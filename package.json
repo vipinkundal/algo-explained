@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check src/app.js"
+    "check": "node --check src/app.js",
+    "generate:algorithm-pages": "node scripts/generate-algorithm-pages.mjs"
   }
 }
