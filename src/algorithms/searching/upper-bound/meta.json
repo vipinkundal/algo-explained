@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "upper-bound",
+  "title": "Upper Bound",
+  "route": "/algorithms/searching/upper-bound",
+  "visualizerType": "array-boundaries",
+  "priority": "medium",
+  "category": "Searching"
+}

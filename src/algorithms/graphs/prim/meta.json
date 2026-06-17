@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "prim",
+  "title": "Prim’s Algorithm",
+  "route": "/algorithms/graphs/prim",
+  "visualizerType": "mst-growth",
+  "priority": "medium",
+  "category": "Graphs"
+}

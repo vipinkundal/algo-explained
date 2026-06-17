@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "matrix-traversal",
+  "title": "Matrix Traversal",
+  "route": "/algorithms/matrix/matrix-traversal",
+  "visualizerType": "grid-walk",
+  "priority": "medium",
+  "category": "Matrix and Grid"
+}

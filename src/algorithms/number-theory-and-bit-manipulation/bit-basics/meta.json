@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "bit-basics",
+  "title": "Bit Basics",
+  "route": "/algorithms/bit-manipulation/bit-basics",
+  "visualizerType": "bit-toggle",
+  "priority": "medium",
+  "category": "Number Theory and Bit Manipulation"
+}

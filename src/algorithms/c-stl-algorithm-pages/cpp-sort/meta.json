@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-sort",
+  "title": "C++ sort()",
+  "route": "/algorithms/cpp-stl/sort",
+  "visualizerType": "comparator-sort",
+  "priority": "high",
+  "category": "C++ STL Algorithm Pages"
+}

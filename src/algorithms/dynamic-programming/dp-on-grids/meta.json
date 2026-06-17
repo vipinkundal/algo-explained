@@ -1,0 +1,9 @@
+{
+  "phase": 4,
+  "id": "dp-on-grids",
+  "title": "DP on Grids",
+  "route": "/algorithms/dynamic-programming/dp-on-grids",
+  "visualizerType": "grid-path-dp",
+  "priority": "high",
+  "category": "Dynamic Programming"
+}

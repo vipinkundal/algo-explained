@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "kmp",
+  "title": "KMP Algorithm",
+  "route": "/algorithms/strings/kmp",
+  "visualizerType": "prefix-table",
+  "priority": "high",
+  "category": "Strings"
+}

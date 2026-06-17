@@ -1,0 +1,9 @@
+{
+  "phase": 4,
+  "id": "red-black-tree-basics",
+  "title": "Red-Black Tree Basics",
+  "route": "/algorithms/trees/red-black-tree-basics",
+  "visualizerType": "balanced-tree",
+  "priority": "low",
+  "category": "Trees"
+}

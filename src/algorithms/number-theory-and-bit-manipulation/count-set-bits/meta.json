@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "count-set-bits",
+  "title": "Count Set Bits",
+  "route": "/algorithms/bit-manipulation/count-set-bits",
+  "visualizerType": "bit-count",
+  "priority": "medium",
+  "category": "Number Theory and Bit Manipulation"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "zero-one-knapsack",
+  "title": "0/1 Knapsack",
+  "route": "/algorithms/dynamic-programming/zero-one-knapsack",
+  "visualizerType": "dp-grid",
+  "priority": "high",
+  "category": "Dynamic Programming"
+}

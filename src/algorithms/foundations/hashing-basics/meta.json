@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "hashing-basics",
+  "title": "Hashing Basics",
+  "route": "/algorithms/foundations/hashing-basics",
+  "visualizerType": "hash-table",
+  "priority": "high",
+  "category": "Foundations"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "merge-sort",
+  "title": "Merge Sort",
+  "route": "/algorithms/sorting/merge-sort",
+  "visualizerType": "divide-merge",
+  "priority": "high",
+  "category": "Sorting"
+}

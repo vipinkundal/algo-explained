@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "height-depth-of-tree",
+  "title": "Height / Depth of Tree",
+  "route": "/algorithms/trees/height-depth-of-tree",
+  "visualizerType": "tree-height",
+  "priority": "high",
+  "category": "Trees"
+}

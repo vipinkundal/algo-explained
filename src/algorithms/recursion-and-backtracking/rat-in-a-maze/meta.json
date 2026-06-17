@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "rat-in-a-maze",
+  "title": "Rat in a Maze",
+  "route": "/algorithms/backtracking/rat-in-a-maze",
+  "visualizerType": "grid-path",
+  "priority": "medium",
+  "category": "Recursion and Backtracking"
+}

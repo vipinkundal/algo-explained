@@ -1,0 +1,9 @@
+{
+  "phase": 4,
+  "id": "kosaraju",
+  "title": "Kosaraju’s Algorithm",
+  "route": "/algorithms/graphs/kosaraju",
+  "visualizerType": "scc-two-pass",
+  "priority": "medium",
+  "category": "Graphs"
+}

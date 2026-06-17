@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "power-of-two",
+  "title": "Power of Two",
+  "route": "/algorithms/bit-manipulation/power-of-two",
+  "visualizerType": "bit-check",
+  "priority": "medium",
+  "category": "Number Theory and Bit Manipulation"
+}

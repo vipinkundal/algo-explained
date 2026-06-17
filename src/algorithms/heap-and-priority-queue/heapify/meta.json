@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "heapify",
+  "title": "Heapify",
+  "route": "/algorithms/heaps/heapify",
+  "visualizerType": "heap-tree",
+  "priority": "medium",
+  "category": "Heap and Priority Queue"
+}

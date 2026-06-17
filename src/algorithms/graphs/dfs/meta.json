@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "dfs",
+  "title": "Depth-First Search",
+  "route": "/algorithms/graphs/dfs",
+  "visualizerType": "graph-stack",
+  "priority": "high",
+  "category": "Graphs"
+}

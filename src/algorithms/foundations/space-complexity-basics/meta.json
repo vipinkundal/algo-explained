@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "space-complexity-basics",
+  "title": "Space Complexity Basics",
+  "route": "/algorithms/foundations/space-complexity-basics",
+  "visualizerType": "memory-blocks",
+  "priority": "high",
+  "category": "Foundations"
+}

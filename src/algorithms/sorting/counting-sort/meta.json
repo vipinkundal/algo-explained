@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "counting-sort",
+  "title": "Counting Sort",
+  "route": "/algorithms/sorting/counting-sort",
+  "visualizerType": "frequency-array",
+  "priority": "medium",
+  "category": "Sorting"
+}

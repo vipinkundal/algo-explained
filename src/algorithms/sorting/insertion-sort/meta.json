@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "insertion-sort",
+  "title": "Insertion Sort",
+  "route": "/algorithms/sorting/insertion-sort",
+  "visualizerType": "card-insertion",
+  "priority": "high",
+  "category": "Sorting"
+}

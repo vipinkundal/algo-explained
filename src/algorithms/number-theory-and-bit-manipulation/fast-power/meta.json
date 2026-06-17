@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "fast-power",
+  "title": "Fast Power",
+  "route": "/algorithms/number-theory/fast-power",
+  "visualizerType": "binary-power",
+  "priority": "high",
+  "category": "Number Theory and Bit Manipulation"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "search-in-rotated-sorted-array",
+  "title": "Search in Rotated Sorted Array",
+  "route": "/algorithms/searching/search-in-rotated-sorted-array",
+  "visualizerType": "rotated-array",
+  "priority": "high",
+  "category": "Searching"
+}

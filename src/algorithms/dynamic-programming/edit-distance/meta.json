@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "edit-distance",
+  "title": "Edit Distance",
+  "route": "/algorithms/dynamic-programming/edit-distance",
+  "visualizerType": "dp-grid",
+  "priority": "medium",
+  "category": "Dynamic Programming"
+}

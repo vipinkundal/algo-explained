@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-priority-queue",
+  "title": "C++ priority_queue",
+  "route": "/algorithms/cpp-stl/priority-queue",
+  "visualizerType": "heap-tree",
+  "priority": "high",
+  "category": "C++ STL Algorithm Pages"
+}

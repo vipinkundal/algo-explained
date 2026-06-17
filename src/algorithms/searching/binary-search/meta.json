@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "binary-search",
+  "title": "Binary Search",
+  "route": "/algorithms/searching/binary-search",
+  "visualizerType": "array-boundaries",
+  "priority": "high",
+  "category": "Searching"
+}

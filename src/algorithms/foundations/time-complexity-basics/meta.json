@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "time-complexity-basics",
+  "title": "Time Complexity Basics",
+  "route": "/algorithms/foundations/time-complexity-basics",
+  "visualizerType": "growth-chart",
+  "priority": "high",
+  "category": "Foundations"
+}

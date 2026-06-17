@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-lower-bound",
+  "title": "C++ lower_bound()",
+  "route": "/algorithms/cpp-stl/lower-bound",
+  "visualizerType": "array-boundaries",
+  "priority": "high",
+  "category": "C++ STL Algorithm Pages"
+}

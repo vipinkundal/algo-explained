@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "postorder-traversal",
+  "title": "Postorder Traversal",
+  "route": "/algorithms/trees/postorder-traversal",
+  "visualizerType": "tree-traversal",
+  "priority": "high",
+  "category": "Trees"
+}

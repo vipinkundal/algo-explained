@@ -1,0 +1,9 @@
+{
+  "phase": 4,
+  "id": "matrix-chain-multiplication",
+  "title": "Matrix Chain Multiplication",
+  "route": "/algorithms/dynamic-programming/matrix-chain-multiplication",
+  "visualizerType": "interval-dp",
+  "priority": "medium",
+  "category": "Dynamic Programming"
+}

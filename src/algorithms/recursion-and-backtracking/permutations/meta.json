@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "permutations",
+  "title": "Permutations",
+  "route": "/algorithms/backtracking/permutations",
+  "visualizerType": "swap-tree",
+  "priority": "high",
+  "category": "Recursion and Backtracking"
+}

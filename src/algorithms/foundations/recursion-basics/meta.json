@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "recursion-basics",
+  "title": "Recursion Basics",
+  "route": "/algorithms/foundations/recursion-basics",
+  "visualizerType": "call-stack",
+  "priority": "high",
+  "category": "Foundations"
+}

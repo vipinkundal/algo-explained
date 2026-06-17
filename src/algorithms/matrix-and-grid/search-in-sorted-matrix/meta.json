@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "search-in-sorted-matrix",
+  "title": "Search in Sorted Matrix",
+  "route": "/algorithms/matrix/search-in-sorted-matrix",
+  "visualizerType": "matrix-staircase",
+  "priority": "medium",
+  "category": "Matrix and Grid"
+}

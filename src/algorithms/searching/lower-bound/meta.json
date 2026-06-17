@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "lower-bound",
+  "title": "Lower Bound",
+  "route": "/algorithms/searching/lower-bound",
+  "visualizerType": "array-boundaries",
+  "priority": "medium",
+  "category": "Searching"
+}

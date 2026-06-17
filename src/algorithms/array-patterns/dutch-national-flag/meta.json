@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "dutch-national-flag",
+  "title": "Dutch National Flag",
+  "route": "/algorithms/array-patterns/dutch-national-flag",
+  "visualizerType": "three-partition",
+  "priority": "medium",
+  "category": "Array Patterns"
+}

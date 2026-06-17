@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "generate-parentheses",
+  "title": "Generate Parentheses",
+  "route": "/algorithms/backtracking/generate-parentheses",
+  "visualizerType": "state-tree",
+  "priority": "medium",
+  "category": "Recursion and Backtracking"
+}

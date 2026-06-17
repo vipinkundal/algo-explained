@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-next-permutation",
+  "title": "C++ next_permutation()",
+  "route": "/algorithms/cpp-stl/next-permutation",
+  "visualizerType": "permutation-step",
+  "priority": "medium",
+  "category": "C++ STL Algorithm Pages"
+}

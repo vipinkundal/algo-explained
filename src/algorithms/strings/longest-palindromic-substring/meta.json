@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "longest-palindromic-substring",
+  "title": "Longest Palindromic Substring",
+  "route": "/algorithms/strings/longest-palindromic-substring",
+  "visualizerType": "expand-center",
+  "priority": "medium",
+  "category": "Strings"
+}

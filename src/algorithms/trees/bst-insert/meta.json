@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "bst-insert",
+  "title": "BST Insert",
+  "route": "/algorithms/trees/bst-insert",
+  "visualizerType": "bst-path",
+  "priority": "medium",
+  "category": "Trees"
+}

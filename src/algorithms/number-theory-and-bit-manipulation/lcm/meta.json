@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "lcm",
+  "title": "LCM",
+  "route": "/algorithms/number-theory/lcm",
+  "visualizerType": "formula-card",
+  "priority": "medium",
+  "category": "Number Theory and Bit Manipulation"
+}

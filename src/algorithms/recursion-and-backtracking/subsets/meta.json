@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "subsets",
+  "title": "Subsets",
+  "route": "/algorithms/backtracking/subsets",
+  "visualizerType": "decision-tree",
+  "priority": "high",
+  "category": "Recursion and Backtracking"
+}

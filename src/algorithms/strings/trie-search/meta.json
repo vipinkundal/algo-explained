@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "trie-search",
+  "title": "Trie-Based Search",
+  "route": "/algorithms/strings/trie-search",
+  "visualizerType": "prefix-tree",
+  "priority": "high",
+  "category": "Strings"
+}

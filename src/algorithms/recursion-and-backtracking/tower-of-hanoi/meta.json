@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "tower-of-hanoi",
+  "title": "Tower of Hanoi",
+  "route": "/algorithms/recursion/tower-of-hanoi",
+  "visualizerType": "disk-moves",
+  "priority": "low",
+  "category": "Recursion and Backtracking"
+}

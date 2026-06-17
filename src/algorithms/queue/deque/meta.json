@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "deque",
+  "title": "Deque",
+  "route": "/algorithms/queue/deque",
+  "visualizerType": "double-ended-queue",
+  "priority": "medium",
+  "category": "Queue"
+}

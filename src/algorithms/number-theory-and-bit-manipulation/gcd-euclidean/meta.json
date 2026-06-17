@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "gcd-euclidean",
+  "title": "GCD / Euclidean Algorithm",
+  "route": "/algorithms/number-theory/gcd-euclidean",
+  "visualizerType": "remainder-steps",
+  "priority": "high",
+  "category": "Number Theory and Bit Manipulation"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "lowest-common-ancestor",
+  "title": "Lowest Common Ancestor",
+  "route": "/algorithms/trees/lowest-common-ancestor",
+  "visualizerType": "tree-paths",
+  "priority": "high",
+  "category": "Trees"
+}

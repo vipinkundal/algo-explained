@@ -1,0 +1,9 @@
+{
+  "phase": 4,
+  "id": "tarjan",
+  "title": "Tarjan’s Algorithm",
+  "route": "/algorithms/graphs/tarjan",
+  "visualizerType": "low-link",
+  "priority": "medium",
+  "category": "Graphs"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "n-queens",
+  "title": "N-Queens",
+  "route": "/algorithms/backtracking/n-queens",
+  "visualizerType": "chessboard",
+  "priority": "medium",
+  "category": "Recursion and Backtracking"
+}

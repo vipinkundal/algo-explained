@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "sieve-of-eratosthenes",
+  "title": "Sieve of Eratosthenes",
+  "route": "/algorithms/number-theory/sieve-of-eratosthenes",
+  "visualizerType": "number-grid",
+  "priority": "high",
+  "category": "Number Theory and Bit Manipulation"
+}

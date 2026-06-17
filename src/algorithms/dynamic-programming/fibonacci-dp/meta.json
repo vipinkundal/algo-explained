@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "fibonacci-dp",
+  "title": "Fibonacci DP",
+  "route": "/algorithms/dynamic-programming/fibonacci-dp",
+  "visualizerType": "dp-table",
+  "priority": "high",
+  "category": "Dynamic Programming"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "diameter-of-tree",
+  "title": "Diameter of Tree",
+  "route": "/algorithms/trees/diameter-of-tree",
+  "visualizerType": "tree-height",
+  "priority": "medium",
+  "category": "Trees"
+}

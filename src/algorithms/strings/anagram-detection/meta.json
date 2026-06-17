@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "anagram-detection",
+  "title": "Anagram Detection",
+  "route": "/algorithms/strings/anagram-detection",
+  "visualizerType": "frequency-map",
+  "priority": "medium",
+  "category": "Strings"
+}

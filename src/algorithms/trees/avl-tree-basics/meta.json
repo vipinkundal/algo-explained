@@ -1,0 +1,9 @@
+{
+  "phase": 4,
+  "id": "avl-tree-basics",
+  "title": "AVL Tree Basics",
+  "route": "/algorithms/trees/avl-tree-basics",
+  "visualizerType": "rotations",
+  "priority": "low",
+  "category": "Trees"
+}

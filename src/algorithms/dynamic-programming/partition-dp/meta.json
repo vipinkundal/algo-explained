@@ -1,0 +1,9 @@
+{
+  "phase": 4,
+  "id": "partition-dp",
+  "title": "Partition DP",
+  "route": "/algorithms/dynamic-programming/partition-dp",
+  "visualizerType": "partition-table",
+  "priority": "medium",
+  "category": "Dynamic Programming"
+}

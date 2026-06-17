@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "sliding-window",
+  "title": "Sliding Window",
+  "route": "/algorithms/array-patterns/sliding-window",
+  "visualizerType": "moving-window",
+  "priority": "high",
+  "category": "Array Patterns"
+}

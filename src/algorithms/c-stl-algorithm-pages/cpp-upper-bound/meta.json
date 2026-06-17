@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-upper-bound",
+  "title": "C++ upper_bound()",
+  "route": "/algorithms/cpp-stl/upper-bound",
+  "visualizerType": "array-boundaries",
+  "priority": "high",
+  "category": "C++ STL Algorithm Pages"
+}

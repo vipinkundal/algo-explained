@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "greedy-basics",
+  "title": "Greedy Basics",
+  "route": "/algorithms/foundations/greedy-basics",
+  "visualizerType": "decision-timeline",
+  "priority": "medium",
+  "category": "Foundations"
+}

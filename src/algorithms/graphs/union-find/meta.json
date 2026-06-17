@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "union-find",
+  "title": "Disjoint Set Union / Union Find",
+  "route": "/algorithms/graphs/union-find",
+  "visualizerType": "parent-tree",
+  "priority": "high",
+  "category": "Graphs"
+}

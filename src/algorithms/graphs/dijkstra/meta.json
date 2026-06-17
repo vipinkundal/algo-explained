@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "dijkstra",
+  "title": "Dijkstra’s Algorithm",
+  "route": "/algorithms/graphs/dijkstra",
+  "visualizerType": "weighted-graph",
+  "priority": "high",
+  "category": "Graphs"
+}

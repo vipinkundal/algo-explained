@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "inorder-traversal",
+  "title": "Inorder Traversal",
+  "route": "/algorithms/trees/inorder-traversal",
+  "visualizerType": "tree-traversal",
+  "priority": "high",
+  "category": "Trees"
+}

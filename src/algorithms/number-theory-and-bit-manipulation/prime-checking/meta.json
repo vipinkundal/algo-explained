@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "prime-checking",
+  "title": "Prime Checking",
+  "route": "/algorithms/number-theory/prime-checking",
+  "visualizerType": "divisor-scan",
+  "priority": "medium",
+  "category": "Number Theory and Bit Manipulation"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "spiral-matrix",
+  "title": "Spiral Matrix",
+  "route": "/algorithms/matrix/spiral-matrix",
+  "visualizerType": "boundary-grid",
+  "priority": "medium",
+  "category": "Matrix and Grid"
+}

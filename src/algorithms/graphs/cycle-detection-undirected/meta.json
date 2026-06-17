@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "cycle-detection-undirected",
+  "title": "Cycle Detection in Undirected Graph",
+  "route": "/algorithms/graphs/cycle-detection-undirected",
+  "visualizerType": "graph-visited",
+  "priority": "high",
+  "category": "Graphs"
+}

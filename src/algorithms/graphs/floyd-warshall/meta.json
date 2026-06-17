@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "floyd-warshall",
+  "title": "Floyd-Warshall Algorithm",
+  "route": "/algorithms/graphs/floyd-warshall",
+  "visualizerType": "matrix-update",
+  "priority": "medium",
+  "category": "Graphs"
+}

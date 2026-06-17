@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "trie",
+  "title": "Trie Operations",
+  "route": "/algorithms/trees/trie",
+  "visualizerType": "prefix-tree",
+  "priority": "high",
+  "category": "Trees"
+}

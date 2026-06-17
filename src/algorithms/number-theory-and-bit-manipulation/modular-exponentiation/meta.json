@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "modular-exponentiation",
+  "title": "Modular Exponentiation",
+  "route": "/algorithms/number-theory/modular-exponentiation",
+  "visualizerType": "binary-power",
+  "priority": "high",
+  "category": "Number Theory and Bit Manipulation"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "single-number",
+  "title": "Single Number",
+  "route": "/algorithms/bit-manipulation/single-number",
+  "visualizerType": "xor-cancel",
+  "priority": "high",
+  "category": "Number Theory and Bit Manipulation"
+}

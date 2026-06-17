@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "stack-basics",
+  "title": "Stack Basics",
+  "route": "/algorithms/stack/stack-basics",
+  "visualizerType": "stack-push-pop",
+  "priority": "high",
+  "category": "Stack"
+}

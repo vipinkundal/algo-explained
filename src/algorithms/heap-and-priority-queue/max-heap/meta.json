@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "max-heap",
+  "title": "Max Heap",
+  "route": "/algorithms/heaps/max-heap",
+  "visualizerType": "heap-tree",
+  "priority": "medium",
+  "category": "Heap and Priority Queue"
+}

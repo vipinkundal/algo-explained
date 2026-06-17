@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "merge-k-sorted-lists",
+  "title": "Merge K Sorted Lists",
+  "route": "/algorithms/heaps/merge-k-sorted-lists",
+  "visualizerType": "heap-merge",
+  "priority": "medium",
+  "category": "Heap and Priority Queue"
+}

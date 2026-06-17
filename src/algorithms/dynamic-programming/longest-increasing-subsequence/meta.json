@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "longest-increasing-subsequence",
+  "title": "Longest Increasing Subsequence",
+  "route": "/algorithms/dynamic-programming/longest-increasing-subsequence",
+  "visualizerType": "sequence-dp",
+  "priority": "high",
+  "category": "Dynamic Programming"
+}

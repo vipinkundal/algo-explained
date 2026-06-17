@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "bucket-sort",
+  "title": "Bucket Sort",
+  "route": "/algorithms/sorting/bucket-sort",
+  "visualizerType": "bucket-groups",
+  "priority": "low",
+  "category": "Sorting"
+}

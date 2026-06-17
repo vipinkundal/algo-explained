@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-reverse",
+  "title": "C++ reverse()",
+  "route": "/algorithms/cpp-stl/reverse",
+  "visualizerType": "two-pointer-swap",
+  "priority": "medium",
+  "category": "C++ STL Algorithm Pages"
+}

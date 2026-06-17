@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "fibonacci-recursion",
+  "title": "Fibonacci Recursion",
+  "route": "/algorithms/recursion/fibonacci-recursion",
+  "visualizerType": "recursion-tree",
+  "priority": "medium",
+  "category": "Recursion and Backtracking"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "heap-sort",
+  "title": "Heap Sort",
+  "route": "/algorithms/sorting/heap-sort",
+  "visualizerType": "heap-tree",
+  "priority": "medium",
+  "category": "Sorting"
+}

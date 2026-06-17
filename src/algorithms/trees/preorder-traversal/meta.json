@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "preorder-traversal",
+  "title": "Preorder Traversal",
+  "route": "/algorithms/trees/preorder-traversal",
+  "visualizerType": "tree-traversal",
+  "priority": "high",
+  "category": "Trees"
+}

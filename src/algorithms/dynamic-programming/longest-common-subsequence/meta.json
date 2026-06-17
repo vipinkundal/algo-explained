@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "longest-common-subsequence",
+  "title": "Longest Common Subsequence",
+  "route": "/algorithms/dynamic-programming/longest-common-subsequence",
+  "visualizerType": "dp-grid",
+  "priority": "high",
+  "category": "Dynamic Programming"
+}

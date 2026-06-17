@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "circular-queue",
+  "title": "Circular Queue",
+  "route": "/algorithms/queue/circular-queue",
+  "visualizerType": "circular-buffer",
+  "priority": "medium",
+  "category": "Queue"
+}

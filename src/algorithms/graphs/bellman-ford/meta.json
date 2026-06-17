@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "bellman-ford",
+  "title": "Bellman-Ford Algorithm",
+  "route": "/algorithms/graphs/bellman-ford",
+  "visualizerType": "edge-relaxation",
+  "priority": "medium",
+  "category": "Graphs"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "longest-consecutive-sequence",
+  "title": "Longest Consecutive Sequence",
+  "route": "/algorithms/array-patterns/longest-consecutive-sequence",
+  "visualizerType": "hash-set-chain",
+  "priority": "medium",
+  "category": "Array Patterns"
+}

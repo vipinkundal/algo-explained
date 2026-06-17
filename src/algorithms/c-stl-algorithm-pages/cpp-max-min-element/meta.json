@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-max-min-element",
+  "title": "C++ max_element() / min_element()",
+  "route": "/algorithms/cpp-stl/max-min-element",
+  "visualizerType": "array-scan",
+  "priority": "medium",
+  "category": "C++ STL Algorithm Pages"
+}

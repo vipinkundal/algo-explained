@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "queue-basics",
+  "title": "Queue Basics",
+  "route": "/algorithms/queue/queue-basics",
+  "visualizerType": "queue-enqueue-dequeue",
+  "priority": "high",
+  "category": "Queue"
+}

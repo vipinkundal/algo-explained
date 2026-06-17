@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "combination-sum",
+  "title": "Combination Sum",
+  "route": "/algorithms/backtracking/combination-sum",
+  "visualizerType": "choice-tree",
+  "priority": "medium",
+  "category": "Recursion and Backtracking"
+}

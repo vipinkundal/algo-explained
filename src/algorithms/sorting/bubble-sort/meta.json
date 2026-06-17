@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "bubble-sort",
+  "title": "Bubble Sort",
+  "route": "/algorithms/sorting/bubble-sort",
+  "visualizerType": "bar-swap",
+  "priority": "high",
+  "category": "Sorting"
+}

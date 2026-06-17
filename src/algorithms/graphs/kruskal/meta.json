@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "kruskal",
+  "title": "Kruskal’s Algorithm",
+  "route": "/algorithms/graphs/kruskal",
+  "visualizerType": "mst-edges",
+  "priority": "medium",
+  "category": "Graphs"
+}

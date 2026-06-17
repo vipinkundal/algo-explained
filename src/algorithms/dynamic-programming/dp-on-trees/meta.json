@@ -1,0 +1,9 @@
+{
+  "phase": 4,
+  "id": "dp-on-trees",
+  "title": "DP on Trees",
+  "route": "/algorithms/dynamic-programming/dp-on-trees",
+  "visualizerType": "tree-dp",
+  "priority": "medium",
+  "category": "Dynamic Programming"
+}

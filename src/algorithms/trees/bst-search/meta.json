@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "bst-search",
+  "title": "BST Search",
+  "route": "/algorithms/trees/bst-search",
+  "visualizerType": "bst-path",
+  "priority": "high",
+  "category": "Trees"
+}

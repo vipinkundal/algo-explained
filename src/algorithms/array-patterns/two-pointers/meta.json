@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "two-pointers",
+  "title": "Two Pointers",
+  "route": "/algorithms/array-patterns/two-pointers",
+  "visualizerType": "two-pointer-array",
+  "priority": "high",
+  "category": "Array Patterns"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "min-heap",
+  "title": "Min Heap",
+  "route": "/algorithms/heaps/min-heap",
+  "visualizerType": "heap-tree",
+  "priority": "medium",
+  "category": "Heap and Priority Queue"
+}

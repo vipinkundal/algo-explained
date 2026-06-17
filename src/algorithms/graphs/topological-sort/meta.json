@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "topological-sort",
+  "title": "Topological Sort",
+  "route": "/algorithms/graphs/topological-sort",
+  "visualizerType": "dag-order",
+  "priority": "high",
+  "category": "Graphs"
+}

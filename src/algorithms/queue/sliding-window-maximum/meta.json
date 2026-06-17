@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "sliding-window-maximum",
+  "title": "Sliding Window Maximum",
+  "route": "/algorithms/queue/sliding-window-maximum",
+  "visualizerType": "monotonic-deque",
+  "priority": "high",
+  "category": "Queue"
+}

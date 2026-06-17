@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "majority-element",
+  "title": "Majority Element",
+  "route": "/algorithms/array-patterns/majority-element",
+  "visualizerType": "candidate-counter",
+  "priority": "medium",
+  "category": "Array Patterns"
+}

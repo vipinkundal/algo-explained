@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "bfs",
+  "title": "Breadth-First Search",
+  "route": "/algorithms/graphs/bfs",
+  "visualizerType": "graph-queue",
+  "priority": "high",
+  "category": "Graphs"
+}

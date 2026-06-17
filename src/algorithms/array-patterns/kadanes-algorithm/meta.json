@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "kadanes-algorithm",
+  "title": "Kadane’s Algorithm",
+  "route": "/algorithms/array-patterns/kadanes-algorithm",
+  "visualizerType": "running-sum",
+  "priority": "high",
+  "category": "Array Patterns"
+}

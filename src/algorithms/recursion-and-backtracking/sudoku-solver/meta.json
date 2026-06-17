@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "sudoku-solver",
+  "title": "Sudoku Solver",
+  "route": "/algorithms/backtracking/sudoku-solver",
+  "visualizerType": "board-state",
+  "priority": "low",
+  "category": "Recursion and Backtracking"
+}

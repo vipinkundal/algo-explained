@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "min-stack",
+  "title": "Min Stack",
+  "route": "/algorithms/stack/min-stack",
+  "visualizerType": "dual-stack",
+  "priority": "medium",
+  "category": "Stack"
+}

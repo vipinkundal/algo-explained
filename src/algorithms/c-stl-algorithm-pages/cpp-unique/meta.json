@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-unique",
+  "title": "C++ unique()",
+  "route": "/algorithms/cpp-stl/unique",
+  "visualizerType": "duplicate-shift",
+  "priority": "medium",
+  "category": "C++ STL Algorithm Pages"
+}

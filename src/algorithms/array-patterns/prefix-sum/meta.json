@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "prefix-sum",
+  "title": "Prefix Sum",
+  "route": "/algorithms/array-patterns/prefix-sum",
+  "visualizerType": "cumulative-array",
+  "priority": "high",
+  "category": "Array Patterns"
+}

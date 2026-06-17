@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "maximum-product-subarray",
+  "title": "Maximum Product Subarray",
+  "route": "/algorithms/array-patterns/maximum-product-subarray",
+  "visualizerType": "min-max-tracker",
+  "priority": "medium",
+  "category": "Array Patterns"
+}

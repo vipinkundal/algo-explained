@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "xor-tricks",
+  "title": "XOR Tricks",
+  "route": "/algorithms/bit-manipulation/xor-tricks",
+  "visualizerType": "xor-cancel",
+  "priority": "medium",
+  "category": "Number Theory and Bit Manipulation"
+}

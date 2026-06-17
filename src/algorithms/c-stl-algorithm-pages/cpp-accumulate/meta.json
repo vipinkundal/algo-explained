@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-accumulate",
+  "title": "C++ accumulate()",
+  "route": "/algorithms/cpp-stl/accumulate",
+  "visualizerType": "running-sum",
+  "priority": "medium",
+  "category": "C++ STL Algorithm Pages"
+}

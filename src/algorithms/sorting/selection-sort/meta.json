@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "selection-sort",
+  "title": "Selection Sort",
+  "route": "/algorithms/sorting/selection-sort",
+  "visualizerType": "min-selection",
+  "priority": "high",
+  "category": "Sorting"
+}

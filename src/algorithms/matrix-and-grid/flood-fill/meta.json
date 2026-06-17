@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "flood-fill",
+  "title": "Flood Fill",
+  "route": "/algorithms/matrix/flood-fill",
+  "visualizerType": "grid-bfs-dfs",
+  "priority": "high",
+  "category": "Matrix and Grid"
+}

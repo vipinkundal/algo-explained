@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "bst-delete",
+  "title": "BST Delete",
+  "route": "/algorithms/trees/bst-delete",
+  "visualizerType": "bst-restructure",
+  "priority": "medium",
+  "category": "Trees"
+}

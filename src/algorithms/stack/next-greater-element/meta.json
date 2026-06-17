@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "next-greater-element",
+  "title": "Next Greater Element",
+  "route": "/algorithms/stack/next-greater-element",
+  "visualizerType": "monotonic-stack",
+  "priority": "high",
+  "category": "Stack"
+}

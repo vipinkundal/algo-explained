@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "word-search",
+  "title": "Word Search",
+  "route": "/algorithms/backtracking/word-search",
+  "visualizerType": "grid-dfs",
+  "priority": "medium",
+  "category": "Recursion and Backtracking"
+}

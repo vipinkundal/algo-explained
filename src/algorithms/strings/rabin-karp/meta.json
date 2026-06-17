@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "rabin-karp",
+  "title": "Rabin-Karp Algorithm",
+  "route": "/algorithms/strings/rabin-karp",
+  "visualizerType": "rolling-hash",
+  "priority": "medium",
+  "category": "Strings"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 4,
+  "id": "manachers-algorithm",
+  "title": "Manacher’s Algorithm",
+  "route": "/algorithms/strings/manachers-algorithm",
+  "visualizerType": "palindrome-radius",
+  "priority": "low",
+  "category": "Strings"
+}

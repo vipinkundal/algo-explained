@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-unordered-map-set",
+  "title": "C++ unordered_map / unordered_set",
+  "route": "/algorithms/cpp-stl/unordered-map-set",
+  "visualizerType": "hash-table",
+  "priority": "high",
+  "category": "C++ STL Algorithm Pages"
+}

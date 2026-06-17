@@ -1,0 +1,9 @@
+{
+  "phase": 4,
+  "id": "z-algorithm",
+  "title": "Z Algorithm",
+  "route": "/algorithms/strings/z-algorithm",
+  "visualizerType": "z-box",
+  "priority": "medium",
+  "category": "Strings"
+}

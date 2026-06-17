@@ -1,0 +1,9 @@
+{
+  "phase": 4,
+  "id": "modular-inverse",
+  "title": "Modular Inverse",
+  "route": "/algorithms/number-theory/modular-inverse",
+  "visualizerType": "extended-gcd",
+  "priority": "medium",
+  "category": "Number Theory and Bit Manipulation"
+}

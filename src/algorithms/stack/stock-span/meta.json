@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "stock-span",
+  "title": "Stock Span Problem",
+  "route": "/algorithms/stack/stock-span",
+  "visualizerType": "monotonic-stack",
+  "priority": "medium",
+  "category": "Stack"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-map-set",
+  "title": "C++ map / set",
+  "route": "/algorithms/cpp-stl/map-set",
+  "visualizerType": "balanced-tree",
+  "priority": "medium",
+  "category": "C++ STL Algorithm Pages"
+}

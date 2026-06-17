@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "linear-search",
+  "title": "Linear Search",
+  "route": "/algorithms/searching/linear-search",
+  "visualizerType": "array-scan",
+  "priority": "high",
+  "category": "Searching"
+}

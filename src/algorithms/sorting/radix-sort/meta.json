@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "radix-sort",
+  "title": "Radix Sort",
+  "route": "/algorithms/sorting/radix-sort",
+  "visualizerType": "digit-buckets",
+  "priority": "medium",
+  "category": "Sorting"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "bitmasking-subsets",
+  "title": "Bitmasking for Subsets",
+  "route": "/algorithms/bit-manipulation/bitmasking-subsets",
+  "visualizerType": "subset-mask",
+  "priority": "medium",
+  "category": "Number Theory and Bit Manipulation"
+}

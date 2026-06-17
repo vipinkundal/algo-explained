@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "difference-array",
+  "title": "Difference Array",
+  "route": "/algorithms/array-patterns/difference-array",
+  "visualizerType": "range-update",
+  "priority": "medium",
+  "category": "Array Patterns"
+}

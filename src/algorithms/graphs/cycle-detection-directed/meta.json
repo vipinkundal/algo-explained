@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "cycle-detection-directed",
+  "title": "Cycle Detection in Directed Graph",
+  "route": "/algorithms/graphs/cycle-detection-directed",
+  "visualizerType": "graph-recursion-stack",
+  "priority": "high",
+  "category": "Graphs"
+}

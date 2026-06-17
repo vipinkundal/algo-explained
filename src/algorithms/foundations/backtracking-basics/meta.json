@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "backtracking-basics",
+  "title": "Backtracking Basics",
+  "route": "/algorithms/foundations/backtracking-basics",
+  "visualizerType": "recursion-tree",
+  "priority": "high",
+  "category": "Foundations"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "largest-rectangle-histogram",
+  "title": "Largest Rectangle in Histogram",
+  "route": "/algorithms/stack/largest-rectangle-histogram",
+  "visualizerType": "monotonic-stack-bars",
+  "priority": "medium",
+  "category": "Stack"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "ternary-search",
+  "title": "Ternary Search",
+  "route": "/algorithms/searching/ternary-search",
+  "visualizerType": "divided-range",
+  "priority": "low",
+  "category": "Searching"
+}

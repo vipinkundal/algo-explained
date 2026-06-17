@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "level-order-traversal",
+  "title": "Level Order Traversal",
+  "route": "/algorithms/trees/level-order-traversal",
+  "visualizerType": "tree-levels",
+  "priority": "high",
+  "category": "Trees"
+}

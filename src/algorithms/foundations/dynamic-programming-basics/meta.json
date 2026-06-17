@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "dynamic-programming-basics",
+  "title": "Dynamic Programming Basics",
+  "route": "/algorithms/foundations/dynamic-programming-basics",
+  "visualizerType": "dp-table",
+  "priority": "high",
+  "category": "Foundations"
+}

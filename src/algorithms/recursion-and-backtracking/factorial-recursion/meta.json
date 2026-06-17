@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "factorial-recursion",
+  "title": "Factorial Recursion",
+  "route": "/algorithms/recursion/factorial-recursion",
+  "visualizerType": "call-stack",
+  "priority": "medium",
+  "category": "Recursion and Backtracking"
+}

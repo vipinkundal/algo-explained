@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "prefix-sum-matrix",
+  "title": "Prefix Sum Matrix",
+  "route": "/algorithms/matrix/prefix-sum-matrix",
+  "visualizerType": "grid-prefix",
+  "priority": "medium",
+  "category": "Matrix and Grid"
+}

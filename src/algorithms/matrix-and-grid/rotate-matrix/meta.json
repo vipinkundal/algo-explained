@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "rotate-matrix",
+  "title": "Rotate Matrix",
+  "route": "/algorithms/matrix/rotate-matrix",
+  "visualizerType": "grid-transform",
+  "priority": "medium",
+  "category": "Matrix and Grid"
+}

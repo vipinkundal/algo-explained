@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "top-k-frequent-elements",
+  "title": "Top K Frequent Elements",
+  "route": "/algorithms/heaps/top-k-frequent-elements",
+  "visualizerType": "frequency-heap",
+  "priority": "high",
+  "category": "Heap and Priority Queue"
+}

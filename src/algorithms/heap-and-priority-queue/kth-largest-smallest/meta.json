@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "kth-largest-smallest",
+  "title": "Kth Largest / Smallest Element",
+  "route": "/algorithms/heaps/kth-largest-smallest",
+  "visualizerType": "heap-selection",
+  "priority": "high",
+  "category": "Heap and Priority Queue"
+}

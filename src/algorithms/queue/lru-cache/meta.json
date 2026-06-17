@@ -1,0 +1,9 @@
+{
+  "phase": 2,
+  "id": "lru-cache",
+  "title": "LRU Cache",
+  "route": "/algorithms/queue/lru-cache",
+  "visualizerType": "hashmap-linkedlist",
+  "priority": "high",
+  "category": "Queue"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": 3,
+  "id": "coin-change",
+  "title": "Coin Change",
+  "route": "/algorithms/dynamic-programming/coin-change",
+  "visualizerType": "dp-array",
+  "priority": "high",
+  "category": "Dynamic Programming"
+}

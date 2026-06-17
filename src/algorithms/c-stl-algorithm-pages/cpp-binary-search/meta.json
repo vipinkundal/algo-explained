@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "cpp-binary-search",
+  "title": "C++ binary_search()",
+  "route": "/algorithms/cpp-stl/binary-search",
+  "visualizerType": "array-boundaries",
+  "priority": "high",
+  "category": "C++ STL Algorithm Pages"
+}

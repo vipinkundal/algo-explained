@@ -1,0 +1,9 @@
+{
+  "phase": 1,
+  "id": "valid-parentheses",
+  "title": "Valid Parentheses",
+  "route": "/algorithms/stack/valid-parentheses",
+  "visualizerType": "stack-match",
+  "priority": "high",
+  "category": "Stack"
+}
