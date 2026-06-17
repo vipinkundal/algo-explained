@@ -230,6 +230,44 @@ async function handleAuthApi(request, response, url) {
     return true;
   }
 
+  if (url.pathname === "/api/auth/profile" && request.method === "PATCH") {
+    const body = await collectJson(request);
+    const token = String(body.sessionToken || "");
+    const nextEmail = normalizeEmail(body.email);
+    const nextName = String(body.name || "").trim().slice(0, 120);
+    const store = await readProgressStore();
+    const account = getAccountBySession(store, token);
+
+    if (!account) {
+      sendJson(response, 401, { error: "Sign in before updating your profile" });
+      return true;
+    }
+
+    if (!nextEmail || !nextName) {
+      sendJson(response, 400, { error: "Name and a valid email are required" });
+      return true;
+    }
+
+    const existingUserId = store.auth?.emailIndex?.[nextEmail];
+    if (existingUserId && existingUserId !== account.userId) {
+      sendJson(response, 409, { error: "Another account already uses this email" });
+      return true;
+    }
+
+    if (account.email !== nextEmail) {
+      delete store.auth.emailIndex[account.email];
+      store.auth.emailIndex[nextEmail] = account.userId;
+    }
+
+    account.email = nextEmail;
+    account.name = nextName;
+    account.updatedAt = new Date().toISOString();
+    normalizeUser(store, account.userId).user.profile = publicAccount(account);
+    await writeProgressStore(store);
+    sendJson(response, 200, { user: publicAccount(account) });
+    return true;
+  }
+
   if (url.pathname === "/api/auth/logout" && request.method === "POST") {
     const body = await collectJson(request);
     const store = await readProgressStore();

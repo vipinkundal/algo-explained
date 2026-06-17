@@ -927,6 +927,11 @@ em {
   overflow-wrap: anywhere;
 }
 
+.auth-message.success {
+  background: rgba(130, 249, 190, 0.28);
+  color: var(--tertiary);
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;

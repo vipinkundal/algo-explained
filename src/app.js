@@ -81,6 +81,7 @@ const state = {
   sessionToken: loadSessionToken(),
   authMode: "login",
   authMessage: "",
+  authMessageType: "error",
   savedIds: loadSavedIds(initialUserId),
   progress: loadProgress(initialUserId),
   recentIds: loadRecentIds(initialUserId),
@@ -109,20 +110,6 @@ let dailyQuizPromise = null;
 
 function icon(name) {
   return `<span class="material-symbols-outlined" aria-hidden="true">${name}</span>`;
-}
-
-function groupAlgorithms() {
-  const query = state.query.trim().toLowerCase();
-  return algorithms
-    .filter((algorithm) => {
-      if (!query) return true;
-      return `${algorithm.name} ${algorithm.category} ${algorithm.summary || ""}`.toLowerCase().includes(query);
-    })
-    .reduce((groups, algorithm) => {
-      groups[algorithm.category] ||= [];
-      groups[algorithm.category].push(algorithm);
-      return groups;
-    }, {});
 }
 
 function renderHeader() {
@@ -159,15 +146,12 @@ function renderCatalog() {
 
   return `
     <section class="catalog-panel" aria-labelledby="catalog-title">
-      <div class="search-field">
-        ${icon("search")}
-        <input id="algorithm-search" value="${escapeHtml(state.query)}" placeholder="Search algorithms (e.g. Dijkstra, QuickSort)..." aria-label="Search algorithms" />
-      </div>
       <div class="catalog-intro">
         <p class="eyebrow">Learning dashboard</p>
         <h1 id="catalog-title">Learn the logic, then watch it move.</h1>
         <p>Start from plain-English intuition, step through the code trace, then use visual controls to see the state changes.</p>
       </div>
+      ${renderProgressPanel(getSelectedAlgorithm())}
       ${renderDashboardReports()}
       ${recentAlgorithms.length ? renderRecentDashboard(recentAlgorithms) : renderEmptyRecentDashboard()}
     </section>
@@ -342,6 +326,12 @@ function renderAccountProfile() {
         <p>${escapeHtml(state.backendStatus === "synced" ? "Synced to backend" : "Available locally")}</p>
       </div>
     </div>
+    <form class="auth-form profile-edit-form" data-auth-form="profile">
+      <label>Name<input name="name" autocomplete="name" value="${escapeHtml(user.name || "")}" required /></label>
+      <label>Email<input name="email" type="email" autocomplete="email" value="${escapeHtml(user.email || "")}" required /></label>
+      <button class="auth-submit" type="submit">${icon("save")}<span>Save profile</span></button>
+    </form>
+    ${state.authMessage ? `<p class="auth-message ${escapeHtml(state.authMessageType)}">${escapeHtml(state.authMessage)}</p>` : ""}
     <button type="button" class="auth-submit danger" data-auth-action="logout">${icon("logout")}<span>Sign out</span></button>
   `;
 }
@@ -367,7 +357,7 @@ function renderAuthForms() {
       <label>Password<input name="password" type="password" autocomplete="${isSignup ? "new-password" : "current-password"}" minlength="8" required /></label>
       <button class="auth-submit" type="submit">${icon(isSignup ? "person_add" : "login")}<span>${isSignup ? "Create account" : "Sign in"}</span></button>
     </form>
-    ${state.authMessage ? `<p class="auth-message">${escapeHtml(state.authMessage)}</p>` : ""}
+    ${state.authMessage ? `<p class="auth-message ${escapeHtml(state.authMessageType)}">${escapeHtml(state.authMessage)}</p>` : ""}
   `;
 }
 
@@ -514,8 +504,9 @@ function renderWorkspace() {
 
   if (state.view === "search") return "";
   if (state.view === "saved") return "";
+  if (state.view === "profile") return "";
   if (state.view === "quiz") return renderDailyQuizWorkspace();
-  if (state.view !== "catalog" && page) return `${renderProgressPanel(selected)}${page.render(state.view)}`;
+  if (state.view !== "catalog" && page) return page.render(state.view);
   return "";
 }
 
@@ -669,26 +660,11 @@ function renderSidePanel() {
   if (state.view === "saved") return renderSavedPanel();
   if (state.view === "quiz") return renderDailyQuizPanel();
   if (state.view === "profile") return renderProfilePanel();
-  return renderCatalog();
+  if (state.view === "catalog") return renderCatalog();
+  return "";
 }
 
 function bindEvents() {
-  const search = root.querySelector("#algorithm-search");
-  if (search) {
-    search.addEventListener("input", (event) => {
-      const value = event.target.value;
-      state.query = value;
-      state.searchQuery = value;
-      state.view = "search";
-      updateRoute();
-      ensureSmartSearchIndex();
-      render();
-      const nextSearch = root.querySelector("#smart-search");
-      nextSearch?.focus();
-      nextSearch?.setSelectionRange(state.searchQuery.length, state.searchQuery.length);
-    });
-  }
-
   const smartSearch = root.querySelector("#smart-search");
   if (smartSearch) {
     smartSearch.addEventListener("input", (event) => {
@@ -714,6 +690,7 @@ function handleShellClick(event) {
     event.preventDefault();
     state.authMode = target.dataset.authMode;
     state.authMessage = "";
+    state.authMessageType = "error";
     render();
     return;
   }
@@ -1466,11 +1443,8 @@ function redirectFromQuizCooldown() {
 }
 
 function redirectFromQuizOnboarding() {
-  const unlockAt = getDailyQuizUnlockAt();
   state.view = "catalog";
-  state.notice = unlockAt
-    ? `Daily quiz unlocks in ${formatDuration(unlockAt - Date.now())} after 3 days of learning.`
-    : "Sign in and learn for 3 days before daily quizzes start.";
+  state.notice = "";
   updateRoute();
   render();
 }
@@ -1598,6 +1572,7 @@ async function handleAuthSubmit(event) {
   const type = form.dataset.authForm;
 
   state.authMessage = "";
+  state.authMessageType = "error";
   render();
 
   if (type === "signup") {
@@ -1617,7 +1592,16 @@ async function handleAuthSubmit(event) {
     return;
   }
 
+  if (type === "profile") {
+    await updateAuthProfile({
+      name: formData.get("name"),
+      email: formData.get("email"),
+    });
+    return;
+  }
+
   state.authMessage = "Unsupported account form.";
+  state.authMessageType = "error";
   render();
 }
 
@@ -1633,6 +1617,7 @@ async function authenticate(endpoint, payload) {
     await applyAuthSession(data);
   } catch (error) {
     state.authMessage = error.message || "Authentication failed";
+    state.authMessageType = "error";
     render();
   }
 }
@@ -1652,6 +1637,31 @@ async function refreshAuthSession() {
     return true;
   } catch {
     return false;
+  }
+}
+
+async function updateAuthProfile(payload) {
+  try {
+    const response = await fetch("/api/auth/profile", {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        ...payload,
+        sessionToken: state.sessionToken,
+      }),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "Profile update failed");
+
+    state.authUser = data.user;
+    state.authMessage = "Profile updated.";
+    state.authMessageType = "success";
+    persistAuthSession();
+    render();
+  } catch (error) {
+    state.authMessage = error.message || "Profile update failed";
+    state.authMessageType = "error";
+    render();
   }
 }
 
