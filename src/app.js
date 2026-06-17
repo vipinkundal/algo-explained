@@ -149,15 +149,18 @@ function groupAlgorithms() {
 
 function renderHeader() {
   return `
-    <header class="app-header">
-      <button class="icon-button" data-view="catalog" aria-label="Back to catalog">${icon("arrow_back")}</button>
-      <button class="brand-button" data-view="catalog">AlgoExplained</button>
-      <nav class="top-nav" aria-label="Primary">
+    <header class="app-header sticky top-0 z-20 grid h-[72px] grid-cols-[44px_minmax(0,1fr)_auto_44px] items-center gap-2 border-b border-outline-variant/60 bg-surface/95 px-5 backdrop-blur-xl max-[560px]:grid-cols-[44px_minmax(0,1fr)_44px]">
+      <button class="icon-button grid h-11 w-11 place-items-center rounded-full text-primary transition hover:bg-surface-highest active:scale-95" data-view="catalog" aria-label="Back to catalog">${icon("arrow_back")}</button>
+      <button class="brand-button justify-self-start bg-transparent text-[28px] font-black leading-9 text-primary max-[560px]:text-[26px]" data-view="catalog">AlgoExplained</button>
+      <nav class="top-nav hidden gap-2 md:flex" aria-label="Primary">
         ${["catalog", "lesson", "visualizer", "challenge"]
-          .map((view) => `<button class="nav-link ${state.view === view ? "active" : ""}" data-view="${view}">${view}</button>`)
+          .map(
+            (view) =>
+              `<button class="nav-link rounded-full border px-3.5 py-2 text-xs font-black uppercase ${state.view === view ? "active border-primary/20 bg-primary-fixed text-primary" : "border-transparent text-on-surface-variant"}" data-view="${view}">${view}</button>`,
+          )
           .join("")}
       </nav>
-      <button class="icon-button" aria-label="Share">${icon("ios_share")}</button>
+      <button class="icon-button grid h-11 w-11 place-items-center rounded-full text-primary transition hover:bg-surface-highest active:scale-95" aria-label="Share">${icon("ios_share")}</button>
     </header>
   `;
 }
@@ -180,14 +183,14 @@ function renderCatalog() {
 
   return `
     <section class="catalog-panel" aria-labelledby="catalog-title">
-      <div class="search-field">
+      <div class="search-field relative mb-7 flex items-center">
         ${icon("search")}
-        <input id="algorithm-search" value="${escapeHtml(state.query)}" placeholder="Search algorithms (e.g. Dijkstra, QuickSort)..." aria-label="Search algorithms" />
+        <input class="h-[60px] w-full rounded-xl border border-outline-variant bg-surface-lowest pl-[54px] pr-4 text-on-surface shadow-card outline-none focus:border-primary focus:ring-4 focus:ring-primary-container/15" id="algorithm-search" value="${escapeHtml(state.query)}" placeholder="Search algorithms (e.g. Dijkstra, QuickSort)..." aria-label="Search algorithms" />
       </div>
-      <div class="catalog-intro">
-        <p class="eyebrow">Algorithm catalog</p>
-        <h1 id="catalog-title">Learn the logic, then watch it move.</h1>
-        <p>Start from plain-English intuition, step through the code trace, then use visual controls to see the state changes.</p>
+      <div class="catalog-intro mb-7 overflow-hidden rounded-2xl bg-slate-900 p-6 text-white">
+        <p class="eyebrow inline-flex rounded-full bg-primary-fixed px-4 py-1.5 text-xs font-black uppercase text-primary">Algorithm catalog</p>
+        <h1 class="mt-3 text-[32px] font-black leading-10" id="catalog-title">Learn the logic, then watch it move.</h1>
+        <p class="mt-3 text-lg leading-7 text-white/85">Start from plain-English intuition, step through the code trace, then use visual controls to see the state changes.</p>
       </div>
       ${rows}
     </section>
@@ -205,11 +208,11 @@ function renderAlgorithmCard(algorithm) {
   const categoryClass = slugify(algorithm.category || "foundations");
 
   return `
-    <button type="button" class="algorithm-card ${algorithm.id === state.selectedId ? "selected" : ""}" data-algorithm="${algorithm.id}">
+    <button type="button" class="algorithm-card relative grid min-h-[272px] rounded-xl border bg-surface-lowest p-[18px] text-left shadow-card transition hover:-translate-y-1 hover:border-primary-container/40 hover:shadow-lifted focus-visible:-translate-y-1 ${algorithm.id === state.selectedId ? "selected border-primary-container/40 shadow-lifted" : "border-outline-variant/70"}" data-algorithm="${algorithm.id}">
       <span class="card-icon ${categoryClass}">${icon(iconName)}</span>
       <span class="difficulty ${String(level).toLowerCase()}">${escapeHtml(level)}</span>
-      <strong>${escapeHtml(title)}</strong>
-      <span>${escapeHtml(summary)}</span>
+      <strong class="mb-2.5 text-[22px] leading-7">${escapeHtml(title)}</strong>
+      <span class="text-[15px] leading-6 text-on-surface-variant">${escapeHtml(summary)}</span>
       <small>Real-world use</small>
       <em>${escapeHtml(use)}</em>
       <span class="card-meta">
@@ -398,10 +401,10 @@ function renderBottomNav() {
 function render() {
   root.innerHTML = `
     ${renderHeader()}
-    <main class="app-shell">
-      <div class="content-grid">
+    <main class="app-shell mx-auto w-full max-w-7xl px-5 pb-28 pt-6 md:pb-12">
+      <div class="content-grid grid gap-6 md:grid-cols-[minmax(360px,0.86fr)_minmax(0,1.14fr)] lg:grid-cols-[430px_minmax(0,1fr)]">
         ${renderCatalog()}
-        <div class="workspace">${renderWorkspace()}</div>
+        <div class="workspace min-w-0">${renderWorkspace()}</div>
       </div>
     </main>
     ${renderBottomNav()}

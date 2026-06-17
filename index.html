@@ -8,14 +8,58 @@
       content="AlgoExplained teaches algorithms with simple explanations, code traces, and animated visualizers."
     />
     <title>AlgoExplained</title>
+    <script>
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              surface: "#f8f9fb",
+              "surface-base": "#f4f5f7",
+              "surface-lowest": "#ffffff",
+              "surface-low": "#f3f4f6",
+              "surface-container": "#edeef0",
+              "surface-highest": "#e1e2e4",
+              "on-surface": "#191c1e",
+              "on-surface-variant": "#434654",
+              outline: "#737685",
+              "outline-variant": "#c3c6d6",
+              primary: "#003d9b",
+              "primary-container": "#0052cc",
+              "primary-fixed": "#dae2ff",
+              secondary: "#5e4db9",
+              "secondary-container": "#9f8eff",
+              "secondary-fixed": "#e5deff",
+              tertiary: "#004e32",
+              "tertiary-fixed": "#82f9be",
+              error: "#ba1a1a",
+              "error-container": "#ffdad6",
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+              mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+            },
+            boxShadow: {
+              card: "0 4px 8px rgba(20, 28, 38, 0.08)",
+              lifted: "0 14px 30px rgba(0, 61, 155, 0.18)",
+            },
+            borderRadius: {
+              card: "0.75rem",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./src/styles.css" />
   </head>
-  <body>
+  <body class="bg-surface-base font-sans text-on-surface antialiased">
     <div id="root"></div>
     <script defer src="./src/app.js"></script>
   </body>

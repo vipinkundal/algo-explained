@@ -4,10 +4,12 @@ AlgoExplained is a frontend-only algorithm learning website. The goal is to teac
 
 ## Current Stack
 
-- Static HTML, CSS, and JavaScript
+- Static HTML, Tailwind CSS, custom CSS, and JavaScript
 - No backend
 - No install step required
 - GitHub Pages friendly
+
+Tailwind is loaded through the browser CDN so the current project remains zero-install. The custom stylesheet is kept for visualizer-specific animation, code trace, and component polish.
 
 ## Current Prototype
 
