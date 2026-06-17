@@ -1,4 +1,5 @@
 import { createServer } from "node:http";
+import { randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { createReadStream } from "node:fs";
 import { extname, join, normalize, resolve } from "node:path";
@@ -101,6 +102,10 @@ async function handleApi(request, response, url) {
     return handleDailyQuizApi(request, response, url);
   }
 
+  if (url.pathname.startsWith("/api/auth/")) {
+    return handleAuthApi(request, response, url);
+  }
+
   if (url.pathname !== "/api/progress") return false;
 
   if (request.method === "GET") {
@@ -159,6 +164,135 @@ async function handleApi(request, response, url) {
   return true;
 }
 
+async function handleAuthApi(request, response, url) {
+  if (url.pathname === "/api/auth/me" && request.method === "GET") {
+    const store = await readProgressStore();
+    const token = String(url.searchParams.get("sessionToken") || "");
+    const account = getAccountBySession(store, token);
+    sendJson(response, account ? 200 : 401, account ? { user: publicAccount(account) } : { error: "Not signed in" });
+    return true;
+  }
+
+  if (url.pathname === "/api/auth/signup" && request.method === "POST") {
+    const body = await collectJson(request);
+    const email = normalizeEmail(body.email);
+    const password = String(body.password || "");
+    const name = String(body.name || "").trim().slice(0, 120);
+
+    if (!email || password.length < 8) {
+      sendJson(response, 400, { error: "A valid email and an 8 character password are required" });
+      return true;
+    }
+
+    const store = await readProgressStore();
+    store.auth ||= { accounts: {}, emailIndex: {}, sessions: {} };
+    if (store.auth.emailIndex[email]) {
+      sendJson(response, 409, { error: "An account with this email already exists" });
+      return true;
+    }
+
+    const userId = `acct_${randomBytes(12).toString("hex")}`;
+    const account = {
+      userId,
+      email,
+      name: name || email.split("@")[0],
+      password: hashPassword(password),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    store.auth.accounts[userId] = account;
+    store.auth.emailIndex[email] = userId;
+    normalizeUser(store, userId).user.profile = publicAccount(account);
+    const sessionToken = createSession(store, userId);
+    await writeProgressStore(store);
+    sendJson(response, 201, { user: publicAccount(account), sessionToken });
+    return true;
+  }
+
+  if (url.pathname === "/api/auth/login" && request.method === "POST") {
+    const body = await collectJson(request);
+    const email = normalizeEmail(body.email);
+    const password = String(body.password || "");
+    const store = await readProgressStore();
+    const account = getAccountByEmail(store, email);
+
+    if (!account || !verifyPassword(password, account.password)) {
+      sendJson(response, 401, { error: "Email or password is incorrect" });
+      return true;
+    }
+
+    account.updatedAt = new Date().toISOString();
+    normalizeUser(store, account.userId).user.profile = publicAccount(account);
+    const sessionToken = createSession(store, account.userId);
+    await writeProgressStore(store);
+    sendJson(response, 200, { user: publicAccount(account), sessionToken });
+    return true;
+  }
+
+  if (url.pathname === "/api/auth/logout" && request.method === "POST") {
+    const body = await collectJson(request);
+    const store = await readProgressStore();
+    const token = String(body.sessionToken || "");
+    if (store.auth?.sessions && token) delete store.auth.sessions[token];
+    await writeProgressStore(store);
+    sendJson(response, 200, { ok: true });
+    return true;
+  }
+
+  response.writeHead(404);
+  response.end();
+  return true;
+}
+
+function normalizeEmail(value) {
+  const email = String(value || "").trim().toLowerCase();
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : "";
+}
+
+function hashPassword(password) {
+  const salt = randomBytes(16).toString("hex");
+  const hash = scryptSync(password, salt, 64).toString("hex");
+  return `scrypt:${salt}:${hash}`;
+}
+
+function verifyPassword(password, encoded = "") {
+  const [scheme, salt, hash] = String(encoded).split(":");
+  if (scheme !== "scrypt" || !salt || !hash) return false;
+  const actual = Buffer.from(scryptSync(password, salt, 64).toString("hex"), "hex");
+  const expected = Buffer.from(hash, "hex");
+  return actual.length === expected.length && timingSafeEqual(actual, expected);
+}
+
+function createSession(store, userId) {
+  store.auth ||= { accounts: {}, emailIndex: {}, sessions: {} };
+  store.auth.sessions ||= {};
+  const sessionToken = randomBytes(32).toString("hex");
+  store.auth.sessions[sessionToken] = {
+    userId,
+    createdAt: new Date().toISOString(),
+  };
+  return sessionToken;
+}
+
+function getAccountByEmail(store, email) {
+  const userId = store.auth?.emailIndex?.[email];
+  return userId ? store.auth?.accounts?.[userId] : null;
+}
+
+function getAccountBySession(store, token) {
+  const userId = store.auth?.sessions?.[token]?.userId;
+  return userId ? store.auth?.accounts?.[userId] : null;
+}
+
+function publicAccount(account) {
+  return {
+    userId: account.userId,
+    email: account.email,
+    name: account.name,
+  };
+}
+
 async function handleDailyQuizApi(request, response, url) {
   if (request.method === "GET") {
     const date = sanitizeDate(url.searchParams.get("date"));
@@ -169,10 +303,15 @@ async function handleDailyQuizApi(request, response, url) {
 
     const store = await readProgressStore();
     const { id, user } = normalizeUser(store, url.searchParams.get("userId"));
+    const latestCompletedQuiz = getLatestCompletedQuiz(user.dailyQuizzes);
     sendJson(response, 200, {
       userId: id,
       date,
       quiz: user.dailyQuizzes[date] || null,
+      latestCompletedQuiz,
+      nextQuizAt: latestCompletedQuiz?.completedAt
+        ? new Date(Date.parse(latestCompletedQuiz.completedAt) + (24 * 60 * 60 * 1000)).toISOString()
+        : "",
     });
     return true;
   }
@@ -211,6 +350,12 @@ function normalizeDailyQuiz(quiz, date) {
     hintCount: Number.isFinite(Number(quiz.hintCount)) ? Number(quiz.hintCount) : 0,
     elapsedMs: Number.isFinite(Number(quiz.elapsedMs)) ? Number(quiz.elapsedMs) : 0,
   };
+}
+
+function getLatestCompletedQuiz(dailyQuizzes = {}) {
+  return Object.values(dailyQuizzes)
+    .filter((quiz) => quiz?.completedAt && Number.isFinite(Date.parse(quiz.completedAt)))
+    .sort((a, b) => Date.parse(b.completedAt) - Date.parse(a.completedAt))[0] || null;
 }
 
 function normalizeProgress(progress) {

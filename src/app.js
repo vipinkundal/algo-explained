@@ -66,6 +66,9 @@ const starterAlgorithms = [
   },
 ];
 
+const initialAuthUser = loadAuthUser();
+const initialUserId = initialAuthUser?.userId || loadUserId();
+
 const state = {
   view: "catalog",
   selectedId: "binary-search",
@@ -73,10 +76,14 @@ const state = {
   searchQuery: "",
   loadingPageId: "",
   notice: "",
-  userId: loadUserId(),
-  savedIds: loadSavedIds(),
-  progress: loadProgress(),
-  recentIds: loadRecentIds(),
+  userId: initialUserId,
+  authUser: initialAuthUser,
+  sessionToken: loadSessionToken(),
+  authMode: "login",
+  authMessage: "",
+  savedIds: loadSavedIds(initialUserId),
+  progress: loadProgress(initialUserId),
+  recentIds: loadRecentIds(initialUserId),
   backendStatus: "local",
   searchLoading: false,
   quizDate: getTodayKey(),
@@ -86,6 +93,7 @@ const state = {
 };
 
 const routeViews = new Set(["lesson", "visualizer", "challenge"]);
+const dailyQuizCooldownMs = 24 * 60 * 60 * 1000;
 const loadedPages = new Map();
 const loadedStyles = new Set();
 const searchRecords = new Map();
@@ -117,12 +125,13 @@ function groupAlgorithms() {
 
 function renderHeader() {
   const currentSaved = state.savedIds.has(state.selectedId);
+  const navItems = ["catalog", "search", "saved", "lesson", ...(!isDailyQuizCooldownActive() ? ["quiz"] : []), "profile"];
   return `
     <header class="app-header">
       <button class="icon-button" data-view="catalog" aria-label="Back to catalog">${icon("arrow_back")}</button>
       <button class="brand-button" data-view="catalog">Algo Explained</button>
       <nav class="top-nav" aria-label="Primary">
-        ${["catalog", "search", "saved", "lesson", "quiz"].map(renderNavButton).join("")}
+        ${navItems.map(renderNavButton).join("")}
       </nav>
       <button class="icon-button ${currentSaved ? "saved" : ""}" data-action="save-current" aria-label="Save current algorithm">${icon(currentSaved ? "bookmark_added" : "bookmark")}</button>
     </header>
@@ -134,6 +143,7 @@ function renderNavButton(view) {
     catalog: "home",
     search: "search",
     saved: "saved",
+    profile: "profile",
     lesson: "lesson",
     visualizer: "visualize",
     challenge: "quiz",
@@ -298,8 +308,81 @@ function renderEmptySaved() {
   `;
 }
 
+function renderProfilePanel() {
+  return `
+    <section class="catalog-panel profile-panel" aria-labelledby="profile-title">
+      ${state.authUser ? renderAccountProfile() : renderAuthForms()}
+    </section>
+  `;
+}
+
+function renderAccountProfile() {
+  const user = state.authUser;
+  const initials = getUserInitials(user);
+  return `
+    <div class="profile-hero">
+      <span class="profile-avatar">${escapeHtml(initials)}</span>
+      <div>
+        <p class="eyebrow">Signed in</p>
+        <h1 id="profile-title">${escapeHtml(user.name || "Profile")}</h1>
+        <p>${escapeHtml(user.email)}</p>
+      </div>
+    </div>
+    <div class="profile-meta">
+      <div>
+        <span>${icon("badge")}</span>
+        <strong>User ID</strong>
+        <p>${escapeHtml(user.userId)}</p>
+      </div>
+      <div>
+        <span>${icon("sync")}</span>
+        <strong>Progress sync</strong>
+        <p>${escapeHtml(state.backendStatus === "synced" ? "Synced to backend" : "Available locally")}</p>
+      </div>
+    </div>
+    <button type="button" class="auth-submit danger" data-auth-action="logout">${icon("logout")}<span>Sign out</span></button>
+  `;
+}
+
+function renderAuthForms() {
+  const isSignup = state.authMode === "signup";
+  return `
+    <div class="profile-hero auth-hero">
+      <span class="profile-avatar">${icon("account_circle")}</span>
+      <div>
+        <p class="eyebrow">Account</p>
+        <h1 id="profile-title">${isSignup ? "Create your account" : "Sign in"}</h1>
+        <p>Sync saved algorithms, recent activity, daily quizzes, and progress.</p>
+      </div>
+    </div>
+    <div class="auth-tabs" role="tablist" aria-label="Account mode">
+      <button type="button" class="${state.authMode === "login" ? "active" : ""}" data-auth-mode="login">Sign in</button>
+      <button type="button" class="${state.authMode === "signup" ? "active" : ""}" data-auth-mode="signup">Create account</button>
+    </div>
+    <form class="auth-form" data-auth-form="${escapeHtml(state.authMode)}">
+      ${isSignup ? `<label>Full name<input name="name" autocomplete="name" placeholder="Ada Lovelace" /></label>` : ""}
+      <label>Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label>
+      <label>Password<input name="password" type="password" autocomplete="${isSignup ? "new-password" : "current-password"}" minlength="8" required /></label>
+      <button class="auth-submit" type="submit">${icon(isSignup ? "person_add" : "login")}<span>${isSignup ? "Create account" : "Sign in"}</span></button>
+    </form>
+    ${state.authMessage ? `<p class="auth-message">${escapeHtml(state.authMessage)}</p>` : ""}
+  `;
+}
+
+function getUserInitials(user) {
+  const source = user?.name || user?.email || "U";
+  return source
+    .split(/[\s@._-]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join("") || "U";
+}
+
 function renderDailyQuizPanel() {
   const quiz = state.dailyQuiz;
+  if (isDailyQuizCooldownActive(quiz)) return "";
+
   if (state.quizLoading) {
     return `
       <section class="catalog-panel daily-quiz-panel" aria-labelledby="daily-quiz-title">
@@ -426,62 +509,21 @@ function renderWorkspace() {
   const selected = getSelectedAlgorithm();
   const page = loadedPages.get(state.selectedId);
 
-  if (state.view === "search") return renderSearchWorkspace(selected);
-  if (state.view === "saved") return renderSavedWorkspace();
+  if (state.view === "search") return "";
+  if (state.view === "saved") return "";
   if (state.view === "quiz") return renderDailyQuizWorkspace();
   if (state.view !== "catalog" && page) return `${renderProgressPanel(selected)}${page.render(state.view)}`;
-  if (state.loadingPageId === state.selectedId) return renderLoadingPanel(selected);
-  return renderReadyPanel(selected);
-}
-
-function renderSearchWorkspace(selected) {
-  const title = selected ? escapeHtml(selected.title || selected.name) : "Search the catalog";
-  const category = selected ? escapeHtml(selected.category) : "Algorithms";
-
-  return `
-    <section class="ready-panel search-ready-panel">
-      ${icon("manage_search")}
-      <p class="eyebrow">${category}</p>
-      <h2>${title}</h2>
-      <p>Choose a result to open its detailed lesson, visualizer, and quiz. Your saved items and completion checks sync through the backend when it is running.</p>
-    </section>
-  `;
-}
-
-function renderSavedWorkspace() {
-  const savedAlgorithms = getSavedAlgorithms();
-  return `
-    <section class="ready-panel saved-ready-panel">
-      ${icon("bookmark")}
-      <p class="eyebrow">Saved</p>
-      <h2>${savedAlgorithms.length ? `${savedAlgorithms.length} saved` : "Nothing saved yet"}</h2>
-      <p>Saved algorithms sync through the backend when it is running and remain available in this browser as a fallback.</p>
-    </section>
-  `;
+  return "";
 }
 
 function renderDailyQuizWorkspace() {
   const quiz = state.dailyQuiz;
   if (state.quizLoading) {
-    return `
-      <section class="ready-panel quiz-ready-panel">
-        ${icon("hourglass_top")}
-        <p class="eyebrow">Daily quiz</p>
-        <h2>Preparing today&apos;s test</h2>
-        <p>Questions are selected from your recent learning path and algorithm progress.</p>
-      </section>
-    `;
+    return "";
   }
 
   if (!quiz?.questions?.length) {
-    return `
-      <section class="ready-panel quiz-ready-panel">
-        ${icon("quiz")}
-        <p class="eyebrow">Daily quiz</p>
-        <h2>No questions ready</h2>
-        <p>Open a few lessons or visualizers so the daily quiz can follow your learning path.</p>
-      </section>
-    `;
+    return "";
   }
 
   const answered = getAnsweredQuizCount(quiz);
@@ -563,36 +605,16 @@ function renderProgressPanel(selected) {
   `;
 }
 
-function renderLoadingPanel(selected) {
-  return `
-    <section class="ready-panel">
-      ${icon("hourglass_top")}
-      <h2>${selected ? escapeHtml(selected.title || selected.name) : "Loading algorithm"}</h2>
-      <p>Loading this algorithm's separate JavaScript, CSS, logic, and animation files.</p>
-    </section>
-  `;
-}
-
-function renderReadyPanel(selected) {
-  const selectedName = selected ? escapeHtml(selected.title || selected.name) : "Ready to visualize?";
-  const plannedRoute = selected?.route ? `Planned route: ${escapeHtml(selected.route)}.` : "";
-
-  return `
-    <section class="ready-panel">
-      ${icon("school")}
-      <h2>${selectedName}</h2>
-      <p>${plannedRoute} Open any algorithm to load its page files from that algorithm's own folder.</p>
-    </section>
-  `;
-}
-
 function renderBottomNav() {
+  const profileLabel = state.authUser ? "Profile" : "Sign in";
+  const secondaryItems = [
+    ["catalog", "home", "Home"],
+    ["search", "search", "Search"],
+  ];
+  const quizAvailable = !isDailyQuizCooldownActive();
   return `
-    <nav class="bottom-nav" aria-label="Section navigation">
-      ${[
-        ["catalog", "home", "Home"],
-        ["search", "search", "Search"],
-      ].map(([view, symbol, label]) => `
+    <nav class="bottom-nav" aria-label="Section navigation" style="grid-template-columns: repeat(${quizAvailable ? 5 : 4}, minmax(0, 1fr))">
+      ${secondaryItems.map(([view, symbol, label]) => `
         <button class="${state.view === view ? "active" : ""}" data-view="${view}">
           ${icon(symbol)}<span>${label}</span>
         </button>
@@ -600,13 +622,15 @@ function renderBottomNav() {
       <button class="${state.view === "saved" ? "active saved" : ""}" data-view="saved" aria-label="Saved algorithms">
         ${icon("bookmark")}<span>Saved</span>
       </button>
-      ${[
-        ["quiz", "quiz", "Quiz"],
-      ].map(([view, symbol, label]) => `
-        <button class="${state.view === view ? "active" : ""}" data-view="${view}">
-          ${icon(symbol)}<span>${label}</span>
+      ${quizAvailable ? `
+        <button class="${state.view === "quiz" ? "active" : ""}" data-view="quiz">
+          ${icon("quiz")}<span>Quiz</span>
         </button>
-      `).join("")}
+      ` : ""}
+      <button class="${state.view === "profile" ? "active" : ""}" data-view="profile" aria-label="${escapeHtml(profileLabel)}">
+        ${icon(state.authUser ? "account_circle" : "person")}
+        <span>${escapeHtml(profileLabel)}</span>
+      </button>
     </nav>
   `;
 }
@@ -641,6 +665,7 @@ function renderSidePanel() {
   if (state.view === "search") return renderSearchPanel();
   if (state.view === "saved") return renderSavedPanel();
   if (state.view === "quiz") return renderDailyQuizPanel();
+  if (state.view === "profile") return renderProfilePanel();
   return renderCatalog();
 }
 
@@ -672,11 +697,29 @@ function bindEvents() {
       nextSearch?.setSelectionRange(state.searchQuery.length, state.searchQuery.length);
     });
   }
+
+  root.querySelectorAll("[data-auth-form]").forEach((form) => {
+    form.addEventListener("submit", handleAuthSubmit);
+  });
 }
 
 function handleShellClick(event) {
-  const target = event.target.closest("[data-action='save-current'], [data-algorithm], [data-view], [data-progress-section], [data-quiz-answer], [data-quiz-action]");
+  const target = event.target.closest("[data-action='save-current'], [data-auth-action], [data-auth-mode], [data-algorithm], [data-view], [data-progress-section], [data-quiz-answer], [data-quiz-action]");
   if (!target || !root.contains(target)) return;
+
+  if (target.dataset.authMode) {
+    event.preventDefault();
+    state.authMode = target.dataset.authMode;
+    state.authMessage = "";
+    render();
+    return;
+  }
+
+  if (target.dataset.authAction === "logout") {
+    event.preventDefault();
+    logoutUser();
+    return;
+  }
 
   if (target.dataset.quizAnswer) {
     event.preventDefault();
@@ -696,7 +739,7 @@ function handleShellClick(event) {
     return;
   }
 
-  if (isDailyQuizRequired() && (target.dataset.algorithm || target.dataset.progressSection || target.dataset.view !== "quiz")) {
+  if (isDailyQuizRequired() && (target.dataset.algorithm || target.dataset.progressSection || !["quiz", "profile"].includes(target.dataset.view))) {
     event.preventDefault();
     forceDailyQuiz("Complete today's quiz before opening another page.");
     return;
@@ -746,7 +789,12 @@ async function openAlgorithm(id) {
 }
 
 async function setView(view) {
-  if (isDailyQuizRequired() && view !== "quiz") {
+  if (view === "quiz" && isDailyQuizCooldownActive()) {
+    redirectFromQuizCooldown();
+    return;
+  }
+
+  if (isDailyQuizRequired() && !["quiz", "profile"].includes(view)) {
     forceDailyQuiz("Complete today's quiz before opening another page.");
     return;
   }
@@ -758,6 +806,10 @@ async function setView(view) {
 
   if (view === "quiz") {
     await initializeDailyQuiz();
+    if (isDailyQuizCooldownActive()) {
+      redirectFromQuizCooldown();
+      return;
+    }
     render();
     return;
   }
@@ -770,6 +822,11 @@ async function setView(view) {
   }
 
   if (view === "saved") {
+    render();
+    return;
+  }
+
+  if (view === "profile") {
     render();
     return;
   }
@@ -861,6 +918,11 @@ function updateRoute() {
     return;
   }
 
+  if (state.view === "profile") {
+    if (location.hash !== "#/profile") history.pushState(null, "", "#/profile");
+    return;
+  }
+
   const selected = getSelectedAlgorithm();
   if (!selected?.route) return;
 
@@ -880,6 +942,9 @@ function getRouteFromHash() {
   }
   if (normalizeRoute(hash) === "/quiz" || normalizeRoute(hash) === "quiz") {
     return { view: "quiz" };
+  }
+  if (normalizeRoute(hash) === "/profile" || normalizeRoute(hash) === "profile") {
+    return { view: "profile" };
   }
 
   const parts = hash.split("/");
@@ -1082,7 +1147,7 @@ async function loadAlgorithmData(algorithm) {
 }
 
 async function initializeDailyQuiz() {
-  if (state.dailyQuiz?.date === state.quizDate) return state.dailyQuiz;
+  if (isDailyQuizCooldownActive()) return state.dailyQuiz;
   if (dailyQuizPromise) return dailyQuizPromise;
 
   state.quizLoading = true;
@@ -1093,6 +1158,10 @@ async function initializeDailyQuiz() {
     const storedQuiz = await fetchDailyQuiz();
     if (storedQuiz) {
       state.dailyQuiz = storedQuiz;
+    } else if (isDailyQuizCooldownActive()) {
+      state.quizLoading = false;
+      render();
+      return state.dailyQuiz;
     } else {
       state.dailyQuiz = await buildDailyQuiz();
       persistDailyQuizLocal();
@@ -1100,7 +1169,7 @@ async function initializeDailyQuiz() {
     }
 
     state.quizLoading = false;
-    if (isDailyQuizRequired() && state.view !== "quiz") {
+    if (isDailyQuizRequired() && !["quiz", "profile"].includes(state.view)) {
       forceDailyQuiz("Complete today's quiz before opening another page.");
     } else {
       render();
@@ -1121,11 +1190,17 @@ async function initializeDailyQuiz() {
 
 async function fetchDailyQuiz() {
   const localQuiz = loadDailyQuizLocal();
+  if (isDailyQuizCooldownActive(localQuiz)) return localQuiz;
 
   try {
     const response = await fetch(`/api/daily-quiz?userId=${encodeURIComponent(state.userId)}&date=${encodeURIComponent(state.quizDate)}`, { cache: "no-store" });
     if (!response.ok) throw new Error("Daily quiz API unavailable");
     const data = await response.json();
+    const latestCompletedQuiz = data.latestCompletedQuiz ? normalizeClientQuiz(data.latestCompletedQuiz) : null;
+    if (isDailyQuizCooldownActive(latestCompletedQuiz)) {
+      persistDailyQuizLocal(latestCompletedQuiz);
+      return latestCompletedQuiz;
+    }
     if (data.quiz?.date === state.quizDate) {
       persistDailyQuizLocal(data.quiz);
       return normalizeClientQuiz(data.quiz);
@@ -1259,6 +1334,7 @@ function handleDailyQuizAction(target) {
   if (!quiz) return;
 
   const action = target.dataset.quizAction;
+  let completedNow = false;
   if (action === "jump") {
     quiz.activeIndex = Math.max(0, Math.min(Number(target.dataset.quizIndex) || 0, quiz.questions.length - 1));
   }
@@ -1288,6 +1364,7 @@ function handleDailyQuizAction(target) {
       quiz.completedAt = new Date().toISOString();
       quiz.elapsedMs = getDailyQuizElapsedMs(quiz);
       state.notice = `Daily quiz complete: ${getDailyQuizScore(quiz)}/${quiz.questions.length} in ${formatDuration(quiz.elapsedMs)}.`;
+      completedNow = true;
     }
 
     window.clearTimeout(handleDailyQuizAction.noticeTimer);
@@ -1298,16 +1375,41 @@ function handleDailyQuizAction(target) {
   }
 
   persistDailyQuizLocal();
-  render();
   syncDailyQuiz({ silent: true });
+  if (completedNow) {
+    state.view = "catalog";
+    updateRoute();
+  }
+  render();
 }
 
 function isDailyQuizRequired() {
-  return Boolean(state.dailyQuiz?.questions?.length && !isDailyQuizComplete());
+  return Boolean(state.dailyQuiz?.questions?.length && !isDailyQuizComplete() && !isDailyQuizCooldownActive());
 }
 
 function isDailyQuizComplete() {
   return Boolean(state.dailyQuiz?.completedAt);
+}
+
+function isDailyQuizCooldownActive(quiz = state.dailyQuiz) {
+  const completedAt = Date.parse(quiz?.completedAt || "");
+  if (!Number.isFinite(completedAt)) return false;
+  return Date.now() - completedAt < dailyQuizCooldownMs;
+}
+
+function getNextDailyQuizAt(quiz = state.dailyQuiz) {
+  const completedAt = Date.parse(quiz?.completedAt || "");
+  return Number.isFinite(completedAt) ? completedAt + dailyQuizCooldownMs : 0;
+}
+
+function redirectFromQuizCooldown() {
+  const nextQuizAt = getNextDailyQuizAt();
+  state.view = "catalog";
+  state.notice = nextQuizAt
+    ? `Today's quiz is complete. Next quiz opens in ${formatDuration(nextQuizAt - Date.now())}.`
+    : "Today's quiz is complete.";
+  updateRoute();
+  render();
 }
 
 function forceDailyQuiz(message) {
@@ -1349,7 +1451,12 @@ function getTodayKey() {
 function loadDailyQuizLocal() {
   try {
     const quizzes = JSON.parse(window.localStorage.getItem(`algo-explained:daily-quizzes:${state.userId}`) || "{}");
-    return quizzes?.[state.quizDate] ? normalizeClientQuiz(quizzes[state.quizDate]) : null;
+    const todaysQuiz = quizzes?.[state.quizDate] ? normalizeClientQuiz(quizzes[state.quizDate]) : null;
+    if (todaysQuiz) return todaysQuiz;
+    return Object.values(quizzes || {})
+      .map((quiz) => normalizeClientQuiz(quiz))
+      .filter((quiz) => quiz.completedAt)
+      .sort((a, b) => Date.parse(b.completedAt) - Date.parse(a.completedAt))[0] || null;
   } catch {
     return null;
   }
@@ -1360,7 +1467,7 @@ function persistDailyQuizLocal(quiz = state.dailyQuiz) {
   try {
     const key = `algo-explained:daily-quizzes:${state.userId}`;
     const quizzes = JSON.parse(window.localStorage.getItem(key) || "{}");
-    quizzes[state.quizDate] = quiz;
+    quizzes[quiz.date || state.quizDate] = quiz;
     window.localStorage.setItem(key, JSON.stringify(quizzes));
     return true;
   } catch {
@@ -1397,6 +1504,105 @@ async function syncDailyQuiz(options = {}) {
     if (!options.silent) render();
     return false;
   }
+}
+
+async function handleAuthSubmit(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const formData = new FormData(form);
+  const type = form.dataset.authForm;
+
+  state.authMessage = "";
+  render();
+
+  if (type === "signup") {
+    await authenticate("/api/auth/signup", {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+    });
+    return;
+  }
+
+  if (type === "login") {
+    await authenticate("/api/auth/login", {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    });
+    return;
+  }
+
+  state.authMessage = "Unsupported account form.";
+  render();
+}
+
+async function authenticate(endpoint, payload) {
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "Authentication failed");
+    await applyAuthSession(data);
+  } catch (error) {
+    state.authMessage = error.message || "Authentication failed";
+    render();
+  }
+}
+
+async function applyAuthSession(data) {
+  const pendingSavedIds = new Set(state.savedIds);
+  const pendingProgress = { ...state.progress };
+  const pendingRecentIds = [...state.recentIds];
+  state.authUser = data.user;
+  state.sessionToken = data.sessionToken;
+  state.userId = data.user.userId;
+  state.savedIds = new Set([...loadSavedIds(state.userId), ...pendingSavedIds]);
+  state.progress = { ...loadProgress(state.userId), ...pendingProgress };
+  state.recentIds = [...new Set([...pendingRecentIds, ...loadRecentIds(state.userId)])].slice(0, 12);
+  persistAuthSession();
+  persistUserId(state.userId);
+  persistSavedIds();
+  persistProgress();
+  persistRecentIds();
+  state.dailyQuiz = null;
+  dailyQuizPromise = null;
+  await syncUserProgress({ silent: true });
+  await loadUserProgress();
+  await initializeDailyQuiz();
+  state.notice = `Signed in as ${data.user.name || data.user.email}.`;
+  state.view = "profile";
+  updateRoute();
+  render();
+}
+
+async function logoutUser() {
+  const previousToken = state.sessionToken;
+  clearAuthSession();
+  state.authUser = null;
+  state.sessionToken = "";
+  state.userId = loadUserId({ forceAnonymous: true });
+  state.savedIds = loadSavedIds(state.userId);
+  state.progress = loadProgress(state.userId);
+  state.recentIds = loadRecentIds(state.userId);
+  state.dailyQuiz = null;
+  dailyQuizPromise = null;
+  try {
+    if (previousToken) {
+      await fetch("/api/auth/logout", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ sessionToken: previousToken }),
+      });
+    }
+  } catch {
+    // Local logout still succeeds when the backend is unavailable.
+  }
+  await loadUserProgress();
+  state.notice = "Signed out.";
+  render();
 }
 
 async function saveCurrentAlgorithm() {
@@ -1445,21 +1651,73 @@ function getCompletedCount(id) {
   return ["lesson", "visualizer", "challenge"].filter((section) => progress[section]).length;
 }
 
-function loadUserId() {
+function loadUserId(options = {}) {
   try {
-    const existing = window.localStorage.getItem("algo-explained:user-id");
+    const key = options.forceAnonymous ? "algo-explained:anonymous-user-id" : "algo-explained:user-id";
+    const existing = window.localStorage.getItem(key);
     if (existing) return existing;
     const next = `user_${window.crypto?.randomUUID ? window.crypto.randomUUID() : Date.now().toString(36)}`;
-    window.localStorage.setItem("algo-explained:user-id", next);
+    window.localStorage.setItem(key, next);
     return next;
   } catch {
     return "anonymous";
   }
 }
 
-function loadSavedIds() {
+function persistUserId(userId) {
   try {
-    const value = window.localStorage.getItem("algo-explained:saved-algorithms");
+    window.localStorage.setItem("algo-explained:user-id", userId);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function loadAuthUser() {
+  try {
+    const user = JSON.parse(window.localStorage.getItem("algo-explained:auth-user") || "null");
+    return user && typeof user === "object" ? user : null;
+  } catch {
+    return null;
+  }
+}
+
+function loadSessionToken() {
+  try {
+    return window.localStorage.getItem("algo-explained:session-token") || "";
+  } catch {
+    return "";
+  }
+}
+
+function persistAuthSession() {
+  try {
+    if (state.authUser) window.localStorage.setItem("algo-explained:auth-user", JSON.stringify(state.authUser));
+    if (state.sessionToken) window.localStorage.setItem("algo-explained:session-token", state.sessionToken);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function clearAuthSession() {
+  try {
+    window.localStorage.removeItem("algo-explained:auth-user");
+    window.localStorage.removeItem("algo-explained:session-token");
+    window.localStorage.setItem("algo-explained:user-id", loadUserId({ forceAnonymous: true }));
+  } catch {
+    // Browser storage may be unavailable.
+  }
+}
+
+function scopedStorageKey(name, userId = state?.userId || initialUserId) {
+  return `algo-explained:${name}:${userId || "anonymous"}`;
+}
+
+function loadSavedIds(userId = state?.userId || initialUserId) {
+  try {
+    const value = window.localStorage.getItem(scopedStorageKey("saved-algorithms", userId))
+      || window.localStorage.getItem("algo-explained:saved-algorithms");
     const ids = JSON.parse(value || "[]");
     return new Set(Array.isArray(ids) ? ids : []);
   } catch {
@@ -1467,18 +1725,22 @@ function loadSavedIds() {
   }
 }
 
-function loadProgress() {
+function loadProgress(userId = state?.userId || initialUserId) {
   try {
-    const progress = JSON.parse(window.localStorage.getItem("algo-explained:progress") || "{}");
+    const value = window.localStorage.getItem(scopedStorageKey("progress", userId))
+      || window.localStorage.getItem("algo-explained:progress");
+    const progress = JSON.parse(value || "{}");
     return progress && typeof progress === "object" ? progress : {};
   } catch {
     return {};
   }
 }
 
-function loadRecentIds() {
+function loadRecentIds(userId = state?.userId || initialUserId) {
   try {
-    const ids = JSON.parse(window.localStorage.getItem("algo-explained:recent-algorithms") || "[]");
+    const value = window.localStorage.getItem(scopedStorageKey("recent-algorithms", userId))
+      || window.localStorage.getItem("algo-explained:recent-algorithms");
+    const ids = JSON.parse(value || "[]");
     return Array.isArray(ids) ? ids : [];
   } catch {
     return [];
@@ -1487,7 +1749,7 @@ function loadRecentIds() {
 
 function persistSavedIds() {
   try {
-    window.localStorage.setItem("algo-explained:saved-algorithms", JSON.stringify([...state.savedIds]));
+    window.localStorage.setItem(scopedStorageKey("saved-algorithms"), JSON.stringify([...state.savedIds]));
     return true;
   } catch {
     return false;
@@ -1496,7 +1758,7 @@ function persistSavedIds() {
 
 function persistProgress() {
   try {
-    window.localStorage.setItem("algo-explained:progress", JSON.stringify(state.progress));
+    window.localStorage.setItem(scopedStorageKey("progress"), JSON.stringify(state.progress));
     return true;
   } catch {
     return false;
@@ -1505,7 +1767,7 @@ function persistProgress() {
 
 function persistRecentIds() {
   try {
-    window.localStorage.setItem("algo-explained:recent-algorithms", JSON.stringify(state.recentIds));
+    window.localStorage.setItem(scopedStorageKey("recent-algorithms"), JSON.stringify(state.recentIds));
     return true;
   } catch {
     return false;
@@ -1658,10 +1920,19 @@ async function loadAlgorithmIndex() {
     algorithmDataRecords.clear();
     smartSearchPromise = null;
 
+    const routeState = getRouteFromHash();
+    if (["quiz", "profile"].includes(routeState?.view)) {
+      state.view = routeState.view;
+    }
+
     await initializeDailyQuiz();
 
-    const routeState = getRouteFromHash();
-    if (routeState?.view !== "quiz" && isDailyQuizRequired()) {
+    if (routeState?.view === "quiz" && isDailyQuizCooldownActive()) {
+      redirectFromQuizCooldown();
+      return;
+    }
+
+    if (!["quiz", "profile"].includes(routeState?.view) && isDailyQuizRequired()) {
       forceDailyQuiz("Complete today's quiz before opening another page.");
       return;
     }
@@ -1684,6 +1955,12 @@ async function loadAlgorithmIndex() {
       return;
     }
 
+    if (routeState?.view === "profile") {
+      state.view = "profile";
+      render();
+      return;
+    }
+
     if (routeState) {
       setActivePage(routeState.id);
       state.selectedId = routeState.id;
@@ -1702,7 +1979,12 @@ async function loadAlgorithmIndex() {
 
 window.addEventListener("hashchange", async () => {
   const routeState = getRouteFromHash();
-  if (routeState?.view !== "quiz" && isDailyQuizRequired()) {
+  if (routeState?.view === "quiz" && isDailyQuizCooldownActive()) {
+    redirectFromQuizCooldown();
+    return;
+  }
+
+  if (!["quiz", "profile"].includes(routeState?.view) && isDailyQuizRequired()) {
     forceDailyQuiz("Complete today's quiz before opening another page.");
     return;
   }
@@ -1730,6 +2012,12 @@ window.addEventListener("hashchange", async () => {
 
   if (routeState.view === "saved") {
     state.view = "saved";
+    render();
+    return;
+  }
+
+  if (routeState.view === "profile") {
+    state.view = "profile";
     render();
     return;
   }
