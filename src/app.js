@@ -94,6 +94,8 @@ const state = {
 
 const routeViews = new Set(["lesson", "visualizer", "challenge"]);
 const dailyQuizCooldownMs = 24 * 60 * 60 * 1000;
+const dailyQuizOnboardingMs = 3 * 24 * 60 * 60 * 1000;
+const learningPathWindowMs = 3 * 24 * 60 * 60 * 1000;
 const loadedPages = new Map();
 const loadedStyles = new Set();
 const searchRecords = new Map();
@@ -125,7 +127,7 @@ function groupAlgorithms() {
 
 function renderHeader() {
   const currentSaved = state.savedIds.has(state.selectedId);
-  const navItems = ["catalog", "search", "saved", "lesson", ...(!isDailyQuizCooldownActive() ? ["quiz"] : []), "profile"];
+  const navItems = ["catalog", "search", "saved", "lesson", ...(isDailyQuizAvailable() ? ["quiz"] : []), "profile"];
   return `
     <header class="app-header">
       <button class="icon-button" data-view="catalog" aria-label="Back to catalog">${icon("arrow_back")}</button>
@@ -381,6 +383,7 @@ function getUserInitials(user) {
 
 function renderDailyQuizPanel() {
   const quiz = state.dailyQuiz;
+  if (!isDailyQuizUnlocked()) return "";
   if (isDailyQuizCooldownActive(quiz)) return "";
 
   if (state.quizLoading) {
@@ -611,7 +614,7 @@ function renderBottomNav() {
     ["catalog", "home", "Home"],
     ["search", "search", "Search"],
   ];
-  const quizAvailable = !isDailyQuizCooldownActive();
+  const quizAvailable = isDailyQuizAvailable();
   return `
     <nav class="bottom-nav" aria-label="Section navigation" style="grid-template-columns: repeat(${quizAvailable ? 5 : 4}, minmax(0, 1fr))">
       ${secondaryItems.map(([view, symbol, label]) => `
@@ -789,6 +792,11 @@ async function openAlgorithm(id) {
 }
 
 async function setView(view) {
+  if (view === "quiz" && !isDailyQuizUnlocked()) {
+    redirectFromQuizOnboarding();
+    return;
+  }
+
   if (view === "quiz" && isDailyQuizCooldownActive()) {
     redirectFromQuizCooldown();
     return;
@@ -1147,6 +1155,12 @@ async function loadAlgorithmData(algorithm) {
 }
 
 async function initializeDailyQuiz() {
+  if (!isDailyQuizUnlocked()) {
+    state.quizLoading = false;
+    state.dailyQuiz = null;
+    return null;
+  }
+
   if (isDailyQuizCooldownActive()) return state.dailyQuiz;
   if (dailyQuizPromise) return dailyQuizPromise;
 
@@ -1158,6 +1172,10 @@ async function initializeDailyQuiz() {
     const storedQuiz = await fetchDailyQuiz();
     if (storedQuiz) {
       state.dailyQuiz = storedQuiz;
+      if (isDailyQuizCooldownActive()) {
+        persistDailyQuizLocal();
+        syncDailyQuiz({ silent: true });
+      }
     } else if (isDailyQuizCooldownActive()) {
       state.quizLoading = false;
       render();
@@ -1193,13 +1211,26 @@ async function fetchDailyQuiz() {
   if (isDailyQuizCooldownActive(localQuiz)) return localQuiz;
 
   try {
+    const anonymousId = window.localStorage.getItem("algo-explained:anonymous-user-id");
+    if (state.authUser && anonymousId && anonymousId !== state.userId) {
+      const anonymousResponse = await fetch(`/api/daily-quiz?userId=${encodeURIComponent(anonymousId)}&date=${encodeURIComponent(state.quizDate)}`, { cache: "no-store" });
+      if (anonymousResponse.ok) {
+        const anonymousData = await anonymousResponse.json();
+        const anonymousCompletedQuiz = getCooldownQuizFromDailyQuizPayload(anonymousData);
+        if (anonymousCompletedQuiz) {
+          persistDailyQuizLocal(anonymousCompletedQuiz);
+          return anonymousCompletedQuiz;
+        }
+      }
+    }
+
     const response = await fetch(`/api/daily-quiz?userId=${encodeURIComponent(state.userId)}&date=${encodeURIComponent(state.quizDate)}`, { cache: "no-store" });
     if (!response.ok) throw new Error("Daily quiz API unavailable");
     const data = await response.json();
-    const latestCompletedQuiz = data.latestCompletedQuiz ? normalizeClientQuiz(data.latestCompletedQuiz) : null;
-    if (isDailyQuizCooldownActive(latestCompletedQuiz)) {
-      persistDailyQuizLocal(latestCompletedQuiz);
-      return latestCompletedQuiz;
+    const completedQuiz = getCooldownQuizFromDailyQuizPayload(data);
+    if (completedQuiz) {
+      persistDailyQuizLocal(completedQuiz);
+      return completedQuiz;
     }
     if (data.quiz?.date === state.quizDate) {
       persistDailyQuizLocal(data.quiz);
@@ -1210,6 +1241,14 @@ async function fetchDailyQuiz() {
   }
 
   return localQuiz;
+}
+
+function getCooldownQuizFromDailyQuizPayload(data) {
+  const todaysCompletedQuiz = data?.quiz ? normalizeClientQuiz(data.quiz) : null;
+  if (isDailyQuizCooldownActive(todaysCompletedQuiz)) return todaysCompletedQuiz;
+
+  const latestCompletedQuiz = data?.latestCompletedQuiz ? normalizeClientQuiz(data.latestCompletedQuiz) : null;
+  return isDailyQuizCooldownActive(latestCompletedQuiz) ? latestCompletedQuiz : null;
 }
 
 async function buildDailyQuiz() {
@@ -1261,7 +1300,7 @@ function getDailyQuizCandidates() {
 }
 
 function getRecentLearningIds() {
-  const cutoff = Date.now() - (5 * 24 * 60 * 60 * 1000);
+  const cutoff = Date.now() - learningPathWindowMs;
   const progressIds = Object.entries(state.progress)
     .filter(([, progress]) => {
       const updatedAt = Date.parse(progress?.updatedAt || "");
@@ -1384,11 +1423,25 @@ function handleDailyQuizAction(target) {
 }
 
 function isDailyQuizRequired() {
-  return Boolean(state.dailyQuiz?.questions?.length && !isDailyQuizComplete() && !isDailyQuizCooldownActive());
+  return Boolean(isDailyQuizUnlocked() && state.dailyQuiz?.questions?.length && !isDailyQuizComplete() && !isDailyQuizCooldownActive());
 }
 
 function isDailyQuizComplete() {
   return Boolean(state.dailyQuiz?.completedAt);
+}
+
+function isDailyQuizAvailable() {
+  return isDailyQuizUnlocked() && !isDailyQuizCooldownActive();
+}
+
+function isDailyQuizUnlocked() {
+  const unlockAt = getDailyQuizUnlockAt();
+  return Boolean(unlockAt && Date.now() >= unlockAt);
+}
+
+function getDailyQuizUnlockAt() {
+  const createdAt = Date.parse(state.authUser?.createdAt || "");
+  return Number.isFinite(createdAt) ? createdAt + dailyQuizOnboardingMs : 0;
 }
 
 function isDailyQuizCooldownActive(quiz = state.dailyQuiz) {
@@ -1408,6 +1461,16 @@ function redirectFromQuizCooldown() {
   state.notice = nextQuizAt
     ? `Today's quiz is complete. Next quiz opens in ${formatDuration(nextQuizAt - Date.now())}.`
     : "Today's quiz is complete.";
+  updateRoute();
+  render();
+}
+
+function redirectFromQuizOnboarding() {
+  const unlockAt = getDailyQuizUnlockAt();
+  state.view = "catalog";
+  state.notice = unlockAt
+    ? `Daily quiz unlocks in ${formatDuration(unlockAt - Date.now())} after 3 days of learning.`
+    : "Sign in and learn for 3 days before daily quizzes start.";
   updateRoute();
   render();
 }
@@ -1435,8 +1498,12 @@ function getDailyQuizElapsedMs(quiz = state.dailyQuiz) {
 
 function formatDuration(ms) {
   const totalSeconds = Math.max(0, Math.round(ms / 1000));
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
+  if (days) return `${days}d ${String(hours).padStart(2, "0")}h`;
+  if (hours) return `${hours}h ${String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0")}m`;
   return minutes ? `${minutes}m ${String(seconds).padStart(2, "0")}s` : `${seconds}s`;
 }
 
@@ -1450,7 +1517,25 @@ function getTodayKey() {
 
 function loadDailyQuizLocal() {
   try {
-    const quizzes = JSON.parse(window.localStorage.getItem(`algo-explained:daily-quizzes:${state.userId}`) || "{}");
+    const currentQuiz = getLocalDailyQuizForUser(state.userId);
+    if (isDailyQuizCooldownActive(currentQuiz)) return currentQuiz;
+
+    const anonymousId = window.localStorage.getItem("algo-explained:anonymous-user-id");
+    if (state.authUser && anonymousId && anonymousId !== state.userId) {
+      const anonymousQuiz = getLocalDailyQuizForUser(anonymousId);
+      if (isDailyQuizCooldownActive(anonymousQuiz)) return anonymousQuiz;
+    }
+
+    return currentQuiz || null;
+  } catch {
+    return null;
+  }
+}
+
+function getLocalDailyQuizForUser(userId) {
+  if (!userId) return null;
+  try {
+    const quizzes = JSON.parse(window.localStorage.getItem(`algo-explained:daily-quizzes:${userId}`) || "{}");
     const todaysQuiz = quizzes?.[state.quizDate] ? normalizeClientQuiz(quizzes[state.quizDate]) : null;
     if (todaysQuiz) return todaysQuiz;
     return Object.values(quizzes || {})
@@ -1486,7 +1571,7 @@ async function syncDailyQuiz(options = {}) {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         userId: state.userId,
-        date: state.quizDate,
+        date: state.dailyQuiz.date || state.quizDate,
         quiz: state.dailyQuiz,
       }),
     });
@@ -1549,6 +1634,24 @@ async function authenticate(endpoint, payload) {
   } catch (error) {
     state.authMessage = error.message || "Authentication failed";
     render();
+  }
+}
+
+async function refreshAuthSession() {
+  if (!state.sessionToken) return false;
+  try {
+    const response = await fetch(`/api/auth/me?sessionToken=${encodeURIComponent(state.sessionToken)}`, { cache: "no-store" });
+    if (!response.ok) throw new Error("Session expired");
+    const data = await response.json();
+    if (!data.user?.userId) throw new Error("Invalid session");
+
+    state.authUser = data.user;
+    state.userId = data.user.userId;
+    persistAuthSession();
+    persistUserId(state.userId);
+    return true;
+  } catch {
+    return false;
   }
 }
 
@@ -1927,6 +2030,11 @@ async function loadAlgorithmIndex() {
 
     await initializeDailyQuiz();
 
+    if (routeState?.view === "quiz" && !isDailyQuizUnlocked()) {
+      redirectFromQuizOnboarding();
+      return;
+    }
+
     if (routeState?.view === "quiz" && isDailyQuizCooldownActive()) {
       redirectFromQuizCooldown();
       return;
@@ -1979,6 +2087,11 @@ async function loadAlgorithmIndex() {
 
 window.addEventListener("hashchange", async () => {
   const routeState = getRouteFromHash();
+  if (routeState?.view === "quiz" && !isDailyQuizUnlocked()) {
+    redirectFromQuizOnboarding();
+    return;
+  }
+
   if (routeState?.view === "quiz" && isDailyQuizCooldownActive()) {
     redirectFromQuizCooldown();
     return;
@@ -2033,6 +2146,7 @@ root.addEventListener("click", handleShellClick);
 
 async function bootstrap() {
   render();
+  await refreshAuthSession();
   await loadUserProgress();
   await loadAlgorithmIndex();
 }

@@ -286,10 +286,14 @@ function getAccountBySession(store, token) {
 }
 
 function publicAccount(account) {
+  account.createdAt ||= account.updatedAt || new Date().toISOString();
+  account.updatedAt ||= account.createdAt;
   return {
     userId: account.userId,
     email: account.email,
     name: account.name,
+    createdAt: account.createdAt || "",
+    updatedAt: account.updatedAt || "",
   };
 }
 
