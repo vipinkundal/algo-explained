@@ -73,19 +73,29 @@ const state = {
   searchQuery: "",
   loadingPageId: "",
   notice: "",
+  userId: loadUserId(),
   savedIds: loadSavedIds(),
+  progress: loadProgress(),
+  recentIds: loadRecentIds(),
+  backendStatus: "local",
   searchLoading: false,
+  quizDate: getTodayKey(),
+  dailyQuiz: null,
+  quizLoading: false,
+  quizError: "",
 };
 
 const routeViews = new Set(["lesson", "visualizer", "challenge"]);
 const loadedPages = new Map();
 const loadedStyles = new Set();
 const searchRecords = new Map();
+const algorithmDataRecords = new Map();
 const root = document.getElementById("root");
 
 let algorithms = starterAlgorithms;
 let activePageId = "";
 let smartSearchPromise = null;
+let dailyQuizPromise = null;
 
 function icon(name) {
   return `<span class="material-symbols-outlined" aria-hidden="true">${name}</span>`;
@@ -112,7 +122,7 @@ function renderHeader() {
       <button class="icon-button" data-view="catalog" aria-label="Back to catalog">${icon("arrow_back")}</button>
       <button class="brand-button" data-view="catalog">Algo Explained</button>
       <nav class="top-nav" aria-label="Primary">
-        ${["catalog", "search", "lesson", "visualizer", "challenge"].map(renderNavButton).join("")}
+        ${["catalog", "search", "saved", "lesson", "quiz"].map(renderNavButton).join("")}
       </nav>
       <button class="icon-button ${currentSaved ? "saved" : ""}" data-action="save-current" aria-label="Save current algorithm">${icon(currentSaved ? "bookmark_added" : "bookmark")}</button>
     </header>
@@ -123,27 +133,17 @@ function renderNavButton(view) {
   const labels = {
     catalog: "home",
     search: "search",
+    saved: "saved",
     lesson: "lesson",
     visualizer: "visualize",
     challenge: "quiz",
+    quiz: "quiz",
   };
   return `<button class="nav-link ${state.view === view ? "active" : ""}" data-view="${view}">${labels[view] || view}</button>`;
 }
 
 function renderCatalog() {
-  const rows = Object.entries(groupAlgorithms())
-    .map(([category, items]) => `
-      <section class="category-row" aria-labelledby="${slugify(category)}-title">
-        <div class="section-heading">
-          <h2 id="${slugify(category)}-title">${escapeHtml(category)}</h2>
-          <button type="button">View all</button>
-        </div>
-        <div class="algorithm-strip">
-          ${items.map(renderAlgorithmCard).join("")}
-        </div>
-      </section>
-    `)
-    .join("");
+  const recentAlgorithms = getRecentAlgorithms();
 
   return `
     <section class="catalog-panel" aria-labelledby="catalog-title">
@@ -152,12 +152,91 @@ function renderCatalog() {
         <input id="algorithm-search" value="${escapeHtml(state.query)}" placeholder="Search algorithms (e.g. Dijkstra, QuickSort)..." aria-label="Search algorithms" />
       </div>
       <div class="catalog-intro">
-        <p class="eyebrow">Algorithm catalog</p>
+        <p class="eyebrow">Learning dashboard</p>
         <h1 id="catalog-title">Learn the logic, then watch it move.</h1>
         <p>Start from plain-English intuition, step through the code trace, then use visual controls to see the state changes.</p>
       </div>
-      ${rows}
+      ${renderDashboardReports()}
+      ${recentAlgorithms.length ? renderRecentDashboard(recentAlgorithms) : renderEmptyRecentDashboard()}
     </section>
+  `;
+}
+
+function renderDashboardReports() {
+  const recentAlgorithms = getRecentAlgorithms();
+  const savedCount = state.savedIds.size;
+  const completedCount = Object.values(state.progress)
+    .reduce((total, progress) => total + ["lesson", "visualizer", "challenge"].filter((section) => progress?.[section]).length, 0);
+
+  return `
+    <section class="dashboard-reports" aria-labelledby="dashboard-reports-title">
+      <div class="section-heading">
+        <h2 id="dashboard-reports-title">Reports</h2>
+        <span>More soon</span>
+      </div>
+      <div class="report-grid">
+        ${renderReportCard("history", "Recent activity", `${recentAlgorithms.length}`, "Algorithms opened recently")}
+        ${renderReportCard("fact_check", "Completed checks", `${completedCount}`, "Lesson, visualizer, and quiz marks")}
+        ${renderReportCard("bookmark", "Saved for later", `${savedCount}`, "Algorithms saved to revisit")}
+      </div>
+    </section>
+  `;
+}
+
+function renderReportCard(symbol, title, value, text) {
+  return `
+    <div class="report-card">
+      <span class="report-icon">${icon(symbol)}</span>
+      <strong>${escapeHtml(value)}</strong>
+      <span>${escapeHtml(title)}</span>
+      <p>${escapeHtml(text)}</p>
+    </div>
+  `;
+}
+
+function renderRecentDashboard(items) {
+  return `
+    <section class="recent-dashboard" aria-labelledby="recent-dashboard-title">
+      <div class="section-heading">
+        <h2 id="recent-dashboard-title">Recent learning</h2>
+        <span>${items.length} recent</span>
+      </div>
+      <div class="recent-grid">
+        ${items.map(renderRecentCard).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderEmptyRecentDashboard() {
+  return `
+    <section class="recent-dashboard" aria-labelledby="recent-dashboard-title">
+      <div class="section-heading">
+        <h2 id="recent-dashboard-title">Recent learning</h2>
+        <span>0 recent</span>
+      </div>
+      <div class="empty-search dashboard-empty">
+        ${icon("history")}
+        <strong>No recent algorithms yet</strong>
+        <p>Open an algorithm from Search and it will appear here for the next few days.</p>
+      </div>
+    </section>
+  `;
+}
+
+function renderRecentCard(algorithm) {
+  const title = algorithm.title || algorithm.name;
+  const progressCount = getCompletedCount(algorithm.id);
+  const progressLabel = progressCount ? `${progressCount}/3 complete` : "Started";
+  return `
+    <button type="button" class="recent-card" data-algorithm="${algorithm.id}">
+      <span class="card-icon ${slugify(algorithm.category || "algorithms")}">${icon(algorithm.icon || iconForAlgorithm(algorithm))}</span>
+      <span>
+        <strong>${escapeHtml(title)}</strong>
+        <em>${escapeHtml(algorithm.category || "Algorithms")}</em>
+      </span>
+      <b>${escapeHtml(progressLabel)}</b>
+    </button>
   `;
 }
 
@@ -174,19 +253,142 @@ function renderSearchPanel() {
         ${icon("search")}
         <input id="smart-search" value="${escapeHtml(state.searchQuery)}" placeholder="Search title, concept, complexity, code, use case..." aria-label="Search algorithm content" />
       </div>
-      <div class="search-hero">
-        <p class="eyebrow">Smart search</p>
-        <h1 id="smart-search-title">Find an algorithm by what you remember.</h1>
-        <p>Search titles, categories, visualizer types, lesson text, variables, dry runs, complexity notes, quiz content, and route keywords.</p>
+      <h1 class="visually-hidden" id="smart-search-title">Search algorithms</h1>
+      ${query ? `
+        <div class="search-summary">
+          <span>${icon("database_search")} ${escapeHtml(status)}</span>
+          <span>${results.length} matches</span>
+        </div>
+        <div class="search-results" aria-live="polite">
+          ${results.length ? results.map(renderSearchResult).join("") : renderNoSearchResults(query)}
+        </div>
+      ` : ""}
+    </section>
+  `;
+}
+
+function renderSavedPanel() {
+  const savedAlgorithms = getSavedAlgorithms();
+  return `
+    <section class="catalog-panel saved-panel" aria-labelledby="saved-title">
+      <div class="saved-heading">
+        <p class="eyebrow">Saved for later</p>
+        <h1 id="saved-title">Your saved algorithms</h1>
+        <p>${savedAlgorithms.length ? `${savedAlgorithms.length} algorithms saved to your backend-backed progress.` : "Algorithms you save will appear here."}</p>
       </div>
-      <div class="search-summary">
-        <span>${icon("database_search")} ${escapeHtml(status)}</span>
-        <span>${query ? `${results.length} matches` : "Showing useful starting points"}</span>
-      </div>
-      <div class="search-results" aria-live="polite">
-        ${results.length ? results.map(renderSearchResult).join("") : renderNoSearchResults(query)}
+      <div class="search-results saved-results" aria-live="polite">
+        ${savedAlgorithms.length ? savedAlgorithms.map((algorithm) => renderSavedResult(algorithm)).join("") : renderEmptySaved()}
       </div>
     </section>
+  `;
+}
+
+function renderSavedResult(algorithm) {
+  const record = getSearchRecord(algorithm);
+  return renderSearchResult({ ...record, match: algorithm.meaning || record.match });
+}
+
+function renderEmptySaved() {
+  return `
+    <div class="empty-search">
+      ${icon("bookmark")}
+      <strong>No saved algorithms yet</strong>
+      <p>Open an algorithm and use the save control to keep it here for later.</p>
+    </div>
+  `;
+}
+
+function renderDailyQuizPanel() {
+  const quiz = state.dailyQuiz;
+  if (state.quizLoading) {
+    return `
+      <section class="catalog-panel daily-quiz-panel" aria-labelledby="daily-quiz-title">
+        <div class="saved-heading">
+          <p class="eyebrow">Daily quiz</p>
+          <h1 id="daily-quiz-title">Building your test</h1>
+          <p>Questions are selected from recently learned algorithms and related topics.</p>
+        </div>
+      </section>
+    `;
+  }
+
+  if (!quiz?.questions?.length) {
+    return `
+      <section class="catalog-panel daily-quiz-panel" aria-labelledby="daily-quiz-title">
+        <div class="saved-heading">
+          <p class="eyebrow">Daily quiz</p>
+          <h1 id="daily-quiz-title">No quiz available</h1>
+          <p>${escapeHtml(state.quizError || "Start learning an algorithm to seed the daily question pool.")}</p>
+        </div>
+      </section>
+    `;
+  }
+
+  const activeIndex = Math.min(quiz.activeIndex || 0, quiz.questions.length - 1);
+  const question = quiz.questions[activeIndex];
+  const answered = getAnsweredQuizCount(quiz);
+  const complete = isDailyQuizComplete();
+  const isLastQuestion = activeIndex >= quiz.questions.length - 1;
+
+  return `
+    <section class="catalog-panel daily-quiz-panel" aria-labelledby="daily-quiz-title">
+      <div class="daily-quiz-heading">
+        <p class="eyebrow">${escapeHtml(quiz.date)}</p>
+        <h1 id="daily-quiz-title">Daily quiz</h1>
+        <p>${complete ? "Completed for today." : "Required before opening another page."}</p>
+        <div class="daily-quiz-meter" aria-label="${answered} of ${quiz.questions.length} questions answered">
+          <span style="width: ${(answered / quiz.questions.length) * 100}%"></span>
+        </div>
+      </div>
+      <article class="quiz-question-card">
+        <div class="quiz-question-meta">
+          <span>${icon("quiz")} Question ${activeIndex + 1}/${quiz.questions.length}</span>
+          <span>${escapeHtml(question.category)}</span>
+        </div>
+        <h2>${escapeHtml(question.question)}</h2>
+        <p>${escapeHtml(question.title)}</p>
+        <div class="quiz-options">
+          ${question.options.map((option) => renderQuizOption(question, option, complete)).join("")}
+        </div>
+        ${question.hintShown ? `<div class="quiz-hint">${icon("lightbulb")}<span>${escapeHtml(question.hint)}</span></div>` : ""}
+        ${question.selectedKey ? renderQuizFeedback(question) : ""}
+        <div class="quiz-controls">
+          <button type="button" data-quiz-action="prev" ${activeIndex <= 0 ? "disabled" : ""}>${icon("skip_previous")}<span>Previous</span></button>
+          <button type="button" data-quiz-action="hint" ${question.hintShown || complete ? "disabled" : ""}>${icon("lightbulb")}<span>Hint</span></button>
+          ${isLastQuestion
+            ? `<button type="button" class="primary" data-quiz-action="finish" ${complete || !question.selectedKey ? "disabled" : ""}>${icon("task_alt")}<span>Finish</span></button>`
+            : `<button type="button" class="primary" data-quiz-action="next">${icon("skip_next")}<span>Next</span></button>`}
+        </div>
+      </article>
+    </section>
+  `;
+}
+
+function renderQuizOption(question, option, complete) {
+  const selected = question.selectedKey === option.key;
+  const answered = Boolean(question.selectedKey);
+  const correctness = answered && selected
+    ? option.key === question.correctKey
+      ? "correct"
+      : "incorrect"
+    : "";
+  const revealCorrect = answered && option.key === question.correctKey ? "correct-answer" : "";
+
+  return `
+    <button type="button" class="quiz-option ${selected ? "selected" : ""} ${correctness} ${revealCorrect}" data-quiz-answer="${escapeHtml(option.key)}" ${complete ? "disabled" : ""}>
+      <b>${escapeHtml(option.key)}</b>
+      <span>${escapeHtml(option.text)}</span>
+    </button>
+  `;
+}
+
+function renderQuizFeedback(question) {
+  const correct = question.selectedKey === question.correctKey;
+  return `
+    <div class="quiz-feedback ${correct ? "correct" : "incorrect"}">
+      ${icon(correct ? "check_circle" : "error")}
+      <span>${escapeHtml(correct ? question.explanation : question.incorrectText)}</span>
+    </div>
   `;
 }
 
@@ -200,6 +402,7 @@ function renderAlgorithmCard(algorithm) {
   const iconName = algorithm.icon || iconForAlgorithm(algorithm);
   const categoryClass = slugify(algorithm.category || "foundations");
   const saved = state.savedIds.has(algorithm.id);
+  const completedCount = getCompletedCount(algorithm.id);
 
   return `
     <button type="button" class="algorithm-card ${algorithm.id === state.selectedId ? "selected" : ""} ${saved ? "saved" : ""}" data-algorithm="${algorithm.id}">
@@ -212,6 +415,7 @@ function renderAlgorithmCard(algorithm) {
       <span class="card-meta">
         <b>${escapeHtml(phase)}</b>
         ${algorithm.visualizerType ? `<b>${escapeHtml(algorithm.visualizerType)}</b>` : ""}
+        ${completedCount ? `<b class="progress-chip">${icon("task_alt")} ${completedCount}/3</b>` : ""}
         ${saved ? `<b class="saved-chip">${icon("bookmark")} Saved</b>` : ""}
       </span>
     </button>
@@ -223,7 +427,9 @@ function renderWorkspace() {
   const page = loadedPages.get(state.selectedId);
 
   if (state.view === "search") return renderSearchWorkspace(selected);
-  if (state.view !== "catalog" && page) return page.render(state.view);
+  if (state.view === "saved") return renderSavedWorkspace();
+  if (state.view === "quiz") return renderDailyQuizWorkspace();
+  if (state.view !== "catalog" && page) return `${renderProgressPanel(selected)}${page.render(state.view)}`;
   if (state.loadingPageId === state.selectedId) return renderLoadingPanel(selected);
   return renderReadyPanel(selected);
 }
@@ -237,7 +443,122 @@ function renderSearchWorkspace(selected) {
       ${icon("manage_search")}
       <p class="eyebrow">${category}</p>
       <h2>${title}</h2>
-      <p>Choose a result to open its detailed lesson, visualizer, and quiz. The search panel keeps working from the browser with no backend.</p>
+      <p>Choose a result to open its detailed lesson, visualizer, and quiz. Your saved items and completion checks sync through the backend when it is running.</p>
+    </section>
+  `;
+}
+
+function renderSavedWorkspace() {
+  const savedAlgorithms = getSavedAlgorithms();
+  return `
+    <section class="ready-panel saved-ready-panel">
+      ${icon("bookmark")}
+      <p class="eyebrow">Saved</p>
+      <h2>${savedAlgorithms.length ? `${savedAlgorithms.length} saved` : "Nothing saved yet"}</h2>
+      <p>Saved algorithms sync through the backend when it is running and remain available in this browser as a fallback.</p>
+    </section>
+  `;
+}
+
+function renderDailyQuizWorkspace() {
+  const quiz = state.dailyQuiz;
+  if (state.quizLoading) {
+    return `
+      <section class="ready-panel quiz-ready-panel">
+        ${icon("hourglass_top")}
+        <p class="eyebrow">Daily quiz</p>
+        <h2>Preparing today&apos;s test</h2>
+        <p>Questions are selected from your recent learning path and algorithm progress.</p>
+      </section>
+    `;
+  }
+
+  if (!quiz?.questions?.length) {
+    return `
+      <section class="ready-panel quiz-ready-panel">
+        ${icon("quiz")}
+        <p class="eyebrow">Daily quiz</p>
+        <h2>No questions ready</h2>
+        <p>Open a few lessons or visualizers so the daily quiz can follow your learning path.</p>
+      </section>
+    `;
+  }
+
+  const answered = getAnsweredQuizCount(quiz);
+  const complete = isDailyQuizComplete();
+  if (!complete) return "";
+
+  const score = getDailyQuizScore(quiz);
+
+  return `
+    <section class="daily-quiz-workspace" aria-labelledby="daily-quiz-workspace-title">
+      <div>
+        <p class="eyebrow">${complete ? "Completed" : "Required today"}</p>
+        <h2 id="daily-quiz-workspace-title">${complete ? "Daily quiz complete" : "Finish today&apos;s quiz first"}</h2>
+        <p>${complete ? "Your time and answers were logged to your progress." : "Navigation unlocks after every question has an answer."}</p>
+      </div>
+      <dl class="quiz-stats">
+        <div>
+          <dt>Questions</dt>
+          <dd>${answered}/${quiz.questions.length}</dd>
+        </div>
+        <div>
+          <dt>Score</dt>
+          <dd>${score}/${quiz.questions.length}</dd>
+        </div>
+        <div>
+          <dt>Time</dt>
+          <dd>${formatDuration(getDailyQuizElapsedMs(quiz))}</dd>
+        </div>
+        <div>
+          <dt>Hints</dt>
+          <dd>${quiz.hintCount || 0}</dd>
+        </div>
+      </dl>
+      <div class="quiz-topic-grid">
+        ${quiz.questions.map((question, index) => `
+          <button type="button" class="${index === quiz.activeIndex ? "active" : ""} ${question.selectedKey ? "answered" : ""}" data-quiz-action="jump" data-quiz-index="${index}">
+            <span>${index + 1}</span>
+            <strong>${escapeHtml(question.title)}</strong>
+            <em>${escapeHtml(question.category)}</em>
+          </button>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderProgressPanel(selected) {
+  if (!selected) return "";
+  const progress = getAlgorithmProgress(selected.id);
+  const completeCount = getCompletedCount(selected.id);
+  const saved = state.savedIds.has(selected.id);
+  const syncText = state.backendStatus === "synced"
+    ? "Synced to backend"
+    : state.backendStatus === "syncing"
+      ? "Syncing..."
+      : "Saved locally until backend is available";
+
+  return `
+    <section class="progress-panel" aria-label="${escapeHtml(selected.title || selected.name)} progress">
+      <div>
+        <strong>${icon("fact_check")} Progress</strong>
+        <span>${completeCount}/3 complete · ${syncText}</span>
+      </div>
+      <div class="progress-actions">
+        ${[
+          ["lesson", "school", "Lesson"],
+          ["visualizer", "play_circle", "Visualizer"],
+          ["challenge", "quiz", "Quiz"],
+        ].map(([section, symbol, label]) => `
+          <button type="button" class="${progress[section] ? "completed" : ""}" data-progress-section="${section}">
+            ${icon(progress[section] ? "check_circle" : symbol)}<span>${label}</span>
+          </button>
+        `).join("")}
+        <button type="button" class="${saved ? "completed" : ""}" data-action="save-current">
+          ${icon(saved ? "bookmark_added" : "bookmark")}<span>${saved ? "Saved" : "Save"}</span>
+        </button>
+      </div>
     </section>
   `;
 }
@@ -266,7 +587,6 @@ function renderReadyPanel(selected) {
 }
 
 function renderBottomNav() {
-  const currentSaved = state.savedIds.has(state.selectedId);
   return `
     <nav class="bottom-nav" aria-label="Section navigation">
       ${[
@@ -277,12 +597,11 @@ function renderBottomNav() {
           ${icon(symbol)}<span>${label}</span>
         </button>
       `).join("")}
-      <button class="${currentSaved ? "active saved" : ""}" data-action="save-current" aria-label="Save current algorithm">
-        ${icon(currentSaved ? "bookmark_added" : "bookmark")}<span>${currentSaved ? "Saved" : "Save"}</span>
+      <button class="${state.view === "saved" ? "active saved" : ""}" data-view="saved" aria-label="Saved algorithms">
+        ${icon("bookmark")}<span>Saved</span>
       </button>
       ${[
-        ["visualizer", "play_circle", "Visualize"],
-        ["challenge", "quiz", "Quiz"],
+        ["quiz", "quiz", "Quiz"],
       ].map(([view, symbol, label]) => `
         <button class="${state.view === view ? "active" : ""}" data-view="${view}">
           ${icon(symbol)}<span>${label}</span>
@@ -293,12 +612,18 @@ function renderBottomNav() {
 }
 
 function render() {
+  const workspace = renderWorkspace();
+  const contentGridClass = [
+    "content-grid",
+    shouldFocusDailyQuizQuestion() ? "quiz-question-only" : "",
+  ].filter(Boolean).join(" ");
+
   root.innerHTML = `
     ${renderHeader()}
     <main class="app-shell">
-      <div class="content-grid">
-        ${state.view === "search" ? renderSearchPanel() : renderCatalog()}
-        <div class="workspace">${renderWorkspace()}</div>
+      <div class="${contentGridClass}">
+        ${renderSidePanel()}
+        ${workspace ? `<div class="workspace">${workspace}</div>` : ""}
       </div>
     </main>
     ${renderNotice()}
@@ -308,15 +633,31 @@ function render() {
   loadedPages.get(state.selectedId)?.bind(root);
 }
 
+function shouldFocusDailyQuizQuestion() {
+  return state.view === "quiz" && Boolean(state.dailyQuiz?.questions?.length) && !isDailyQuizComplete();
+}
+
+function renderSidePanel() {
+  if (state.view === "search") return renderSearchPanel();
+  if (state.view === "saved") return renderSavedPanel();
+  if (state.view === "quiz") return renderDailyQuizPanel();
+  return renderCatalog();
+}
+
 function bindEvents() {
   const search = root.querySelector("#algorithm-search");
   if (search) {
     search.addEventListener("input", (event) => {
-      state.query = event.target.value;
+      const value = event.target.value;
+      state.query = value;
+      state.searchQuery = value;
+      state.view = "search";
+      updateRoute();
+      ensureSmartSearchIndex();
       render();
-      const nextSearch = root.querySelector("#algorithm-search");
+      const nextSearch = root.querySelector("#smart-search");
       nextSearch?.focus();
-      nextSearch?.setSelectionRange(state.query.length, state.query.length);
+      nextSearch?.setSelectionRange(state.searchQuery.length, state.searchQuery.length);
     });
   }
 
@@ -334,8 +675,20 @@ function bindEvents() {
 }
 
 function handleShellClick(event) {
-  const target = event.target.closest("[data-action='save-current'], [data-algorithm], [data-view]");
+  const target = event.target.closest("[data-action='save-current'], [data-algorithm], [data-view], [data-progress-section], [data-quiz-answer], [data-quiz-action]");
   if (!target || !root.contains(target)) return;
+
+  if (target.dataset.quizAnswer) {
+    event.preventDefault();
+    answerDailyQuiz(target.dataset.quizAnswer);
+    return;
+  }
+
+  if (target.dataset.quizAction) {
+    event.preventDefault();
+    handleDailyQuizAction(target);
+    return;
+  }
 
   if (target.dataset.action === "save-current") {
     event.preventDefault();
@@ -343,9 +696,21 @@ function handleShellClick(event) {
     return;
   }
 
+  if (isDailyQuizRequired() && (target.dataset.algorithm || target.dataset.progressSection || target.dataset.view !== "quiz")) {
+    event.preventDefault();
+    forceDailyQuiz("Complete today's quiz before opening another page.");
+    return;
+  }
+
   if (target.dataset.algorithm) {
     event.preventDefault();
     openAlgorithm(target.dataset.algorithm);
+    return;
+  }
+
+  if (target.dataset.progressSection) {
+    event.preventDefault();
+    toggleProgress(target.dataset.progressSection);
     return;
   }
 
@@ -361,8 +726,14 @@ function renderNotice() {
 }
 
 async function openAlgorithm(id) {
+  if (isDailyQuizRequired()) {
+    forceDailyQuiz("Complete today's quiz before opening another page.");
+    return;
+  }
+
   setActivePage(id);
   state.selectedId = id;
+  markAlgorithmRecent(id);
   state.view = pageLoaders[id] ? "lesson" : "catalog";
   updateRoute();
 
@@ -375,14 +746,31 @@ async function openAlgorithm(id) {
 }
 
 async function setView(view) {
+  if (isDailyQuizRequired() && view !== "quiz") {
+    forceDailyQuiz("Complete today's quiz before opening another page.");
+    return;
+  }
+
   state.view = view;
   loadedPages.get(state.selectedId)?.onViewChange?.(view);
   updateRoute();
+  if (routeViews.has(view)) markAlgorithmRecent(state.selectedId);
+
+  if (view === "quiz") {
+    await initializeDailyQuiz();
+    render();
+    return;
+  }
 
   if (view === "search") {
     ensureSmartSearchIndex();
     render();
     focusSmartSearch();
+    return;
+  }
+
+  if (view === "saved") {
+    render();
     return;
   }
 
@@ -439,6 +827,19 @@ function getSelectedAlgorithm() {
   return algorithms.find((algorithm) => algorithm.id === state.selectedId);
 }
 
+function getRecentAlgorithms() {
+  return state.recentIds
+    .map((id) => algorithms.find((algorithm) => algorithm.id === id))
+    .filter(Boolean)
+    .slice(0, 6);
+}
+
+function getSavedAlgorithms() {
+  return [...state.savedIds]
+    .map((id) => algorithms.find((algorithm) => algorithm.id === id))
+    .filter(Boolean);
+}
+
 function updateRoute() {
   if (state.view === "catalog") {
     history.pushState(null, "", `${location.pathname}${location.search}`);
@@ -447,6 +848,16 @@ function updateRoute() {
 
   if (state.view === "search") {
     if (location.hash !== "#/search") history.pushState(null, "", "#/search");
+    return;
+  }
+
+  if (state.view === "saved") {
+    if (location.hash !== "#/saved") history.pushState(null, "", "#/saved");
+    return;
+  }
+
+  if (state.view === "quiz") {
+    if (location.hash !== "#/quiz") history.pushState(null, "", "#/quiz");
     return;
   }
 
@@ -463,6 +874,12 @@ function getRouteFromHash() {
   if (!hash) return null;
   if (normalizeRoute(hash) === "/search" || normalizeRoute(hash) === "search") {
     return { view: "search" };
+  }
+  if (normalizeRoute(hash) === "/saved" || normalizeRoute(hash) === "saved") {
+    return { view: "saved" };
+  }
+  if (normalizeRoute(hash) === "/quiz" || normalizeRoute(hash) === "quiz") {
+    return { view: "quiz" };
   }
 
   const parts = hash.split("/");
@@ -500,7 +917,7 @@ function focusSmartSearch() {
 function getSearchResults() {
   const query = state.searchQuery.trim();
   const records = algorithms.map((algorithm) => getSearchRecord(algorithm));
-  if (!query) return records.sort(sortSuggestedSearchRecords).slice(0, 12);
+  if (!query) return [];
 
   const tokens = tokenize(query);
   return records
@@ -515,6 +932,7 @@ function getSearchResults() {
 
 function renderSearchResult(record) {
   const saved = state.savedIds.has(record.id);
+  const completedCount = getCompletedCount(record.id);
   return `
     <button type="button" class="search-result ${record.id === state.selectedId ? "selected" : ""}" data-algorithm="${record.id}">
       <span class="card-icon ${slugify(record.category)}">${icon(record.icon)}</span>
@@ -525,6 +943,7 @@ function renderSearchResult(record) {
           <b>${escapeHtml(record.category)}</b>
           <b>${escapeHtml(record.priority)}</b>
           <b>${escapeHtml(record.visualizerType)}</b>
+          ${completedCount ? `<b class="progress-chip">${icon("task_alt")} ${completedCount}/3</b>` : ""}
           ${saved ? `<b class="saved-chip">${icon("bookmark")} Saved</b>` : ""}
         </span>
       </span>
@@ -649,7 +1068,338 @@ function ensureSmartSearchIndex() {
   return smartSearchPromise;
 }
 
-function saveCurrentAlgorithm() {
+async function loadAlgorithmData(algorithm) {
+  if (algorithmDataRecords.has(algorithm.id)) return algorithmDataRecords.get(algorithm.id);
+
+  const parts = getAlgorithmRouteParts(algorithm);
+  if (!parts) return {};
+
+  const module = await import(`./algorithms/${parts.categorySlug}/${parts.algorithmSlug}/data.js`);
+  const pageData = module.algorithmPage || {};
+  algorithmDataRecords.set(algorithm.id, pageData);
+  searchRecords.set(algorithm.id, createSearchRecord(algorithm, pageData));
+  return pageData;
+}
+
+async function initializeDailyQuiz() {
+  if (state.dailyQuiz?.date === state.quizDate) return state.dailyQuiz;
+  if (dailyQuizPromise) return dailyQuizPromise;
+
+  state.quizLoading = true;
+  state.quizError = "";
+  render();
+
+  dailyQuizPromise = (async () => {
+    const storedQuiz = await fetchDailyQuiz();
+    if (storedQuiz) {
+      state.dailyQuiz = storedQuiz;
+    } else {
+      state.dailyQuiz = await buildDailyQuiz();
+      persistDailyQuizLocal();
+      await syncDailyQuiz({ silent: true });
+    }
+
+    state.quizLoading = false;
+    if (isDailyQuizRequired() && state.view !== "quiz") {
+      forceDailyQuiz("Complete today's quiz before opening another page.");
+    } else {
+      render();
+    }
+
+    return state.dailyQuiz;
+  })().catch((error) => {
+    state.quizLoading = false;
+    state.quizError = error.message || "Daily quiz could not be prepared.";
+    render();
+    return state.dailyQuiz;
+  }).finally(() => {
+    dailyQuizPromise = null;
+  });
+
+  return dailyQuizPromise;
+}
+
+async function fetchDailyQuiz() {
+  const localQuiz = loadDailyQuizLocal();
+
+  try {
+    const response = await fetch(`/api/daily-quiz?userId=${encodeURIComponent(state.userId)}&date=${encodeURIComponent(state.quizDate)}`, { cache: "no-store" });
+    if (!response.ok) throw new Error("Daily quiz API unavailable");
+    const data = await response.json();
+    if (data.quiz?.date === state.quizDate) {
+      persistDailyQuizLocal(data.quiz);
+      return normalizeClientQuiz(data.quiz);
+    }
+  } catch {
+    state.backendStatus = "local";
+  }
+
+  return localQuiz;
+}
+
+async function buildDailyQuiz() {
+  const candidates = getDailyQuizCandidates();
+  const questions = [];
+
+  for (const algorithm of candidates) {
+    try {
+      const pageData = await loadAlgorithmData(algorithm);
+      const question = createDailyQuestion(algorithm, pageData, questions.length);
+      if (question) questions.push(question);
+      if (questions.length >= 10) break;
+    } catch {
+      continue;
+    }
+  }
+
+  const startedAt = new Date().toISOString();
+  return normalizeClientQuiz({
+    date: state.quizDate,
+    userId: state.userId,
+    startedAt,
+    completedAt: questions.length ? "" : startedAt,
+    elapsedMs: 0,
+    hintCount: 0,
+    activeIndex: 0,
+    sourceIds: questions.map((question) => question.algorithmId),
+    questions,
+  });
+}
+
+function getDailyQuizCandidates() {
+  const learningIds = getRecentLearningIds();
+  const learningAlgorithms = learningIds
+    .map((id) => algorithms.find((algorithm) => algorithm.id === id))
+    .filter(Boolean);
+  const learningCategories = new Set(learningAlgorithms.map((algorithm) => algorithm.category));
+  const candidateIds = [
+    ...learningIds,
+    ...algorithms.filter((algorithm) => learningCategories.has(algorithm.category)).map((algorithm) => algorithm.id),
+    ...algorithms.filter((algorithm) => String(algorithm.priority || algorithm.level).toLowerCase() === "high").map((algorithm) => algorithm.id),
+    ...algorithms.map((algorithm) => algorithm.id),
+  ];
+
+  return [...new Set(candidateIds)]
+    .map((id) => algorithms.find((algorithm) => algorithm.id === id))
+    .filter((algorithm) => algorithm && pageLoaders[algorithm.id])
+    .slice(0, 40);
+}
+
+function getRecentLearningIds() {
+  const cutoff = Date.now() - (5 * 24 * 60 * 60 * 1000);
+  const progressIds = Object.entries(state.progress)
+    .filter(([, progress]) => {
+      const updatedAt = Date.parse(progress?.updatedAt || "");
+      return Number.isFinite(updatedAt) && updatedAt >= cutoff;
+    })
+    .sort(([, a], [, b]) => Date.parse(b.updatedAt || "") - Date.parse(a.updatedAt || ""))
+    .map(([id]) => id);
+
+  return [...new Set([...progressIds, ...state.recentIds])].filter(Boolean);
+}
+
+function createDailyQuestion(algorithm, pageData, index) {
+  const quiz = pageData.quiz || {};
+  const options = Array.isArray(quiz.options) ? quiz.options : [];
+  const correctOption = options.find((option) => option.correct);
+  if (!quiz.question || !correctOption) return null;
+
+  return {
+    id: `${state.quizDate}-${algorithm.id}-${index + 1}`,
+    algorithmId: algorithm.id,
+    title: pageData.title || algorithm.title || algorithm.name,
+    category: pageData.category || algorithm.category || "Algorithms",
+    question: quiz.question,
+    options: options.map((option) => ({
+      key: String(option.key || ""),
+      text: String(option.text || ""),
+    })).filter((option) => option.key && option.text),
+    correctKey: String(correctOption.key || ""),
+    hint: pageData.memoryTrick || pageData.whenToUse || quiz.incorrectText || "Look for the input shape, state, and stop condition.",
+    explanation: quiz.correctText || pageData.meaning || "That answer matches the algorithm's core pattern.",
+    incorrectText: quiz.incorrectText || "Review the algorithm's own state and stop condition.",
+    selectedKey: "",
+    answeredAt: "",
+    hintShown: false,
+  };
+}
+
+function normalizeClientQuiz(quiz) {
+  return {
+    ...quiz,
+    date: quiz.date || state.quizDate,
+    userId: quiz.userId || state.userId,
+    activeIndex: Math.max(0, Math.min(Number(quiz.activeIndex) || 0, Math.max((quiz.questions || []).length - 1, 0))),
+    hintCount: Number(quiz.hintCount) || 0,
+    elapsedMs: Number(quiz.elapsedMs) || 0,
+    questions: Array.isArray(quiz.questions) ? quiz.questions.slice(0, 10).map((question) => ({
+      ...question,
+      selectedKey: question.selectedKey || "",
+      answeredAt: question.answeredAt || "",
+      hintShown: Boolean(question.hintShown),
+    })) : [],
+  };
+}
+
+function answerDailyQuiz(key) {
+  const quiz = state.dailyQuiz;
+  if (!quiz || isDailyQuizComplete()) return;
+  const question = quiz.questions[quiz.activeIndex || 0];
+  if (!question) return;
+
+  question.selectedKey = key;
+  question.answeredAt = new Date().toISOString();
+  persistDailyQuizLocal();
+  render();
+  syncDailyQuiz({ silent: true });
+}
+
+function handleDailyQuizAction(target) {
+  const quiz = state.dailyQuiz;
+  if (!quiz) return;
+
+  const action = target.dataset.quizAction;
+  if (action === "jump") {
+    quiz.activeIndex = Math.max(0, Math.min(Number(target.dataset.quizIndex) || 0, quiz.questions.length - 1));
+  }
+
+  if (action === "prev") {
+    quiz.activeIndex = Math.max(0, (quiz.activeIndex || 0) - 1);
+  }
+
+  if (action === "next") {
+    quiz.activeIndex = Math.min(quiz.questions.length - 1, (quiz.activeIndex || 0) + 1);
+  }
+
+  if (action === "hint" && !isDailyQuizComplete()) {
+    const question = quiz.questions[quiz.activeIndex || 0];
+    if (question && !question.hintShown) {
+      question.hintShown = true;
+      quiz.hintCount = (quiz.hintCount || 0) + 1;
+    }
+  }
+
+  if (action === "finish") {
+    const firstUnansweredIndex = quiz.questions.findIndex((question) => !question.selectedKey);
+    if (firstUnansweredIndex >= 0) {
+      quiz.activeIndex = firstUnansweredIndex;
+      state.notice = `Answer question ${firstUnansweredIndex + 1} before finishing today's quiz.`;
+    } else {
+      quiz.completedAt = new Date().toISOString();
+      quiz.elapsedMs = getDailyQuizElapsedMs(quiz);
+      state.notice = `Daily quiz complete: ${getDailyQuizScore(quiz)}/${quiz.questions.length} in ${formatDuration(quiz.elapsedMs)}.`;
+    }
+
+    window.clearTimeout(handleDailyQuizAction.noticeTimer);
+    handleDailyQuizAction.noticeTimer = window.setTimeout(() => {
+      state.notice = "";
+      render();
+    }, 2600);
+  }
+
+  persistDailyQuizLocal();
+  render();
+  syncDailyQuiz({ silent: true });
+}
+
+function isDailyQuizRequired() {
+  return Boolean(state.dailyQuiz?.questions?.length && !isDailyQuizComplete());
+}
+
+function isDailyQuizComplete() {
+  return Boolean(state.dailyQuiz?.completedAt);
+}
+
+function forceDailyQuiz(message) {
+  state.notice = message;
+  state.view = "quiz";
+  updateRoute();
+  render();
+}
+
+function getAnsweredQuizCount(quiz = state.dailyQuiz) {
+  return quiz?.questions?.filter((question) => question.selectedKey).length || 0;
+}
+
+function getDailyQuizScore(quiz = state.dailyQuiz) {
+  return quiz?.questions?.filter((question) => question.selectedKey === question.correctKey).length || 0;
+}
+
+function getDailyQuizElapsedMs(quiz = state.dailyQuiz) {
+  if (!quiz?.startedAt) return 0;
+  if (quiz.completedAt && quiz.elapsedMs) return quiz.elapsedMs;
+  return Math.max(0, Date.now() - Date.parse(quiz.startedAt));
+}
+
+function formatDuration(ms) {
+  const totalSeconds = Math.max(0, Math.round(ms / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return minutes ? `${minutes}m ${String(seconds).padStart(2, "0")}s` : `${seconds}s`;
+}
+
+function getTodayKey() {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function loadDailyQuizLocal() {
+  try {
+    const quizzes = JSON.parse(window.localStorage.getItem(`algo-explained:daily-quizzes:${state.userId}`) || "{}");
+    return quizzes?.[state.quizDate] ? normalizeClientQuiz(quizzes[state.quizDate]) : null;
+  } catch {
+    return null;
+  }
+}
+
+function persistDailyQuizLocal(quiz = state.dailyQuiz) {
+  if (!quiz) return false;
+  try {
+    const key = `algo-explained:daily-quizzes:${state.userId}`;
+    const quizzes = JSON.parse(window.localStorage.getItem(key) || "{}");
+    quizzes[state.quizDate] = quiz;
+    window.localStorage.setItem(key, JSON.stringify(quizzes));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function syncDailyQuiz(options = {}) {
+  if (!state.dailyQuiz) return false;
+
+  try {
+    state.backendStatus = "syncing";
+    if (!options.silent) render();
+    const response = await fetch("/api/daily-quiz", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        userId: state.userId,
+        date: state.quizDate,
+        quiz: state.dailyQuiz,
+      }),
+    });
+    if (!response.ok) throw new Error("Daily quiz sync failed");
+    const data = await response.json();
+    if (data.quiz) {
+      state.dailyQuiz = normalizeClientQuiz(data.quiz);
+      persistDailyQuizLocal();
+    }
+    state.backendStatus = "synced";
+    if (!options.silent) render();
+    return true;
+  } catch {
+    state.backendStatus = "local";
+    if (!options.silent) render();
+    return false;
+  }
+}
+
+async function saveCurrentAlgorithm() {
   const selected = getSelectedAlgorithm();
   if (!selected) return;
 
@@ -657,10 +1407,11 @@ function saveCurrentAlgorithm() {
   state.savedIds.add(selected.id);
   const saved = persistSavedIds();
   if (!saved && !wasSaved) state.savedIds.delete(selected.id);
+  if (saved) await syncUserProgress({ silent: true });
   state.notice = saved
     ? wasSaved
-      ? `${selected.title || selected.name} is already saved in this browser.`
-      : `${selected.title || selected.name} saved in this browser.`
+      ? `${selected.title || selected.name} is already saved.`
+      : `${selected.title || selected.name} saved to your progress.`
     : "Browser storage is unavailable, so this item could not be saved.";
   render();
   window.clearTimeout(saveCurrentAlgorithm.noticeTimer);
@@ -668,6 +1419,42 @@ function saveCurrentAlgorithm() {
     state.notice = "";
     render();
   }, 2200);
+}
+
+function toggleProgress(section) {
+  const selected = getSelectedAlgorithm();
+  if (!selected) return;
+
+  const progress = getAlgorithmProgress(selected.id);
+  progress[section] = !progress[section];
+  progress.updatedAt = new Date().toISOString();
+  state.progress[selected.id] = progress;
+  markAlgorithmRecent(selected.id, { sync: false });
+  persistProgress();
+  render();
+  syncProgressSection(selected.id, section, progress[section]);
+}
+
+function getAlgorithmProgress(id) {
+  state.progress[id] ||= {};
+  return state.progress[id];
+}
+
+function getCompletedCount(id) {
+  const progress = state.progress[id] || {};
+  return ["lesson", "visualizer", "challenge"].filter((section) => progress[section]).length;
+}
+
+function loadUserId() {
+  try {
+    const existing = window.localStorage.getItem("algo-explained:user-id");
+    if (existing) return existing;
+    const next = `user_${window.crypto?.randomUUID ? window.crypto.randomUUID() : Date.now().toString(36)}`;
+    window.localStorage.setItem("algo-explained:user-id", next);
+    return next;
+  } catch {
+    return "anonymous";
+  }
 }
 
 function loadSavedIds() {
@@ -680,12 +1467,133 @@ function loadSavedIds() {
   }
 }
 
+function loadProgress() {
+  try {
+    const progress = JSON.parse(window.localStorage.getItem("algo-explained:progress") || "{}");
+    return progress && typeof progress === "object" ? progress : {};
+  } catch {
+    return {};
+  }
+}
+
+function loadRecentIds() {
+  try {
+    const ids = JSON.parse(window.localStorage.getItem("algo-explained:recent-algorithms") || "[]");
+    return Array.isArray(ids) ? ids : [];
+  } catch {
+    return [];
+  }
+}
+
 function persistSavedIds() {
   try {
     window.localStorage.setItem("algo-explained:saved-algorithms", JSON.stringify([...state.savedIds]));
     return true;
   } catch {
     return false;
+  }
+}
+
+function persistProgress() {
+  try {
+    window.localStorage.setItem("algo-explained:progress", JSON.stringify(state.progress));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function persistRecentIds() {
+  try {
+    window.localStorage.setItem("algo-explained:recent-algorithms", JSON.stringify(state.recentIds));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function markAlgorithmRecent(id, options = {}) {
+  if (!id) return;
+  state.recentIds = [id, ...state.recentIds.filter((recentId) => recentId !== id)].slice(0, 12);
+  persistRecentIds();
+  if (options.sync !== false) syncUserProgress({ silent: true });
+}
+
+async function loadUserProgress() {
+  try {
+    state.backendStatus = "syncing";
+    const response = await fetch(`/api/progress?userId=${encodeURIComponent(state.userId)}`, { cache: "no-store" });
+    if (!response.ok) throw new Error("Progress API unavailable");
+    const data = await response.json();
+    applyProgressPayload(data);
+    state.backendStatus = "synced";
+    render();
+  } catch {
+    state.backendStatus = "local";
+  }
+}
+
+function applyProgressPayload(data) {
+  if (Array.isArray(data.savedAlgorithmIds)) {
+    state.savedIds = new Set([...state.savedIds, ...data.savedAlgorithmIds]);
+    persistSavedIds();
+  }
+  if (Array.isArray(data.recentAlgorithmIds)) {
+    state.recentIds = [...new Set([...state.recentIds, ...data.recentAlgorithmIds])].slice(0, 12);
+    persistRecentIds();
+  }
+  if (data.progress && typeof data.progress === "object") {
+    state.progress = { ...state.progress, ...data.progress };
+    persistProgress();
+  }
+}
+
+async function syncUserProgress(options = {}) {
+  try {
+    state.backendStatus = "syncing";
+    if (!options.silent) render();
+    const response = await fetch("/api/progress", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        userId: state.userId,
+        savedAlgorithmIds: [...state.savedIds],
+        recentAlgorithmIds: state.recentIds,
+        progress: state.progress,
+      }),
+    });
+    if (!response.ok) throw new Error("Progress sync failed");
+    applyProgressPayload(await response.json());
+    state.backendStatus = "synced";
+    render();
+    return true;
+  } catch {
+    state.backendStatus = "local";
+    render();
+    return false;
+  }
+}
+
+async function syncProgressSection(algorithmId, section, completed) {
+  try {
+    state.backendStatus = "syncing";
+    const response = await fetch("/api/progress", {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        userId: state.userId,
+        algorithmId,
+        section,
+        completed,
+      }),
+    });
+    if (!response.ok) throw new Error("Progress sync failed");
+    applyProgressPayload(await response.json());
+    state.backendStatus = "synced";
+  } catch {
+    state.backendStatus = "local";
+  } finally {
+    render();
   }
 }
 
@@ -747,12 +1655,31 @@ async function loadAlgorithmIndex() {
       level: algorithm.priority,
     }));
     searchRecords.clear();
+    algorithmDataRecords.clear();
     smartSearchPromise = null;
 
+    await initializeDailyQuiz();
+
     const routeState = getRouteFromHash();
+    if (routeState?.view !== "quiz" && isDailyQuizRequired()) {
+      forceDailyQuiz("Complete today's quiz before opening another page.");
+      return;
+    }
+
     if (routeState?.view === "search") {
       state.view = "search";
       ensureSmartSearchIndex();
+      render();
+      return;
+    }
+    if (routeState?.view === "saved") {
+      state.view = "saved";
+      render();
+      return;
+    }
+
+    if (routeState?.view === "quiz") {
+      state.view = "quiz";
       render();
       return;
     }
@@ -760,6 +1687,7 @@ async function loadAlgorithmIndex() {
     if (routeState) {
       setActivePage(routeState.id);
       state.selectedId = routeState.id;
+      markAlgorithmRecent(routeState.id);
       state.view = routeState.view;
       await loadAlgorithmPage(routeState.id, { scrollToWorkspace: true });
       return;
@@ -774,6 +1702,11 @@ async function loadAlgorithmIndex() {
 
 window.addEventListener("hashchange", async () => {
   const routeState = getRouteFromHash();
+  if (routeState?.view !== "quiz" && isDailyQuizRequired()) {
+    forceDailyQuiz("Complete today's quiz before opening another page.");
+    return;
+  }
+
   if (!routeState) {
     state.view = "catalog";
     render();
@@ -788,12 +1721,32 @@ window.addEventListener("hashchange", async () => {
     return;
   }
 
+  if (routeState.view === "quiz") {
+    state.view = "quiz";
+    await initializeDailyQuiz();
+    render();
+    return;
+  }
+
+  if (routeState.view === "saved") {
+    state.view = "saved";
+    render();
+    return;
+  }
+
   setActivePage(routeState.id);
   state.selectedId = routeState.id;
+  markAlgorithmRecent(routeState.id);
   state.view = routeState.view;
   await loadAlgorithmPage(routeState.id, { scrollToWorkspace: true });
 });
 
 root.addEventListener("click", handleShellClick);
-render();
-loadAlgorithmIndex();
+
+async function bootstrap() {
+  render();
+  await loadUserProgress();
+  await loadAlgorithmIndex();
+}
+
+bootstrap();

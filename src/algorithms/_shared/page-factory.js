@@ -72,7 +72,7 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
   function renderVisualizer() {
     const current = algorithmPage.dryRun[state.step];
     return `
-      <section class="algorithm-page visualizer-panel" aria-labelledby="visualizer-title">
+      <section class="algorithm-page visualizer-panel" data-algorithm-page="${escapeHtml(algorithmPage.id)}" data-visualizer="${escapeHtml(algorithmPage.visualizerType)}" aria-labelledby="visualizer-title">
         <div class="title-row">
           <div>
             <p class="eyebrow">Algorithm visualizer</p>
@@ -88,6 +88,20 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
               <span>${escapeHtml(step.label)}</span>
             </div>
           `).join("")}
+        </div>
+        <div class="concept-loop-grid">
+          <article>
+            <strong>${icon("psychology")} Concept</strong>
+            <p>${escapeHtml(algorithmPage.problem)}</p>
+          </article>
+          <article>
+            <strong>${icon("account_tree")} Logic</strong>
+            <p>${escapeHtml(current.note)}</p>
+          </article>
+          <article>
+            <strong>${icon("repeat")} Loop / transition</strong>
+            <p>${escapeHtml(getTransitionSummary(current))}</p>
+          </article>
         </div>
         <div class="trace-layout">
           ${renderCodeTrace(current.activeLine)}
@@ -125,6 +139,11 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
         <pre>${codeLines.map((line, index) => `<code class="${index + 1 === activeLine ? "active-line" : ""}"><span>${index + 1}</span>${escapeHtml(line)}</code>`).join("")}</pre>
       </div>
     `;
+  }
+
+  function getTransitionSummary(current) {
+    const variableNames = algorithmPage.variables.map((variable) => variable.name).join(", ");
+    return `${current.title}: update ${variableNames || "state"} for the ${algorithmPage.visualizerType.replaceAll("-", " ")} dry run.`;
   }
 
   function renderChallenge() {

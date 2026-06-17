@@ -1,26 +1,37 @@
-# AlgoExplained
+# Algo Explained
 
-AlgoExplained is a frontend-only algorithm learning website. The goal is to teach algorithms with simple explanations, visual dry runs, clickable code traces, and practice prompts.
+Algo Explained is an algorithm learning website. The goal is to teach algorithms with simple explanations, visual dry runs, clickable code traces, practice prompts, and saved user progress.
 
 ## Current Stack
 
 - Static HTML, Tailwind CSS, custom CSS, and JavaScript
-- No backend
-- No install step required
-- GitHub Pages friendly
+- Built-in Node.js backend using `node:http`
+- File-based progress storage in `data/progress.json`
+- No third-party backend dependency required
 
 Tailwind is loaded through the browser CDN so the current project remains zero-install. The custom stylesheet is kept for visualizer-specific animation, code trace, and component polish.
 
+## Run Locally
+
+```bash
+npm run serve
+```
+
+Then open `http://localhost:4173/`.
+
+The backend exposes `GET`, `PUT`, and `PATCH` on `/api/progress`. It stores anonymous browser users, saved algorithms, and completion checks for lesson, visualizer, and quiz sections.
+
 ## Current Prototype
 
-Open `index.html` directly in a browser, or serve the folder with any static file server.
+Run the Node server so progress can sync. Opening `index.html` directly still renders the learning UI, but progress falls back to browser-local storage.
 
 The first interactive slice includes:
 
 - Algorithm catalog
 - Binary Search lesson
 - Binary Search visualizer
-- Quick Sort practice challenge
+- Binary Search practice challenge
+- Backend-backed saved algorithms and completion checks
 
 ## Planning Sources
 

@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "check": "node --check src/app.js",
+    "check:server": "node --check server.mjs",
+    "serve": "node server.mjs",
     "generate:algorithm-pages": "node scripts/generate-algorithm-pages.mjs"
   }
 }

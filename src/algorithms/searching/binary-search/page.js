@@ -44,9 +44,9 @@ const codeLines = [
 ];
 
 const challengeOptions = [
-  ["A", "It stays at index 2 because it is already in the correct partition position.", false],
-  ["B", "It is swapped with the element after the final smaller-than-pivot region.", true],
-  ["C", "It is moved to the beginning of the array to start a new sub-partition.", false],
+  ["A", "Move high to mid - 1 because the target must be on the left side.", false],
+  ["B", "Return mid because the middle value matches the target.", true],
+  ["C", "Move low to mid + 1 because every value before mid is too small.", false],
 ];
 
 export const stylePath = "./src/algorithms/searching/binary-search/styles.css";
@@ -128,7 +128,7 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
   function renderVisualizer() {
     const current = binarySteps[state.step];
     return `
-      <section class="visualizer-panel" aria-labelledby="visualizer-title">
+      <section class="visualizer-panel binary-search-visualizer" data-algorithm-page="binary-search" aria-labelledby="visualizer-title">
         <div class="title-row">
           <div>
             <p class="eyebrow">Algorithm visualizer</p>
@@ -146,6 +146,20 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
             <span><i class="dot neutral"></i> Iteration: ${state.step + 1}</span>
             <span><i class="dot secondary"></i> Range: ${current.range}</span>
           </div>
+        </div>
+        <div class="concept-loop-grid">
+          <article>
+            <strong>${icon("psychology")} Concept</strong>
+            <p>Binary Search keeps only the sorted half that can still contain the target.</p>
+          </article>
+          <article>
+            <strong>${icon("repeat")} Loop</strong>
+            <p>Run while <code>low &lt;= high</code>, compute <code>mid</code>, then compare <code>arr[mid]</code> with the target.</p>
+          </article>
+          <article>
+            <strong>${icon("sync_alt")} State updates</strong>
+            <p>If the middle value is too small, move <code>low</code>. If it is too large, move <code>high</code>.</p>
+          </article>
         </div>
         <div class="trace-layout">
           ${renderCodeTrace(current.activeLine)}
@@ -191,24 +205,22 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
   function renderChallenge() {
     const selected = challengeOptions.find(([key]) => key === state.selectedAnswer);
     return `
-      <section class="challenge-panel" aria-labelledby="challenge-title">
+      <section class="challenge-panel" data-algorithm-page="binary-search" aria-labelledby="challenge-title">
         <div class="title-row">
           <div>
-            <p class="eyebrow">Quick sort challenge</p>
-            <h2 id="challenge-title">Partitioning Step</h2>
-            <p>The current array is being partitioned around the pivot element <code>7</code>.</p>
+            <p class="eyebrow">Binary search challenge</p>
+            <h2 id="challenge-title">Middle Match</h2>
+            <p>The current range is <code>[4 - 7]</code>, the middle value is <code>13</code>, and the target is <code>13</code>.</p>
           </div>
-          <span class="step-pill purple">${icon("bolt")} Step 4/12</span>
+          <span class="step-pill purple">${icon("quiz")} Step 3/3</span>
         </div>
-        <div class="partition-stage">
-          ${[3, 5, 7, 9, 2].map((value, index) => `
-            <span class="bar ${value === 7 ? "pivot" : ""}" style="--height: ${48 + value * 8}px">
-              <b>${value}</b><small>${value === 7 ? "P" : index}</small>
-            </span>
-          `).join("")}
+        <div class="array-stage challenge-array">
+          <div class="array-track" aria-label="Binary search challenge array">
+            ${arrayValues.map((value, index) => renderArrayCell(value, index, binarySteps[2])).join("")}
+          </div>
         </div>
-        ${renderCodeTrace(6)}
-        <h3>What happens to the pivot next?</h3>
+        ${renderCodeTrace(5)}
+        <h3>What should the algorithm do next?</h3>
         <div class="answer-list">
           ${challengeOptions.map(([key, text]) => `
             <button class="answer ${state.selectedAnswer === key ? "selected" : ""}" data-answer="${key}">
@@ -225,8 +237,8 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
     return `
       <p class="result ${correct ? "correct" : "incorrect"}">
         ${correct
-          ? "Correct. The pivot moves after the values smaller than it, locking one final position."
-          : "Not quite. Partitioning keeps values smaller than the pivot before it, then places the pivot after them."}
+          ? "Correct. A match at mid ends the search and returns the middle index."
+          : "Not quite. The middle value equals the target, so the algorithm returns mid immediately."}
       </p>
     `;
   }

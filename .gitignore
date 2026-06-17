@@ -5,4 +5,4 @@ dist/
 .stitch-reference/
 design-qa.md
 qa-artifacts/
-
+data/progress.json
