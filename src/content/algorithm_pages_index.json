@@ -1,0 +1,1264 @@
+{
+  "purpose": "Algorithm page index for Codex. Build one page per algorithm using the learning debugger template.",
+  "routePattern": "/algorithms/{categorySlug}/{algorithmSlug}",
+  "pageTemplate": [
+    "Algorithm title",
+    "One-line meaning",
+    "Problem this algorithm solves",
+    "Real-life example",
+    "When to use it",
+    "Variables and why each one exists",
+    "Step-by-step logic in plain English",
+    "Visual dry run",
+    "Clickable code with line-by-line explanation",
+    "Common mistakes",
+    "Memory trick",
+    "Time and space complexity",
+    "Interview pattern recognition",
+    "Practice problems",
+    "Mini quiz"
+  ],
+  "components": [
+    "AlgorithmPageLayout",
+    "AlgorithmHero",
+    "WhenToUseCard",
+    "VariableExplainerGrid",
+    "DryRunPlayer",
+    "LineByLineCodeBlock",
+    "CodeWhyPanel",
+    "CommonMistakes",
+    "MemoryTrickCard",
+    "ComplexityCard",
+    "PracticeProblemList",
+    "MiniQuiz"
+  ],
+  "algorithms": [
+    {
+      "phase": 1,
+      "id": "time-complexity-basics",
+      "title": "Time Complexity Basics",
+      "route": "/algorithms/foundations/time-complexity-basics",
+      "visualizerType": "growth-chart",
+      "priority": "high",
+      "category": "Foundations"
+    },
+    {
+      "phase": 1,
+      "id": "space-complexity-basics",
+      "title": "Space Complexity Basics",
+      "route": "/algorithms/foundations/space-complexity-basics",
+      "visualizerType": "memory-blocks",
+      "priority": "high",
+      "category": "Foundations"
+    },
+    {
+      "phase": 1,
+      "id": "recursion-basics",
+      "title": "Recursion Basics",
+      "route": "/algorithms/foundations/recursion-basics",
+      "visualizerType": "call-stack",
+      "priority": "high",
+      "category": "Foundations"
+    },
+    {
+      "phase": 2,
+      "id": "hashing-basics",
+      "title": "Hashing Basics",
+      "route": "/algorithms/foundations/hashing-basics",
+      "visualizerType": "hash-table",
+      "priority": "high",
+      "category": "Foundations"
+    },
+    {
+      "phase": 2,
+      "id": "greedy-basics",
+      "title": "Greedy Basics",
+      "route": "/algorithms/foundations/greedy-basics",
+      "visualizerType": "decision-timeline",
+      "priority": "medium",
+      "category": "Foundations"
+    },
+    {
+      "phase": 2,
+      "id": "backtracking-basics",
+      "title": "Backtracking Basics",
+      "route": "/algorithms/foundations/backtracking-basics",
+      "visualizerType": "recursion-tree",
+      "priority": "high",
+      "category": "Foundations"
+    },
+    {
+      "phase": 3,
+      "id": "dynamic-programming-basics",
+      "title": "Dynamic Programming Basics",
+      "route": "/algorithms/foundations/dynamic-programming-basics",
+      "visualizerType": "dp-table",
+      "priority": "high",
+      "category": "Foundations"
+    },
+    {
+      "phase": 1,
+      "id": "linear-search",
+      "title": "Linear Search",
+      "route": "/algorithms/searching/linear-search",
+      "visualizerType": "array-scan",
+      "priority": "high",
+      "category": "Searching"
+    },
+    {
+      "phase": 1,
+      "id": "binary-search",
+      "title": "Binary Search",
+      "route": "/algorithms/searching/binary-search",
+      "visualizerType": "array-boundaries",
+      "priority": "high",
+      "category": "Searching"
+    },
+    {
+      "phase": 1,
+      "id": "lower-bound",
+      "title": "Lower Bound",
+      "route": "/algorithms/searching/lower-bound",
+      "visualizerType": "array-boundaries",
+      "priority": "medium",
+      "category": "Searching"
+    },
+    {
+      "phase": 1,
+      "id": "upper-bound",
+      "title": "Upper Bound",
+      "route": "/algorithms/searching/upper-bound",
+      "visualizerType": "array-boundaries",
+      "priority": "medium",
+      "category": "Searching"
+    },
+    {
+      "phase": 2,
+      "id": "search-in-rotated-sorted-array",
+      "title": "Search in Rotated Sorted Array",
+      "route": "/algorithms/searching/search-in-rotated-sorted-array",
+      "visualizerType": "rotated-array",
+      "priority": "high",
+      "category": "Searching"
+    },
+    {
+      "phase": 2,
+      "id": "ternary-search",
+      "title": "Ternary Search",
+      "route": "/algorithms/searching/ternary-search",
+      "visualizerType": "divided-range",
+      "priority": "low",
+      "category": "Searching"
+    },
+    {
+      "phase": 1,
+      "id": "bubble-sort",
+      "title": "Bubble Sort",
+      "route": "/algorithms/sorting/bubble-sort",
+      "visualizerType": "bar-swap",
+      "priority": "high",
+      "category": "Sorting"
+    },
+    {
+      "phase": 1,
+      "id": "selection-sort",
+      "title": "Selection Sort",
+      "route": "/algorithms/sorting/selection-sort",
+      "visualizerType": "min-selection",
+      "priority": "high",
+      "category": "Sorting"
+    },
+    {
+      "phase": 1,
+      "id": "insertion-sort",
+      "title": "Insertion Sort",
+      "route": "/algorithms/sorting/insertion-sort",
+      "visualizerType": "card-insertion",
+      "priority": "high",
+      "category": "Sorting"
+    },
+    {
+      "phase": 2,
+      "id": "merge-sort",
+      "title": "Merge Sort",
+      "route": "/algorithms/sorting/merge-sort",
+      "visualizerType": "divide-merge",
+      "priority": "high",
+      "category": "Sorting"
+    },
+    {
+      "phase": 2,
+      "id": "quick-sort",
+      "title": "Quick Sort",
+      "route": "/algorithms/sorting/quick-sort",
+      "visualizerType": "partition",
+      "priority": "high",
+      "category": "Sorting"
+    },
+    {
+      "phase": 2,
+      "id": "heap-sort",
+      "title": "Heap Sort",
+      "route": "/algorithms/sorting/heap-sort",
+      "visualizerType": "heap-tree",
+      "priority": "medium",
+      "category": "Sorting"
+    },
+    {
+      "phase": 3,
+      "id": "counting-sort",
+      "title": "Counting Sort",
+      "route": "/algorithms/sorting/counting-sort",
+      "visualizerType": "frequency-array",
+      "priority": "medium",
+      "category": "Sorting"
+    },
+    {
+      "phase": 3,
+      "id": "radix-sort",
+      "title": "Radix Sort",
+      "route": "/algorithms/sorting/radix-sort",
+      "visualizerType": "digit-buckets",
+      "priority": "medium",
+      "category": "Sorting"
+    },
+    {
+      "phase": 3,
+      "id": "bucket-sort",
+      "title": "Bucket Sort",
+      "route": "/algorithms/sorting/bucket-sort",
+      "visualizerType": "bucket-groups",
+      "priority": "low",
+      "category": "Sorting"
+    },
+    {
+      "phase": 1,
+      "id": "two-pointers",
+      "title": "Two Pointers",
+      "route": "/algorithms/array-patterns/two-pointers",
+      "visualizerType": "two-pointer-array",
+      "priority": "high",
+      "category": "Array Patterns"
+    },
+    {
+      "phase": 1,
+      "id": "sliding-window",
+      "title": "Sliding Window",
+      "route": "/algorithms/array-patterns/sliding-window",
+      "visualizerType": "moving-window",
+      "priority": "high",
+      "category": "Array Patterns"
+    },
+    {
+      "phase": 1,
+      "id": "prefix-sum",
+      "title": "Prefix Sum",
+      "route": "/algorithms/array-patterns/prefix-sum",
+      "visualizerType": "cumulative-array",
+      "priority": "high",
+      "category": "Array Patterns"
+    },
+    {
+      "phase": 2,
+      "id": "kadanes-algorithm",
+      "title": "Kadane’s Algorithm",
+      "route": "/algorithms/array-patterns/kadanes-algorithm",
+      "visualizerType": "running-sum",
+      "priority": "high",
+      "category": "Array Patterns"
+    },
+    {
+      "phase": 2,
+      "id": "difference-array",
+      "title": "Difference Array",
+      "route": "/algorithms/array-patterns/difference-array",
+      "visualizerType": "range-update",
+      "priority": "medium",
+      "category": "Array Patterns"
+    },
+    {
+      "phase": 2,
+      "id": "dutch-national-flag",
+      "title": "Dutch National Flag",
+      "route": "/algorithms/array-patterns/dutch-national-flag",
+      "visualizerType": "three-partition",
+      "priority": "medium",
+      "category": "Array Patterns"
+    },
+    {
+      "phase": 2,
+      "id": "majority-element",
+      "title": "Majority Element",
+      "route": "/algorithms/array-patterns/majority-element",
+      "visualizerType": "candidate-counter",
+      "priority": "medium",
+      "category": "Array Patterns"
+    },
+    {
+      "phase": 2,
+      "id": "maximum-product-subarray",
+      "title": "Maximum Product Subarray",
+      "route": "/algorithms/array-patterns/maximum-product-subarray",
+      "visualizerType": "min-max-tracker",
+      "priority": "medium",
+      "category": "Array Patterns"
+    },
+    {
+      "phase": 2,
+      "id": "longest-consecutive-sequence",
+      "title": "Longest Consecutive Sequence",
+      "route": "/algorithms/array-patterns/longest-consecutive-sequence",
+      "visualizerType": "hash-set-chain",
+      "priority": "medium",
+      "category": "Array Patterns"
+    },
+    {
+      "phase": 1,
+      "id": "factorial-recursion",
+      "title": "Factorial Recursion",
+      "route": "/algorithms/recursion/factorial-recursion",
+      "visualizerType": "call-stack",
+      "priority": "medium",
+      "category": "Recursion and Backtracking"
+    },
+    {
+      "phase": 1,
+      "id": "fibonacci-recursion",
+      "title": "Fibonacci Recursion",
+      "route": "/algorithms/recursion/fibonacci-recursion",
+      "visualizerType": "recursion-tree",
+      "priority": "medium",
+      "category": "Recursion and Backtracking"
+    },
+    {
+      "phase": 1,
+      "id": "tower-of-hanoi",
+      "title": "Tower of Hanoi",
+      "route": "/algorithms/recursion/tower-of-hanoi",
+      "visualizerType": "disk-moves",
+      "priority": "low",
+      "category": "Recursion and Backtracking"
+    },
+    {
+      "phase": 2,
+      "id": "subsets",
+      "title": "Subsets",
+      "route": "/algorithms/backtracking/subsets",
+      "visualizerType": "decision-tree",
+      "priority": "high",
+      "category": "Recursion and Backtracking"
+    },
+    {
+      "phase": 2,
+      "id": "permutations",
+      "title": "Permutations",
+      "route": "/algorithms/backtracking/permutations",
+      "visualizerType": "swap-tree",
+      "priority": "high",
+      "category": "Recursion and Backtracking"
+    },
+    {
+      "phase": 2,
+      "id": "combination-sum",
+      "title": "Combination Sum",
+      "route": "/algorithms/backtracking/combination-sum",
+      "visualizerType": "choice-tree",
+      "priority": "medium",
+      "category": "Recursion and Backtracking"
+    },
+    {
+      "phase": 2,
+      "id": "generate-parentheses",
+      "title": "Generate Parentheses",
+      "route": "/algorithms/backtracking/generate-parentheses",
+      "visualizerType": "state-tree",
+      "priority": "medium",
+      "category": "Recursion and Backtracking"
+    },
+    {
+      "phase": 2,
+      "id": "n-queens",
+      "title": "N-Queens",
+      "route": "/algorithms/backtracking/n-queens",
+      "visualizerType": "chessboard",
+      "priority": "medium",
+      "category": "Recursion and Backtracking"
+    },
+    {
+      "phase": 2,
+      "id": "rat-in-a-maze",
+      "title": "Rat in a Maze",
+      "route": "/algorithms/backtracking/rat-in-a-maze",
+      "visualizerType": "grid-path",
+      "priority": "medium",
+      "category": "Recursion and Backtracking"
+    },
+    {
+      "phase": 2,
+      "id": "sudoku-solver",
+      "title": "Sudoku Solver",
+      "route": "/algorithms/backtracking/sudoku-solver",
+      "visualizerType": "board-state",
+      "priority": "low",
+      "category": "Recursion and Backtracking"
+    },
+    {
+      "phase": 2,
+      "id": "word-search",
+      "title": "Word Search",
+      "route": "/algorithms/backtracking/word-search",
+      "visualizerType": "grid-dfs",
+      "priority": "medium",
+      "category": "Recursion and Backtracking"
+    },
+    {
+      "phase": 3,
+      "id": "fibonacci-dp",
+      "title": "Fibonacci DP",
+      "route": "/algorithms/dynamic-programming/fibonacci-dp",
+      "visualizerType": "dp-table",
+      "priority": "high",
+      "category": "Dynamic Programming"
+    },
+    {
+      "phase": 3,
+      "id": "zero-one-knapsack",
+      "title": "0/1 Knapsack",
+      "route": "/algorithms/dynamic-programming/zero-one-knapsack",
+      "visualizerType": "dp-grid",
+      "priority": "high",
+      "category": "Dynamic Programming"
+    },
+    {
+      "phase": 3,
+      "id": "coin-change",
+      "title": "Coin Change",
+      "route": "/algorithms/dynamic-programming/coin-change",
+      "visualizerType": "dp-array",
+      "priority": "high",
+      "category": "Dynamic Programming"
+    },
+    {
+      "phase": 3,
+      "id": "longest-common-subsequence",
+      "title": "Longest Common Subsequence",
+      "route": "/algorithms/dynamic-programming/longest-common-subsequence",
+      "visualizerType": "dp-grid",
+      "priority": "high",
+      "category": "Dynamic Programming"
+    },
+    {
+      "phase": 3,
+      "id": "longest-increasing-subsequence",
+      "title": "Longest Increasing Subsequence",
+      "route": "/algorithms/dynamic-programming/longest-increasing-subsequence",
+      "visualizerType": "sequence-dp",
+      "priority": "high",
+      "category": "Dynamic Programming"
+    },
+    {
+      "phase": 3,
+      "id": "edit-distance",
+      "title": "Edit Distance",
+      "route": "/algorithms/dynamic-programming/edit-distance",
+      "visualizerType": "dp-grid",
+      "priority": "medium",
+      "category": "Dynamic Programming"
+    },
+    {
+      "phase": 4,
+      "id": "matrix-chain-multiplication",
+      "title": "Matrix Chain Multiplication",
+      "route": "/algorithms/dynamic-programming/matrix-chain-multiplication",
+      "visualizerType": "interval-dp",
+      "priority": "medium",
+      "category": "Dynamic Programming"
+    },
+    {
+      "phase": 4,
+      "id": "dp-on-grids",
+      "title": "DP on Grids",
+      "route": "/algorithms/dynamic-programming/dp-on-grids",
+      "visualizerType": "grid-path-dp",
+      "priority": "high",
+      "category": "Dynamic Programming"
+    },
+    {
+      "phase": 4,
+      "id": "dp-on-trees",
+      "title": "DP on Trees",
+      "route": "/algorithms/dynamic-programming/dp-on-trees",
+      "visualizerType": "tree-dp",
+      "priority": "medium",
+      "category": "Dynamic Programming"
+    },
+    {
+      "phase": 4,
+      "id": "partition-dp",
+      "title": "Partition DP",
+      "route": "/algorithms/dynamic-programming/partition-dp",
+      "visualizerType": "partition-table",
+      "priority": "medium",
+      "category": "Dynamic Programming"
+    },
+    {
+      "phase": 2,
+      "id": "bfs",
+      "title": "Breadth-First Search",
+      "route": "/algorithms/graphs/bfs",
+      "visualizerType": "graph-queue",
+      "priority": "high",
+      "category": "Graphs"
+    },
+    {
+      "phase": 2,
+      "id": "dfs",
+      "title": "Depth-First Search",
+      "route": "/algorithms/graphs/dfs",
+      "visualizerType": "graph-stack",
+      "priority": "high",
+      "category": "Graphs"
+    },
+    {
+      "phase": 2,
+      "id": "cycle-detection-undirected",
+      "title": "Cycle Detection in Undirected Graph",
+      "route": "/algorithms/graphs/cycle-detection-undirected",
+      "visualizerType": "graph-visited",
+      "priority": "high",
+      "category": "Graphs"
+    },
+    {
+      "phase": 2,
+      "id": "cycle-detection-directed",
+      "title": "Cycle Detection in Directed Graph",
+      "route": "/algorithms/graphs/cycle-detection-directed",
+      "visualizerType": "graph-recursion-stack",
+      "priority": "high",
+      "category": "Graphs"
+    },
+    {
+      "phase": 2,
+      "id": "topological-sort",
+      "title": "Topological Sort",
+      "route": "/algorithms/graphs/topological-sort",
+      "visualizerType": "dag-order",
+      "priority": "high",
+      "category": "Graphs"
+    },
+    {
+      "phase": 3,
+      "id": "dijkstra",
+      "title": "Dijkstra’s Algorithm",
+      "route": "/algorithms/graphs/dijkstra",
+      "visualizerType": "weighted-graph",
+      "priority": "high",
+      "category": "Graphs"
+    },
+    {
+      "phase": 3,
+      "id": "bellman-ford",
+      "title": "Bellman-Ford Algorithm",
+      "route": "/algorithms/graphs/bellman-ford",
+      "visualizerType": "edge-relaxation",
+      "priority": "medium",
+      "category": "Graphs"
+    },
+    {
+      "phase": 3,
+      "id": "floyd-warshall",
+      "title": "Floyd-Warshall Algorithm",
+      "route": "/algorithms/graphs/floyd-warshall",
+      "visualizerType": "matrix-update",
+      "priority": "medium",
+      "category": "Graphs"
+    },
+    {
+      "phase": 3,
+      "id": "prim",
+      "title": "Prim’s Algorithm",
+      "route": "/algorithms/graphs/prim",
+      "visualizerType": "mst-growth",
+      "priority": "medium",
+      "category": "Graphs"
+    },
+    {
+      "phase": 3,
+      "id": "kruskal",
+      "title": "Kruskal’s Algorithm",
+      "route": "/algorithms/graphs/kruskal",
+      "visualizerType": "mst-edges",
+      "priority": "medium",
+      "category": "Graphs"
+    },
+    {
+      "phase": 3,
+      "id": "union-find",
+      "title": "Disjoint Set Union / Union Find",
+      "route": "/algorithms/graphs/union-find",
+      "visualizerType": "parent-tree",
+      "priority": "high",
+      "category": "Graphs"
+    },
+    {
+      "phase": 4,
+      "id": "kosaraju",
+      "title": "Kosaraju’s Algorithm",
+      "route": "/algorithms/graphs/kosaraju",
+      "visualizerType": "scc-two-pass",
+      "priority": "medium",
+      "category": "Graphs"
+    },
+    {
+      "phase": 4,
+      "id": "tarjan",
+      "title": "Tarjan’s Algorithm",
+      "route": "/algorithms/graphs/tarjan",
+      "visualizerType": "low-link",
+      "priority": "medium",
+      "category": "Graphs"
+    },
+    {
+      "phase": 2,
+      "id": "inorder-traversal",
+      "title": "Inorder Traversal",
+      "route": "/algorithms/trees/inorder-traversal",
+      "visualizerType": "tree-traversal",
+      "priority": "high",
+      "category": "Trees"
+    },
+    {
+      "phase": 2,
+      "id": "preorder-traversal",
+      "title": "Preorder Traversal",
+      "route": "/algorithms/trees/preorder-traversal",
+      "visualizerType": "tree-traversal",
+      "priority": "high",
+      "category": "Trees"
+    },
+    {
+      "phase": 2,
+      "id": "postorder-traversal",
+      "title": "Postorder Traversal",
+      "route": "/algorithms/trees/postorder-traversal",
+      "visualizerType": "tree-traversal",
+      "priority": "high",
+      "category": "Trees"
+    },
+    {
+      "phase": 2,
+      "id": "level-order-traversal",
+      "title": "Level Order Traversal",
+      "route": "/algorithms/trees/level-order-traversal",
+      "visualizerType": "tree-levels",
+      "priority": "high",
+      "category": "Trees"
+    },
+    {
+      "phase": 2,
+      "id": "bst-search",
+      "title": "BST Search",
+      "route": "/algorithms/trees/bst-search",
+      "visualizerType": "bst-path",
+      "priority": "high",
+      "category": "Trees"
+    },
+    {
+      "phase": 2,
+      "id": "bst-insert",
+      "title": "BST Insert",
+      "route": "/algorithms/trees/bst-insert",
+      "visualizerType": "bst-path",
+      "priority": "medium",
+      "category": "Trees"
+    },
+    {
+      "phase": 2,
+      "id": "bst-delete",
+      "title": "BST Delete",
+      "route": "/algorithms/trees/bst-delete",
+      "visualizerType": "bst-restructure",
+      "priority": "medium",
+      "category": "Trees"
+    },
+    {
+      "phase": 3,
+      "id": "lowest-common-ancestor",
+      "title": "Lowest Common Ancestor",
+      "route": "/algorithms/trees/lowest-common-ancestor",
+      "visualizerType": "tree-paths",
+      "priority": "high",
+      "category": "Trees"
+    },
+    {
+      "phase": 3,
+      "id": "diameter-of-tree",
+      "title": "Diameter of Tree",
+      "route": "/algorithms/trees/diameter-of-tree",
+      "visualizerType": "tree-height",
+      "priority": "medium",
+      "category": "Trees"
+    },
+    {
+      "phase": 3,
+      "id": "height-depth-of-tree",
+      "title": "Height / Depth of Tree",
+      "route": "/algorithms/trees/height-depth-of-tree",
+      "visualizerType": "tree-height",
+      "priority": "high",
+      "category": "Trees"
+    },
+    {
+      "phase": 3,
+      "id": "trie",
+      "title": "Trie Operations",
+      "route": "/algorithms/trees/trie",
+      "visualizerType": "prefix-tree",
+      "priority": "high",
+      "category": "Trees"
+    },
+    {
+      "phase": 4,
+      "id": "avl-tree-basics",
+      "title": "AVL Tree Basics",
+      "route": "/algorithms/trees/avl-tree-basics",
+      "visualizerType": "rotations",
+      "priority": "low",
+      "category": "Trees"
+    },
+    {
+      "phase": 4,
+      "id": "red-black-tree-basics",
+      "title": "Red-Black Tree Basics",
+      "route": "/algorithms/trees/red-black-tree-basics",
+      "visualizerType": "balanced-tree",
+      "priority": "low",
+      "category": "Trees"
+    },
+    {
+      "phase": 2,
+      "id": "anagram-detection",
+      "title": "Anagram Detection",
+      "route": "/algorithms/strings/anagram-detection",
+      "visualizerType": "frequency-map",
+      "priority": "medium",
+      "category": "Strings"
+    },
+    {
+      "phase": 2,
+      "id": "longest-palindromic-substring",
+      "title": "Longest Palindromic Substring",
+      "route": "/algorithms/strings/longest-palindromic-substring",
+      "visualizerType": "expand-center",
+      "priority": "medium",
+      "category": "Strings"
+    },
+    {
+      "phase": 3,
+      "id": "kmp",
+      "title": "KMP Algorithm",
+      "route": "/algorithms/strings/kmp",
+      "visualizerType": "prefix-table",
+      "priority": "high",
+      "category": "Strings"
+    },
+    {
+      "phase": 3,
+      "id": "rabin-karp",
+      "title": "Rabin-Karp Algorithm",
+      "route": "/algorithms/strings/rabin-karp",
+      "visualizerType": "rolling-hash",
+      "priority": "medium",
+      "category": "Strings"
+    },
+    {
+      "phase": 4,
+      "id": "z-algorithm",
+      "title": "Z Algorithm",
+      "route": "/algorithms/strings/z-algorithm",
+      "visualizerType": "z-box",
+      "priority": "medium",
+      "category": "Strings"
+    },
+    {
+      "phase": 4,
+      "id": "manachers-algorithm",
+      "title": "Manacher’s Algorithm",
+      "route": "/algorithms/strings/manachers-algorithm",
+      "visualizerType": "palindrome-radius",
+      "priority": "low",
+      "category": "Strings"
+    },
+    {
+      "phase": 3,
+      "id": "trie-search",
+      "title": "Trie-Based Search",
+      "route": "/algorithms/strings/trie-search",
+      "visualizerType": "prefix-tree",
+      "priority": "high",
+      "category": "Strings"
+    },
+    {
+      "phase": 2,
+      "id": "min-heap",
+      "title": "Min Heap",
+      "route": "/algorithms/heaps/min-heap",
+      "visualizerType": "heap-tree",
+      "priority": "medium",
+      "category": "Heap and Priority Queue"
+    },
+    {
+      "phase": 2,
+      "id": "max-heap",
+      "title": "Max Heap",
+      "route": "/algorithms/heaps/max-heap",
+      "visualizerType": "heap-tree",
+      "priority": "medium",
+      "category": "Heap and Priority Queue"
+    },
+    {
+      "phase": 2,
+      "id": "heapify",
+      "title": "Heapify",
+      "route": "/algorithms/heaps/heapify",
+      "visualizerType": "heap-tree",
+      "priority": "medium",
+      "category": "Heap and Priority Queue"
+    },
+    {
+      "phase": 2,
+      "id": "kth-largest-smallest",
+      "title": "Kth Largest / Smallest Element",
+      "route": "/algorithms/heaps/kth-largest-smallest",
+      "visualizerType": "heap-selection",
+      "priority": "high",
+      "category": "Heap and Priority Queue"
+    },
+    {
+      "phase": 2,
+      "id": "merge-k-sorted-lists",
+      "title": "Merge K Sorted Lists",
+      "route": "/algorithms/heaps/merge-k-sorted-lists",
+      "visualizerType": "heap-merge",
+      "priority": "medium",
+      "category": "Heap and Priority Queue"
+    },
+    {
+      "phase": 2,
+      "id": "top-k-frequent-elements",
+      "title": "Top K Frequent Elements",
+      "route": "/algorithms/heaps/top-k-frequent-elements",
+      "visualizerType": "frequency-heap",
+      "priority": "high",
+      "category": "Heap and Priority Queue"
+    },
+    {
+      "phase": 1,
+      "id": "stack-basics",
+      "title": "Stack Basics",
+      "route": "/algorithms/stack/stack-basics",
+      "visualizerType": "stack-push-pop",
+      "priority": "high",
+      "category": "Stack"
+    },
+    {
+      "phase": 1,
+      "id": "valid-parentheses",
+      "title": "Valid Parentheses",
+      "route": "/algorithms/stack/valid-parentheses",
+      "visualizerType": "stack-match",
+      "priority": "high",
+      "category": "Stack"
+    },
+    {
+      "phase": 2,
+      "id": "next-greater-element",
+      "title": "Next Greater Element",
+      "route": "/algorithms/stack/next-greater-element",
+      "visualizerType": "monotonic-stack",
+      "priority": "high",
+      "category": "Stack"
+    },
+    {
+      "phase": 2,
+      "id": "previous-greater-element",
+      "title": "Previous Greater Element",
+      "route": "/algorithms/stack/previous-greater-element",
+      "visualizerType": "monotonic-stack",
+      "priority": "medium",
+      "category": "Stack"
+    },
+    {
+      "phase": 2,
+      "id": "min-stack",
+      "title": "Min Stack",
+      "route": "/algorithms/stack/min-stack",
+      "visualizerType": "dual-stack",
+      "priority": "medium",
+      "category": "Stack"
+    },
+    {
+      "phase": 2,
+      "id": "largest-rectangle-histogram",
+      "title": "Largest Rectangle in Histogram",
+      "route": "/algorithms/stack/largest-rectangle-histogram",
+      "visualizerType": "monotonic-stack-bars",
+      "priority": "medium",
+      "category": "Stack"
+    },
+    {
+      "phase": 2,
+      "id": "stock-span",
+      "title": "Stock Span Problem",
+      "route": "/algorithms/stack/stock-span",
+      "visualizerType": "monotonic-stack",
+      "priority": "medium",
+      "category": "Stack"
+    },
+    {
+      "phase": 1,
+      "id": "queue-basics",
+      "title": "Queue Basics",
+      "route": "/algorithms/queue/queue-basics",
+      "visualizerType": "queue-enqueue-dequeue",
+      "priority": "high",
+      "category": "Queue"
+    },
+    {
+      "phase": 1,
+      "id": "circular-queue",
+      "title": "Circular Queue",
+      "route": "/algorithms/queue/circular-queue",
+      "visualizerType": "circular-buffer",
+      "priority": "medium",
+      "category": "Queue"
+    },
+    {
+      "phase": 2,
+      "id": "deque",
+      "title": "Deque",
+      "route": "/algorithms/queue/deque",
+      "visualizerType": "double-ended-queue",
+      "priority": "medium",
+      "category": "Queue"
+    },
+    {
+      "phase": 2,
+      "id": "sliding-window-maximum",
+      "title": "Sliding Window Maximum",
+      "route": "/algorithms/queue/sliding-window-maximum",
+      "visualizerType": "monotonic-deque",
+      "priority": "high",
+      "category": "Queue"
+    },
+    {
+      "phase": 2,
+      "id": "lru-cache",
+      "title": "LRU Cache",
+      "route": "/algorithms/queue/lru-cache",
+      "visualizerType": "hashmap-linkedlist",
+      "priority": "high",
+      "category": "Queue"
+    },
+    {
+      "phase": 1,
+      "id": "matrix-traversal",
+      "title": "Matrix Traversal",
+      "route": "/algorithms/matrix/matrix-traversal",
+      "visualizerType": "grid-walk",
+      "priority": "medium",
+      "category": "Matrix and Grid"
+    },
+    {
+      "phase": 1,
+      "id": "spiral-matrix",
+      "title": "Spiral Matrix",
+      "route": "/algorithms/matrix/spiral-matrix",
+      "visualizerType": "boundary-grid",
+      "priority": "medium",
+      "category": "Matrix and Grid"
+    },
+    {
+      "phase": 1,
+      "id": "rotate-matrix",
+      "title": "Rotate Matrix",
+      "route": "/algorithms/matrix/rotate-matrix",
+      "visualizerType": "grid-transform",
+      "priority": "medium",
+      "category": "Matrix and Grid"
+    },
+    {
+      "phase": 2,
+      "id": "search-in-sorted-matrix",
+      "title": "Search in Sorted Matrix",
+      "route": "/algorithms/matrix/search-in-sorted-matrix",
+      "visualizerType": "matrix-staircase",
+      "priority": "medium",
+      "category": "Matrix and Grid"
+    },
+    {
+      "phase": 2,
+      "id": "flood-fill",
+      "title": "Flood Fill",
+      "route": "/algorithms/matrix/flood-fill",
+      "visualizerType": "grid-bfs-dfs",
+      "priority": "high",
+      "category": "Matrix and Grid"
+    },
+    {
+      "phase": 2,
+      "id": "island-counting",
+      "title": "Island Counting",
+      "route": "/algorithms/matrix/island-counting",
+      "visualizerType": "grid-bfs-dfs",
+      "priority": "high",
+      "category": "Matrix and Grid"
+    },
+    {
+      "phase": 2,
+      "id": "prefix-sum-matrix",
+      "title": "Prefix Sum Matrix",
+      "route": "/algorithms/matrix/prefix-sum-matrix",
+      "visualizerType": "grid-prefix",
+      "priority": "medium",
+      "category": "Matrix and Grid"
+    },
+    {
+      "phase": 1,
+      "id": "gcd-euclidean",
+      "title": "GCD / Euclidean Algorithm",
+      "route": "/algorithms/number-theory/gcd-euclidean",
+      "visualizerType": "remainder-steps",
+      "priority": "high",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 1,
+      "id": "lcm",
+      "title": "LCM",
+      "route": "/algorithms/number-theory/lcm",
+      "visualizerType": "formula-card",
+      "priority": "medium",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 1,
+      "id": "prime-checking",
+      "title": "Prime Checking",
+      "route": "/algorithms/number-theory/prime-checking",
+      "visualizerType": "divisor-scan",
+      "priority": "medium",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 3,
+      "id": "sieve-of-eratosthenes",
+      "title": "Sieve of Eratosthenes",
+      "route": "/algorithms/number-theory/sieve-of-eratosthenes",
+      "visualizerType": "number-grid",
+      "priority": "high",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 3,
+      "id": "modular-exponentiation",
+      "title": "Modular Exponentiation",
+      "route": "/algorithms/number-theory/modular-exponentiation",
+      "visualizerType": "binary-power",
+      "priority": "high",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 4,
+      "id": "modular-inverse",
+      "title": "Modular Inverse",
+      "route": "/algorithms/number-theory/modular-inverse",
+      "visualizerType": "extended-gcd",
+      "priority": "medium",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 3,
+      "id": "fast-power",
+      "title": "Fast Power",
+      "route": "/algorithms/number-theory/fast-power",
+      "visualizerType": "binary-power",
+      "priority": "high",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 1,
+      "id": "bit-basics",
+      "title": "Bit Basics",
+      "route": "/algorithms/bit-manipulation/bit-basics",
+      "visualizerType": "bit-toggle",
+      "priority": "medium",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 1,
+      "id": "count-set-bits",
+      "title": "Count Set Bits",
+      "route": "/algorithms/bit-manipulation/count-set-bits",
+      "visualizerType": "bit-count",
+      "priority": "medium",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 1,
+      "id": "power-of-two",
+      "title": "Power of Two",
+      "route": "/algorithms/bit-manipulation/power-of-two",
+      "visualizerType": "bit-check",
+      "priority": "medium",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 1,
+      "id": "xor-tricks",
+      "title": "XOR Tricks",
+      "route": "/algorithms/bit-manipulation/xor-tricks",
+      "visualizerType": "xor-cancel",
+      "priority": "medium",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 1,
+      "id": "single-number",
+      "title": "Single Number",
+      "route": "/algorithms/bit-manipulation/single-number",
+      "visualizerType": "xor-cancel",
+      "priority": "high",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 2,
+      "id": "bitmasking-subsets",
+      "title": "Bitmasking for Subsets",
+      "route": "/algorithms/bit-manipulation/bitmasking-subsets",
+      "visualizerType": "subset-mask",
+      "priority": "medium",
+      "category": "Number Theory and Bit Manipulation"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-sort",
+      "title": "C++ sort()",
+      "route": "/algorithms/cpp-stl/sort",
+      "visualizerType": "comparator-sort",
+      "priority": "high",
+      "category": "C++ STL Algorithm Pages"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-reverse",
+      "title": "C++ reverse()",
+      "route": "/algorithms/cpp-stl/reverse",
+      "visualizerType": "two-pointer-swap",
+      "priority": "medium",
+      "category": "C++ STL Algorithm Pages"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-binary-search",
+      "title": "C++ binary_search()",
+      "route": "/algorithms/cpp-stl/binary-search",
+      "visualizerType": "array-boundaries",
+      "priority": "high",
+      "category": "C++ STL Algorithm Pages"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-lower-bound",
+      "title": "C++ lower_bound()",
+      "route": "/algorithms/cpp-stl/lower-bound",
+      "visualizerType": "array-boundaries",
+      "priority": "high",
+      "category": "C++ STL Algorithm Pages"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-upper-bound",
+      "title": "C++ upper_bound()",
+      "route": "/algorithms/cpp-stl/upper-bound",
+      "visualizerType": "array-boundaries",
+      "priority": "high",
+      "category": "C++ STL Algorithm Pages"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-next-permutation",
+      "title": "C++ next_permutation()",
+      "route": "/algorithms/cpp-stl/next-permutation",
+      "visualizerType": "permutation-step",
+      "priority": "medium",
+      "category": "C++ STL Algorithm Pages"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-max-min-element",
+      "title": "C++ max_element() / min_element()",
+      "route": "/algorithms/cpp-stl/max-min-element",
+      "visualizerType": "array-scan",
+      "priority": "medium",
+      "category": "C++ STL Algorithm Pages"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-accumulate",
+      "title": "C++ accumulate()",
+      "route": "/algorithms/cpp-stl/accumulate",
+      "visualizerType": "running-sum",
+      "priority": "medium",
+      "category": "C++ STL Algorithm Pages"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-unique",
+      "title": "C++ unique()",
+      "route": "/algorithms/cpp-stl/unique",
+      "visualizerType": "duplicate-shift",
+      "priority": "medium",
+      "category": "C++ STL Algorithm Pages"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-priority-queue",
+      "title": "C++ priority_queue",
+      "route": "/algorithms/cpp-stl/priority-queue",
+      "visualizerType": "heap-tree",
+      "priority": "high",
+      "category": "C++ STL Algorithm Pages"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-map-set",
+      "title": "C++ map / set",
+      "route": "/algorithms/cpp-stl/map-set",
+      "visualizerType": "balanced-tree",
+      "priority": "medium",
+      "category": "C++ STL Algorithm Pages"
+    },
+    {
+      "phase": 1,
+      "id": "cpp-unordered-map-set",
+      "title": "C++ unordered_map / unordered_set",
+      "route": "/algorithms/cpp-stl/unordered-map-set",
+      "visualizerType": "hash-table",
+      "priority": "high",
+      "category": "C++ STL Algorithm Pages"
+    }
+  ],
+  "firstImplementationTarget": "binary-search",
+  "buildOrder": [
+    "binary-search",
+    "linear-search",
+    "bubble-sort",
+    "selection-sort",
+    "insertion-sort",
+    "two-pointers",
+    "sliding-window",
+    "prefix-sum",
+    "recursion-basics"
+  ]
+}
