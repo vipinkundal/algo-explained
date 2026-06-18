@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "view_week",
   "codePath": "./src/algorithms/array-patterns/longest-consecutive-sequence/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Longest Consecutive Sequence is a Array Patterns technique taught with a hash set chain dry run.",
-  "problem": "It helps you recognize and solve the Longest Consecutive Sequence pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Longest Consecutive Sequence: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Longest Consecutive Sequence when a problem statement matches the Array Patterns pattern and the planned visualization is hash set chain.",
-  "memoryTrick": "Longest Consecutive Sequence: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact hash set chain walkthrough for Longest Consecutive Sequence.",
+  "meaning": "Longest Consecutive Sequence is taught here with its own state, transition, code trace, and stopping rule.",
+  "problem": "Longest Consecutive Sequence starts only at numbers that have no predecessor and counts the chain forward.",
+  "concept": "Longest Consecutive Sequence starts only at numbers that have no predecessor and counts the chain forward.",
+  "logicSummary": "Longest Consecutive Sequence keeps an array-specific invariant and updates it as the scan moves through the input.",
+  "transitionSummary": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
+  "codeInsight": "The code is written around the array invariant, not a generic scan: each variable explains what future positions can still change.",
+  "realLifeExample": "Longest Consecutive Sequence appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
+  "whenToUse": "Use Longest Consecutive Sequence when the problem statement matches its array invariant.",
+  "memoryTrick": "Longest Consecutive Sequence: write down the invariant before moving the pointer.",
+  "visualizerCaption": "A hash set chain walkthrough showing Longest Consecutive Sequence's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Array Patterns family."
+      "title": "Read the array",
+      "text": "Identify whether the problem is about a range, window, order, or frequency."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize invariant",
+      "text": "Create only the pointer or running state this pattern needs."
     },
     {
-      "title": "Apply the transition",
-      "text": "Move through the input using the hash set chain idea and update only the relevant state."
+      "title": "Advance scan",
+      "text": "Update the invariant as each position is consumed."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "title": "Return answer",
+      "text": "Return the value maintained by the invariant."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "array",
+      "purpose": "The input values."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "invariant state",
+      "purpose": "The running sum, window, pointer, candidate, or frequency state."
     },
     {
       "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "purpose": "The best value, transformed array, or matching pair."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "scan remains",
+      "purpose": "Continue while unchecked positions remain."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
-      "title": "Read the problem data",
-      "note": "Start by identifying what Longest Consecutive Sequence receives and what output is expected.",
+      "title": "Read inputs",
+      "note": "Longest Consecutive Sequence starts by reading the exact input shape it owns.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize state",
+      "note": "Create only the state needed for this algorithm's invariant.",
+      "activeLine": 3
     },
     {
-      "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core hash set chain transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "label": "Loop",
+      "title": "Run transition",
+      "note": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
+      "activeLine": 8
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
-      "activeLine": 8
+      "title": "Return answer",
+      "note": "Return the value produced by the maintained invariant.",
+      "activeLine": 12
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(n) average.",
+    "space": "O(n)."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Longest Consecutive Sequence?",
+    "question": "Which state choice keeps Longest Consecutive Sequence correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track state and update it only through Longest Consecutive Sequence's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Longest Consecutive Sequence stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Longest Consecutive Sequence needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "array-patterns",
   "algorithmSlug": "longest-consecutive-sequence"

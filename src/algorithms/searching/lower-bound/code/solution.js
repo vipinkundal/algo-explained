@@ -1,8 +1,14 @@
+// SPECIFIC ALGORITHM SOLUTION
 // Lower Bound
 // Route: /algorithms/searching/lower-bound
-// Visualizer: array-boundaries
 
-export function lowerBound(input) {
-  // TODO: Implement Lower Bound.
-  return input;
+export function lowerBound(array, target) {
+  let low = 0;
+  let high = array.length;
+  while (low < high) {
+    const mid = Math.floor((low + high) / 2);
+    if (array[mid] < target) low = mid + 1;
+    else high = mid;
+  }
+  return low;
 }

@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/bst-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "BST Search is a Trees technique taught with a bst path dry run.",
-  "problem": "It helps you recognize and solve the BST Search pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for BST Search: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use BST Search when a problem statement matches the Trees pattern and the planned visualization is bst path.",
-  "memoryTrick": "BST Search: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact bst path walkthrough for BST Search.",
+  "meaning": "BST Search is a Trees technique focused on index or insertion point.",
+  "problem": "BST Search narrows where a target can be by scanning or shrinking a candidate interval.",
+  "concept": "BST Search narrows where a target can be by scanning or shrinking a candidate interval.",
+  "logicSummary": "Compare the current value with the target, discard impossible positions, and keep the best candidate when needed.",
+  "transitionSummary": "Each transition either advances one position or moves a boundary inward.",
+  "codeInsight": "The boundary variables are the important state; every branch must make the remaining search interval smaller.",
+  "realLifeExample": "BST Search appears when the input is array, target and the required result is index or insertion point.",
+  "whenToUse": "Use BST Search when a problem matches the Trees pattern and the expected state changes match a bst path dry run.",
+  "memoryTrick": "BST Search: name the input, state, answer, and stop condition before writing the loop.",
+  "visualizerCaption": "A bst path walkthrough showing BST Search's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Trees family."
+      "title": "Read the input",
+      "text": "Identify the exact data BST Search receives and what output is required."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize state",
+      "text": "Prepare the working variables used only by BST Search."
     },
     {
       "title": "Apply the transition",
-      "text": "Move through the input using the bst path idea and update only the relevant state."
+      "text": "Run the bst path transition and update the algorithm-specific state."
     },
     {
       "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "text": "Stop at the correct condition and return the tracked result."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "array, target",
+      "purpose": "A searchable list plus the value or boundary condition being requested."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "search window",
+      "purpose": "Current indices or scan position that define where the answer can still be."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "index or insertion point",
+      "purpose": "The found position, boundary position, or -1 when no valid item exists."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "window still valid",
+      "purpose": "Continue while the current index or low/high window can still contain the answer."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
       "title": "Read the problem data",
-      "note": "Start by identifying what BST Search receives and what output is expected.",
+      "note": "Read the BST Search input and decide what result must be produced.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize working state",
+      "note": "Set up the state variables that BST Search changes during the dry run.",
+      "activeLine": 3
     },
     {
       "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core bst path transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "title": "Run the core step",
+      "note": "Apply one bst path transition for BST Search.",
+      "activeLine": 5
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
+      "title": "Return the result",
+      "note": "Return the final BST Search answer from the tracked state.",
       "activeLine": 8
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(n) for the educational reference implementation.",
+    "space": "O(n) for tracked state when needed."
   },
   "quiz": {
-    "question": "What is the safest first step when applying BST Search?",
+    "question": "Which state choice keeps BST Search correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track search window and update it only through BST Search's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. BST Search stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. BST Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "trees",
   "algorithmSlug": "bst-search"

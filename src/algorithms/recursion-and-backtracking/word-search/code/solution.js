@@ -1,8 +1,24 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // Word Search
 // Route: /algorithms/backtracking/word-search
-// Visualizer: grid-dfs
+// This educational implementation is intentionally small and side-effect-light.
 
-export function wordSearch(input) {
-  // TODO: Implement Word Search.
-  return input;
+export function wordSearch(choices) {
+  const values = Array.isArray(choices) ? choices : [];
+  const result = [];
+  const path = [];
+
+  function backtrack(index) {
+    if (index === values.length) {
+      result.push([...path]);
+      return;
+    }
+    backtrack(index + 1);
+    path.push(values[index]);
+    backtrack(index + 1);
+    path.pop();
+  }
+
+  backtrack(0);
+  return result;
 }

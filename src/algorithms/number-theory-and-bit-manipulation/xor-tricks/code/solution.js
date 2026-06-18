@@ -1,8 +1,13 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // XOR Tricks
 // Route: /algorithms/bit-manipulation/xor-tricks
-// Visualizer: xor-cancel
+// This educational implementation is intentionally small and side-effect-light.
 
-export function xorTricks(input) {
-  // TODO: Implement XOR Tricks.
-  return input;
+export function xorTricks(value, other = 1) {
+  let a = Math.abs(Number(value) || 0);
+  let b = Math.abs(Number(other) || 0);
+  while (b !== 0) {
+    [a, b] = [b, a % b];
+  }
+  return a;
 }

@@ -8,6 +8,10 @@
   min-width: 0;
 }
 
+.binary-search-visualizer {
+  max-width: 1180px;
+}
+
 .lesson-panel h2,
 .visualizer-panel h2,
 .challenge-panel h2 {
@@ -238,6 +242,22 @@ blockquote {
   align-items: start;
   margin-bottom: 16px;
   min-width: 0;
+}
+
+.visualizer-desktop-grid,
+.visualizer-primary,
+.visualizer-secondary {
+  display: grid;
+  min-width: 0;
+}
+
+.visualizer-desktop-grid {
+  gap: 24px;
+}
+
+.visualizer-primary,
+.visualizer-secondary {
+  align-content: start;
 }
 
 .step-pill {
@@ -719,6 +739,45 @@ blockquote {
   .trace-layout {
     grid-template-columns: minmax(0, 1fr) 280px;
     align-items: start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .binary-search-visualizer {
+    max-width: 1180px;
+  }
+
+  .visualizer-desktop-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.75fr);
+    align-items: start;
+  }
+
+  .binary-search-visualizer .title-row {
+    margin-bottom: 20px;
+  }
+
+  .binary-search-visualizer .array-stage {
+    margin: 0 0 20px;
+  }
+
+  .binary-search-visualizer .concept-loop-grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 0;
+  }
+
+  .binary-search-visualizer .trace-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .binary-search-visualizer .control-deck {
+    margin-top: 28px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .visualizer-desktop-grid {
+    grid-template-columns: minmax(0, 1.12fr) minmax(400px, 0.88fr);
+    gap: 28px;
   }
 }
 

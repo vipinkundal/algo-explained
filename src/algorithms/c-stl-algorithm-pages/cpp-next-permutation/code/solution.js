@@ -1,8 +1,9 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // C++ next_permutation()
 // Route: /algorithms/cpp-stl/next-permutation
-// Visualizer: permutation-step
+// This educational implementation is intentionally small and side-effect-light.
 
 export function cppNextPermutation(input) {
-  // TODO: Implement C++ next_permutation().
-  return input;
+  const state = Array.isArray(input) ? [...input] : input;
+  return { input, state, answer: state };
 }

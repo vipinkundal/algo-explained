@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/selection-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Selection Sort is a Sorting technique taught with a min selection dry run.",
-  "problem": "It helps you recognize and solve the Selection Sort pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Selection Sort: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Selection Sort when a problem statement matches the Sorting pattern and the planned visualization is min selection.",
-  "memoryTrick": "Selection Sort: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact min selection walkthrough for Selection Sort.",
+  "meaning": "Selection Sort is taught here with its own state, transition, code trace, and stopping rule.",
+  "problem": "Select the smallest item from the unsorted suffix and swap it into the next output slot.",
+  "concept": "Select the smallest item from the unsorted suffix and swap it into the next output slot.",
+  "logicSummary": "Selection Sort keeps a clear sorted/unsorted invariant and makes one transition that places values closer to final order.",
+  "transitionSummary": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
+  "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
+  "realLifeExample": "Selection Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
+  "whenToUse": "Use Selection Sort when its ordering invariant and complexity tradeoff match the dataset.",
+  "memoryTrick": "Selection Sort: protect the invariant after every comparison or move.",
+  "visualizerCaption": "A min selection walkthrough showing Selection Sort's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Sorting family."
+      "title": "Copy input",
+      "text": "Avoid mutating the caller's original array."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Maintain invariant",
+      "text": "Track which part is sorted or partitioned."
     },
     {
-      "title": "Apply the transition",
-      "text": "Move through the input using the min selection idea and update only the relevant state."
+      "title": "Move values",
+      "text": "Swap, insert, merge, or bucket according to the algorithm."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "title": "Return sorted result",
+      "text": "Return the fully ordered working array."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "array",
+      "purpose": "The values to sort."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "working array",
+      "purpose": "A copy that is rearranged during sorting."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "sorted array",
+      "purpose": "The final ordered result."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "unsorted work remains",
+      "purpose": "Continue until every value is in final order."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
-      "title": "Read the problem data",
-      "note": "Start by identifying what Selection Sort receives and what output is expected.",
+      "title": "Read inputs",
+      "note": "Selection Sort starts by reading the exact input shape it owns.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize state",
+      "note": "Create only the state needed for this algorithm's invariant.",
+      "activeLine": 3
     },
     {
-      "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core min selection transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "label": "Loop",
+      "title": "Run transition",
+      "note": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
+      "activeLine": 8
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
-      "activeLine": 8
+      "title": "Return answer",
+      "note": "Return the value produced by the maintained invariant.",
+      "activeLine": 12
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(n^2).",
+    "space": "O(1)."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Selection Sort?",
+    "question": "Which state choice keeps Selection Sort correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track indices and working array and update it only through Selection Sort's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Selection Sort stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Selection Sort needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "selection-sort"

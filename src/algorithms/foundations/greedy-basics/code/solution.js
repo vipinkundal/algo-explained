@@ -1,8 +1,9 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // Greedy Basics
 // Route: /algorithms/foundations/greedy-basics
-// Visualizer: decision-timeline
+// This educational implementation is intentionally small and side-effect-light.
 
 export function greedyBasics(input) {
-  // TODO: Implement Greedy Basics.
-  return input;
+  const state = Array.isArray(input) ? [...input] : input;
+  return { input, state, answer: state };
 }

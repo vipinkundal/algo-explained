@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/kmp/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "KMP Algorithm is a Strings technique taught with a prefix table dry run.",
-  "problem": "It helps you recognize and solve the KMP Algorithm pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for KMP Algorithm: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use KMP Algorithm when a problem statement matches the Strings pattern and the planned visualization is prefix table.",
-  "memoryTrick": "KMP Algorithm: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact prefix table walkthrough for KMP Algorithm.",
+  "meaning": "KMP Algorithm is a Strings technique focused on matches or string result.",
+  "problem": "KMP Algorithm turns character comparisons into reusable state so the string is not rechecked from scratch.",
+  "concept": "KMP Algorithm turns character comparisons into reusable state so the string is not rechecked from scratch.",
+  "logicSummary": "Precompute the helper state, scan the text, update indices or hashes, and record each valid match.",
+  "transitionSummary": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state.",
+  "codeInsight": "String algorithms are safest when index movement is explicit and every mismatch has a defined fallback.",
+  "realLifeExample": "KMP Algorithm appears when the input is text and pattern and the required result is matches or string result.",
+  "whenToUse": "Use KMP Algorithm when a problem matches the Strings pattern and the expected state changes match a prefix table dry run.",
+  "memoryTrick": "KMP Algorithm: name the input, state, answer, and stop condition before writing the loop.",
+  "visualizerCaption": "A prefix table walkthrough showing KMP Algorithm's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Strings family."
+      "title": "Read the input",
+      "text": "Identify the exact data KMP Algorithm receives and what output is required."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize state",
+      "text": "Prepare the working variables used only by KMP Algorithm."
     },
     {
       "title": "Apply the transition",
-      "text": "Move through the input using the prefix table idea and update only the relevant state."
+      "text": "Run the prefix table transition and update the algorithm-specific state."
     },
     {
       "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "text": "Stop at the correct condition and return the tracked result."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "text and pattern",
+      "purpose": "The concrete data KMP Algorithm receives before any state changes begin."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "indices and prefix/hash state",
+      "purpose": "The working information KMP Algorithm updates while it runs."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "matches or string result",
+      "purpose": "The final value KMP Algorithm returns after the stop condition is met."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "characters remain",
+      "purpose": "The rule that decides whether KMP Algorithm continues, branches, or stops."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
       "title": "Read the problem data",
-      "note": "Start by identifying what KMP Algorithm receives and what output is expected.",
+      "note": "Read the KMP Algorithm input and decide what result must be produced.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize working state",
+      "note": "Set up the state variables that KMP Algorithm changes during the dry run.",
+      "activeLine": 3
     },
     {
       "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core prefix table transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "title": "Run the core step",
+      "note": "Apply one prefix table transition for KMP Algorithm.",
+      "activeLine": 5
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
+      "title": "Return the result",
+      "note": "Return the final KMP Algorithm answer from the tracked state.",
       "activeLine": 8
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(n + m) for the usual text/pattern model.",
+    "space": "O(n + m) for preprocessing or result state."
   },
   "quiz": {
-    "question": "What is the safest first step when applying KMP Algorithm?",
+    "question": "Which state choice keeps KMP Algorithm correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track indices and prefix/hash state and update it only through KMP Algorithm's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. KMP Algorithm stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. KMP Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "strings",
   "algorithmSlug": "kmp"

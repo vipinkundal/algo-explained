@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "grid_on",
   "codePath": "./src/algorithms/matrix-and-grid/flood-fill/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Flood Fill is a Matrix and Grid technique taught with a grid bfs dfs dry run.",
-  "problem": "It helps you recognize and solve the Flood Fill pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Flood Fill: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Flood Fill when a problem statement matches the Matrix and Grid pattern and the planned visualization is grid bfs dfs.",
-  "memoryTrick": "Flood Fill: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact grid bfs dfs walkthrough for Flood Fill.",
+  "meaning": "Flood Fill is a Matrix and Grid technique focused on answer.",
+  "problem": "Flood Fill solves a Matrix and Grid problem by maintaining only the state needed for its grid bfs dfs transition.",
+  "concept": "Flood Fill solves a Matrix and Grid problem by maintaining only the state needed for its grid bfs dfs transition.",
+  "logicSummary": "Flood Fill reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
+  "transitionSummary": "Repeat the grid bfs dfs transition until the stop condition for Flood Fill is reached.",
+  "codeInsight": "The implementation keeps Flood Fill's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
+  "realLifeExample": "Flood Fill appears when the input is input and the required result is answer.",
+  "whenToUse": "Use Flood Fill when a problem matches the Matrix and Grid pattern and the expected state changes match a grid bfs dfs dry run.",
+  "memoryTrick": "Flood Fill: name the input, state, answer, and stop condition before writing the loop.",
+  "visualizerCaption": "A grid bfs dfs walkthrough showing Flood Fill's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Matrix and Grid family."
+      "title": "Read the input",
+      "text": "Identify the exact data Flood Fill receives and what output is required."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize state",
+      "text": "Prepare the working variables used only by Flood Fill."
     },
     {
       "title": "Apply the transition",
-      "text": "Move through the input using the grid bfs dfs idea and update only the relevant state."
+      "text": "Run the grid bfs dfs transition and update the algorithm-specific state."
     },
     {
       "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "text": "Stop at the correct condition and return the tracked result."
     }
   ],
   "variables": [
     {
       "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "purpose": "The concrete data Flood Fill receives before any state changes begin."
     },
     {
       "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "purpose": "The working information Flood Fill updates while it runs."
     },
     {
       "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "purpose": "The final value Flood Fill returns after the stop condition is met."
     },
     {
       "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "purpose": "The rule that decides whether Flood Fill continues, branches, or stops."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
       "title": "Read the problem data",
-      "note": "Start by identifying what Flood Fill receives and what output is expected.",
+      "note": "Read the Flood Fill input and decide what result must be produced.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize working state",
+      "note": "Set up the state variables that Flood Fill changes during the dry run.",
+      "activeLine": 3
     },
     {
       "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core grid bfs dfs transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "title": "Run the core step",
+      "note": "Apply one grid bfs dfs transition for Flood Fill.",
+      "activeLine": 5
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
+      "title": "Return the result",
+      "note": "Return the final Flood Fill answer from the tracked state.",
       "activeLine": 8
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "Depends on the finalized input size and transition count.",
+    "space": "Depends on the auxiliary state maintained by the implementation."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Flood Fill?",
+    "question": "Which state choice keeps Flood Fill correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track state and update it only through Flood Fill's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Flood Fill stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Flood Fill needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "matrix-and-grid",
   "algorithmSlug": "flood-fill"

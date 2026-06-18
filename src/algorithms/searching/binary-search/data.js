@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "search",
   "codePath": "./src/algorithms/searching/binary-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Binary Search is a Searching technique taught with a array boundaries dry run.",
-  "problem": "It helps you recognize and solve the Binary Search pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Binary Search: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Binary Search when a problem statement matches the Searching pattern and the planned visualization is array boundaries.",
-  "memoryTrick": "Binary Search: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact array boundaries walkthrough for Binary Search.",
+  "meaning": "Binary Search is taught here with its own state, transition, code trace, and stopping rule.",
+  "problem": "Binary Search repeatedly halves a sorted search range using the middle value.",
+  "concept": "Binary Search repeatedly halves a sorted search range using the middle value.",
+  "logicSummary": "Keep low and high boundaries, compare the middle item, then discard the half that cannot contain the target.",
+  "transitionSummary": "Move low to mid + 1 when the middle is too small; move high to mid - 1 when it is too large.",
+  "codeInsight": "Every branch must shrink the search window, otherwise binary search can loop forever.",
+  "realLifeExample": "Use it for sorted arrays, lookup tables, and monotonic answer spaces.",
+  "whenToUse": "Use Binary Search when the range is sorted or the predicate is monotonic.",
+  "memoryTrick": "Binary Search: compare middle, keep only the possible half.",
+  "visualizerCaption": "A array boundaries walkthrough showing Binary Search's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Searching family."
+      "title": "Set boundaries",
+      "text": "low starts at 0 and high at the last index."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Pick middle",
+      "text": "Compute mid inside the current window."
     },
     {
-      "title": "Apply the transition",
-      "text": "Move through the input using the array boundaries idea and update only the relevant state."
+      "title": "Discard half",
+      "text": "Use the comparison to move low or high."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "title": "Return index",
+      "text": "Return mid on equality or -1 after the window closes."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "array, target",
+      "purpose": "A sorted array and the value to find."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "low, high, mid",
+      "purpose": "The current search window and its midpoint."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "index",
+      "purpose": "The target index, or -1 when absent."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "low <= high",
+      "purpose": "The loop runs while the window is non-empty."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
-      "title": "Read the problem data",
-      "note": "Start by identifying what Binary Search receives and what output is expected.",
+      "title": "Read inputs",
+      "note": "Binary Search starts by reading the exact input shape it owns.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize state",
+      "note": "Create only the state needed for this algorithm's invariant.",
+      "activeLine": 3
     },
     {
-      "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core array boundaries transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "label": "Loop",
+      "title": "Run transition",
+      "note": "Move low to mid + 1 when the middle is too small; move high to mid - 1 when it is too large.",
+      "activeLine": 8
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
-      "activeLine": 8
+      "title": "Return answer",
+      "note": "Return the value produced by the maintained invariant.",
+      "activeLine": 12
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(log n).",
+    "space": "O(1)."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Binary Search?",
+    "question": "Which state choice keeps Binary Search correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track search window and update it only through Binary Search's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Binary Search stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Binary Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "searching",
   "algorithmSlug": "binary-search"

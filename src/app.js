@@ -114,15 +114,15 @@ function icon(name) {
 
 function renderHeader() {
   const currentSaved = state.savedIds.has(state.selectedId);
+  const canSaveCurrentAlgorithm = routeViews.has(state.view) && Boolean(getSelectedAlgorithm());
   const navItems = ["catalog", "search", "saved", "lesson", ...(isDailyQuizAvailable() ? ["quiz"] : []), "profile"];
   return `
     <header class="app-header">
-      <button class="icon-button" data-view="catalog" aria-label="Back to catalog">${icon("arrow_back")}</button>
       <button class="brand-button" data-view="catalog">Algo Explained</button>
       <nav class="top-nav" aria-label="Primary">
         ${navItems.map(renderNavButton).join("")}
       </nav>
-      <button class="icon-button ${currentSaved ? "saved" : ""}" data-action="save-current" aria-label="Save current algorithm">${icon(currentSaved ? "bookmark_added" : "bookmark")}</button>
+      ${canSaveCurrentAlgorithm ? `<button class="icon-button ${currentSaved ? "saved" : ""}" data-action="save-current" aria-label="Save current algorithm">${icon(currentSaved ? "bookmark_added" : "bookmark")}</button>` : ""}
     </header>
   `;
 }
@@ -242,6 +242,7 @@ function renderSearchPanel() {
   const status = state.searchLoading
     ? "Indexing full algorithm page content..."
     : `${searchRecords.size || algorithms.length} algorithms searchable`;
+  const resultLabel = query ? `${results.length} matches` : `${results.length} algorithms`;
 
   return `
     <section class="catalog-panel search-panel" aria-labelledby="smart-search-title">
@@ -250,15 +251,13 @@ function renderSearchPanel() {
         <input id="smart-search" value="${escapeHtml(state.searchQuery)}" placeholder="Search title, concept, complexity, code, use case..." aria-label="Search algorithm content" />
       </div>
       <h1 class="visually-hidden" id="smart-search-title">Search algorithms</h1>
-      ${query ? `
-        <div class="search-summary">
-          <span>${icon("database_search")} ${escapeHtml(status)}</span>
-          <span>${results.length} matches</span>
-        </div>
-        <div class="search-results" aria-live="polite">
-          ${results.length ? results.map(renderSearchResult).join("") : renderNoSearchResults(query)}
-        </div>
-      ` : ""}
+      <div class="search-summary">
+        <span>${icon("database_search")} ${escapeHtml(status)}</span>
+        <span>${escapeHtml(resultLabel)}</span>
+      </div>
+      <div class="search-results grouped-search-results" aria-live="polite">
+        ${results.length ? renderSearchResultGroups(results) : renderNoSearchResults(query)}
+      </div>
     </section>
   `;
 }
@@ -630,9 +629,11 @@ function renderBottomNav() {
 }
 
 function render() {
+  const sidePanel = renderSidePanel();
   const workspace = renderWorkspace();
   const contentGridClass = [
     "content-grid",
+    !(sidePanel && workspace) ? "single-column" : "",
     shouldFocusDailyQuizQuestion() ? "quiz-question-only" : "",
   ].filter(Boolean).join(" ");
 
@@ -640,7 +641,7 @@ function render() {
     ${renderHeader()}
     <main class="app-shell">
       <div class="${contentGridClass}">
-        ${renderSidePanel()}
+        ${sidePanel}
         ${workspace ? `<div class="workspace">${workspace}</div>` : ""}
       </div>
     </main>
@@ -967,7 +968,7 @@ function focusSmartSearch() {
 function getSearchResults() {
   const query = state.searchQuery.trim();
   const records = algorithms.map((algorithm) => getSearchRecord(algorithm));
-  if (!query) return [];
+  if (!query) return records.sort(sortSuggestedSearchRecords);
 
   const tokens = tokenize(query);
   return records
@@ -999,6 +1000,62 @@ function renderSearchResult(record) {
       </span>
     </button>
   `;
+}
+
+function renderSearchResultGroups(records) {
+  return groupSearchResultsByCategory(records).map(({ category, records: categoryRecords }) => `
+    <section class="search-result-group">
+      <div class="search-result-group-header">
+        <h2>${escapeHtml(category)}</h2>
+        <span>${categoryRecords.length} ${categoryRecords.length === 1 ? "algorithm" : "algorithms"}</span>
+      </div>
+      <div class="search-result-group-list">
+        ${categoryRecords.map(renderSearchResult).join("")}
+      </div>
+    </section>
+  `).join("");
+}
+
+function groupSearchResultsByCategory(records) {
+  const groups = new Map();
+  records.forEach((record) => {
+    const category = record.category || "Algorithms";
+    if (!groups.has(category)) groups.set(category, []);
+    groups.get(category).push(record);
+  });
+
+  return [...groups.entries()]
+    .map(([category, categoryRecords]) => ({
+      category,
+      records: categoryRecords.sort(sortSuggestedSearchRecords),
+    }))
+    .sort(sortSearchCategoryGroups);
+}
+
+function sortSearchCategoryGroups(a, b) {
+  const categoryOrder = [
+    "Foundations",
+    "Searching",
+    "Sorting",
+    "Trees",
+    "Graphs",
+    "Arrays",
+    "Strings",
+    "Hashing",
+    "Stacks",
+    "Queues",
+    "Linked Lists",
+    "Heaps",
+    "Dynamic Programming",
+    "Greedy",
+    "Backtracking",
+    "C++ STL Algorithm Pages",
+  ];
+  const aRank = categoryOrder.indexOf(a.category);
+  const bRank = categoryOrder.indexOf(b.category);
+  const normalizedARank = aRank === -1 ? categoryOrder.length : aRank;
+  const normalizedBRank = bRank === -1 ? categoryOrder.length : bRank;
+  return normalizedARank - normalizedBRank || a.category.localeCompare(b.category);
 }
 
 function renderNoSearchResults(query) {

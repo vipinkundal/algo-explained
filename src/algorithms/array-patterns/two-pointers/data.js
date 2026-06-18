@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "view_week",
   "codePath": "./src/algorithms/array-patterns/two-pointers/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Two Pointers is a Array Patterns technique taught with a two pointer array dry run.",
-  "problem": "It helps you recognize and solve the Two Pointers pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Two Pointers: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Two Pointers when a problem statement matches the Array Patterns pattern and the planned visualization is two pointer array.",
-  "memoryTrick": "Two Pointers: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact two pointer array walkthrough for Two Pointers.",
+  "meaning": "Two Pointers is taught here with its own state, transition, code trace, and stopping rule.",
+  "problem": "Two Pointers moves two indices toward a condition without trying every pair.",
+  "concept": "Two Pointers moves two indices toward a condition without trying every pair.",
+  "logicSummary": "Two Pointers keeps an array-specific invariant and updates it as the scan moves through the input.",
+  "transitionSummary": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
+  "codeInsight": "The code is written around the array invariant, not a generic scan: each variable explains what future positions can still change.",
+  "realLifeExample": "Two Pointers appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
+  "whenToUse": "Use Two Pointers when the problem statement matches its array invariant.",
+  "memoryTrick": "Two Pointers: write down the invariant before moving the pointer.",
+  "visualizerCaption": "A two pointer array walkthrough showing Two Pointers' input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Array Patterns family."
+      "title": "Read the array",
+      "text": "Identify whether the problem is about a range, window, order, or frequency."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize invariant",
+      "text": "Create only the pointer or running state this pattern needs."
     },
     {
-      "title": "Apply the transition",
-      "text": "Move through the input using the two pointer array idea and update only the relevant state."
+      "title": "Advance scan",
+      "text": "Update the invariant as each position is consumed."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "title": "Return answer",
+      "text": "Return the value maintained by the invariant."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "array",
+      "purpose": "The input values."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "invariant state",
+      "purpose": "The running sum, window, pointer, candidate, or frequency state."
     },
     {
       "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "purpose": "The best value, transformed array, or matching pair."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "scan remains",
+      "purpose": "Continue while unchecked positions remain."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
-      "title": "Read the problem data",
-      "note": "Start by identifying what Two Pointers receives and what output is expected.",
+      "title": "Read inputs",
+      "note": "Two Pointers starts by reading the exact input shape it owns.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize state",
+      "note": "Create only the state needed for this algorithm's invariant.",
+      "activeLine": 3
     },
     {
-      "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core two pointer array transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "label": "Loop",
+      "title": "Run transition",
+      "note": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
+      "activeLine": 8
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
-      "activeLine": 8
+      "title": "Return answer",
+      "note": "Return the value produced by the maintained invariant.",
+      "activeLine": 12
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(n).",
+    "space": "O(1)."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Two Pointers?",
+    "question": "Which state choice keeps Two Pointers correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track state and update it only through Two Pointers' transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Two Pointers stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Two Pointers needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "array-patterns",
   "algorithmSlug": "two-pointers"

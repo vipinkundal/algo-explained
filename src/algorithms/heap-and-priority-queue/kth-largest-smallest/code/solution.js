@@ -1,8 +1,11 @@
+// SPECIFIC ALGORITHM SOLUTION
 // Kth Largest / Smallest Element
 // Route: /algorithms/heaps/kth-largest-smallest
-// Visualizer: heap-selection
 
-export function kthLargestSmallest(input) {
-  // TODO: Implement Kth Largest / Smallest Element.
-  return input;
+export function kthLargestSmallest(values, k) {
+  const sorted = [...values].sort((a, b) => a - b);
+  return {
+    kthSmallest: sorted[k - 1] ?? null,
+    kthLargest: sorted[sorted.length - k] ?? null,
+  };
 }

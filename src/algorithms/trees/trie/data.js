@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/trie/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Trie Operations is a Trees technique taught with a prefix tree dry run.",
-  "problem": "It helps you recognize and solve the Trie Operations pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Trie Operations: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Trie Operations when a problem statement matches the Trees pattern and the planned visualization is prefix tree.",
-  "memoryTrick": "Trie Operations: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact prefix tree walkthrough for Trie Operations.",
+  "meaning": "Trie Operations is a Trees technique focused on tree result.",
+  "problem": "Trie Operations relies on the recursive structure of a tree: solve the current node and combine child results.",
+  "concept": "Trie Operations relies on the recursive structure of a tree: solve the current node and combine child results.",
+  "logicSummary": "Check the base case, process the current node, recurse into children, and combine the returned values.",
+  "transitionSummary": "Move from a node to its child or back from a child to its parent with updated state.",
+  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
+  "realLifeExample": "Trie Operations appears when the input is root and the required result is tree result.",
+  "whenToUse": "Use Trie Operations when a problem matches the Trees pattern and the expected state changes match a prefix tree dry run.",
+  "memoryTrick": "Trie Operations: name the input, state, answer, and stop condition before writing the loop.",
+  "visualizerCaption": "A prefix tree walkthrough showing Trie Operations' input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Trees family."
+      "title": "Read the input",
+      "text": "Identify the exact data Trie Operations receives and what output is required."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize state",
+      "text": "Prepare the working variables used only by Trie Operations."
     },
     {
       "title": "Apply the transition",
-      "text": "Move through the input using the prefix tree idea and update only the relevant state."
+      "text": "Run the prefix tree transition and update the algorithm-specific state."
     },
     {
       "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "text": "Stop at the correct condition and return the tracked result."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "root",
+      "purpose": "The concrete data Trie Operations receives before any state changes begin."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "current node and traversal state",
+      "purpose": "The working information Trie Operations updates while it runs."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "tree result",
+      "purpose": "The final value Trie Operations returns after the stop condition is met."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "node exists",
+      "purpose": "The rule that decides whether Trie Operations continues, branches, or stops."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
       "title": "Read the problem data",
-      "note": "Start by identifying what Trie Operations receives and what output is expected.",
+      "note": "Read the Trie Operations input and decide what result must be produced.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize working state",
+      "note": "Set up the state variables that Trie Operations changes during the dry run.",
+      "activeLine": 3
     },
     {
       "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core prefix tree transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "title": "Run the core step",
+      "note": "Apply one prefix tree transition for Trie Operations.",
+      "activeLine": 5
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
+      "title": "Return the result",
+      "note": "Return the final Trie Operations answer from the tracked state.",
       "activeLine": 8
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(n) for the educational reference implementation.",
+    "space": "O(n) for tracked state when needed."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Trie Operations?",
+    "question": "Which state choice keeps Trie Operations correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track current node and traversal state and update it only through Trie Operations' transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Trie Operations stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Trie Operations needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "trees",
   "algorithmSlug": "trie"

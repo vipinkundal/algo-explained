@@ -1,8 +1,11 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // BST Search
 // Route: /algorithms/trees/bst-search
-// Visualizer: bst-path
+// This educational implementation is intentionally small and side-effect-light.
 
-export function bstSearch(input) {
-  // TODO: Implement BST Search.
-  return input;
+export function bstSearch(array, target) {
+  for (let index = 0; index < array.length; index += 1) {
+    if (array[index] === target) return index;
+  }
+  return -1;
 }

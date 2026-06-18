@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "queue",
   "codePath": "./src/algorithms/queue/queue-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Queue Basics is a Queue technique taught with a queue enqueue dequeue dry run.",
-  "problem": "It helps you recognize and solve the Queue Basics pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Queue Basics: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Queue Basics when a problem statement matches the Queue pattern and the planned visualization is queue enqueue dequeue.",
-  "memoryTrick": "Queue Basics: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact queue enqueue dequeue walkthrough for Queue Basics.",
+  "meaning": "Queue Basics is taught here with its own state, transition, code trace, and stopping rule.",
+  "problem": "Queue Basics follows first-in, first-out order with enqueue and dequeue operations.",
+  "concept": "Queue Basics follows first-in, first-out order with enqueue and dequeue operations.",
+  "logicSummary": "Queue Basics maintains a dedicated data-structure invariant and changes it through one clear push, pop, enqueue, dequeue, heap, or cache transition.",
+  "transitionSummary": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
+  "codeInsight": "The implementation names the backing state directly, so the code trace matches the visual data structure on the page.",
+  "realLifeExample": "Queue Basics appears when the problem is defined by the behavior of this exact data structure.",
+  "whenToUse": "Use Queue Basics when its state transition is the natural way to model the problem.",
+  "memoryTrick": "Queue Basics: the data structure is the algorithm state.",
+  "visualizerCaption": "A queue enqueue dequeue walkthrough showing Queue Basics' input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Queue family."
+      "title": "Read operation",
+      "text": "Identify the next value or command."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Update structure",
+      "text": "Push, pop, enqueue, dequeue, rebalance, or evict as required."
     },
     {
-      "title": "Apply the transition",
-      "text": "Move through the input using the queue enqueue dequeue idea and update only the relevant state."
+      "title": "Preserve invariant",
+      "text": "Keep the structure valid after the update."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "title": "Return output",
+      "text": "Return the accumulated answers or final structure."
     }
   ],
   "variables": [
     {
       "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "purpose": "Values or operations to process."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "data structure state",
+      "purpose": "The stack, queue, heap, deque, or cache state."
     },
     {
       "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "purpose": "The output after all operations or after each step."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "operations remain",
+      "purpose": "Continue while input values or operations remain."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
-      "title": "Read the problem data",
-      "note": "Start by identifying what Queue Basics receives and what output is expected.",
+      "title": "Read inputs",
+      "note": "Queue Basics starts by reading the exact input shape it owns.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize state",
+      "note": "Create only the state needed for this algorithm's invariant.",
+      "activeLine": 3
     },
     {
-      "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core queue enqueue dequeue transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "label": "Loop",
+      "title": "Run transition",
+      "note": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
+      "activeLine": 8
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
-      "activeLine": 8
+      "title": "Return answer",
+      "note": "Return the value produced by the maintained invariant.",
+      "activeLine": 12
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(m).",
+    "space": "O(m)."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Queue Basics?",
+    "question": "Which state choice keeps Queue Basics correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track state and update it only through Queue Basics' transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Queue Basics stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Queue Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "queue",
   "algorithmSlug": "queue-basics"

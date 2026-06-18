@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/zero-one-knapsack/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "0/1 Knapsack is a Dynamic Programming technique taught with a dp grid dry run.",
-  "problem": "It helps you recognize and solve the 0/1 Knapsack pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for 0/1 Knapsack: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use 0/1 Knapsack when a problem statement matches the Dynamic Programming pattern and the planned visualization is dp grid.",
-  "memoryTrick": "0/1 Knapsack: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact dp grid walkthrough for 0/1 Knapsack.",
+  "meaning": "0/1 Knapsack is taught here with its own state, transition, code trace, and stopping rule.",
+  "problem": "0/1 Knapsack decides for each item whether taking it improves capacity-limited value.",
+  "concept": "0/1 Knapsack decides for each item whether taking it improves capacity-limited value.",
+  "logicSummary": "0/1 Knapsack defines subproblems, initializes base cases, fills states in dependency order, and reads the requested state as the answer.",
+  "transitionSummary": "Compute one DP state from already-solved smaller states.",
+  "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
+  "realLifeExample": "0/1 Knapsack appears when overlapping subproblems would otherwise be recomputed.",
+  "whenToUse": "Use 0/1 Knapsack when the recurrence and base cases match the problem statement.",
+  "memoryTrick": "0/1 Knapsack: state definition first, recurrence second, loops third.",
+  "visualizerCaption": "A dp grid walkthrough showing 0/1 Knapsack's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Dynamic Programming family."
+      "title": "Define state",
+      "text": "Name what one DP cell means."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Set base cases",
+      "text": "Fill states that do not depend on others."
     },
     {
-      "title": "Apply the transition",
-      "text": "Move through the input using the dp grid idea and update only the relevant state."
+      "title": "Apply recurrence",
+      "text": "Fill each state from solved states."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "title": "Return target",
+      "text": "Read the requested final state."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "input parameters",
+      "purpose": "The values that define the DP problem."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "dp table",
+      "purpose": "Stored answers for subproblems."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "target state",
+      "purpose": "The final state returned as the answer."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "states remain",
+      "purpose": "Continue until every dependency needed by the answer is filled."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
-      "title": "Read the problem data",
-      "note": "Start by identifying what 0/1 Knapsack receives and what output is expected.",
+      "title": "Read inputs",
+      "note": "0/1 Knapsack starts by reading the exact input shape it owns.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize state",
+      "note": "Create only the state needed for this algorithm's invariant.",
+      "activeLine": 3
     },
     {
-      "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core dp grid transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "label": "Loop",
+      "title": "Run transition",
+      "note": "Compute one DP state from already-solved smaller states.",
+      "activeLine": 8
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
-      "activeLine": 8
+      "title": "Return answer",
+      "note": "Return the value produced by the maintained invariant.",
+      "activeLine": 12
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(n * capacity).",
+    "space": "O(capacity)."
   },
   "quiz": {
-    "question": "What is the safest first step when applying 0/1 Knapsack?",
+    "question": "Which state choice keeps 0/1 Knapsack correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track dp table and update it only through 0/1 Knapsack's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. 0/1 Knapsack stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. 0/1 Knapsack needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "zero-one-knapsack"

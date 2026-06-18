@@ -101,10 +101,9 @@ em {
   position: sticky;
   top: 0;
   z-index: 20;
-  display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) auto 44px;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   height: 72px;
   padding: 0 20px;
   background: rgba(248, 249, 251, 0.94);
@@ -113,7 +112,7 @@ em {
 }
 
 .brand-button {
-  justify-self: start;
+  flex: 0 0 auto;
   border: 0;
   background: transparent;
   color: var(--primary);
@@ -121,9 +120,11 @@ em {
   line-height: 34px;
   font-weight: 800;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .icon-button {
+  flex: 0 0 auto;
   display: grid;
   width: 44px;
   height: 44px;
@@ -152,7 +153,9 @@ em {
 
 .top-nav {
   display: none;
+  justify-content: flex-end;
   gap: 8px;
+  margin-left: auto;
   min-width: 0;
 }
 
@@ -190,6 +193,10 @@ em {
 .content-grid.quiz-question-only {
   width: min(100%, 860px);
   margin-inline: auto;
+}
+
+.content-grid.single-column {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .catalog-panel,
@@ -326,6 +333,48 @@ em {
 }
 
 .search-results {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.grouped-search-results {
+  gap: 26px;
+}
+
+.search-result-group {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.search-result-group-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 14px;
+  min-width: 0;
+}
+
+.search-result-group-header h2 {
+  margin: 0;
+  color: var(--on-surface);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.search-result-group-header span {
+  flex-shrink: 0;
+  color: var(--outline);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.search-result-group-list {
   display: grid;
   gap: 12px;
   min-width: 0;
@@ -1495,6 +1544,10 @@ em {
     align-items: start;
   }
 
+  .content-grid.single-column {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .content-grid.quiz-question-only {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1505,6 +1558,13 @@ em {
     max-height: calc(100vh - 116px);
     overflow-y: auto;
     padding-right: 4px;
+  }
+
+  .content-grid.single-column .catalog-panel {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
   }
 
   .content-grid.quiz-question-only .catalog-panel {
@@ -1539,6 +1599,10 @@ em {
   .content-grid {
     grid-template-columns: 430px minmax(0, 1fr);
   }
+
+  .content-grid.single-column {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 560px) {
@@ -1553,6 +1617,8 @@ em {
   }
 
   .brand-button {
+    flex: 1 1 auto;
+    min-width: 0;
     font-size: 26px;
     line-height: 32px;
     overflow: hidden;

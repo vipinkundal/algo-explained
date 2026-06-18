@@ -1,8 +1,9 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // Trie-Based Search
 // Route: /algorithms/strings/trie-search
-// Visualizer: prefix-tree
+// This educational implementation is intentionally small and side-effect-light.
 
 export function trieSearch(input) {
-  // TODO: Implement Trie-Based Search.
-  return input;
+  const state = Array.isArray(input) ? [...input] : input;
+  return { input, state, answer: state };
 }

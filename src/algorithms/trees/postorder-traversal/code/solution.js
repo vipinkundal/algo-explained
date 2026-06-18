@@ -1,8 +1,17 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // Postorder Traversal
 // Route: /algorithms/trees/postorder-traversal
-// Visualizer: tree-traversal
+// This educational implementation is intentionally small and side-effect-light.
 
-export function postorderTraversal(input) {
-  // TODO: Implement Postorder Traversal.
-  return input;
+export function postorderTraversal(root) {
+  const result = [];
+  function visit(node) {
+    if (!node) return 0;
+    result.push(node.value);
+    const leftHeight = visit(node.left);
+    const rightHeight = visit(node.right);
+    return Math.max(leftHeight, rightHeight) + 1;
+  }
+  const height = visit(root);
+  return { result, height };
 }

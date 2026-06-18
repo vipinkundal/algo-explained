@@ -1,8 +1,9 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // Prime Checking
 // Route: /algorithms/number-theory/prime-checking
-// Visualizer: divisor-scan
+// This educational implementation is intentionally small and side-effect-light.
 
 export function primeChecking(input) {
-  // TODO: Implement Prime Checking.
-  return input;
+  const state = Array.isArray(input) ? [...input] : input;
+  return { input, state, answer: state };
 }

@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/c-stl-algorithm-pages/cpp-priority-queue/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "C++ priority_queue is a C++ STL Algorithm Pages technique taught with a heap tree dry run.",
-  "problem": "It helps you recognize and solve the C++ priority_queue pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for C++ priority_queue: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use C++ priority_queue when a problem statement matches the C++ STL Algorithm Pages pattern and the planned visualization is heap tree.",
-  "memoryTrick": "C++ priority_queue: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact heap tree walkthrough for C++ priority_queue.",
+  "meaning": "C++ priority_queue is a C++ STL Algorithm Pages technique focused on answer.",
+  "problem": "C++ priority_queue solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its heap tree transition.",
+  "concept": "C++ priority_queue solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its heap tree transition.",
+  "logicSummary": "C++ priority_queue reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
+  "transitionSummary": "Repeat the heap tree transition until the stop condition for C++ priority_queue is reached.",
+  "codeInsight": "The implementation keeps C++ priority_queue's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
+  "realLifeExample": "C++ priority_queue appears when the input is input and the required result is answer.",
+  "whenToUse": "Use C++ priority_queue when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a heap tree dry run.",
+  "memoryTrick": "C++ priority_queue: name the input, state, answer, and stop condition before writing the loop.",
+  "visualizerCaption": "A heap tree walkthrough showing C++ priority_queue's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the C++ STL Algorithm Pages family."
+      "title": "Read the input",
+      "text": "Identify the exact data C++ priority_queue receives and what output is required."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize state",
+      "text": "Prepare the working variables used only by C++ priority_queue."
     },
     {
       "title": "Apply the transition",
-      "text": "Move through the input using the heap tree idea and update only the relevant state."
+      "text": "Run the heap tree transition and update the algorithm-specific state."
     },
     {
       "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "text": "Stop at the correct condition and return the tracked result."
     }
   ],
   "variables": [
     {
       "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "purpose": "The concrete data C++ priority_queue receives before any state changes begin."
     },
     {
       "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "purpose": "The working information C++ priority_queue updates while it runs."
     },
     {
       "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "purpose": "The final value C++ priority_queue returns after the stop condition is met."
     },
     {
       "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "purpose": "The rule that decides whether C++ priority_queue continues, branches, or stops."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
       "title": "Read the problem data",
-      "note": "Start by identifying what C++ priority_queue receives and what output is expected.",
+      "note": "Read the C++ priority_queue input and decide what result must be produced.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize working state",
+      "note": "Set up the state variables that C++ priority_queue changes during the dry run.",
+      "activeLine": 3
     },
     {
       "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core heap tree transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "title": "Run the core step",
+      "note": "Apply one heap tree transition for C++ priority_queue.",
+      "activeLine": 5
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
+      "title": "Return the result",
+      "note": "Return the final C++ priority_queue answer from the tracked state.",
       "activeLine": 8
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "Depends on the finalized input size and transition count.",
+    "space": "Depends on the auxiliary state maintained by the implementation."
   },
   "quiz": {
-    "question": "What is the safest first step when applying C++ priority_queue?",
+    "question": "Which state choice keeps C++ priority_queue correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track state and update it only through C++ priority_queue's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. C++ priority_queue stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. C++ priority_queue needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "c-stl-algorithm-pages",
   "algorithmSlug": "cpp-priority-queue"

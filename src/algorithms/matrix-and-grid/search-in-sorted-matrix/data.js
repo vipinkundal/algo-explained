@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "grid_on",
   "codePath": "./src/algorithms/matrix-and-grid/search-in-sorted-matrix/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Search in Sorted Matrix is a Matrix and Grid technique taught with a matrix staircase dry run.",
-  "problem": "It helps you recognize and solve the Search in Sorted Matrix pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Search in Sorted Matrix: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Search in Sorted Matrix when a problem statement matches the Matrix and Grid pattern and the planned visualization is matrix staircase.",
-  "memoryTrick": "Search in Sorted Matrix: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact matrix staircase walkthrough for Search in Sorted Matrix.",
+  "meaning": "Search in Sorted Matrix is a Matrix and Grid technique focused on sorted array.",
+  "problem": "Search in Sorted Matrix is a sorting strategy that repeatedly narrows unsorted work until every value is in order.",
+  "concept": "Search in Sorted Matrix is a sorting strategy that repeatedly narrows unsorted work until every value is in order.",
+  "logicSummary": "Keep the sorted invariant for Search in Sorted Matrix: each transition makes a pass, partition, merge, heap step, or bucket placement that reduces disorder.",
+  "transitionSummary": "Compare, move, swap, merge, or bucket values according to this sorter until no unsorted work remains.",
+  "codeInsight": "The implementation copies the input first, then mutates only that working array so the original caller data is not changed.",
+  "realLifeExample": "Search in Sorted Matrix appears when the input is array and the required result is sorted array.",
+  "whenToUse": "Use Search in Sorted Matrix when a problem matches the Matrix and Grid pattern and the expected state changes match a matrix staircase dry run.",
+  "memoryTrick": "Search in Sorted Matrix: name the input, state, answer, and stop condition before writing the loop.",
+  "visualizerCaption": "A matrix staircase walkthrough showing Search in Sorted Matrix's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Matrix and Grid family."
+      "title": "Read the input",
+      "text": "Identify the exact data Search in Sorted Matrix receives and what output is required."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize state",
+      "text": "Prepare the working variables used only by Search in Sorted Matrix."
     },
     {
       "title": "Apply the transition",
-      "text": "Move through the input using the matrix staircase idea and update only the relevant state."
+      "text": "Run the matrix staircase transition and update the algorithm-specific state."
     },
     {
       "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "text": "Stop at the correct condition and return the tracked result."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "array",
+      "purpose": "The list of comparable values that must be rearranged into sorted order."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "indices and working array",
+      "purpose": "Pointers, passes, partitions, buckets, or merge buffers that track progress."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "sorted array",
+      "purpose": "A nondecreasing version of the input array."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "unsorted region remains",
+      "purpose": "Continue while there are elements, partitions, passes, or digit buckets left to process."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
       "title": "Read the problem data",
-      "note": "Start by identifying what Search in Sorted Matrix receives and what output is expected.",
+      "note": "Read the Search in Sorted Matrix input and decide what result must be produced.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize working state",
+      "note": "Set up the state variables that Search in Sorted Matrix changes during the dry run.",
+      "activeLine": 3
     },
     {
       "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core matrix staircase transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "title": "Run the core step",
+      "note": "Apply one matrix staircase transition for Search in Sorted Matrix.",
+      "activeLine": 5
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
+      "title": "Return the result",
+      "note": "Return the final Search in Sorted Matrix answer from the tracked state.",
       "activeLine": 8
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(n) for the educational reference implementation.",
+    "space": "O(n) for tracked state when needed."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Search in Sorted Matrix?",
+    "question": "Which state choice keeps Search in Sorted Matrix correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track indices and working array and update it only through Search in Sorted Matrix's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Search in Sorted Matrix stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Search in Sorted Matrix needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "matrix-and-grid",
   "algorithmSlug": "search-in-sorted-matrix"

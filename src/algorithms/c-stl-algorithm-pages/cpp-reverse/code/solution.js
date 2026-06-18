@@ -1,8 +1,8 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // C++ reverse()
 // Route: /algorithms/cpp-stl/reverse
-// Visualizer: two-pointer-swap
+// This educational implementation is intentionally small and side-effect-light.
 
-export function cppReverse(input) {
-  // TODO: Implement C++ reverse().
-  return input;
+export function cppReverse(array) {
+  return [...array].reverse();
 }

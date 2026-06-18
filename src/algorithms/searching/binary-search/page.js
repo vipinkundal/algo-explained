@@ -129,50 +129,56 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
     const current = binarySteps[state.step];
     return `
       <section class="visualizer-panel binary-search-visualizer" data-algorithm-page="binary-search" aria-labelledby="visualizer-title">
-        <div class="title-row">
-          <div>
-            <p class="eyebrow">Algorithm visualizer</p>
-            <h2 id="visualizer-title">Binary Search</h2>
-            <p>Efficiently searching a sorted array by repeatedly dividing the interval in half.</p>
+        <div class="visualizer-desktop-grid">
+          <div class="visualizer-primary">
+            <div class="title-row">
+              <div>
+                <p class="eyebrow">Algorithm visualizer</p>
+                <h2 id="visualizer-title">Binary Search</h2>
+                <p>Efficiently searching a sorted array by repeatedly dividing the interval in half.</p>
+              </div>
+              <span class="step-pill">Step ${state.step + 1}/${binarySteps.length}</span>
+            </div>
+            <div class="array-stage">
+              <div class="array-track" aria-label="Binary search array state">
+                ${arrayValues.map((value, index) => renderArrayCell(value, index, current)).join("")}
+              </div>
+              <div class="state-row">
+                <span><i class="dot primary"></i> Target: ${current.target}</span>
+                <span><i class="dot neutral"></i> Iteration: ${state.step + 1}</span>
+                <span><i class="dot secondary"></i> Range: ${current.range}</span>
+              </div>
+            </div>
+            <div class="concept-loop-grid">
+              <article>
+                <strong>${icon("psychology")} Concept</strong>
+                <p>Binary Search keeps only the sorted half that can still contain the target.</p>
+              </article>
+              <article>
+                <strong>${icon("repeat")} Loop</strong>
+                <p>Run while <code>low &lt;= high</code>, compute <code>mid</code>, then compare <code>arr[mid]</code> with the target.</p>
+              </article>
+              <article>
+                <strong>${icon("sync_alt")} State updates</strong>
+                <p>If the middle value is too small, move <code>low</code>. If it is too large, move <code>high</code>.</p>
+              </article>
+            </div>
           </div>
-          <span class="step-pill">Step ${state.step + 1}/${binarySteps.length}</span>
-        </div>
-        <div class="array-stage">
-          <div class="array-track" aria-label="Binary search array state">
-            ${arrayValues.map((value, index) => renderArrayCell(value, index, current)).join("")}
+          <div class="visualizer-secondary">
+            <div class="trace-layout">
+              ${renderCodeTrace(current.activeLine)}
+              ${state.debug ? `<aside class="explanation-bubble">${icon("tips_and_updates")}<strong>Conceptual insight</strong><p>${current.note}</p></aside>` : ""}
+            </div>
+            <div class="control-deck" aria-label="Visualizer controls">
+              <button data-action="prev" aria-label="Previous step">${icon("skip_previous")}</button>
+              <button class="play-button" data-action="play" aria-label="Play visualizer">${icon(state.playing ? "pause" : "play_arrow")}</button>
+              <button data-action="next" aria-label="Next step">${icon("skip_next")}</button>
+            </div>
+            <div class="secondary-actions">
+              <button data-action="reset">Reset</button>
+              <button class="debug ${state.debug ? "active" : ""}" data-action="debug">Debug mode</button>
+            </div>
           </div>
-          <div class="state-row">
-            <span><i class="dot primary"></i> Target: ${current.target}</span>
-            <span><i class="dot neutral"></i> Iteration: ${state.step + 1}</span>
-            <span><i class="dot secondary"></i> Range: ${current.range}</span>
-          </div>
-        </div>
-        <div class="concept-loop-grid">
-          <article>
-            <strong>${icon("psychology")} Concept</strong>
-            <p>Binary Search keeps only the sorted half that can still contain the target.</p>
-          </article>
-          <article>
-            <strong>${icon("repeat")} Loop</strong>
-            <p>Run while <code>low &lt;= high</code>, compute <code>mid</code>, then compare <code>arr[mid]</code> with the target.</p>
-          </article>
-          <article>
-            <strong>${icon("sync_alt")} State updates</strong>
-            <p>If the middle value is too small, move <code>low</code>. If it is too large, move <code>high</code>.</p>
-          </article>
-        </div>
-        <div class="trace-layout">
-          ${renderCodeTrace(current.activeLine)}
-          ${state.debug ? `<aside class="explanation-bubble">${icon("tips_and_updates")}<strong>Conceptual insight</strong><p>${current.note}</p></aside>` : ""}
-        </div>
-        <div class="control-deck" aria-label="Visualizer controls">
-          <button data-action="prev" aria-label="Previous step">${icon("skip_previous")}</button>
-          <button class="play-button" data-action="play" aria-label="Play visualizer">${icon(state.playing ? "pause" : "play_arrow")}</button>
-          <button data-action="next" aria-label="Next step">${icon("skip_next")}</button>
-        </div>
-        <div class="secondary-actions">
-          <button data-action="reset">Reset</button>
-          <button class="debug ${state.debug ? "active" : ""}" data-action="debug">Debug mode</button>
         </div>
       </section>
     `;

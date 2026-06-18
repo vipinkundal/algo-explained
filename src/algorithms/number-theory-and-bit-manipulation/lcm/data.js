@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "memory",
   "codePath": "./src/algorithms/number-theory-and-bit-manipulation/lcm/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "LCM is a Number Theory and Bit Manipulation technique taught with a formula card dry run.",
-  "problem": "It helps you recognize and solve the LCM pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for LCM: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use LCM when a problem statement matches the Number Theory and Bit Manipulation pattern and the planned visualization is formula card.",
-  "memoryTrick": "LCM: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact formula card walkthrough for LCM.",
+  "meaning": "LCM is a Number Theory and Bit Manipulation technique focused on answer.",
+  "problem": "LCM solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its formula card transition.",
+  "concept": "LCM solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its formula card transition.",
+  "logicSummary": "LCM reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
+  "transitionSummary": "Repeat the formula card transition until the stop condition for LCM is reached.",
+  "codeInsight": "The implementation keeps LCM's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
+  "realLifeExample": "LCM appears when the input is input and the required result is answer.",
+  "whenToUse": "Use LCM when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a formula card dry run.",
+  "memoryTrick": "LCM: name the input, state, answer, and stop condition before writing the loop.",
+  "visualizerCaption": "A formula card walkthrough showing LCM's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Number Theory and Bit Manipulation family."
+      "title": "Read the input",
+      "text": "Identify the exact data LCM receives and what output is required."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize state",
+      "text": "Prepare the working variables used only by LCM."
     },
     {
       "title": "Apply the transition",
-      "text": "Move through the input using the formula card idea and update only the relevant state."
+      "text": "Run the formula card transition and update the algorithm-specific state."
     },
     {
       "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "text": "Stop at the correct condition and return the tracked result."
     }
   ],
   "variables": [
     {
       "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "purpose": "The concrete data LCM receives before any state changes begin."
     },
     {
       "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "purpose": "The working information LCM updates while it runs."
     },
     {
       "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "purpose": "The final value LCM returns after the stop condition is met."
     },
     {
       "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "purpose": "The rule that decides whether LCM continues, branches, or stops."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
       "title": "Read the problem data",
-      "note": "Start by identifying what LCM receives and what output is expected.",
+      "note": "Read the LCM input and decide what result must be produced.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize working state",
+      "note": "Set up the state variables that LCM changes during the dry run.",
+      "activeLine": 3
     },
     {
       "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core formula card transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "title": "Run the core step",
+      "note": "Apply one formula card transition for LCM.",
+      "activeLine": 5
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
+      "title": "Return the result",
+      "note": "Return the final LCM answer from the tracked state.",
       "activeLine": 8
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "Depends on the finalized input size and transition count.",
+    "space": "Depends on the auxiliary state maintained by the implementation."
   },
   "quiz": {
-    "question": "What is the safest first step when applying LCM?",
+    "question": "Which state choice keeps LCM correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track state and update it only through LCM's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. LCM stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. LCM needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
   "algorithmSlug": "lcm"

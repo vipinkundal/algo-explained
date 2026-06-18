@@ -92,23 +92,23 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
         <div class="concept-loop-grid">
           <article>
             <strong>${icon("psychology")} Concept</strong>
-            <p>${escapeHtml(algorithmPage.problem)}</p>
+            <p>${escapeHtml(algorithmPage.concept || algorithmPage.problem)}</p>
           </article>
           <article>
             <strong>${icon("account_tree")} Logic</strong>
-            <p>${escapeHtml(current.note)}</p>
+            <p>${escapeHtml(algorithmPage.logicSummary || current.note)}</p>
           </article>
           <article>
             <strong>${icon("repeat")} Loop / transition</strong>
-            <p>${escapeHtml(getTransitionSummary(current))}</p>
+            <p>${escapeHtml(algorithmPage.transitionSummary || getTransitionSummary(current))}</p>
           </article>
         </div>
         <div class="trace-layout">
           ${renderCodeTrace(current.activeLine)}
           <aside class="explanation-bubble">
             ${icon("tips_and_updates")}
-            <strong>${escapeHtml(current.title)}</strong>
-            <p>${escapeHtml(current.note)}</p>
+            <strong>Code insight</strong>
+            <p>${escapeHtml(algorithmPage.codeInsight || current.note)}</p>
           </aside>
         </div>
         <div class="control-deck" aria-label="Visualizer controls">

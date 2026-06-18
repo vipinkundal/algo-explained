@@ -1,8 +1,8 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // C++ accumulate()
 // Route: /algorithms/cpp-stl/accumulate
-// Visualizer: running-sum
+// This educational implementation is intentionally small and side-effect-light.
 
-export function cppAccumulate(input) {
-  // TODO: Implement C++ accumulate().
-  return input;
+export function cppAccumulate(array, initial = 0) {
+  return array.reduce((sum, value) => sum + value, initial);
 }

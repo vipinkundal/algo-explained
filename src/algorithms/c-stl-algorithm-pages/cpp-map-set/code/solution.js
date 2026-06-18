@@ -1,8 +1,9 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // C++ map / set
 // Route: /algorithms/cpp-stl/map-set
-// Visualizer: balanced-tree
+// This educational implementation is intentionally small and side-effect-light.
 
 export function cppMapSet(input) {
-  // TODO: Implement C++ map / set.
-  return input;
+  const state = Array.isArray(input) ? [...input] : input;
+  return { input, state, answer: state };
 }

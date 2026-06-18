@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/floyd-warshall/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Floyd-Warshall Algorithm is a Graphs technique taught with a matrix update dry run.",
-  "problem": "It helps you recognize and solve the Floyd-Warshall Algorithm pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Floyd-Warshall Algorithm: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Floyd-Warshall Algorithm when a problem statement matches the Graphs pattern and the planned visualization is matrix update.",
-  "memoryTrick": "Floyd-Warshall Algorithm: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact matrix update walkthrough for Floyd-Warshall Algorithm.",
+  "meaning": "Floyd-Warshall Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
+  "problem": "Floyd-Warshall lets every vertex act as an intermediate stop for every pair of vertices.",
+  "concept": "Floyd-Warshall lets every vertex act as an intermediate stop for every pair of vertices.",
+  "logicSummary": "floyd-warshall maintains graph-specific state and updates it through the algorithm's own vertex or edge transition.",
+  "transitionSummary": "Consume the next vertex or edge, update graph state, and preserve the graph invariant.",
+  "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
+  "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
+  "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
+  "memoryTrick": "Graph algorithms are state machines: pick the right frontier and update only that state.",
+  "visualizerCaption": "A matrix update walkthrough showing Floyd-Warshall Algorithm's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Graphs family."
+      "title": "Initialize graph state",
+      "text": "Create the state this graph algorithm owns."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Choose next work item",
+      "text": "Pick the next vertex or edge according to the invariant."
     },
     {
-      "title": "Apply the transition",
-      "text": "Move through the input using the matrix update idea and update only the relevant state."
+      "title": "Update state",
+      "text": "Relax, visit, union, or decrement state."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "title": "Return graph result",
+      "text": "Return the final graph-specific result."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "graph input",
+      "purpose": "Vertices, edges, weights, or adjacency lists."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "graph state",
+      "purpose": "Visited, distance, parent, indegree, or component state."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "graph result",
+      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "work remains",
+      "purpose": "Continue while vertices, edges, or frontier items remain."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
-      "title": "Read the problem data",
-      "note": "Start by identifying what Floyd-Warshall Algorithm receives and what output is expected.",
+      "title": "Read inputs",
+      "note": "Floyd-Warshall Algorithm starts by reading the exact input shape it owns.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize state",
+      "note": "Create only the state needed for this algorithm's invariant.",
+      "activeLine": 3
     },
     {
-      "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core matrix update transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "label": "Loop",
+      "title": "Run transition",
+      "note": "Consume the next vertex or edge, update graph state, and preserve the graph invariant.",
+      "activeLine": 8
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
-      "activeLine": 8
+      "title": "Return answer",
+      "note": "Return the value produced by the maintained invariant.",
+      "activeLine": 12
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(V^3).",
+    "space": "O(V^2)."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Floyd-Warshall Algorithm?",
+    "question": "Which state choice keeps Floyd-Warshall Algorithm correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track visited and frontier and update it only through Floyd-Warshall Algorithm's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Floyd-Warshall Algorithm stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Floyd-Warshall Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "floyd-warshall"

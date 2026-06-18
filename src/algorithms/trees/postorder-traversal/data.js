@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/postorder-traversal/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Postorder Traversal is a Trees technique taught with a tree traversal dry run.",
-  "problem": "It helps you recognize and solve the Postorder Traversal pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Postorder Traversal: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Postorder Traversal when a problem statement matches the Trees pattern and the planned visualization is tree traversal.",
-  "memoryTrick": "Postorder Traversal: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact tree traversal walkthrough for Postorder Traversal.",
+  "meaning": "Postorder Traversal is a Trees technique focused on tree result.",
+  "problem": "Postorder Traversal relies on the recursive structure of a tree: solve the current node and combine child results.",
+  "concept": "Postorder Traversal relies on the recursive structure of a tree: solve the current node and combine child results.",
+  "logicSummary": "Check the base case, process the current node, recurse into children, and combine the returned values.",
+  "transitionSummary": "Move from a node to its child or back from a child to its parent with updated state.",
+  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
+  "realLifeExample": "Postorder Traversal appears when the input is root and the required result is tree result.",
+  "whenToUse": "Use Postorder Traversal when a problem matches the Trees pattern and the expected state changes match a tree traversal dry run.",
+  "memoryTrick": "Postorder Traversal: name the input, state, answer, and stop condition before writing the loop.",
+  "visualizerCaption": "A tree traversal walkthrough showing Postorder Traversal's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Trees family."
+      "title": "Read the input",
+      "text": "Identify the exact data Postorder Traversal receives and what output is required."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize state",
+      "text": "Prepare the working variables used only by Postorder Traversal."
     },
     {
       "title": "Apply the transition",
-      "text": "Move through the input using the tree traversal idea and update only the relevant state."
+      "text": "Run the tree traversal transition and update the algorithm-specific state."
     },
     {
       "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "text": "Stop at the correct condition and return the tracked result."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "root",
+      "purpose": "The concrete data Postorder Traversal receives before any state changes begin."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "current node and traversal state",
+      "purpose": "The working information Postorder Traversal updates while it runs."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "tree result",
+      "purpose": "The final value Postorder Traversal returns after the stop condition is met."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "node exists",
+      "purpose": "The rule that decides whether Postorder Traversal continues, branches, or stops."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
       "title": "Read the problem data",
-      "note": "Start by identifying what Postorder Traversal receives and what output is expected.",
+      "note": "Read the Postorder Traversal input and decide what result must be produced.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize working state",
+      "note": "Set up the state variables that Postorder Traversal changes during the dry run.",
+      "activeLine": 3
     },
     {
       "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core tree traversal transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "title": "Run the core step",
+      "note": "Apply one tree traversal transition for Postorder Traversal.",
+      "activeLine": 5
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
+      "title": "Return the result",
+      "note": "Return the final Postorder Traversal answer from the tracked state.",
       "activeLine": 8
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(n) over tree nodes.",
+    "space": "O(h) recursion or traversal state."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Postorder Traversal?",
+    "question": "Which state choice keeps Postorder Traversal correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track current node and traversal state and update it only through Postorder Traversal's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Postorder Traversal stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Postorder Traversal needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "trees",
   "algorithmSlug": "postorder-traversal"

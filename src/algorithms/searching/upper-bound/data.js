@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "search",
   "codePath": "./src/algorithms/searching/upper-bound/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Upper Bound is a Searching technique taught with a array boundaries dry run.",
-  "problem": "It helps you recognize and solve the Upper Bound pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Upper Bound: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Upper Bound when a problem statement matches the Searching pattern and the planned visualization is array boundaries.",
-  "memoryTrick": "Upper Bound: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact array boundaries walkthrough for Upper Bound.",
+  "meaning": "Upper Bound is taught here with its own state, transition, code trace, and stopping rule.",
+  "problem": "Upper Bound finds the first sorted position whose value is strictly greater than the target.",
+  "concept": "Upper Bound finds the first sorted position whose value is strictly greater than the target.",
+  "logicSummary": "Keep [low, high), skip values <= target, and keep values that may be the first greater item.",
+  "transitionSummary": "If array[mid] <= target, move low right; otherwise move high to mid.",
+  "codeInsight": "The only difference from lower bound is the comparison: <= target is discarded.",
+  "realLifeExample": "Use it to count duplicates with upperBound - lowerBound.",
+  "whenToUse": "Use Upper Bound when you need the first item after all target-equal values.",
+  "memoryTrick": "Upper Bound: first value greater than target.",
+  "visualizerCaption": "A array boundaries walkthrough showing Upper Bound's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Searching family."
+      "title": "Open full range",
+      "text": "Search [0, array.length)."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Compare middle",
+      "text": "Check whether mid still belongs to <= target."
     },
     {
-      "title": "Apply the transition",
-      "text": "Move through the input using the array boundaries idea and update only the relevant state."
+      "title": "Discard equal values",
+      "text": "Move low past mid when array[mid] <= target."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "title": "Return boundary",
+      "text": "low is the first greater position."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "array, target",
+      "purpose": "A sorted array and boundary value."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "low, high",
+      "purpose": "A half-open search range."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "upper index",
+      "purpose": "The first index with value > target."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "low < high",
+      "purpose": "Stop when one insertion point remains."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
-      "title": "Read the problem data",
-      "note": "Start by identifying what Upper Bound receives and what output is expected.",
+      "title": "Read inputs",
+      "note": "Upper Bound starts by reading the exact input shape it owns.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize state",
+      "note": "Create only the state needed for this algorithm's invariant.",
+      "activeLine": 3
     },
     {
-      "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core array boundaries transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "label": "Loop",
+      "title": "Run transition",
+      "note": "If array[mid] <= target, move low right; otherwise move high to mid.",
+      "activeLine": 8
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
-      "activeLine": 8
+      "title": "Return answer",
+      "note": "Return the value produced by the maintained invariant.",
+      "activeLine": 12
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(log n).",
+    "space": "O(1)."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Upper Bound?",
+    "question": "Which state choice keeps Upper Bound correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track search window and update it only through Upper Bound's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Upper Bound stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Upper Bound needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "searching",
   "algorithmSlug": "upper-bound"

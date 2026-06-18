@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/c-stl-algorithm-pages/cpp-binary-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "C++ binary_search() is a C++ STL Algorithm Pages technique taught with a array boundaries dry run.",
-  "problem": "It helps you recognize and solve the C++ binary_search() pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for C++ binary_search(): inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use C++ binary_search() when a problem statement matches the C++ STL Algorithm Pages pattern and the planned visualization is array boundaries.",
-  "memoryTrick": "C++ binary_search(): name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact array boundaries walkthrough for C++ binary_search().",
+  "meaning": "C++ binary_search() is a C++ STL Algorithm Pages technique focused on index or insertion point.",
+  "problem": "C++ binary_search() narrows where a target can be by scanning or shrinking a candidate interval.",
+  "concept": "C++ binary_search() narrows where a target can be by scanning or shrinking a candidate interval.",
+  "logicSummary": "Compare the current value with the target, discard impossible positions, and keep the best candidate when needed.",
+  "transitionSummary": "Each transition either advances one position or moves a boundary inward.",
+  "codeInsight": "The boundary variables are the important state; every branch must make the remaining search interval smaller.",
+  "realLifeExample": "C++ binary_search() appears when the input is array, target and the required result is index or insertion point.",
+  "whenToUse": "Use C++ binary_search() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a array boundaries dry run.",
+  "memoryTrick": "C++ binary_search(): name the input, state, answer, and stop condition before writing the loop.",
+  "visualizerCaption": "A array boundaries walkthrough showing C++ binary_search()'s input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the C++ STL Algorithm Pages family."
+      "title": "Read the input",
+      "text": "Identify the exact data C++ binary_search() receives and what output is required."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize state",
+      "text": "Prepare the working variables used only by C++ binary_search()."
     },
     {
       "title": "Apply the transition",
-      "text": "Move through the input using the array boundaries idea and update only the relevant state."
+      "text": "Run the array boundaries transition and update the algorithm-specific state."
     },
     {
       "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "text": "Stop at the correct condition and return the tracked result."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "array, target",
+      "purpose": "A searchable list plus the value or boundary condition being requested."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "search window",
+      "purpose": "Current indices or scan position that define where the answer can still be."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "index or insertion point",
+      "purpose": "The found position, boundary position, or -1 when no valid item exists."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "window still valid",
+      "purpose": "Continue while the current index or low/high window can still contain the answer."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
       "title": "Read the problem data",
-      "note": "Start by identifying what C++ binary_search() receives and what output is expected.",
+      "note": "Read the C++ binary_search() input and decide what result must be produced.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize working state",
+      "note": "Set up the state variables that C++ binary_search() changes during the dry run.",
+      "activeLine": 3
     },
     {
       "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core array boundaries transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "title": "Run the core step",
+      "note": "Apply one array boundaries transition for C++ binary_search().",
+      "activeLine": 5
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
+      "title": "Return the result",
+      "note": "Return the final C++ binary_search() answer from the tracked state.",
       "activeLine": 8
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(log n) on sorted or searchable ranges.",
+    "space": "O(1) auxiliary space."
   },
   "quiz": {
-    "question": "What is the safest first step when applying C++ binary_search()?",
+    "question": "Which state choice keeps C++ binary_search() correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track search window and update it only through C++ binary_search()'s transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. C++ binary_search() stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. C++ binary_search() needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "c-stl-algorithm-pages",
   "algorithmSlug": "cpp-binary-search"

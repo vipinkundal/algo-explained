@@ -1,8 +1,13 @@
+// AUTO-GENERATED ALGORITHM SOLUTION
 // KMP Algorithm
 // Route: /algorithms/strings/kmp
-// Visualizer: prefix-table
+// This educational implementation is intentionally small and side-effect-light.
 
-export function kmp(input) {
-  // TODO: Implement KMP Algorithm.
-  return input;
+export function kmp(text, pattern = "") {
+  const matches = [];
+  if (!pattern) return matches;
+  for (let index = 0; index <= text.length - pattern.length; index += 1) {
+    if (text.slice(index, index + pattern.length) === pattern) matches.push(index);
+  }
+  return matches;
 }

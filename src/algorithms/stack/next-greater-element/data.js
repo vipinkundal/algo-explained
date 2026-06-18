@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "layers",
   "codePath": "./src/algorithms/stack/next-greater-element/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Next Greater Element is a Stack technique taught with a monotonic stack dry run.",
-  "problem": "It helps you recognize and solve the Next Greater Element pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Next Greater Element: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Next Greater Element when a problem statement matches the Stack pattern and the planned visualization is monotonic stack.",
-  "memoryTrick": "Next Greater Element: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact monotonic stack walkthrough for Next Greater Element.",
+  "meaning": "Next Greater Element is taught here with its own state, transition, code trace, and stopping rule.",
+  "problem": "Next Greater Element uses a decreasing stack to resolve values when a larger value appears.",
+  "concept": "Next Greater Element uses a decreasing stack to resolve values when a larger value appears.",
+  "logicSummary": "Next Greater Element maintains a dedicated data-structure invariant and changes it through one clear push, pop, enqueue, dequeue, heap, or cache transition.",
+  "transitionSummary": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
+  "codeInsight": "The implementation names the backing state directly, so the code trace matches the visual data structure on the page.",
+  "realLifeExample": "Next Greater Element appears when the problem is defined by the behavior of this exact data structure.",
+  "whenToUse": "Use Next Greater Element when its state transition is the natural way to model the problem.",
+  "memoryTrick": "Next Greater Element: the data structure is the algorithm state.",
+  "visualizerCaption": "A monotonic stack walkthrough showing Next Greater Element's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Stack family."
+      "title": "Read operation",
+      "text": "Identify the next value or command."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Update structure",
+      "text": "Push, pop, enqueue, dequeue, rebalance, or evict as required."
     },
     {
-      "title": "Apply the transition",
-      "text": "Move through the input using the monotonic stack idea and update only the relevant state."
+      "title": "Preserve invariant",
+      "text": "Keep the structure valid after the update."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "title": "Return output",
+      "text": "Return the accumulated answers or final structure."
     }
   ],
   "variables": [
     {
       "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "purpose": "Values or operations to process."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "data structure state",
+      "purpose": "The stack, queue, heap, deque, or cache state."
     },
     {
       "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "purpose": "The output after all operations or after each step."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "operations remain",
+      "purpose": "Continue while input values or operations remain."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
-      "title": "Read the problem data",
-      "note": "Start by identifying what Next Greater Element receives and what output is expected.",
+      "title": "Read inputs",
+      "note": "Next Greater Element starts by reading the exact input shape it owns.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize state",
+      "note": "Create only the state needed for this algorithm's invariant.",
+      "activeLine": 3
     },
     {
-      "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core monotonic stack transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "label": "Loop",
+      "title": "Run transition",
+      "note": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
+      "activeLine": 8
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
-      "activeLine": 8
+      "title": "Return answer",
+      "note": "Return the value produced by the maintained invariant.",
+      "activeLine": 12
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(n).",
+    "space": "O(n)."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Next Greater Element?",
+    "question": "Which state choice keeps Next Greater Element correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track state and update it only through Next Greater Element's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Next Greater Element stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Next Greater Element needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "stack",
   "algorithmSlug": "next-greater-element"

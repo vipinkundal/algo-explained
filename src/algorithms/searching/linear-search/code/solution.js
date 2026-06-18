@@ -1,8 +1,10 @@
+// SPECIFIC ALGORITHM SOLUTION
 // Linear Search
 // Route: /algorithms/searching/linear-search
-// Visualizer: array-scan
 
-export function linearSearch(input) {
-  // TODO: Implement Linear Search.
-  return input;
+export function linearSearch(array, target) {
+  for (let index = 0; index < array.length; index += 1) {
+    if (array[index] === target) return index;
+  }
+  return -1;
 }

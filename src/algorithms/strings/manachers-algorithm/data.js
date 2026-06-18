@@ -12,99 +12,103 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/manachers-algorithm/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Manacher’s Algorithm is a Strings technique taught with a palindrome radius dry run.",
-  "problem": "It helps you recognize and solve the Manacher’s Algorithm pattern without mixing it with other algorithms.",
-  "realLifeExample": "Think of this page as the isolated practice bench for Manacher’s Algorithm: inputs come in, key state changes are tracked, and the result is produced step by step.",
-  "whenToUse": "Use Manacher’s Algorithm when a problem statement matches the Strings pattern and the planned visualization is palindrome radius.",
-  "memoryTrick": "Manacher’s Algorithm: name the state, update it once per step, and check the stop condition before returning.",
-  "visualizerCaption": "A compact palindrome radius walkthrough for Manacher’s Algorithm.",
+  "meaning": "Manacher’s Algorithm is a Strings technique focused on matches or string result.",
+  "problem": "Manacher’s Algorithm turns character comparisons into reusable state so the string is not rechecked from scratch.",
+  "concept": "Manacher’s Algorithm turns character comparisons into reusable state so the string is not rechecked from scratch.",
+  "logicSummary": "Precompute the helper state, scan the text, update indices or hashes, and record each valid match.",
+  "transitionSummary": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state.",
+  "codeInsight": "String algorithms are safest when index movement is explicit and every mismatch has a defined fallback.",
+  "realLifeExample": "Manacher’s Algorithm appears when the input is text and pattern and the required result is matches or string result.",
+  "whenToUse": "Use Manacher’s Algorithm when a problem matches the Strings pattern and the expected state changes match a palindrome radius dry run.",
+  "memoryTrick": "Manacher’s Algorithm: name the input, state, answer, and stop condition before writing the loop.",
+  "visualizerCaption": "A palindrome radius walkthrough showing Manacher’s Algorithm's input, state, transition, and answer.",
   "logicSteps": [
     {
-      "title": "Identify the input shape",
-      "text": "Read the problem and confirm it belongs to the Strings family."
+      "title": "Read the input",
+      "text": "Identify the exact data Manacher’s Algorithm receives and what output is required."
     },
     {
-      "title": "Initialize the working state",
-      "text": "Create the variables or data structures that carry progress through the algorithm."
+      "title": "Initialize state",
+      "text": "Prepare the working variables used only by Manacher’s Algorithm."
     },
     {
       "title": "Apply the transition",
-      "text": "Move through the input using the palindrome radius idea and update only the relevant state."
+      "text": "Run the palindrome radius transition and update the algorithm-specific state."
     },
     {
       "title": "Return the answer",
-      "text": "Stop when the condition is satisfied and return the final value from the tracked state."
+      "text": "Stop at the correct condition and return the tracked result."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The data structure or values the algorithm receives."
+      "name": "text and pattern",
+      "purpose": "The concrete data Manacher’s Algorithm receives before any state changes begin."
     },
     {
-      "name": "state",
-      "purpose": "The changing information that represents progress during the dry run."
+      "name": "indices and prefix/hash state",
+      "purpose": "The working information Manacher’s Algorithm updates while it runs."
     },
     {
-      "name": "answer",
-      "purpose": "The value produced after the final transition or check."
+      "name": "matches or string result",
+      "purpose": "The final value Manacher’s Algorithm returns after the stop condition is met."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether the algorithm should continue, branch, or stop."
+      "name": "characters remain",
+      "purpose": "The rule that decides whether Manacher’s Algorithm continues, branches, or stops."
     }
   ],
   "dryRun": [
     {
       "label": "Input",
       "title": "Read the problem data",
-      "note": "Start by identifying what Manacher’s Algorithm receives and what output is expected.",
+      "note": "Read the Manacher’s Algorithm input and decide what result must be produced.",
       "activeLine": 1
     },
     {
       "label": "State",
-      "title": "Prepare working variables",
-      "note": "Set up counters, pointers, containers, or tables before the main transition begins.",
-      "activeLine": 4
+      "title": "Initialize working state",
+      "note": "Set up the state variables that Manacher’s Algorithm changes during the dry run.",
+      "activeLine": 3
     },
     {
       "label": "Transition",
-      "title": "Move one step forward",
-      "note": "Apply the core palindrome radius transition and keep unrelated state untouched.",
-      "activeLine": 6
+      "title": "Run the core step",
+      "note": "Apply one palindrome radius transition for Manacher’s Algorithm.",
+      "activeLine": 5
     },
     {
       "label": "Answer",
-      "title": "Finish and return",
-      "note": "Use the final tracked state to produce the result.",
+      "title": "Return the result",
+      "note": "Return the final Manacher’s Algorithm answer from the tracked state.",
       "activeLine": 8
     }
   ],
   "complexity": {
-    "time": "Fill this with the finalized implementation's time complexity.",
-    "space": "Fill this with the finalized implementation's auxiliary space complexity."
+    "time": "O(n + m) for the usual text/pattern model.",
+    "space": "O(n + m) for preprocessing or result state."
   },
   "quiz": {
-    "question": "What is the safest first step when applying Manacher’s Algorithm?",
+    "question": "Which state choice keeps Manacher’s Algorithm correct?",
     "options": [
       {
         "key": "A",
-        "text": "Identify the input shape and the state the algorithm needs to track.",
+        "text": "Track indices and prefix/hash state and update it only through Manacher’s Algorithm's transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Start coding before naming the variables or stop condition.",
+        "text": "Reuse a different algorithm's state names even when the transition is different.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reuse another algorithm's visualizer state without checking the pattern.",
+        "text": "Return before checking the algorithm-specific stop condition.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Naming the input and state first keeps this algorithm separate from the others.",
-    "incorrectText": "Not quite. Keep each algorithm isolated by identifying its own input shape, state, and stop condition first."
+    "correctText": "Correct. Manacher’s Algorithm stays understandable when its own state and transition drive the answer.",
+    "incorrectText": "Not quite. Manacher’s Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "strings",
   "algorithmSlug": "manachers-algorithm"
