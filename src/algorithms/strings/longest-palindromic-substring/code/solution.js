@@ -1,13 +1,20 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Longest Palindromic Substring
 // Route: /algorithms/strings/longest-palindromic-substring
-// This educational implementation is intentionally small and side-effect-light.
 
-export function longestPalindromicSubstring(text, pattern = "") {
-  const matches = [];
-  if (!pattern) return matches;
-  for (let index = 0; index <= text.length - pattern.length; index += 1) {
-    if (text.slice(index, index + pattern.length) === pattern) matches.push(index);
+export function longestPalindromicSubstring(text) {
+  let best = "";
+  function expand(left, right) {
+    while (left >= 0 && right < text.length && text[left] === text[right]) {
+      left -= 1;
+      right += 1;
+    }
+    const current = text.slice(left + 1, right);
+    if (current.length > best.length) best = current;
   }
-  return matches;
+  for (let index = 0; index < text.length; index += 1) {
+    expand(index, index);
+    expand(index, index + 1);
+  }
+  return best;
 }

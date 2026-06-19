@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The concrete data Flood Fill receives before any state changes begin."
+      "name": "matrix",
+      "purpose": "The two-dimensional structure whose cells are visited or updated."
     },
     {
-      "name": "state",
-      "purpose": "The working information Flood Fill updates while it runs."
+      "name": "row, column, and visited state",
+      "purpose": "Cell coordinates and visited or transformed values used by the grid transition. This page visualizes it as grid bfs dfs."
     },
     {
-      "name": "answer",
-      "purpose": "The final value Flood Fill returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by floodFill after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether Flood Fill continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the grid bfs dfs transition until the stop condition for Flood Fill is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,22 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Flood Fill needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "matrix-and-grid",
-  "algorithmSlug": "flood-fill"
+  "algorithmSlug": "flood-fill",
+  "runnerInput": [
+    [
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    0,
+    0,
+    2
+  ]
 };

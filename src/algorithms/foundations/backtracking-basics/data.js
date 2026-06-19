@@ -12,7 +12,12 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/foundations/backtracking-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "runnerInput": [[1, 2, 3]],
+  "runnerInput": [
+    [
+      1,
+      2
+    ]
+  ],
   "meaning": "Backtracking Basics is a Foundations technique focused on solutions.",
   "problem": "Backtracking Basics explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
   "concept": "Backtracking Basics explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
@@ -44,19 +49,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "choices",
-      "purpose": "The concrete data Backtracking Basics receives before any state changes begin."
+      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
     },
     {
-      "name": "path",
-      "purpose": "The partial decision path being built by the recursive search."
+      "name": "call frame and path",
+      "purpose": "The current recursive call plus the partial answer built so far."
     },
     {
-      "name": "solutions",
-      "purpose": "All valid paths or the final recursive value requested by the problem."
+      "name": "returned value",
+      "purpose": "The value produced by backtrackingBasics after the maintained state reaches the stop rule."
     },
     {
-      "name": "base case or invalid choice",
-      "purpose": "Stop when the path is complete, invalid, or ready to be recorded."
+      "name": "transition / stop rule",
+      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [

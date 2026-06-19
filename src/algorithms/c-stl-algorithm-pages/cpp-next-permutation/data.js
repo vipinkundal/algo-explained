@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "input",
-      "purpose": "The concrete data C++ next_permutation() receives before any state changes begin."
+      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "state",
-      "purpose": "The working information C++ next_permutation() updates while it runs."
+      "name": "working state",
+      "purpose": "The local state updated by the algorithm transition. This page visualizes it as permutation step."
     },
     {
-      "name": "answer",
-      "purpose": "The final value C++ next_permutation() returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by cppNextPermutation after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether C++ next_permutation() continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the permutation step transition until the stop condition for C++ next_permutation() is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,12 @@ export const algorithmPage = {
     "incorrectText": "Not quite. C++ next_permutation() needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "c-stl-algorithm-pages",
-  "algorithmSlug": "cpp-next-permutation"
+  "algorithmSlug": "cpp-next-permutation",
+  "runnerInput": [
+    [
+      1,
+      2,
+      3
+    ]
+  ]
 };

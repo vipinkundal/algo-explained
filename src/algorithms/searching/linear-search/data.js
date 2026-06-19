@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "array, target",
-      "purpose": "The list to scan and the value to find."
+      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
     },
     {
-      "name": "index",
-      "purpose": "The current position being compared."
+      "name": "index and comparison",
+      "purpose": "The current array position and comparison that decide whether Linear Search returns now or moves on."
     },
     {
-      "name": "matching index",
-      "purpose": "The first index whose value equals the target, or -1."
+      "name": "found index or boundary",
+      "purpose": "The value produced by linearSearch after the maintained state reaches the stop rule."
     },
     {
-      "name": "index < array.length",
-      "purpose": "The loop continues while unchecked items remain."
+      "name": "transition / stop rule",
+      "purpose": "Advance the index by one after every failed comparison. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,13 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Linear Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "searching",
-  "algorithmSlug": "linear-search"
+  "algorithmSlug": "linear-search",
+  "runnerInput": [
+    [
+      4,
+      2,
+      7
+    ],
+    7
+  ]
 };

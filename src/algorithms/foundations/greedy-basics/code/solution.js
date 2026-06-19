@@ -1,9 +1,16 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Greedy Basics
 // Route: /algorithms/foundations/greedy-basics
-// This educational implementation is intentionally small and side-effect-light.
 
-export function greedyBasics(input) {
-  const state = Array.isArray(input) ? [...input] : input;
-  return { input, state, answer: state };
+export function greedyBasics(values, capacity = 10) {
+  const sorted = [...(Array.isArray(values) ? values : [])].sort((a, b) => a - b);
+  const chosen = [];
+  let total = 0;
+  for (const value of sorted) {
+    if (total + value <= capacity) {
+      chosen.push(value);
+      total += value;
+    }
+  }
+  return { chosen, total };
 }

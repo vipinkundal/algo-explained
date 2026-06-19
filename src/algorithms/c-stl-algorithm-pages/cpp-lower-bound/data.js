@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "array, target",
-      "purpose": "A searchable list plus the value or boundary condition being requested."
+      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
     },
     {
-      "name": "search window",
-      "purpose": "Current indices or scan position that define where the answer can still be."
+      "name": "low, high, mid",
+      "purpose": "The shrinking search window and midpoint used to discard impossible positions."
     },
     {
-      "name": "index or insertion point",
-      "purpose": "The found position, boundary position, or -1 when no valid item exists."
+      "name": "returned value",
+      "purpose": "The value produced by cppLowerBound after the maintained state reaches the stop rule."
     },
     {
-      "name": "window still valid",
-      "purpose": "Continue while the current index or low/high window can still contain the answer."
+      "name": "transition / stop rule",
+      "purpose": "Each transition either advances one position or moves a boundary inward. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,14 @@ export const algorithmPage = {
     "incorrectText": "Not quite. C++ lower_bound() needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "c-stl-algorithm-pages",
-  "algorithmSlug": "cpp-lower-bound"
+  "algorithmSlug": "cpp-lower-bound",
+  "runnerInput": [
+    [
+      1,
+      3,
+      3,
+      5
+    ],
+    3
+  ]
 };

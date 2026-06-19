@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "text and pattern",
-      "purpose": "The concrete data Manacher’s Algorithm receives before any state changes begin."
+      "name": "text, pattern",
+      "purpose": "text: The string data used for character comparisons, matching, or dynamic programming states. pattern: The string data used for character comparisons, matching, or dynamic programming states."
     },
     {
-      "name": "indices and prefix/hash state",
-      "purpose": "The working information Manacher’s Algorithm updates while it runs."
+      "name": "indices and match state",
+      "purpose": "Pointers, prefix/hash values, or windows that decide how characters match. This page visualizes it as palindrome radius."
     },
     {
-      "name": "matches or string result",
-      "purpose": "The final value Manacher’s Algorithm returns after the stop condition is met."
+      "name": "match result",
+      "purpose": "The value produced by manachersAlgorithm after the maintained state reaches the stop rule."
     },
     {
-      "name": "characters remain",
-      "purpose": "The rule that decides whether Manacher’s Algorithm continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,8 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Manacher’s Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "strings",
-  "algorithmSlug": "manachers-algorithm"
+  "algorithmSlug": "manachers-algorithm",
+  "runnerInput": [
+    "babad"
+  ]
 };

@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "vertices, edges, start",
+      "purpose": "vertices: The vertex set or count used to initialize graph state. edges: Weighted or unweighted connections considered by the graph transition. start: The vertex where traversal, relaxation, or tree growth begins."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "frontier / visited / distance state",
+      "purpose": "The graph-owned state that changes as vertices or edges are processed. This page visualizes it as edge relaxation."
     },
     {
       "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "purpose": "The value produced by bellmanFord after the maintained state reaches the stop rule."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "transition / stop rule",
+      "purpose": "Consume the next vertex or edge, update graph state, and preserve the graph invariant. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,30 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Bellman-Ford Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "graphs",
-  "algorithmSlug": "bellman-ford"
+  "algorithmSlug": "bellman-ford",
+  "runnerInput": [
+    [
+      "A",
+      "B",
+      "C"
+    ],
+    [
+      [
+        "A",
+        "B",
+        1
+      ],
+      [
+        "B",
+        "C",
+        2
+      ],
+      [
+        "A",
+        "C",
+        5
+      ]
+    ],
+    "A"
+  ]
 };

@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "low, high, evaluate",
-      "purpose": "The search bounds and objective function."
+      "name": "low, high, evaluate, precision",
+      "purpose": "low: The numeric search interval, objective, or tolerance used by the search transition. high: The numeric search interval, objective, or tolerance used by the search transition. evaluate: The numeric search interval, objective, or tolerance used by the search transition. precision: The numeric search interval, objective, or tolerance used by the search transition."
     },
     {
-      "name": "mid1, mid2",
-      "purpose": "Two interior probes."
+      "name": "search window or scan index",
+      "purpose": "The index, pointer, or boundary range that can still contain the answer. This page visualizes it as divided range."
     },
     {
-      "name": "best position",
-      "purpose": "The remaining optimum candidate."
+      "name": "found index or boundary",
+      "purpose": "The value produced by ternarySearch after the maintained state reaches the stop rule."
     },
     {
-      "name": "high - low > precision",
-      "purpose": "Stop when the range is small enough."
+      "name": "transition / stop rule",
+      "purpose": "For a maximum, if f(mid1) < f(mid2), discard the left third; otherwise discard the right third. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [

@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "input",
-      "purpose": "The concrete data Prime Checking receives before any state changes begin."
+      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "state",
-      "purpose": "The working information Prime Checking updates while it runs."
+      "name": "numeric invariant",
+      "purpose": "The remainder, bit mask, power, xor, or primality state updated each step. This page visualizes it as divisor scan."
     },
     {
-      "name": "answer",
-      "purpose": "The final value Prime Checking returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by primeChecking after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether Prime Checking continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the divisor scan transition until the stop condition for Prime Checking is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,8 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Prime Checking needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
-  "algorithmSlug": "prime-checking"
+  "algorithmSlug": "prime-checking",
+  "runnerInput": [
+    29
+  ]
 };

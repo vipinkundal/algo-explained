@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The concrete data Sieve of Eratosthenes receives before any state changes begin."
+      "name": "value, other",
+      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "state",
-      "purpose": "The working information Sieve of Eratosthenes updates while it runs."
+      "name": "marked numbers",
+      "purpose": "Composite markers that remove numbers from the candidate prime set."
     },
     {
-      "name": "answer",
-      "purpose": "The final value Sieve of Eratosthenes returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by sieveOfEratosthenes after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether Sieve of Eratosthenes continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the number grid transition until the stop condition for Sieve of Eratosthenes is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,8 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Sieve of Eratosthenes needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
-  "algorithmSlug": "sieve-of-eratosthenes"
+  "algorithmSlug": "sieve-of-eratosthenes",
+  "runnerInput": [
+    10
+  ]
 };

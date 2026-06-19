@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "choices",
-      "purpose": "The concrete data Tower of Hanoi receives before any state changes begin."
+      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
     },
     {
-      "name": "path",
-      "purpose": "The partial decision path being built by the recursive search."
+      "name": "path and recursion frame",
+      "purpose": "The partial choice path plus the current recursive frame before backtracking restores it. This page visualizes it as disk moves."
     },
     {
-      "name": "solutions",
-      "purpose": "All valid paths or the final recursive value requested by the problem."
+      "name": "returned value",
+      "purpose": "The value produced by towerOfHanoi after the maintained state reaches the stop rule."
     },
     {
-      "name": "base case or invalid choice",
-      "purpose": "Stop when the path is complete, invalid, or ready to be recorded."
+      "name": "transition / stop rule",
+      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,8 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Tower of Hanoi needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "recursion-and-backtracking",
-  "algorithmSlug": "tower-of-hanoi"
+  "algorithmSlug": "tower-of-hanoi",
+  "runnerInput": [
+    3
+  ]
 };

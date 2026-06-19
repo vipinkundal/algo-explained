@@ -1,24 +1,31 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // N-Queens
 // Route: /algorithms/backtracking/n-queens
-// This educational implementation is intentionally small and side-effect-light.
 
-export function nQueens(choices) {
-  const values = Array.isArray(choices) ? choices : [];
+export function nQueens(size) {
   const result = [];
-  const path = [];
-
-  function backtrack(index) {
-    if (index === values.length) {
-      result.push([...path]);
+  const columns = new Set();
+  const diagA = new Set();
+  const diagB = new Set();
+  const board = Array.from({ length: size }, () => Array(size).fill("."));
+  function place(row) {
+    if (row === size) {
+      result.push(board.map((line) => line.join("")));
       return;
     }
-    backtrack(index + 1);
-    path.push(values[index]);
-    backtrack(index + 1);
-    path.pop();
+    for (let col = 0; col < size; col += 1) {
+      if (columns.has(col) || diagA.has(row - col) || diagB.has(row + col)) continue;
+      columns.add(col);
+      diagA.add(row - col);
+      diagB.add(row + col);
+      board[row][col] = "Q";
+      place(row + 1);
+      board[row][col] = ".";
+      columns.delete(col);
+      diagA.delete(row - col);
+      diagB.delete(row + col);
+    }
   }
-
-  backtrack(0);
+  place(0);
   return result;
 }

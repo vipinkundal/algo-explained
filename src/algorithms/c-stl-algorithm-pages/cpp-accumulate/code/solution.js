@@ -1,8 +1,7 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // C++ accumulate()
 // Route: /algorithms/cpp-stl/accumulate
-// This educational implementation is intentionally small and side-effect-light.
 
-export function cppAccumulate(array, initial = 0) {
-  return array.reduce((sum, value) => sum + value, initial);
+export function cppAccumulate(values, initialValue = 0) {
+  return values.reduce((total, value) => total + value, initialValue);
 }

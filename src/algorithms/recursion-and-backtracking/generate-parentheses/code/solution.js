@@ -1,24 +1,17 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Generate Parentheses
 // Route: /algorithms/backtracking/generate-parentheses
-// This educational implementation is intentionally small and side-effect-light.
 
-export function generateParentheses(choices) {
-  const values = Array.isArray(choices) ? choices : [];
+export function generateParentheses(pairs) {
   const result = [];
-  const path = [];
-
-  function backtrack(index) {
-    if (index === values.length) {
-      result.push([...path]);
+  function build(open, close, text) {
+    if (text.length === pairs * 2) {
+      result.push(text);
       return;
     }
-    backtrack(index + 1);
-    path.push(values[index]);
-    backtrack(index + 1);
-    path.pop();
+    if (open < pairs) build(open + 1, close, text + "(");
+    if (close < open) build(open, close + 1, text + ")");
   }
-
-  backtrack(0);
+  build(0, 0, "");
   return result;
 }

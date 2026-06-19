@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "array, target",
-      "purpose": "A sorted array and boundary value."
+      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
     },
     {
-      "name": "low, high",
-      "purpose": "A half-open search range."
+      "name": "low, high, mid",
+      "purpose": "The shrinking search window and midpoint used to discard impossible positions."
     },
     {
-      "name": "upper index",
-      "purpose": "The first index with value > target."
+      "name": "found index or boundary",
+      "purpose": "The value produced by upperBound after the maintained state reaches the stop rule."
     },
     {
-      "name": "low < high",
-      "purpose": "Stop when one insertion point remains."
+      "name": "transition / stop rule",
+      "purpose": "If array[mid] <= target, move low right; otherwise move high to mid. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,14 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Upper Bound needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "searching",
-  "algorithmSlug": "upper-bound"
+  "algorithmSlug": "upper-bound",
+  "runnerInput": [
+    [
+      1,
+      3,
+      3,
+      5
+    ],
+    3
+  ]
 };

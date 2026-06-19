@@ -1,24 +1,27 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Rat in a Maze
 // Route: /algorithms/backtracking/rat-in-a-maze
-// This educational implementation is intentionally small and side-effect-light.
 
-export function ratInAMaze(choices) {
-  const values = Array.isArray(choices) ? choices : [];
+export function ratInAMaze(maze) {
+  const n = maze.length;
   const result = [];
-  const path = [];
-
-  function backtrack(index) {
-    if (index === values.length) {
-      result.push([...path]);
+  const seen = Array.from({ length: n }, () => Array(n).fill(false));
+  const moves = [[1, 0, "D"], [0, -1, "L"], [0, 1, "R"], [-1, 0, "U"]];
+  function walk(row, col, path) {
+    if (row === n - 1 && col === n - 1) {
+      result.push(path);
       return;
     }
-    backtrack(index + 1);
-    path.push(values[index]);
-    backtrack(index + 1);
-    path.pop();
+    seen[row][col] = true;
+    for (const [dr, dc, label] of moves) {
+      const nextRow = row + dr;
+      const nextCol = col + dc;
+      if (nextRow < 0 || nextCol < 0 || nextRow >= n || nextCol >= n) continue;
+      if (seen[nextRow][nextCol] || maze[nextRow][nextCol] !== 1) continue;
+      walk(nextRow, nextCol, path + label);
+    }
+    seen[row][col] = false;
   }
-
-  backtrack(0);
+  if (maze[0]?.[0] === 1) walk(0, 0, "");
   return result;
 }

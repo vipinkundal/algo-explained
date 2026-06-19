@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "array",
-      "purpose": "The input values."
+      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
     },
     {
-      "name": "invariant state",
-      "purpose": "The running sum, window, pointer, candidate, or frequency state."
+      "name": "candidate and count",
+      "purpose": "The current majority candidate and its vote balance."
     },
     {
-      "name": "answer",
-      "purpose": "The best value, transformed array, or matching pair."
+      "name": "returned value",
+      "purpose": "The value produced by majorityElement after the maintained state reaches the stop rule."
     },
     {
-      "name": "scan remains",
-      "purpose": "Continue while unchecked positions remain."
+      "name": "transition / stop rule",
+      "purpose": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,16 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Majority Element needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "array-patterns",
-  "algorithmSlug": "majority-element"
+  "algorithmSlug": "majority-element",
+  "runnerInput": [
+    [
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2
+    ]
+  ]
 };

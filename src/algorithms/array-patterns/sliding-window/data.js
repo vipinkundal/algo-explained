@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The input values."
+      "name": "array, size",
+      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. size: A numeric limit that controls the window, heap, bucket, or selected result size."
     },
     {
-      "name": "invariant state",
-      "purpose": "The running sum, window, pointer, candidate, or frequency state."
+      "name": "left, right, and window value",
+      "purpose": "The current window boundaries plus the aggregate maintained inside that window."
     },
     {
-      "name": "answer",
-      "purpose": "The best value, transformed array, or matching pair."
+      "name": "returned value",
+      "purpose": "The value produced by slidingWindow after the maintained state reaches the stop rule."
     },
     {
-      "name": "scan remains",
-      "purpose": "Continue while unchecked positions remain."
+      "name": "transition / stop rule",
+      "purpose": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,15 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Sliding Window needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "array-patterns",
-  "algorithmSlug": "sliding-window"
+  "algorithmSlug": "sliding-window",
+  "runnerInput": [
+    [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    3
+  ]
 };

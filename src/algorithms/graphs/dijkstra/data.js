@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "graph, start",
+      "purpose": "graph: The adjacency structure that defines which vertices can be reached from each vertex. start: The vertex where traversal, relaxation, or tree growth begins."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "frontier / visited / distance state",
+      "purpose": "The graph-owned state that changes as vertices or edges are processed. This page visualizes it as weighted graph."
     },
     {
       "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "purpose": "The value produced by dijkstra after the maintained state reaches the stop rule."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "transition / stop rule",
+      "purpose": "Consume the next vertex or edge, update graph state, and preserve the graph invariant. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,27 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Dijkstra’s Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "graphs",
-  "algorithmSlug": "dijkstra"
+  "algorithmSlug": "dijkstra",
+  "runnerInput": [
+    {
+      "A": [
+        [
+          "B",
+          1
+        ],
+        [
+          "C",
+          4
+        ]
+      ],
+      "B": [
+        [
+          "C",
+          2
+        ]
+      ],
+      "C": []
+    },
+    "A"
+  ]
 };

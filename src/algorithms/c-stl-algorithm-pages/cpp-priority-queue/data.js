@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The concrete data C++ priority_queue receives before any state changes begin."
+      "name": "values, window Size",
+      "purpose": "values: The candidate values that drive the heap, recursion, subset, or frequency process. window Size: The window Size input used by the algorithm."
     },
     {
-      "name": "state",
-      "purpose": "The working information C++ priority_queue updates while it runs."
+      "name": "heap array",
+      "purpose": "The array-backed heap after each sift, push, or pop operation."
     },
     {
-      "name": "answer",
-      "purpose": "The final value C++ priority_queue returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by cppPriorityQueue after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether C++ priority_queue continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the heap tree transition until the stop condition for C++ priority_queue is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,14 @@ export const algorithmPage = {
     "incorrectText": "Not quite. C++ priority_queue needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "c-stl-algorithm-pages",
-  "algorithmSlug": "cpp-priority-queue"
+  "algorithmSlug": "cpp-priority-queue",
+  "runnerInput": [
+    [
+      4,
+      1,
+      5,
+      2
+    ],
+    2
+  ]
 };

@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "a, b",
+      "purpose": "a: The string data used for character comparisons, matching, or dynamic programming states. b: The string data used for character comparisons, matching, or dynamic programming states."
     },
     {
-      "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "name": "dp table and dependencies",
+      "purpose": "Stored subproblem answers plus the dependency order needed to fill them. This page visualizes it as dp grid."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "target dp answer",
+      "purpose": "The value produced by editDistance after the maintained state reaches the stop rule."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "transition / stop rule",
+      "purpose": "Compute one DP state from already-solved smaller states. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,9 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Edit Distance needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "dynamic-programming",
-  "algorithmSlug": "edit-distance"
+  "algorithmSlug": "edit-distance",
+  "runnerInput": [
+    "horse",
+    "ros"
+  ]
 };

@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "input",
-      "purpose": "The concrete data C++ max_element() / min_element() receives before any state changes begin."
+      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "state",
-      "purpose": "The working information C++ max_element() / min_element() updates while it runs."
+      "name": "index and comparison",
+      "purpose": "The current array position and comparison that decide whether C++ max_element() / min_element() returns now or moves on."
     },
     {
-      "name": "answer",
-      "purpose": "The final value C++ max_element() / min_element() returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by cppMaxMinElement after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether C++ max_element() / min_element() continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the array scan transition until the stop condition for C++ max_element() / min_element() is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,13 @@ export const algorithmPage = {
     "incorrectText": "Not quite. C++ max_element() / min_element() needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "c-stl-algorithm-pages",
-  "algorithmSlug": "cpp-max-min-element"
+  "algorithmSlug": "cpp-max-min-element",
+  "runnerInput": [
+    [
+      3,
+      1,
+      4,
+      2
+    ]
+  ]
 };

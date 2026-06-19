@@ -1,13 +1,14 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Anagram Detection
 // Route: /algorithms/strings/anagram-detection
-// This educational implementation is intentionally small and side-effect-light.
 
-export function anagramDetection(text, pattern = "") {
-  const matches = [];
-  if (!pattern) return matches;
-  for (let index = 0; index <= text.length - pattern.length; index += 1) {
-    if (text.slice(index, index + pattern.length) === pattern) matches.push(index);
+export function anagramDetection(first, second) {
+  if (first.length !== second.length) return false;
+  const counts = {};
+  for (const char of first) counts[char] = (counts[char] || 0) + 1;
+  for (const char of second) {
+    if (!counts[char]) return false;
+    counts[char] -= 1;
   }
-  return matches;
+  return true;
 }

@@ -1,24 +1,18 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Recursion Basics
 // Route: /algorithms/foundations/recursion-basics
-// This educational implementation is intentionally small and side-effect-light.
 
-export function recursionBasics(choices) {
-  const values = Array.isArray(choices) ? choices : [];
+export function recursionBasics(values) {
+  const input = Array.isArray(values) ? values : [1, 2, 3];
   const result = [];
-  const path = [];
-
-  function backtrack(index) {
-    if (index === values.length) {
-      result.push([...path]);
+  function build(index, path) {
+    if (index === input.length) {
+      result.push(path);
       return;
     }
-    backtrack(index + 1);
-    path.push(values[index]);
-    backtrack(index + 1);
-    path.pop();
+    build(index + 1, path);
+    build(index + 1, [...path, input[index]]);
   }
-
-  backtrack(0);
+  build(0, []);
   return result;
 }

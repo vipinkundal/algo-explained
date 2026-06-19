@@ -1,9 +1,11 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // C++ unique()
 // Route: /algorithms/cpp-stl/unique
-// This educational implementation is intentionally small and side-effect-light.
 
-export function cppUnique(input) {
-  const state = Array.isArray(input) ? [...input] : input;
-  return { input, state, answer: state };
+export function cppUnique(values) {
+  const result = [];
+  for (const value of values) {
+    if (result.length === 0 || result[result.length - 1] !== value) result.push(value);
+  }
+  return result;
 }

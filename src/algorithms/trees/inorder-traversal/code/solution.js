@@ -1,17 +1,15 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Inorder Traversal
 // Route: /algorithms/trees/inorder-traversal
-// This educational implementation is intentionally small and side-effect-light.
 
 export function inorderTraversal(root) {
   const result = [];
-  function visit(node) {
-    if (!node) return 0;
+  function walk(node) {
+    if (!node) return;
+    walk(node.left);
     result.push(node.value);
-    const leftHeight = visit(node.left);
-    const rightHeight = visit(node.right);
-    return Math.max(leftHeight, rightHeight) + 1;
+    walk(node.right);
   }
-  const height = visit(root);
-  return { result, height };
+  walk(root);
+  return result;
 }

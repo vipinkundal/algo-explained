@@ -1,13 +1,13 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Bitmasking for Subsets
 // Route: /algorithms/bit-manipulation/bitmasking-subsets
-// This educational implementation is intentionally small and side-effect-light.
 
-export function bitmaskingSubsets(value, other = 1) {
-  let a = Math.abs(Number(value) || 0);
-  let b = Math.abs(Number(other) || 0);
-  while (b !== 0) {
-    [a, b] = [b, a % b];
+export function bitmaskingSubsets(values) {
+  const result = [];
+  for (let mask = 0; mask < (1 << values.length); mask += 1) {
+    const subset = [];
+    for (let bit = 0; bit < values.length; bit += 1) if (mask & (1 << bit)) subset.push(values[bit]);
+    result.push(subset);
   }
-  return a;
+  return result;
 }

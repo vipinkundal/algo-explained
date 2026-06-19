@@ -55,6 +55,110 @@ function collectExports(source) {
   return { transformed, names };
 }
 
+function splitParameters(parameterSource) {
+  const parameters = [];
+  let current = "";
+  let depth = 0;
+  let quote = "";
+
+  for (const character of parameterSource) {
+    if (quote) {
+      current += character;
+      if (character === quote) quote = "";
+      continue;
+    }
+    if (character === "\\"" || character === "'" || character === "\`") {
+      quote = character;
+      current += character;
+      continue;
+    }
+    if ("([{".includes(character)) depth += 1;
+    if (")]}".includes(character)) depth -= 1;
+    if (character === "," && depth === 0) {
+      parameters.push(current.trim());
+      current = "";
+      continue;
+    }
+    current += character;
+  }
+
+  if (current.trim()) parameters.push(current.trim());
+  return parameters;
+}
+
+function getFunctionParameters(source, functionName) {
+  const match = source.match(new RegExp("(?:export\\\\s+)?(?:async\\\\s+)?function\\\\s+" + functionName + "\\\\s*\\\\(([^)]*)\\\\)"));
+  if (!match) return [];
+  return splitParameters(match[1]).map((parameter) => parameter.replace(/=.*/, "").trim()).filter(Boolean);
+}
+
+function sampleValueForParameter(parameter) {
+  const name = String(parameter || "").toLowerCase();
+  if (["array", "arr", "nums", "numbers"].includes(name)) return [1, 2, 3, 4, 5];
+  if (["sortedarray"].includes(name)) return [1, 2, 3, 4, 5, 8, 13];
+  if (["values"].includes(name)) return [4, 1, 2, 1, 3, 2, 5];
+  if (["prices"].includes(name)) return [100, 80, 60, 70, 60, 75, 85];
+  if (["heights"].includes(name)) return [2, 1, 5, 6, 2, 3];
+  if (["choices"].includes(name)) return [1, 2, 3];
+  if (["target", "key"].includes(name)) return 3;
+  if (name === "value") return 12;
+  if (name === "other") return 8;
+  if (name === "k") return 2;
+  if (name === "n") return 5;
+  if (name === "size") return 5;
+  if (name === "length") return 5;
+  if (name === "capacity") return 3;
+  if (name === "amount") return 7;
+  if (name === "low") return -5;
+  if (name === "high") return 5;
+  if (name === "precision") return 0.001;
+  if (name === "initial") return 0;
+  if (name === "windowsize") return 3;
+  if (name === "bucketcount") return 3;
+  if (name === "coins") return [1, 3, 4];
+  if (name === "weights") return [2, 3, 4];
+  if (name === "dimensions") return [10, 20, 30, 40];
+  if (name === "lists") return [[1, 4, 5], [1, 3, 4], [2, 6]];
+  if (name === "updates") return [[0, 2, 3], [1, 4, 2]];
+  if (name === "vertices") return ["A", "B", "C", "D"];
+  if (name === "vertexcount") return 4;
+  if (name === "edges") return [["A", "B", 1], ["B", "C", 2], ["A", "C", 4], [0, 1, 1], [1, 2, 2], [2, 3, 1]];
+  if (name === "graph") return {
+    A: ["B", "C"],
+    B: ["D"],
+    C: ["D"],
+    D: [],
+  };
+  if (name === "start") return "A";
+  if (name === "matrix" || name === "grid" || name === "board") return [
+    [1, 1, 0],
+    [0, 1, 0],
+    [1, 0, 1],
+  ];
+  if (name === "root" || name === "node") return {
+    value: 4,
+    left: { value: 2, left: { value: 1 }, right: { value: 3 } },
+    right: { value: 6, left: { value: 5 }, right: { value: 7 } },
+  };
+  if (name === "text" || name === "str" || name === "word" || name === "s" || name === "a") return "abracadabra";
+  if (name === "pattern" || name === "b") return "abra";
+  if (name === "input") return [1, 2, 3, 2, 1];
+  if (name === "operations") return [
+    ["push", 1],
+    ["push", 2],
+    ["peek"],
+    ["pop"],
+    ["get", 1],
+    ["put", 1, 10],
+  ];
+  if (name === "evaluate") return (x) => -(x - 2) * (x - 2) + 4;
+  return undefined;
+}
+
+function inferRunInput(source, functionName) {
+  return getFunctionParameters(source, functionName).map(sampleValueForParameter);
+}
+
 self.onmessage = async (event) => {
   const logs = [];
   const consoleProxy = {};
@@ -78,7 +182,8 @@ self.onmessage = async (event) => {
       return;
     }
 
-    const result = await moduleExports[callableName](...runInput);
+    const input = runInput.length ? runInput : inferRunInput(source, callableName);
+    const result = await moduleExports[callableName](...input);
     self.postMessage({ ok: true, logs, returned: true, result: formatValue(result) });
   } catch (error) {
     self.postMessage({

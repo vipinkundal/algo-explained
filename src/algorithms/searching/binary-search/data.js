@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "array, target",
-      "purpose": "A sorted array and the value to find."
+      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
     },
     {
       "name": "low, high, mid",
-      "purpose": "The current search window and its midpoint."
+      "purpose": "The shrinking search window and midpoint used to discard impossible positions."
     },
     {
-      "name": "index",
-      "purpose": "The target index, or -1 when absent."
+      "name": "found index or boundary",
+      "purpose": "The value produced by binarySearch after the maintained state reaches the stop rule."
     },
     {
-      "name": "low <= high",
-      "purpose": "The loop runs while the window is non-empty."
+      "name": "transition / stop rule",
+      "purpose": "Move low to mid + 1 when the middle is too small; move high to mid - 1 when it is too large. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,13 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Binary Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "searching",
-  "algorithmSlug": "binary-search"
+  "algorithmSlug": "binary-search",
+  "runnerInput": [
+    [
+      1,
+      3,
+      5
+    ],
+    3
+  ]
 };

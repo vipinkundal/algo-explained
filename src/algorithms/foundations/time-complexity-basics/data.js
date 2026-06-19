@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "input",
-      "purpose": "The concrete data Time Complexity Basics receives before any state changes begin."
+      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "state",
-      "purpose": "The working information Time Complexity Basics updates while it runs."
+      "name": "working state",
+      "purpose": "The local state updated by the algorithm transition. This page visualizes it as growth chart."
     },
     {
-      "name": "answer",
-      "purpose": "The final value Time Complexity Basics returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by timeComplexityBasics after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether Time Complexity Basics continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the growth chart transition until the stop condition for Time Complexity Basics is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,12 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Time Complexity Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "foundations",
-  "algorithmSlug": "time-complexity-basics"
+  "algorithmSlug": "time-complexity-basics",
+  "runnerInput": [
+    [
+      1,
+      2,
+      3
+    ]
+  ]
 };

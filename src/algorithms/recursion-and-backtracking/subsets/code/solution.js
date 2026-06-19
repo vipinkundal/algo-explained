@@ -1,24 +1,19 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Subsets
 // Route: /algorithms/backtracking/subsets
-// This educational implementation is intentionally small and side-effect-light.
 
-export function subsets(choices) {
-  const values = Array.isArray(choices) ? choices : [];
+export function subsets(values) {
   const result = [];
-  const path = [];
-
-  function backtrack(index) {
+  function build(index, path) {
     if (index === values.length) {
       result.push([...path]);
       return;
     }
-    backtrack(index + 1);
+    build(index + 1, path);
     path.push(values[index]);
-    backtrack(index + 1);
+    build(index + 1, path);
     path.pop();
   }
-
-  backtrack(0);
+  build(0, []);
   return result;
 }

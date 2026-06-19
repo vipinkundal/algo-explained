@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "array, target",
-      "purpose": "A rotated sorted array and target."
+      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
     },
     {
-      "name": "low, high, mid",
-      "purpose": "Current candidate window."
+      "name": "search window or scan index",
+      "purpose": "The index, pointer, or boundary range that can still contain the answer. This page visualizes it as rotated array."
     },
     {
-      "name": "index",
-      "purpose": "The target index or -1."
+      "name": "found index or boundary",
+      "purpose": "The value produced by searchInRotatedSortedArray after the maintained state reaches the stop rule."
     },
     {
-      "name": "low <= high",
-      "purpose": "Continue while the window can contain target."
+      "name": "transition / stop rule",
+      "purpose": "Move low/high according to whether target lies inside the sorted side. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,17 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Search in Rotated Sorted Array needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "searching",
-  "algorithmSlug": "search-in-rotated-sorted-array"
+  "algorithmSlug": "search-in-rotated-sorted-array",
+  "runnerInput": [
+    [
+      4,
+      5,
+      6,
+      7,
+      0,
+      1,
+      2
+    ],
+    0
+  ]
 };

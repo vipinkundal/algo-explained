@@ -1,9 +1,12 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Hashing Basics
 // Route: /algorithms/foundations/hashing-basics
-// This educational implementation is intentionally small and side-effect-light.
 
-export function hashingBasics(input) {
-  const state = Array.isArray(input) ? [...input] : input;
-  return { input, state, answer: state };
+export function hashingBasics(values) {
+  const counts = {};
+  for (const value of Array.isArray(values) ? values : []) {
+    const key = String(value);
+    counts[key] = (counts[key] || 0) + 1;
+  }
+  return counts;
 }

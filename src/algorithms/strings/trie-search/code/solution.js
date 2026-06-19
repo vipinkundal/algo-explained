@@ -1,9 +1,18 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Trie-Based Search
 // Route: /algorithms/strings/trie-search
-// This educational implementation is intentionally small and side-effect-light.
 
-export function trieSearch(input) {
-  const state = Array.isArray(input) ? [...input] : input;
-  return { input, state, answer: state };
+export function trieSearch(words, query) {
+  const root = {};
+  for (const word of words) {
+    let node = root;
+    for (const char of word) node = node[char] ||= {};
+    node.$ = true;
+  }
+  let node = root;
+  for (const char of query) {
+    if (!node[char]) return false;
+    node = node[char];
+  }
+  return Boolean(node.$);
 }

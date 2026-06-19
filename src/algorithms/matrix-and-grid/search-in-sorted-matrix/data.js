@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The list of comparable values that must be rearranged into sorted order."
+      "name": "array, target",
+      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
     },
     {
-      "name": "indices and working array",
-      "purpose": "Pointers, passes, partitions, buckets, or merge buffers that track progress."
+      "name": "row, column, and visited state",
+      "purpose": "Cell coordinates and visited or transformed values used by the grid transition. This page visualizes it as matrix staircase."
     },
     {
-      "name": "sorted array",
-      "purpose": "A nondecreasing version of the input array."
+      "name": "returned value",
+      "purpose": "The value produced by searchInSortedMatrix after the maintained state reaches the stop rule."
     },
     {
-      "name": "unsorted region remains",
-      "purpose": "Continue while there are elements, partitions, passes, or digit buckets left to process."
+      "name": "transition / stop rule",
+      "purpose": "Compare, move, swap, merge, or bucket values according to this sorter until no unsorted work remains. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,20 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Search in Sorted Matrix needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "matrix-and-grid",
-  "algorithmSlug": "search-in-sorted-matrix"
+  "algorithmSlug": "search-in-sorted-matrix",
+  "runnerInput": [
+    [
+      [
+        1,
+        3,
+        5
+      ],
+      [
+        7,
+        9,
+        11
+      ]
+    ],
+    9
+  ]
 };

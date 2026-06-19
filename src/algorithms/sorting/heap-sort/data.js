@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "array",
-      "purpose": "The values to sort."
+      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
     },
     {
-      "name": "working array",
-      "purpose": "A copy that is rearranged during sorting."
+      "name": "heap array",
+      "purpose": "The array-backed heap after each sift, push, or pop operation."
     },
     {
-      "name": "sorted array",
-      "purpose": "The final ordered result."
+      "name": "sorted result",
+      "purpose": "The value produced by heapSort after the maintained state reaches the stop rule."
     },
     {
-      "name": "unsorted work remains",
-      "purpose": "Continue until every value is in final order."
+      "name": "transition / stop rule",
+      "purpose": "Compare and move values according to the algorithm's invariant until no unsorted work remains. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,13 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Heap Sort needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "sorting",
-  "algorithmSlug": "heap-sort"
+  "algorithmSlug": "heap-sort",
+  "runnerInput": [
+    [
+      4,
+      1,
+      3,
+      2
+    ]
+  ]
 };

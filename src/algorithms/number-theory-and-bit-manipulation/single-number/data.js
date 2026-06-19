@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The concrete data Single Number receives before any state changes begin."
+      "name": "value, other",
+      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "state",
-      "purpose": "The working information Single Number updates while it runs."
+      "name": "xor accumulator",
+      "purpose": "The running xor value where duplicate bits cancel out."
     },
     {
-      "name": "answer",
-      "purpose": "The final value Single Number returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by singleNumber after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether Single Number continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the xor cancel transition until the stop condition for Single Number is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,12 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Single Number needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
-  "algorithmSlug": "single-number"
+  "algorithmSlug": "single-number",
+  "runnerInput": [
+    [
+      2,
+      2,
+      1
+    ]
+  ]
 };

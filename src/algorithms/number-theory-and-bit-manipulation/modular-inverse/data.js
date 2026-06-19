@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The concrete data Modular Inverse receives before any state changes begin."
+      "name": "value, other",
+      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "state",
-      "purpose": "The working information Modular Inverse updates while it runs."
+      "name": "numeric invariant",
+      "purpose": "The remainder, bit mask, power, xor, or primality state updated each step. This page visualizes it as extended gcd."
     },
     {
-      "name": "answer",
-      "purpose": "The final value Modular Inverse returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by modularInverse after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether Modular Inverse continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the extended gcd transition until the stop condition for Modular Inverse is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,9 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Modular Inverse needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
-  "algorithmSlug": "modular-inverse"
+  "algorithmSlug": "modular-inverse",
+  "runnerInput": [
+    3,
+    11
+  ]
 };

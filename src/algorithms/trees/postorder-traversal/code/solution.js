@@ -1,17 +1,15 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Postorder Traversal
 // Route: /algorithms/trees/postorder-traversal
-// This educational implementation is intentionally small and side-effect-light.
 
 export function postorderTraversal(root) {
   const result = [];
-  function visit(node) {
-    if (!node) return 0;
+  function walk(node) {
+    if (!node) return;
+    walk(node.left);
+    walk(node.right);
     result.push(node.value);
-    const leftHeight = visit(node.left);
-    const rightHeight = visit(node.right);
-    return Math.max(leftHeight, rightHeight) + 1;
   }
-  const height = visit(root);
-  return { result, height };
+  walk(root);
+  return result;
 }

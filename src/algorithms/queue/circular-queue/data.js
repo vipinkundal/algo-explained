@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "Values or operations to process."
+      "name": "capacity, operations",
+      "purpose": "capacity: The maximum size allowed before eviction or rejection happens. operations: The sequence of commands applied to the data structure state."
     },
     {
-      "name": "data structure state",
-      "purpose": "The stack, queue, heap, deque, or cache state."
+      "name": "queue / deque / cache state",
+      "purpose": "The front, back, capacity, and cached entries affected by each operation. This page visualizes it as circular buffer."
     },
     {
-      "name": "answer",
-      "purpose": "The output after all operations or after each step."
+      "name": "operation output",
+      "purpose": "The value produced by circularQueue after the maintained state reaches the stop rule."
     },
     {
-      "name": "operations remain",
-      "purpose": "Continue while input values or operations remain."
+      "name": "transition / stop rule",
+      "purpose": "Read the next operation or value, update the owned data structure, and emit the current answer if needed. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,35 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Circular Queue needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "queue",
-  "algorithmSlug": "circular-queue"
+  "algorithmSlug": "circular-queue",
+  "runnerInput": [
+    2,
+    [
+      {
+        "type": "enqueue",
+        "value": 1
+      },
+      {
+        "type": "enqueue",
+        "value": 2
+      },
+      {
+        "type": "enqueue",
+        "value": 3
+      },
+      {
+        "type": "dequeue"
+      },
+      {
+        "type": "enqueue",
+        "value": 4
+      },
+      {
+        "type": "dequeue"
+      },
+      {
+        "type": "dequeue"
+      }
+    ]
+  ]
 };

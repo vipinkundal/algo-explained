@@ -1,9 +1,15 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // BST Insert
 // Route: /algorithms/trees/bst-insert
-// This educational implementation is intentionally small and side-effect-light.
 
-export function bstInsert(input) {
-  const state = Array.isArray(input) ? [...input] : input;
-  return { input, state, answer: state };
+export function bstInsert(root, value) {
+  const insert = (node, nextValue) => {
+    if (!node) return { value: nextValue, left: null, right: null };
+    const copy = { value: node.value, left: node.left, right: node.right };
+    if (nextValue < copy.value) copy.left = insert(copy.left, nextValue);
+    else if (nextValue > copy.value) copy.right = insert(copy.right, nextValue);
+    return copy;
+  };
+  const tree = Array.isArray(root) ? root.reduce((node, next) => insert(node, next), null) : root;
+  return insert(tree, value);
 }

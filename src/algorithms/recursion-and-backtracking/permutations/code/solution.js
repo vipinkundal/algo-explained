@@ -1,24 +1,24 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Permutations
 // Route: /algorithms/backtracking/permutations
-// This educational implementation is intentionally small and side-effect-light.
 
-export function permutations(choices) {
-  const values = Array.isArray(choices) ? choices : [];
+export function permutations(values) {
   const result = [];
-  const path = [];
-
-  function backtrack(index) {
-    if (index === values.length) {
+  const used = Array(values.length).fill(false);
+  function build(path) {
+    if (path.length === values.length) {
       result.push([...path]);
       return;
     }
-    backtrack(index + 1);
-    path.push(values[index]);
-    backtrack(index + 1);
-    path.pop();
+    for (let index = 0; index < values.length; index += 1) {
+      if (used[index]) continue;
+      used[index] = true;
+      path.push(values[index]);
+      build(path);
+      path.pop();
+      used[index] = false;
+    }
   }
-
-  backtrack(0);
+  build([]);
   return result;
 }

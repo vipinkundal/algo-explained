@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "root",
-      "purpose": "The concrete data Height / Depth of Tree receives before any state changes begin."
+      "purpose": "The tree node where recursion or traversal begins."
     },
     {
-      "name": "current node and traversal state",
-      "purpose": "The working information Height / Depth of Tree updates while it runs."
+      "name": "current node and recursion state",
+      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as tree height."
     },
     {
       "name": "tree result",
-      "purpose": "The final value Height / Depth of Tree returns after the stop condition is met."
+      "purpose": "The value produced by heightDepthOfTree after the maintained state reaches the stop rule."
     },
     {
-      "name": "node exists",
-      "purpose": "The rule that decides whether Height / Depth of Tree continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,28 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Height / Depth of Tree needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "trees",
-  "algorithmSlug": "height-depth-of-tree"
+  "algorithmSlug": "height-depth-of-tree",
+  "runnerInput": [
+    {
+      "value": 4,
+      "left": {
+        "value": 2,
+        "left": {
+          "value": 1
+        },
+        "right": {
+          "value": 3
+        }
+      },
+      "right": {
+        "value": 6,
+        "left": {
+          "value": 5
+        },
+        "right": {
+          "value": 7
+        }
+      }
+    }
+  ]
 };

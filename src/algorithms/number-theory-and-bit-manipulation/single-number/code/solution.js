@@ -1,13 +1,7 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Single Number
 // Route: /algorithms/bit-manipulation/single-number
-// This educational implementation is intentionally small and side-effect-light.
 
-export function singleNumber(value, other = 1) {
-  let a = Math.abs(Number(value) || 0);
-  let b = Math.abs(Number(other) || 0);
-  while (b !== 0) {
-    [a, b] = [b, a % b];
-  }
-  return a;
+export function singleNumber(values) {
+  return values.reduce((answer, value) => answer ^ value, 0);
 }

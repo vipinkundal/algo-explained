@@ -1,17 +1,11 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Matrix Traversal
 // Route: /algorithms/matrix/matrix-traversal
-// This educational implementation is intentionally small and side-effect-light.
 
-export function matrixTraversal(root) {
-  const result = [];
-  function visit(node) {
-    if (!node) return 0;
-    result.push(node.value);
-    const leftHeight = visit(node.left);
-    const rightHeight = visit(node.right);
-    return Math.max(leftHeight, rightHeight) + 1;
+export function matrixTraversal(matrix) {
+  const order = [];
+  for (let row = 0; row < matrix.length; row += 1) {
+    for (let col = 0; col < matrix[row].length; col += 1) order.push(matrix[row][col]);
   }
-  const height = visit(root);
-  return { result, height };
+  return order;
 }

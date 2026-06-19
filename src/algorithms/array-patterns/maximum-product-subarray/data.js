@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "array",
-      "purpose": "The input values."
+      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
     },
     {
-      "name": "invariant state",
-      "purpose": "The running sum, window, pointer, candidate, or frequency state."
+      "name": "current min, current max, best",
+      "purpose": "Both extremes are tracked because a negative value can swap min and max products."
     },
     {
-      "name": "answer",
-      "purpose": "The best value, transformed array, or matching pair."
+      "name": "returned value",
+      "purpose": "The value produced by maximumProductSubarray after the maintained state reaches the stop rule."
     },
     {
-      "name": "scan remains",
-      "purpose": "Continue while unchecked positions remain."
+      "name": "transition / stop rule",
+      "purpose": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,13 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Maximum Product Subarray needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "array-patterns",
-  "algorithmSlug": "maximum-product-subarray"
+  "algorithmSlug": "maximum-product-subarray",
+  "runnerInput": [
+    [
+      2,
+      3,
+      -2,
+      4
+    ]
+  ]
 };

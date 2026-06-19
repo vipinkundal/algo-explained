@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "input",
-      "purpose": "The concrete data C++ unordered_map / unordered_set receives before any state changes begin."
+      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "state",
-      "purpose": "The working information C++ unordered_map / unordered_set updates while it runs."
+      "name": "working state",
+      "purpose": "The local state updated by the algorithm transition. This page visualizes it as hash table."
     },
     {
-      "name": "answer",
-      "purpose": "The final value C++ unordered_map / unordered_set returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by cppUnorderedMapSet after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether C++ unordered_map / unordered_set continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the hash table transition until the stop condition for C++ unordered_map / unordered_set is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,12 @@ export const algorithmPage = {
     "incorrectText": "Not quite. C++ unordered_map / unordered_set needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "c-stl-algorithm-pages",
-  "algorithmSlug": "cpp-unordered-map-set"
+  "algorithmSlug": "cpp-unordered-map-set",
+  "runnerInput": [
+    [
+      1,
+      2,
+      2
+    ]
+  ]
 };

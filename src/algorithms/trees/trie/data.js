@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "root",
-      "purpose": "The concrete data Trie Operations receives before any state changes begin."
+      "name": "input",
+      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "current node and traversal state",
-      "purpose": "The working information Trie Operations updates while it runs."
+      "name": "trie node and child links",
+      "purpose": "The current prefix node and the links followed or created for each character."
     },
     {
       "name": "tree result",
-      "purpose": "The final value Trie Operations returns after the stop condition is met."
+      "purpose": "The value produced by trie after the maintained state reaches the stop rule."
     },
     {
-      "name": "node exists",
-      "purpose": "The rule that decides whether Trie Operations continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,11 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Trie Operations needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "trees",
-  "algorithmSlug": "trie"
+  "algorithmSlug": "trie",
+  "runnerInput": [
+    [
+      "cat",
+      "car"
+    ]
+  ]
 };

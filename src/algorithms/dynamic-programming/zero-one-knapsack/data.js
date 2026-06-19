@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "weights, values, capacity",
+      "purpose": "weights: Item weights that constrain which choices fit into the knapsack capacity. values: The candidate values that drive the heap, recursion, subset, or frequency process. capacity: The maximum size allowed before eviction or rejection happens."
     },
     {
-      "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "name": "dp table and dependencies",
+      "purpose": "Stored subproblem answers plus the dependency order needed to fill them. This page visualizes it as dp grid."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "target dp answer",
+      "purpose": "The value produced by zeroOneKnapsack after the maintained state reaches the stop rule."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "transition / stop rule",
+      "purpose": "Compute one DP state from already-solved smaller states. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,18 @@ export const algorithmPage = {
     "incorrectText": "Not quite. 0/1 Knapsack needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "dynamic-programming",
-  "algorithmSlug": "zero-one-knapsack"
+  "algorithmSlug": "zero-one-knapsack",
+  "runnerInput": [
+    [
+      2,
+      3,
+      4
+    ],
+    [
+      3,
+      4,
+      5
+    ],
+    5
+  ]
 };

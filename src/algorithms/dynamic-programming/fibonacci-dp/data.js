@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "n",
+      "purpose": "The n input used by the algorithm."
     },
     {
       "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "purpose": "A table of subproblem answers filled in dependency order."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "target dp answer",
+      "purpose": "The value produced by fibonacciDp after the maintained state reaches the stop rule."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "transition / stop rule",
+      "purpose": "Compute one DP state from already-solved smaller states. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,8 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Fibonacci DP needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "dynamic-programming",
-  "algorithmSlug": "fibonacci-dp"
+  "algorithmSlug": "fibonacci-dp",
+  "runnerInput": [
+    7
+  ]
 };

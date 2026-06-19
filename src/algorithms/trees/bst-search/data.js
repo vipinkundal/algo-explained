@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "array, target",
-      "purpose": "A searchable list plus the value or boundary condition being requested."
+      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
     },
     {
-      "name": "search window",
-      "purpose": "Current indices or scan position that define where the answer can still be."
+      "name": "current node and recursion state",
+      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as bst path."
     },
     {
-      "name": "index or insertion point",
-      "purpose": "The found position, boundary position, or -1 when no valid item exists."
+      "name": "tree result",
+      "purpose": "The value produced by bstSearch after the maintained state reaches the stop rule."
     },
     {
-      "name": "window still valid",
-      "purpose": "Continue while the current index or low/high window can still contain the answer."
+      "name": "transition / stop rule",
+      "purpose": "Each transition either advances one position or moves a boundary inward. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,29 @@ export const algorithmPage = {
     "incorrectText": "Not quite. BST Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "trees",
-  "algorithmSlug": "bst-search"
+  "algorithmSlug": "bst-search",
+  "runnerInput": [
+    {
+      "value": 4,
+      "left": {
+        "value": 2,
+        "left": {
+          "value": 1
+        },
+        "right": {
+          "value": 3
+        }
+      },
+      "right": {
+        "value": 6,
+        "left": {
+          "value": 5
+        },
+        "right": {
+          "value": 7
+        }
+      }
+    },
+    5
+  ]
 };

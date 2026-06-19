@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "Values or operations to process."
+      "name": "values, size",
+      "purpose": "values: The candidate values that drive the heap, recursion, subset, or frequency process. size: A numeric limit that controls the window, heap, bucket, or selected result size."
     },
     {
-      "name": "data structure state",
-      "purpose": "The stack, queue, heap, deque, or cache state."
+      "name": "queue / deque / cache state",
+      "purpose": "The front, back, capacity, and cached entries affected by each operation. This page visualizes it as monotonic deque."
     },
     {
-      "name": "answer",
-      "purpose": "The output after all operations or after each step."
+      "name": "operation output",
+      "purpose": "The value produced by slidingWindowMaximum after the maintained state reaches the stop rule."
     },
     {
-      "name": "operations remain",
-      "purpose": "Continue while input values or operations remain."
+      "name": "transition / stop rule",
+      "purpose": "Read the next operation or value, update the owned data structure, and emit the current answer if needed. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,18 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Sliding Window Maximum needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "queue",
-  "algorithmSlug": "sliding-window-maximum"
+  "algorithmSlug": "sliding-window-maximum",
+  "runnerInput": [
+    [
+      1,
+      3,
+      -1,
+      -3,
+      5,
+      3,
+      6,
+      7
+    ],
+    3
+  ]
 };

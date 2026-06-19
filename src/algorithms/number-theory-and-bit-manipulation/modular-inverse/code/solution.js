@@ -1,13 +1,14 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Modular Inverse
 // Route: /algorithms/number-theory/modular-inverse
-// This educational implementation is intentionally small and side-effect-light.
 
-export function modularInverse(value, other = 1) {
-  let a = Math.abs(Number(value) || 0);
-  let b = Math.abs(Number(other) || 0);
-  while (b !== 0) {
-    [a, b] = [b, a % b];
+export function modularInverse(value, mod) {
+  function extendedGcd(a, b) {
+    if (b === 0) return [Math.abs(a), Math.sign(a) || 1, 0];
+    const [g, x1, y1] = extendedGcd(b, a % b);
+    return [g, y1, x1 - Math.floor(a / b) * y1];
   }
-  return a;
+  const [gcd, x] = extendedGcd(value, mod);
+  if (gcd !== 1) return null;
+  return ((x % mod) + mod) % mod;
 }

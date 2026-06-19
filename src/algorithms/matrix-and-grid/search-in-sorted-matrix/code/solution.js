@@ -1,11 +1,15 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Search in Sorted Matrix
 // Route: /algorithms/matrix/search-in-sorted-matrix
-// This educational implementation is intentionally small and side-effect-light.
 
-export function searchInSortedMatrix(array, target) {
-  for (let index = 0; index < array.length; index += 1) {
-    if (array[index] === target) return index;
+export function searchInSortedMatrix(matrix, target) {
+  if (!matrix.length || !matrix[0].length) return [-1, -1];
+  let row = 0;
+  let col = matrix[0].length - 1;
+  while (row < matrix.length && col >= 0) {
+    if (matrix[row][col] === target) return [row, col];
+    if (matrix[row][col] > target) col -= 1;
+    else row += 1;
   }
-  return -1;
+  return [-1, -1];
 }

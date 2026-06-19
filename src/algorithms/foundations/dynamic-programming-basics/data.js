@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "input",
-      "purpose": "The concrete data Dynamic Programming Basics receives before any state changes begin."
+      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "state",
-      "purpose": "The working information Dynamic Programming Basics updates while it runs."
+      "name": "dp table",
+      "purpose": "A table of subproblem answers filled in dependency order."
     },
     {
-      "name": "answer",
-      "purpose": "The final value Dynamic Programming Basics returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by dynamicProgrammingBasics after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether Dynamic Programming Basics continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the dp table transition until the stop condition for Dynamic Programming Basics is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,12 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Dynamic Programming Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "foundations",
-  "algorithmSlug": "dynamic-programming-basics"
+  "algorithmSlug": "dynamic-programming-basics",
+  "runnerInput": [
+    [
+      1,
+      2,
+      3
+    ]
+  ]
 };

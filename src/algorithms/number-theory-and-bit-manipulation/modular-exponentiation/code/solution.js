@@ -1,13 +1,15 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Modular Exponentiation
 // Route: /algorithms/number-theory/modular-exponentiation
-// This educational implementation is intentionally small and side-effect-light.
 
-export function modularExponentiation(value, other = 1) {
-  let a = Math.abs(Number(value) || 0);
-  let b = Math.abs(Number(other) || 0);
-  while (b !== 0) {
-    [a, b] = [b, a % b];
+export function modularExponentiation(base, exponent, mod) {
+  let result = 1 % mod;
+  let power = ((base % mod) + mod) % mod;
+  let n = exponent;
+  while (n > 0) {
+    if (n % 2 === 1) result = (result * power) % mod;
+    power = (power * power) % mod;
+    n = Math.floor(n / 2);
   }
-  return a;
+  return result;
 }

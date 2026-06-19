@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The concrete data C++ accumulate() receives before any state changes begin."
+      "name": "array, initial",
+      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. initial: The initial input used by the algorithm."
     },
     {
-      "name": "state",
-      "purpose": "The working information C++ accumulate() updates while it runs."
+      "name": "running total",
+      "purpose": "The accumulator after processing each item in order."
     },
     {
-      "name": "answer",
-      "purpose": "The final value C++ accumulate() returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by cppAccumulate after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether C++ accumulate() continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the running sum transition until the stop condition for C++ accumulate() is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,13 @@ export const algorithmPage = {
     "incorrectText": "Not quite. C++ accumulate() needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "c-stl-algorithm-pages",
-  "algorithmSlug": "cpp-accumulate"
+  "algorithmSlug": "cpp-accumulate",
+  "runnerInput": [
+    [
+      1,
+      2,
+      3
+    ],
+    10
+  ]
 };

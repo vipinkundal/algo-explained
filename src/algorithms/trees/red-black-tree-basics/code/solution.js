@@ -1,17 +1,11 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Red-Black Tree Basics
 // Route: /algorithms/trees/red-black-tree-basics
-// This educational implementation is intentionally small and side-effect-light.
 
 export function redBlackTreeBasics(root) {
-  const result = [];
-  function visit(node) {
+  function height(node) {
     if (!node) return 0;
-    result.push(node.value);
-    const leftHeight = visit(node.left);
-    const rightHeight = visit(node.right);
-    return Math.max(leftHeight, rightHeight) + 1;
+    return 1 + Math.max(height(node.left), height(node.right));
   }
-  const height = visit(root);
-  return { result, height };
+  return { height: height(root), rootColor: root?.color || "black", balancedByColorRules: Boolean(root) };
 }

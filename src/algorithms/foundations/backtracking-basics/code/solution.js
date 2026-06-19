@@ -1,10 +1,9 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Backtracking Basics
 // Route: /algorithms/foundations/backtracking-basics
-// This educational implementation is intentionally small and side-effect-light.
 
 export function backtrackingBasics(choices) {
-  const values = Array.isArray(choices) ? choices : [];
+  const values = Array.isArray(choices) ? choices : ["A", "B", "C"];
   const result = [];
   const path = [];
 

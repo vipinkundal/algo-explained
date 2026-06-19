@@ -1,24 +1,15 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Tower of Hanoi
 // Route: /algorithms/recursion/tower-of-hanoi
-// This educational implementation is intentionally small and side-effect-light.
 
-export function towerOfHanoi(choices) {
-  const values = Array.isArray(choices) ? choices : [];
-  const result = [];
-  const path = [];
-
-  function backtrack(index) {
-    if (index === values.length) {
-      result.push([...path]);
-      return;
-    }
-    backtrack(index + 1);
-    path.push(values[index]);
-    backtrack(index + 1);
-    path.pop();
+export function towerOfHanoi(disks, from = "A", to = "C", helper = "B") {
+  const moves = [];
+  function move(n, source, target, spare) {
+    if (n === 0) return;
+    move(n - 1, source, spare, target);
+    moves.push([source, target]);
+    move(n - 1, spare, target, source);
   }
-
-  backtrack(0);
-  return result;
+  move(disks, from, to, helper);
+  return moves;
 }

@@ -1,13 +1,15 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Sieve of Eratosthenes
 // Route: /algorithms/number-theory/sieve-of-eratosthenes
-// This educational implementation is intentionally small and side-effect-light.
 
-export function sieveOfEratosthenes(value, other = 1) {
-  let a = Math.abs(Number(value) || 0);
-  let b = Math.abs(Number(other) || 0);
-  while (b !== 0) {
-    [a, b] = [b, a % b];
+export function sieveOfEratosthenes(limit) {
+  const prime = Array(limit + 1).fill(true);
+  prime[0] = prime[1] = false;
+  for (let value = 2; value * value <= limit; value += 1) {
+    if (!prime[value]) continue;
+    for (let multiple = value * value; multiple <= limit; multiple += value) prime[multiple] = false;
   }
-  return a;
+  const result = [];
+  for (let value = 2; value <= limit; value += 1) if (prime[value]) result.push(value);
+  return result;
 }

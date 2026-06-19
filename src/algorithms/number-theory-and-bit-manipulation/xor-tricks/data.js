@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The concrete data XOR Tricks receives before any state changes begin."
+      "name": "value, other",
+      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "state",
-      "purpose": "The working information XOR Tricks updates while it runs."
+      "name": "xor accumulator",
+      "purpose": "The running xor value where duplicate bits cancel out."
     },
     {
-      "name": "answer",
-      "purpose": "The final value XOR Tricks returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by xorTricks after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether XOR Tricks continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the xor cancel transition until the stop condition for XOR Tricks is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,9 @@ export const algorithmPage = {
     "incorrectText": "Not quite. XOR Tricks needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
-  "algorithmSlug": "xor-tricks"
+  "algorithmSlug": "xor-tricks",
+  "runnerInput": [
+    6,
+    3
+  ]
 };

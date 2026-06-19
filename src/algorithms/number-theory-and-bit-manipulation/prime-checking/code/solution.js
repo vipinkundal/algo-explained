@@ -1,9 +1,13 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Prime Checking
 // Route: /algorithms/number-theory/prime-checking
-// This educational implementation is intentionally small and side-effect-light.
 
-export function primeChecking(input) {
-  const state = Array.isArray(input) ? [...input] : input;
-  return { input, state, answer: state };
+export function primeChecking(value) {
+  if (value < 2) return false;
+  if (value === 2) return true;
+  if (value % 2 === 0) return false;
+  for (let divisor = 3; divisor * divisor <= value; divisor += 2) {
+    if (value % divisor === 0) return false;
+  }
+  return true;
 }

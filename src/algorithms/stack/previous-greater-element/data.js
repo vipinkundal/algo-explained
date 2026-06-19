@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "Values or operations to process."
+      "name": "values",
+      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
     },
     {
-      "name": "data structure state",
-      "purpose": "The stack, queue, heap, deque, or cache state."
+      "name": "monotonic stack",
+      "purpose": "Candidate indices kept in an order that makes the next answer easy to find."
     },
     {
-      "name": "answer",
-      "purpose": "The output after all operations or after each step."
+      "name": "operation output",
+      "purpose": "The value produced by previousGreaterElement after the maintained state reaches the stop rule."
     },
     {
-      "name": "operations remain",
-      "purpose": "Continue while input values or operations remain."
+      "name": "transition / stop rule",
+      "purpose": "Read the next operation or value, update the owned data structure, and emit the current answer if needed. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,14 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Previous Greater Element needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "stack",
-  "algorithmSlug": "previous-greater-element"
+  "algorithmSlug": "previous-greater-element",
+  "runnerInput": [
+    [
+      2,
+      1,
+      2,
+      4,
+      3
+    ]
+  ]
 };

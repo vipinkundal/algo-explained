@@ -1,14 +1,12 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Rotate Matrix
 // Route: /algorithms/matrix/rotate-matrix
-// This educational implementation is intentionally small and side-effect-light.
 
 export function rotateMatrix(matrix) {
-  const rows = matrix.length;
-  const cols = matrix[0]?.length || 0;
-  const order = [];
-  for (let row = 0; row < rows; row += 1) {
-    for (let col = 0; col < cols; col += 1) order.push(matrix[row][col]);
+  const n = matrix.length;
+  const rotated = Array.from({ length: n }, () => Array(n));
+  for (let row = 0; row < n; row += 1) {
+    for (let col = 0; col < n; col += 1) rotated[col][n - 1 - row] = matrix[row][col];
   }
-  return order;
+  return rotated;
 }

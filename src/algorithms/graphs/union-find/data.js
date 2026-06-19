@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "size, operations",
+      "purpose": "size: A numeric limit that controls the window, heap, bucket, or selected result size. operations: The sequence of commands applied to the data structure state."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "parent and rank arrays",
+      "purpose": "Disjoint-set parent links and ranks used to merge components."
     },
     {
       "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "purpose": "The value produced by unionFind after the maintained state reaches the stop rule."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "transition / stop rule",
+      "purpose": "Consume the next vertex or edge, update graph state, and preserve the graph invariant. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,26 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Disjoint Set Union / Union Find needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "graphs",
-  "algorithmSlug": "union-find"
+  "algorithmSlug": "union-find",
+  "runnerInput": [
+    4,
+    [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        3
+      ]
+    ]
+  ]
 };

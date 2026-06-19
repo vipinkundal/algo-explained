@@ -1,17 +1,16 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Level Order Traversal
 // Route: /algorithms/trees/level-order-traversal
-// This educational implementation is intentionally small and side-effect-light.
 
 export function levelOrderTraversal(root) {
-  const result = [];
-  function visit(node) {
-    if (!node) return 0;
-    result.push(node.value);
-    const leftHeight = visit(node.left);
-    const rightHeight = visit(node.right);
-    return Math.max(leftHeight, rightHeight) + 1;
+  if (!root) return [];
+  const order = [];
+  const queue = [root];
+  for (let index = 0; index < queue.length; index += 1) {
+    const node = queue[index];
+    order.push(node.value);
+    if (node.left) queue.push(node.left);
+    if (node.right) queue.push(node.right);
   }
-  const height = visit(root);
-  return { result, height };
+  return order;
 }

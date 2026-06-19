@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The input values."
+      "name": "sorted Array, target",
+      "purpose": "sorted Array: A sorted list whose order lets the algorithm move pointers or boundaries safely. target: The value or condition each comparison is trying to locate."
     },
     {
-      "name": "invariant state",
-      "purpose": "The running sum, window, pointer, candidate, or frequency state."
+      "name": "left and right pointers",
+      "purpose": "Two indices that move toward each other while preserving the pair or boundary invariant."
     },
     {
-      "name": "answer",
-      "purpose": "The best value, transformed array, or matching pair."
+      "name": "returned value",
+      "purpose": "The value produced by twoPointers after the maintained state reaches the stop rule."
     },
     {
-      "name": "scan remains",
-      "purpose": "Continue while unchecked positions remain."
+      "name": "transition / stop rule",
+      "purpose": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,15 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Two Pointers needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "array-patterns",
-  "algorithmSlug": "two-pointers"
+  "algorithmSlug": "two-pointers",
+  "runnerInput": [
+    [
+      1,
+      2,
+      4,
+      6,
+      8
+    ],
+    10
+  ]
 };

@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "text and pattern",
-      "purpose": "The concrete data Trie-Based Search receives before any state changes begin."
+      "name": "input",
+      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "indices and prefix/hash state",
-      "purpose": "The working information Trie-Based Search updates while it runs."
+      "name": "trie node and child links",
+      "purpose": "The current prefix node and the links followed or created for each character."
     },
     {
-      "name": "matches or string result",
-      "purpose": "The final value Trie-Based Search returns after the stop condition is met."
+      "name": "match result",
+      "purpose": "The value produced by trieSearch after the maintained state reaches the stop rule."
     },
     {
-      "name": "characters remain",
-      "purpose": "The rule that decides whether Trie-Based Search continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,12 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Trie-Based Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "strings",
-  "algorithmSlug": "trie-search"
+  "algorithmSlug": "trie-search",
+  "runnerInput": [
+    [
+      "cat",
+      "car"
+    ],
+    "car"
+  ]
 };

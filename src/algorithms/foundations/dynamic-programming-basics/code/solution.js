@@ -1,9 +1,10 @@
-// AUTO-GENERATED ALGORITHM SOLUTION
+// REFERENCE ALGORITHM SOLUTION
 // Dynamic Programming Basics
 // Route: /algorithms/foundations/dynamic-programming-basics
-// This educational implementation is intentionally small and side-effect-light.
 
-export function dynamicProgrammingBasics(input) {
-  const state = Array.isArray(input) ? [...input] : input;
-  return { input, state, answer: state };
+export function dynamicProgrammingBasics(values) {
+  const numbers = Array.isArray(values) ? values : [1, 2, 3];
+  const state = [0];
+  for (const value of numbers) state.push(state[state.length - 1] + value);
+  return { state, answer: state[state.length - 1] };
 }

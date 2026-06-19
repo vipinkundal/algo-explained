@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The concrete data Matrix Traversal receives before any state changes begin."
+      "name": "root",
+      "purpose": "The tree node where recursion or traversal begins."
     },
     {
-      "name": "state",
-      "purpose": "The working information Matrix Traversal updates while it runs."
+      "name": "row, column, and visited state",
+      "purpose": "Cell coordinates and visited or transformed values used by the grid transition. This page visualizes it as grid walk."
     },
     {
-      "name": "answer",
-      "purpose": "The final value Matrix Traversal returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by matrixTraversal after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether Matrix Traversal continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the grid walk transition until the stop condition for Matrix Traversal is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,17 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Matrix Traversal needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "matrix-and-grid",
-  "algorithmSlug": "matrix-traversal"
+  "algorithmSlug": "matrix-traversal",
+  "runnerInput": [
+    [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ]
+  ]
 };

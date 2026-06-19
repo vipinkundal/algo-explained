@@ -42,20 +42,20 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "vertex Count, edges",
+      "purpose": "vertex Count: The vertex Count input used by the algorithm. edges: Weighted or unweighted connections considered by the graph transition."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "chosen edges and components",
+      "purpose": "The partial spanning tree plus component or frontier state."
     },
     {
       "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "purpose": "The value produced by kruskal after the maintained state reaches the stop rule."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "transition / stop rule",
+      "purpose": "Consume the next vertex or edge, update graph state, and preserve the graph invariant. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,30 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Kruskal’s Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "graphs",
-  "algorithmSlug": "kruskal"
+  "algorithmSlug": "kruskal",
+  "runnerInput": [
+    4,
+    [
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        5
+      ],
+      [
+        2,
+        3,
+        1
+      ]
+    ]
+  ]
 };

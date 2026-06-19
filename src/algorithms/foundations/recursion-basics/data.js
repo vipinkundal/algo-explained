@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "choices",
-      "purpose": "The concrete data Recursion Basics receives before any state changes begin."
+      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
     },
     {
-      "name": "path",
-      "purpose": "The partial decision path being built by the recursive search."
+      "name": "working state",
+      "purpose": "The local state updated by the algorithm transition. This page visualizes it as call stack."
     },
     {
-      "name": "solutions",
-      "purpose": "All valid paths or the final recursive value requested by the problem."
+      "name": "returned value",
+      "purpose": "The value produced by recursionBasics after the maintained state reaches the stop rule."
     },
     {
-      "name": "base case or invalid choice",
-      "purpose": "Stop when the path is complete, invalid, or ready to be recorded."
+      "name": "transition / stop rule",
+      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,11 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Recursion Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "foundations",
-  "algorithmSlug": "recursion-basics"
+  "algorithmSlug": "recursion-basics",
+  "runnerInput": [
+    [
+      1,
+      2
+    ]
+  ]
 };

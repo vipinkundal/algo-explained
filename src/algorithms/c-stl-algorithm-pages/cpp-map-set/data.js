@@ -43,19 +43,19 @@ export const algorithmPage = {
   "variables": [
     {
       "name": "input",
-      "purpose": "The concrete data C++ map / set receives before any state changes begin."
+      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
     },
     {
-      "name": "state",
-      "purpose": "The working information C++ map / set updates while it runs."
+      "name": "working state",
+      "purpose": "The local state updated by the algorithm transition. This page visualizes it as balanced tree."
     },
     {
-      "name": "answer",
-      "purpose": "The final value C++ map / set returns after the stop condition is met."
+      "name": "returned value",
+      "purpose": "The value produced by cppMapSet after the maintained state reaches the stop rule."
     },
     {
-      "name": "condition",
-      "purpose": "The rule that decides whether C++ map / set continues, branches, or stops."
+      "name": "transition / stop rule",
+      "purpose": "Repeat the balanced tree transition until the stop condition for C++ map / set is reached. Stop when no valid work remains or the answer is known."
     }
   ],
   "dryRun": [
@@ -111,5 +111,12 @@ export const algorithmPage = {
     "incorrectText": "Not quite. C++ map / set needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "c-stl-algorithm-pages",
-  "algorithmSlug": "cpp-map-set"
+  "algorithmSlug": "cpp-map-set",
+  "runnerInput": [
+    [
+      1,
+      2,
+      2
+    ]
+  ]
 };
