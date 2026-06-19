@@ -986,10 +986,12 @@ function renderSearchResult(record) {
   const completedCount = getCompletedCount(record.id);
   return `
     <button type="button" class="search-result ${record.id === state.selectedId ? "selected" : ""}" data-algorithm="${record.id}">
-      <span class="card-icon ${slugify(record.category)}">${icon(record.icon)}</span>
       <span class="search-result-body">
-        <strong>${escapeHtml(record.title)}</strong>
-        <span>${escapeHtml(record.match)}</span>
+        <span class="search-result-title">
+          <span class="card-icon ${slugify(record.category)}">${icon(record.icon)}</span>
+          <strong>${escapeHtml(record.title)}</strong>
+        </span>
+        <span class="search-result-summary">${escapeHtml(record.match)}</span>
         <span class="search-result-meta">
           <b>${escapeHtml(record.category)}</b>
           <b>${escapeHtml(record.priority)}</b>
