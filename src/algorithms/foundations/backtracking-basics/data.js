@@ -12,6 +12,7 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/foundations/backtracking-basics/code/solution.js",
   "codeFilename": "solution.js",
+  "runnerInput": [[1, 2, 3]],
   "meaning": "Backtracking Basics is a Foundations technique focused on solutions.",
   "problem": "Backtracking Basics explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
   "concept": "Backtracking Basics explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
@@ -63,25 +64,29 @@ export const algorithmPage = {
       "label": "Input",
       "title": "Read the problem data",
       "note": "Read the Backtracking Basics input and decide what result must be produced.",
-      "activeLine": 1
+      "codeInsight": "Line 7 normalizes the input. If choices is not an array, the function uses an empty list so the rest of the code can iterate safely.",
+      "activeLine": 7
     },
     {
       "label": "State",
       "title": "Initialize working state",
       "note": "Set up the state variables that Backtracking Basics changes during the dry run.",
-      "activeLine": 3
+      "codeInsight": "Lines 8 and 9 create separate state: result stores completed paths, while path tracks the current recursive choice trail.",
+      "activeLine": 8
     },
     {
       "label": "Transition",
       "title": "Run the core step",
       "note": "Apply one recursion tree transition for Backtracking Basics.",
-      "activeLine": 5
+      "codeInsight": "Lines 17-19 are the choose, explore, unchoose cycle: push the current value, recurse with it included, then pop to restore the path.",
+      "activeLine": 17
     },
     {
       "label": "Answer",
       "title": "Return the result",
       "note": "Return the final Backtracking Basics answer from the tracked state.",
-      "activeLine": 8
+      "codeInsight": "Line 23 returns the collected result after backtrack(0) has explored every include and exclude branch.",
+      "activeLine": 23
     }
   ],
   "complexity": {

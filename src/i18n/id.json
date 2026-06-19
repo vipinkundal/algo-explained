@@ -44,7 +44,18 @@
     "miniQuiz": "Mini kuis",
     "practice": "Latihan",
     "time": "Waktu",
-    "space": "Ruang"
+    "space": "Ruang",
+    "runCode": "Jalankan JS",
+    "codeEditor": "Kode JavaScript yang bisa diedit",
+    "codeOutput": "Output",
+    "outputEmpty": "Jalankan kode untuk melihat output.",
+    "runningCode": "Menjalankan...",
+    "outputNoResult": "Tidak ada output. Tambahkan console.log(...) atau export fungsi untuk dijalankan.",
+    "outputError": "Error",
+    "outputTimeout": "Eksekusi dihentikan setelah 2 detik. Periksa infinite loop.",
+    "consoleOutput": "Console",
+    "returnedValue": "Return",
+    "activeLine": "Baris aktif {line}"
   },
   "algorithmPages": {
     "backtracking-basics": {
@@ -100,22 +111,26 @@
         {
           "label": "Input",
           "title": "Baca data masalah",
-          "note": "Baca input Backtracking dan tentukan hasil apa yang harus dibuat."
+          "note": "Baca input Backtracking dan tentukan hasil apa yang harus dibuat.",
+          "codeInsight": "Baris 7 menormalkan input. Jika choices bukan array, fungsi memakai list kosong agar sisa kode bisa melakukan iterasi dengan aman."
         },
         {
           "label": "State",
           "title": "Inisialisasi state kerja",
-          "note": "Atur variabel state yang berubah selama dry run Backtracking."
+          "note": "Atur variabel state yang berubah selama dry run Backtracking.",
+          "codeInsight": "Baris 8 dan 9 membuat state terpisah: result menyimpan path yang selesai, sedangkan path melacak jejak pilihan rekursif saat ini."
         },
         {
           "label": "Transisi",
           "title": "Jalankan langkah inti",
-          "note": "Terapkan satu transisi pohon rekursi untuk Backtracking."
+          "note": "Terapkan satu transisi pohon rekursi untuk Backtracking.",
+          "codeInsight": "Baris 17-19 adalah siklus choose, explore, unchoose: push nilai saat ini, recurse dengan nilai itu disertakan, lalu pop untuk memulihkan path."
         },
         {
           "label": "Jawaban",
           "title": "Kembalikan hasil",
-          "note": "Kembalikan jawaban akhir Backtracking dari state yang dilacak."
+          "note": "Kembalikan jawaban akhir Backtracking dari state yang dilacak.",
+          "codeInsight": "Baris 23 mengembalikan result yang terkumpul setelah backtrack(0) menjelajahi semua cabang include dan exclude."
         }
       ],
       "complexity": {

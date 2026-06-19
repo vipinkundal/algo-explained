@@ -44,7 +44,18 @@
     "miniQuiz": "Mini cuestionario",
     "practice": "Práctica",
     "time": "Tiempo",
-    "space": "Espacio"
+    "space": "Espacio",
+    "runCode": "Ejecutar JS",
+    "codeEditor": "C?digo JavaScript editable",
+    "codeOutput": "Salida",
+    "outputEmpty": "Ejecuta el c?digo para ver la salida.",
+    "runningCode": "Ejecutando...",
+    "outputNoResult": "No hay salida. Agrega console.log(...) o exporta una funci?n para ejecutarla.",
+    "outputError": "Error",
+    "outputTimeout": "La ejecuci?n se detuvo despu?s de 2 segundos. Revisa si hay un bucle infinito.",
+    "consoleOutput": "Consola",
+    "returnedValue": "Devuelto",
+    "activeLine": "L?nea activa {line}"
   },
   "algorithmPages": {
     "backtracking-basics": {
@@ -100,22 +111,26 @@
         {
           "label": "Entrada",
           "title": "Leer los datos del problema",
-          "note": "Lee la entrada de Backtracking Basics y decide qué resultado debe producirse."
+          "note": "Lee la entrada de Backtracking Basics y decide qué resultado debe producirse.",
+          "codeInsight": "La l?nea 7 normaliza la entrada. Si choices no es un arreglo, la funci?n usa una lista vac?a para que el resto del c?digo pueda iterar con seguridad."
         },
         {
           "label": "Estado",
           "title": "Inicializar el estado de trabajo",
-          "note": "Configura las variables de estado que Backtracking Basics cambia durante el recorrido."
+          "note": "Configura las variables de estado que Backtracking Basics cambia durante el recorrido.",
+          "codeInsight": "Las l?neas 8 y 9 crean estados separados: result guarda los caminos completos, mientras path sigue la ruta actual de decisiones recursivas."
         },
         {
           "label": "Transición",
           "title": "Ejecutar el paso central",
-          "note": "Aplica una transición del árbol recursivo para Backtracking Basics."
+          "note": "Aplica una transición del árbol recursivo para Backtracking Basics.",
+          "codeInsight": "Las l?neas 17-19 son el ciclo elegir, explorar y deshacer: agrega el valor actual, recurre incluy?ndolo y luego lo quita para restaurar path."
         },
         {
           "label": "Respuesta",
           "title": "Devolver el resultado",
-          "note": "Devuelve la respuesta final de Backtracking Basics desde el estado seguido."
+          "note": "Devuelve la respuesta final de Backtracking Basics desde el estado seguido.",
+          "codeInsight": "La l?nea 23 devuelve el resultado recopilado despu?s de que backtrack(0) explor? todas las ramas de incluir y excluir."
         }
       ],
       "complexity": {

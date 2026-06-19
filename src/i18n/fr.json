@@ -44,7 +44,18 @@
     "miniQuiz": "Mini quiz",
     "practice": "Pratique",
     "time": "Temps",
-    "space": "Espace"
+    "space": "Espace",
+    "runCode": "Ex?cuter JS",
+    "codeEditor": "Code JavaScript modifiable",
+    "codeOutput": "Sortie",
+    "outputEmpty": "Ex?cutez le code pour voir la sortie.",
+    "runningCode": "Ex?cution...",
+    "outputNoResult": "Aucune sortie. Ajoutez console.log(...) ou exportez une fonction ? ex?cuter.",
+    "outputError": "Erreur",
+    "outputTimeout": "L?ex?cution s?est arr?t?e apr?s 2 secondes. V?rifiez la pr?sence d?une boucle infinie.",
+    "consoleOutput": "Console",
+    "returnedValue": "Valeur renvoy?e",
+    "activeLine": "Ligne active {line}"
   },
   "algorithmPages": {
     "backtracking-basics": {
@@ -100,22 +111,26 @@
         {
           "label": "Entrée",
           "title": "Lire les données du problème",
-          "note": "Lis l'entrée du backtracking et décide quel résultat doit être produit."
+          "note": "Lis l'entrée du backtracking et décide quel résultat doit être produit.",
+          "codeInsight": "La ligne 7 normalise l?entr?e. Si choices n?est pas un tableau, la fonction utilise une liste vide pour que le reste du code puisse it?rer sans risque."
         },
         {
           "label": "État",
           "title": "Initialiser l'état de travail",
-          "note": "Configure les variables d'état que le backtracking modifie pendant le parcours."
+          "note": "Configure les variables d'état que le backtracking modifie pendant le parcours.",
+          "codeInsight": "Les lignes 8 et 9 cr?ent deux ?tats s?par?s : result stocke les chemins termin?s, tandis que path suit la piste de choix r?cursive actuelle."
         },
         {
           "label": "Transition",
           "title": "Exécuter l'étape centrale",
-          "note": "Applique une transition d'arbre récursif pour le backtracking."
+          "note": "Applique une transition d'arbre récursif pour le backtracking.",
+          "codeInsight": "Les lignes 17-19 forment le cycle choisir, explorer, annuler : on ajoute la valeur courante, on lance l?appel r?cursif avec elle, puis on la retire pour restaurer path."
         },
         {
           "label": "Réponse",
           "title": "Renvoyer le résultat",
-          "note": "Renvoie la réponse finale du backtracking depuis l'état suivi."
+          "note": "Renvoie la réponse finale du backtracking depuis l'état suivi.",
+          "codeInsight": "La ligne 23 renvoie le r?sultat collect? apr?s que backtrack(0) a explor? toutes les branches avec inclusion et exclusion."
         }
       ],
       "complexity": {

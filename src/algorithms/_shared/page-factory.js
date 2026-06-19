@@ -1,12 +1,106 @@
+const CODE_RUN_TIMEOUT_MS = 2000;
+
+const RUNNER_WORKER_SOURCE = `
+function formatValue(value) {
+  if (typeof value === "string") return value;
+  if (typeof value === "undefined") return "undefined";
+  if (typeof value === "function") return "[Function " + (value.name || "anonymous") + "]";
+  try {
+    const json = JSON.stringify(value, null, 2);
+    return json === undefined ? String(value) : json;
+  } catch {
+    return String(value);
+  }
+}
+
+function collectExports(source) {
+  const names = [];
+  const addName = (name) => {
+    if (name && !names.includes(name)) names.push(name);
+    return name;
+  };
+  let transformed = source;
+
+  transformed = transformed.replace(/export\\s+default\\s+async\\s+function\\s+([A-Za-z_$][\\w$]*)/g, (_, name) => {
+    addName(name);
+    return "async function " + name;
+  });
+  transformed = transformed.replace(/export\\s+default\\s+function\\s+([A-Za-z_$][\\w$]*)/g, (_, name) => {
+    addName(name);
+    return "function " + name;
+  });
+  transformed = transformed.replace(/export\\s+async\\s+function\\s+([A-Za-z_$][\\w$]*)/g, (_, name) => {
+    addName(name);
+    return "async function " + name;
+  });
+  transformed = transformed.replace(/export\\s+function\\s+([A-Za-z_$][\\w$]*)/g, (_, name) => {
+    addName(name);
+    return "function " + name;
+  });
+  transformed = transformed.replace(/export\\s+(const|let|var)\\s+([A-Za-z_$][\\w$]*)\\s*=/g, (_, kind, name) => {
+    addName(name);
+    return kind + " " + name + " =";
+  });
+  transformed = transformed.replace(/export\\s+default\\s+/g, () => {
+    addName("__defaultExport");
+    return "const __defaultExport = ";
+  });
+  transformed = transformed.replace(/export\\s*\\{([^}]+)\\};?/g, (_, list) => {
+    list.split(",").forEach((part) => {
+      addName(part.trim().split(/\\s+as\\s+/i)[0].trim());
+    });
+    return "";
+  });
+
+  return { transformed, names };
+}
+
+self.onmessage = async (event) => {
+  const logs = [];
+  const consoleProxy = {};
+  ["log", "info", "warn", "error"].forEach((level) => {
+    consoleProxy[level] = (...args) => logs.push(args.map(formatValue).join(" "));
+  });
+
+  try {
+    const source = event.data && event.data.source ? event.data.source : "";
+    const runInput = Array.isArray(event.data && event.data.runInput) ? event.data.runInput : [];
+    const collected = collectExports(source);
+    const exportMap = collected.names
+      .map((name) => name + ": typeof " + name + " === \\"undefined\\" ? undefined : " + name)
+      .join(",");
+    const factory = new Function("console", collected.transformed + "\\nreturn { " + exportMap + " };");
+    const moduleExports = factory(consoleProxy);
+    const callableName = collected.names.find((name) => typeof moduleExports[name] === "function");
+
+    if (!callableName) {
+      self.postMessage({ ok: true, logs, returned: false, result: "" });
+      return;
+    }
+
+    const result = await moduleExports[callableName](...runInput);
+    self.postMessage({ ok: true, logs, returned: true, result: formatValue(result) });
+  } catch (error) {
+    self.postMessage({
+      ok: false,
+      message: error && error.message ? error.message : String(error),
+    });
+  }
+};
+`;
+
 export function createGenericAlgorithmPage(deps, algorithmPage) {
   const { icon, escapeHtml, requestRender } = deps;
   const t = deps.t || ((key) => key);
   algorithmPage = deps.localizeAlgorithmPage?.(algorithmPage) || algorithmPage;
 
   const state = {
-    codeLines: [],
+    codeSource: "",
+    codeDirty: false,
     codeLoaded: false,
     loadingCode: false,
+    codeOutput: "",
+    codeOutputKind: "idle",
     selectedAnswer: "",
     step: 0,
   };
@@ -30,6 +124,14 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
         requestRender();
       });
     });
+
+    const codeEditor = root.querySelector("[data-code-editor]");
+    if (codeEditor) {
+      codeEditor.addEventListener("input", () => {
+        state.codeSource = codeEditor.value;
+        state.codeDirty = true;
+      });
+    }
   }
 
   function cleanup() {}
@@ -112,7 +214,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
           <aside class="explanation-bubble">
             ${icon("tips_and_updates")}
             <strong>${escapeHtml(t("algorithmPage.codeInsight"))}</strong>
-            <p>${escapeHtml(algorithmPage.codeInsight || current.note)}</p>
+            <p>${escapeHtml(getCodeInsight(current))}</p>
           </aside>
         </div>
         <div class="control-deck" aria-label="${escapeHtml(t("algorithmPage.visualizerControls"))}">
@@ -133,16 +235,39 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   }
 
   function renderCodeTrace(activeLine) {
-    const codeLines = state.codeLines.length ? state.codeLines : [`// ${t("algorithmPage.loadingImplementation", { title: algorithmPage.title })}`];
+    const codeSource = getCodeSource();
+    const codeLines = codeSource.split("\n");
+    const output = state.codeOutput || t("algorithmPage.outputEmpty");
+    const editorRows = Math.min(Math.max(codeLines.length, 12), 24);
     return `
       <div class="code-trace" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.codeTrace")}`)}">
         <div class="code-header">
           <span>${escapeHtml(algorithmPage.codeFilename)}</span>
-          <span class="window-dots"><i></i><i></i><i></i></span>
+          <span class="code-header-actions">
+            <span>${escapeHtml(t("algorithmPage.activeLine", { line: activeLine }))}</span>
+            <button type="button" data-action="run-code">${icon("play_arrow")} ${escapeHtml(t("algorithmPage.runCode"))}</button>
+          </span>
         </div>
-        <pre>${codeLines.map((line, index) => `<code class="${index + 1 === activeLine ? "active-line" : ""}"><span>${index + 1}</span>${escapeHtml(line)}</code>`).join("")}</pre>
+        <div class="code-editor-shell">
+          <div class="code-line-gutter" aria-hidden="true">
+            ${codeLines.map((_, index) => `<span class="${index + 1 === activeLine ? "active" : ""}">${index + 1}</span>`).join("")}
+          </div>
+          <textarea data-code-editor spellcheck="false" rows="${editorRows}" aria-label="${escapeHtml(t("algorithmPage.codeEditor"))}">${escapeHtml(codeSource)}</textarea>
+        </div>
+        <div class="code-output ${escapeHtml(state.codeOutputKind)}" aria-label="${escapeHtml(t("algorithmPage.codeOutput"))}">
+          <strong>${escapeHtml(t("algorithmPage.codeOutput"))}</strong>
+          <pre>${escapeHtml(output)}</pre>
+        </div>
       </div>
     `;
+  }
+
+  function getCodeSource() {
+    return state.codeSource || `// ${t("algorithmPage.loadingImplementation", { title: algorithmPage.title })}`;
+  }
+
+  function getCodeInsight(current) {
+    return current.codeInsight || current.note || algorithmPage.codeInsight;
   }
 
   function getTransitionSummary(current) {
@@ -190,11 +315,66 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     `;
   }
 
-  function handleAction(action) {
+  async function handleAction(action) {
+    if (action === "run-code") {
+      await runCode();
+      return;
+    }
     if (action === "prev") state.step = Math.max(0, state.step - 1);
     if (action === "next") state.step = Math.min(algorithmPage.dryRun.length - 1, state.step + 1);
     if (action === "reset") state.step = 0;
     requestRender();
+  }
+
+  async function runCode() {
+    state.codeOutput = t("algorithmPage.runningCode");
+    state.codeOutputKind = "running";
+    requestRender();
+
+    const result = await runJavaScriptSource(getCodeSource());
+    if (!result.ok) {
+      state.codeOutput = `${t("algorithmPage.outputError")}: ${result.message}`;
+      state.codeOutputKind = "error";
+      requestRender();
+      return;
+    }
+
+    const outputParts = [];
+    if (result.logs.length) {
+      outputParts.push(`${t("algorithmPage.consoleOutput")}:\n${result.logs.join("\n")}`);
+    }
+    if (result.returned) {
+      outputParts.push(`${t("algorithmPage.returnedValue")}:\n${result.result}`);
+    }
+    state.codeOutput = outputParts.join("\n\n") || t("algorithmPage.outputNoResult");
+    state.codeOutputKind = "success";
+    requestRender();
+  }
+
+  function runJavaScriptSource(source) {
+    return new Promise((resolve) => {
+      const workerUrl = URL.createObjectURL(new Blob([RUNNER_WORKER_SOURCE], { type: "text/javascript" }));
+      const worker = new Worker(workerUrl);
+      const finish = (result) => {
+        window.clearTimeout(timeout);
+        worker.terminate();
+        URL.revokeObjectURL(workerUrl);
+        resolve(result);
+      };
+      const timeout = window.setTimeout(() => {
+        finish({ ok: false, message: t("algorithmPage.outputTimeout") });
+      }, CODE_RUN_TIMEOUT_MS);
+
+      worker.onmessage = (event) => finish(event.data);
+      worker.onerror = (event) => finish({
+        ok: false,
+        message: event.message || t("algorithmPage.outputError"),
+      });
+      worker.postMessage({
+        source,
+        runInput: algorithmPage.runnerInput || [],
+      });
+    });
   }
 
   async function loadCode() {
@@ -205,7 +385,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       const response = await fetch(algorithmPage.codePath, { cache: "no-store" });
       if (response.ok) {
         const source = await response.text();
-        state.codeLines = source.trimEnd().split("\n");
+        if (!state.codeDirty) state.codeSource = source.trimEnd();
       }
     } finally {
       state.codeLoaded = true;

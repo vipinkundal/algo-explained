@@ -44,7 +44,18 @@
     "miniQuiz": "Mini quiz",
     "practice": "Practice",
     "time": "Time",
-    "space": "Space"
+    "space": "Space",
+    "runCode": "Run JS",
+    "codeEditor": "Editable JavaScript code",
+    "codeOutput": "Output",
+    "outputEmpty": "Run the code to see output.",
+    "runningCode": "Running...",
+    "outputNoResult": "No output. Add console.log(...) or export a function to run.",
+    "outputError": "Error",
+    "outputTimeout": "Execution stopped after 2 seconds. Check for an infinite loop.",
+    "consoleOutput": "Console",
+    "returnedValue": "Returned",
+    "activeLine": "Active line {line}"
   },
   "algorithmPages": {
     "backtracking-basics": {
@@ -100,22 +111,26 @@
         {
           "label": "Input",
           "title": "Read the problem data",
-          "note": "Read the Backtracking Basics input and decide what result must be produced."
+          "note": "Read the Backtracking Basics input and decide what result must be produced.",
+          "codeInsight": "Line 7 normalizes the input. If choices is not an array, the function uses an empty list so the rest of the code can iterate safely."
         },
         {
           "label": "State",
           "title": "Initialize working state",
-          "note": "Set up the state variables that Backtracking Basics changes during the dry run."
+          "note": "Set up the state variables that Backtracking Basics changes during the dry run.",
+          "codeInsight": "Lines 8 and 9 create separate state: result stores completed paths, while path tracks the current recursive choice trail."
         },
         {
           "label": "Transition",
           "title": "Run the core step",
-          "note": "Apply one recursion tree transition for Backtracking Basics."
+          "note": "Apply one recursion tree transition for Backtracking Basics.",
+          "codeInsight": "Lines 17-19 are the choose, explore, unchoose cycle: push the current value, recurse with it included, then pop to restore the path."
         },
         {
           "label": "Answer",
           "title": "Return the result",
-          "note": "Return the final Backtracking Basics answer from the tracked state."
+          "note": "Return the final Backtracking Basics answer from the tracked state.",
+          "codeInsight": "Line 23 returns the collected result after backtrack(0) has explored every include and exclude branch."
         }
       ],
       "complexity": {

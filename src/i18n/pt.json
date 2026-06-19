@@ -44,7 +44,18 @@
     "miniQuiz": "Mini quiz",
     "practice": "Prática",
     "time": "Tempo",
-    "space": "Espaço"
+    "space": "Espaço",
+    "runCode": "Executar JS",
+    "codeEditor": "C?digo JavaScript edit?vel",
+    "codeOutput": "Sa?da",
+    "outputEmpty": "Execute o c?digo para ver a sa?da.",
+    "runningCode": "Executando...",
+    "outputNoResult": "Sem sa?da. Adicione console.log(...) ou exporte uma fun??o para executar.",
+    "outputError": "Erro",
+    "outputTimeout": "A execu??o parou ap?s 2 segundos. Verifique se h? um loop infinito.",
+    "consoleOutput": "Console",
+    "returnedValue": "Retornado",
+    "activeLine": "Linha ativa {line}"
   },
   "algorithmPages": {
     "backtracking-basics": {
@@ -100,22 +111,26 @@
         {
           "label": "Entrada",
           "title": "Ler os dados do problema",
-          "note": "Leia a entrada de Backtracking Basics e decida qual resultado precisa ser produzido."
+          "note": "Leia a entrada de Backtracking Basics e decida qual resultado precisa ser produzido.",
+          "codeInsight": "A linha 7 normaliza a entrada. Se choices n?o for um array, a fun??o usa uma lista vazia para que o restante do c?digo possa iterar com seguran?a."
         },
         {
           "label": "Estado",
           "title": "Inicializar o estado de trabalho",
-          "note": "Configure as variáveis de estado que Backtracking Basics muda durante a execução."
+          "note": "Configure as variáveis de estado que Backtracking Basics muda durante a execução.",
+          "codeInsight": "As linhas 8 e 9 criam estados separados: result guarda os caminhos completos, enquanto path acompanha a trilha atual de escolhas recursivas."
         },
         {
           "label": "Transição",
           "title": "Executar a etapa central",
-          "note": "Aplique uma transição de árvore recursiva para Backtracking Basics."
+          "note": "Aplique uma transição de árvore recursiva para Backtracking Basics.",
+          "codeInsight": "As linhas 17-19 formam o ciclo escolher, explorar e desfazer: adiciona o valor atual, recursa incluindo-o e depois remove para restaurar path."
         },
         {
           "label": "Resposta",
           "title": "Retornar o resultado",
-          "note": "Retorne a resposta final de Backtracking Basics a partir do estado acompanhado."
+          "note": "Retorne a resposta final de Backtracking Basics a partir do estado acompanhado.",
+          "codeInsight": "A linha 23 retorna o resultado coletado depois que backtrack(0) explorou todos os ramos de incluir e excluir."
         }
       ],
       "complexity": {
