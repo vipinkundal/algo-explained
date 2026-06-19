@@ -1,0 +1,143 @@
+{
+  "app": {
+    "brand": "Algo Explained"
+  },
+  "language": {
+    "label": "भाषा"
+  },
+  "nav": {
+    "primary": "मुख्य",
+    "home": "होम",
+    "search": "खोज",
+    "saved": "सहेजा",
+    "savedAlgorithms": "सहेजे गए एल्गोरिदम",
+    "profile": "प्रोफ़ाइल",
+    "signIn": "साइन इन",
+    "lesson": "पाठ",
+    "visualizer": "विज़ुअलाइज़र",
+    "challenge": "क्विज़",
+    "quiz": "क्विज़"
+  },
+  "actions": {
+    "saveCurrentAlgorithm": "मौजूदा एल्गोरिदम सहेजें"
+  },
+  "algorithmPage": {
+    "stepByStepLogic": "चरण-दर-चरण तर्क",
+    "whenToUse": "कब उपयोग करें",
+    "memoryTrick": "याद रखने की तरकीब",
+    "startVisualizer": "विज़ुअलाइज़र शुरू करें",
+    "algorithmVisualizer": "एल्गोरिदम विज़ुअलाइज़र",
+    "stepCounter": "चरण {current}/{total}",
+    "concept": "संकल्पना",
+    "logic": "तर्क",
+    "loopTransition": "लूप / ट्रांज़िशन",
+    "codeInsight": "कोड इनसाइट",
+    "visualizerControls": "विज़ुअलाइज़र नियंत्रण",
+    "previousStep": "पिछला चरण",
+    "nextStep": "अगला चरण",
+    "resetVisualizer": "विज़ुअलाइज़र रीसेट करें",
+    "dryRun": "ड्राई रन",
+    "codeTrace": "कोड ट्रेस",
+    "stateFallback": "स्थिति",
+    "transitionSummaryFallback": "{title}: {visualizer} ड्राई रन के लिए {variables} अपडेट करें।",
+    "loadingImplementation": "{title} इम्प्लीमेंटेशन लोड हो रहा है...",
+    "miniQuiz": "मिनी क्विज़",
+    "practice": "अभ्यास",
+    "time": "समय",
+    "space": "स्पेस"
+  },
+  "algorithmPages": {
+    "backtracking-basics": {
+      "title": "बैकट्रैकिंग बेसिक्स",
+      "category": "फाउंडेशन",
+      "meaning": "बैकट्रैकिंग बेसिक्स समाधान खोजने पर केंद्रित एक फाउंडेशन तकनीक है।",
+      "problem": "बैकट्रैकिंग बेसिक्स चुनाव करने, रिकर्स करने, और अगला विकल्प आज़माने से पहले चुनाव को वापस लेने से निर्णय वृक्ष खोजता है।",
+      "concept": "बैकट्रैकिंग बेसिक्स चुनाव करने, रिकर्स करने, और अगला विकल्प आज़माने से पहले चुनाव को वापस लेने से निर्णय वृक्ष खोजता है।",
+      "logicSummary": "बेस केस संभालें, मान्य चुनावों पर लूप करें, एक चुनाव जोड़ें, रिकर्स करें, फिर उस चुनाव को हटाएँ।",
+      "transitionSummary": "ट्रांज़िशन है चुनें -> खोजें -> अनचुनें, जिससे समान स्तर की शाखाएँ अलग रहती हैं।",
+      "codeInsight": "बैकट्रैक चरण स्टेट को सही रखता है: हर push के साथ एक matching pop होना चाहिए।",
+      "realLifeExample": "जब इनपुट choices हो और अपेक्षित परिणाम solutions हों, तब बैकट्रैकिंग बेसिक्स काम आता है।",
+      "whenToUse": "जब समस्या फाउंडेशन पैटर्न से मेल खाती हो और अपेक्षित स्टेट बदलाव recursion tree dry run से मेल खाते हों, तब बैकट्रैकिंग बेसिक्स उपयोग करें।",
+      "memoryTrick": "बैकट्रैकिंग बेसिक्स: लूप लिखने से पहले input, state, answer, और stop condition का नाम तय करें।",
+      "visualizerCaption": "एक recursion tree walkthrough जो बैकट्रैकिंग बेसिक्स का input, state, transition, और answer दिखाता है।",
+      "logicSteps": [
+        {
+          "title": "इनपुट पढ़ें",
+          "text": "पहचानें कि बैकट्रैकिंग बेसिक्स को कौन-सा डेटा मिलता है और कौन-सा आउटपुट चाहिए।"
+        },
+        {
+          "title": "स्टेट शुरू करें",
+          "text": "वे working variables तैयार करें जो सिर्फ बैकट्रैकिंग बेसिक्स इस्तेमाल करता है।"
+        },
+        {
+          "title": "ट्रांज़िशन लागू करें",
+          "text": "एक recursion tree transition चलाएँ और algorithm-specific state अपडेट करें।"
+        },
+        {
+          "title": "उत्तर लौटाएँ",
+          "text": "सही condition पर रुकें और tracked result लौटाएँ।"
+        }
+      ],
+      "variables": [
+        {
+          "name": "choices",
+          "purpose": "वह ठोस डेटा जो किसी भी state change से पहले बैकट्रैकिंग बेसिक्स को मिलता है।"
+        },
+        {
+          "name": "path",
+          "purpose": "recursive search द्वारा बनाई जा रही partial decision path।"
+        },
+        {
+          "name": "solutions",
+          "purpose": "सभी valid paths या समस्या द्वारा माँगा गया final recursive value।"
+        },
+        {
+          "name": "base case या invalid choice",
+          "purpose": "जब path complete, invalid, या record करने योग्य हो तब रुकें।"
+        }
+      ],
+      "dryRun": [
+        {
+          "label": "इनपुट",
+          "title": "समस्या डेटा पढ़ें",
+          "note": "बैकट्रैकिंग बेसिक्स का input पढ़ें और तय करें कि कौन-सा result बनना चाहिए।"
+        },
+        {
+          "label": "स्टेट",
+          "title": "working state शुरू करें",
+          "note": "वे state variables सेट करें जिन्हें बैकट्रैकिंग बेसिक्स dry run में बदलता है।"
+        },
+        {
+          "label": "ट्रांज़िशन",
+          "title": "core step चलाएँ",
+          "note": "बैकट्रैकिंग बेसिक्स के लिए एक recursion tree transition लागू करें।"
+        },
+        {
+          "label": "उत्तर",
+          "title": "result लौटाएँ",
+          "note": "tracked state से final बैकट्रैकिंग बेसिक्स answer लौटाएँ।"
+        }
+      ],
+      "complexity": {
+        "time": "educational reference implementation के लिए O(n)।",
+        "space": "ज़रूरत होने पर tracked state के लिए O(n)।"
+      },
+      "quiz": {
+        "question": "कौन-सा state choice बैकट्रैकिंग बेसिक्स को सही रखता है?",
+        "options": [
+          {
+            "text": "path track करें और उसे सिर्फ बैकट्रैकिंग बेसिक्स के transition से update करें।"
+          },
+          {
+            "text": "transition अलग होने पर भी किसी दूसरे algorithm के state names reuse करें।"
+          },
+          {
+            "text": "algorithm-specific stop condition जाँचे बिना return करें।"
+          }
+        ],
+        "correctText": "सही। जब अपना state और transition answer को drive करते हैं, तब बैकट्रैकिंग बेसिक्स समझना आसान रहता है।",
+        "incorrectText": "ठीक नहीं। बैकट्रैकिंग बेसिक्स को दूसरे algorithm की page structure नहीं, बल्कि अपना input, state, answer, और condition चाहिए।"
+      }
+    }
+  }
+}

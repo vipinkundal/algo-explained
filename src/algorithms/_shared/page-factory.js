@@ -1,4 +1,8 @@
-export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, algorithmPage) {
+export function createGenericAlgorithmPage(deps, algorithmPage) {
+  const { icon, escapeHtml, requestRender } = deps;
+  const t = deps.t || ((key) => key);
+  algorithmPage = deps.localizeAlgorithmPage?.(algorithmPage) || algorithmPage;
+
   const state = {
     codeLines: [],
     codeLoaded: false,
@@ -46,7 +50,7 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
           </div>
         </div>
         <div class="logic-list">
-          <h3>${icon("analytics")} Step-by-step logic</h3>
+          <h3>${icon("analytics")} ${escapeHtml(t("algorithmPage.stepByStepLogic"))}</h3>
           ${algorithmPage.logicSteps.map((step, index) => `
             <div class="logic-step">
               <span>${index + 1}</span>
@@ -56,15 +60,15 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
         </div>
         <div class="info-grid">
           <article>
-            <h3>${icon("rule")} When to use it</h3>
+            <h3>${icon("rule")} ${escapeHtml(t("algorithmPage.whenToUse"))}</h3>
             <p>${escapeHtml(algorithmPage.whenToUse)}</p>
           </article>
           <article>
-            <h3>${icon("psychology")} Memory trick</h3>
+            <h3>${icon("psychology")} ${escapeHtml(t("algorithmPage.memoryTrick"))}</h3>
             <p>${escapeHtml(algorithmPage.memoryTrick)}</p>
           </article>
         </div>
-        <button class="primary-action" data-view="visualizer">Start visualizer ${icon("arrow_forward")}</button>
+        <button class="primary-action" data-view="visualizer">${escapeHtml(t("algorithmPage.startVisualizer"))} ${icon("arrow_forward")}</button>
       </section>
     `;
   }
@@ -75,13 +79,27 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
       <section class="algorithm-page visualizer-panel" data-algorithm-page="${escapeHtml(algorithmPage.id)}" data-visualizer="${escapeHtml(algorithmPage.visualizerType)}" aria-labelledby="visualizer-title">
         <div class="title-row">
           <div>
-            <p class="eyebrow">Algorithm visualizer</p>
+            <p class="eyebrow">${escapeHtml(t("algorithmPage.algorithmVisualizer"))}</p>
             <h2 id="visualizer-title">${escapeHtml(algorithmPage.title)}</h2>
             <p>${escapeHtml(algorithmPage.visualizerCaption)}</p>
           </div>
-          <span class="step-pill">Step ${state.step + 1}/${algorithmPage.dryRun.length}</span>
+          <span class="step-pill">${escapeHtml(t("algorithmPage.stepCounter", { current: state.step + 1, total: algorithmPage.dryRun.length }))}</span>
         </div>
-        <div class="dry-run-stage" aria-label="${escapeHtml(algorithmPage.title)} dry run">
+        <div class="concept-loop-grid">
+          <article>
+            <strong>${icon("psychology")} ${escapeHtml(t("algorithmPage.concept"))}</strong>
+            <p>${escapeHtml(algorithmPage.concept || algorithmPage.problem)}</p>
+          </article>
+          <article>
+            <strong>${icon("account_tree")} ${escapeHtml(t("algorithmPage.logic"))}</strong>
+            <p>${escapeHtml(algorithmPage.logicSummary || current.note)}</p>
+          </article>
+          <article>
+            <strong>${icon("repeat")} ${escapeHtml(t("algorithmPage.loopTransition"))}</strong>
+            <p>${escapeHtml(algorithmPage.transitionSummary || getTransitionSummary(current))}</p>
+          </article>
+        </div>
+        <div class="dry-run-stage" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.dryRun")}`)}">
           ${algorithmPage.dryRun.map((step, index) => `
             <div class="dry-run-node ${index === state.step ? "active" : ""} ${index < state.step ? "complete" : ""}">
               <b>${index + 1}</b>
@@ -89,32 +107,18 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
             </div>
           `).join("")}
         </div>
-        <div class="concept-loop-grid">
-          <article>
-            <strong>${icon("psychology")} Concept</strong>
-            <p>${escapeHtml(algorithmPage.concept || algorithmPage.problem)}</p>
-          </article>
-          <article>
-            <strong>${icon("account_tree")} Logic</strong>
-            <p>${escapeHtml(algorithmPage.logicSummary || current.note)}</p>
-          </article>
-          <article>
-            <strong>${icon("repeat")} Loop / transition</strong>
-            <p>${escapeHtml(algorithmPage.transitionSummary || getTransitionSummary(current))}</p>
-          </article>
-        </div>
         <div class="trace-layout">
           ${renderCodeTrace(current.activeLine)}
           <aside class="explanation-bubble">
             ${icon("tips_and_updates")}
-            <strong>Code insight</strong>
+            <strong>${escapeHtml(t("algorithmPage.codeInsight"))}</strong>
             <p>${escapeHtml(algorithmPage.codeInsight || current.note)}</p>
           </aside>
         </div>
-        <div class="control-deck" aria-label="Visualizer controls">
-          <button data-action="prev" aria-label="Previous step">${icon("skip_previous")}</button>
-          <button class="play-button" data-action="next" aria-label="Next step">${icon("skip_next")}</button>
-          <button data-action="reset" aria-label="Reset visualizer">${icon("replay")}</button>
+        <div class="control-deck" aria-label="${escapeHtml(t("algorithmPage.visualizerControls"))}">
+          <button data-action="prev" aria-label="${escapeHtml(t("algorithmPage.previousStep"))}">${icon("skip_previous")}</button>
+          <button class="play-button" data-action="next" aria-label="${escapeHtml(t("algorithmPage.nextStep"))}">${icon("skip_next")}</button>
+          <button data-action="reset" aria-label="${escapeHtml(t("algorithmPage.resetVisualizer"))}">${icon("replay")}</button>
         </div>
         <div class="variable-grid">
           ${algorithmPage.variables.map((variable) => `
@@ -129,9 +133,9 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
   }
 
   function renderCodeTrace(activeLine) {
-    const codeLines = state.codeLines.length ? state.codeLines : [`// Loading ${algorithmPage.title} implementation...`];
+    const codeLines = state.codeLines.length ? state.codeLines : [`// ${t("algorithmPage.loadingImplementation", { title: algorithmPage.title })}`];
     return `
-      <div class="code-trace" aria-label="${escapeHtml(algorithmPage.title)} code trace">
+      <div class="code-trace" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.codeTrace")}`)}">
         <div class="code-header">
           <span>${escapeHtml(algorithmPage.codeFilename)}</span>
           <span class="window-dots"><i></i><i></i><i></i></span>
@@ -143,7 +147,11 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
 
   function getTransitionSummary(current) {
     const variableNames = algorithmPage.variables.map((variable) => variable.name).join(", ");
-    return `${current.title}: update ${variableNames || "state"} for the ${algorithmPage.visualizerType.replaceAll("-", " ")} dry run.`;
+    return t("algorithmPage.transitionSummaryFallback", {
+      title: current.title,
+      variables: variableNames || t("algorithmPage.stateFallback"),
+      visualizer: algorithmPage.visualizerType.replaceAll("-", " "),
+    });
   }
 
   function renderChallenge() {
@@ -152,11 +160,11 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
       <section class="algorithm-page challenge-panel" aria-labelledby="challenge-title">
         <div class="title-row">
           <div>
-            <p class="eyebrow">Mini quiz</p>
+            <p class="eyebrow">${escapeHtml(t("algorithmPage.miniQuiz"))}</p>
             <h2 id="challenge-title">${escapeHtml(algorithmPage.title)}</h2>
             <p>${escapeHtml(algorithmPage.quiz.question)}</p>
           </div>
-          <span class="step-pill purple">${icon("quiz")} Practice</span>
+          <span class="step-pill purple">${icon("quiz")} ${escapeHtml(t("algorithmPage.practice"))}</span>
         </div>
         <div class="answer-list">
           ${algorithmPage.quiz.options.map((option) => `
@@ -167,8 +175,8 @@ export function createGenericAlgorithmPage({ icon, escapeHtml, requestRender }, 
         </div>
         ${selected ? renderChallengeResult(selected) : ""}
         <div class="complexity-grid">
-          <article><strong>Time</strong><p>${escapeHtml(algorithmPage.complexity.time)}</p></article>
-          <article><strong>Space</strong><p>${escapeHtml(algorithmPage.complexity.space)}</p></article>
+          <article><strong>${escapeHtml(t("algorithmPage.time"))}</strong><p>${escapeHtml(algorithmPage.complexity.time)}</p></article>
+          <article><strong>${escapeHtml(t("algorithmPage.space"))}</strong><p>${escapeHtml(algorithmPage.complexity.space)}</p></article>
         </div>
       </section>
     `;

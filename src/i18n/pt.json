@@ -1,0 +1,143 @@
+{
+  "app": {
+    "brand": "Algo Explained"
+  },
+  "language": {
+    "label": "Idioma"
+  },
+  "nav": {
+    "primary": "Principal",
+    "home": "Início",
+    "search": "Buscar",
+    "saved": "Salvos",
+    "savedAlgorithms": "Algoritmos salvos",
+    "profile": "Perfil",
+    "signIn": "Entrar",
+    "lesson": "Aula",
+    "visualizer": "Visualizador",
+    "challenge": "Quiz",
+    "quiz": "Quiz"
+  },
+  "actions": {
+    "saveCurrentAlgorithm": "Salvar algoritmo atual"
+  },
+  "algorithmPage": {
+    "stepByStepLogic": "Lógica passo a passo",
+    "whenToUse": "Quando usar",
+    "memoryTrick": "Dica de memória",
+    "startVisualizer": "Iniciar visualizador",
+    "algorithmVisualizer": "Visualizador de algoritmo",
+    "stepCounter": "Etapa {current}/{total}",
+    "concept": "Conceito",
+    "logic": "Lógica",
+    "loopTransition": "Loop / transição",
+    "codeInsight": "Insight do código",
+    "visualizerControls": "Controles do visualizador",
+    "previousStep": "Etapa anterior",
+    "nextStep": "Próxima etapa",
+    "resetVisualizer": "Reiniciar visualizador",
+    "dryRun": "Execução passo a passo",
+    "codeTrace": "Rastreamento de código",
+    "stateFallback": "estado",
+    "transitionSummaryFallback": "{title}: atualize {variables} para a execução passo a passo de {visualizer}.",
+    "loadingImplementation": "Carregando a implementação de {title}...",
+    "miniQuiz": "Mini quiz",
+    "practice": "Prática",
+    "time": "Tempo",
+    "space": "Espaço"
+  },
+  "algorithmPages": {
+    "backtracking-basics": {
+      "title": "Fundamentos de backtracking",
+      "category": "Fundamentos",
+      "meaning": "Backtracking Basics é uma técnica de fundamentos focada em soluções.",
+      "problem": "Backtracking Basics explora uma árvore de decisão escolhendo, chamando recursivamente e desfazendo a escolha antes de tentar a próxima opção.",
+      "concept": "Backtracking Basics explora uma árvore de decisão escolhendo, chamando recursivamente e desfazendo a escolha antes de tentar a próxima opção.",
+      "logicSummary": "Trate o caso base, percorra escolhas válidas, adicione uma escolha, faça a recursão e depois remova essa escolha.",
+      "transitionSummary": "A transição é escolher -> explorar -> desfazer, mantendo ramos irmãos isolados.",
+      "codeInsight": "A etapa de backtrack mantém o estado correto: cada push precisa ter um pop correspondente.",
+      "realLifeExample": "Backtracking Basics aparece quando a entrada são escolhas e o resultado exigido são soluções.",
+      "whenToUse": "Use Backtracking Basics quando o problema combina com o padrão de fundamentos e as mudanças de estado esperadas combinam com uma execução em árvore recursiva.",
+      "memoryTrick": "Backtracking Basics: nomeie entrada, estado, resposta e condição de parada antes de escrever o loop.",
+      "visualizerCaption": "Uma caminhada por árvore recursiva mostrando entrada, estado, transição e resposta de Backtracking Basics.",
+      "logicSteps": [
+        {
+          "title": "Ler a entrada",
+          "text": "Identifique os dados exatos que Backtracking Basics recebe e qual saída é necessária."
+        },
+        {
+          "title": "Inicializar o estado",
+          "text": "Prepare as variáveis de trabalho usadas apenas por Backtracking Basics."
+        },
+        {
+          "title": "Aplicar a transição",
+          "text": "Execute uma transição da árvore recursiva e atualize o estado específico do algoritmo."
+        },
+        {
+          "title": "Retornar a resposta",
+          "text": "Pare na condição correta e retorne o resultado acompanhado."
+        }
+      ],
+      "variables": [
+        {
+          "name": "escolhas",
+          "purpose": "Os dados concretos que Backtracking Basics recebe antes de qualquer mudança de estado começar."
+        },
+        {
+          "name": "caminho",
+          "purpose": "O caminho parcial de decisão construído pela busca recursiva."
+        },
+        {
+          "name": "soluções",
+          "purpose": "Todos os caminhos válidos ou o valor recursivo final pedido pelo problema."
+        },
+        {
+          "name": "caso base ou escolha inválida",
+          "purpose": "Pare quando o caminho estiver completo, inválido ou pronto para ser registrado."
+        }
+      ],
+      "dryRun": [
+        {
+          "label": "Entrada",
+          "title": "Ler os dados do problema",
+          "note": "Leia a entrada de Backtracking Basics e decida qual resultado precisa ser produzido."
+        },
+        {
+          "label": "Estado",
+          "title": "Inicializar o estado de trabalho",
+          "note": "Configure as variáveis de estado que Backtracking Basics muda durante a execução."
+        },
+        {
+          "label": "Transição",
+          "title": "Executar a etapa central",
+          "note": "Aplique uma transição de árvore recursiva para Backtracking Basics."
+        },
+        {
+          "label": "Resposta",
+          "title": "Retornar o resultado",
+          "note": "Retorne a resposta final de Backtracking Basics a partir do estado acompanhado."
+        }
+      ],
+      "complexity": {
+        "time": "O(n) para a implementação educacional de referência.",
+        "space": "O(n) para o estado acompanhado quando necessário."
+      },
+      "quiz": {
+        "question": "Qual escolha de estado mantém Backtracking Basics correto?",
+        "options": [
+          {
+            "text": "Acompanhar o caminho e atualizá-lo apenas pela transição de Backtracking Basics."
+          },
+          {
+            "text": "Reutilizar nomes de estado de outro algoritmo mesmo quando a transição é diferente."
+          },
+          {
+            "text": "Retornar antes de verificar a condição de parada específica do algoritmo."
+          }
+        ],
+        "correctText": "Correto. Backtracking Basics fica compreensível quando seu próprio estado e sua transição conduzem a resposta.",
+        "incorrectText": "Não exatamente. Backtracking Basics precisa de sua própria entrada, estado, resposta e condição, não da estrutura de página de outro algoritmo."
+      }
+    }
+  }
+}

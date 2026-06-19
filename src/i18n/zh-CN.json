@@ -1,0 +1,143 @@
+{
+  "app": {
+    "brand": "Algo Explained"
+  },
+  "language": {
+    "label": "语言"
+  },
+  "nav": {
+    "primary": "主导航",
+    "home": "首页",
+    "search": "搜索",
+    "saved": "已保存",
+    "savedAlgorithms": "已保存的算法",
+    "profile": "个人资料",
+    "signIn": "登录",
+    "lesson": "课程",
+    "visualizer": "可视化",
+    "challenge": "测验",
+    "quiz": "测验"
+  },
+  "actions": {
+    "saveCurrentAlgorithm": "保存当前算法"
+  },
+  "algorithmPage": {
+    "stepByStepLogic": "分步逻辑",
+    "whenToUse": "何时使用",
+    "memoryTrick": "记忆技巧",
+    "startVisualizer": "启动可视化",
+    "algorithmVisualizer": "算法可视化",
+    "stepCounter": "步骤 {current}/{total}",
+    "concept": "概念",
+    "logic": "逻辑",
+    "loopTransition": "循环 / 转换",
+    "codeInsight": "代码洞察",
+    "visualizerControls": "可视化控件",
+    "previousStep": "上一步",
+    "nextStep": "下一步",
+    "resetVisualizer": "重置可视化",
+    "dryRun": "演练",
+    "codeTrace": "代码跟踪",
+    "stateFallback": "状态",
+    "transitionSummaryFallback": "{title}：为 {visualizer} 演练更新 {variables}。",
+    "loadingImplementation": "正在加载 {title} 实现...",
+    "miniQuiz": "小测验",
+    "practice": "练习",
+    "time": "时间",
+    "space": "空间"
+  },
+  "algorithmPages": {
+    "backtracking-basics": {
+      "title": "回溯基础",
+      "category": "基础",
+      "meaning": "回溯基础是一种专注于寻找解的基础技巧。",
+      "problem": "回溯基础通过选择、递归，并在尝试下一个选项前撤销选择来探索决策树。",
+      "concept": "回溯基础通过选择、递归，并在尝试下一个选项前撤销选择来探索决策树。",
+      "logicSummary": "处理基本情况，遍历有效选择，加入一个选择，递归，然后移除该选择。",
+      "transitionSummary": "转换是选择 -> 探索 -> 取消选择，这能让兄弟分支彼此独立。",
+      "codeInsight": "回溯步骤让状态保持正确：每一次 push 都必须对应一次 pop。",
+      "realLifeExample": "当输入是多个选择，而需要的结果是所有解时，就会用到回溯基础。",
+      "whenToUse": "当问题符合基础模式，并且预期状态变化适合用递归树演示时，使用回溯基础。",
+      "memoryTrick": "回溯基础：写循环前，先命名输入、状态、答案和停止条件。",
+      "visualizerCaption": "一个递归树演示，展示回溯基础的输入、状态、转换和答案。",
+      "logicSteps": [
+        {
+          "title": "读取输入",
+          "text": "确定回溯基础接收的具体数据，以及需要输出什么。"
+        },
+        {
+          "title": "初始化状态",
+          "text": "准备只由回溯基础使用的工作变量。"
+        },
+        {
+          "title": "应用转换",
+          "text": "执行一次递归树转换，并更新算法专属状态。"
+        },
+        {
+          "title": "返回答案",
+          "text": "在正确条件处停止，并返回跟踪到的结果。"
+        }
+      ],
+      "variables": [
+        {
+          "name": "选择",
+          "purpose": "回溯基础在任何状态变化开始前接收的具体数据。"
+        },
+        {
+          "name": "路径",
+          "purpose": "递归搜索正在构建的部分决策路径。"
+        },
+        {
+          "name": "解集",
+          "purpose": "问题要求的所有有效路径或最终递归值。"
+        },
+        {
+          "name": "基本情况或无效选择",
+          "purpose": "当路径完成、无效或可以记录时停止。"
+        }
+      ],
+      "dryRun": [
+        {
+          "label": "输入",
+          "title": "读取问题数据",
+          "note": "读取回溯基础的输入，并判断必须产生什么结果。"
+        },
+        {
+          "label": "状态",
+          "title": "初始化工作状态",
+          "note": "设置回溯基础在演示过程中会改变的状态变量。"
+        },
+        {
+          "label": "转换",
+          "title": "运行核心步骤",
+          "note": "为回溯基础应用一次递归树转换。"
+        },
+        {
+          "label": "答案",
+          "title": "返回结果",
+          "note": "从跟踪状态中返回最终的回溯基础答案。"
+        }
+      ],
+      "complexity": {
+        "time": "教育参考实现的时间复杂度为 O(n)。",
+        "space": "需要跟踪状态时空间复杂度为 O(n)。"
+      },
+      "quiz": {
+        "question": "哪种状态选择能让回溯基础保持正确？",
+        "options": [
+          {
+            "text": "跟踪路径，并只通过回溯基础的转换来更新它。"
+          },
+          {
+            "text": "即使转换不同，也复用另一个算法的状态名称。"
+          },
+          {
+            "text": "在检查算法专属停止条件之前就返回。"
+          }
+        ],
+        "correctText": "正确。由自身状态和转换驱动答案时，回溯基础最容易理解。",
+        "incorrectText": "还不对。回溯基础需要自己的输入、状态、答案和条件，而不是另一个算法的页面结构。"
+      }
+    }
+  }
+}

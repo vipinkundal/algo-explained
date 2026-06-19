@@ -1,0 +1,143 @@
+{
+  "app": {
+    "brand": "Algo Explained"
+  },
+  "language": {
+    "label": "Langue"
+  },
+  "nav": {
+    "primary": "Principal",
+    "home": "Accueil",
+    "search": "Recherche",
+    "saved": "Enregistrés",
+    "savedAlgorithms": "Algorithmes enregistrés",
+    "profile": "Profil",
+    "signIn": "Connexion",
+    "lesson": "Leçon",
+    "visualizer": "Visualiseur",
+    "challenge": "Quiz",
+    "quiz": "Quiz"
+  },
+  "actions": {
+    "saveCurrentAlgorithm": "Enregistrer l'algorithme actuel"
+  },
+  "algorithmPage": {
+    "stepByStepLogic": "Logique étape par étape",
+    "whenToUse": "Quand l'utiliser",
+    "memoryTrick": "Astuce mémoire",
+    "startVisualizer": "Lancer le visualiseur",
+    "algorithmVisualizer": "Visualiseur d'algorithme",
+    "stepCounter": "Étape {current}/{total}",
+    "concept": "Concept",
+    "logic": "Logique",
+    "loopTransition": "Boucle / transition",
+    "codeInsight": "Insight du code",
+    "visualizerControls": "Contrôles du visualiseur",
+    "previousStep": "Étape précédente",
+    "nextStep": "Étape suivante",
+    "resetVisualizer": "Réinitialiser le visualiseur",
+    "dryRun": "Exécution à blanc",
+    "codeTrace": "Trace du code",
+    "stateFallback": "état",
+    "transitionSummaryFallback": "{title} : mettez à jour {variables} pour l'exécution à blanc {visualizer}.",
+    "loadingImplementation": "Chargement de l'implémentation de {title}...",
+    "miniQuiz": "Mini quiz",
+    "practice": "Pratique",
+    "time": "Temps",
+    "space": "Espace"
+  },
+  "algorithmPages": {
+    "backtracking-basics": {
+      "title": "Bases du backtracking",
+      "category": "Fondations",
+      "meaning": "Les bases du backtracking sont une technique de fondation centrée sur les solutions.",
+      "problem": "Les bases du backtracking explorent un arbre de décision en choisissant, en lançant l'appel récursif, puis en annulant le choix avant d'essayer l'option suivante.",
+      "concept": "Les bases du backtracking explorent un arbre de décision en choisissant, en lançant l'appel récursif, puis en annulant le choix avant d'essayer l'option suivante.",
+      "logicSummary": "Gérer le cas de base, parcourir les choix valides, ajouter un choix, lancer l'appel récursif, puis retirer ce choix.",
+      "transitionSummary": "La transition est choisir -> explorer -> annuler, ce qui garde les branches sœurs isolées.",
+      "codeInsight": "L'étape de backtrack garde l'état correct : chaque push doit avoir un pop correspondant.",
+      "realLifeExample": "Les bases du backtracking apparaissent quand l'entrée est un ensemble de choix et que le résultat attendu est un ensemble de solutions.",
+      "whenToUse": "Utilise les bases du backtracking quand un problème suit le motif des fondations et que les changements d'état attendus correspondent à un parcours d'arbre récursif.",
+      "memoryTrick": "Backtracking : nomme l'entrée, l'état, la réponse et la condition d'arrêt avant d'écrire la boucle.",
+      "visualizerCaption": "Un parcours d'arbre récursif montrant l'entrée, l'état, la transition et la réponse du backtracking.",
+      "logicSteps": [
+        {
+          "title": "Lire l'entrée",
+          "text": "Identifie les données exactes que le backtracking reçoit et la sortie attendue."
+        },
+        {
+          "title": "Initialiser l'état",
+          "text": "Prépare les variables de travail utilisées uniquement par le backtracking."
+        },
+        {
+          "title": "Appliquer la transition",
+          "text": "Exécute une transition d'arbre récursif et mets à jour l'état propre à l'algorithme."
+        },
+        {
+          "title": "Renvoyer la réponse",
+          "text": "Arrête-toi à la bonne condition et renvoie le résultat suivi."
+        }
+      ],
+      "variables": [
+        {
+          "name": "choix",
+          "purpose": "Les données concrètes reçues avant tout changement d'état."
+        },
+        {
+          "name": "chemin",
+          "purpose": "Le chemin de décision partiel construit par la recherche récursive."
+        },
+        {
+          "name": "solutions",
+          "purpose": "Tous les chemins valides ou la valeur récursive finale demandée par le problème."
+        },
+        {
+          "name": "cas de base ou choix invalide",
+          "purpose": "S'arrêter lorsque le chemin est complet, invalide ou prêt à être enregistré."
+        }
+      ],
+      "dryRun": [
+        {
+          "label": "Entrée",
+          "title": "Lire les données du problème",
+          "note": "Lis l'entrée du backtracking et décide quel résultat doit être produit."
+        },
+        {
+          "label": "État",
+          "title": "Initialiser l'état de travail",
+          "note": "Configure les variables d'état que le backtracking modifie pendant le parcours."
+        },
+        {
+          "label": "Transition",
+          "title": "Exécuter l'étape centrale",
+          "note": "Applique une transition d'arbre récursif pour le backtracking."
+        },
+        {
+          "label": "Réponse",
+          "title": "Renvoyer le résultat",
+          "note": "Renvoie la réponse finale du backtracking depuis l'état suivi."
+        }
+      ],
+      "complexity": {
+        "time": "O(n) pour l'implémentation pédagogique de référence.",
+        "space": "O(n) pour l'état suivi lorsque c'est nécessaire."
+      },
+      "quiz": {
+        "question": "Quel choix d'état garde le backtracking correct ?",
+        "options": [
+          {
+            "text": "Suivre le chemin et le mettre à jour uniquement via la transition du backtracking."
+          },
+          {
+            "text": "Réutiliser les noms d'état d'un autre algorithme même si la transition est différente."
+          },
+          {
+            "text": "Renvoyer avant de vérifier la condition d'arrêt propre à l'algorithme."
+          }
+        ],
+        "correctText": "Correct. Le backtracking reste compréhensible quand son propre état et sa transition dirigent la réponse.",
+        "incorrectText": "Pas tout à fait. Le backtracking a besoin de sa propre entrée, de son état, de sa réponse et de sa condition, pas de la structure d'un autre algorithme."
+      }
+    }
+  }
+}

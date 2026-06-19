@@ -1,0 +1,143 @@
+{
+  "app": {
+    "brand": "Algo Explained"
+  },
+  "language": {
+    "label": "Language"
+  },
+  "nav": {
+    "primary": "Primary",
+    "home": "Home",
+    "search": "Search",
+    "saved": "Saved",
+    "savedAlgorithms": "Saved algorithms",
+    "profile": "Profile",
+    "signIn": "Sign in",
+    "lesson": "Lesson",
+    "visualizer": "Visualizer",
+    "challenge": "Quiz",
+    "quiz": "Quiz"
+  },
+  "actions": {
+    "saveCurrentAlgorithm": "Save current algorithm"
+  },
+  "algorithmPage": {
+    "stepByStepLogic": "Step-by-step logic",
+    "whenToUse": "When to use it",
+    "memoryTrick": "Memory trick",
+    "startVisualizer": "Start visualizer",
+    "algorithmVisualizer": "Algorithm visualizer",
+    "stepCounter": "Step {current}/{total}",
+    "concept": "Concept",
+    "logic": "Logic",
+    "loopTransition": "Loop / transition",
+    "codeInsight": "Code insight",
+    "visualizerControls": "Visualizer controls",
+    "previousStep": "Previous step",
+    "nextStep": "Next step",
+    "resetVisualizer": "Reset visualizer",
+    "dryRun": "Dry run",
+    "codeTrace": "Code trace",
+    "stateFallback": "state",
+    "transitionSummaryFallback": "{title}: update {variables} for the {visualizer} dry run.",
+    "loadingImplementation": "Loading {title} implementation...",
+    "miniQuiz": "Mini quiz",
+    "practice": "Practice",
+    "time": "Time",
+    "space": "Space"
+  },
+  "algorithmPages": {
+    "backtracking-basics": {
+      "title": "Backtracking Basics",
+      "category": "Foundations",
+      "meaning": "Backtracking Basics is a Foundations technique focused on solutions.",
+      "problem": "Backtracking Basics explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
+      "concept": "Backtracking Basics explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
+      "logicSummary": "Handle the base case, loop through valid choices, add one choice, recurse, then remove that choice.",
+      "transitionSummary": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated.",
+      "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
+      "realLifeExample": "Backtracking Basics appears when the input is choices and the required result is solutions.",
+      "whenToUse": "Use Backtracking Basics when a problem matches the Foundations pattern and the expected state changes match a recursion tree dry run.",
+      "memoryTrick": "Backtracking Basics: name the input, state, answer, and stop condition before writing the loop.",
+      "visualizerCaption": "A recursion tree walkthrough showing Backtracking Basics' input, state, transition, and answer.",
+      "logicSteps": [
+        {
+          "title": "Read the input",
+          "text": "Identify the exact data Backtracking Basics receives and what output is required."
+        },
+        {
+          "title": "Initialize state",
+          "text": "Prepare the working variables used only by Backtracking Basics."
+        },
+        {
+          "title": "Apply the transition",
+          "text": "Run the recursion tree transition and update the algorithm-specific state."
+        },
+        {
+          "title": "Return the answer",
+          "text": "Stop at the correct condition and return the tracked result."
+        }
+      ],
+      "variables": [
+        {
+          "name": "choices",
+          "purpose": "The concrete data Backtracking Basics receives before any state changes begin."
+        },
+        {
+          "name": "path",
+          "purpose": "The partial decision path being built by the recursive search."
+        },
+        {
+          "name": "solutions",
+          "purpose": "All valid paths or the final recursive value requested by the problem."
+        },
+        {
+          "name": "base case or invalid choice",
+          "purpose": "Stop when the path is complete, invalid, or ready to be recorded."
+        }
+      ],
+      "dryRun": [
+        {
+          "label": "Input",
+          "title": "Read the problem data",
+          "note": "Read the Backtracking Basics input and decide what result must be produced."
+        },
+        {
+          "label": "State",
+          "title": "Initialize working state",
+          "note": "Set up the state variables that Backtracking Basics changes during the dry run."
+        },
+        {
+          "label": "Transition",
+          "title": "Run the core step",
+          "note": "Apply one recursion tree transition for Backtracking Basics."
+        },
+        {
+          "label": "Answer",
+          "title": "Return the result",
+          "note": "Return the final Backtracking Basics answer from the tracked state."
+        }
+      ],
+      "complexity": {
+        "time": "O(n) for the educational reference implementation.",
+        "space": "O(n) for tracked state when needed."
+      },
+      "quiz": {
+        "question": "Which state choice keeps Backtracking Basics correct?",
+        "options": [
+          {
+            "text": "Track path and update it only through Backtracking Basics' transition."
+          },
+          {
+            "text": "Reuse a different algorithm's state names even when the transition is different."
+          },
+          {
+            "text": "Return before checking the algorithm-specific stop condition."
+          }
+        ],
+        "correctText": "Correct. Backtracking Basics stays understandable when its own state and transition drive the answer.",
+        "incorrectText": "Not quite. Backtracking Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
+      }
+    }
+  }
+}

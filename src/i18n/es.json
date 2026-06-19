@@ -1,0 +1,143 @@
+{
+  "app": {
+    "brand": "Algo Explained"
+  },
+  "language": {
+    "label": "Idioma"
+  },
+  "nav": {
+    "primary": "Principal",
+    "home": "Inicio",
+    "search": "Buscar",
+    "saved": "Guardados",
+    "savedAlgorithms": "Algoritmos guardados",
+    "profile": "Perfil",
+    "signIn": "Iniciar sesión",
+    "lesson": "Lección",
+    "visualizer": "Visualizador",
+    "challenge": "Cuestionario",
+    "quiz": "Cuestionario"
+  },
+  "actions": {
+    "saveCurrentAlgorithm": "Guardar algoritmo actual"
+  },
+  "algorithmPage": {
+    "stepByStepLogic": "Lógica paso a paso",
+    "whenToUse": "Cuándo usarlo",
+    "memoryTrick": "Truco de memoria",
+    "startVisualizer": "Iniciar visualizador",
+    "algorithmVisualizer": "Visualizador de algoritmos",
+    "stepCounter": "Paso {current}/{total}",
+    "concept": "Concepto",
+    "logic": "Lógica",
+    "loopTransition": "Bucle / transición",
+    "codeInsight": "Idea del código",
+    "visualizerControls": "Controles del visualizador",
+    "previousStep": "Paso anterior",
+    "nextStep": "Paso siguiente",
+    "resetVisualizer": "Reiniciar visualizador",
+    "dryRun": "Ejecución paso a paso",
+    "codeTrace": "Trazado de código",
+    "stateFallback": "estado",
+    "transitionSummaryFallback": "{title}: actualiza {variables} para la ejecución paso a paso de {visualizer}.",
+    "loadingImplementation": "Cargando la implementación de {title}...",
+    "miniQuiz": "Mini cuestionario",
+    "practice": "Práctica",
+    "time": "Tiempo",
+    "space": "Espacio"
+  },
+  "algorithmPages": {
+    "backtracking-basics": {
+      "title": "Conceptos básicos de backtracking",
+      "category": "Fundamentos",
+      "meaning": "Backtracking Basics es una técnica de fundamentos enfocada en soluciones.",
+      "problem": "Backtracking Basics explora un árbol de decisiones eligiendo, recurriendo y deshaciendo la elección antes de probar la siguiente opción.",
+      "concept": "Backtracking Basics explora un árbol de decisiones eligiendo, recurriendo y deshaciendo la elección antes de probar la siguiente opción.",
+      "logicSummary": "Maneja el caso base, recorre las opciones válidas, agrega una elección, recurre y luego elimina esa elección.",
+      "transitionSummary": "La transición es elegir -> explorar -> deshacer, lo que mantiene aisladas las ramas hermanas.",
+      "codeInsight": "El paso de backtrack mantiene correcto el estado: cada push debe tener un pop correspondiente.",
+      "realLifeExample": "Backtracking Basics aparece cuando la entrada son opciones y el resultado requerido son soluciones.",
+      "whenToUse": "Usa Backtracking Basics cuando un problema coincide con el patrón de fundamentos y los cambios de estado esperados coinciden con un recorrido de árbol recursivo.",
+      "memoryTrick": "Backtracking Basics: nombra la entrada, el estado, la respuesta y la condición de parada antes de escribir el bucle.",
+      "visualizerCaption": "Un recorrido de árbol recursivo que muestra la entrada, el estado, la transición y la respuesta de Backtracking Basics.",
+      "logicSteps": [
+        {
+          "title": "Leer la entrada",
+          "text": "Identifica los datos exactos que recibe Backtracking Basics y qué salida se requiere."
+        },
+        {
+          "title": "Inicializar el estado",
+          "text": "Prepara las variables de trabajo usadas solo por Backtracking Basics."
+        },
+        {
+          "title": "Aplicar la transición",
+          "text": "Ejecuta una transición del árbol recursivo y actualiza el estado específico del algoritmo."
+        },
+        {
+          "title": "Devolver la respuesta",
+          "text": "Detente en la condición correcta y devuelve el resultado seguido."
+        }
+      ],
+      "variables": [
+        {
+          "name": "opciones",
+          "purpose": "Los datos concretos que recibe Backtracking Basics antes de que empiece cualquier cambio de estado."
+        },
+        {
+          "name": "camino",
+          "purpose": "El camino parcial de decisiones construido por la búsqueda recursiva."
+        },
+        {
+          "name": "soluciones",
+          "purpose": "Todos los caminos válidos o el valor recursivo final solicitado por el problema."
+        },
+        {
+          "name": "caso base o elección inválida",
+          "purpose": "Detente cuando el camino esté completo, sea inválido o esté listo para registrarse."
+        }
+      ],
+      "dryRun": [
+        {
+          "label": "Entrada",
+          "title": "Leer los datos del problema",
+          "note": "Lee la entrada de Backtracking Basics y decide qué resultado debe producirse."
+        },
+        {
+          "label": "Estado",
+          "title": "Inicializar el estado de trabajo",
+          "note": "Configura las variables de estado que Backtracking Basics cambia durante el recorrido."
+        },
+        {
+          "label": "Transición",
+          "title": "Ejecutar el paso central",
+          "note": "Aplica una transición del árbol recursivo para Backtracking Basics."
+        },
+        {
+          "label": "Respuesta",
+          "title": "Devolver el resultado",
+          "note": "Devuelve la respuesta final de Backtracking Basics desde el estado seguido."
+        }
+      ],
+      "complexity": {
+        "time": "O(n) para la implementación educativa de referencia.",
+        "space": "O(n) para el estado seguido cuando sea necesario."
+      },
+      "quiz": {
+        "question": "¿Qué elección de estado mantiene correcto Backtracking Basics?",
+        "options": [
+          {
+            "text": "Seguir el camino y actualizarlo solo mediante la transición de Backtracking Basics."
+          },
+          {
+            "text": "Reutilizar nombres de estado de otro algoritmo aunque la transición sea diferente."
+          },
+          {
+            "text": "Devolver antes de comprobar la condición de parada específica del algoritmo."
+          }
+        ],
+        "correctText": "Correcto. Backtracking Basics se mantiene comprensible cuando su propio estado y transición dirigen la respuesta.",
+        "incorrectText": "No del todo. Backtracking Basics necesita su propia entrada, estado, respuesta y condición, no la estructura de página de otro algoritmo."
+      }
+    }
+  }
+}

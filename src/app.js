@@ -69,6 +69,19 @@ const starterAlgorithms = [
 const initialAuthUser = loadAuthUser();
 const initialUserId = initialAuthUser?.userId || loadUserId();
 
+const supportedLanguages = [
+  { code: "en", label: "English", dir: "ltr" },
+  { code: "zh-CN", label: "中文", dir: "ltr" },
+  { code: "hi", label: "हिन्दी", dir: "ltr" },
+  { code: "es", label: "Español", dir: "ltr" },
+  { code: "ar", label: "العربية", dir: "rtl" },
+  { code: "fr", label: "Français", dir: "ltr" },
+  { code: "bn", label: "বাংলা", dir: "ltr" },
+  { code: "pt", label: "Português", dir: "ltr" },
+  { code: "ru", label: "Русский", dir: "ltr" },
+  { code: "id", label: "Indonesia", dir: "ltr" },
+];
+
 const state = {
   view: "catalog",
   selectedId: "binary-search",
@@ -91,6 +104,7 @@ const state = {
   dailyQuiz: null,
   quizLoading: false,
   quizError: "",
+  language: loadLanguage(),
 };
 
 const routeViews = new Set(["lesson", "visualizer", "challenge"]);
@@ -101,6 +115,7 @@ const loadedPages = new Map();
 const loadedStyles = new Set();
 const searchRecords = new Map();
 const algorithmDataRecords = new Map();
+const localeDictionaries = new Map();
 const root = document.getElementById("root");
 
 let algorithms = starterAlgorithms;
@@ -118,27 +133,43 @@ function renderHeader() {
   const navItems = ["catalog", "search", "saved", "lesson", ...(isDailyQuizAvailable() ? ["quiz"] : []), "profile"];
   return `
     <header class="app-header">
-      <button class="brand-button" data-view="catalog">Algo Explained</button>
-      <nav class="top-nav" aria-label="Primary">
+      <button class="brand-button" data-view="catalog">${t("app.brand")}</button>
+      <nav class="top-nav" aria-label="${escapeHtml(t("nav.primary"))}">
         ${navItems.map(renderNavButton).join("")}
       </nav>
-      ${canSaveCurrentAlgorithm ? `<button class="icon-button ${currentSaved ? "saved" : ""}" data-action="save-current" aria-label="Save current algorithm">${icon(currentSaved ? "bookmark_added" : "bookmark")}</button>` : ""}
+      ${renderLanguageSelector()}
+      ${canSaveCurrentAlgorithm ? `<button class="icon-button ${currentSaved ? "saved" : ""}" data-action="save-current" aria-label="${escapeHtml(t("actions.saveCurrentAlgorithm"))}">${icon(currentSaved ? "bookmark_added" : "bookmark")}</button>` : ""}
     </header>
   `;
 }
 
 function renderNavButton(view) {
   const labels = {
-    catalog: "home",
-    search: "search",
-    saved: "saved",
-    profile: "profile",
-    lesson: "lesson",
-    visualizer: "visualize",
-    challenge: "quiz",
-    quiz: "quiz",
+    catalog: t("nav.home"),
+    search: t("nav.search"),
+    saved: t("nav.saved"),
+    profile: t("nav.profile"),
+    lesson: t("nav.lesson"),
+    visualizer: t("nav.visualizer"),
+    challenge: t("nav.challenge"),
+    quiz: t("nav.quiz"),
   };
-  return `<button class="nav-link ${state.view === view ? "active" : ""}" data-view="${view}">${labels[view] || view}</button>`;
+  return `<button class="nav-link ${state.view === view ? "active" : ""}" data-view="${view}">${escapeHtml(labels[view] || view)}</button>`;
+}
+
+function renderLanguageSelector() {
+  return `
+    <label class="language-selector" aria-label="${escapeHtml(t("language.label"))}">
+      ${icon("translate")}
+      <select data-language-select>
+        ${supportedLanguages.map((language) => `
+          <option value="${escapeHtml(language.code)}" ${language.code === state.language ? "selected" : ""}>
+            ${escapeHtml(language.label)}
+          </option>
+        `).join("")}
+      </select>
+    </label>
+  `;
 }
 
 function renderCatalog() {
@@ -599,10 +630,10 @@ function renderProgressPanel(selected) {
 }
 
 function renderBottomNav() {
-  const profileLabel = state.authUser ? "Profile" : "Sign in";
+  const profileLabel = state.authUser ? t("nav.profile") : t("nav.signIn");
   const secondaryItems = [
-    ["catalog", "home", "Home"],
-    ["search", "search", "Search"],
+    ["catalog", "home", t("nav.home")],
+    ["search", "search", t("nav.search")],
   ];
   const quizAvailable = isDailyQuizAvailable();
   return `
@@ -612,12 +643,12 @@ function renderBottomNav() {
           ${icon(symbol)}<span>${label}</span>
         </button>
       `).join("")}
-      <button class="${state.view === "saved" ? "active saved" : ""}" data-view="saved" aria-label="Saved algorithms">
-        ${icon("bookmark")}<span>Saved</span>
+      <button class="${state.view === "saved" ? "active saved" : ""}" data-view="saved" aria-label="${escapeHtml(t("nav.savedAlgorithms"))}">
+        ${icon("bookmark")}<span>${escapeHtml(t("nav.saved"))}</span>
       </button>
       ${quizAvailable ? `
         <button class="${state.view === "quiz" ? "active" : ""}" data-view="quiz">
-          ${icon("quiz")}<span>Quiz</span>
+          ${icon("quiz")}<span>${escapeHtml(t("nav.quiz"))}</span>
         </button>
       ` : ""}
       <button class="${state.view === "profile" ? "active" : ""}" data-view="profile" aria-label="${escapeHtml(profileLabel)}">
@@ -681,6 +712,13 @@ function bindEvents() {
   root.querySelectorAll("[data-auth-form]").forEach((form) => {
     form.addEventListener("submit", handleAuthSubmit);
   });
+
+  const languageSelect = root.querySelector("[data-language-select]");
+  if (languageSelect) {
+    languageSelect.addEventListener("change", (event) => {
+      setLanguage(event.target.value);
+    });
+  }
 }
 
 function handleShellClick(event) {
@@ -843,6 +881,8 @@ async function loadAlgorithmPage(id, options = {}) {
       icon,
       escapeHtml,
       requestRender: render,
+      localizeAlgorithmPage,
+      t,
     }));
   } finally {
     state.loadingPageId = "";
@@ -1862,6 +1902,96 @@ function loadSessionToken() {
   }
 }
 
+function loadLanguage() {
+  try {
+    const saved = window.localStorage.getItem("algo-explained:language") || "en";
+    return supportedLanguages.some((language) => language.code === saved) ? saved : "en";
+  } catch {
+    return "en";
+  }
+}
+
+function persistLanguage(language) {
+  try {
+    window.localStorage.setItem("algo-explained:language", language);
+  } catch {
+    // Language selection still applies for the current session.
+  }
+}
+
+async function loadLocale(language = state.language) {
+  if (localeDictionaries.has(language)) return localeDictionaries.get(language);
+
+  const response = await fetch(`./src/i18n/${language}.json`, { cache: "no-store" });
+  if (!response.ok) throw new Error(`Could not load locale ${language}`);
+  const dictionary = await response.json();
+  localeDictionaries.set(language, dictionary);
+  return dictionary;
+}
+
+async function loadActiveLocale() {
+  await loadLocale("en");
+  if (state.language !== "en") {
+    try {
+      await loadLocale(state.language);
+    } catch {
+      state.language = "en";
+      persistLanguage("en");
+    }
+  }
+  applyDocumentLanguage();
+}
+
+async function setLanguage(language) {
+  if (!supportedLanguages.some((item) => item.code === language)) return;
+  state.language = language;
+  persistLanguage(language);
+  await loadActiveLocale();
+  loadedPages.clear();
+  activePageId = "";
+  if (routeViews.has(state.view) && pageLoaders[state.selectedId]) {
+    await loadAlgorithmPage(state.selectedId);
+    return;
+  }
+  render();
+}
+
+function applyDocumentLanguage() {
+  const language = supportedLanguages.find((item) => item.code === state.language) || supportedLanguages[0];
+  document.documentElement.lang = language.code;
+  document.documentElement.dir = language.dir;
+}
+
+function t(key, params = {}) {
+  const value = getLocaleValue(state.language, key) ?? getLocaleValue("en", key) ?? key;
+  if (typeof value !== "string") return key;
+  return value.replace(/\{(\w+)\}/g, (_, name) => params[name] ?? "");
+}
+
+function getLocaleValue(language, key) {
+  const dictionary = localeDictionaries.get(language);
+  if (!dictionary) return undefined;
+  return key.split(".").reduce((value, part) => value?.[part], dictionary);
+}
+
+function localizeAlgorithmPage(pageData) {
+  const localized = getLocaleValue(state.language, `algorithmPages.${pageData.id}`)
+    || getLocaleValue("en", `algorithmPages.${pageData.id}`);
+  return localized ? deepMerge(pageData, localized) : pageData;
+}
+
+function deepMerge(base, override) {
+  if (Array.isArray(base) && Array.isArray(override)) {
+    return base.map((item, index) => deepMerge(item, override[index] || {}));
+  }
+  if (base && typeof base === "object" && override && typeof override === "object" && !Array.isArray(override)) {
+    return Object.fromEntries(
+      Object.keys({ ...base, ...override }).map((key) => [key, deepMerge(base[key], override[key])]),
+    );
+  }
+  return override === undefined ? base : override;
+}
+
 function persistAuthSession() {
   try {
     if (state.authUser) window.localStorage.setItem("algo-explained:auth-user", JSON.stringify(state.authUser));
@@ -2214,6 +2344,7 @@ window.addEventListener("hashchange", async () => {
 root.addEventListener("click", handleShellClick);
 
 async function bootstrap() {
+  await loadActiveLocale();
   render();
   await refreshAuthSession();
   await loadUserProgress();

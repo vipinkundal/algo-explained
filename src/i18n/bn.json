@@ -1,0 +1,143 @@
+{
+  "app": {
+    "brand": "Algo Explained"
+  },
+  "language": {
+    "label": "ভাষা"
+  },
+  "nav": {
+    "primary": "প্রধান",
+    "home": "হোম",
+    "search": "অনুসন্ধান",
+    "saved": "সংরক্ষিত",
+    "savedAlgorithms": "সংরক্ষিত অ্যালগরিদম",
+    "profile": "প্রোফাইল",
+    "signIn": "সাইন ইন",
+    "lesson": "পাঠ",
+    "visualizer": "ভিজুয়ালাইজার",
+    "challenge": "কুইজ",
+    "quiz": "কুইজ"
+  },
+  "actions": {
+    "saveCurrentAlgorithm": "বর্তমান অ্যালগরিদম সংরক্ষণ করুন"
+  },
+  "algorithmPage": {
+    "stepByStepLogic": "ধাপে ধাপে যুক্তি",
+    "whenToUse": "কখন ব্যবহার করবেন",
+    "memoryTrick": "মনে রাখার কৌশল",
+    "startVisualizer": "ভিজুয়ালাইজার শুরু করুন",
+    "algorithmVisualizer": "অ্যালগরিদম ভিজুয়ালাইজার",
+    "stepCounter": "ধাপ {current}/{total}",
+    "concept": "ধারণা",
+    "logic": "যুক্তি",
+    "loopTransition": "লুপ / ট্রানজিশন",
+    "codeInsight": "কোড ইনসাইট",
+    "visualizerControls": "ভিজুয়ালাইজার নিয়ন্ত্রণ",
+    "previousStep": "আগের ধাপ",
+    "nextStep": "পরের ধাপ",
+    "resetVisualizer": "ভিজুয়ালাইজার রিসেট করুন",
+    "dryRun": "ড্রাই রান",
+    "codeTrace": "কোড ট্রেস",
+    "stateFallback": "স্টেট",
+    "transitionSummaryFallback": "{title}: {visualizer} ড্রাই রানের জন্য {variables} আপডেট করুন।",
+    "loadingImplementation": "{title} ইমপ্লিমেন্টেশন লোড হচ্ছে...",
+    "miniQuiz": "মিনি কুইজ",
+    "practice": "অনুশীলন",
+    "time": "সময়",
+    "space": "স্পেস"
+  },
+  "algorithmPages": {
+    "backtracking-basics": {
+      "title": "ব্যাকট্র্যাকিং বেসিকস",
+      "category": "ফাউন্ডেশন",
+      "meaning": "ব্যাকট্র্যাকিং বেসিকস সমাধান খোঁজার উপর কেন্দ্রীভূত একটি ফাউন্ডেশন কৌশল।",
+      "problem": "ব্যাকট্র্যাকিং বেসিকস একটি সিদ্ধান্ত গাছ অনুসন্ধান করে: একটি পছন্দ নেওয়া, রিকার্স করা, তারপর পরের বিকল্পের আগে পছন্দটি undo করা।",
+      "concept": "ব্যাকট্র্যাকিং বেসিকস একটি সিদ্ধান্ত গাছ অনুসন্ধান করে: একটি পছন্দ নেওয়া, রিকার্স করা, তারপর পরের বিকল্পের আগে পছন্দটি undo করা।",
+      "logicSummary": "base case সামলান, valid choices ঘুরে দেখুন, একটি choice যোগ করুন, recurse করুন, তারপর choice সরান।",
+      "transitionSummary": "transition হলো choose -> explore -> unchoose, যা sibling branches আলাদা রাখে।",
+      "codeInsight": "backtrack ধাপ state ঠিক রাখে: প্রতিটি push-এর matching pop থাকতে হবে।",
+      "realLifeExample": "যখন input হলো choices এবং প্রয়োজনীয় result হলো solutions, তখন ব্যাকট্র্যাকিং বেসিকস দেখা যায়।",
+      "whenToUse": "যখন problem ফাউন্ডেশন pattern-এর সাথে মেলে এবং expected state changes recursion tree dry run-এর সাথে মেলে, তখন ব্যাকট্র্যাকিং বেসিকস ব্যবহার করুন।",
+      "memoryTrick": "ব্যাকট্র্যাকিং বেসিকস: loop লেখার আগে input, state, answer, এবং stop condition-এর নাম ঠিক করুন।",
+      "visualizerCaption": "একটি recursion tree walkthrough যা ব্যাকট্র্যাকিং বেসিকসের input, state, transition, এবং answer দেখায়।",
+      "logicSteps": [
+        {
+          "title": "ইনপুট পড়ুন",
+          "text": "ব্যাকট্র্যাকিং বেসিকস কোন নির্দিষ্ট data পায় এবং কোন output দরকার তা শনাক্ত করুন।"
+        },
+        {
+          "title": "state শুরু করুন",
+          "text": "ব্যাকট্র্যাকিং বেসিকসের জন্য ব্যবহৃত working variables প্রস্তুত করুন।"
+        },
+        {
+          "title": "transition প্রয়োগ করুন",
+          "text": "একটি recursion tree transition চালিয়ে algorithm-specific state update করুন।"
+        },
+        {
+          "title": "উত্তর ফেরত দিন",
+          "text": "সঠিক condition-এ থামুন এবং tracked result return করুন।"
+        }
+      ],
+      "variables": [
+        {
+          "name": "choices",
+          "purpose": "state change শুরু হওয়ার আগে ব্যাকট্র্যাকিং বেসিকস যে concrete data পায়।"
+        },
+        {
+          "name": "path",
+          "purpose": "recursive search দ্বারা তৈরি হওয়া partial decision path।"
+        },
+        {
+          "name": "solutions",
+          "purpose": "সব valid paths বা problem যে final recursive value চেয়েছে।"
+        },
+        {
+          "name": "base case বা invalid choice",
+          "purpose": "path complete, invalid, বা record করার মতো হলে থামুন।"
+        }
+      ],
+      "dryRun": [
+        {
+          "label": "ইনপুট",
+          "title": "problem data পড়ুন",
+          "note": "ব্যাকট্র্যাকিং বেসিকসের input পড়ুন এবং কী result তৈরি করতে হবে তা ঠিক করুন।"
+        },
+        {
+          "label": "state",
+          "title": "working state শুরু করুন",
+          "note": "dry run চলাকালে ব্যাকট্র্যাকিং বেসিকস যে state variables বদলায় সেগুলো সেট করুন।"
+        },
+        {
+          "label": "transition",
+          "title": "core step চালান",
+          "note": "ব্যাকট্র্যাকিং বেসিকসের জন্য একটি recursion tree transition প্রয়োগ করুন।"
+        },
+        {
+          "label": "উত্তর",
+          "title": "result ফেরত দিন",
+          "note": "tracked state থেকে final ব্যাকট্র্যাকিং বেসিকস answer return করুন।"
+        }
+      ],
+      "complexity": {
+        "time": "educational reference implementation-এর জন্য O(n)।",
+        "space": "প্রয়োজন হলে tracked state-এর জন্য O(n)।"
+      },
+      "quiz": {
+        "question": "কোন state choice ব্যাকট্র্যাকিং বেসিকসকে সঠিক রাখে?",
+        "options": [
+          {
+            "text": "path track করুন এবং শুধু ব্যাকট্র্যাকিং বেসিকসের transition দিয়ে update করুন।"
+          },
+          {
+            "text": "transition আলাদা হলেও অন্য algorithm-এর state names reuse করুন।"
+          },
+          {
+            "text": "algorithm-specific stop condition check করার আগে return করুন।"
+          }
+        ],
+        "correctText": "সঠিক। নিজের state এবং transition answer চালালে ব্যাকট্র্যাকিং বেসিকস বোঝা সহজ থাকে।",
+        "incorrectText": "পুরোপুরি নয়। ব্যাকট্র্যাকিং বেসিকসের নিজের input, state, answer, এবং condition দরকার, অন্য algorithm-এর page structure নয়।"
+      }
+    }
+  }
+}

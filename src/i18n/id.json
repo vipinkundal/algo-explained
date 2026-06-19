@@ -1,0 +1,143 @@
+{
+  "app": {
+    "brand": "Algo Explained"
+  },
+  "language": {
+    "label": "Bahasa"
+  },
+  "nav": {
+    "primary": "Utama",
+    "home": "Beranda",
+    "search": "Cari",
+    "saved": "Tersimpan",
+    "savedAlgorithms": "Algoritma tersimpan",
+    "profile": "Profil",
+    "signIn": "Masuk",
+    "lesson": "Pelajaran",
+    "visualizer": "Visualizer",
+    "challenge": "Kuis",
+    "quiz": "Kuis"
+  },
+  "actions": {
+    "saveCurrentAlgorithm": "Simpan algoritma saat ini"
+  },
+  "algorithmPage": {
+    "stepByStepLogic": "Logika langkah demi langkah",
+    "whenToUse": "Kapan digunakan",
+    "memoryTrick": "Trik mengingat",
+    "startVisualizer": "Mulai visualizer",
+    "algorithmVisualizer": "Visualizer algoritma",
+    "stepCounter": "Langkah {current}/{total}",
+    "concept": "Konsep",
+    "logic": "Logika",
+    "loopTransition": "Loop / transisi",
+    "codeInsight": "Insight kode",
+    "visualizerControls": "Kontrol visualizer",
+    "previousStep": "Langkah sebelumnya",
+    "nextStep": "Langkah berikutnya",
+    "resetVisualizer": "Reset visualizer",
+    "dryRun": "Dry run",
+    "codeTrace": "Jejak kode",
+    "stateFallback": "state",
+    "transitionSummaryFallback": "{title}: perbarui {variables} untuk dry run {visualizer}.",
+    "loadingImplementation": "Memuat implementasi {title}...",
+    "miniQuiz": "Mini kuis",
+    "practice": "Latihan",
+    "time": "Waktu",
+    "space": "Ruang"
+  },
+  "algorithmPages": {
+    "backtracking-basics": {
+      "title": "Dasar-dasar Backtracking",
+      "category": "Fondasi",
+      "meaning": "Dasar-dasar Backtracking adalah teknik fondasi yang berfokus pada solusi.",
+      "problem": "Dasar-dasar Backtracking menjelajahi pohon keputusan dengan memilih, melakukan rekursi, lalu membatalkan pilihan sebelum mencoba opsi berikutnya.",
+      "concept": "Dasar-dasar Backtracking menjelajahi pohon keputusan dengan memilih, melakukan rekursi, lalu membatalkan pilihan sebelum mencoba opsi berikutnya.",
+      "logicSummary": "Tangani base case, lakukan loop pada pilihan valid, tambahkan satu pilihan, rekursi, lalu hapus pilihan itu.",
+      "transitionSummary": "Transisinya adalah choose -> explore -> unchoose, sehingga cabang saudara tetap terpisah.",
+      "codeInsight": "Langkah backtrack menjaga state tetap benar: setiap push harus memiliki pop yang sesuai.",
+      "realLifeExample": "Dasar-dasar Backtracking muncul saat input berupa pilihan dan hasil yang dibutuhkan berupa solusi.",
+      "whenToUse": "Gunakan Dasar-dasar Backtracking saat masalah cocok dengan pola fondasi dan perubahan state yang diharapkan cocok dengan dry run pohon rekursi.",
+      "memoryTrick": "Backtracking: beri nama input, state, jawaban, dan kondisi berhenti sebelum menulis loop.",
+      "visualizerCaption": "Walkthrough pohon rekursi yang menunjukkan input, state, transisi, dan jawaban dari Dasar-dasar Backtracking.",
+      "logicSteps": [
+        {
+          "title": "Baca input",
+          "text": "Identifikasi data tepat yang diterima Backtracking dan output apa yang diperlukan."
+        },
+        {
+          "title": "Inisialisasi state",
+          "text": "Siapkan variabel kerja yang hanya digunakan oleh Backtracking."
+        },
+        {
+          "title": "Terapkan transisi",
+          "text": "Jalankan satu transisi pohon rekursi dan perbarui state khusus algoritma."
+        },
+        {
+          "title": "Kembalikan jawaban",
+          "text": "Berhenti pada kondisi yang benar dan kembalikan hasil yang dilacak."
+        }
+      ],
+      "variables": [
+        {
+          "name": "pilihan",
+          "purpose": "Data konkret yang diterima Backtracking sebelum perubahan state dimulai."
+        },
+        {
+          "name": "path",
+          "purpose": "Jalur keputusan parsial yang dibangun oleh pencarian rekursif."
+        },
+        {
+          "name": "solusi",
+          "purpose": "Semua jalur valid atau nilai rekursif akhir yang diminta masalah."
+        },
+        {
+          "name": "base case atau pilihan tidak valid",
+          "purpose": "Berhenti saat path selesai, tidak valid, atau siap dicatat."
+        }
+      ],
+      "dryRun": [
+        {
+          "label": "Input",
+          "title": "Baca data masalah",
+          "note": "Baca input Backtracking dan tentukan hasil apa yang harus dibuat."
+        },
+        {
+          "label": "State",
+          "title": "Inisialisasi state kerja",
+          "note": "Atur variabel state yang berubah selama dry run Backtracking."
+        },
+        {
+          "label": "Transisi",
+          "title": "Jalankan langkah inti",
+          "note": "Terapkan satu transisi pohon rekursi untuk Backtracking."
+        },
+        {
+          "label": "Jawaban",
+          "title": "Kembalikan hasil",
+          "note": "Kembalikan jawaban akhir Backtracking dari state yang dilacak."
+        }
+      ],
+      "complexity": {
+        "time": "O(n) untuk implementasi referensi edukatif.",
+        "space": "O(n) untuk state yang dilacak saat diperlukan."
+      },
+      "quiz": {
+        "question": "Pilihan state mana yang menjaga Backtracking tetap benar?",
+        "options": [
+          {
+            "text": "Lacak path dan perbarui hanya melalui transisi Backtracking."
+          },
+          {
+            "text": "Gunakan kembali nama state dari algoritma lain meskipun transisinya berbeda."
+          },
+          {
+            "text": "Return sebelum memeriksa kondisi berhenti khusus algoritma."
+          }
+        ],
+        "correctText": "Benar. Backtracking tetap mudah dipahami saat state dan transisinya sendiri mengarahkan jawaban.",
+        "incorrectText": "Belum tepat. Backtracking membutuhkan input, state, jawaban, dan kondisinya sendiri, bukan struktur halaman algoritma lain."
+      }
+    }
+  }
+}
