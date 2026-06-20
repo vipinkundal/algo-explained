@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-string-changing-case",
+  "title": "String Changing Case",
+  "route": "/algorithms/data-structures/string-changing-case",
+  "visualizerType": "string-scan",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "abc",
+  "track": "Data Structures",
+  "topicGroup": "Strings"
+}

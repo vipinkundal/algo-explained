@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-recursion-tree-recursion",
+  "title": "Tree Recursion",
+  "route": "/algorithms/data-structures/recursion-tree-recursion",
+  "visualizerType": "call-stack",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Recursion"
+}

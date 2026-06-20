@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-linked-list-isloop",
+  "title": "Linked List Isloop",
+  "route": "/algorithms/data-structures/linked-list-isloop",
+  "visualizerType": "linked-list",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "link",
+  "track": "Data Structures",
+  "topicGroup": "Linked List"
+}

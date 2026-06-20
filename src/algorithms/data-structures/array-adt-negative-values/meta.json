@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-array-adt-negative-values",
+  "title": "Array ADT Negative Values",
+  "route": "/algorithms/data-structures/array-adt-negative-values",
+  "visualizerType": "array-adt",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "view_week",
+  "track": "Data Structures",
+  "topicGroup": "Arrays / Array ADT"
+}

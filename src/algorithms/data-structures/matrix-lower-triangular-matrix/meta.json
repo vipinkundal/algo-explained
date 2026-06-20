@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-matrix-lower-triangular-matrix",
+  "title": "Lower Triangular Matrix",
+  "route": "/algorithms/data-structures/matrix-lower-triangular-matrix",
+  "visualizerType": "matrix-layout",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "grid_on",
+  "track": "Data Structures",
+  "topicGroup": "Matrix / Sparse Matrix / Polynomial"
+}

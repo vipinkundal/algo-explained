@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-queue-using-linked-list",
+  "title": "Queue Using Linked List",
+  "route": "/algorithms/data-structures/queue-using-linked-list",
+  "visualizerType": "queue-operations",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "queue",
+  "track": "Data Structures",
+  "topicGroup": "Queue"
+}

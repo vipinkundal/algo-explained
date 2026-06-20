@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-essential-c-and-cpp-array-as-parameter",
+  "title": "C/C++ Array As Parameter",
+  "route": "/algorithms/data-structures/essential-c-and-cpp-array-as-parameter",
+  "visualizerType": "cpp-memory-model",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "data_object",
+  "track": "Data Structures",
+  "topicGroup": "C/C++ Essentials"
+}

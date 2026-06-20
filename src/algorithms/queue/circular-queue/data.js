@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "circular-queue",
@@ -141,5 +141,12 @@ export const algorithmPage = {
         "type": "dequeue"
       }
     ]
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-circular-queue",
+      "title": "Circular Queue",
+      "label": "C/C++ queue source"
+    }
   ]
 };

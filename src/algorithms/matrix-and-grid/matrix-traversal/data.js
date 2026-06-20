@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "matrix-traversal",
@@ -123,5 +123,27 @@ export const algorithmPage = {
         4
       ]
     ]
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-matrix-diagonal-matrix",
+      "title": "Diagonal Matrix",
+      "label": "C/C++ matrix source"
+    },
+    {
+      "id": "ds-matrix-diagonal-matrix-with-c-cpp-class",
+      "title": "Diagonal Matrix With C++ Class",
+      "label": "C/C++ matrix source"
+    },
+    {
+      "id": "ds-matrix-lower-triangular-matrix",
+      "title": "Lower Triangular Matrix",
+      "label": "C/C++ matrix source"
+    },
+    {
+      "id": "ds-matrix-c-cpp-lower-triangular-matrix",
+      "title": "C++ Lower Triangular Matrix",
+      "label": "C/C++ matrix source"
+    }
   ]
 };

@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-array-adt-finding-missing-element",
+  "title": "Find Missing Element in Array",
+  "route": "/algorithms/data-structures/array-adt-finding-missing-element",
+  "visualizerType": "array-adt",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "view_week",
+  "track": "Data Structures",
+  "topicGroup": "Arrays / Array ADT"
+}

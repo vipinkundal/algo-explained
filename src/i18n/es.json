@@ -55,7 +55,12 @@
     "outputTimeout": "La ejecuci?n se detuvo despu?s de 2 segundos. Revisa si hay un bucle infinito.",
     "consoleOutput": "Consola",
     "returnedValue": "Devuelto",
-    "activeLine": "L?nea activa {line}"
+    "activeLine": "L?nea activa {line}",
+    "codeView": "Vista de c?digo",
+    "runnableJs": "JS ejecutable",
+    "originalCpp": "C/C++ original",
+    "originalCppSource": "C?digo fuente C/C++ original",
+    "loadingOriginalCpp": "Cargando c?digo fuente C/C++ original"
   },
   "algorithmPages": {
     "backtracking-basics": {

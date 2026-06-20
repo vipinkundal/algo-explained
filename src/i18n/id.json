@@ -55,7 +55,12 @@
     "outputTimeout": "Eksekusi dihentikan setelah 2 detik. Periksa infinite loop.",
     "consoleOutput": "Console",
     "returnedValue": "Return",
-    "activeLine": "Baris aktif {line}"
+    "activeLine": "Baris aktif {line}",
+    "codeView": "Tampilan kode",
+    "runnableJs": "JS yang dapat dijalankan",
+    "originalCpp": "C/C++ asli",
+    "originalCppSource": "Sumber C/C++ asli",
+    "loadingOriginalCpp": "Memuat sumber C/C++ asli"
   },
   "algorithmPages": {
     "backtracking-basics": {

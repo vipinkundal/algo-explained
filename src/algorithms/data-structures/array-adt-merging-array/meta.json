@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-array-adt-merging-array",
+  "title": "Array ADT Merging Array",
+  "route": "/algorithms/data-structures/array-adt-merging-array",
+  "visualizerType": "array-adt",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "view_week",
+  "track": "Data Structures",
+  "topicGroup": "Arrays / Array ADT"
+}

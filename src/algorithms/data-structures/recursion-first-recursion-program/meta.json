@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-recursion-first-recursion-program",
+  "title": "First Recursion Program",
+  "route": "/algorithms/data-structures/recursion-first-recursion-program",
+  "visualizerType": "call-stack",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Recursion"
+}

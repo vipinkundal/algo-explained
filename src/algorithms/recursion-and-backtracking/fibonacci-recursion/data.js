@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "fibonacci-recursion",
@@ -114,5 +114,12 @@ export const algorithmPage = {
   "algorithmSlug": "fibonacci-recursion",
   "runnerInput": [
     6
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-recursion-fibonacci",
+      "title": "Recursion Fibonacci",
+      "label": "C/C++ recursion source"
+    }
   ]
 };

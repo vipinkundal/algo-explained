@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-array-adt-inserting-in-sorted-array",
+  "title": "Array ADT Inserting In Sorted Array",
+  "route": "/algorithms/data-structures/array-adt-inserting-in-sorted-array",
+  "visualizerType": "array-adt",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "view_week",
+  "track": "Data Structures",
+  "topicGroup": "Arrays / Array ADT"
+}

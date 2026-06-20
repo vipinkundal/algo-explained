@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-heap-creation",
+  "title": "Heap Creation",
+  "route": "/algorithms/data-structures/heap-creation",
+  "visualizerType": "heap-operations",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "priority_high",
+  "track": "Data Structures",
+  "topicGroup": "Trees / BST / AVL / Heap"
+}

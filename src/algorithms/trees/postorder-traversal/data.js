@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "postorder-traversal",
@@ -133,6 +133,18 @@ export const algorithmPage = {
           "value": 7
         }
       }
+    }
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-binary-tree-traversal",
+      "title": "Binary Tree Traversal",
+      "label": "C/C++ tree source"
+    },
+    {
+      "id": "ds-binary-tree-level-order",
+      "title": "Binary Tree Level Order Traversal",
+      "label": "C/C++ tree source"
     }
   ]
 };

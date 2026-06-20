@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-array-adt-get-set-max-sum",
+  "title": "Array ADT Get Set Max Sum",
+  "route": "/algorithms/data-structures/array-adt-get-set-max-sum",
+  "visualizerType": "array-adt",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "view_week",
+  "track": "Data Structures",
+  "topicGroup": "Arrays / Array ADT"
+}

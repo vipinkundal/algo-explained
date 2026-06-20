@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-linked-list-middlenode-and-intersection-of-two-ll",
+  "title": "MiddleNode And Intersection Of Two Linked List",
+  "route": "/algorithms/data-structures/linked-list-middlenode-and-intersection-of-two-ll",
+  "visualizerType": "linked-list",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "link",
+  "track": "Data Structures",
+  "topicGroup": "Linked List"
+}

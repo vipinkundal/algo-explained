@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-linked-list-circular-linkedlist",
+  "title": "Circular Linked List",
+  "route": "/algorithms/data-structures/linked-list-circular-linkedlist",
+  "visualizerType": "linked-list",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "link",
+  "track": "Data Structures",
+  "topicGroup": "Linked List"
+}

@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-essential-c-and-cpp-monolithic-program",
+  "title": "C/C++ Monolithic Program",
+  "route": "/algorithms/data-structures/essential-c-and-cpp-monolithic-program",
+  "visualizerType": "cpp-memory-model",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "data_object",
+  "track": "Data Structures",
+  "topicGroup": "C/C++ Essentials"
+}

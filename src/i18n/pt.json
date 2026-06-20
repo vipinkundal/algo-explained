@@ -55,7 +55,12 @@
     "outputTimeout": "A execu??o parou ap?s 2 segundos. Verifique se h? um loop infinito.",
     "consoleOutput": "Console",
     "returnedValue": "Retornado",
-    "activeLine": "Linha ativa {line}"
+    "activeLine": "Linha ativa {line}",
+    "codeView": "Visualiza??o do c?digo",
+    "runnableJs": "JS execut?vel",
+    "originalCpp": "C/C++ original",
+    "originalCppSource": "C?digo-fonte C/C++ original",
+    "loadingOriginalCpp": "Carregando c?digo-fonte C/C++ original"
   },
   "algorithmPages": {
     "backtracking-basics": {

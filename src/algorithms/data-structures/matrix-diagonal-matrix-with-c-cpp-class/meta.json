@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-matrix-diagonal-matrix-with-c-cpp-class",
+  "title": "Diagonal Matrix With C++ Class",
+  "route": "/algorithms/data-structures/matrix-diagonal-matrix-with-c-cpp-class",
+  "visualizerType": "matrix-layout",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "grid_on",
+  "track": "Data Structures",
+  "topicGroup": "Matrix / Sparse Matrix / Polynomial"
+}

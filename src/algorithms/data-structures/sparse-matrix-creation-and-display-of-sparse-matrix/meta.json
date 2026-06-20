@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-sparse-matrix-creation-and-display-of-sparse-matrix",
+  "title": "Creation And Display Of Sparse Matrix",
+  "route": "/algorithms/data-structures/sparse-matrix-creation-and-display-of-sparse-matrix",
+  "visualizerType": "sparse-matrix",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "grid_on",
+  "track": "Data Structures",
+  "topicGroup": "Matrix / Sparse Matrix / Polynomial"
+}

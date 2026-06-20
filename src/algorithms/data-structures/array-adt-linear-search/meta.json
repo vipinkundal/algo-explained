@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-array-adt-linear-search",
+  "title": "Linear Search in Array ADT",
+  "route": "/algorithms/data-structures/array-adt-linear-search",
+  "visualizerType": "array-adt",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "view_week",
+  "track": "Data Structures",
+  "topicGroup": "Arrays / Array ADT"
+}

@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "heapify",
@@ -120,5 +120,12 @@ export const algorithmPage = {
     ],
     0,
     3
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-heap-creation",
+      "title": "Heap Creation",
+      "label": "C/C++ heap source"
+    }
   ]
 };

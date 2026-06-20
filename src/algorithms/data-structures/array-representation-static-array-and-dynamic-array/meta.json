@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-array-representation-static-array-and-dynamic-array",
+  "title": "Static Array And Dynamic Array",
+  "route": "/algorithms/data-structures/array-representation-static-array-and-dynamic-array",
+  "visualizerType": "array-memory",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "view_week",
+  "track": "Data Structures",
+  "topicGroup": "Arrays / Array ADT"
+}

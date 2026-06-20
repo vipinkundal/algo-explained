@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "linear-search",
@@ -119,5 +119,17 @@ export const algorithmPage = {
       7
     ],
     7
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-array-adt-linear-search",
+      "title": "Linear Search in Array ADT",
+      "label": "C/C++ array source"
+    },
+    {
+      "id": "ds-array-adt-linear-search-transposition",
+      "title": "Linear Search in Array ADT with Transposition",
+      "label": "C/C++ array source"
+    }
   ]
 };

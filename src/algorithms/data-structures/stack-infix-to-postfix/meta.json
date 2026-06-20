@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-stack-infix-to-postfix",
+  "title": "Stack Infix To Postfix",
+  "route": "/algorithms/data-structures/stack-infix-to-postfix",
+  "visualizerType": "stack-operations",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "layers",
+  "track": "Data Structures",
+  "topicGroup": "Stack"
+}

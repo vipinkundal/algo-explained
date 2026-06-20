@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-sparse-matrix-polynomial-representation",
+  "title": "Sparse Matrix Polynomial Representation",
+  "route": "/algorithms/data-structures/sparse-matrix-polynomial-representation",
+  "visualizerType": "sparse-matrix",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "grid_on",
+  "track": "Data Structures",
+  "topicGroup": "Matrix / Sparse Matrix / Polynomial"
+}

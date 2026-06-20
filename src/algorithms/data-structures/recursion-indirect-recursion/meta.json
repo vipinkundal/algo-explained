@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-recursion-indirect-recursion",
+  "title": "Indirect Recursion",
+  "route": "/algorithms/data-structures/recursion-indirect-recursion",
+  "visualizerType": "call-stack",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Recursion"
+}

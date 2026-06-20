@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-array-adt-creating-array-of-desired-size",
+  "title": "Array ADT Creating Array Of Desired Size",
+  "route": "/algorithms/data-structures/array-adt-creating-array-of-desired-size",
+  "visualizerType": "array-adt",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "view_week",
+  "track": "Data Structures",
+  "topicGroup": "Arrays / Array ADT"
+}

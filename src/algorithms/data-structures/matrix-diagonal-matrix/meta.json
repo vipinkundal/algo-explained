@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-matrix-diagonal-matrix",
+  "title": "Diagonal Matrix",
+  "route": "/algorithms/data-structures/matrix-diagonal-matrix",
+  "visualizerType": "matrix-layout",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "grid_on",
+  "track": "Data Structures",
+  "topicGroup": "Matrix / Sparse Matrix / Polynomial"
+}

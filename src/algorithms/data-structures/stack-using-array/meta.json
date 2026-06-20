@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-stack-using-array",
+  "title": "Stack Using Array",
+  "route": "/algorithms/data-structures/stack-using-array",
+  "visualizerType": "stack-operations",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "layers",
+  "track": "Data Structures",
+  "topicGroup": "Stack"
+}

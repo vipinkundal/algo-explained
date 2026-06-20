@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-trees-node",
+  "title": "Binary Tree Node",
+  "route": "/algorithms/data-structures/trees-node",
+  "visualizerType": "tree-structure",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Trees / BST / AVL / Heap"
+}

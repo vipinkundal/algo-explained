@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "tower-of-hanoi",
@@ -114,5 +114,12 @@ export const algorithmPage = {
   "algorithmSlug": "tower-of-hanoi",
   "runnerInput": [
     3
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-recursion-toh",
+      "title": "Recursion Tower of Hanoi",
+      "label": "C/C++ recursion source"
+    }
   ]
 };

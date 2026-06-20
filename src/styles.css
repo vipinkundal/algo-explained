@@ -311,6 +311,11 @@ em {
   color: rgba(255, 255, 255, 0.84);
 }
 
+.catalog-intro .eyebrow {
+  background: #f6d46b;
+  color: #292410;
+}
+
 .search-summary {
   display: flex;
   flex-wrap: wrap;
@@ -1708,6 +1713,13 @@ em {
 
   .search-result-group-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1400px) {
+  .app-shell {
+    max-width: 1680px;
+    padding-inline: 32px;
   }
 }
 

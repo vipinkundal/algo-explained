@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-circular-queue",
+  "title": "Circular Queue",
+  "route": "/algorithms/data-structures/circular-queue",
+  "visualizerType": "queue-operations",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "queue",
+  "track": "Data Structures",
+  "topicGroup": "Queue"
+}

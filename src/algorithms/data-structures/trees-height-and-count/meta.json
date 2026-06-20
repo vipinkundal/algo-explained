@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-trees-height-and-count",
+  "title": "Binary Tree Height and Node Count",
+  "route": "/algorithms/data-structures/trees-height-and-count",
+  "visualizerType": "tree-structure",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Trees / BST / AVL / Heap"
+}

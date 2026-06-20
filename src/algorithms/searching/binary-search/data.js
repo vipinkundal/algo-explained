@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "binary-search",
@@ -119,5 +119,12 @@ export const algorithmPage = {
       5
     ],
     3
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-array-adt-binary-search",
+      "title": "Binary Search in Array ADT",
+      "label": "C/C++ array source"
+    }
   ]
 };

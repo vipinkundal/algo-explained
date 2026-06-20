@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-linked-list-linear-search",
+  "title": "Linked List Linear Search",
+  "route": "/algorithms/data-structures/linked-list-linear-search",
+  "visualizerType": "linked-list",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "link",
+  "track": "Data Structures",
+  "topicGroup": "Linked List"
+}

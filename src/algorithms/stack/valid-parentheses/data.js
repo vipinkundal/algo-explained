@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "valid-parentheses",
@@ -114,5 +114,17 @@ export const algorithmPage = {
   "algorithmSlug": "valid-parentheses",
   "runnerInput": [
     "({[]})"
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-stack-parenthesis-is-balanced",
+      "title": "Stack Parenthesis Is Balanced",
+      "label": "C/C++ stack source"
+    },
+    {
+      "id": "ds-stack-parenthesis-is-balanced-extended",
+      "title": "Stack Parenthesis Is Balanced Extended",
+      "label": "C/C++ stack source"
+    }
   ]
 };

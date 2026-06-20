@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-stack-infix-to-postfix-2",
+  "title": "Infix to Postfix Conversion",
+  "route": "/algorithms/data-structures/stack-infix-to-postfix-2",
+  "visualizerType": "stack-operations",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "layers",
+  "track": "Data Structures",
+  "topicGroup": "Stack"
+}

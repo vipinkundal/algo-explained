@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-linked-list-reverse-linked-list",
+  "title": "Reverse Linked List",
+  "route": "/algorithms/data-structures/linked-list-reverse-linked-list",
+  "visualizerType": "linked-list",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "link",
+  "track": "Data Structures",
+  "topicGroup": "Linked List"
+}

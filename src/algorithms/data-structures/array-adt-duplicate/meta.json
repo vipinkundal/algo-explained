@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-array-adt-duplicate",
+  "title": "Array ADT Duplicate",
+  "route": "/algorithms/data-structures/array-adt-duplicate",
+  "visualizerType": "array-adt",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "view_week",
+  "track": "Data Structures",
+  "topicGroup": "Arrays / Array ADT"
+}

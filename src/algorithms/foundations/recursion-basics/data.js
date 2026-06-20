@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "recursion-basics",
@@ -117,5 +117,27 @@ export const algorithmPage = {
       1,
       2
     ]
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-recursion-first-recursion-program",
+      "title": "First Recursion Program",
+      "label": "C/C++ recursion source"
+    },
+    {
+      "id": "ds-recursion-static-variable-in-recursion",
+      "title": "Static Variable In Recursion",
+      "label": "C/C++ recursion source"
+    },
+    {
+      "id": "ds-recursion-tree-recursion",
+      "title": "Tree Recursion",
+      "label": "C/C++ recursion source"
+    },
+    {
+      "id": "ds-recursion-indirect-recursion",
+      "title": "Indirect Recursion",
+      "label": "C/C++ recursion source"
+    }
   ]
 };

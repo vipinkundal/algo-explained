@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-linked-list-cdoublell",
+  "title": "Circular Doubly Linked List",
+  "route": "/algorithms/data-structures/linked-list-cdoublell",
+  "visualizerType": "linked-list",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "link",
+  "track": "Data Structures",
+  "topicGroup": "Linked List"
+}

@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-essential-c-and-cpp-pointer-to-structure",
+  "title": "C/C++ Pointer To Structure",
+  "route": "/algorithms/data-structures/essential-c-and-cpp-pointer-to-structure",
+  "visualizerType": "cpp-memory-model",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "data_object",
+  "track": "Data Structures",
+  "topicGroup": "C/C++ Essentials"
+}

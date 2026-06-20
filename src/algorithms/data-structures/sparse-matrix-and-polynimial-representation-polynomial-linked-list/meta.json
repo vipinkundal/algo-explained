@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-sparse-matrix-and-polynimial-representation-polynomial-linked-list",
+  "title": "Sparse Matrix / Polynomial Polynomial Linked List",
+  "route": "/algorithms/data-structures/sparse-matrix-and-polynimial-representation-polynomial-linked-list",
+  "visualizerType": "sparse-polynomial",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "functions",
+  "track": "Data Structures",
+  "topicGroup": "Matrix / Sparse Matrix / Polynomial"
+}

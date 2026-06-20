@@ -55,7 +55,12 @@
     "outputTimeout": "L?ex?cution s?est arr?t?e apr?s 2 secondes. V?rifiez la pr?sence d?une boucle infinie.",
     "consoleOutput": "Console",
     "returnedValue": "Valeur renvoy?e",
-    "activeLine": "Ligne active {line}"
+    "activeLine": "Ligne active {line}",
+    "codeView": "Vue du code",
+    "runnableJs": "JS ex?cutable",
+    "originalCpp": "C/C++ original",
+    "originalCppSource": "Source C/C++ originale",
+    "loadingOriginalCpp": "Chargement de la source C/C++ originale"
   },
   "algorithmPages": {
     "backtracking-basics": {

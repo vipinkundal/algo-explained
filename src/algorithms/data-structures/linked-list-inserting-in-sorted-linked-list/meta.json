@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-linked-list-inserting-in-sorted-linked-list",
+  "title": "Inserting In Sorted Linked List",
+  "route": "/algorithms/data-structures/linked-list-inserting-in-sorted-linked-list",
+  "visualizerType": "linked-list",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "link",
+  "track": "Data Structures",
+  "topicGroup": "Linked List"
+}

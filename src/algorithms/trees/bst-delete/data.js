@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "bst-delete",
@@ -135,5 +135,12 @@ export const algorithmPage = {
       }
     },
     2
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-bst-basics",
+      "title": "BST Basics",
+      "label": "C/C++ BST source"
+    }
   ]
 };

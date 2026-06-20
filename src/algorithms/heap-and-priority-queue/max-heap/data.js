@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "max-heap",
@@ -119,5 +119,12 @@ export const algorithmPage = {
       4,
       2
     ]
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-heap-creation",
+      "title": "Heap Creation",
+      "label": "C/C++ heap source"
+    }
   ]
 };

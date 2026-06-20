@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-array-adt-set",
+  "title": "Array ADT Set",
+  "route": "/algorithms/data-structures/array-adt-set",
+  "visualizerType": "array-adt",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "view_week",
+  "track": "Data Structures",
+  "topicGroup": "Arrays / Array ADT"
+}

@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-recursion-taylor-series-using-horners-rule",
+  "title": "Recursion Taylor Series Using Horners Rule",
+  "route": "/algorithms/data-structures/recursion-taylor-series-using-horners-rule",
+  "visualizerType": "call-stack",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Recursion"
+}

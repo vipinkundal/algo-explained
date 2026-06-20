@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-sparse-matrix-addition",
+  "title": "Sparse Matrix Addition",
+  "route": "/algorithms/data-structures/sparse-matrix-addition",
+  "visualizerType": "sparse-matrix",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "grid_on",
+  "track": "Data Structures",
+  "topicGroup": "Matrix / Sparse Matrix / Polynomial"
+}

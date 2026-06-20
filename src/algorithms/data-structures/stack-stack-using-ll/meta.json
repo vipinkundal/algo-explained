@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-stack-stack-using-ll",
+  "title": "Stack Using Linked List",
+  "route": "/algorithms/data-structures/stack-stack-using-ll",
+  "visualizerType": "stack-operations",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "layers",
+  "track": "Data Structures",
+  "topicGroup": "Stack"
+}

@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-queue-array-enqueue-dequeue",
+  "title": "Queue Enqueue and Dequeue",
+  "route": "/algorithms/data-structures/queue-array-enqueue-dequeue",
+  "visualizerType": "queue-operations",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "queue",
+  "track": "Data Structures",
+  "topicGroup": "Queue"
+}

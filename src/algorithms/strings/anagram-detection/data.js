@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "anagram-detection",
@@ -115,5 +115,12 @@ export const algorithmPage = {
   "runnerInput": [
     "listen",
     "silent"
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-string-anagram",
+      "title": "String Anagram",
+      "label": "C/C++ string source"
+    }
   ]
 };

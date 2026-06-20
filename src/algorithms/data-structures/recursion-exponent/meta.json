@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-recursion-exponent",
+  "title": "Recursion Exponent",
+  "route": "/algorithms/data-structures/recursion-exponent",
+  "visualizerType": "call-stack",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Recursion"
+}

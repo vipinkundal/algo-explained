@@ -1,4 +1,4 @@
-const CODE_RUN_TIMEOUT_MS = 2000;
+﻿const CODE_RUN_TIMEOUT_MS = 2000;
 
 const RUNNER_WORKER_SOURCE = `
 function formatValue(value) {
@@ -203,6 +203,10 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     codeSource: "",
     codeDirty: false,
     codeLoaded: false,
+    originalCodeSource: "",
+    originalCodeLoaded: false,
+    loadingOriginalCode: false,
+    activeCodeTab: "js",
     loadingCode: false,
     codeOutput: "",
     codeOutputKind: "idle",
@@ -221,6 +225,13 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
 
     root.querySelectorAll(".workspace [data-action]").forEach((button) => {
       button.addEventListener("click", () => handleAction(button.dataset.action));
+    });
+
+    root.querySelectorAll("[data-code-tab]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.activeCodeTab = button.dataset.codeTab === "original" ? "original" : "js";
+        requestRender();
+      });
     });
 
     root.querySelectorAll("[data-answer]").forEach((button) => {
@@ -275,6 +286,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             <p>${escapeHtml(algorithmPage.memoryTrick)}</p>
           </article>
         </div>
+        ${renderRelatedLinks()}
         <button class="primary-action" data-view="visualizer">${escapeHtml(t("algorithmPage.startVisualizer"))} ${icon("arrow_forward")}</button>
       </section>
     `;
@@ -335,34 +347,89 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             </article>
           `).join("")}
         </div>
+        ${renderRelatedLinks()}
+      </section>
+    `;
+  }
+
+  function renderRelatedLinks() {
+    const links = Array.isArray(algorithmPage.relatedLinks) ? algorithmPage.relatedLinks : [];
+    if (!links.length) return "";
+
+    return `
+      <section class="related-links" aria-label="Related lessons">
+        <strong>${icon("link")} Related lessons</strong>
+        <div>
+          ${links.map((link) => `
+            <button type="button" data-algorithm="${escapeHtml(link.id)}">
+              <span>${escapeHtml(link.title || link.id)}</span>
+              ${link.label ? `<em>${escapeHtml(link.label)}</em>` : ""}
+            </button>
+          `).join("")}
+        </div>
       </section>
     `;
   }
 
   function renderCodeTrace(activeLine) {
-    const codeSource = getCodeSource();
+    const hasOriginalCode = Boolean(algorithmPage.originalCodePath);
+    const showingOriginal = hasOriginalCode && state.activeCodeTab === "original";
+    const codeSource = showingOriginal ? getOriginalCodeSource() : getCodeSource();
     const codeLines = codeSource.split("\n");
     const output = state.codeOutput || t("algorithmPage.outputEmpty");
     const editorRows = Math.min(Math.max(codeLines.length, 12), 24);
+    const filename = showingOriginal
+      ? algorithmPage.originalCodeFilename || algorithmPage.sourceFile || "original.cpp"
+      : algorithmPage.codeFilename;
+    const lineLabel = showingOriginal
+      ? algorithmPage.originalActiveLine || 1
+      : activeLine;
     return `
       <div class="code-trace" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.codeTrace")}`)}">
         <div class="code-header">
-          <span>${escapeHtml(algorithmPage.codeFilename)}</span>
+          <span>${escapeHtml(filename)}</span>
           <span class="code-header-actions">
-            <span>${escapeHtml(t("algorithmPage.activeLine", { line: activeLine }))}</span>
-            <button type="button" data-action="run-code">${icon("play_arrow")} ${escapeHtml(t("algorithmPage.runCode"))}</button>
+            <span>${escapeHtml(t("algorithmPage.activeLine", { line: lineLabel }))}</span>
+            ${showingOriginal ? "" : `<button type="button" data-action="run-code">${icon("play_arrow")} ${escapeHtml(t("algorithmPage.runCode"))}</button>`}
           </span>
         </div>
-        <div class="code-editor-shell">
-          <div class="code-line-gutter" aria-hidden="true">
-            ${codeLines.map((_, index) => `<span class="${index + 1 === activeLine ? "active" : ""}">${index + 1}</span>`).join("")}
+        ${hasOriginalCode ? renderCodeTabs(showingOriginal) : ""}
+        ${showingOriginal ? renderOriginalSource(codeLines, lineLabel) : `
+          <div class="code-editor-shell">
+            <div class="code-line-gutter" aria-hidden="true">
+              ${codeLines.map((_, index) => `<span class="${index + 1 === activeLine ? "active" : ""}">${index + 1}</span>`).join("")}
+            </div>
+            <textarea data-code-editor spellcheck="false" rows="${editorRows}" aria-label="${escapeHtml(t("algorithmPage.codeEditor"))}">${escapeHtml(codeSource)}</textarea>
           </div>
-          <textarea data-code-editor spellcheck="false" rows="${editorRows}" aria-label="${escapeHtml(t("algorithmPage.codeEditor"))}">${escapeHtml(codeSource)}</textarea>
+          <div class="code-output ${escapeHtml(state.codeOutputKind)}" aria-label="${escapeHtml(t("algorithmPage.codeOutput"))}">
+            <strong>${escapeHtml(t("algorithmPage.codeOutput"))}</strong>
+            <pre>${escapeHtml(output)}</pre>
+          </div>
+        `}
+      </div>
+    `;
+  }
+
+  function renderCodeTabs(showingOriginal) {
+    return `
+      <div class="code-tabs" role="tablist" aria-label="${escapeHtml(t("algorithmPage.codeView"))}">
+        <button type="button" class="${showingOriginal ? "" : "active"}" data-code-tab="js" role="tab" aria-selected="${showingOriginal ? "false" : "true"}">
+          ${escapeHtml(t("algorithmPage.runnableJs"))}
+        </button>
+        <button type="button" class="${showingOriginal ? "active" : ""}" data-code-tab="original" role="tab" aria-selected="${showingOriginal ? "true" : "false"}">
+          ${escapeHtml(t("algorithmPage.originalCpp"))}
+        </button>
+      </div>
+    `;
+  }
+
+  function renderOriginalSource(codeLines, activeLine) {
+    return `
+      <div class="source-viewer" aria-label="${escapeHtml(t("algorithmPage.originalCppSource"))}">
+        <div class="code-line-gutter" aria-hidden="true">
+          ${codeLines.map((_, index) => `<span class="${index + 1 === activeLine ? "active" : ""}">${index + 1}</span>`).join("")}
         </div>
-        <div class="code-output ${escapeHtml(state.codeOutputKind)}" aria-label="${escapeHtml(t("algorithmPage.codeOutput"))}">
-          <strong>${escapeHtml(t("algorithmPage.codeOutput"))}</strong>
-          <pre>${escapeHtml(output)}</pre>
-        </div>
+        <pre><code>${escapeHtml(codeLines.join("\n"))}</code></pre>
       </div>
     `;
   }
@@ -371,7 +438,14 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     return state.codeSource || `// ${t("algorithmPage.loadingImplementation", { title: algorithmPage.title })}`;
   }
 
+  function getOriginalCodeSource() {
+    return state.originalCodeSource || `// ${t("algorithmPage.loadingOriginalCpp")}`;
+  }
+
   function getCodeInsight(current) {
+    if (state.activeCodeTab === "original") {
+      return current.originalCodeInsight || algorithmPage.originalCodeInsight || current.codeInsight || current.note || algorithmPage.codeInsight;
+    }
     return current.codeInsight || current.note || algorithmPage.codeInsight;
   }
 
@@ -483,6 +557,8 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   }
 
   async function loadCode() {
+    loadOriginalCode();
+
     if (state.codeLoaded || state.loadingCode || !algorithmPage.codePath) return;
     state.loadingCode = true;
 
@@ -495,6 +571,23 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     } finally {
       state.codeLoaded = true;
       state.loadingCode = false;
+      requestRender();
+    }
+
+  }
+
+  async function loadOriginalCode() {
+    if (state.originalCodeLoaded || state.loadingOriginalCode || !algorithmPage.originalCodePath) return;
+    state.loadingOriginalCode = true;
+
+    try {
+      const response = await fetch(algorithmPage.originalCodePath, { cache: "no-store" });
+      if (response.ok) {
+        state.originalCodeSource = (await response.text()).trimEnd();
+      }
+    } finally {
+      state.originalCodeLoaded = true;
+      state.loadingOriginalCode = false;
       requestRender();
     }
   }

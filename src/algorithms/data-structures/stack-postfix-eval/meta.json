@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-stack-postfix-eval",
+  "title": "Stack Postfix Eval",
+  "route": "/algorithms/data-structures/stack-postfix-eval",
+  "visualizerType": "stack-operations",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "layers",
+  "track": "Data Structures",
+  "topicGroup": "Stack"
+}

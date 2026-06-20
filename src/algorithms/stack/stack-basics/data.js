@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this algorithm page without touching app.js.
+// Edit this file to customize this data-structure page without touching app.js.
 
 export const algorithmPage = {
   "id": "stack-basics",
@@ -132,5 +132,27 @@ export const algorithmPage = {
         "type": "pop"
       }
     ]
+  ],
+  "relatedLinks": [
+    {
+      "id": "ds-stack-using-array",
+      "title": "Stack Using Array",
+      "label": "C/C++ stack source"
+    },
+    {
+      "id": "ds-stack-stack-using-ll",
+      "title": "Stack Using Linked List",
+      "label": "C/C++ stack source"
+    },
+    {
+      "id": "ds-stack-parenthesis-is-balanced",
+      "title": "Balanced Parentheses with Stack",
+      "label": "C/C++ stack source"
+    },
+    {
+      "id": "ds-stack-parenthesis-is-balanced-extended",
+      "title": "Balanced Parentheses Extended",
+      "label": "C/C++ stack source"
+    }
   ]
 };

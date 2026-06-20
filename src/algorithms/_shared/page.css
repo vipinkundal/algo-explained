@@ -9,6 +9,10 @@
   min-width: 0;
 }
 
+.visualizer-panel {
+  max-width: 1000px;
+}
+
 .algorithm-page h2 {
   margin: 0 0 12px;
   color: var(--on-surface);
@@ -151,6 +155,62 @@
   border-radius: 12px;
   background: var(--surface-lowest);
   min-width: 0;
+}
+
+.related-links {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+  min-width: 0;
+}
+
+.related-links > strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--on-surface);
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.related-links > strong .material-symbols-outlined {
+  color: var(--secondary);
+}
+
+.related-links > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 10px;
+}
+
+.related-links button {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  min-height: 72px;
+  border: 1px solid var(--outline-variant);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: var(--surface-lowest);
+  color: var(--on-surface);
+  text-align: left;
+  box-shadow: var(--shadow-1);
+}
+
+.related-links button span {
+  font-size: 15px;
+  line-height: 21px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.related-links button em {
+  color: var(--on-surface-variant);
+  font-size: 12px;
+  line-height: 16px;
+  font-style: normal;
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .primary-action,
@@ -382,6 +442,32 @@
   font-size: 18px;
 }
 
+.code-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: #252525;
+}
+
+.code-tabs button {
+  min-height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 7px 12px;
+  background: #1b1b1b;
+  color: #c6c6c6;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 800;
+}
+
+.code-tabs button.active {
+  border-color: rgba(178, 197, 255, 0.5);
+  background: rgba(0, 82, 204, 0.28);
+  color: white;
+}
+
 .window-dots {
   display: flex;
   gap: 8px;
@@ -445,6 +531,34 @@
   min-width: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   background: #1e1e1e;
+}
+
+.source-viewer {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  min-width: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: #1e1e1e;
+}
+
+.source-viewer pre {
+  min-height: 360px;
+  max-height: 620px;
+  margin: 0;
+  overflow: auto;
+  padding: 18px 0;
+}
+
+.source-viewer code {
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  padding: 0 18px;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 13px;
+  line-height: 22px;
+  white-space: pre;
 }
 
 .code-line-gutter {
@@ -669,6 +783,76 @@
   }
 }
 
+@media (min-width: 1180px) {
+  .visualizer-panel {
+    display: grid;
+    grid-template-columns: minmax(360px, 0.78fr) minmax(560px, 1.22fr);
+    gap: 24px 28px;
+    align-items: start;
+    max-width: 1520px;
+  }
+
+  .visualizer-panel .title-row {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  .visualizer-panel .concept-loop-grid {
+    grid-column: 1;
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+
+  .visualizer-panel .dry-run-stage {
+    grid-column: 1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0;
+  }
+
+  .visualizer-panel .trace-layout {
+    grid-column: 2;
+    grid-row: 2 / 6;
+    grid-template-columns: minmax(0, 1fr);
+    align-self: stretch;
+  }
+
+  .visualizer-panel .code-editor-shell textarea {
+    min-height: clamp(420px, 42vh, 620px);
+  }
+
+  .visualizer-panel .explanation-bubble {
+    padding: 20px;
+  }
+
+  .visualizer-panel .control-deck {
+    grid-column: 1;
+    justify-self: center;
+    margin: 0 auto;
+  }
+
+  .visualizer-panel .variable-grid {
+    grid-column: 1;
+    grid-template-columns: 1fr;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1480px) {
+  .visualizer-panel {
+    grid-template-columns: minmax(440px, 0.82fr) minmax(720px, 1.18fr);
+    gap: 28px 34px;
+  }
+
+  .visualizer-panel .dry-run-stage {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .visualizer-panel .concept-loop-grid,
+  .visualizer-panel .variable-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 560px) {
   .algorithm-page h2 {
     font-size: 30px;
@@ -718,6 +902,16 @@
 
   .code-editor-shell {
     grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .source-viewer {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .source-viewer code {
+    padding-inline: 14px;
+    font-size: 12px;
+    line-height: 22px;
   }
 
   .code-line-gutter {

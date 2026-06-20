@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-array-adt-reverse-and-shift-of-an-array",
+  "title": "Array ADT Reverse And Shift Of An Array",
+  "route": "/algorithms/data-structures/array-adt-reverse-and-shift-of-an-array",
+  "visualizerType": "array-adt",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "view_week",
+  "track": "Data Structures",
+  "topicGroup": "Arrays / Array ADT"
+}

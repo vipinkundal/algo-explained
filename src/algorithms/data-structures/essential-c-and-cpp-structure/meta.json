@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-essential-c-and-cpp-structure",
+  "title": "C/C++ Structure",
+  "route": "/algorithms/data-structures/essential-c-and-cpp-structure",
+  "visualizerType": "cpp-memory-model",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "data_object",
+  "track": "Data Structures",
+  "topicGroup": "C/C++ Essentials"
+}

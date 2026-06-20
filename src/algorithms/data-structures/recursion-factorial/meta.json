@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-recursion-factorial",
+  "title": "Recursion Factorial",
+  "route": "/algorithms/data-structures/recursion-factorial",
+  "visualizerType": "call-stack",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Recursion"
+}

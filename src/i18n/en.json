@@ -55,7 +55,12 @@
     "outputTimeout": "Execution stopped after 2 seconds. Check for an infinite loop.",
     "consoleOutput": "Console",
     "returnedValue": "Returned",
-    "activeLine": "Active line {line}"
+    "activeLine": "Active line {line}",
+    "codeView": "Code view",
+    "runnableJs": "Runnable JS",
+    "originalCpp": "Original C/C++",
+    "originalCppSource": "Original C/C++ source",
+    "loadingOriginalCpp": "Loading original C/C++ source"
   },
   "algorithmPages": {
     "backtracking-basics": {

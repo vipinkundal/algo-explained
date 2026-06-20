@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-string-permutation",
+  "title": "String Permutation",
+  "route": "/algorithms/data-structures/string-permutation",
+  "visualizerType": "string-scan",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "abc",
+  "track": "Data Structures",
+  "topicGroup": "Strings"
+}

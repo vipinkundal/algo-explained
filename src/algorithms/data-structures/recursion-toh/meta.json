@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-recursion-toh",
+  "title": "Recursion Tower of Hanoi",
+  "route": "/algorithms/data-structures/recursion-toh",
+  "visualizerType": "call-stack",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Recursion"
+}

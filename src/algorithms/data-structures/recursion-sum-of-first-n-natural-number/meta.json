@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-recursion-sum-of-first-n-natural-number",
+  "title": "Recursion Sum Of First N Natural Number",
+  "route": "/algorithms/data-structures/recursion-sum-of-first-n-natural-number",
+  "visualizerType": "call-stack",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Recursion"
+}

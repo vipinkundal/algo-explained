@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-stack-parenthesis-is-balanced",
+  "title": "Balanced Parentheses with Stack",
+  "route": "/algorithms/data-structures/stack-parenthesis-is-balanced",
+  "visualizerType": "stack-operations",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "layers",
+  "track": "Data Structures",
+  "topicGroup": "Stack"
+}

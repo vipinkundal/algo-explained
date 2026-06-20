@@ -1,0 +1,7 @@
+// Runnable JavaScript companion for Array ADT Sum Of K
+// Original source: 05_Array_ADT/11_Sum_of_k.cpp
+export function arrayAdtSumOfK() {
+  const values = [3, 1, 4, 1, 5];
+  const sum = values.reduce((total, value) => total + value, 0);
+  return { structure: "array", values, length: values.length, max: Math.max(...values), sum };
+}

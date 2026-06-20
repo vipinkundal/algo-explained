@@ -129,8 +129,9 @@ function icon(name) {
 
 function renderHeader() {
   const currentSaved = state.savedIds.has(state.selectedId);
-  const canSaveCurrentAlgorithm = routeViews.has(state.view) && Boolean(getSelectedAlgorithm());
-  const navItems = ["catalog", "search", "saved", "lesson", ...(isDailyQuizAvailable() ? ["quiz"] : []), "profile"];
+  const isAuthenticated = Boolean(state.authUser);
+  const canSaveCurrentAlgorithm = isAuthenticated && routeViews.has(state.view) && Boolean(getSelectedAlgorithm());
+  const navItems = ["catalog", "search", ...(isAuthenticated ? ["saved"] : []), "lesson", ...(isDailyQuizAvailable() ? ["quiz"] : []), "profile"];
   return `
     <header class="app-header">
       <button class="brand-button" data-view="catalog">${t("app.brand")}</button>
@@ -148,7 +149,7 @@ function renderNavButton(view) {
     catalog: t("nav.home"),
     search: t("nav.search"),
     saved: t("nav.saved"),
-    profile: t("nav.profile"),
+    profile: state.authUser ? t("nav.profile") : t("nav.signIn"),
     lesson: t("nav.lesson"),
     visualizer: t("nav.visualizer"),
     challenge: t("nav.challenge"),
@@ -621,9 +622,11 @@ function renderProgressPanel(selected) {
             ${icon(progress[section] ? "check_circle" : symbol)}<span>${label}</span>
           </button>
         `).join("")}
-        <button type="button" class="${saved ? "completed" : ""}" data-action="save-current">
-          ${icon(saved ? "bookmark_added" : "bookmark")}<span>${saved ? "Saved" : "Save"}</span>
-        </button>
+        ${state.authUser ? `
+          <button type="button" class="${saved ? "completed" : ""}" data-action="save-current">
+            ${icon(saved ? "bookmark_added" : "bookmark")}<span>${saved ? "Saved" : "Save"}</span>
+          </button>
+        ` : ""}
       </div>
     </section>
   `;
@@ -631,21 +634,24 @@ function renderProgressPanel(selected) {
 
 function renderBottomNav() {
   const profileLabel = state.authUser ? t("nav.profile") : t("nav.signIn");
+  const bottomItemCount = 2 + (state.authUser ? 1 : 0) + (isDailyQuizAvailable() ? 1 : 0) + 1;
   const secondaryItems = [
     ["catalog", "home", t("nav.home")],
     ["search", "search", t("nav.search")],
   ];
   const quizAvailable = isDailyQuizAvailable();
   return `
-    <nav class="bottom-nav" aria-label="Section navigation" style="grid-template-columns: repeat(${quizAvailable ? 5 : 4}, minmax(0, 1fr))">
+    <nav class="bottom-nav" aria-label="Section navigation" style="grid-template-columns: repeat(${bottomItemCount}, minmax(0, 1fr))">
       ${secondaryItems.map(([view, symbol, label]) => `
         <button class="${state.view === view ? "active" : ""}" data-view="${view}">
           ${icon(symbol)}<span>${label}</span>
         </button>
       `).join("")}
-      <button class="${state.view === "saved" ? "active saved" : ""}" data-view="saved" aria-label="${escapeHtml(t("nav.savedAlgorithms"))}">
-        ${icon("bookmark")}<span>${escapeHtml(t("nav.saved"))}</span>
-      </button>
+      ${state.authUser ? `
+        <button class="${state.view === "saved" ? "active saved" : ""}" data-view="saved" aria-label="${escapeHtml(t("nav.savedAlgorithms"))}">
+          ${icon("bookmark")}<span>${escapeHtml(t("nav.saved"))}</span>
+        </button>
+      ` : ""}
       ${quizAvailable ? `
         <button class="${state.view === "quiz" ? "active" : ""}" data-view="quiz">
           ${icon("quiz")}<span>${escapeHtml(t("nav.quiz"))}</span>
@@ -808,6 +814,11 @@ async function openAlgorithm(id) {
 }
 
 async function setView(view) {
+  if (view === "saved" && !state.authUser) {
+    showSignIn();
+    return;
+  }
+
   if (view === "quiz" && !isDailyQuizUnlocked()) {
     redirectFromQuizOnboarding();
     return;
@@ -1092,6 +1103,7 @@ function sortSearchCategoryGroups(a, b) {
     "Greedy",
     "Backtracking",
     "C++ STL Algorithm Pages",
+    "Data Structures",
   ];
   const aRank = categoryOrder.indexOf(a.category);
   const bRank = categoryOrder.indexOf(b.category);
@@ -1137,6 +1149,12 @@ function createSearchRecord(algorithm, pageData = {}) {
     pageData.realLifeExample,
     pageData.whenToUse,
     pageData.memoryTrick,
+    pageData.track,
+    pageData.topicGroup,
+    pageData.sourceFolder,
+    pageData.sourceFile,
+    pageData.sourceLanguage,
+    pageData.originalCodeFilename,
     pageData.visualizerCaption,
     pageData.complexity?.time,
     pageData.complexity?.space,
@@ -1146,6 +1164,8 @@ function createSearchRecord(algorithm, pageData = {}) {
     ...(pageData.logicSteps || []).flatMap((step) => [step.title, step.text]),
     ...(pageData.variables || []).flatMap((variable) => [variable.name, variable.purpose]),
     ...(pageData.dryRun || []).flatMap((step) => [step.label, step.title, step.note]),
+    ...(pageData.relatedLinks || []).flatMap((link) => [link.id, link.title, link.label]),
+    ...(pageData.relatedAlgorithmIds || []),
     ...(pageData.quiz?.options || []).map((option) => option.text),
     route.replaceAll("/", " ").replaceAll("-", " "),
     String(title).replaceAll("-", " "),
@@ -1818,6 +1838,11 @@ async function logoutUser() {
 }
 
 async function saveCurrentAlgorithm() {
+  if (!state.authUser) {
+    showSignIn();
+    return;
+  }
+
   const selected = getSelectedAlgorithm();
   if (!selected) return;
 
@@ -1851,6 +1876,15 @@ function toggleProgress(section) {
   persistProgress();
   render();
   syncProgressSection(selected.id, section, progress[section]);
+}
+
+function showSignIn() {
+  state.view = "profile";
+  state.authMode = "login";
+  state.authMessage = "";
+  state.authMessageType = "error";
+  updateRoute();
+  render();
 }
 
 function getAlgorithmProgress(id) {
@@ -2202,6 +2236,7 @@ function iconForAlgorithm(algorithm) {
   if (category.includes("bit")) return "memory";
   if (category.includes("heap")) return "priority_high";
   if (category.includes("array")) return "view_week";
+  if (category.includes("data structure")) return "schema";
   return "school";
 }
 
@@ -2251,6 +2286,10 @@ async function loadAlgorithmIndex() {
       return;
     }
     if (routeState?.view === "saved") {
+      if (!state.authUser) {
+        showSignIn();
+        return;
+      }
       state.view = "saved";
       render();
       return;
@@ -2323,6 +2362,10 @@ window.addEventListener("hashchange", async () => {
   }
 
   if (routeState.view === "saved") {
+    if (!state.authUser) {
+      showSignIn();
+      return;
+    }
     state.view = "saved";
     render();
     return;

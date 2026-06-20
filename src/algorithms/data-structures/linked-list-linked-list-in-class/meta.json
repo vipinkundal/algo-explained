@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-linked-list-linked-list-in-class",
+  "title": "Linked List In Class",
+  "route": "/algorithms/data-structures/linked-list-linked-list-in-class",
+  "visualizerType": "linked-list",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "link",
+  "track": "Data Structures",
+  "topicGroup": "Linked List"
+}

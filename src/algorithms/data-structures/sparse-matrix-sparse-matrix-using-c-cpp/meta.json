@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-sparse-matrix-sparse-matrix-using-c-cpp",
+  "title": "Sparse Matrix Using C++",
+  "route": "/algorithms/data-structures/sparse-matrix-sparse-matrix-using-c-cpp",
+  "visualizerType": "sparse-matrix",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "grid_on",
+  "track": "Data Structures",
+  "topicGroup": "Matrix / Sparse Matrix / Polynomial"
+}

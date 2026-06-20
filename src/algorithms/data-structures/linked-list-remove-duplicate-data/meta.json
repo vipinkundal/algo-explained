@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-linked-list-remove-duplicate-data",
+  "title": "Linked List Remove Duplicate Data",
+  "route": "/algorithms/data-structures/linked-list-remove-duplicate-data",
+  "visualizerType": "linked-list",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "link",
+  "track": "Data Structures",
+  "topicGroup": "Linked List"
+}

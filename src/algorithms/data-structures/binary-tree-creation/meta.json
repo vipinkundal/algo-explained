@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-binary-tree-creation",
+  "title": "Binary Tree Creation",
+  "route": "/algorithms/data-structures/binary-tree-creation",
+  "visualizerType": "tree-structure",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Trees / BST / AVL / Heap"
+}

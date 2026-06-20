@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-linked-list-deleting-in-linked-list",
+  "title": "Linked List Deletion",
+  "route": "/algorithms/data-structures/linked-list-deleting-in-linked-list",
+  "visualizerType": "linked-list",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "link",
+  "track": "Data Structures",
+  "topicGroup": "Linked List"
+}

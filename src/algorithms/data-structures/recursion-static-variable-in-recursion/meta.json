@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "id": "ds-recursion-static-variable-in-recursion",
+  "title": "Static Variable In Recursion",
+  "route": "/algorithms/data-structures/recursion-static-variable-in-recursion",
+  "visualizerType": "call-stack",
+  "priority": "medium",
+  "category": "Data Structures",
+  "icon": "account_tree",
+  "track": "Data Structures",
+  "topicGroup": "Recursion"
+}
