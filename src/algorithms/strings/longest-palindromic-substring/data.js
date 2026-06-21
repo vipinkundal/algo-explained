@@ -118,5 +118,133 @@ export const algorithmPage = {
   "algorithmSlug": "longest-palindromic-substring",
   "runnerInput": [
     "babad"
-  ]
+  ],
+  "animation": {
+    "type": "tree-operation",
+    "title": "Longest Palindromic Substring tree state",
+    "nodes": [
+      {
+        "id": "8",
+        "label": "8",
+        "x": 340,
+        "y": 58
+      },
+      {
+        "id": "4",
+        "label": "4",
+        "x": 190,
+        "y": 150
+      },
+      {
+        "id": "12",
+        "label": "12",
+        "x": 490,
+        "y": 150
+      },
+      {
+        "id": "2",
+        "label": "2",
+        "x": 110,
+        "y": 255
+      },
+      {
+        "id": "6",
+        "label": "6",
+        "x": 270,
+        "y": 255
+      },
+      {
+        "id": "10",
+        "label": "10",
+        "x": 420,
+        "y": 255
+      },
+      {
+        "id": "14",
+        "label": "14",
+        "x": 570,
+        "y": 255
+      }
+    ],
+    "edges": [
+      {
+        "from": "8",
+        "to": "4"
+      },
+      {
+        "from": "8",
+        "to": "12"
+      },
+      {
+        "from": "4",
+        "to": "2"
+      },
+      {
+        "from": "4",
+        "to": "6"
+      },
+      {
+        "from": "12",
+        "to": "10"
+      },
+      {
+        "from": "12",
+        "to": "14"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Text",
+        "title": "Read string input",
+        "note": "The code receives text, pattern, or character data.",
+        "ruleLabel": "Longest Palindromic Substring invariant",
+        "rule": "The code receives text, pattern, or character data.",
+        "activeNode": "8",
+        "targetNode": "4",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Helper",
+        "title": "Prepare string state",
+        "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
+        "ruleLabel": "Longest Palindromic Substring invariant",
+        "rule": "Prefix, hash, frequency, or radius state avoids repeated work.",
+        "activeNode": "4",
+        "targetNode": "12",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Character",
+        "title": "Update on current char",
+        "note": "One character changes the active string state.",
+        "ruleLabel": "Longest Palindromic Substring invariant",
+        "rule": "One character changes the active string state.",
+        "activeNode": "12",
+        "targetNode": "2",
+        "replacementNode": "2",
+        "mutedNodes": []
+      },
+      {
+        "phase": "Result",
+        "title": "Return string answer",
+        "note": "Matches or best values are returned after the scan.",
+        "ruleLabel": "Longest Palindromic Substring invariant",
+        "rule": "Matches or best values are returned after the scan.",
+        "activeNode": "2",
+        "targetNode": "6",
+        "replacementNode": "6",
+        "mutedNodes": []
+      }
+    ]
+  }
 };

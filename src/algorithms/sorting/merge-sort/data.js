@@ -123,5 +123,106 @@ export const algorithmPage = {
       3,
       2
     ]
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Merge Sort array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each merge step chooses the smaller front value from two already-sorted halves.",
+    "values": [
+      4,
+      1,
+      3,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Range",
+        "title": "Split array",
+        "note": "The code divides work into smaller ranges.",
+        "ruleLabel": "Merge Sort invariant",
+        "rule": "The code divides work into smaller ranges.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Range",
+        "secondaryLabel": "Each merge step chooses the smaller front value from two already-sorted halves."
+      },
+      {
+        "phase": "Halves",
+        "title": "Sort recursively",
+        "note": "Each half is solved before merge.",
+        "ruleLabel": "Merge Sort invariant",
+        "rule": "Each half is solved before merge.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Halves",
+        "secondaryLabel": "Each merge step chooses the smaller front value from two already-sorted halves."
+      },
+      {
+        "phase": "Merge",
+        "title": "Choose smaller front",
+        "note": "The next output value comes from one sorted half.",
+        "ruleLabel": "Merge Sort invariant",
+        "rule": "The next output value comes from one sorted half.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [
+          0,
+          1
+        ],
+        "mutedIndices": [],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Merge",
+        "secondaryLabel": "Each merge step chooses the smaller front value from two already-sorted halves."
+      },
+      {
+        "phase": "Sorted",
+        "title": "Return merged result",
+        "note": "The merged section is fully ordered.",
+        "ruleLabel": "Merge Sort invariant",
+        "rule": "The merged section is fully ordered.",
+        "activeIndices": [
+          3,
+          3
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2
+        ],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          3
+        ],
+        "primaryLabel": "Sorted",
+        "secondaryLabel": "Each merge step chooses the smaller front value from two already-sorted halves."
+      }
+    ]
+  }
 };

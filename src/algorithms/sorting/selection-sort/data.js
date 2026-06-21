@@ -123,5 +123,106 @@ export const algorithmPage = {
       3,
       2
     ]
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Selection Sort array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each pass selects one minimum and grows the sorted prefix by one position.",
+    "values": [
+      4,
+      1,
+      3,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Boundary",
+        "title": "Choose next fixed slot",
+        "note": "The left side is already sorted.",
+        "ruleLabel": "Selection Sort invariant",
+        "rule": "The left side is already sorted.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Boundary",
+        "secondaryLabel": "Each pass selects one minimum and grows the sorted prefix by one position."
+      },
+      {
+        "phase": "Minimum",
+        "title": "Scan unsorted suffix",
+        "note": "The code tracks the smallest remaining value.",
+        "ruleLabel": "Selection Sort invariant",
+        "rule": "The code tracks the smallest remaining value.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Minimum",
+        "secondaryLabel": "Each pass selects one minimum and grows the sorted prefix by one position."
+      },
+      {
+        "phase": "Swap",
+        "title": "Place selected value",
+        "note": "The minimum moves into its final position.",
+        "ruleLabel": "Selection Sort invariant",
+        "rule": "The minimum moves into its final position.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [
+          0,
+          1
+        ],
+        "mutedIndices": [],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Swap",
+        "secondaryLabel": "Each pass selects one minimum and grows the sorted prefix by one position."
+      },
+      {
+        "phase": "Sorted",
+        "title": "Return final order",
+        "note": "All positions are fixed after the last pass.",
+        "ruleLabel": "Selection Sort invariant",
+        "rule": "All positions are fixed after the last pass.",
+        "activeIndices": [
+          3,
+          3
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2
+        ],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          3
+        ],
+        "primaryLabel": "Sorted",
+        "secondaryLabel": "Each pass selects one minimum and grows the sorted prefix by one position."
+      }
+    ]
+  }
 };

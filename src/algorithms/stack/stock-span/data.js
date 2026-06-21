@@ -126,5 +126,81 @@ export const algorithmPage = {
       75,
       85
     ]
-  ]
+  ],
+  "animation": {
+    "type": "stack-queue-flow",
+    "title": "Stock Span Problem stack state",
+    "ruleLabel": "stack rule",
+    "rule": "Each step changes only the part of the stack required to preserve the invariant.",
+    "orientation": "stack",
+    "items": [
+      100,
+      80,
+      60,
+      70,
+      60
+    ],
+    "steps": [
+      {
+        "phase": "Stack",
+        "title": "Read stack action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Stock Span Problem invariant",
+        "rule": "The code receives the next value or command.",
+        "activeItems": [
+          0
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          4
+        ]
+      },
+      {
+        "phase": "Stack top",
+        "title": "Inspect stack",
+        "note": "The active state must still satisfy last-in, first-out state.",
+        "ruleLabel": "Stock Span Problem invariant",
+        "rule": "The active state must still satisfy last-in, first-out state.",
+        "activeItems": [
+          1
+        ],
+        "topIndex": 1,
+        "queueWindow": [
+          1,
+          4
+        ]
+      },
+      {
+        "phase": "Push / pop",
+        "title": "Push, pop, peek, or resolve stack entries",
+        "note": "Only the necessary stack fields are changed.",
+        "ruleLabel": "Stock Span Problem invariant",
+        "rule": "Only the necessary stack fields are changed.",
+        "activeItems": [
+          2
+        ],
+        "topIndex": 2,
+        "queueWindow": [
+          2,
+          4
+        ]
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Stock Span Problem invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeItems": [
+          3
+        ],
+        "topIndex": 3,
+        "queueWindow": [
+          3,
+          4
+        ]
+      }
+    ]
+  }
 };

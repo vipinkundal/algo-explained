@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "check": "node --check src/app.js",
+    "check:data-pages": "node scripts/audit-page-data-usage.mjs",
     "check:server": "node --check server.mjs",
     "serve": "node server.mjs",
     "generate:algorithm-pages": "node scripts/generate-algorithm-pages.mjs"

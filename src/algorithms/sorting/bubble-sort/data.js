@@ -123,5 +123,106 @@ export const algorithmPage = {
       3,
       2
     ]
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Bubble Sort array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array.",
+    "values": [
+      4,
+      1,
+      3,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Array",
+        "title": "Copy values",
+        "note": "The code starts with the list to reorder.",
+        "ruleLabel": "Bubble Sort invariant",
+        "rule": "The code starts with the list to reorder.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Array",
+        "secondaryLabel": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array."
+      },
+      {
+        "phase": "Pair",
+        "title": "Compare neighbors",
+        "note": "Only adjacent values are inspected.",
+        "ruleLabel": "Bubble Sort invariant",
+        "rule": "Only adjacent values are inspected.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Pair",
+        "secondaryLabel": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array."
+      },
+      {
+        "phase": "Swap",
+        "title": "Move larger right",
+        "note": "Out-of-order neighbors exchange positions.",
+        "ruleLabel": "Bubble Sort invariant",
+        "rule": "Out-of-order neighbors exchange positions.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [
+          0,
+          1
+        ],
+        "mutedIndices": [],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Swap",
+        "secondaryLabel": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array."
+      },
+      {
+        "phase": "Sorted",
+        "title": "Return final order",
+        "note": "The last pass confirms every pair is ordered.",
+        "ruleLabel": "Bubble Sort invariant",
+        "rule": "The last pass confirms every pair is ordered.",
+        "activeIndices": [
+          3,
+          3
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2
+        ],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          3
+        ],
+        "primaryLabel": "Sorted",
+        "secondaryLabel": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array."
+      }
+    ]
+  }
 };

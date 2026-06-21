@@ -42,52 +42,235 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "root, value",
+      "purpose": "The BST root and the value that should be removed."
     },
     {
-      "name": "current node and recursion state",
-      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as bst restructure."
+      "name": "node",
+      "purpose": "The current subtree root being inspected by the recursive delete call."
     },
     {
-      "name": "tree result",
-      "purpose": "The value produced by bstDelete after the maintained state reaches the stop rule."
+      "name": "successor",
+      "purpose": "The smallest value in the right subtree used when deleting a node with two children."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
+      "name": "returned subtree",
+      "purpose": "Every recursive call returns the updated subtree to reconnect with its parent."
     }
   ],
   "dryRun": [
     {
       "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 1,
-      "codeInsight": "The code starts by handling missing nodes or the current root."
+      "title": "Start at root 4",
+      "note": "The delete value is 2, so begin by comparing 2 with the root value 4.",
+      "activeLine": 14,
+      "codeInsight": "Line 14 protects the recursion: an empty subtree returns null immediately."
     },
     {
-      "label": "Node state",
-      "title": "Read ordered branch",
-      "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "The current node controls the next step."
+      "label": "Go left",
+      "title": "2 is smaller than 4",
+      "note": "Because 2 < 4, the target can only be in the left subtree.",
+      "activeLine": 15,
+      "codeInsight": "Line 15 preserves the BST rule by recursing only into the left branch."
     },
     {
-      "label": "Child step",
-      "title": "Compare with the current node and move left or right",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
+      "label": "Found 2",
+      "title": "Target node found",
+      "note": "The current node value equals the delete value, so restructuring starts here.",
+      "activeLine": 17,
+      "codeInsight": "The else branch starts only when the current node is the target node."
     },
     {
-      "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 10,
-      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
+      "label": "Two children",
+      "title": "Node 2 has two children",
+      "note": "Node 2 has both left child 1 and right child 3, so we cannot just drop it.",
+      "activeLine": 20,
+      "codeInsight": "Lines 18-19 handle simpler one-child cases; this node needs the two-child path."
+    },
+    {
+      "label": "Successor",
+      "title": "Choose successor 3",
+      "note": "The smallest value in the right subtree is 3, so it can replace 2 without breaking order.",
+      "activeLine": 21,
+      "codeInsight": "Line 21 copies the inorder successor value into the target node."
+    },
+    {
+      "label": "Remove old 3",
+      "title": "Delete duplicate successor",
+      "note": "After copying 3 into node 2's position, remove the old 3 from the right subtree.",
+      "activeLine": 22,
+      "codeInsight": "Line 22 removes the successor from its original location so the value appears once."
+    },
+    {
+      "label": "Reconnect",
+      "title": "Return updated subtree",
+      "note": "The updated subtree reconnects to root 4 as its left child.",
+      "activeLine": 24,
+      "codeInsight": "Line 24 returns the repaired subtree to the parent recursive call."
     }
   ],
+  "animation": {
+    "type": "tree-operation",
+    "title": "BST delete restructuring",
+    "nodes": [
+      {
+        "id": "4",
+        "label": "4",
+        "x": 340,
+        "y": 58
+      },
+      {
+        "id": "2",
+        "label": "2",
+        "x": 190,
+        "y": 150
+      },
+      {
+        "id": "6",
+        "label": "6",
+        "x": 490,
+        "y": 150
+      },
+      {
+        "id": "1",
+        "label": "1",
+        "x": 110,
+        "y": 255
+      },
+      {
+        "id": "3",
+        "label": "3",
+        "x": 270,
+        "y": 255
+      },
+      {
+        "id": "5",
+        "label": "5",
+        "x": 420,
+        "y": 255
+      },
+      {
+        "id": "7",
+        "label": "7",
+        "x": 570,
+        "y": 255
+      }
+    ],
+    "edges": [
+      {
+        "from": "4",
+        "to": "2"
+      },
+      {
+        "from": "4",
+        "to": "6"
+      },
+      {
+        "from": "2",
+        "to": "1"
+      },
+      {
+        "from": "2",
+        "to": "3"
+      },
+      {
+        "from": "6",
+        "to": "5"
+      },
+      {
+        "from": "6",
+        "to": "7"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Search",
+        "title": "Compare target 2 with root 4",
+        "note": "The target is smaller than 4, so deletion must continue in the left subtree.",
+        "activeNode": "4",
+        "targetNode": "2",
+        "mutedNodes": [
+          "6",
+          "5",
+          "7"
+        ],
+        "ruleLabel": "BST direction",
+        "rule": "Smaller values are always searched through the left child."
+      },
+      {
+        "phase": "Search",
+        "title": "Move into the left subtree",
+        "note": "The recursive call focuses on node 2 while root 4 waits for the updated subtree to return.",
+        "activeNode": "2",
+        "targetNode": "2",
+        "mutedNodes": [
+          "6",
+          "5",
+          "7"
+        ],
+        "ruleLabel": "Recursive contract",
+        "rule": "Delete returns a subtree root that the parent can reconnect."
+      },
+      {
+        "phase": "Match",
+        "title": "Node 2 is the delete target",
+        "note": "The current value matches the requested delete value.",
+        "activeNode": "2",
+        "targetNode": "2",
+        "ruleLabel": "Target found",
+        "rule": "Once the value matches, search stops and restructuring begins."
+      },
+      {
+        "phase": "Case check",
+        "title": "Two-child delete case",
+        "note": "Node 2 has left child 1 and right child 3, so the tree needs a replacement value.",
+        "activeNode": "2",
+        "targetNode": "2",
+        "ruleLabel": "Why not remove directly?",
+        "rule": "Removing node 2 directly would disconnect one of its children."
+      },
+      {
+        "phase": "Replace",
+        "title": "Use successor 3",
+        "note": "3 is the smallest value in node 2's right subtree, so it safely replaces 2.",
+        "activeNode": "2",
+        "targetNode": "2",
+        "replacementNode": "3",
+        "ruleLabel": "Inorder successor",
+        "rule": "The successor is larger than every left value and no larger than the right subtree."
+      },
+      {
+        "phase": "Cleanup",
+        "title": "Remove old successor node",
+        "note": "After copying 3 upward, the original leaf node 3 is removed from its old position.",
+        "activeNode": "2",
+        "replacementNode": "2",
+        "nodeLabels": {
+          "2": "3"
+        },
+        "removedNodes": [
+          "3"
+        ],
+        "ruleLabel": "Avoid duplicate values",
+        "rule": "The copied successor must be deleted from its original subtree."
+      },
+      {
+        "phase": "Return",
+        "title": "Reconnect repaired subtree",
+        "note": "Root 4 now points left to the repaired subtree, where 3 replaced 2 and 1 remains left.",
+        "activeNode": "4",
+        "replacementNode": "2",
+        "nodeLabels": {
+          "2": "3"
+        },
+        "removedNodes": [
+          "3"
+        ],
+        "ruleLabel": "Final order",
+        "rule": "The resulting tree still keeps smaller values left and larger values right."
+      }
+    ]
+  },
   "complexity": {
     "time": "O(n) for the educational reference implementation.",
     "space": "O(n) for tracked state when needed."

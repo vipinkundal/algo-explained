@@ -42,52 +42,222 @@ export const algorithmPage = {
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "vertices",
+      "purpose": "The nodes whose shortest distance must be computed."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "edges",
+      "purpose": "Directed weighted connections tested during every pass."
     },
     {
-      "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "name": "distance",
+      "purpose": "Best known cost from the start vertex to each vertex."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "hasNegativeCycle",
+      "purpose": "A final check that becomes true if any edge can still relax."
     }
   ],
   "dryRun": [
     {
       "label": "Graph",
       "title": "Read graph input",
-      "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 1,
-      "codeInsight": "The code receives vertices, edges, weights, or adjacency lists."
+      "note": "Use vertices A, B, C and weighted edges A -> B (1), B -> C (2), and A -> C (5).",
+      "activeLine": 5,
+      "codeInsight": "The function receives vertices, weighted directed edges, and the start vertex."
     },
     {
-      "label": "Distance Table",
-      "title": "Initialize distance table",
-      "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 3,
-      "codeInsight": "Only the graph state owned by this algorithm is created."
+      "label": "Start distance",
+      "title": "Initialize distances",
+      "note": "Every vertex starts at infinity except A, because the distance from A to itself is 0.",
+      "activeLine": 7,
+      "codeInsight": "Lines 6-7 create the distance table and set only the start vertex to 0."
     },
     {
-      "label": "Work item",
-      "title": "Process next vertex or edge",
-      "note": "Relax outgoing edges when a better distance is found.",
-      "activeLine": 6,
-      "codeInsight": "Relax outgoing edges when a better distance is found."
+      "label": "Relax A -> B",
+      "title": "Improve B",
+      "note": "A is reachable with cost 0, so A -> B gives B a better cost of 1.",
+      "activeLine": 11,
+      "codeInsight": "The relaxation condition succeeds, so distance[B] becomes distance[A] + 1."
     },
     {
-      "label": "Shortest Path Relaxation",
-      "title": "Return shortest-path relaxation",
-      "note": "The final graph state becomes the answer.",
+      "label": "Relax B -> C",
+      "title": "Improve C",
+      "note": "B is now reachable with cost 1, so B -> C improves C from infinity to 3.",
+      "activeLine": 11,
+      "codeInsight": "The same rule applies again: distance[C] becomes distance[B] + 2."
+    },
+    {
+      "label": "Check A -> C",
+      "title": "Skip worse edge",
+      "note": "A -> C costs 5, but C already has cost 3, so the table does not change.",
       "activeLine": 10,
-      "codeInsight": "The final graph state becomes the answer."
+      "codeInsight": "The if statement blocks a worse route from overwriting the better distance."
+    },
+    {
+      "label": "Next pass",
+      "title": "Repeat edge scan",
+      "note": "The second pass checks every edge again, but no distance improves.",
+      "activeLine": 8,
+      "codeInsight": "Bellman-Ford repeats edge scans V - 1 times so longer paths can propagate."
+    },
+    {
+      "label": "Cycle check",
+      "title": "Detect negative cycle",
+      "note": "A final scan asks whether any edge can still improve a distance.",
+      "activeLine": 15,
+      "codeInsight": "If an edge can still relax after V - 1 passes, a reachable negative cycle exists."
+    },
+    {
+      "label": "Result",
+      "title": "Return distances",
+      "note": "The final answer is A: 0, B: 1, C: 3 with no negative cycle.",
+      "activeLine": 16,
+      "codeInsight": "The function returns both the shortest-distance table and the negative-cycle flag."
     }
   ],
+  "animation": {
+    "type": "edge-relaxation",
+    "title": "Bellman-Ford edge relaxation",
+    "nodes": [
+      {
+        "id": "A",
+        "label": "A",
+        "x": 110,
+        "y": 150
+      },
+      {
+        "id": "B",
+        "label": "B",
+        "x": 330,
+        "y": 78
+      },
+      {
+        "id": "C",
+        "label": "C",
+        "x": 530,
+        "y": 200
+      }
+    ],
+    "edges": [
+      {
+        "from": "A",
+        "to": "B",
+        "weight": 1
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "weight": 2
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "weight": 5
+      }
+    ],
+    "steps": [
+      {
+        "pass": "Input",
+        "title": "Graph loaded",
+        "note": "The weighted directed graph is ready, but no shortest paths have been calculated yet.",
+        "distances": {
+          "A": "∞",
+          "B": "∞",
+          "C": "∞"
+        }
+      },
+      {
+        "pass": "Setup",
+        "title": "Start at A",
+        "note": "A becomes 0 and every other vertex stays infinity until an edge proves a cheaper route.",
+        "relaxedNode": "A",
+        "distances": {
+          "A": 0,
+          "B": "∞",
+          "C": "∞"
+        }
+      },
+      {
+        "pass": "Pass 1",
+        "title": "Relax A -> B",
+        "note": "0 + 1 is better than infinity, so B becomes 1.",
+        "activeEdge": {
+          "from": "A",
+          "to": "B"
+        },
+        "relaxedNode": "B",
+        "distances": {
+          "A": 0,
+          "B": 1,
+          "C": "∞"
+        }
+      },
+      {
+        "pass": "Pass 1",
+        "title": "Relax B -> C",
+        "note": "1 + 2 is better than infinity, so C becomes 3.",
+        "activeEdge": {
+          "from": "B",
+          "to": "C"
+        },
+        "relaxedNode": "C",
+        "distances": {
+          "A": 0,
+          "B": 1,
+          "C": 3
+        }
+      },
+      {
+        "pass": "Pass 1",
+        "title": "Check A -> C",
+        "note": "0 + 5 is worse than the current C distance of 3, so C stays unchanged.",
+        "activeEdge": {
+          "from": "A",
+          "to": "C"
+        },
+        "distances": {
+          "A": 0,
+          "B": 1,
+          "C": 3
+        }
+      },
+      {
+        "pass": "Pass 2",
+        "title": "No more improvements",
+        "note": "The next pass scans all edges again, but every proposed route is already worse or equal.",
+        "activeEdge": {
+          "from": "A",
+          "to": "B"
+        },
+        "distances": {
+          "A": 0,
+          "B": 1,
+          "C": 3
+        }
+      },
+      {
+        "pass": "Final scan",
+        "title": "Check negative cycle",
+        "note": "No edge can still improve a distance, so there is no reachable negative cycle.",
+        "distances": {
+          "A": 0,
+          "B": 1,
+          "C": 3
+        }
+      },
+      {
+        "pass": "Answer",
+        "title": "Return shortest paths",
+        "note": "Bellman-Ford returns the final distance table and hasNegativeCycle: false.",
+        "distances": {
+          "A": 0,
+          "B": 1,
+          "C": 3
+        }
+      }
+    ]
+  },
   "complexity": {
     "time": "O(VE).",
     "space": "O(V)."

@@ -123,5 +123,133 @@ export const algorithmPage = {
       3,
       2
     ]
-  ]
+  ],
+  "animation": {
+    "type": "tree-operation",
+    "title": "Heap Sort tree state",
+    "nodes": [
+      {
+        "id": "8",
+        "label": "8",
+        "x": 340,
+        "y": 58
+      },
+      {
+        "id": "4",
+        "label": "4",
+        "x": 190,
+        "y": 150
+      },
+      {
+        "id": "12",
+        "label": "12",
+        "x": 490,
+        "y": 150
+      },
+      {
+        "id": "2",
+        "label": "2",
+        "x": 110,
+        "y": 255
+      },
+      {
+        "id": "6",
+        "label": "6",
+        "x": 270,
+        "y": 255
+      },
+      {
+        "id": "10",
+        "label": "10",
+        "x": 420,
+        "y": 255
+      },
+      {
+        "id": "14",
+        "label": "14",
+        "x": 570,
+        "y": 255
+      }
+    ],
+    "edges": [
+      {
+        "from": "8",
+        "to": "4"
+      },
+      {
+        "from": "8",
+        "to": "12"
+      },
+      {
+        "from": "4",
+        "to": "2"
+      },
+      {
+        "from": "4",
+        "to": "6"
+      },
+      {
+        "from": "12",
+        "to": "10"
+      },
+      {
+        "from": "12",
+        "to": "14"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Heap",
+        "title": "Build priority tree",
+        "note": "The array is interpreted as a heap.",
+        "ruleLabel": "Heap Sort invariant",
+        "rule": "The array is interpreted as a heap.",
+        "activeNode": "8",
+        "targetNode": "4",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Root",
+        "title": "Move root to output",
+        "note": "The max or min root becomes fixed.",
+        "ruleLabel": "Heap Sort invariant",
+        "rule": "The max or min root becomes fixed.",
+        "activeNode": "4",
+        "targetNode": "12",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Size",
+        "title": "Shrink active heap",
+        "note": "Fixed values are no longer heapified.",
+        "ruleLabel": "Heap Sort invariant",
+        "rule": "Fixed values are no longer heapified.",
+        "activeNode": "12",
+        "targetNode": "2",
+        "replacementNode": "2",
+        "mutedNodes": []
+      },
+      {
+        "phase": "Restore",
+        "title": "Heapify remaining range",
+        "note": "The parent-child invariant is repaired.",
+        "ruleLabel": "Heap Sort invariant",
+        "rule": "The parent-child invariant is repaired.",
+        "activeNode": "2",
+        "targetNode": "6",
+        "replacementNode": "6",
+        "mutedNodes": []
+      }
+    ]
+  }
 };

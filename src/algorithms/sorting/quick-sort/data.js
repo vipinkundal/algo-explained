@@ -123,5 +123,106 @@ export const algorithmPage = {
       3,
       2
     ]
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Quick Sort array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each partition step moves values to the correct side of the pivot and fixes the pivot position.",
+    "values": [
+      4,
+      1,
+      3,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Pivot",
+        "title": "Choose pivot value",
+        "note": "The pivot defines the partition rule.",
+        "ruleLabel": "Quick Sort invariant",
+        "rule": "The pivot defines the partition rule.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Pivot",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      },
+      {
+        "phase": "Scan",
+        "title": "Move values by pivot",
+        "note": "Values are compared with the pivot.",
+        "ruleLabel": "Quick Sort invariant",
+        "rule": "Values are compared with the pivot.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Scan",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      },
+      {
+        "phase": "Place",
+        "title": "Fix pivot index",
+        "note": "The pivot lands between smaller and larger values.",
+        "ruleLabel": "Quick Sort invariant",
+        "rule": "The pivot lands between smaller and larger values.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [
+          0,
+          1
+        ],
+        "mutedIndices": [],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Place",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      },
+      {
+        "phase": "Recurse",
+        "title": "Sort both sides",
+        "note": "The same partition rule handles each side.",
+        "ruleLabel": "Quick Sort invariant",
+        "rule": "The same partition rule handles each side.",
+        "activeIndices": [
+          3,
+          3
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2
+        ],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          3
+        ],
+        "primaryLabel": "Recurse",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      }
+    ]
+  }
 };

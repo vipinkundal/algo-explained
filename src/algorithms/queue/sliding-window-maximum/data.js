@@ -128,5 +128,81 @@ export const algorithmPage = {
       7
     ],
     3
-  ]
+  ],
+  "animation": {
+    "type": "stack-queue-flow",
+    "title": "Sliding Window Maximum queue state",
+    "ruleLabel": "queue rule",
+    "rule": "Each step adds the right item and removes or ignores items that no longer belong.",
+    "orientation": "queue",
+    "items": [
+      1,
+      3,
+      -1,
+      -3,
+      5
+    ],
+    "steps": [
+      {
+        "phase": "Window rule",
+        "title": "Read array and window rule",
+        "note": "The code knows the range size or condition.",
+        "ruleLabel": "Sliding Window Maximum invariant",
+        "rule": "The code knows the range size or condition.",
+        "activeItems": [
+          0
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          0
+        ]
+      },
+      {
+        "phase": "Right edge",
+        "title": "Consume next value",
+        "note": "The window grows by one new item.",
+        "ruleLabel": "Sliding Window Maximum invariant",
+        "rule": "The window grows by one new item.",
+        "activeItems": [
+          1
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          1
+        ]
+      },
+      {
+        "phase": "Left edge",
+        "title": "Drop expired state",
+        "note": "Values outside the range are removed.",
+        "ruleLabel": "Sliding Window Maximum invariant",
+        "rule": "Values outside the range are removed.",
+        "activeItems": [
+          2
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          2
+        ]
+      },
+      {
+        "phase": "Window answer",
+        "title": "Record current result",
+        "note": "The current valid window updates the output.",
+        "ruleLabel": "Sliding Window Maximum invariant",
+        "rule": "The current valid window updates the output.",
+        "activeItems": [
+          3
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          3
+        ]
+      }
+    ]
+  }
 };

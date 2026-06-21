@@ -131,5 +131,133 @@ export const algorithmPage = {
         6
       ]
     ]
-  ]
+  ],
+  "animation": {
+    "type": "tree-operation",
+    "title": "Merge K Sorted Lists tree state",
+    "nodes": [
+      {
+        "id": "8",
+        "label": "8",
+        "x": 340,
+        "y": 58
+      },
+      {
+        "id": "4",
+        "label": "4",
+        "x": 190,
+        "y": 150
+      },
+      {
+        "id": "12",
+        "label": "12",
+        "x": 490,
+        "y": 150
+      },
+      {
+        "id": "2",
+        "label": "2",
+        "x": 110,
+        "y": 255
+      },
+      {
+        "id": "6",
+        "label": "6",
+        "x": 270,
+        "y": 255
+      },
+      {
+        "id": "10",
+        "label": "10",
+        "x": 420,
+        "y": 255
+      },
+      {
+        "id": "14",
+        "label": "14",
+        "x": 570,
+        "y": 255
+      }
+    ],
+    "edges": [
+      {
+        "from": "8",
+        "to": "4"
+      },
+      {
+        "from": "8",
+        "to": "12"
+      },
+      {
+        "from": "4",
+        "to": "2"
+      },
+      {
+        "from": "4",
+        "to": "6"
+      },
+      {
+        "from": "12",
+        "to": "10"
+      },
+      {
+        "from": "12",
+        "to": "14"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Range",
+        "title": "Split array",
+        "note": "The code divides work into smaller ranges.",
+        "ruleLabel": "Merge K Sorted Lists invariant",
+        "rule": "The code divides work into smaller ranges.",
+        "activeNode": "8",
+        "targetNode": "4",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Halves",
+        "title": "Sort recursively",
+        "note": "Each half is solved before merge.",
+        "ruleLabel": "Merge K Sorted Lists invariant",
+        "rule": "Each half is solved before merge.",
+        "activeNode": "4",
+        "targetNode": "12",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Merge",
+        "title": "Choose smaller front",
+        "note": "The next output value comes from one sorted half.",
+        "ruleLabel": "Merge K Sorted Lists invariant",
+        "rule": "The next output value comes from one sorted half.",
+        "activeNode": "12",
+        "targetNode": "2",
+        "replacementNode": "2",
+        "mutedNodes": []
+      },
+      {
+        "phase": "Sorted",
+        "title": "Return merged result",
+        "note": "The merged section is fully ordered.",
+        "ruleLabel": "Merge K Sorted Lists invariant",
+        "rule": "The merged section is fully ordered.",
+        "activeNode": "2",
+        "targetNode": "6",
+        "replacementNode": "6",
+        "mutedNodes": []
+      }
+    ]
+  }
 };

@@ -1,3 +1,5 @@
+import { algorithmPage } from "./data.js";
+
 const arrayValues = [1, 3, 5, 7, 9, 13, 15, 19];
 
 const binarySteps = [
@@ -52,6 +54,8 @@ const challengeOptions = [
 export const stylePath = "./src/algorithms/searching/binary-search/styles.css";
 
 export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
+  const pageTitle = algorithmPage.title;
+
   const state = {
     step: 0,
     playing: false,
@@ -90,9 +94,9 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
   function renderLesson() {
     return `
       <section class="lesson-panel" aria-labelledby="lesson-title">
-        <p class="eyebrow">Sorting & searching</p>
-        <h2 id="lesson-title">Binary Search</h2>
-        <p class="lede">The power of "divide and conquer" explained through a simple analogy.</p>
+        <p class="eyebrow">${escapeHtml(algorithmPage.category)}</p>
+        <h2 id="lesson-title">${escapeHtml(pageTitle)}</h2>
+        <p class="lede">${escapeHtml(algorithmPage.meaning)}</p>
         <div class="analogy-media">
           <div class="dictionary-scene" aria-hidden="true">
             <span class="page left"></span>
@@ -128,14 +132,14 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
   function renderVisualizer() {
     const current = binarySteps[state.step];
     return `
-      <section class="visualizer-panel binary-search-visualizer" data-algorithm-page="binary-search" aria-labelledby="visualizer-title">
+      <section class="visualizer-panel binary-search-visualizer" data-algorithm-page="${escapeHtml(algorithmPage.id)}" aria-labelledby="visualizer-title">
         <div class="visualizer-desktop-grid">
           <div class="visualizer-primary">
             <div class="title-row">
               <div>
                 ${renderPageTags(["Searching", "Array boundaries", "Sorted array", "High"])}
-                <h2 id="visualizer-title">Binary Search</h2>
-                <p>Efficiently searching a sorted array by repeatedly dividing the interval in half.</p>
+                <h2 id="visualizer-title">${escapeHtml(pageTitle)}</h2>
+                <p>${escapeHtml(algorithmPage.problem)}</p>
               </div>
               <span class="step-pill">Step ${state.step + 1}/${binarySteps.length}</span>
             </div>
@@ -152,15 +156,15 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
             <div class="concept-loop-grid">
               <article>
                 <strong>${icon("psychology")} Concept</strong>
-                <p>Binary Search keeps only the sorted half that can still contain the target.</p>
+                <p>${escapeHtml(algorithmPage.concept)}</p>
               </article>
               <article>
                 <strong>${icon("repeat")} Loop</strong>
-                <p>Run while <code>low &lt;= high</code>, compute <code>mid</code>, then compare <code>arr[mid]</code> with the target.</p>
+                <p>${escapeHtml(algorithmPage.logicSummary)}</p>
               </article>
               <article>
                 <strong>${icon("sync_alt")} State updates</strong>
-                <p>If the middle value is too small, move <code>low</code>. If it is too large, move <code>high</code>.</p>
+                <p>${escapeHtml(algorithmPage.transitionSummary)}</p>
               </article>
             </div>
           </div>

@@ -126,5 +126,106 @@ export const algorithmPage = {
       2,
       2
     ]
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Majority Element array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
+    "values": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Algorithm State",
+        "title": "Read algorithm state action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Majority Element invariant",
+        "rule": "The code receives the next value or command.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Algorithm State",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
+      },
+      {
+        "phase": "Invariant",
+        "title": "Inspect algorithm state",
+        "note": "The active state must still satisfy page-specific invariant.",
+        "ruleLabel": "Majority Element invariant",
+        "rule": "The active state must still satisfy page-specific invariant.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4,
+          5,
+          6
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Invariant",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
+      },
+      {
+        "phase": "State change",
+        "title": "Update the state described by this algorithm",
+        "note": "Only the necessary algorithm state fields are changed.",
+        "ruleLabel": "Majority Element invariant",
+        "rule": "Only the necessary algorithm state fields are changed.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          5,
+          6
+        ],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "State change",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Majority Element invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0,
+          6
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Result",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
+      }
+    ]
+  }
 };

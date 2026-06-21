@@ -123,5 +123,92 @@ export const algorithmPage = {
       3
     ],
     10
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "C++ accumulate() array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each item updates the running total, difference, or accumulator exactly once.",
+    "values": [
+      1,
+      2,
+      3
+    ],
+    "steps": [
+      {
+        "phase": "Values",
+        "title": "Read values or updates",
+        "note": "The code receives the array, ranges, or deltas.",
+        "ruleLabel": "C++ accumulate() invariant",
+        "rule": "The code receives the array, ranges, or deltas.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Values",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
+      },
+      {
+        "phase": "Accumulator",
+        "title": "Start running state",
+        "note": "A neutral starting value makes every update consistent.",
+        "ruleLabel": "C++ accumulate() invariant",
+        "rule": "A neutral starting value makes every update consistent.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Accumulator",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
+      },
+      {
+        "phase": "Prefix step",
+        "title": "Apply current contribution",
+        "note": "The running state changes by the current value or boundary delta.",
+        "ruleLabel": "C++ accumulate() invariant",
+        "rule": "The running state changes by the current value or boundary delta.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Prefix step",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
+      },
+      {
+        "phase": "Range result",
+        "title": "Read saved state",
+        "note": "The stored state gives the final or range answer.",
+        "ruleLabel": "C++ accumulate() invariant",
+        "rule": "The stored state gives the final or range answer.",
+        "activeIndices": [
+          2,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Range result",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
+      }
+    ]
+  }
 };

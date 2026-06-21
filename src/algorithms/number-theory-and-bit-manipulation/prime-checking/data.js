@@ -118,5 +118,102 @@ export const algorithmPage = {
   "algorithmSlug": "prime-checking",
   "runnerInput": [
     29
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Prime Checking array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
+    "values": [
+      4,
+      1,
+      7,
+      3,
+      6,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Numbers",
+        "title": "Read numeric state",
+        "note": "The code receives the number, range, or modulus.",
+        "ruleLabel": "Prime Checking invariant",
+        "rule": "The code receives the number, range, or modulus.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Numbers",
+        "secondaryLabel": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant."
+      },
+      {
+        "phase": "Rule",
+        "title": "Select math invariant",
+        "note": "The chosen identity controls every update.",
+        "ruleLabel": "Prime Checking invariant",
+        "rule": "The chosen identity controls every update.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4,
+          5
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Rule",
+        "secondaryLabel": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant."
+      },
+      {
+        "phase": "Reduction",
+        "title": "Apply one reduction",
+        "note": "A shift, xor, multiply, divide, or mark changes state.",
+        "ruleLabel": "Prime Checking invariant",
+        "rule": "A shift, xor, multiply, divide, or mark changes state.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          5
+        ],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Reduction",
+        "secondaryLabel": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant."
+      },
+      {
+        "phase": "Numeric result",
+        "title": "Return numeric result",
+        "note": "The loop ends when the invariant gives the answer.",
+        "ruleLabel": "Prime Checking invariant",
+        "rule": "The loop ends when the invariant gives the answer.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Numeric result",
+        "secondaryLabel": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant."
+      }
+    ]
+  }
 };

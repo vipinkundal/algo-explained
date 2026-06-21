@@ -318,13 +318,11 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             <p>${escapeHtml(algorithmPage.transitionSummary || getTransitionSummary(current))}</p>
           </article>
         </div>
-        <div class="dry-run-stage" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.dryRun")}`)}">
-          ${algorithmPage.dryRun.map((step, index) => `
-            <div class="dry-run-node ${index === state.step ? "active" : ""} ${index < state.step ? "complete" : ""}">
-              <b>${index + 1}</b>
-              <span>${escapeHtml(step.label)}</span>
-            </div>
-          `).join("")}
+        ${renderDryRunStage(current)}
+        <div class="control-deck" aria-label="${escapeHtml(t("algorithmPage.visualizerControls"))}">
+          <button data-action="prev" aria-label="${escapeHtml(t("algorithmPage.previousStep"))}">${icon("skip_previous")}</button>
+          <button class="play-button" data-action="next" aria-label="${escapeHtml(t("algorithmPage.nextStep"))}">${icon("skip_next")}</button>
+          <button data-action="reset" aria-label="${escapeHtml(t("algorithmPage.resetVisualizer"))}">${icon("replay")}</button>
         </div>
         <div class="trace-layout">
           ${renderCodeTrace(current.activeLine)}
@@ -333,11 +331,6 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             <strong>${escapeHtml(t("algorithmPage.codeInsight"))}</strong>
             <p>${escapeHtml(getCodeInsight(current))}</p>
           </aside>
-        </div>
-        <div class="control-deck" aria-label="${escapeHtml(t("algorithmPage.visualizerControls"))}">
-          <button data-action="prev" aria-label="${escapeHtml(t("algorithmPage.previousStep"))}">${icon("skip_previous")}</button>
-          <button class="play-button" data-action="next" aria-label="${escapeHtml(t("algorithmPage.nextStep"))}">${icon("skip_next")}</button>
-          <button data-action="reset" aria-label="${escapeHtml(t("algorithmPage.resetVisualizer"))}">${icon("replay")}</button>
         </div>
         <div class="variable-grid">
           ${algorithmPage.variables.map((variable) => `
@@ -368,6 +361,463 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
           `).join("")}
         </div>
       </section>
+    `;
+  }
+
+  function renderDryRunStage(current) {
+    if (algorithmPage.animation?.type === "edge-relaxation") {
+      return renderEdgeRelaxationStage(current);
+    }
+    if (algorithmPage.animation?.type === "tree-operation") {
+      return renderTreeOperationStage(current);
+    }
+    if (algorithmPage.animation?.type) {
+      return renderStructuredAnimationStage(current);
+    }
+
+    return renderStateFlowStage(current);
+  }
+
+  function renderDryRunNodes() {
+    return algorithmPage.dryRun.map((step, index) => `
+      <div class="dry-run-node ${index === state.step ? "active" : ""} ${index < state.step ? "complete" : ""}">
+        <b>${index + 1}</b>
+        <span>${escapeHtml(step.label)}</span>
+      </div>
+    `).join("");
+  }
+
+  function renderEdgeRelaxationStage(current) {
+    const animation = algorithmPage.animation || {};
+    const animationStep = animation.steps?.[state.step] || {};
+    const nodes = Array.isArray(animation.nodes) ? animation.nodes : [];
+    const edges = Array.isArray(animation.edges) ? animation.edges : [];
+    const distances = animationStep.distances || {};
+    const activeEdge = animationStep.activeEdge || null;
+    const relaxedNode = animationStep.relaxedNode || "";
+
+    return `
+      <div class="dry-run-stage graph-relaxation-stage" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.dryRun")}`)}">
+        <div class="graph-relaxation-board">
+          <svg class="graph-relaxation-svg" viewBox="0 0 640 300" role="img" aria-label="${escapeHtml(animation.title || algorithmPage.title)}">
+            <defs>
+              <marker id="edge-arrow-${escapeHtml(algorithmPage.id)}" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L0,6 L9,3 z"></path>
+              </marker>
+            </defs>
+            ${edges.map((edge) => renderRelaxationEdge(edge, nodes, activeEdge)).join("")}
+            ${nodes.map((node) => renderRelaxationNode(node, distances[node.id], relaxedNode)).join("")}
+          </svg>
+        </div>
+        <div class="graph-relaxation-details">
+          <p class="relaxation-kicker">${escapeHtml(animationStep.pass || current.label)}</p>
+          <h3>${escapeHtml(animationStep.title || current.title)}</h3>
+          <p>${escapeHtml(animationStep.note || current.note)}</p>
+          <div class="distance-table" aria-label="Distance table">
+            ${nodes.map((node) => `
+              <span class="${node.id === relaxedNode ? "updated" : ""}">
+                <b>${escapeHtml(node.label || node.id)}</b>
+                <em>${escapeHtml(formatDistance(distances[node.id]))}</em>
+              </span>
+            `).join("")}
+          </div>
+          <div class="relaxation-timeline" aria-label="Relaxation steps">
+            ${renderDryRunNodes()}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderStateFlowStage(current) {
+    const stepNumber = state.step + 1;
+    const variableFocus = algorithmPage.variables[state.step % Math.max(algorithmPage.variables.length, 1)];
+
+    return `
+      <div class="dry-run-stage state-flow-stage" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.dryRun")}`)}">
+        <div class="state-flow-current">
+          <p class="state-flow-kicker">${escapeHtml(humanizeTag(algorithmPage.visualizerType))} · ${escapeHtml(t("algorithmPage.activeLine", { line: current.activeLine || 1 }))}</p>
+          <h3>${escapeHtml(current.title || current.label)}</h3>
+          <p>${escapeHtml(current.note || getCodeInsight(current))}</p>
+          <div class="state-flow-code-link">
+            <span>${stepNumber}</span>
+            <div>
+              <strong>${escapeHtml(current.label)}</strong>
+              <em>${escapeHtml(getCodeInsight(current))}</em>
+            </div>
+          </div>
+        </div>
+        <div class="state-flow-visual" aria-hidden="true">
+          <div class="state-flow-track">
+            ${algorithmPage.dryRun.map((step, index) => `
+              <span class="${index === state.step ? "active" : ""} ${index < state.step ? "complete" : ""}">
+                <b>${index + 1}</b>
+              </span>
+            `).join("")}
+          </div>
+          <div class="state-flow-focus">
+            <span>${escapeHtml(variableFocus?.name || current.label)}</span>
+            <strong>${escapeHtml(variableFocus?.purpose || current.note || "")}</strong>
+          </div>
+          <div class="state-flow-mini-grid">
+            ${algorithmPage.variables.slice(0, 4).map((variable, index) => `
+              <span class="${index === state.step % Math.max(algorithmPage.variables.length, 1) ? "active" : ""}">
+                ${escapeHtml(variable.name)}
+              </span>
+            `).join("")}
+          </div>
+        </div>
+        <div class="state-flow-timeline">
+          ${renderDryRunNodes()}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderTreeOperationStage(current) {
+    const animation = algorithmPage.animation || {};
+    const animationStep = animation.steps?.[state.step] || {};
+    const nodes = Array.isArray(animation.nodes) ? animation.nodes : [];
+    const edges = Array.isArray(animation.edges) ? animation.edges : [];
+    const activeNode = animationStep.activeNode || "";
+    const targetNode = animationStep.targetNode || "";
+    const replacementNode = animationStep.replacementNode || "";
+    const removedNodes = Array.isArray(animationStep.removedNodes) ? animationStep.removedNodes : [];
+    const mutedNodes = Array.isArray(animationStep.mutedNodes) ? animationStep.mutedNodes : [];
+    const nodeLabels = animationStep.nodeLabels || {};
+
+    return `
+      <div class="dry-run-stage tree-operation-stage" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.dryRun")}`)}">
+        <div class="tree-operation-board">
+          <svg class="tree-operation-svg" viewBox="0 0 680 360" role="img" aria-label="${escapeHtml(animation.title || algorithmPage.title)}">
+            ${edges.map((edge) => renderTreeEdge(edge, nodes, removedNodes, mutedNodes)).join("")}
+            ${nodes.map((node) => renderTreeNode(node, {
+              activeNode,
+              targetNode,
+              replacementNode,
+              removedNodes,
+              mutedNodes,
+              nodeLabels,
+            })).join("")}
+          </svg>
+        </div>
+        <div class="tree-operation-details">
+          <p class="tree-operation-kicker">${escapeHtml(animationStep.phase || current.label)}</p>
+          <h3>${escapeHtml(animationStep.title || current.title)}</h3>
+          <p>${escapeHtml(animationStep.note || current.note)}</p>
+          <div class="tree-operation-rule">
+            <span>${escapeHtml(animationStep.ruleLabel || "BST invariant")}</span>
+            <strong>${escapeHtml(animationStep.rule || "Left subtree values stay smaller; right subtree values stay larger.")}</strong>
+          </div>
+          <div class="tree-operation-legend" aria-label="Tree operation legend">
+            <span><i class="current"></i> Current</span>
+            <span><i class="target"></i> Target</span>
+            <span><i class="replacement"></i> Replacement</span>
+          </div>
+          <div class="relaxation-timeline" aria-label="Tree operation steps">
+            ${renderDryRunNodes()}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderTreeEdge(edge, nodes, removedNodes, mutedNodes) {
+    const from = nodes.find((node) => node.id === edge.from);
+    const to = nodes.find((node) => node.id === edge.to);
+    if (!from || !to) return "";
+    const muted = removedNodes.includes(edge.from)
+      || removedNodes.includes(edge.to)
+      || mutedNodes.includes(edge.from)
+      || mutedNodes.includes(edge.to);
+    return `
+      <line class="tree-edge ${muted ? "muted" : ""}" x1="${from.x}" y1="${from.y + 26}" x2="${to.x}" y2="${to.y - 28}"></line>
+    `;
+  }
+
+  function renderTreeNode(node, stateForNode) {
+    const isRemoved = stateForNode.removedNodes.includes(node.id);
+    const classes = [
+      "tree-node",
+      node.id === stateForNode.activeNode ? "active" : "",
+      node.id === stateForNode.targetNode ? "target" : "",
+      node.id === stateForNode.replacementNode ? "replacement" : "",
+      isRemoved ? "removed" : "",
+      stateForNode.mutedNodes.includes(node.id) ? "muted" : "",
+    ].filter(Boolean).join(" ");
+    const label = stateForNode.nodeLabels[node.id] || node.label || node.id;
+
+    return `
+      <g class="${classes}" transform="translate(${node.x} ${node.y})">
+        <circle r="28"></circle>
+        <text>${escapeHtml(label)}</text>
+      </g>
+    `;
+  }
+
+  function renderRelaxationEdge(edge, nodes, activeEdge) {
+    const from = nodes.find((node) => node.id === edge.from);
+    const to = nodes.find((node) => node.id === edge.to);
+    if (!from || !to) return "";
+
+    const isActive = activeEdge && activeEdge.from === edge.from && activeEdge.to === edge.to;
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    const length = Math.max(Math.sqrt((dx * dx) + (dy * dy)), 1);
+    const radius = 24;
+    const startX = from.x + (dx / length) * radius;
+    const startY = from.y + (dy / length) * radius;
+    const endX = to.x - (dx / length) * radius;
+    const endY = to.y - (dy / length) * radius;
+    const labelX = (startX + endX) / 2;
+    const labelY = (startY + endY) / 2 - 12;
+
+    return `
+      <g class="graph-edge ${isActive ? "active" : ""}">
+        <line x1="${startX}" y1="${startY}" x2="${endX}" y2="${endY}" marker-end="url(#edge-arrow-${escapeHtml(algorithmPage.id)})"></line>
+        <text x="${labelX}" y="${labelY}">${escapeHtml(edge.weight)}</text>
+      </g>
+    `;
+  }
+
+  function renderRelaxationNode(node, distance, relaxedNode) {
+    return `
+      <g class="graph-node ${node.id === relaxedNode ? "updated" : ""}" transform="translate(${node.x} ${node.y})">
+        <circle r="26"></circle>
+        <text y="-3">${escapeHtml(node.label || node.id)}</text>
+        <text class="node-distance" y="17">${escapeHtml(formatDistance(distance))}</text>
+      </g>
+    `;
+  }
+
+  function formatDistance(value) {
+    if (typeof value === "undefined") return "∞";
+    return String(value);
+  }
+
+  function renderStructuredAnimationStage(current) {
+    const animation = algorithmPage.animation || {};
+    const animationStep = animation.steps?.[state.step] || {};
+
+    return `
+      <div class="dry-run-stage structured-animation-stage ${escapeHtml(animation.type)}" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.dryRun")}`)}">
+        <div class="structured-animation-board">
+          ${renderStructuredBoard(animation, animationStep)}
+        </div>
+        <div class="structured-animation-details">
+          <p class="structured-animation-kicker">${escapeHtml(animationStep.phase || current.label)}</p>
+          <h3>${escapeHtml(animationStep.title || current.title)}</h3>
+          <p>${escapeHtml(animationStep.note || current.note)}</p>
+          <div class="structured-animation-rule">
+            <span>${escapeHtml(animationStep.ruleLabel || animation.ruleLabel || "State rule")}</span>
+            <strong>${escapeHtml(animationStep.rule || animation.rule || getCodeInsight(current))}</strong>
+          </div>
+          <div class="relaxation-timeline" aria-label="Animation steps">
+            ${renderDryRunNodes()}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderStructuredBoard(animation, animationStep) {
+    if (animation.type === "array-flow") return renderArrayBoard(animation, animationStep);
+    if (animation.type === "bucket-flow") return renderBucketBoard(animation, animationStep);
+    if (animation.type === "matrix-flow") return renderMatrixBoard(animation, animationStep);
+    if (animation.type === "graph-flow") return renderGraphBoard(animation, animationStep);
+    if (animation.type === "stack-queue-flow") return renderStackQueueBoard(animation, animationStep);
+    if (animation.type === "linked-list-flow") return renderLinkedListBoard(animation, animationStep);
+    if (animation.type === "recursion-flow") return renderRecursionBoard(animation, animationStep);
+    if (animation.type === "string-flow") return renderStringBoard(animation, animationStep);
+    return renderStateBoard(animation, animationStep);
+  }
+
+  function renderArrayBoard(animation, animationStep) {
+    const values = Array.isArray(animation.values) && animation.values.length ? animation.values : [4, 1, 3, 2];
+    const active = new Set(animationStep.activeIndices || []);
+    const sorted = new Set(animationStep.sortedIndices || []);
+    const muted = new Set(animationStep.mutedIndices || []);
+    const windowRange = Array.isArray(animationStep.window) ? animationStep.window : [];
+
+    return `
+      <div class="array-animation-row">
+        ${values.map((value, index) => {
+          const inWindow = windowRange.length === 2 && index >= windowRange[0] && index <= windowRange[1];
+          const classes = [
+            "array-animation-cell",
+            active.has(index) ? "active" : "",
+            sorted.has(index) ? "sorted" : "",
+            muted.has(index) ? "muted" : "",
+            inWindow ? "window" : "",
+          ].filter(Boolean).join(" ");
+          return `<span class="${classes}"><b>${escapeHtml(value)}</b><em>${index}</em></span>`;
+        }).join("")}
+      </div>
+      <div class="animation-label-row">
+        <span>${escapeHtml(animationStep.primaryLabel || "current state")}</span>
+        <span>${escapeHtml(animationStep.secondaryLabel || "values move by the rule")}</span>
+      </div>
+    `;
+  }
+
+  function renderBucketBoard(animation, animationStep) {
+    const values = Array.isArray(animation.values) && animation.values.length ? animation.values : [4, 1, 3, 2];
+    const buckets = Array.isArray(animation.buckets) && animation.buckets.length ? animation.buckets : [
+      { label: "low" },
+      { label: "mid" },
+      { label: "high" },
+    ];
+    const activeValue = animationStep.activeValue;
+    const activeBucket = animationStep.bucketIndex;
+
+    return `
+      <div class="bucket-value-row">
+        ${values.map((value) => `<span class="${value === activeValue ? "active" : ""}">${escapeHtml(value)}</span>`).join("")}
+      </div>
+      <div class="bucket-grid">
+        ${buckets.map((bucket, index) => {
+          const items = animationStep.bucketValues?.[index] || bucket.values || [];
+          return `
+            <div class="bucket-bin ${index === activeBucket ? "active" : ""}">
+              <strong>${escapeHtml(bucket.label || `bucket ${index + 1}`)}</strong>
+              <div>${items.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
+  }
+
+  function renderMatrixBoard(animation, animationStep) {
+    const matrix = Array.isArray(animation.matrix) && animation.matrix.length ? animation.matrix : [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ];
+    const active = new Set((animationStep.activeCells || []).map((cell) => cell.join(",")));
+    const visited = new Set((animationStep.visitedCells || []).map((cell) => cell.join(",")));
+
+    return `
+      <div class="matrix-animation-grid" style="--matrix-columns: ${matrix[0]?.length || 1}">
+        ${matrix.flatMap((row, rowIndex) => row.map((value, columnIndex) => {
+          const key = `${rowIndex},${columnIndex}`;
+          return `<span class="${active.has(key) ? "active" : ""} ${visited.has(key) ? "visited" : ""}"><b>${escapeHtml(value)}</b><em>${rowIndex},${columnIndex}</em></span>`;
+        })).join("")}
+      </div>
+    `;
+  }
+
+  function renderGraphBoard(animation, animationStep) {
+    const nodes = Array.isArray(animation.nodes) && animation.nodes.length ? animation.nodes : [
+      { id: "A", label: "A", x: 120, y: 150 },
+      { id: "B", label: "B", x: 320, y: 80 },
+      { id: "C", label: "C", x: 520, y: 150 },
+    ];
+    const edges = Array.isArray(animation.edges) ? animation.edges : [];
+    const activeNode = animationStep.activeNode || "";
+    const visited = new Set(animationStep.visitedNodes || []);
+    const frontier = new Set(animationStep.frontierNodes || []);
+    const activeEdge = animationStep.activeEdge || {};
+
+    return `
+      <svg class="structured-graph-svg" viewBox="0 0 640 300" role="img" aria-label="${escapeHtml(animation.title || algorithmPage.title)}">
+        ${edges.map((edge) => {
+          const from = nodes.find((node) => node.id === edge.from);
+          const to = nodes.find((node) => node.id === edge.to);
+          if (!from || !to) return "";
+          const active = activeEdge.from === edge.from && activeEdge.to === edge.to;
+          return `<line class="structured-graph-edge ${active ? "active" : ""}" x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}"></line>`;
+        }).join("")}
+        ${nodes.map((node) => `
+          <g class="structured-graph-node ${node.id === activeNode ? "active" : ""} ${visited.has(node.id) ? "visited" : ""} ${frontier.has(node.id) ? "frontier" : ""}" transform="translate(${node.x} ${node.y})">
+            <circle r="28"></circle>
+            <text>${escapeHtml(node.label || node.id)}</text>
+          </g>
+        `).join("")}
+      </svg>
+    `;
+  }
+
+  function renderStackQueueBoard(animation, animationStep) {
+    const items = Array.isArray(animation.items) && animation.items.length ? animation.items : [1, 2, 3, 4];
+    const active = new Set(animationStep.activeItems || []);
+    const topIndex = typeof animationStep.topIndex === "number" ? animationStep.topIndex : items.length - 1;
+    const windowRange = Array.isArray(animationStep.queueWindow) ? animationStep.queueWindow : [0, items.length - 1];
+
+    return `
+      <div class="stack-queue-board ${escapeHtml(animation.orientation || "stack")}">
+        ${items.map((item, index) => {
+          const inQueue = index >= windowRange[0] && index <= windowRange[1];
+          return `<span class="${active.has(index) ? "active" : ""} ${index === topIndex ? "top" : ""} ${inQueue ? "" : "muted"}"><b>${escapeHtml(item)}</b><em>${index === topIndex ? "top" : `slot ${index}`}</em></span>`;
+        }).join("")}
+      </div>
+    `;
+  }
+
+  function renderLinkedListBoard(animation, animationStep) {
+    const nodes = Array.isArray(animation.nodes) && animation.nodes.length ? animation.nodes : [
+      { id: "n1", label: "8" },
+      { id: "n2", label: "13" },
+      { id: "n3", label: "21" },
+      { id: "n4", label: "34" },
+    ];
+
+    return `
+      <div class="linked-list-board">
+        ${nodes.map((node, index) => `
+          <span class="linked-list-node ${node.id === animationStep.activeNode ? "active" : ""} ${node.id === animationStep.previousNode ? "previous" : ""} ${node.id === animationStep.nextNode ? "next" : ""}">
+            <b>${escapeHtml(node.label || node.id)}</b>
+            <em>${escapeHtml(node.role || `node ${index + 1}`)}</em>
+          </span>
+          ${index < nodes.length - 1 ? `<i aria-hidden="true">→</i>` : ""}
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderRecursionBoard(animation, animationStep) {
+    const calls = Array.isArray(animation.calls) && animation.calls.length ? animation.calls : ["call(3)", "call(2)", "call(1)", "base"];
+    const activeCall = animationStep.activeCall ?? 0;
+    const returning = new Set(animationStep.returningCalls || []);
+
+    return `
+      <div class="recursion-board">
+        ${calls.map((call, index) => `
+          <span class="${index === activeCall ? "active" : ""} ${returning.has(index) ? "returning" : ""}" style="--depth: ${index}">
+            <b>${escapeHtml(call)}</b>
+            <em>${index === calls.length - 1 ? "base" : "call"}</em>
+          </span>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderStringBoard(animation, animationStep) {
+    const text = String(animation.text || "algorithm");
+    const activeRange = Array.isArray(animationStep.activeRange) ? animationStep.activeRange : [];
+    const matchedRange = Array.isArray(animationStep.matchedRange) ? animationStep.matchedRange : [];
+
+    return `
+      <div class="string-animation-row">
+        ${text.split("").map((character, index) => {
+          const active = activeRange.length === 2 && index >= activeRange[0] && index <= activeRange[1];
+          const matched = matchedRange.length === 2 && index >= matchedRange[0] && index <= matchedRange[1];
+          return `<span class="${active ? "active" : ""} ${matched ? "matched" : ""}"><b>${escapeHtml(character)}</b><em>${index}</em></span>`;
+        }).join("")}
+      </div>
+      ${animation.pattern ? `<div class="string-pattern-pill">pattern: ${escapeHtml(animation.pattern)}</div>` : ""}
+    `;
+  }
+
+  function renderStateBoard(animation, animationStep) {
+    const states = Array.isArray(animation.states) && animation.states.length
+      ? animation.states
+      : algorithmPage.dryRun.map((step) => step.label);
+    const activeState = animationStep.activeState ?? state.step;
+    return `
+      <div class="state-machine-board">
+        ${states.map((item, index) => `<span class="${index === activeState ? "active" : ""} ${index < activeState ? "complete" : ""}">${escapeHtml(item)}</span>`).join("")}
+      </div>
     `;
   }
 

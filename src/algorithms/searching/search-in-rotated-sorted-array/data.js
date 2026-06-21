@@ -127,5 +127,106 @@ export const algorithmPage = {
       2
     ],
     0
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Search in Rotated Sorted Array array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Move low or high after checking whether target fits inside the sorted half.",
+    "values": [
+      4,
+      5,
+      6,
+      7,
+      0,
+      1,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Rotated range",
+        "title": "Read array and target",
+        "note": "The code starts with a sorted array shifted around a pivot.",
+        "ruleLabel": "Search in Rotated Sorted Array invariant",
+        "rule": "The code starts with a sorted array shifted around a pivot.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Rotated range",
+        "secondaryLabel": "Move low or high after checking whether target fits inside the sorted half."
+      },
+      {
+        "phase": "mid probe",
+        "title": "Choose the middle",
+        "note": "mid divides the current candidate window.",
+        "ruleLabel": "Search in Rotated Sorted Array invariant",
+        "rule": "mid divides the current candidate window.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4,
+          5,
+          6
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "mid probe",
+        "secondaryLabel": "Move low or high after checking whether target fits inside the sorted half."
+      },
+      {
+        "phase": "sorted half",
+        "title": "Detect ordered side",
+        "note": "One side of mid must still be sorted.",
+        "ruleLabel": "Search in Rotated Sorted Array invariant",
+        "rule": "One side of mid must still be sorted.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          5,
+          6
+        ],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "sorted half",
+        "secondaryLabel": "Move low or high after checking whether target fits inside the sorted half."
+      },
+      {
+        "phase": "Move bounds",
+        "title": "Keep possible side",
+        "note": "Bounds move toward the only half that can contain target.",
+        "ruleLabel": "Search in Rotated Sorted Array invariant",
+        "rule": "Bounds move toward the only half that can contain target.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0,
+          6
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Move bounds",
+        "secondaryLabel": "Move low or high after checking whether target fits inside the sorted half."
+      }
+    ]
+  }
 };

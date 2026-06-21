@@ -123,5 +123,106 @@ export const algorithmPage = {
       3,
       2
     ]
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Insertion Sort array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each step expands the sorted prefix by inserting one value without disturbing earlier order.",
+    "values": [
+      4,
+      1,
+      3,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Prefix",
+        "title": "Start sorted area",
+        "note": "The left side is maintained in order.",
+        "ruleLabel": "Insertion Sort invariant",
+        "rule": "The left side is maintained in order.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Prefix",
+        "secondaryLabel": "Each step expands the sorted prefix by inserting one value without disturbing earlier order."
+      },
+      {
+        "phase": "Key",
+        "title": "Read next value",
+        "note": "One value is removed from the unsorted side.",
+        "ruleLabel": "Insertion Sort invariant",
+        "rule": "One value is removed from the unsorted side.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Key",
+        "secondaryLabel": "Each step expands the sorted prefix by inserting one value without disturbing earlier order."
+      },
+      {
+        "phase": "Shift",
+        "title": "Move larger values",
+        "note": "Larger prefix values slide right to create room.",
+        "ruleLabel": "Insertion Sort invariant",
+        "rule": "Larger prefix values slide right to create room.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [
+          0,
+          1
+        ],
+        "mutedIndices": [],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Shift",
+        "secondaryLabel": "Each step expands the sorted prefix by inserting one value without disturbing earlier order."
+      },
+      {
+        "phase": "Insert",
+        "title": "Place key",
+        "note": "The sorted prefix grows by one.",
+        "ruleLabel": "Insertion Sort invariant",
+        "rule": "The sorted prefix grows by one.",
+        "activeIndices": [
+          3,
+          3
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2
+        ],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          3
+        ],
+        "primaryLabel": "Insert",
+        "secondaryLabel": "Each step expands the sorted prefix by inserting one value without disturbing earlier order."
+      }
+    ]
+  }
 };

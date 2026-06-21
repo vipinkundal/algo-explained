@@ -130,5 +130,102 @@ export const algorithmPage = {
         2
       ]
     ]
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Difference Array array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each item updates the running total, difference, or accumulator exactly once.",
+    "values": [
+      4,
+      1,
+      7,
+      3,
+      6,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Values",
+        "title": "Read values or updates",
+        "note": "The code receives the array, ranges, or deltas.",
+        "ruleLabel": "Difference Array invariant",
+        "rule": "The code receives the array, ranges, or deltas.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Values",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
+      },
+      {
+        "phase": "Accumulator",
+        "title": "Start running state",
+        "note": "A neutral starting value makes every update consistent.",
+        "ruleLabel": "Difference Array invariant",
+        "rule": "A neutral starting value makes every update consistent.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4,
+          5
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Accumulator",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
+      },
+      {
+        "phase": "Prefix step",
+        "title": "Apply current contribution",
+        "note": "The running state changes by the current value or boundary delta.",
+        "ruleLabel": "Difference Array invariant",
+        "rule": "The running state changes by the current value or boundary delta.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          5
+        ],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Prefix step",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
+      },
+      {
+        "phase": "Range result",
+        "title": "Read saved state",
+        "note": "The stored state gives the final or range answer.",
+        "ruleLabel": "Difference Array invariant",
+        "rule": "The stored state gives the final or range answer.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Range result",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
+      }
+    ]
+  }
 };

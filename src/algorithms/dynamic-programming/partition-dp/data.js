@@ -123,5 +123,95 @@ export const algorithmPage = {
       11,
       5
     ]
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Partition DP array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each partition step moves values to the correct side of the pivot and fixes the pivot position.",
+    "values": [
+      1,
+      5,
+      11,
+      5
+    ],
+    "steps": [
+      {
+        "phase": "Pivot",
+        "title": "Choose pivot value",
+        "note": "The pivot defines the partition rule.",
+        "ruleLabel": "Partition DP invariant",
+        "rule": "The pivot defines the partition rule.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Pivot",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      },
+      {
+        "phase": "Scan",
+        "title": "Move values by pivot",
+        "note": "Values are compared with the pivot.",
+        "ruleLabel": "Partition DP invariant",
+        "rule": "Values are compared with the pivot.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Scan",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      },
+      {
+        "phase": "Place",
+        "title": "Fix pivot index",
+        "note": "The pivot lands between smaller and larger values.",
+        "ruleLabel": "Partition DP invariant",
+        "rule": "The pivot lands between smaller and larger values.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Place",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      },
+      {
+        "phase": "Recurse",
+        "title": "Sort both sides",
+        "note": "The same partition rule handles each side.",
+        "ruleLabel": "Partition DP invariant",
+        "rule": "The same partition rule handles each side.",
+        "activeIndices": [
+          3,
+          3
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          3
+        ],
+        "primaryLabel": "Recurse",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      }
+    ]
+  }
 };

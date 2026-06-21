@@ -130,5 +130,130 @@ export const algorithmPage = {
       ],
       "D": []
     }
-  ]
+  ],
+  "animation": {
+    "type": "graph-flow",
+    "title": "Topological Sort graph state",
+    "ruleLabel": "Graph invariant",
+    "rule": "Each step compares or moves values so the unsorted region gets smaller.",
+    "nodes": [
+      {
+        "id": "A",
+        "label": "A",
+        "x": 110,
+        "y": 150
+      },
+      {
+        "id": "B",
+        "label": "B",
+        "x": 300,
+        "y": 75
+      },
+      {
+        "id": "C",
+        "label": "C",
+        "x": 500,
+        "y": 150
+      },
+      {
+        "id": "D",
+        "label": "D",
+        "x": 300,
+        "y": 235
+      }
+    ],
+    "edges": [
+      {
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "from": "D",
+        "to": "C"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Input array",
+        "title": "Copy values",
+        "note": "The code starts with the values to reorder.",
+        "ruleLabel": "Topological Sort invariant",
+        "rule": "The code starts with the values to reorder.",
+        "activeNode": "A",
+        "visitedNodes": [],
+        "frontierNodes": [
+          "B"
+        ],
+        "activeEdge": {
+          "from": "A",
+          "to": "B"
+        }
+      },
+      {
+        "phase": "Invariant",
+        "title": "Track ordered work",
+        "note": "The algorithm marks what part is already safe.",
+        "ruleLabel": "Topological Sort invariant",
+        "rule": "The algorithm marks what part is already safe.",
+        "activeNode": "B",
+        "visitedNodes": [
+          "A"
+        ],
+        "frontierNodes": [
+          "C"
+        ],
+        "activeEdge": {
+          "from": "B",
+          "to": "C"
+        }
+      },
+      {
+        "phase": "Move",
+        "title": "Apply ordering step",
+        "note": "The current operation reduces disorder.",
+        "ruleLabel": "Topological Sort invariant",
+        "rule": "The current operation reduces disorder.",
+        "activeNode": "C",
+        "visitedNodes": [
+          "A",
+          "B"
+        ],
+        "frontierNodes": [
+          "D"
+        ],
+        "activeEdge": {
+          "from": "C",
+          "to": "D"
+        }
+      },
+      {
+        "phase": "Sorted output",
+        "title": "Return final order",
+        "note": "The result is returned when no unsorted work remains.",
+        "ruleLabel": "Topological Sort invariant",
+        "rule": "The result is returned when no unsorted work remains.",
+        "activeNode": "D",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "frontierNodes": [
+          "A"
+        ],
+        "activeEdge": {
+          "from": "D",
+          "to": "A"
+        }
+      }
+    ]
+  }
 };

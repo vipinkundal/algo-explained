@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-queue-array-enqueue-dequeue",
@@ -136,5 +136,81 @@ export const algorithmPage = {
   ],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "queue-array-enqueue-dequeue"
+  "algorithmSlug": "queue-array-enqueue-dequeue",
+  "animation": {
+    "type": "stack-queue-flow",
+    "title": "Queue Enqueue and Dequeue queue state",
+    "ruleLabel": "queue rule",
+    "rule": "Each step changes only the part of the queue required to preserve the invariant.",
+    "orientation": "queue",
+    "items": [
+      4,
+      1,
+      7,
+      3,
+      6
+    ],
+    "steps": [
+      {
+        "phase": "Queue",
+        "title": "Read queue action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Queue Enqueue and Dequeue invariant",
+        "rule": "The code receives the next value or command.",
+        "activeItems": [
+          0
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          0
+        ]
+      },
+      {
+        "phase": "Queue front",
+        "title": "Inspect queue",
+        "note": "The active state must still satisfy first-in, first-out state.",
+        "ruleLabel": "Queue Enqueue and Dequeue invariant",
+        "rule": "The active state must still satisfy first-in, first-out state.",
+        "activeItems": [
+          1
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          1
+        ]
+      },
+      {
+        "phase": "Enqueue / dequeue",
+        "title": "Enqueue, dequeue, peek, or evict entries",
+        "note": "Only the necessary queue fields are changed.",
+        "ruleLabel": "Queue Enqueue and Dequeue invariant",
+        "rule": "Only the necessary queue fields are changed.",
+        "activeItems": [
+          2
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          2
+        ]
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Queue Enqueue and Dequeue invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeItems": [
+          3
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          3
+        ]
+      }
+    ]
+  }
 };

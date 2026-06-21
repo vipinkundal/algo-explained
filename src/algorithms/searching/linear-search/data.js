@@ -135,5 +135,92 @@ export const algorithmPage = {
       "title": "Linear Search in Array ADT with Transposition",
       "label": "C/C++ array source"
     }
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Linear Search array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each loop consumes the current item exactly once and advances the index.",
+    "values": [
+      4,
+      2,
+      7
+    ],
+    "steps": [
+      {
+        "phase": "Input array",
+        "title": "Read values",
+        "note": "The code receives the list and any target condition.",
+        "ruleLabel": "Linear Search invariant",
+        "rule": "The code receives the list and any target condition.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Input array",
+        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
+      },
+      {
+        "phase": "Index",
+        "title": "Select current item",
+        "note": "The loop focuses on one position at a time.",
+        "ruleLabel": "Linear Search invariant",
+        "rule": "The loop focuses on one position at a time.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Index",
+        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
+      },
+      {
+        "phase": "Update",
+        "title": "Apply comparison or count",
+        "note": "The current value changes the running state only if the rule says so.",
+        "ruleLabel": "Linear Search invariant",
+        "rule": "The current value changes the running state only if the rule says so.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Update",
+        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
+      },
+      {
+        "phase": "Result",
+        "title": "Return scan output",
+        "note": "When the scan ends, the tracked result is returned.",
+        "ruleLabel": "Linear Search invariant",
+        "rule": "When the scan ends, the tracked result is returned.",
+        "activeIndices": [
+          2,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Result",
+        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
+      }
+    ]
+  }
 };

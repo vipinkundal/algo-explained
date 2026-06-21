@@ -121,5 +121,133 @@ export const algorithmPage = {
       "cat",
       "car"
     ]
-  ]
+  ],
+  "animation": {
+    "type": "tree-operation",
+    "title": "Trie Operations tree state",
+    "nodes": [
+      {
+        "id": "8",
+        "label": "8",
+        "x": 340,
+        "y": 58
+      },
+      {
+        "id": "4",
+        "label": "4",
+        "x": 190,
+        "y": 150
+      },
+      {
+        "id": "12",
+        "label": "12",
+        "x": 490,
+        "y": 150
+      },
+      {
+        "id": "2",
+        "label": "2",
+        "x": 110,
+        "y": 255
+      },
+      {
+        "id": "6",
+        "label": "6",
+        "x": 270,
+        "y": 255
+      },
+      {
+        "id": "10",
+        "label": "10",
+        "x": 420,
+        "y": 255
+      },
+      {
+        "id": "14",
+        "label": "14",
+        "x": 570,
+        "y": 255
+      }
+    ],
+    "edges": [
+      {
+        "from": "8",
+        "to": "4"
+      },
+      {
+        "from": "8",
+        "to": "12"
+      },
+      {
+        "from": "4",
+        "to": "2"
+      },
+      {
+        "from": "4",
+        "to": "6"
+      },
+      {
+        "from": "12",
+        "to": "10"
+      },
+      {
+        "from": "12",
+        "to": "14"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Root",
+        "title": "Check current node",
+        "note": "The code starts by handling missing nodes or the current root.",
+        "ruleLabel": "Trie Operations invariant",
+        "rule": "The code starts by handling missing nodes or the current root.",
+        "activeNode": "8",
+        "targetNode": "4",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Node state",
+        "title": "Read character path",
+        "note": "The current node controls the next step.",
+        "ruleLabel": "Trie Operations invariant",
+        "rule": "The current node controls the next step.",
+        "activeNode": "4",
+        "targetNode": "12",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Child step",
+        "title": "Follow or create the child link for the current character",
+        "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "ruleLabel": "Trie Operations invariant",
+        "rule": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "activeNode": "12",
+        "targetNode": "2",
+        "replacementNode": "2",
+        "mutedNodes": []
+      },
+      {
+        "phase": "Tree result",
+        "title": "Return result",
+        "note": "The final traversal, path, measurement, or tree state is returned.",
+        "ruleLabel": "Trie Operations invariant",
+        "rule": "The final traversal, path, measurement, or tree state is returned.",
+        "activeNode": "2",
+        "targetNode": "6",
+        "replacementNode": "6",
+        "mutedNodes": []
+      }
+    ]
+  }
 };

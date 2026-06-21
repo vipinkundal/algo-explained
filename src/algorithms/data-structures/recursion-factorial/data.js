@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-recursion-factorial",
@@ -142,5 +142,60 @@ export const algorithmPage = {
   ],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "recursion-factorial"
+  "algorithmSlug": "recursion-factorial",
+  "animation": {
+    "type": "recursion-flow",
+    "title": "Recursion Factorial call stack",
+    "ruleLabel": "Recursive contract",
+    "rule": "Each step changes only the part of the stack required to preserve the invariant.",
+    "calls": [
+      "recursion-factorial(3)",
+      "recursion-factorial(2)",
+      "recursion-factorial(1)",
+      "base case"
+    ],
+    "steps": [
+      {
+        "phase": "Stack",
+        "title": "Read stack action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Recursion Factorial invariant",
+        "rule": "The code receives the next value or command.",
+        "activeCall": 0,
+        "returningCalls": []
+      },
+      {
+        "phase": "Stack top",
+        "title": "Inspect stack",
+        "note": "The active state must still satisfy last-in, first-out state.",
+        "ruleLabel": "Recursion Factorial invariant",
+        "rule": "The active state must still satisfy last-in, first-out state.",
+        "activeCall": 1,
+        "returningCalls": []
+      },
+      {
+        "phase": "Push / pop",
+        "title": "Push, pop, peek, or resolve stack entries",
+        "note": "Only the necessary stack fields are changed.",
+        "ruleLabel": "Recursion Factorial invariant",
+        "rule": "Only the necessary stack fields are changed.",
+        "activeCall": 2,
+        "returningCalls": []
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Recursion Factorial invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeCall": 3,
+        "returningCalls": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
 };

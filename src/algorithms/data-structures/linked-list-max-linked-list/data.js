@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-linked-list-max-linked-list",
@@ -128,5 +128,75 @@ export const algorithmPage = {
   "relatedLinks": [],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "linked-list-max-linked-list"
+  "algorithmSlug": "linked-list-max-linked-list",
+  "animation": {
+    "type": "linked-list-flow",
+    "title": "Max Linked List pointer state",
+    "ruleLabel": "Pointer rule",
+    "rule": "Each step changes only the part of the linked list required to preserve the invariant.",
+    "nodes": [
+      {
+        "id": "head",
+        "label": "head",
+        "role": "head"
+      },
+      {
+        "id": "n2",
+        "label": "12",
+        "role": "node 2"
+      },
+      {
+        "id": "n3",
+        "label": "18",
+        "role": "node 3"
+      },
+      {
+        "id": "tail",
+        "label": "tail",
+        "role": "tail"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Linked List",
+        "title": "Read linked list action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Max Linked List invariant",
+        "rule": "The code receives the next value or command.",
+        "activeNode": "head",
+        "previousNode": "head",
+        "nextNode": "n2"
+      },
+      {
+        "phase": "Node links",
+        "title": "Inspect linked list",
+        "note": "The active state must still satisfy node-link structure.",
+        "ruleLabel": "Max Linked List invariant",
+        "rule": "The active state must still satisfy node-link structure.",
+        "activeNode": "n2",
+        "previousNode": "head",
+        "nextNode": "n3"
+      },
+      {
+        "phase": "Pointer update",
+        "title": "Move pointers without losing the rest of the chain",
+        "note": "Only the necessary linked list fields are changed.",
+        "ruleLabel": "Max Linked List invariant",
+        "rule": "Only the necessary linked list fields are changed.",
+        "activeNode": "n3",
+        "previousNode": "n2",
+        "nextNode": "tail"
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Max Linked List invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeNode": "tail",
+        "previousNode": "n3",
+        "nextNode": "tail"
+      }
+    ]
+  }
 };

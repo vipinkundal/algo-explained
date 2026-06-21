@@ -218,5 +218,139 @@ export const algorithmPage = {
         9
       ]
     ]
-  ]
+  ],
+  "animation": {
+    "type": "matrix-flow",
+    "title": "Sudoku Solver matrix state",
+    "ruleLabel": "Grid rule",
+    "rule": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
+    "matrix": [
+      [
+        5,
+        3,
+        0,
+        0
+      ],
+      [
+        6,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        9,
+        8,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0
+      ]
+    ],
+    "steps": [
+      {
+        "phase": "Base",
+        "title": "Check stop condition",
+        "note": "The code first asks whether the current state is complete.",
+        "ruleLabel": "Sudoku Solver invariant",
+        "rule": "The code first asks whether the current state is complete.",
+        "activeCells": [
+          [
+            0,
+            0
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "phase": "Choice",
+        "title": "Select next option",
+        "note": "One valid move is added to the state.",
+        "ruleLabel": "Sudoku Solver invariant",
+        "rule": "One valid move is added to the state.",
+        "activeCells": [
+          [
+            0,
+            1
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "phase": "Call",
+        "title": "Recurse deeper",
+        "note": "The same rule runs on a smaller or extended state.",
+        "ruleLabel": "Sudoku Solver invariant",
+        "rule": "The same rule runs on a smaller or extended state.",
+        "activeCells": [
+          [
+            0,
+            2
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      {
+        "phase": "Unwind",
+        "title": "Return or backtrack",
+        "note": "The result is combined or the choice is removed.",
+        "ruleLabel": "Sudoku Solver invariant",
+        "rule": "The result is combined or the choice is removed.",
+        "activeCells": [
+          [
+            0,
+            3
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ]
+        ]
+      }
+    ]
+  }
 };

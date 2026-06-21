@@ -123,5 +123,103 @@ export const algorithmPage = {
       3,
       2
     ]
-  ]
+  ],
+  "animation": {
+    "type": "bucket-flow",
+    "title": "Counting Sort bucket movement",
+    "ruleLabel": "Bucket rule",
+    "rule": "Each value increments a count, and each count later emits ordered copies.",
+    "values": [
+      4,
+      1,
+      3,
+      2
+    ],
+    "buckets": [
+      {
+        "label": "low range"
+      },
+      {
+        "label": "middle range"
+      },
+      {
+        "label": "high range"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Range",
+        "title": "Read key bounds",
+        "note": "Counting needs a finite integer range.",
+        "ruleLabel": "Counting Sort invariant",
+        "rule": "Counting needs a finite integer range.",
+        "activeValue": 4,
+        "bucketIndex": 1,
+        "bucketValues": [
+          [],
+          [
+            4
+          ],
+          []
+        ]
+      },
+      {
+        "phase": "Counts",
+        "title": "Increment frequency",
+        "note": "Each input value updates one bucket.",
+        "ruleLabel": "Counting Sort invariant",
+        "rule": "Each input value updates one bucket.",
+        "activeValue": 1,
+        "bucketIndex": 1,
+        "bucketValues": [
+          [],
+          [
+            4,
+            1
+          ],
+          []
+        ]
+      },
+      {
+        "phase": "Emit",
+        "title": "Write repeated keys",
+        "note": "Counts turn into ordered output values.",
+        "ruleLabel": "Counting Sort invariant",
+        "rule": "Counts turn into ordered output values.",
+        "activeValue": 3,
+        "bucketIndex": 0,
+        "bucketValues": [
+          [
+            3
+          ],
+          [
+            4,
+            1
+          ],
+          []
+        ]
+      },
+      {
+        "phase": "Sorted",
+        "title": "Return output",
+        "note": "The rebuilt list is sorted by key.",
+        "ruleLabel": "Counting Sort invariant",
+        "rule": "The rebuilt list is sorted by key.",
+        "activeValue": 2,
+        "bucketIndex": 2,
+        "bucketValues": [
+          [
+            3
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      }
+    ]
+  }
 };

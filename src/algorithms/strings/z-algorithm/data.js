@@ -119,5 +119,66 @@ export const algorithmPage = {
   "runnerInput": [
     "abracadabra",
     "abra"
-  ]
+  ],
+  "animation": {
+    "type": "string-flow",
+    "title": "Z Algorithm character scan",
+    "ruleLabel": "String invariant",
+    "rule": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
+    "text": "abracadabra",
+    "pattern": "abra",
+    "steps": [
+      {
+        "phase": "Text",
+        "title": "Read string input",
+        "note": "The code receives text, pattern, or character data.",
+        "ruleLabel": "Z Algorithm invariant",
+        "rule": "The code receives text, pattern, or character data.",
+        "activeRange": [
+          0,
+          3
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Helper",
+        "title": "Prepare string state",
+        "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
+        "ruleLabel": "Z Algorithm invariant",
+        "rule": "Prefix, hash, frequency, or radius state avoids repeated work.",
+        "activeRange": [
+          1,
+          4
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Character",
+        "title": "Update on current char",
+        "note": "One character changes the active string state.",
+        "ruleLabel": "Z Algorithm invariant",
+        "rule": "One character changes the active string state.",
+        "activeRange": [
+          2,
+          5
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Result",
+        "title": "Return string answer",
+        "note": "Matches or best values are returned after the scan.",
+        "ruleLabel": "Z Algorithm invariant",
+        "rule": "Matches or best values are returned after the scan.",
+        "activeRange": [
+          3,
+          6
+        ],
+        "matchedRange": [
+          0,
+          3
+        ]
+      }
+    ]
+  }
 };

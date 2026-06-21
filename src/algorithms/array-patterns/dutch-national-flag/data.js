@@ -125,5 +125,102 @@ export const algorithmPage = {
       1,
       0
     ]
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Dutch National Flag array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each partition step moves values to the correct side of the pivot and fixes the pivot position.",
+    "values": [
+      2,
+      0,
+      2,
+      1,
+      1,
+      0
+    ],
+    "steps": [
+      {
+        "phase": "Pivot",
+        "title": "Choose pivot value",
+        "note": "The pivot defines the partition rule.",
+        "ruleLabel": "Dutch National Flag invariant",
+        "rule": "The pivot defines the partition rule.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Pivot",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      },
+      {
+        "phase": "Scan",
+        "title": "Move values by pivot",
+        "note": "Values are compared with the pivot.",
+        "ruleLabel": "Dutch National Flag invariant",
+        "rule": "Values are compared with the pivot.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4,
+          5
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Scan",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      },
+      {
+        "phase": "Place",
+        "title": "Fix pivot index",
+        "note": "The pivot lands between smaller and larger values.",
+        "ruleLabel": "Dutch National Flag invariant",
+        "rule": "The pivot lands between smaller and larger values.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          5
+        ],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Place",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      },
+      {
+        "phase": "Recurse",
+        "title": "Sort both sides",
+        "note": "The same partition rule handles each side.",
+        "ruleLabel": "Dutch National Flag invariant",
+        "rule": "The same partition rule handles each side.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Recurse",
+        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+      }
+    ]
+  }
 };

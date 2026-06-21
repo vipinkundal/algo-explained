@@ -131,5 +131,130 @@ export const algorithmPage = {
         "B"
       ]
     }
-  ]
+  ],
+  "animation": {
+    "type": "graph-flow",
+    "title": "Cycle Detection in Undirected Graph graph state",
+    "ruleLabel": "Graph invariant",
+    "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
+    "nodes": [
+      {
+        "id": "A",
+        "label": "A",
+        "x": 110,
+        "y": 150
+      },
+      {
+        "id": "B",
+        "label": "B",
+        "x": 300,
+        "y": 75
+      },
+      {
+        "id": "C",
+        "label": "C",
+        "x": 500,
+        "y": 150
+      },
+      {
+        "id": "D",
+        "label": "D",
+        "x": 300,
+        "y": 235
+      }
+    ],
+    "edges": [
+      {
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "from": "D",
+        "to": "C"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Algorithm State",
+        "title": "Read algorithm state action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Cycle Detection in Undirected Graph invariant",
+        "rule": "The code receives the next value or command.",
+        "activeNode": "A",
+        "visitedNodes": [],
+        "frontierNodes": [
+          "B"
+        ],
+        "activeEdge": {
+          "from": "A",
+          "to": "B"
+        }
+      },
+      {
+        "phase": "Invariant",
+        "title": "Inspect algorithm state",
+        "note": "The active state must still satisfy page-specific invariant.",
+        "ruleLabel": "Cycle Detection in Undirected Graph invariant",
+        "rule": "The active state must still satisfy page-specific invariant.",
+        "activeNode": "B",
+        "visitedNodes": [
+          "A"
+        ],
+        "frontierNodes": [
+          "C"
+        ],
+        "activeEdge": {
+          "from": "B",
+          "to": "C"
+        }
+      },
+      {
+        "phase": "State change",
+        "title": "Update the state described by this algorithm",
+        "note": "Only the necessary algorithm state fields are changed.",
+        "ruleLabel": "Cycle Detection in Undirected Graph invariant",
+        "rule": "Only the necessary algorithm state fields are changed.",
+        "activeNode": "C",
+        "visitedNodes": [
+          "A",
+          "B"
+        ],
+        "frontierNodes": [
+          "D"
+        ],
+        "activeEdge": {
+          "from": "C",
+          "to": "D"
+        }
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Cycle Detection in Undirected Graph invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeNode": "D",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "frontierNodes": [
+          "A"
+        ],
+        "activeEdge": {
+          "from": "D",
+          "to": "A"
+        }
+      }
+    ]
+  }
 };

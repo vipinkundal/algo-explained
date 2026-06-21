@@ -122,5 +122,51 @@ export const algorithmPage = {
       2,
       3
     ]
-  ]
+  ],
+  "animation": {
+    "type": "state-flow",
+    "title": "C++ next_permutation() state transitions",
+    "ruleLabel": "State rule",
+    "rule": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
+    "states": [
+      "Base",
+      "Choice",
+      "Call",
+      "Unwind"
+    ],
+    "steps": [
+      {
+        "phase": "Base",
+        "title": "Check stop condition",
+        "note": "The code first asks whether the current state is complete.",
+        "ruleLabel": "C++ next_permutation() invariant",
+        "rule": "The code first asks whether the current state is complete.",
+        "activeState": 0
+      },
+      {
+        "phase": "Choice",
+        "title": "Select next option",
+        "note": "One valid move is added to the state.",
+        "ruleLabel": "C++ next_permutation() invariant",
+        "rule": "One valid move is added to the state.",
+        "activeState": 1
+      },
+      {
+        "phase": "Call",
+        "title": "Recurse deeper",
+        "note": "The same rule runs on a smaller or extended state.",
+        "ruleLabel": "C++ next_permutation() invariant",
+        "rule": "The same rule runs on a smaller or extended state.",
+        "activeState": 2
+      },
+      {
+        "phase": "Unwind",
+        "title": "Return or backtrack",
+        "note": "The result is combined or the choice is removed.",
+        "ruleLabel": "C++ next_permutation() invariant",
+        "rule": "The result is combined or the choice is removed.",
+        "activeState": 3
+      }
+    ]
+  }
 };

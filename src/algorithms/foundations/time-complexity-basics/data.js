@@ -122,5 +122,51 @@ export const algorithmPage = {
       2,
       3
     ]
-  ]
+  ],
+  "animation": {
+    "type": "state-flow",
+    "title": "Time Complexity Basics state transitions",
+    "ruleLabel": "State rule",
+    "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
+    "states": [
+      "Algorithm State",
+      "Invariant",
+      "State change",
+      "Result"
+    ],
+    "steps": [
+      {
+        "phase": "Algorithm State",
+        "title": "Read algorithm state action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Time Complexity Basics invariant",
+        "rule": "The code receives the next value or command.",
+        "activeState": 0
+      },
+      {
+        "phase": "Invariant",
+        "title": "Inspect algorithm state",
+        "note": "The active state must still satisfy page-specific invariant.",
+        "ruleLabel": "Time Complexity Basics invariant",
+        "rule": "The active state must still satisfy page-specific invariant.",
+        "activeState": 1
+      },
+      {
+        "phase": "State change",
+        "title": "Update the state described by this algorithm",
+        "note": "Only the necessary algorithm state fields are changed.",
+        "ruleLabel": "Time Complexity Basics invariant",
+        "rule": "Only the necessary algorithm state fields are changed.",
+        "activeState": 2
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Time Complexity Basics invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeState": 3
+      }
+    ]
+  }
 };

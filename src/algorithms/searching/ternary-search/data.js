@@ -115,5 +115,102 @@ export const algorithmPage = {
     "incorrectText": "Not quite. Ternary Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
   },
   "categorySlug": "searching",
-  "algorithmSlug": "ternary-search"
+  "algorithmSlug": "ternary-search",
+  "animation": {
+    "type": "array-flow",
+    "title": "Ternary Search array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
+    "values": [
+      4,
+      1,
+      7,
+      3,
+      6,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Algorithm State",
+        "title": "Read algorithm state action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Ternary Search invariant",
+        "rule": "The code receives the next value or command.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Algorithm State",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
+      },
+      {
+        "phase": "Invariant",
+        "title": "Inspect algorithm state",
+        "note": "The active state must still satisfy page-specific invariant.",
+        "ruleLabel": "Ternary Search invariant",
+        "rule": "The active state must still satisfy page-specific invariant.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4,
+          5
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Invariant",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
+      },
+      {
+        "phase": "State change",
+        "title": "Update the state described by this algorithm",
+        "note": "Only the necessary algorithm state fields are changed.",
+        "ruleLabel": "Ternary Search invariant",
+        "rule": "Only the necessary algorithm state fields are changed.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          5
+        ],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "State change",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Ternary Search invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Result",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
+      }
+    ]
+  }
 };

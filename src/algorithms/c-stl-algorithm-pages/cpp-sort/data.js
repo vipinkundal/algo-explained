@@ -122,5 +122,92 @@ export const algorithmPage = {
       1,
       2
     ]
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "C++ sort() array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each step compares or moves values so the unsorted region gets smaller.",
+    "values": [
+      3,
+      1,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Input array",
+        "title": "Copy values",
+        "note": "The code starts with the values to reorder.",
+        "ruleLabel": "C++ sort() invariant",
+        "rule": "The code starts with the values to reorder.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Input array",
+        "secondaryLabel": "Each step compares or moves values so the unsorted region gets smaller."
+      },
+      {
+        "phase": "Invariant",
+        "title": "Track ordered work",
+        "note": "The algorithm marks what part is already safe.",
+        "ruleLabel": "C++ sort() invariant",
+        "rule": "The algorithm marks what part is already safe.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Invariant",
+        "secondaryLabel": "Each step compares or moves values so the unsorted region gets smaller."
+      },
+      {
+        "phase": "Move",
+        "title": "Apply ordering step",
+        "note": "The current operation reduces disorder.",
+        "ruleLabel": "C++ sort() invariant",
+        "rule": "The current operation reduces disorder.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Move",
+        "secondaryLabel": "Each step compares or moves values so the unsorted region gets smaller."
+      },
+      {
+        "phase": "Sorted output",
+        "title": "Return final order",
+        "note": "The result is returned when no unsorted work remains.",
+        "ruleLabel": "C++ sort() invariant",
+        "rule": "The result is returned when no unsorted work remains.",
+        "activeIndices": [
+          2,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Sorted output",
+        "secondaryLabel": "Each step compares or moves values so the unsorted region gets smaller."
+      }
+    ]
+  }
 };

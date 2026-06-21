@@ -123,5 +123,92 @@ export const algorithmPage = {
       4
     ],
     6
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Coin Change array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each step computes one state from already-solved smaller or earlier states.",
+    "values": [
+      1,
+      3,
+      4
+    ],
+    "steps": [
+      {
+        "phase": "State meaning",
+        "title": "Define DP cell",
+        "note": "The code first needs a precise subproblem meaning.",
+        "ruleLabel": "Coin Change invariant",
+        "rule": "The code first needs a precise subproblem meaning.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "State meaning",
+        "secondaryLabel": "Each step computes one state from already-solved smaller or earlier states."
+      },
+      {
+        "phase": "Base case",
+        "title": "Seed known answers",
+        "note": "Base values stop the recurrence from falling through.",
+        "ruleLabel": "Coin Change invariant",
+        "rule": "Base values stop the recurrence from falling through.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Base case",
+        "secondaryLabel": "Each step computes one state from already-solved smaller or earlier states."
+      },
+      {
+        "phase": "Recurrence",
+        "title": "Fill next state",
+        "note": "The transition combines previously solved states.",
+        "ruleLabel": "Coin Change invariant",
+        "rule": "The transition combines previously solved states.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Recurrence",
+        "secondaryLabel": "Each step computes one state from already-solved smaller or earlier states."
+      },
+      {
+        "phase": "Target",
+        "title": "Return requested state",
+        "note": "The answer is read from the final DP state.",
+        "ruleLabel": "Coin Change invariant",
+        "rule": "The answer is read from the final DP state.",
+        "activeIndices": [
+          2,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Target",
+        "secondaryLabel": "Each step computes one state from already-solved smaller or earlier states."
+      }
+    ]
+  }
 };

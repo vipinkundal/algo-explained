@@ -124,5 +124,51 @@ export const algorithmPage = {
       2,
       1
     ]
-  ]
+  ],
+  "animation": {
+    "type": "state-flow",
+    "title": "C++ unique() state transitions",
+    "ruleLabel": "State rule",
+    "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
+    "states": [
+      "Algorithm State",
+      "Invariant",
+      "State change",
+      "Result"
+    ],
+    "steps": [
+      {
+        "phase": "Algorithm State",
+        "title": "Read algorithm state action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "C++ unique() invariant",
+        "rule": "The code receives the next value or command.",
+        "activeState": 0
+      },
+      {
+        "phase": "Invariant",
+        "title": "Inspect algorithm state",
+        "note": "The active state must still satisfy page-specific invariant.",
+        "ruleLabel": "C++ unique() invariant",
+        "rule": "The active state must still satisfy page-specific invariant.",
+        "activeState": 1
+      },
+      {
+        "phase": "State change",
+        "title": "Update the state described by this algorithm",
+        "note": "Only the necessary algorithm state fields are changed.",
+        "ruleLabel": "C++ unique() invariant",
+        "rule": "Only the necessary algorithm state fields are changed.",
+        "activeState": 2
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "C++ unique() invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeState": 3
+      }
+    ]
+  }
 };

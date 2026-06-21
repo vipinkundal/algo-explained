@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-essential-c-and-cpp-pointer",
@@ -128,5 +128,102 @@ export const algorithmPage = {
   "relatedLinks": [],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "essential-c-and-cpp-pointer"
+  "algorithmSlug": "essential-c-and-cpp-pointer",
+  "animation": {
+    "type": "array-flow",
+    "title": "C/C++ Pointer array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules.",
+    "values": [
+      4,
+      1,
+      7,
+      3,
+      6,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Declaration",
+        "title": "Create program value",
+        "note": "The code introduces the variable, pointer, structure, or object.",
+        "ruleLabel": "C/C++ Pointer invariant",
+        "rule": "The code introduces the variable, pointer, structure, or object.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Declaration",
+        "secondaryLabel": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules."
+      },
+      {
+        "phase": "Storage",
+        "title": "Track address or copy",
+        "note": "Passing by value, pointer, or reference controls what can change.",
+        "ruleLabel": "C/C++ Pointer invariant",
+        "rule": "Passing by value, pointer, or reference controls what can change.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4,
+          5
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Storage",
+        "secondaryLabel": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules."
+      },
+      {
+        "phase": "C/C++ rule",
+        "title": "Apply C/C++ rule",
+        "note": "Assignment, dereference, member access, or method call changes the state.",
+        "ruleLabel": "C/C++ Pointer invariant",
+        "rule": "Assignment, dereference, member access, or method call changes the state.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          5
+        ],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "C/C++ rule",
+        "secondaryLabel": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules."
+      },
+      {
+        "phase": "Result",
+        "title": "Read final value",
+        "note": "The visible output follows from the memory model.",
+        "ruleLabel": "C/C++ Pointer invariant",
+        "rule": "The visible output follows from the memory model.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Result",
+        "secondaryLabel": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules."
+      }
+    ]
+  }
 };

@@ -131,5 +131,130 @@ export const algorithmPage = {
       "D": []
     },
     "A"
-  ]
+  ],
+  "animation": {
+    "type": "graph-flow",
+    "title": "Depth-First Search graph state",
+    "ruleLabel": "Graph invariant",
+    "rule": "Each step consumes one vertex or edge and updates stack or recursion frontier without losing the graph invariant.",
+    "nodes": [
+      {
+        "id": "A",
+        "label": "A",
+        "x": 110,
+        "y": 150
+      },
+      {
+        "id": "B",
+        "label": "B",
+        "x": 300,
+        "y": 75
+      },
+      {
+        "id": "C",
+        "label": "C",
+        "x": 500,
+        "y": 150
+      },
+      {
+        "id": "D",
+        "label": "D",
+        "x": 300,
+        "y": 235
+      }
+    ],
+    "edges": [
+      {
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "from": "D",
+        "to": "C"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Graph",
+        "title": "Read graph input",
+        "note": "The code receives vertices, edges, weights, or adjacency lists.",
+        "ruleLabel": "Depth-First Search invariant",
+        "rule": "The code receives vertices, edges, weights, or adjacency lists.",
+        "activeNode": "A",
+        "visitedNodes": [],
+        "frontierNodes": [
+          "B"
+        ],
+        "activeEdge": {
+          "from": "A",
+          "to": "B"
+        }
+      },
+      {
+        "phase": "Stack Or Recursion Frontier",
+        "title": "Initialize stack or recursion frontier",
+        "note": "Only the graph state owned by this algorithm is created.",
+        "ruleLabel": "Depth-First Search invariant",
+        "rule": "Only the graph state owned by this algorithm is created.",
+        "activeNode": "B",
+        "visitedNodes": [
+          "A"
+        ],
+        "frontierNodes": [
+          "C"
+        ],
+        "activeEdge": {
+          "from": "B",
+          "to": "C"
+        }
+      },
+      {
+        "phase": "Work item",
+        "title": "Process next vertex or edge",
+        "note": "Visit one unvisited neighbor before backtracking.",
+        "ruleLabel": "Depth-First Search invariant",
+        "rule": "Visit one unvisited neighbor before backtracking.",
+        "activeNode": "C",
+        "visitedNodes": [
+          "A",
+          "B"
+        ],
+        "frontierNodes": [
+          "D"
+        ],
+        "activeEdge": {
+          "from": "C",
+          "to": "D"
+        }
+      },
+      {
+        "phase": "Deep Traversal",
+        "title": "Return deep traversal",
+        "note": "The final graph state becomes the answer.",
+        "ruleLabel": "Depth-First Search invariant",
+        "rule": "The final graph state becomes the answer.",
+        "activeNode": "D",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "frontierNodes": [
+          "A"
+        ],
+        "activeEdge": {
+          "from": "D",
+          "to": "A"
+        }
+      }
+    ]
+  }
 };

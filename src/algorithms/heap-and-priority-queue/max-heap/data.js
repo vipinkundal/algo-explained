@@ -130,5 +130,133 @@ export const algorithmPage = {
       "title": "Heap Creation",
       "label": "C/C++ heap source"
     }
-  ]
+  ],
+  "animation": {
+    "type": "tree-operation",
+    "title": "Max Heap tree state",
+    "nodes": [
+      {
+        "id": "8",
+        "label": "8",
+        "x": 340,
+        "y": 58
+      },
+      {
+        "id": "4",
+        "label": "4",
+        "x": 190,
+        "y": 150
+      },
+      {
+        "id": "12",
+        "label": "12",
+        "x": 490,
+        "y": 150
+      },
+      {
+        "id": "2",
+        "label": "2",
+        "x": 110,
+        "y": 255
+      },
+      {
+        "id": "6",
+        "label": "6",
+        "x": 270,
+        "y": 255
+      },
+      {
+        "id": "10",
+        "label": "10",
+        "x": 420,
+        "y": 255
+      },
+      {
+        "id": "14",
+        "label": "14",
+        "x": 570,
+        "y": 255
+      }
+    ],
+    "edges": [
+      {
+        "from": "8",
+        "to": "4"
+      },
+      {
+        "from": "8",
+        "to": "12"
+      },
+      {
+        "from": "4",
+        "to": "2"
+      },
+      {
+        "from": "4",
+        "to": "6"
+      },
+      {
+        "from": "12",
+        "to": "10"
+      },
+      {
+        "from": "12",
+        "to": "14"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Queue",
+        "title": "Read queue action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Max Heap invariant",
+        "rule": "The code receives the next value or command.",
+        "activeNode": "8",
+        "targetNode": "4",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Queue front",
+        "title": "Inspect queue",
+        "note": "The active state must still satisfy first-in, first-out state.",
+        "ruleLabel": "Max Heap invariant",
+        "rule": "The active state must still satisfy first-in, first-out state.",
+        "activeNode": "4",
+        "targetNode": "12",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Enqueue / dequeue",
+        "title": "Enqueue, dequeue, peek, or evict entries",
+        "note": "Only the necessary queue fields are changed.",
+        "ruleLabel": "Max Heap invariant",
+        "rule": "Only the necessary queue fields are changed.",
+        "activeNode": "12",
+        "targetNode": "2",
+        "replacementNode": "2",
+        "mutedNodes": []
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Max Heap invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeNode": "2",
+        "targetNode": "6",
+        "replacementNode": "6",
+        "mutedNodes": []
+      }
+    ]
+  }
 };

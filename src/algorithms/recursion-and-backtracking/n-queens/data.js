@@ -118,5 +118,130 @@ export const algorithmPage = {
   "algorithmSlug": "n-queens",
   "runnerInput": [
     4
-  ]
+  ],
+  "animation": {
+    "type": "matrix-flow",
+    "title": "N-Queens matrix state",
+    "ruleLabel": "Grid rule",
+    "rule": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
+    "matrix": [
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "steps": [
+      {
+        "phase": "Base",
+        "title": "Check stop condition",
+        "note": "The code first asks whether the current state is complete.",
+        "ruleLabel": "N-Queens invariant",
+        "rule": "The code first asks whether the current state is complete.",
+        "activeCells": [
+          [
+            0,
+            0
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "phase": "Choice",
+        "title": "Select next option",
+        "note": "One valid move is added to the state.",
+        "ruleLabel": "N-Queens invariant",
+        "rule": "One valid move is added to the state.",
+        "activeCells": [
+          [
+            0,
+            1
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "phase": "Call",
+        "title": "Recurse deeper",
+        "note": "The same rule runs on a smaller or extended state.",
+        "ruleLabel": "N-Queens invariant",
+        "rule": "The same rule runs on a smaller or extended state.",
+        "activeCells": [
+          [
+            0,
+            2
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      {
+        "phase": "Unwind",
+        "title": "Return or backtrack",
+        "note": "The result is combined or the choice is removed.",
+        "ruleLabel": "N-Queens invariant",
+        "rule": "The result is combined or the choice is removed.",
+        "activeCells": [
+          [
+            1,
+            0
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      }
+    ]
+  }
 };

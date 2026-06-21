@@ -118,5 +118,51 @@ export const algorithmPage = {
   "algorithmSlug": "fibonacci-dp",
   "runnerInput": [
     7
-  ]
+  ],
+  "animation": {
+    "type": "state-flow",
+    "title": "Fibonacci DP state transitions",
+    "ruleLabel": "State rule",
+    "rule": "Each step computes one state from already-solved smaller or earlier states.",
+    "states": [
+      "State meaning",
+      "Base case",
+      "Recurrence",
+      "Target"
+    ],
+    "steps": [
+      {
+        "phase": "State meaning",
+        "title": "Define DP cell",
+        "note": "The code first needs a precise subproblem meaning.",
+        "ruleLabel": "Fibonacci DP invariant",
+        "rule": "The code first needs a precise subproblem meaning.",
+        "activeState": 0
+      },
+      {
+        "phase": "Base case",
+        "title": "Seed known answers",
+        "note": "Base values stop the recurrence from falling through.",
+        "ruleLabel": "Fibonacci DP invariant",
+        "rule": "Base values stop the recurrence from falling through.",
+        "activeState": 1
+      },
+      {
+        "phase": "Recurrence",
+        "title": "Fill next state",
+        "note": "The transition combines previously solved states.",
+        "ruleLabel": "Fibonacci DP invariant",
+        "rule": "The transition combines previously solved states.",
+        "activeState": 2
+      },
+      {
+        "phase": "Target",
+        "title": "Return requested state",
+        "note": "The answer is read from the final DP state.",
+        "ruleLabel": "Fibonacci DP invariant",
+        "rule": "The answer is read from the final DP state.",
+        "activeState": 3
+      }
+    ]
+  }
 };

@@ -128,5 +128,130 @@ export const algorithmPage = {
         "A"
       ]
     }
-  ]
+  ],
+  "animation": {
+    "type": "graph-flow",
+    "title": "Cycle Detection in Directed Graph graph state",
+    "ruleLabel": "Graph invariant",
+    "rule": "Each step changes only the part of the stack required to preserve the invariant.",
+    "nodes": [
+      {
+        "id": "A",
+        "label": "A",
+        "x": 110,
+        "y": 150
+      },
+      {
+        "id": "B",
+        "label": "B",
+        "x": 300,
+        "y": 75
+      },
+      {
+        "id": "C",
+        "label": "C",
+        "x": 500,
+        "y": 150
+      },
+      {
+        "id": "D",
+        "label": "D",
+        "x": 300,
+        "y": 235
+      }
+    ],
+    "edges": [
+      {
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "from": "D",
+        "to": "C"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Stack",
+        "title": "Read stack action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Cycle Detection in Directed Graph invariant",
+        "rule": "The code receives the next value or command.",
+        "activeNode": "A",
+        "visitedNodes": [],
+        "frontierNodes": [
+          "B"
+        ],
+        "activeEdge": {
+          "from": "A",
+          "to": "B"
+        }
+      },
+      {
+        "phase": "Stack top",
+        "title": "Inspect stack",
+        "note": "The active state must still satisfy last-in, first-out state.",
+        "ruleLabel": "Cycle Detection in Directed Graph invariant",
+        "rule": "The active state must still satisfy last-in, first-out state.",
+        "activeNode": "B",
+        "visitedNodes": [
+          "A"
+        ],
+        "frontierNodes": [
+          "C"
+        ],
+        "activeEdge": {
+          "from": "B",
+          "to": "C"
+        }
+      },
+      {
+        "phase": "Push / pop",
+        "title": "Push, pop, peek, or resolve stack entries",
+        "note": "Only the necessary stack fields are changed.",
+        "ruleLabel": "Cycle Detection in Directed Graph invariant",
+        "rule": "Only the necessary stack fields are changed.",
+        "activeNode": "C",
+        "visitedNodes": [
+          "A",
+          "B"
+        ],
+        "frontierNodes": [
+          "D"
+        ],
+        "activeEdge": {
+          "from": "C",
+          "to": "D"
+        }
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Cycle Detection in Directed Graph invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeNode": "D",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "frontierNodes": [
+          "A"
+        ],
+        "activeEdge": {
+          "from": "D",
+          "to": "A"
+        }
+      }
+    ]
+  }
 };

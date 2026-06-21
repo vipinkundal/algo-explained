@@ -118,5 +118,66 @@ export const algorithmPage = {
   "algorithmSlug": "manachers-algorithm",
   "runnerInput": [
     "babad"
-  ]
+  ],
+  "animation": {
+    "type": "string-flow",
+    "title": "Manacher’s Algorithm character scan",
+    "ruleLabel": "String invariant",
+    "rule": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
+    "text": "babad",
+    "pattern": "bab",
+    "steps": [
+      {
+        "phase": "Text",
+        "title": "Read string input",
+        "note": "The code receives text, pattern, or character data.",
+        "ruleLabel": "Manacher’s Algorithm invariant",
+        "rule": "The code receives text, pattern, or character data.",
+        "activeRange": [
+          0,
+          2
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Helper",
+        "title": "Prepare string state",
+        "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
+        "ruleLabel": "Manacher’s Algorithm invariant",
+        "rule": "Prefix, hash, frequency, or radius state avoids repeated work.",
+        "activeRange": [
+          1,
+          3
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Character",
+        "title": "Update on current char",
+        "note": "One character changes the active string state.",
+        "ruleLabel": "Manacher’s Algorithm invariant",
+        "rule": "One character changes the active string state.",
+        "activeRange": [
+          2,
+          4
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Result",
+        "title": "Return string answer",
+        "note": "Matches or best values are returned after the scan.",
+        "ruleLabel": "Manacher’s Algorithm invariant",
+        "rule": "Matches or best values are returned after the scan.",
+        "activeRange": [
+          3,
+          4
+        ],
+        "matchedRange": [
+          0,
+          2
+        ]
+      }
+    ]
+  }
 };

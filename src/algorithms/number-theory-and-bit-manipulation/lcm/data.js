@@ -119,5 +119,51 @@ export const algorithmPage = {
   "runnerInput": [
     4,
     6
-  ]
+  ],
+  "animation": {
+    "type": "state-flow",
+    "title": "LCM state transitions",
+    "ruleLabel": "State rule",
+    "rule": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
+    "states": [
+      "Numbers",
+      "Rule",
+      "Reduction",
+      "Numeric result"
+    ],
+    "steps": [
+      {
+        "phase": "Numbers",
+        "title": "Read numeric state",
+        "note": "The code receives the number, range, or modulus.",
+        "ruleLabel": "LCM invariant",
+        "rule": "The code receives the number, range, or modulus.",
+        "activeState": 0
+      },
+      {
+        "phase": "Rule",
+        "title": "Select math invariant",
+        "note": "The chosen identity controls every update.",
+        "ruleLabel": "LCM invariant",
+        "rule": "The chosen identity controls every update.",
+        "activeState": 1
+      },
+      {
+        "phase": "Reduction",
+        "title": "Apply one reduction",
+        "note": "A shift, xor, multiply, divide, or mark changes state.",
+        "ruleLabel": "LCM invariant",
+        "rule": "A shift, xor, multiply, divide, or mark changes state.",
+        "activeState": 2
+      },
+      {
+        "phase": "Numeric result",
+        "title": "Return numeric result",
+        "note": "The loop ends when the invariant gives the answer.",
+        "ruleLabel": "LCM invariant",
+        "rule": "The loop ends when the invariant gives the answer.",
+        "activeState": 3
+      }
+    ]
+  }
 };

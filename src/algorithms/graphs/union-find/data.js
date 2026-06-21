@@ -136,5 +136,130 @@ export const algorithmPage = {
         3
       ]
     ]
-  ]
+  ],
+  "animation": {
+    "type": "graph-flow",
+    "title": "Disjoint Set Union / Union Find graph state",
+    "ruleLabel": "Graph invariant",
+    "rule": "Each step consumes one vertex or edge and updates parent array without losing the graph invariant.",
+    "nodes": [
+      {
+        "id": "A",
+        "label": "A",
+        "x": 110,
+        "y": 150
+      },
+      {
+        "id": "B",
+        "label": "B",
+        "x": 300,
+        "y": 75
+      },
+      {
+        "id": "C",
+        "label": "C",
+        "x": 500,
+        "y": 150
+      },
+      {
+        "id": "D",
+        "label": "D",
+        "x": 300,
+        "y": 235
+      }
+    ],
+    "edges": [
+      {
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "from": "D",
+        "to": "C"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Graph",
+        "title": "Read graph input",
+        "note": "The code receives vertices, edges, weights, or adjacency lists.",
+        "ruleLabel": "Disjoint Set Union / Union Find invariant",
+        "rule": "The code receives vertices, edges, weights, or adjacency lists.",
+        "activeNode": "A",
+        "visitedNodes": [],
+        "frontierNodes": [
+          "B"
+        ],
+        "activeEdge": {
+          "from": "A",
+          "to": "B"
+        }
+      },
+      {
+        "phase": "Parent Array",
+        "title": "Initialize parent array",
+        "note": "Only the graph state owned by this algorithm is created.",
+        "ruleLabel": "Disjoint Set Union / Union Find invariant",
+        "rule": "Only the graph state owned by this algorithm is created.",
+        "activeNode": "B",
+        "visitedNodes": [
+          "A"
+        ],
+        "frontierNodes": [
+          "C"
+        ],
+        "activeEdge": {
+          "from": "B",
+          "to": "C"
+        }
+      },
+      {
+        "phase": "Work item",
+        "title": "Process next vertex or edge",
+        "note": "Find roots and union separate sets.",
+        "ruleLabel": "Disjoint Set Union / Union Find invariant",
+        "rule": "Find roots and union separate sets.",
+        "activeNode": "C",
+        "visitedNodes": [
+          "A",
+          "B"
+        ],
+        "frontierNodes": [
+          "D"
+        ],
+        "activeEdge": {
+          "from": "C",
+          "to": "D"
+        }
+      },
+      {
+        "phase": "Component Merging",
+        "title": "Return component merging",
+        "note": "The final graph state becomes the answer.",
+        "ruleLabel": "Disjoint Set Union / Union Find invariant",
+        "rule": "The final graph state becomes the answer.",
+        "activeNode": "D",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "frontierNodes": [
+          "A"
+        ],
+        "activeEdge": {
+          "from": "D",
+          "to": "A"
+        }
+      }
+    ]
+  }
 };

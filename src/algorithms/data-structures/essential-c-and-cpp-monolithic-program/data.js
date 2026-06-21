@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-essential-c-and-cpp-monolithic-program",
@@ -128,5 +128,51 @@ export const algorithmPage = {
   "relatedLinks": [],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "essential-c-and-cpp-monolithic-program"
+  "algorithmSlug": "essential-c-and-cpp-monolithic-program",
+  "animation": {
+    "type": "state-flow",
+    "title": "C/C++ Monolithic Program state transitions",
+    "ruleLabel": "State rule",
+    "rule": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules.",
+    "states": [
+      "Declaration",
+      "Storage",
+      "C/C++ rule",
+      "Result"
+    ],
+    "steps": [
+      {
+        "phase": "Declaration",
+        "title": "Create program value",
+        "note": "The code introduces the variable, pointer, structure, or object.",
+        "ruleLabel": "C/C++ Monolithic Program invariant",
+        "rule": "The code introduces the variable, pointer, structure, or object.",
+        "activeState": 0
+      },
+      {
+        "phase": "Storage",
+        "title": "Track address or copy",
+        "note": "Passing by value, pointer, or reference controls what can change.",
+        "ruleLabel": "C/C++ Monolithic Program invariant",
+        "rule": "Passing by value, pointer, or reference controls what can change.",
+        "activeState": 1
+      },
+      {
+        "phase": "C/C++ rule",
+        "title": "Apply C/C++ rule",
+        "note": "Assignment, dereference, member access, or method call changes the state.",
+        "ruleLabel": "C/C++ Monolithic Program invariant",
+        "rule": "Assignment, dereference, member access, or method call changes the state.",
+        "activeState": 2
+      },
+      {
+        "phase": "Result",
+        "title": "Read final value",
+        "note": "The visible output follows from the memory model.",
+        "ruleLabel": "C/C++ Monolithic Program invariant",
+        "rule": "The visible output follows from the memory model.",
+        "activeState": 3
+      }
+    ]
+  }
 };

@@ -122,5 +122,92 @@ export const algorithmPage = {
       2,
       3
     ]
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "C++ reverse() array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each step moves left or right inward instead of trying all combinations.",
+    "values": [
+      1,
+      2,
+      3
+    ],
+    "steps": [
+      {
+        "phase": "Range",
+        "title": "Read ordered range",
+        "note": "The code receives values where pointer movement has meaning.",
+        "ruleLabel": "C++ reverse() invariant",
+        "rule": "The code receives values where pointer movement has meaning.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Range",
+        "secondaryLabel": "Each step moves left or right inward instead of trying all combinations."
+      },
+      {
+        "phase": "Pointers",
+        "title": "Set left and right",
+        "note": "Both indices define the current candidate state.",
+        "ruleLabel": "C++ reverse() invariant",
+        "rule": "Both indices define the current candidate state.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Pointers",
+        "secondaryLabel": "Each step moves left or right inward instead of trying all combinations."
+      },
+      {
+        "phase": "Compare",
+        "title": "Choose pointer movement",
+        "note": "The condition decides which pointer moves.",
+        "ruleLabel": "C++ reverse() invariant",
+        "rule": "The condition decides which pointer moves.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Compare",
+        "secondaryLabel": "Each step moves left or right inward instead of trying all combinations."
+      },
+      {
+        "phase": "Pair result",
+        "title": "Return pair or state",
+        "note": "The loop stops when the target condition is met or exhausted.",
+        "ruleLabel": "C++ reverse() invariant",
+        "rule": "The loop stops when the target condition is met or exhausted.",
+        "activeIndices": [
+          2,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Pair result",
+        "secondaryLabel": "Each step moves left or right inward instead of trying all combinations."
+      }
+    ]
+  }
 };

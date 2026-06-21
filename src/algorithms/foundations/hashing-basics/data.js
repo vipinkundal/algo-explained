@@ -122,5 +122,66 @@ export const algorithmPage = {
       "b",
       "a"
     ]
-  ]
+  ],
+  "animation": {
+    "type": "string-flow",
+    "title": "Hashing Basics character scan",
+    "ruleLabel": "String invariant",
+    "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
+    "text": "hashingbasic",
+    "pattern": "has",
+    "steps": [
+      {
+        "phase": "Algorithm State",
+        "title": "Read algorithm state action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Hashing Basics invariant",
+        "rule": "The code receives the next value or command.",
+        "activeRange": [
+          0,
+          2
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Invariant",
+        "title": "Inspect algorithm state",
+        "note": "The active state must still satisfy page-specific invariant.",
+        "ruleLabel": "Hashing Basics invariant",
+        "rule": "The active state must still satisfy page-specific invariant.",
+        "activeRange": [
+          1,
+          3
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "State change",
+        "title": "Update the state described by this algorithm",
+        "note": "Only the necessary algorithm state fields are changed.",
+        "ruleLabel": "Hashing Basics invariant",
+        "rule": "Only the necessary algorithm state fields are changed.",
+        "activeRange": [
+          2,
+          4
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Hashing Basics invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeRange": [
+          3,
+          5
+        ],
+        "matchedRange": [
+          0,
+          2
+        ]
+      }
+    ]
+  }
 };

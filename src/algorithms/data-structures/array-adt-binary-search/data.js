@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-array-adt-binary-search",
@@ -142,5 +142,102 @@ export const algorithmPage = {
   ],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "array-adt-binary-search"
+  "algorithmSlug": "array-adt-binary-search",
+  "animation": {
+    "type": "array-flow",
+    "title": "Binary Search in Array ADT array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
+    "values": [
+      4,
+      1,
+      7,
+      3,
+      6,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Sorted input",
+        "title": "Read the ordered search space",
+        "note": "The code starts from a range where binary decisions are valid.",
+        "ruleLabel": "Binary Search in Array ADT invariant",
+        "rule": "The code starts from a range where binary decisions are valid.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Sorted input",
+        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+      },
+      {
+        "phase": "low / high",
+        "title": "Open the candidate window",
+        "note": "low and high mark every position that may still answer.",
+        "ruleLabel": "Binary Search in Array ADT invariant",
+        "rule": "low and high mark every position that may still answer.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4,
+          5
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "low / high",
+        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+      },
+      {
+        "phase": "mid check",
+        "title": "Compare the midpoint",
+        "note": "The midpoint decides which half is removed.",
+        "ruleLabel": "Binary Search in Array ADT invariant",
+        "rule": "The midpoint decides which half is removed.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          5
+        ],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "mid check",
+        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+      },
+      {
+        "phase": "Return",
+        "title": "Emit index or boundary",
+        "note": "The loop ends with a match or the collapsed boundary.",
+        "ruleLabel": "Binary Search in Array ADT invariant",
+        "rule": "The loop ends with a match or the collapsed boundary.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Return",
+        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+      }
+    ]
+  }
 };

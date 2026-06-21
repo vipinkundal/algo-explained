@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-recursion-tree-recursion",
@@ -142,5 +142,133 @@ export const algorithmPage = {
   ],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "recursion-tree-recursion"
+  "algorithmSlug": "recursion-tree-recursion",
+  "animation": {
+    "type": "tree-operation",
+    "title": "Tree Recursion tree state",
+    "nodes": [
+      {
+        "id": "8",
+        "label": "8",
+        "x": 340,
+        "y": 58
+      },
+      {
+        "id": "4",
+        "label": "4",
+        "x": 190,
+        "y": 150
+      },
+      {
+        "id": "12",
+        "label": "12",
+        "x": 490,
+        "y": 150
+      },
+      {
+        "id": "2",
+        "label": "2",
+        "x": 110,
+        "y": 255
+      },
+      {
+        "id": "6",
+        "label": "6",
+        "x": 270,
+        "y": 255
+      },
+      {
+        "id": "10",
+        "label": "10",
+        "x": 420,
+        "y": 255
+      },
+      {
+        "id": "14",
+        "label": "14",
+        "x": 570,
+        "y": 255
+      }
+    ],
+    "edges": [
+      {
+        "from": "8",
+        "to": "4"
+      },
+      {
+        "from": "8",
+        "to": "12"
+      },
+      {
+        "from": "4",
+        "to": "2"
+      },
+      {
+        "from": "4",
+        "to": "6"
+      },
+      {
+        "from": "12",
+        "to": "10"
+      },
+      {
+        "from": "12",
+        "to": "14"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Stack",
+        "title": "Read stack action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Tree Recursion invariant",
+        "rule": "The code receives the next value or command.",
+        "activeNode": "8",
+        "targetNode": "4",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Stack top",
+        "title": "Inspect stack",
+        "note": "The active state must still satisfy last-in, first-out state.",
+        "ruleLabel": "Tree Recursion invariant",
+        "rule": "The active state must still satisfy last-in, first-out state.",
+        "activeNode": "4",
+        "targetNode": "12",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Push / pop",
+        "title": "Push, pop, peek, or resolve stack entries",
+        "note": "Only the necessary stack fields are changed.",
+        "ruleLabel": "Tree Recursion invariant",
+        "rule": "Only the necessary stack fields are changed.",
+        "activeNode": "12",
+        "targetNode": "2",
+        "replacementNode": "2",
+        "mutedNodes": []
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Tree Recursion invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeNode": "2",
+        "targetNode": "6",
+        "replacementNode": "6",
+        "mutedNodes": []
+      }
+    ]
+  }
 };

@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-linked-list-linear-search",
@@ -136,5 +136,75 @@ export const algorithmPage = {
   ],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "linked-list-linear-search"
+  "algorithmSlug": "linked-list-linear-search",
+  "animation": {
+    "type": "linked-list-flow",
+    "title": "Linked List Linear Search pointer state",
+    "ruleLabel": "Pointer rule",
+    "rule": "Each loop consumes the current item exactly once and advances the index.",
+    "nodes": [
+      {
+        "id": "head",
+        "label": "head",
+        "role": "head"
+      },
+      {
+        "id": "n2",
+        "label": "12",
+        "role": "node 2"
+      },
+      {
+        "id": "n3",
+        "label": "18",
+        "role": "node 3"
+      },
+      {
+        "id": "tail",
+        "label": "tail",
+        "role": "tail"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Input array",
+        "title": "Read values",
+        "note": "The code receives the list and any target condition.",
+        "ruleLabel": "Linked List Linear Search invariant",
+        "rule": "The code receives the list and any target condition.",
+        "activeNode": "head",
+        "previousNode": "head",
+        "nextNode": "n2"
+      },
+      {
+        "phase": "Index",
+        "title": "Select current item",
+        "note": "The loop focuses on one position at a time.",
+        "ruleLabel": "Linked List Linear Search invariant",
+        "rule": "The loop focuses on one position at a time.",
+        "activeNode": "n2",
+        "previousNode": "head",
+        "nextNode": "n3"
+      },
+      {
+        "phase": "Update",
+        "title": "Apply comparison or count",
+        "note": "The current value changes the running state only if the rule says so.",
+        "ruleLabel": "Linked List Linear Search invariant",
+        "rule": "The current value changes the running state only if the rule says so.",
+        "activeNode": "n3",
+        "previousNode": "n2",
+        "nextNode": "tail"
+      },
+      {
+        "phase": "Result",
+        "title": "Return scan output",
+        "note": "When the scan ends, the tracked result is returned.",
+        "ruleLabel": "Linked List Linear Search invariant",
+        "rule": "When the scan ends, the tracked result is returned.",
+        "activeNode": "tail",
+        "previousNode": "n3",
+        "nextNode": "tail"
+      }
+    ]
+  }
 };

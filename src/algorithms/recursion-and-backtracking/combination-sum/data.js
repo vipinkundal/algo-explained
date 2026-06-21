@@ -124,5 +124,133 @@ export const algorithmPage = {
       7
     ],
     7
-  ]
+  ],
+  "animation": {
+    "type": "tree-operation",
+    "title": "Combination Sum tree state",
+    "nodes": [
+      {
+        "id": "8",
+        "label": "8",
+        "x": 340,
+        "y": 58
+      },
+      {
+        "id": "4",
+        "label": "4",
+        "x": 190,
+        "y": 150
+      },
+      {
+        "id": "12",
+        "label": "12",
+        "x": 490,
+        "y": 150
+      },
+      {
+        "id": "2",
+        "label": "2",
+        "x": 110,
+        "y": 255
+      },
+      {
+        "id": "6",
+        "label": "6",
+        "x": 270,
+        "y": 255
+      },
+      {
+        "id": "10",
+        "label": "10",
+        "x": 420,
+        "y": 255
+      },
+      {
+        "id": "14",
+        "label": "14",
+        "x": 570,
+        "y": 255
+      }
+    ],
+    "edges": [
+      {
+        "from": "8",
+        "to": "4"
+      },
+      {
+        "from": "8",
+        "to": "12"
+      },
+      {
+        "from": "4",
+        "to": "2"
+      },
+      {
+        "from": "4",
+        "to": "6"
+      },
+      {
+        "from": "12",
+        "to": "10"
+      },
+      {
+        "from": "12",
+        "to": "14"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Base",
+        "title": "Check stop condition",
+        "note": "The code first asks whether the current state is complete.",
+        "ruleLabel": "Combination Sum invariant",
+        "rule": "The code first asks whether the current state is complete.",
+        "activeNode": "8",
+        "targetNode": "4",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Choice",
+        "title": "Select next option",
+        "note": "One valid move is added to the state.",
+        "ruleLabel": "Combination Sum invariant",
+        "rule": "One valid move is added to the state.",
+        "activeNode": "4",
+        "targetNode": "12",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
+      },
+      {
+        "phase": "Call",
+        "title": "Recurse deeper",
+        "note": "The same rule runs on a smaller or extended state.",
+        "ruleLabel": "Combination Sum invariant",
+        "rule": "The same rule runs on a smaller or extended state.",
+        "activeNode": "12",
+        "targetNode": "2",
+        "replacementNode": "2",
+        "mutedNodes": []
+      },
+      {
+        "phase": "Unwind",
+        "title": "Return or backtrack",
+        "note": "The result is combined or the choice is removed.",
+        "ruleLabel": "Combination Sum invariant",
+        "rule": "The result is combined or the choice is removed.",
+        "activeNode": "2",
+        "targetNode": "6",
+        "replacementNode": "6",
+        "mutedNodes": []
+      }
+    ]
+  }
 };

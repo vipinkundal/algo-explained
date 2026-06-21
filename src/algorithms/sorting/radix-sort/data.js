@@ -123,5 +123,103 @@ export const algorithmPage = {
       3,
       2
     ]
-  ]
+  ],
+  "animation": {
+    "type": "bucket-flow",
+    "title": "Radix Sort bucket movement",
+    "ruleLabel": "Bucket rule",
+    "rule": "Each value moves into its bucket, then each bucket is locally sorted before concatenation.",
+    "values": [
+      4,
+      1,
+      3,
+      2
+    ],
+    "buckets": [
+      {
+        "label": "low range"
+      },
+      {
+        "label": "middle range"
+      },
+      {
+        "label": "high range"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Buckets",
+        "title": "Create bucket ranges",
+        "note": "The code creates containers for value ranges.",
+        "ruleLabel": "Radix Sort invariant",
+        "rule": "The code creates containers for value ranges.",
+        "activeValue": 4,
+        "bucketIndex": 1,
+        "bucketValues": [
+          [],
+          [
+            4
+          ],
+          []
+        ]
+      },
+      {
+        "phase": "Value",
+        "title": "Assign to bucket",
+        "note": "Each input value lands in one bucket.",
+        "ruleLabel": "Radix Sort invariant",
+        "rule": "Each input value lands in one bucket.",
+        "activeValue": 1,
+        "bucketIndex": 1,
+        "bucketValues": [
+          [],
+          [
+            4,
+            1
+          ],
+          []
+        ]
+      },
+      {
+        "phase": "Inside bucket",
+        "title": "Sort local values",
+        "note": "Small bucket lists are ordered independently.",
+        "ruleLabel": "Radix Sort invariant",
+        "rule": "Small bucket lists are ordered independently.",
+        "activeValue": 3,
+        "bucketIndex": 0,
+        "bucketValues": [
+          [
+            3
+          ],
+          [
+            4,
+            1
+          ],
+          []
+        ]
+      },
+      {
+        "phase": "Concatenate",
+        "title": "Concatenate buckets",
+        "note": "Buckets are joined in range order.",
+        "ruleLabel": "Radix Sort invariant",
+        "rule": "Buckets are joined in range order.",
+        "activeValue": 2,
+        "bucketIndex": 2,
+        "bucketValues": [
+          [
+            3
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      }
+    ]
+  }
 };

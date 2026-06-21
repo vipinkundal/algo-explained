@@ -125,5 +125,98 @@ export const algorithmPage = {
       8
     ],
     10
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Two Pointers array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each step moves left or right inward instead of trying all combinations.",
+    "values": [
+      1,
+      2,
+      4,
+      6,
+      8
+    ],
+    "steps": [
+      {
+        "phase": "Range",
+        "title": "Read ordered range",
+        "note": "The code receives values where pointer movement has meaning.",
+        "ruleLabel": "Two Pointers invariant",
+        "rule": "The code receives values where pointer movement has meaning.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Range",
+        "secondaryLabel": "Each step moves left or right inward instead of trying all combinations."
+      },
+      {
+        "phase": "Pointers",
+        "title": "Set left and right",
+        "note": "Both indices define the current candidate state.",
+        "ruleLabel": "Two Pointers invariant",
+        "rule": "Both indices define the current candidate state.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Pointers",
+        "secondaryLabel": "Each step moves left or right inward instead of trying all combinations."
+      },
+      {
+        "phase": "Compare",
+        "title": "Choose pointer movement",
+        "note": "The condition decides which pointer moves.",
+        "ruleLabel": "Two Pointers invariant",
+        "rule": "The condition decides which pointer moves.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Compare",
+        "secondaryLabel": "Each step moves left or right inward instead of trying all combinations."
+      },
+      {
+        "phase": "Pair result",
+        "title": "Return pair or state",
+        "note": "The loop stops when the target condition is met or exhausted.",
+        "ruleLabel": "Two Pointers invariant",
+        "rule": "The loop stops when the target condition is met or exhausted.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Pair result",
+        "secondaryLabel": "Each step moves left or right inward instead of trying all combinations."
+      }
+    ]
+  }
 };

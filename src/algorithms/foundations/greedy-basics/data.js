@@ -123,5 +123,60 @@ export const algorithmPage = {
       7,
       1
     ]
-  ]
+  ],
+  "animation": {
+    "type": "recursion-flow",
+    "title": "Greedy Basics call stack",
+    "ruleLabel": "Recursive contract",
+    "rule": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
+    "calls": [
+      "greedy-basics(3)",
+      "greedy-basics(2)",
+      "greedy-basics(1)",
+      "base case"
+    ],
+    "steps": [
+      {
+        "phase": "Base",
+        "title": "Check stop condition",
+        "note": "The code first asks whether the current state is complete.",
+        "ruleLabel": "Greedy Basics invariant",
+        "rule": "The code first asks whether the current state is complete.",
+        "activeCall": 0,
+        "returningCalls": []
+      },
+      {
+        "phase": "Choice",
+        "title": "Select next option",
+        "note": "One valid move is added to the state.",
+        "ruleLabel": "Greedy Basics invariant",
+        "rule": "One valid move is added to the state.",
+        "activeCall": 1,
+        "returningCalls": []
+      },
+      {
+        "phase": "Call",
+        "title": "Recurse deeper",
+        "note": "The same rule runs on a smaller or extended state.",
+        "ruleLabel": "Greedy Basics invariant",
+        "rule": "The same rule runs on a smaller or extended state.",
+        "activeCall": 2,
+        "returningCalls": []
+      },
+      {
+        "phase": "Unwind",
+        "title": "Return or backtrack",
+        "note": "The result is combined or the choice is removed.",
+        "ruleLabel": "Greedy Basics invariant",
+        "rule": "The result is combined or the choice is removed.",
+        "activeCall": 3,
+        "returningCalls": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
 };

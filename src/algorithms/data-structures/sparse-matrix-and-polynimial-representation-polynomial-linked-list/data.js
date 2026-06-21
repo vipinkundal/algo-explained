@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-sparse-matrix-and-polynimial-representation-polynomial-linked-list",
@@ -136,5 +136,130 @@ export const algorithmPage = {
   ],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "sparse-matrix-and-polynimial-representation-polynomial-linked-list"
+  "algorithmSlug": "sparse-matrix-and-polynimial-representation-polynomial-linked-list",
+  "animation": {
+    "type": "matrix-flow",
+    "title": "Sparse Matrix / Polynomial Polynomial Linked List matrix state",
+    "ruleLabel": "Grid rule",
+    "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
+    "matrix": [
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "steps": [
+      {
+        "phase": "Algorithm State",
+        "title": "Read algorithm state action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Sparse Matrix / Polynomial Polynomial Linked List invariant",
+        "rule": "The code receives the next value or command.",
+        "activeCells": [
+          [
+            0,
+            0
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "phase": "Invariant",
+        "title": "Inspect algorithm state",
+        "note": "The active state must still satisfy page-specific invariant.",
+        "ruleLabel": "Sparse Matrix / Polynomial Polynomial Linked List invariant",
+        "rule": "The active state must still satisfy page-specific invariant.",
+        "activeCells": [
+          [
+            0,
+            1
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "phase": "State change",
+        "title": "Update the state described by this algorithm",
+        "note": "Only the necessary algorithm state fields are changed.",
+        "ruleLabel": "Sparse Matrix / Polynomial Polynomial Linked List invariant",
+        "rule": "Only the necessary algorithm state fields are changed.",
+        "activeCells": [
+          [
+            0,
+            2
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Sparse Matrix / Polynomial Polynomial Linked List invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeCells": [
+          [
+            1,
+            0
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      }
+    ]
+  }
 };

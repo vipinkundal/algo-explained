@@ -127,5 +127,123 @@ export const algorithmPage = {
         4
       ]
     ]
-  ]
+  ],
+  "animation": {
+    "type": "matrix-flow",
+    "title": "Rotate Matrix matrix state",
+    "ruleLabel": "Grid rule",
+    "rule": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
+    "matrix": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "steps": [
+      {
+        "phase": "Grid",
+        "title": "Read rows and columns",
+        "note": "The code starts from the matrix shape.",
+        "ruleLabel": "Rotate Matrix invariant",
+        "rule": "The code starts from the matrix shape.",
+        "activeCells": [
+          [
+            0,
+            0
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "phase": "Position",
+        "title": "Choose active cell",
+        "note": "The current row/column controls the next update.",
+        "ruleLabel": "Rotate Matrix invariant",
+        "rule": "The current row/column controls the next update.",
+        "activeCells": [
+          [
+            0,
+            1
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "phase": "Move/update",
+        "title": "Apply neighbor or boundary rule",
+        "note": "The transition changes reachable cells, boundaries, or accumulated values.",
+        "ruleLabel": "Rotate Matrix invariant",
+        "rule": "The transition changes reachable cells, boundaries, or accumulated values.",
+        "activeCells": [
+          [
+            1,
+            0
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      },
+      {
+        "phase": "Result",
+        "title": "Return grid output",
+        "note": "The final matrix, count, or query answer is returned.",
+        "ruleLabel": "Rotate Matrix invariant",
+        "rule": "The final matrix, count, or query answer is returned.",
+        "activeCells": [
+          [
+            1,
+            1
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    ]
+  }
 };

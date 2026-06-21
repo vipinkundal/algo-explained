@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-array-adt-reverse-and-shift-of-an-array",
@@ -136,5 +136,102 @@ export const algorithmPage = {
   ],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "array-adt-reverse-and-shift-of-an-array"
+  "algorithmSlug": "array-adt-reverse-and-shift-of-an-array",
+  "animation": {
+    "type": "array-flow",
+    "title": "Array ADT Reverse And Shift Of An Array array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each step changes one index, length, capacity, or shifted range while preserving the array representation.",
+    "values": [
+      4,
+      1,
+      7,
+      3,
+      6,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Array",
+        "title": "Read array request",
+        "note": "The code receives an array plus an index, value, or command.",
+        "ruleLabel": "Array ADT Reverse And Shift Of An Array invariant",
+        "rule": "The code receives an array plus an index, value, or command.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Array",
+        "secondaryLabel": "Each step changes one index, length, capacity, or shifted range while preserving the array representation."
+      },
+      {
+        "phase": "Index / length",
+        "title": "Check active range",
+        "note": "Bounds and current length decide whether the operation is valid.",
+        "ruleLabel": "Array ADT Reverse And Shift Of An Array invariant",
+        "rule": "Bounds and current length decide whether the operation is valid.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4,
+          5
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Index / length",
+        "secondaryLabel": "Each step changes one index, length, capacity, or shifted range while preserving the array representation."
+      },
+      {
+        "phase": "Slots",
+        "title": "Update affected cells",
+        "note": "The operation sets, shifts, scans, or resizes array slots.",
+        "ruleLabel": "Array ADT Reverse And Shift Of An Array invariant",
+        "rule": "The operation sets, shifts, scans, or resizes array slots.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          5
+        ],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Slots",
+        "secondaryLabel": "Each step changes one index, length, capacity, or shifted range while preserving the array representation."
+      },
+      {
+        "phase": "Result",
+        "title": "Return array state",
+        "note": "The visible value or updated array confirms the operation.",
+        "ruleLabel": "Array ADT Reverse And Shift Of An Array invariant",
+        "rule": "The visible value or updated array confirms the operation.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Result",
+        "secondaryLabel": "Each step changes one index, length, capacity, or shifted range while preserving the array representation."
+      }
+    ]
+  }
 };

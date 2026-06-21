@@ -153,5 +153,93 @@ export const algorithmPage = {
       "title": "Queue Using Linked List",
       "label": "C/C++ queue source"
     }
-  ]
+  ],
+  "animation": {
+    "type": "stack-queue-flow",
+    "title": "Queue Basics queue state",
+    "ruleLabel": "queue rule",
+    "rule": "Each step changes only the part of the queue required to preserve the invariant.",
+    "orientation": "queue",
+    "items": [
+      {
+        "type": "enqueue",
+        "value": 1
+      },
+      {
+        "type": "enqueue",
+        "value": 2
+      },
+      {
+        "type": "front"
+      },
+      {
+        "type": "dequeue"
+      },
+      {
+        "type": "dequeue"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Queue",
+        "title": "Read queue action",
+        "note": "The code receives the next value or command.",
+        "ruleLabel": "Queue Basics invariant",
+        "rule": "The code receives the next value or command.",
+        "activeItems": [
+          0
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          0
+        ]
+      },
+      {
+        "phase": "Queue front",
+        "title": "Inspect queue",
+        "note": "The active state must still satisfy first-in, first-out state.",
+        "ruleLabel": "Queue Basics invariant",
+        "rule": "The active state must still satisfy first-in, first-out state.",
+        "activeItems": [
+          1
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          1
+        ]
+      },
+      {
+        "phase": "Enqueue / dequeue",
+        "title": "Enqueue, dequeue, peek, or evict entries",
+        "note": "Only the necessary queue fields are changed.",
+        "ruleLabel": "Queue Basics invariant",
+        "rule": "Only the necessary queue fields are changed.",
+        "activeItems": [
+          2
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          2
+        ]
+      },
+      {
+        "phase": "Result",
+        "title": "Return visible result",
+        "note": "The return value or printed state confirms the operation.",
+        "ruleLabel": "Queue Basics invariant",
+        "rule": "The return value or printed state confirms the operation.",
+        "activeItems": [
+          3
+        ],
+        "topIndex": 0,
+        "queueWindow": [
+          0,
+          3
+        ]
+      }
+    ]
+  }
 };

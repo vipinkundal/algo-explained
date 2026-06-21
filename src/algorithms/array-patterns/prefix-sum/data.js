@@ -122,5 +122,66 @@ export const algorithmPage = {
       2,
       3
     ]
-  ]
+  ],
+  "animation": {
+    "type": "string-flow",
+    "title": "Prefix Sum character scan",
+    "ruleLabel": "String invariant",
+    "rule": "Each item updates the running total, difference, or accumulator exactly once.",
+    "text": "prefixsum",
+    "pattern": "pre",
+    "steps": [
+      {
+        "phase": "Values",
+        "title": "Read values or updates",
+        "note": "The code receives the array, ranges, or deltas.",
+        "ruleLabel": "Prefix Sum invariant",
+        "rule": "The code receives the array, ranges, or deltas.",
+        "activeRange": [
+          0,
+          2
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Accumulator",
+        "title": "Start running state",
+        "note": "A neutral starting value makes every update consistent.",
+        "ruleLabel": "Prefix Sum invariant",
+        "rule": "A neutral starting value makes every update consistent.",
+        "activeRange": [
+          1,
+          3
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Prefix step",
+        "title": "Apply current contribution",
+        "note": "The running state changes by the current value or boundary delta.",
+        "ruleLabel": "Prefix Sum invariant",
+        "rule": "The running state changes by the current value or boundary delta.",
+        "activeRange": [
+          2,
+          4
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Range result",
+        "title": "Read saved state",
+        "note": "The stored state gives the final or range answer.",
+        "ruleLabel": "Prefix Sum invariant",
+        "rule": "The stored state gives the final or range answer.",
+        "activeRange": [
+          3,
+          5
+        ],
+        "matchedRange": [
+          0,
+          2
+        ]
+      }
+    ]
+  }
 };

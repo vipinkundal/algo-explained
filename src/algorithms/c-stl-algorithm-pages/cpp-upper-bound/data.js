@@ -124,5 +124,95 @@ export const algorithmPage = {
       5
     ],
     3
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "C++ upper_bound() array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
+    "values": [
+      1,
+      3,
+      3,
+      5
+    ],
+    "steps": [
+      {
+        "phase": "Sorted input",
+        "title": "Read the ordered search space",
+        "note": "The code starts from a range where binary decisions are valid.",
+        "ruleLabel": "C++ upper_bound() invariant",
+        "rule": "The code starts from a range where binary decisions are valid.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Sorted input",
+        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+      },
+      {
+        "phase": "low / high",
+        "title": "Open the candidate window",
+        "note": "low and high mark every position that may still answer.",
+        "ruleLabel": "C++ upper_bound() invariant",
+        "rule": "low and high mark every position that may still answer.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "low / high",
+        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+      },
+      {
+        "phase": "mid check",
+        "title": "Compare the midpoint",
+        "note": "The midpoint decides which half is removed.",
+        "ruleLabel": "C++ upper_bound() invariant",
+        "rule": "The midpoint decides which half is removed.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "mid check",
+        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+      },
+      {
+        "phase": "Return",
+        "title": "Emit index or boundary",
+        "note": "The loop ends with a match or the collapsed boundary.",
+        "ruleLabel": "C++ upper_bound() invariant",
+        "rule": "The loop ends with a match or the collapsed boundary.",
+        "activeIndices": [
+          3,
+          3
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          3
+        ],
+        "primaryLabel": "Return",
+        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+      }
+    ]
+  }
 };

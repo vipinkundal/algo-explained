@@ -132,5 +132,130 @@ export const algorithmPage = {
         "C"
       ]
     }
-  ]
+  ],
+  "animation": {
+    "type": "graph-flow",
+    "title": "Tarjan’s Algorithm graph state",
+    "ruleLabel": "Graph invariant",
+    "rule": "Each step consumes one vertex or edge and updates discovery/component state without losing the graph invariant.",
+    "nodes": [
+      {
+        "id": "A",
+        "label": "A",
+        "x": 110,
+        "y": 150
+      },
+      {
+        "id": "B",
+        "label": "B",
+        "x": 300,
+        "y": 75
+      },
+      {
+        "id": "C",
+        "label": "C",
+        "x": 500,
+        "y": 150
+      },
+      {
+        "id": "D",
+        "label": "D",
+        "x": 300,
+        "y": 235
+      }
+    ],
+    "edges": [
+      {
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "from": "D",
+        "to": "C"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Graph",
+        "title": "Read graph input",
+        "note": "The code receives vertices, edges, weights, or adjacency lists.",
+        "ruleLabel": "Tarjan’s Algorithm invariant",
+        "rule": "The code receives vertices, edges, weights, or adjacency lists.",
+        "activeNode": "A",
+        "visitedNodes": [],
+        "frontierNodes": [
+          "B"
+        ],
+        "activeEdge": {
+          "from": "A",
+          "to": "B"
+        }
+      },
+      {
+        "phase": "Discovery Component State",
+        "title": "Initialize discovery/component state",
+        "note": "Only the graph state owned by this algorithm is created.",
+        "ruleLabel": "Tarjan’s Algorithm invariant",
+        "rule": "Only the graph state owned by this algorithm is created.",
+        "activeNode": "B",
+        "visitedNodes": [
+          "A"
+        ],
+        "frontierNodes": [
+          "C"
+        ],
+        "activeEdge": {
+          "from": "B",
+          "to": "C"
+        }
+      },
+      {
+        "phase": "Work item",
+        "title": "Process next vertex or edge",
+        "note": "Update low-link/order state and emit components.",
+        "ruleLabel": "Tarjan’s Algorithm invariant",
+        "rule": "Update low-link/order state and emit components.",
+        "activeNode": "C",
+        "visitedNodes": [
+          "A",
+          "B"
+        ],
+        "frontierNodes": [
+          "D"
+        ],
+        "activeEdge": {
+          "from": "C",
+          "to": "D"
+        }
+      },
+      {
+        "phase": "Component Discovery",
+        "title": "Return component discovery",
+        "note": "The final graph state becomes the answer.",
+        "ruleLabel": "Tarjan’s Algorithm invariant",
+        "rule": "The final graph state becomes the answer.",
+        "activeNode": "D",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "frontierNodes": [
+          "A"
+        ],
+        "activeEdge": {
+          "from": "D",
+          "to": "A"
+        }
+      }
+    ]
+  }
 };

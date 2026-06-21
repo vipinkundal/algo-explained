@@ -125,5 +125,60 @@ export const algorithmPage = {
       "title": "Recursion Tower of Hanoi",
       "label": "C/C++ recursion source"
     }
-  ]
+  ],
+  "animation": {
+    "type": "recursion-flow",
+    "title": "Tower of Hanoi call stack",
+    "ruleLabel": "Recursive contract",
+    "rule": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
+    "calls": [
+      "tower-of-hanoi(3)",
+      "tower-of-hanoi(2)",
+      "tower-of-hanoi(1)",
+      "base case"
+    ],
+    "steps": [
+      {
+        "phase": "Base",
+        "title": "Check stop condition",
+        "note": "The code first asks whether the current state is complete.",
+        "ruleLabel": "Tower of Hanoi invariant",
+        "rule": "The code first asks whether the current state is complete.",
+        "activeCall": 0,
+        "returningCalls": []
+      },
+      {
+        "phase": "Choice",
+        "title": "Select next option",
+        "note": "One valid move is added to the state.",
+        "ruleLabel": "Tower of Hanoi invariant",
+        "rule": "One valid move is added to the state.",
+        "activeCall": 1,
+        "returningCalls": []
+      },
+      {
+        "phase": "Call",
+        "title": "Recurse deeper",
+        "note": "The same rule runs on a smaller or extended state.",
+        "ruleLabel": "Tower of Hanoi invariant",
+        "rule": "The same rule runs on a smaller or extended state.",
+        "activeCall": 2,
+        "returningCalls": []
+      },
+      {
+        "phase": "Unwind",
+        "title": "Return or backtrack",
+        "note": "The result is combined or the choice is removed.",
+        "ruleLabel": "Tower of Hanoi invariant",
+        "rule": "The result is combined or the choice is removed.",
+        "activeCall": 3,
+        "returningCalls": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
 };

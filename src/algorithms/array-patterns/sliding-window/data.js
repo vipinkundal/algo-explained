@@ -125,5 +125,98 @@ export const algorithmPage = {
       5
     ],
     3
-  ]
+  ],
+  "animation": {
+    "type": "array-flow",
+    "title": "Sliding Window array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each step adds the right item and removes or ignores items that no longer belong.",
+    "values": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "steps": [
+      {
+        "phase": "Window rule",
+        "title": "Read array and window rule",
+        "note": "The code knows the range size or condition.",
+        "ruleLabel": "Sliding Window invariant",
+        "rule": "The code knows the range size or condition.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Window rule",
+        "secondaryLabel": "Each step adds the right item and removes or ignores items that no longer belong."
+      },
+      {
+        "phase": "Right edge",
+        "title": "Consume next value",
+        "note": "The window grows by one new item.",
+        "ruleLabel": "Sliding Window invariant",
+        "rule": "The window grows by one new item.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Right edge",
+        "secondaryLabel": "Each step adds the right item and removes or ignores items that no longer belong."
+      },
+      {
+        "phase": "Left edge",
+        "title": "Drop expired state",
+        "note": "Values outside the range are removed.",
+        "ruleLabel": "Sliding Window invariant",
+        "rule": "Values outside the range are removed.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Left edge",
+        "secondaryLabel": "Each step adds the right item and removes or ignores items that no longer belong."
+      },
+      {
+        "phase": "Window answer",
+        "title": "Record current result",
+        "note": "The current valid window updates the output.",
+        "ruleLabel": "Sliding Window invariant",
+        "rule": "The current valid window updates the output.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Window answer",
+        "secondaryLabel": "Each step adds the right item and removes or ignores items that no longer belong."
+      }
+    ]
+  }
 };

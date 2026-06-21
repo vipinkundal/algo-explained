@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-linked-list-sorted-checking",
@@ -128,5 +128,75 @@ export const algorithmPage = {
   "relatedLinks": [],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "linked-list-sorted-checking"
+  "algorithmSlug": "linked-list-sorted-checking",
+  "animation": {
+    "type": "linked-list-flow",
+    "title": "Linked List Sorted Checking pointer state",
+    "ruleLabel": "Pointer rule",
+    "rule": "Each step compares or moves values so the unsorted region gets smaller.",
+    "nodes": [
+      {
+        "id": "head",
+        "label": "head",
+        "role": "head"
+      },
+      {
+        "id": "n2",
+        "label": "12",
+        "role": "node 2"
+      },
+      {
+        "id": "n3",
+        "label": "18",
+        "role": "node 3"
+      },
+      {
+        "id": "tail",
+        "label": "tail",
+        "role": "tail"
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Input array",
+        "title": "Copy values",
+        "note": "The code starts with the values to reorder.",
+        "ruleLabel": "Linked List Sorted Checking invariant",
+        "rule": "The code starts with the values to reorder.",
+        "activeNode": "head",
+        "previousNode": "head",
+        "nextNode": "n2"
+      },
+      {
+        "phase": "Invariant",
+        "title": "Track ordered work",
+        "note": "The algorithm marks what part is already safe.",
+        "ruleLabel": "Linked List Sorted Checking invariant",
+        "rule": "The algorithm marks what part is already safe.",
+        "activeNode": "n2",
+        "previousNode": "head",
+        "nextNode": "n3"
+      },
+      {
+        "phase": "Move",
+        "title": "Apply ordering step",
+        "note": "The current operation reduces disorder.",
+        "ruleLabel": "Linked List Sorted Checking invariant",
+        "rule": "The current operation reduces disorder.",
+        "activeNode": "n3",
+        "previousNode": "n2",
+        "nextNode": "tail"
+      },
+      {
+        "phase": "Sorted output",
+        "title": "Return final order",
+        "note": "The result is returned when no unsorted work remains.",
+        "ruleLabel": "Linked List Sorted Checking invariant",
+        "rule": "The result is returned when no unsorted work remains.",
+        "activeNode": "tail",
+        "previousNode": "n3",
+        "nextNode": "tail"
+      }
+    ]
+  }
 };

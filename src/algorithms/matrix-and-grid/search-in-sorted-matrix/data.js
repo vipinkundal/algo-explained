@@ -130,5 +130,125 @@ export const algorithmPage = {
       ]
     ],
     9
-  ]
+  ],
+  "animation": {
+    "type": "matrix-flow",
+    "title": "Search in Sorted Matrix matrix state",
+    "ruleLabel": "Grid rule",
+    "rule": "Each step compares or moves values so the unsorted region gets smaller.",
+    "matrix": [
+      [
+        1,
+        3,
+        5
+      ],
+      [
+        7,
+        9,
+        11
+      ]
+    ],
+    "steps": [
+      {
+        "phase": "Input array",
+        "title": "Copy values",
+        "note": "The code starts with the values to reorder.",
+        "ruleLabel": "Search in Sorted Matrix invariant",
+        "rule": "The code starts with the values to reorder.",
+        "activeCells": [
+          [
+            0,
+            0
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "phase": "Invariant",
+        "title": "Track ordered work",
+        "note": "The algorithm marks what part is already safe.",
+        "ruleLabel": "Search in Sorted Matrix invariant",
+        "rule": "The algorithm marks what part is already safe.",
+        "activeCells": [
+          [
+            0,
+            1
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "phase": "Move",
+        "title": "Apply ordering step",
+        "note": "The current operation reduces disorder.",
+        "ruleLabel": "Search in Sorted Matrix invariant",
+        "rule": "The current operation reduces disorder.",
+        "activeCells": [
+          [
+            0,
+            2
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      {
+        "phase": "Sorted output",
+        "title": "Return final order",
+        "note": "The result is returned when no unsorted work remains.",
+        "ruleLabel": "Search in Sorted Matrix invariant",
+        "rule": "The result is returned when no unsorted work remains.",
+        "activeCells": [
+          [
+            1,
+            0
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      }
+    ]
+  }
 };

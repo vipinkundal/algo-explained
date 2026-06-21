@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "ds-array-adt-linear-search",
@@ -142,5 +142,102 @@ export const algorithmPage = {
   ],
   "runnerInput": [],
   "categorySlug": "data-structures",
-  "algorithmSlug": "array-adt-linear-search"
+  "algorithmSlug": "array-adt-linear-search",
+  "animation": {
+    "type": "array-flow",
+    "title": "Linear Search in Array ADT array state",
+    "ruleLabel": "Array invariant",
+    "rule": "Each loop consumes the current item exactly once and advances the index.",
+    "values": [
+      4,
+      1,
+      7,
+      3,
+      6,
+      2
+    ],
+    "steps": [
+      {
+        "phase": "Input array",
+        "title": "Read values",
+        "note": "The code receives the list and any target condition.",
+        "ruleLabel": "Linear Search in Array ADT invariant",
+        "rule": "The code receives the list and any target condition.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Input array",
+        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
+      },
+      {
+        "phase": "Index",
+        "title": "Select current item",
+        "note": "The loop focuses on one position at a time.",
+        "ruleLabel": "Linear Search in Array ADT invariant",
+        "rule": "The loop focuses on one position at a time.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4,
+          5
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Index",
+        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
+      },
+      {
+        "phase": "Update",
+        "title": "Apply comparison or count",
+        "note": "The current value changes the running state only if the rule says so.",
+        "ruleLabel": "Linear Search in Array ADT invariant",
+        "rule": "The current value changes the running state only if the rule says so.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          5
+        ],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "Update",
+        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
+      },
+      {
+        "phase": "Result",
+        "title": "Return scan output",
+        "note": "When the scan ends, the tracked result is returned.",
+        "ruleLabel": "Linear Search in Array ADT invariant",
+        "rule": "When the scan ends, the tracked result is returned.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Result",
+        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
+      }
+    ]
+  }
 };

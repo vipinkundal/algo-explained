@@ -126,5 +126,66 @@ export const algorithmPage = {
       "title": "String Anagram",
       "label": "C/C++ string source"
     }
-  ]
+  ],
+  "animation": {
+    "type": "string-flow",
+    "title": "Anagram Detection character scan",
+    "ruleLabel": "String invariant",
+    "rule": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
+    "text": "listen",
+    "pattern": "silent",
+    "steps": [
+      {
+        "phase": "Text",
+        "title": "Read string input",
+        "note": "The code receives text, pattern, or character data.",
+        "ruleLabel": "Anagram Detection invariant",
+        "rule": "The code receives text, pattern, or character data.",
+        "activeRange": [
+          0,
+          5
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Helper",
+        "title": "Prepare string state",
+        "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
+        "ruleLabel": "Anagram Detection invariant",
+        "rule": "Prefix, hash, frequency, or radius state avoids repeated work.",
+        "activeRange": [
+          1,
+          5
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Character",
+        "title": "Update on current char",
+        "note": "One character changes the active string state.",
+        "ruleLabel": "Anagram Detection invariant",
+        "rule": "One character changes the active string state.",
+        "activeRange": [
+          2,
+          5
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "Result",
+        "title": "Return string answer",
+        "note": "Matches or best values are returned after the scan.",
+        "ruleLabel": "Anagram Detection invariant",
+        "rule": "Matches or best values are returned after the scan.",
+        "activeRange": [
+          3,
+          5
+        ],
+        "matchedRange": [
+          0,
+          5
+        ]
+      }
+    ]
+  }
 };

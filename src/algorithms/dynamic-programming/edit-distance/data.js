@@ -119,5 +119,130 @@ export const algorithmPage = {
   "runnerInput": [
     "horse",
     "ros"
-  ]
+  ],
+  "animation": {
+    "type": "matrix-flow",
+    "title": "Edit Distance matrix state",
+    "ruleLabel": "Grid rule",
+    "rule": "Each step computes one state from already-solved smaller or earlier states.",
+    "matrix": [
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "steps": [
+      {
+        "phase": "State meaning",
+        "title": "Define DP cell",
+        "note": "The code first needs a precise subproblem meaning.",
+        "ruleLabel": "Edit Distance invariant",
+        "rule": "The code first needs a precise subproblem meaning.",
+        "activeCells": [
+          [
+            0,
+            0
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "phase": "Base case",
+        "title": "Seed known answers",
+        "note": "Base values stop the recurrence from falling through.",
+        "ruleLabel": "Edit Distance invariant",
+        "rule": "Base values stop the recurrence from falling through.",
+        "activeCells": [
+          [
+            0,
+            1
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "phase": "Recurrence",
+        "title": "Fill next state",
+        "note": "The transition combines previously solved states.",
+        "ruleLabel": "Edit Distance invariant",
+        "rule": "The transition combines previously solved states.",
+        "activeCells": [
+          [
+            0,
+            2
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      {
+        "phase": "Target",
+        "title": "Return requested state",
+        "note": "The answer is read from the final DP state.",
+        "ruleLabel": "Edit Distance invariant",
+        "rule": "The answer is read from the final DP state.",
+        "activeCells": [
+          [
+            1,
+            0
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      }
+    ]
+  }
 };
