@@ -22,31 +22,31 @@ export const algorithmPage = {
   "originalActiveLine": 5,
   "meaning": "Inserting In Sorted Linked List shows how data is organized, changed, and inspected through a small browser demo with the original C/C++ reference available beside it.",
   "problem": "Inserting In Sorted Linked List explains the linked-list state model and how one focused change updates it.",
-  "concept": "Data structures are easier to learn when each value has a clear place and every change preserves a rule.",
-  "logicSummary": "Track the active state, connect, insert, remove, or scan nodes, and inspect the updated view.",
-  "transitionSummary": "Move one step forward by changing only the slots, links, cursors, or nodes required by this operation.",
+  "concept": "Inserting In Sorted Linked List is useful when values must be placed into a reliable order before later work can be simple. Use this when the algorithm's ordering invariant and cost fit the input size and stability needs.",
+  "logicSummary": "Protect the algorithm's ordering invariant until every value reaches final order.",
+  "transitionSummary": "Each step compares or moves values so the unsorted region gets smaller.",
   "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the Original C/C++ tab to study the source implementation.",
   "originalCodeInsight": "The C/C++ Node struct is the memory layout: data stores the value and next/child pointers connect the structure.",
   "realLifeExample": "Inserting In Sorted Linked List is useful when you need to understand the mechanics behind library-level data structures.",
   "whenToUse": "Use this page when learning Linked List behavior through state changes instead of memorized code.",
-  "memoryTrick": "Name the moving part first, then ask which invariant must still be true.",
-  "visualizerCaption": "A linked list walkthrough for Inserting In Sorted Linked List.",
+  "memoryTrick": "Inserting In Sorted Linked List: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Inserting In Sorted Linked List is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Map the state",
-      "text": "Identify the values Inserting In Sorted Linked List needs before any operation starts."
+      "title": "Copy values",
+      "text": "Work on a mutable array without changing the original input."
     },
     {
-      "title": "Set the rule",
-      "text": "Name the linked-list invariant that should remain true after the step."
+      "title": "Choose invariant",
+      "text": "Track the sorted or partitioned region."
     },
     {
-      "title": "Apply one change",
-      "text": "Run the next action: connect, insert, remove, or scan nodes."
+      "title": "Move values",
+      "text": "Perform the comparison, swap, merge, or placement."
     },
     {
-      "title": "Read the view",
-      "text": "Compare the before and after state to confirm the transition."
+      "title": "Return order",
+      "text": "Return the fully sorted array."
     }
   ],
   "variables": [
@@ -69,36 +69,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "State map",
-      "title": "Prepare the working view",
-      "note": "Start with the values that Inserting In Sorted Linked List needs to inspect or change.",
+      "label": "Input array",
+      "title": "Copy values",
+      "note": "The code starts with the values to reorder.",
       "activeLine": 1,
-      "codeInsight": "The JS companion builds a compact state you can edit safely in the browser.",
-      "originalCodeInsight": "The C/C++ Node struct is the memory layout: data stores the value and next/child pointers connect the structure."
+      "codeInsight": "The code starts with the values to reorder."
     },
     {
-      "label": "Cursor move",
-      "title": "Choose the active part",
-      "note": "Focus on the head link before changing anything else.",
-      "activeLine": 4,
-      "codeInsight": "Keeping the active part explicit makes the output easier to debug.",
-      "originalCodeInsight": "Initialization lines define the valid memory shape before mutation begins."
+      "label": "Invariant",
+      "title": "Track ordered work",
+      "note": "The algorithm marks what part is already safe.",
+      "activeLine": 3,
+      "codeInsight": "The algorithm marks what part is already safe."
     },
     {
-      "label": "State change",
-      "title": "Apply the rule",
-      "note": "Perform one linked-list update and keep the invariant intact.",
-      "activeLine": 7,
-      "codeInsight": "This line group performs the browser-safe version of the same data-structure transition.",
-      "originalCodeInsight": "The important lines update the pointer, index, child link, cursor, or stored value."
+      "label": "Move",
+      "title": "Apply ordering step",
+      "note": "The current operation reduces disorder.",
+      "activeLine": 6,
+      "codeInsight": "The current operation reduces disorder."
     },
     {
-      "label": "Visible result",
-      "title": "Inspect the answer",
-      "note": "Read the chain view after the update.",
+      "label": "Sorted output",
+      "title": "Return final order",
+      "note": "The result is returned when no unsorted work remains.",
       "activeLine": 10,
-      "codeInsight": "The return object exposes the updated state so edits have immediate feedback.",
-      "originalCodeInsight": "Display, return, or cout lines reveal the observable result."
+      "codeInsight": "The result is returned when no unsorted work remains."
     }
   ],
   "complexity": {

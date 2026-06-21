@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Min Heap is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Min Heap keeps the smallest value at the root after each insertion.",
-  "concept": "Min Heap keeps the smallest value at the root after each insertion.",
-  "logicSummary": "Min Heap maintains a dedicated data-structure invariant and changes it through one clear push, pop, enqueue, dequeue, heap, or cache transition.",
-  "transitionSummary": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
+  "concept": "Min Heap is useful when queue behavior is the clearest model for the data changes. Use this when the problem is naturally described by first-in, first-out state.",
+  "logicSummary": "Read the next value or operation, maintain first-in, first-out state, then enqueue, dequeue, peek, or evict entries.",
+  "transitionSummary": "Each step changes only the part of the queue required to preserve the invariant.",
   "codeInsight": "The implementation names the backing state directly, so the code trace matches the visual data structure on the page.",
   "realLifeExample": "Min Heap appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Min Heap when its state transition is the natural way to model the problem.",
-  "memoryTrick": "Min Heap: the data structure is the algorithm state.",
-  "visualizerCaption": "A heap tree walkthrough showing Min Heap's input, state, transition, and answer.",
+  "memoryTrick": "Min Heap: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Min Heap is shown as queue state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read operation",
-      "text": "Identify the next value or command."
+      "title": "Read queue",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Update structure",
-      "text": "Push, pop, enqueue, dequeue, rebalance, or evict as required."
+      "title": "Inspect queue front",
+      "text": "Look at the active queue fields."
     },
     {
-      "title": "Preserve invariant",
-      "text": "Keep the structure valid after the update."
+      "title": "Enqueue / dequeue",
+      "text": "enqueue, dequeue, peek, or evict entries."
     },
     {
-      "title": "Return output",
-      "text": "Return the accumulated answers or final structure."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
     {
-      "name": "values",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "name": "input",
+      "purpose": "Values or operations to process."
     },
     {
-      "name": "heap array",
-      "purpose": "The array-backed heap after each sift, push, or pop operation."
+      "name": "data structure state",
+      "purpose": "The stack, queue, heap, deque, or cache state."
     },
     {
-      "name": "operation output",
-      "purpose": "The value produced by minHeap after the maintained state reaches the stop rule."
+      "name": "answer",
+      "purpose": "The output after all operations or after each step."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Read the next operation or value, update the owned data structure, and emit the current answer if needed. Stop when no valid work remains or the answer is known."
+      "name": "operations remain",
+      "purpose": "Continue while input values or operations remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Min Heap starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Queue",
+      "title": "Read queue action",
+      "note": "The code receives the next value or command.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Queue front",
+      "title": "Inspect queue",
+      "note": "The active state must still satisfy first-in, first-out state.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy first-in, first-out state."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
-      "activeLine": 8
+      "label": "Enqueue / dequeue",
+      "title": "Enqueue, dequeue, peek, or evict entries",
+      "note": "Only the necessary queue fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary queue fields are changed."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

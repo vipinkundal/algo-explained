@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "level-order-traversal",
@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Level Order Traversal visits a tree breadth-first, reading every node on one level before moving to the next.",
   "problem": "Level Order Traversal uses a queue so nodes are processed in the same order their parents discover them.",
-  "concept": "Level Order Traversal is breadth-first traversal for trees: visit the root, then its children, then the next level.",
-  "logicSummary": "Start with the root in a queue, visit the front node, append its value, then enqueue its left and right children.",
-  "transitionSummary": "Each step removes the next queued node from the front position and adds its children to the back of the queue.",
+  "concept": "Level-order traversal is useful when tree nodes must be processed by depth from top to bottom. Use this when closer-to-root nodes must be handled before deeper nodes.",
+  "logicSummary": "Start with the root in a queue, visit the front node, append its value, then enqueue children.",
+  "transitionSummary": "Each step removes the next queued node and appends its children to the back.",
   "codeInsight": "The queue is the invariant: it always holds the nodes that have been discovered but not visited yet.",
   "realLifeExample": "Use it when rendering a family tree by rows, scanning a folder tree by depth, or finding nodes closest to the root first.",
   "whenToUse": "Use Level Order Traversal when tree nodes must be processed by depth from top to bottom.",
-  "memoryTrick": "Level Order Traversal: queue the root, visit front, push children, repeat.",
-  "visualizerCaption": "A breadth-first tree walkthrough showing the queue, current node, child enqueue step, and output order.",
+  "memoryTrick": "Level Order Traversal: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Level Order Traversal is shown as breadth-first queue traversal. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Start at root",
-      "text": "If the root is missing, the traversal is empty; otherwise the root is the first queued node."
+      "title": "Check root",
+      "text": "Return an empty result for an empty tree."
     },
     {
-      "title": "Create queue",
-      "text": "Keep discovered nodes in first-in, first-out order so earlier levels are visited first."
+      "title": "Seed queue",
+      "text": "Put the root in the BFS queue."
     },
     {
-      "title": "Visit next node",
-      "text": "Read the front queued node and append its value to the traversal output."
+      "title": "Visit front",
+      "text": "Append the next queued node value."
     },
     {
-      "title": "Queue children",
-      "text": "Add the current node's left and right children so the next level is visited after this one."
+      "title": "Enqueue children",
+      "text": "Push left and right children for the next levels."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Root check",
-      "title": "Check for an empty tree",
-      "note": "If root is missing, there are no levels to scan, so the function returns an empty list.",
-      "activeLine": 6
+      "label": "Root",
+      "title": "Check for empty tree",
+      "note": "If root is missing, there are no levels to visit.",
+      "activeLine": 1,
+      "codeInsight": "If root is missing, there are no levels to visit."
     },
     {
-      "label": "Queue setup",
-      "title": "Seed the BFS queue",
-      "note": "Put the root in the queue and create the output list that will receive visited values.",
-      "activeLine": 8
+      "label": "Queue",
+      "title": "Seed traversal queue",
+      "note": "The root becomes the first discovered node.",
+      "activeLine": 3,
+      "codeInsight": "The root becomes the first discovered node."
     },
     {
-      "label": "Visit front",
-      "title": "Process the next queued node",
-      "note": "Read the next queue item and append its value to the level-order output.",
-      "activeLine": 11
+      "label": "Visit",
+      "title": "Process queue front",
+      "note": "The front node is appended to output.",
+      "activeLine": 6,
+      "codeInsight": "The front node is appended to output."
     },
     {
-      "label": "Enqueue kids",
-      "title": "Discover the next level",
-      "note": "Push the left and right children to the back of the queue, then continue until the queue is exhausted.",
-      "activeLine": 12
+      "label": "Children",
+      "title": "Discover next level",
+      "note": "Children are pushed to the queue for later visits.",
+      "activeLine": 8,
+      "codeInsight": "Children are pushed to the queue for later visits."
     }
   ],
   "complexity": {

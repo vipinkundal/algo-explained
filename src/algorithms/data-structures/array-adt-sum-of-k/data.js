@@ -22,31 +22,31 @@ export const algorithmPage = {
   "originalActiveLine": 3,
   "meaning": "Array ADT Sum Of K shows how data is organized, changed, and inspected through a small browser demo with the original C/C++ reference available beside it.",
   "problem": "Array ADT Sum Of K explains the array state model and how one focused change updates it.",
-  "concept": "Data structures are easier to learn when each value has a clear place and every change preserves a rule.",
-  "logicSummary": "Track the active state, move, search, insert, remove, or summarize slots, and inspect the updated view.",
-  "transitionSummary": "Move one step forward by changing only the slots, links, cursors, or nodes required by this operation.",
+  "concept": "Array ADT Sum Of K is useful when contiguous storage, indexes, length, or capacity explain the operation. Use this when an array operation depends on slot position, bounds, or shifting values.",
+  "logicSummary": "Read the index or value, check the active length and capacity, update the affected slots, and return the visible array result.",
+  "transitionSummary": "Each step changes one index, length, capacity, or shifted range while preserving the array representation.",
   "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the Original C/C++ tab to study the source implementation.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
   "realLifeExample": "Array ADT Sum Of K is useful when you need to understand the mechanics behind library-level data structures.",
   "whenToUse": "Use this page when learning Arrays / Array ADT behavior through state changes instead of memorized code.",
-  "memoryTrick": "Name the moving part first, then ask which invariant must still be true.",
-  "visualizerCaption": "An array adt walkthrough for Array ADT Sum Of K.",
+  "memoryTrick": "Array ADT Sum Of K: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Array ADT Sum Of K is shown as indexed array state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Map the state",
-      "text": "Identify the values Array ADT Sum Of K needs before any operation starts."
+      "title": "Read request",
+      "text": "Identify the index, value, length, or capacity involved."
     },
     {
-      "title": "Set the rule",
-      "text": "Name the array invariant that should remain true after the step."
+      "title": "Check bounds",
+      "text": "Confirm the operation is valid for the active array size."
     },
     {
-      "title": "Apply one change",
-      "text": "Run the next action: move, search, insert, remove, or summarize slots."
+      "title": "Update slots",
+      "text": "Set, shift, scan, or resize the affected cells."
     },
     {
-      "title": "Read the view",
-      "text": "Compare the before and after state to confirm the transition."
+      "title": "Return array result",
+      "text": "Return the found value, status, or updated array view."
     }
   ],
   "variables": [
@@ -69,36 +69,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "State map",
-      "title": "Prepare the working view",
-      "note": "Start with the values that Array ADT Sum Of K needs to inspect or change.",
+      "label": "Array",
+      "title": "Read array request",
+      "note": "The code receives an array plus an index, value, or command.",
       "activeLine": 1,
-      "codeInsight": "The JS companion builds a compact state you can edit safely in the browser.",
-      "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state."
+      "codeInsight": "The code receives an array plus an index, value, or command."
     },
     {
-      "label": "Cursor move",
-      "title": "Choose the active part",
-      "note": "Focus on the slot index before changing anything else.",
+      "label": "Index / length",
+      "title": "Check active range",
+      "note": "Bounds and current length decide whether the operation is valid.",
       "activeLine": 4,
-      "codeInsight": "Keeping the active part explicit makes the output easier to debug.",
-      "originalCodeInsight": "Initialization lines define the valid memory shape before mutation begins."
+      "codeInsight": "Bounds and current length decide whether the operation is valid."
     },
     {
-      "label": "State change",
-      "title": "Apply the rule",
-      "note": "Perform one array update and keep the invariant intact.",
+      "label": "Slots",
+      "title": "Update affected cells",
+      "note": "The operation sets, shifts, scans, or resizes array slots.",
       "activeLine": 7,
-      "codeInsight": "This line group performs the browser-safe version of the same data-structure transition.",
-      "originalCodeInsight": "The important lines update the pointer, index, child link, cursor, or stored value."
+      "codeInsight": "The operation sets, shifts, scans, or resizes array slots."
     },
     {
-      "label": "Visible result",
-      "title": "Inspect the answer",
-      "note": "Read the array view after the update.",
+      "label": "Result",
+      "title": "Return array state",
+      "note": "The visible value or updated array confirms the operation.",
       "activeLine": 10,
-      "codeInsight": "The return object exposes the updated state so edits have immediate feedback.",
-      "originalCodeInsight": "Display, return, or cout lines reveal the observable result."
+      "codeInsight": "The visible value or updated array confirms the operation."
     }
   ],
   "complexity": {

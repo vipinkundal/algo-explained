@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "linear-search",
@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Linear Search is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Linear Search scans items one by one and stops as soon as the target is found.",
-  "concept": "Linear Search scans items one by one and stops as soon as the target is found.",
-  "logicSummary": "Start at index 0, compare each value with the target, and return the first matching index.",
-  "transitionSummary": "Advance the index by one after every failed comparison.",
+  "concept": "Linear Search is useful when every item may matter and the input has no stronger ordering to exploit. Use this when a simple pass is clearer or cheaper than preprocessing.",
+  "logicSummary": "Move one index through the array, update the running state, and stop when the required condition is met.",
+  "transitionSummary": "Each loop consumes the current item exactly once and advances the index.",
   "codeInsight": "The loop has no hidden structure: correctness comes from checking every earlier item before moving forward.",
   "realLifeExample": "Use it for unsorted lists, small inputs, or cases where sorting first would cost more than scanning.",
   "whenToUse": "Use Linear Search when the data is unsorted or a single sequential pass is acceptable.",
-  "memoryTrick": "Linear Search: current item either answers now or the scan moves right.",
-  "visualizerCaption": "A array scan walkthrough showing Linear Search's input, state, transition, and answer.",
+  "memoryTrick": "Linear Search: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Linear Search is shown as a left-to-right scan. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Start at the first element",
-      "text": "Initialize index to 0."
+      "title": "Start scan",
+      "text": "Set the first index and initial result."
     },
     {
-      "title": "Compare current value",
-      "text": "Check whether array[index] equals target."
+      "title": "Read value",
+      "text": "Inspect the current array item."
     },
     {
-      "title": "Move right",
-      "text": "Increment index after a miss."
+      "title": "Update state",
+      "text": "Change the answer, counter, or candidate."
     },
     {
-      "title": "Return result",
-      "text": "Return the match or -1 after the scan finishes."
+      "title": "Finish pass",
+      "text": "Return the maintained result after the scan."
     }
   ],
   "variables": [
     {
       "name": "array, target",
-      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
+      "purpose": "The list to scan and the value to find."
     },
     {
-      "name": "index and comparison",
-      "purpose": "The current array position and comparison that decide whether Linear Search returns now or moves on."
+      "name": "index",
+      "purpose": "The current position being compared."
     },
     {
-      "name": "found index or boundary",
-      "purpose": "The value produced by linearSearch after the maintained state reaches the stop rule."
+      "name": "matching index",
+      "purpose": "The first index whose value equals the target, or -1."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Advance the index by one after every failed comparison. Stop when no valid work remains or the answer is known."
+      "name": "index < array.length",
+      "purpose": "The loop continues while unchecked items remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Linear Search starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Input array",
+      "title": "Read values",
+      "note": "The code receives the list and any target condition.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the list and any target condition."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Index",
+      "title": "Select current item",
+      "note": "The loop focuses on one position at a time.",
+      "activeLine": 3,
+      "codeInsight": "The loop focuses on one position at a time."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Advance the index by one after every failed comparison.",
-      "activeLine": 8
+      "label": "Update",
+      "title": "Apply comparison or count",
+      "note": "The current value changes the running state only if the rule says so.",
+      "activeLine": 5,
+      "codeInsight": "The current value changes the running state only if the rule says so."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Result",
+      "title": "Return scan output",
+      "note": "When the scan ends, the tracked result is returned.",
+      "activeLine": 8,
+      "codeInsight": "When the scan ends, the tracked result is returned."
     }
   ],
   "complexity": {

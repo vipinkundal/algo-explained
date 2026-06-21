@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "GCD / Euclidean Algorithm is a Number Theory and Bit Manipulation technique focused on answer.",
   "problem": "GCD / Euclidean Algorithm solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its remainder steps transition.",
-  "concept": "GCD / Euclidean Algorithm solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its remainder steps transition.",
-  "logicSummary": "GCD / Euclidean Algorithm reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the remainder steps transition until the stop condition for GCD / Euclidean Algorithm is reached.",
+  "concept": "Number and bit algorithms are useful when arithmetic properties let you skip brute-force work. Use this when divisibility, powers, bits, xor, or modular rules define the answer.",
+  "logicSummary": "Read numeric input, keep the relevant arithmetic state, apply the identity, and return the reduced result.",
+  "transitionSummary": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
   "codeInsight": "The implementation keeps GCD / Euclidean Algorithm's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "GCD / Euclidean Algorithm appears when the input is input and the required result is answer.",
   "whenToUse": "Use GCD / Euclidean Algorithm when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a remainder steps dry run.",
-  "memoryTrick": "GCD / Euclidean Algorithm: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A remainder steps walkthrough showing GCD / Euclidean Algorithm's input, state, transition, and answer.",
+  "memoryTrick": "GCD / Euclidean Algorithm: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "GCD / Euclidean Algorithm is shown as arithmetic-state reduction. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data GCD / Euclidean Algorithm receives and what output is required."
+      "title": "Read numbers",
+      "text": "Identify the integer, range, or modulus."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by GCD / Euclidean Algorithm."
+      "title": "Set invariant",
+      "text": "Choose the arithmetic or bit rule."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the remainder steps transition and update the algorithm-specific state."
+      "title": "Apply operation",
+      "text": "Shift, xor, divide, multiply, or mark values."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return result",
+      "text": "Return the reduced number or boolean answer."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the GCD / Euclidean Algorithm input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Numbers",
+      "title": "Read numeric state",
+      "note": "The code receives the number, range, or modulus.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the number, range, or modulus."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that GCD / Euclidean Algorithm changes during the dry run.",
-      "activeLine": 3
+      "label": "Rule",
+      "title": "Select math invariant",
+      "note": "The chosen identity controls every update.",
+      "activeLine": 3,
+      "codeInsight": "The chosen identity controls every update."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one remainder steps transition for GCD / Euclidean Algorithm.",
-      "activeLine": 5
+      "label": "Reduction",
+      "title": "Apply one reduction",
+      "note": "A shift, xor, multiply, divide, or mark changes state.",
+      "activeLine": 5,
+      "codeInsight": "A shift, xor, multiply, divide, or mark changes state."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final GCD / Euclidean Algorithm answer from the tracked state.",
-      "activeLine": 8
+      "label": "Numeric result",
+      "title": "Return numeric result",
+      "note": "The loop ends when the invariant gives the answer.",
+      "activeLine": 8,
+      "codeInsight": "The loop ends when the invariant gives the answer."
     }
   ],
   "complexity": {

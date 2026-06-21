@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "C++ max_element() / min_element() is a C++ STL Algorithm Pages technique focused on answer.",
   "problem": "C++ max_element() / min_element() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its array scan transition.",
-  "concept": "C++ max_element() / min_element() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its array scan transition.",
-  "logicSummary": "C++ max_element() / min_element() reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the array scan transition until the stop condition for C++ max_element() / min_element() is reached.",
+  "concept": "C++ max_element() / min_element() is useful when every item may matter and the input has no stronger ordering to exploit. Use this when a simple pass is clearer or cheaper than preprocessing.",
+  "logicSummary": "Move one index through the array, update the running state, and stop when the required condition is met.",
+  "transitionSummary": "Each loop consumes the current item exactly once and advances the index.",
   "codeInsight": "The implementation keeps C++ max_element() / min_element()'s state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "C++ max_element() / min_element() appears when the input is input and the required result is answer.",
   "whenToUse": "Use C++ max_element() / min_element() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a array scan dry run.",
-  "memoryTrick": "C++ max_element() / min_element(): name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A array scan walkthrough showing C++ max_element() / min_element()'s input, state, transition, and answer.",
+  "memoryTrick": "C++ max_element() / min_element(): name the invariant, then trace the exact state change.",
+  "visualizerCaption": "C++ max_element() / min_element() is shown as a left-to-right scan. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data C++ max_element() / min_element() receives and what output is required."
+      "title": "Start scan",
+      "text": "Set the first index and initial result."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by C++ max_element() / min_element()."
+      "title": "Read value",
+      "text": "Inspect the current array item."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the array scan transition and update the algorithm-specific state."
+      "title": "Update state",
+      "text": "Change the answer, counter, or candidate."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Finish pass",
+      "text": "Return the maintained result after the scan."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the C++ max_element() / min_element() input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Input array",
+      "title": "Read values",
+      "note": "The code receives the list and any target condition.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the list and any target condition."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that C++ max_element() / min_element() changes during the dry run.",
-      "activeLine": 3
+      "label": "Index",
+      "title": "Select current item",
+      "note": "The loop focuses on one position at a time.",
+      "activeLine": 3,
+      "codeInsight": "The loop focuses on one position at a time."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one array scan transition for C++ max_element() / min_element().",
-      "activeLine": 5
+      "label": "Update",
+      "title": "Apply comparison or count",
+      "note": "The current value changes the running state only if the rule says so.",
+      "activeLine": 5,
+      "codeInsight": "The current value changes the running state only if the rule says so."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final C++ max_element() / min_element() answer from the tracked state.",
-      "activeLine": 8
+      "label": "Result",
+      "title": "Return scan output",
+      "note": "When the scan ends, the tracked result is returned.",
+      "activeLine": 8,
+      "codeInsight": "When the scan ends, the tracked result is returned."
     }
   ],
   "complexity": {

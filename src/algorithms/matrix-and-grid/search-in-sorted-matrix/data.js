@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Search in Sorted Matrix is a Matrix and Grid technique focused on sorted array.",
   "problem": "Search in Sorted Matrix is a sorting strategy that repeatedly narrows unsorted work until every value is in order.",
-  "concept": "Search in Sorted Matrix is a sorting strategy that repeatedly narrows unsorted work until every value is in order.",
-  "logicSummary": "Keep the sorted invariant for Search in Sorted Matrix: each transition makes a pass, partition, merge, heap step, or bucket placement that reduces disorder.",
-  "transitionSummary": "Compare, move, swap, merge, or bucket values according to this sorter until no unsorted work remains.",
+  "concept": "Search in Sorted Matrix is useful when values must be placed into a reliable order before later work can be simple. Use this when the algorithm's ordering invariant and cost fit the input size and stability needs.",
+  "logicSummary": "Protect the algorithm's ordering invariant until every value reaches final order.",
+  "transitionSummary": "Each step compares or moves values so the unsorted region gets smaller.",
   "codeInsight": "The implementation copies the input first, then mutates only that working array so the original caller data is not changed.",
   "realLifeExample": "Search in Sorted Matrix appears when the input is array and the required result is sorted array.",
   "whenToUse": "Use Search in Sorted Matrix when a problem matches the Matrix and Grid pattern and the expected state changes match a matrix staircase dry run.",
-  "memoryTrick": "Search in Sorted Matrix: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A matrix staircase walkthrough showing Search in Sorted Matrix's input, state, transition, and answer.",
+  "memoryTrick": "Search in Sorted Matrix: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Search in Sorted Matrix is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Search in Sorted Matrix receives and what output is required."
+      "title": "Copy values",
+      "text": "Work on a mutable array without changing the original input."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Search in Sorted Matrix."
+      "title": "Choose invariant",
+      "text": "Track the sorted or partitioned region."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the matrix staircase transition and update the algorithm-specific state."
+      "title": "Move values",
+      "text": "Perform the comparison, swap, merge, or placement."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return order",
+      "text": "Return the fully sorted array."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Search in Sorted Matrix input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Input array",
+      "title": "Copy values",
+      "note": "The code starts with the values to reorder.",
+      "activeLine": 1,
+      "codeInsight": "The code starts with the values to reorder."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Search in Sorted Matrix changes during the dry run.",
-      "activeLine": 3
+      "label": "Invariant",
+      "title": "Track ordered work",
+      "note": "The algorithm marks what part is already safe.",
+      "activeLine": 3,
+      "codeInsight": "The algorithm marks what part is already safe."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one matrix staircase transition for Search in Sorted Matrix.",
-      "activeLine": 5
+      "label": "Move",
+      "title": "Apply ordering step",
+      "note": "The current operation reduces disorder.",
+      "activeLine": 6,
+      "codeInsight": "The current operation reduces disorder."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Search in Sorted Matrix answer from the tracked state.",
-      "activeLine": 8
+      "label": "Sorted output",
+      "title": "Return final order",
+      "note": "The result is returned when no unsorted work remains.",
+      "activeLine": 10,
+      "codeInsight": "The result is returned when no unsorted work remains."
     }
   ],
   "complexity": {

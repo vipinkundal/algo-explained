@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Bubble Sort is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Repeatedly swap adjacent out-of-order pairs so the largest remaining value bubbles to the end.",
-  "concept": "Repeatedly swap adjacent out-of-order pairs so the largest remaining value bubbles to the end.",
-  "logicSummary": "Bubble Sort keeps a clear sorted/unsorted invariant and makes one transition that places values closer to final order.",
-  "transitionSummary": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
+  "concept": "Bubble Sort is useful when local adjacent swaps can repeatedly move large values toward the end. Use this when you want the simplest comparison-sort trace for learning adjacent swaps.",
+  "logicSummary": "Sweep across adjacent pairs, swap out-of-order neighbors, and repeat until no unsorted pair remains.",
+  "transitionSummary": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array.",
   "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
   "realLifeExample": "Bubble Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
   "whenToUse": "Use Bubble Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Bubble Sort: protect the invariant after every comparison or move.",
-  "visualizerCaption": "A bar swap walkthrough showing Bubble Sort's input, state, transition, and answer.",
+  "memoryTrick": "Bubble Sort: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Bubble Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Copy input",
-      "text": "Avoid mutating the caller's original array."
+      "title": "Copy values",
+      "text": "Work on a mutable array."
     },
     {
-      "title": "Maintain invariant",
-      "text": "Track which part is sorted or partitioned."
+      "title": "Compare neighbors",
+      "text": "Inspect the current adjacent pair."
     },
     {
-      "title": "Move values",
-      "text": "Swap, insert, merge, or bucket according to the algorithm."
+      "title": "Swap if needed",
+      "text": "Move the larger value one position right."
     },
     {
-      "title": "Return sorted result",
-      "text": "Return the fully ordered working array."
+      "title": "Return sorted array",
+      "text": "Stop when a pass leaves the order stable."
     }
   ],
   "variables": [
     {
       "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
+      "purpose": "The values to sort."
     },
     {
-      "name": "working array and boundaries",
-      "purpose": "The in-progress array plus pass, partition, bucket, or merge boundaries. This page visualizes it as bar swap."
+      "name": "working array",
+      "purpose": "A copy that is rearranged during sorting."
     },
     {
-      "name": "sorted result",
-      "purpose": "The value produced by bubbleSort after the maintained state reaches the stop rule."
+      "name": "sorted array",
+      "purpose": "The final ordered result."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Compare and move values according to the algorithm's invariant until no unsorted work remains. Stop when no valid work remains or the answer is known."
+      "name": "unsorted work remains",
+      "purpose": "Continue until every value is in final order."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Bubble Sort starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Array",
+      "title": "Copy values",
+      "note": "The code starts with the list to reorder.",
+      "activeLine": 1,
+      "codeInsight": "The code starts with the list to reorder."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Pair",
+      "title": "Compare neighbors",
+      "note": "Only adjacent values are inspected.",
+      "activeLine": 4,
+      "codeInsight": "Only adjacent values are inspected."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
-      "activeLine": 8
+      "label": "Swap",
+      "title": "Move larger right",
+      "note": "Out-of-order neighbors exchange positions.",
+      "activeLine": 6,
+      "codeInsight": "Out-of-order neighbors exchange positions."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Sorted",
+      "title": "Return final order",
+      "note": "The last pass confirms every pair is ordered.",
+      "activeLine": 10,
+      "codeInsight": "The last pass confirms every pair is ordered."
     }
   ],
   "complexity": {

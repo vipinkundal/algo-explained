@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "C++ next_permutation() is a C++ STL Algorithm Pages technique focused on answer.",
   "problem": "C++ next_permutation() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its permutation step transition.",
-  "concept": "C++ next_permutation() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its permutation step transition.",
-  "logicSummary": "C++ next_permutation() reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the permutation step transition until the stop condition for C++ next_permutation() is reached.",
+  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
+  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
+  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
   "codeInsight": "The implementation keeps C++ next_permutation()'s state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "C++ next_permutation() appears when the input is input and the required result is answer.",
   "whenToUse": "Use C++ next_permutation() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a permutation step dry run.",
-  "memoryTrick": "C++ next_permutation(): name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A permutation step walkthrough showing C++ next_permutation()'s input, state, transition, and answer.",
+  "memoryTrick": "C++ next_permutation(): name the invariant, then trace the exact state change.",
+  "visualizerCaption": "C++ next_permutation() is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data C++ next_permutation() receives and what output is required."
+      "title": "Base case",
+      "text": "Stop when the current state is complete or invalid."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by C++ next_permutation()."
+      "title": "Choose option",
+      "text": "Pick the next valid branch."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the permutation step transition and update the algorithm-specific state."
+      "title": "Recurse",
+      "text": "Solve the smaller state."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return or undo",
+      "text": "Collect the result or backtrack before the next choice."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the C++ next_permutation() input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Base",
+      "title": "Check stop condition",
+      "note": "The code first asks whether the current state is complete.",
+      "activeLine": 1,
+      "codeInsight": "The code first asks whether the current state is complete."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that C++ next_permutation() changes during the dry run.",
-      "activeLine": 3
+      "label": "Choice",
+      "title": "Select next option",
+      "note": "One valid move is added to the state.",
+      "activeLine": 4,
+      "codeInsight": "One valid move is added to the state."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one permutation step transition for C++ next_permutation().",
-      "activeLine": 5
+      "label": "Call",
+      "title": "Recurse deeper",
+      "note": "The same rule runs on a smaller or extended state.",
+      "activeLine": 6,
+      "codeInsight": "The same rule runs on a smaller or extended state."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final C++ next_permutation() answer from the tracked state.",
-      "activeLine": 8
+      "label": "Unwind",
+      "title": "Return or backtrack",
+      "note": "The result is combined or the choice is removed.",
+      "activeLine": 9,
+      "codeInsight": "The result is combined or the choice is removed."
     }
   ],
   "complexity": {

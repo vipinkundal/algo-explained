@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "C++ reverse() is a C++ STL Algorithm Pages technique focused on answer.",
   "problem": "C++ reverse() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its two pointer swap transition.",
-  "concept": "C++ reverse() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its two pointer swap transition.",
-  "logicSummary": "C++ reverse() reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the two pointer swap transition until the stop condition for C++ reverse() is reached.",
+  "concept": "Two pointers are useful when moving one side changes the condition predictably. Use this when order lets you skip many pairs or positions.",
+  "logicSummary": "Place two indices, inspect their combined state, and move the pointer that can still improve the condition.",
+  "transitionSummary": "Each step moves left or right inward instead of trying all combinations.",
   "codeInsight": "The implementation keeps C++ reverse()'s state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "C++ reverse() appears when the input is input and the required result is answer.",
   "whenToUse": "Use C++ reverse() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a two pointer swap dry run.",
-  "memoryTrick": "C++ reverse(): name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A two pointer swap walkthrough showing C++ reverse()'s input, state, transition, and answer.",
+  "memoryTrick": "C++ reverse(): name the invariant, then trace the exact state change.",
+  "visualizerCaption": "C++ reverse() is shown as two coordinated indices. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data C++ reverse() receives and what output is required."
+      "title": "Place pointers",
+      "text": "Start left and right at meaningful boundaries."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by C++ reverse()."
+      "title": "Inspect pair",
+      "text": "Read the values or state between them."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the two pointer swap transition and update the algorithm-specific state."
+      "title": "Move one side",
+      "text": "Advance the pointer that cannot produce the answer."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return match",
+      "text": "Return the pair, range, or transformed array."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the C++ reverse() input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Range",
+      "title": "Read ordered range",
+      "note": "The code receives values where pointer movement has meaning.",
+      "activeLine": 1,
+      "codeInsight": "The code receives values where pointer movement has meaning."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that C++ reverse() changes during the dry run.",
-      "activeLine": 3
+      "label": "Pointers",
+      "title": "Set left and right",
+      "note": "Both indices define the current candidate state.",
+      "activeLine": 3,
+      "codeInsight": "Both indices define the current candidate state."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one two pointer swap transition for C++ reverse().",
-      "activeLine": 5
+      "label": "Compare",
+      "title": "Choose pointer movement",
+      "note": "The condition decides which pointer moves.",
+      "activeLine": 5,
+      "codeInsight": "The condition decides which pointer moves."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final C++ reverse() answer from the tracked state.",
-      "activeLine": 8
+      "label": "Pair result",
+      "title": "Return pair or state",
+      "note": "The loop stops when the target condition is met or exhausted.",
+      "activeLine": 8,
+      "codeInsight": "The loop stops when the target condition is met or exhausted."
     }
   ],
   "complexity": {

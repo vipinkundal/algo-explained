@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "bst-insert",
@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "BST Insert is a Trees technique focused on tree result.",
   "problem": "BST Insert relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "BST Insert relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "logicSummary": "Check the base case, process the current node, recurse into children, and combine the returned values.",
-  "transitionSummary": "Move from a node to its child or back from a child to its parent with updated state.",
+  "concept": "BST Insert is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on ordered branch.",
+  "logicSummary": "Start at the root, maintain ordered branch, compare with the current node and move left or right, and return the tree-specific result.",
+  "transitionSummary": "Each step focuses on one node and uses ordered branch to decide the next child, rotation, or returned value.",
   "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
   "realLifeExample": "BST Insert appears when the input is root and the required result is tree result.",
   "whenToUse": "Use BST Insert when a problem matches the Trees pattern and the expected state changes match a bst path dry run.",
-  "memoryTrick": "BST Insert: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A bst path walkthrough showing BST Insert's input, state, transition, and answer.",
+  "memoryTrick": "BST Insert: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "BST Insert is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data BST Insert receives and what output is required."
+      "title": "Check node",
+      "text": "Handle an empty root or finished subtree."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by BST Insert."
+      "title": "Read node state",
+      "text": "Inspect ordered branch."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the bst path transition and update the algorithm-specific state."
+      "title": "Move/combine",
+      "text": "compare with the current node and move left or right."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return tree result",
+      "text": "Return traversal output, path result, or updated tree state."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the BST Insert input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Root",
+      "title": "Check current node",
+      "note": "The code starts by handling missing nodes or the current root.",
+      "activeLine": 1,
+      "codeInsight": "The code starts by handling missing nodes or the current root."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that BST Insert changes during the dry run.",
-      "activeLine": 3
+      "label": "Node state",
+      "title": "Read ordered branch",
+      "note": "The current node controls the next step.",
+      "activeLine": 3,
+      "codeInsight": "The current node controls the next step."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one bst path transition for BST Insert.",
-      "activeLine": 5
+      "label": "Child step",
+      "title": "Compare with the current node and move left or right",
+      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "activeLine": 6,
+      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final BST Insert answer from the tracked state.",
-      "activeLine": 8
+      "label": "Tree result",
+      "title": "Return result",
+      "note": "The final traversal, path, measurement, or tree state is returned.",
+      "activeLine": 10,
+      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
     }
   ],
   "complexity": {

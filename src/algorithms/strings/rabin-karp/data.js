@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Rabin-Karp Algorithm is a Strings technique focused on matches or string result.",
   "problem": "Rabin-Karp Algorithm turns character comparisons into reusable state so the string is not rechecked from scratch.",
-  "concept": "Rabin-Karp Algorithm turns character comparisons into reusable state so the string is not rechecked from scratch.",
-  "logicSummary": "Precompute the helper state, scan the text, update indices or hashes, and record each valid match.",
-  "transitionSummary": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state.",
+  "concept": "String algorithms are useful when character order, frequency, prefix, hash, or palindrome structure can be reused. Use this when scanning every substring directly would repeat character work.",
+  "logicSummary": "Prepare helper state, scan characters, update the pattern state, and record matches or the best string result.",
+  "transitionSummary": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
   "codeInsight": "String algorithms are safest when index movement is explicit and every mismatch has a defined fallback.",
   "realLifeExample": "Rabin-Karp Algorithm appears when the input is text and pattern and the required result is matches or string result.",
   "whenToUse": "Use Rabin-Karp Algorithm when a problem matches the Strings pattern and the expected state changes match a rolling hash dry run.",
-  "memoryTrick": "Rabin-Karp Algorithm: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A rolling hash walkthrough showing Rabin-Karp Algorithm's input, state, transition, and answer.",
+  "memoryTrick": "Rabin-Karp Algorithm: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Rabin-Karp Algorithm is shown as character-state updates. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Rabin-Karp Algorithm receives and what output is required."
+      "title": "Read text",
+      "text": "Identify text, pattern, or character rule."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Rabin-Karp Algorithm."
+      "title": "Prepare state",
+      "text": "Build frequency, prefix, hash, trie, or radius state."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the rolling hash transition and update the algorithm-specific state."
+      "title": "Scan character",
+      "text": "Consume the next character and update state."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return match",
+      "text": "Return matches, validity, or the best substring result."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Rabin-Karp Algorithm input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Text",
+      "title": "Read string input",
+      "note": "The code receives text, pattern, or character data.",
+      "activeLine": 1,
+      "codeInsight": "The code receives text, pattern, or character data."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Rabin-Karp Algorithm changes during the dry run.",
-      "activeLine": 3
+      "label": "Helper",
+      "title": "Prepare string state",
+      "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
+      "activeLine": 3,
+      "codeInsight": "Prefix, hash, frequency, or radius state avoids repeated work."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one rolling hash transition for Rabin-Karp Algorithm.",
-      "activeLine": 5
+      "label": "Character",
+      "title": "Update on current char",
+      "note": "One character changes the active string state.",
+      "activeLine": 6,
+      "codeInsight": "One character changes the active string state."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Rabin-Karp Algorithm answer from the tracked state.",
-      "activeLine": 8
+      "label": "Result",
+      "title": "Return string answer",
+      "note": "Matches or best values are returned after the scan.",
+      "activeLine": 9,
+      "codeInsight": "Matches or best values are returned after the scan."
     }
   ],
   "complexity": {

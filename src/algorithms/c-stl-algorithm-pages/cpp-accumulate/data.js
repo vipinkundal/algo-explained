@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "C++ accumulate() is a C++ STL Algorithm Pages technique focused on answer.",
   "problem": "C++ accumulate() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its running sum transition.",
-  "concept": "C++ accumulate() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its running sum transition.",
-  "logicSummary": "C++ accumulate() reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the running sum transition until the stop condition for C++ accumulate() is reached.",
+  "concept": "Prefix-style state is useful when a running total or boundary delta lets future queries reuse past work. Use this when range answers or cumulative changes appear repeatedly.",
+  "logicSummary": "Build a running state once, then answer each range or final value by combining saved boundaries.",
+  "transitionSummary": "Each item updates the running total, difference, or accumulator exactly once.",
   "codeInsight": "The implementation keeps C++ accumulate()'s state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "C++ accumulate() appears when the input is input and the required result is answer.",
   "whenToUse": "Use C++ accumulate() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a running sum dry run.",
-  "memoryTrick": "C++ accumulate(): name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A running sum walkthrough showing C++ accumulate()'s input, state, transition, and answer.",
+  "memoryTrick": "C++ accumulate(): name the invariant, then trace the exact state change.",
+  "visualizerCaption": "C++ accumulate() is shown as cumulative state over positions. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data C++ accumulate() receives and what output is required."
+      "title": "Initialize accumulator",
+      "text": "Start with zero or the neutral value."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by C++ accumulate()."
+      "title": "Consume value",
+      "text": "Add the current contribution."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the running sum transition and update the algorithm-specific state."
+      "title": "Store boundary",
+      "text": "Save the cumulative state for later lookup."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Answer range",
+      "text": "Use stored boundaries to produce the result."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the C++ accumulate() input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Values",
+      "title": "Read values or updates",
+      "note": "The code receives the array, ranges, or deltas.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the array, ranges, or deltas."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that C++ accumulate() changes during the dry run.",
-      "activeLine": 3
+      "label": "Accumulator",
+      "title": "Start running state",
+      "note": "A neutral starting value makes every update consistent.",
+      "activeLine": 3,
+      "codeInsight": "A neutral starting value makes every update consistent."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one running sum transition for C++ accumulate().",
-      "activeLine": 5
+      "label": "Prefix step",
+      "title": "Apply current contribution",
+      "note": "The running state changes by the current value or boundary delta.",
+      "activeLine": 5,
+      "codeInsight": "The running state changes by the current value or boundary delta."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final C++ accumulate() answer from the tracked state.",
-      "activeLine": 8
+      "label": "Range result",
+      "title": "Read saved state",
+      "note": "The stored state gives the final or range answer.",
+      "activeLine": 8,
+      "codeInsight": "The stored state gives the final or range answer."
     }
   ],
   "complexity": {

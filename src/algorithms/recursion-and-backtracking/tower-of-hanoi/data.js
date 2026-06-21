@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "tower-of-hanoi",
@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Tower of Hanoi is a Recursion and Backtracking technique focused on solutions.",
   "problem": "Tower of Hanoi explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Tower of Hanoi explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "logicSummary": "Handle the base case, loop through valid choices, add one choice, recurse, then remove that choice.",
-  "transitionSummary": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated.",
+  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
+  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
+  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
   "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
   "realLifeExample": "Tower of Hanoi appears when the input is choices and the required result is solutions.",
   "whenToUse": "Use Tower of Hanoi when a problem matches the Recursion and Backtracking pattern and the expected state changes match a disk moves dry run.",
-  "memoryTrick": "Tower of Hanoi: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A disk moves walkthrough showing Tower of Hanoi's input, state, transition, and answer.",
+  "memoryTrick": "Tower of Hanoi: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Tower of Hanoi is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Tower of Hanoi receives and what output is required."
+      "title": "Base case",
+      "text": "Stop when the current state is complete or invalid."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Tower of Hanoi."
+      "title": "Choose option",
+      "text": "Pick the next valid branch."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the disk moves transition and update the algorithm-specific state."
+      "title": "Recurse",
+      "text": "Solve the smaller state."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return or undo",
+      "text": "Collect the result or backtrack before the next choice."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Tower of Hanoi input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Base",
+      "title": "Check stop condition",
+      "note": "The code first asks whether the current state is complete.",
+      "activeLine": 1,
+      "codeInsight": "The code first asks whether the current state is complete."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Tower of Hanoi changes during the dry run.",
-      "activeLine": 3
+      "label": "Choice",
+      "title": "Select next option",
+      "note": "One valid move is added to the state.",
+      "activeLine": 4,
+      "codeInsight": "One valid move is added to the state."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one disk moves transition for Tower of Hanoi.",
-      "activeLine": 5
+      "label": "Call",
+      "title": "Recurse deeper",
+      "note": "The same rule runs on a smaller or extended state.",
+      "activeLine": 6,
+      "codeInsight": "The same rule runs on a smaller or extended state."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Tower of Hanoi answer from the tracked state.",
-      "activeLine": 8
+      "label": "Unwind",
+      "title": "Return or backtrack",
+      "note": "The result is combined or the choice is removed.",
+      "activeLine": 9,
+      "codeInsight": "The result is combined or the choice is removed."
     }
   ],
   "complexity": {

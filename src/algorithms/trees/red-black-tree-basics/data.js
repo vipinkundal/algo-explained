@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Red-Black Tree Basics is a Trees technique focused on tree result.",
   "problem": "Red-Black Tree Basics relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "Red-Black Tree Basics relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "logicSummary": "Check the base case, process the current node, recurse into children, and combine the returned values.",
-  "transitionSummary": "Move from a node to its child or back from a child to its parent with updated state.",
+  "concept": "Red-Black Tree Basics is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on balance invariant.",
+  "logicSummary": "Start at the root, maintain balance invariant, rotate or recolor when height/color rules are violated, and return the tree-specific result.",
+  "transitionSummary": "Each step focuses on one node and uses balance invariant to decide the next child, rotation, or returned value.",
   "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
   "realLifeExample": "Red-Black Tree Basics appears when the input is root and the required result is tree result.",
   "whenToUse": "Use Red-Black Tree Basics when a problem matches the Trees pattern and the expected state changes match a balanced tree dry run.",
-  "memoryTrick": "Red-Black Tree Basics: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A balanced tree walkthrough showing Red-Black Tree Basics' input, state, transition, and answer.",
+  "memoryTrick": "Red-Black Tree Basics: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Red-Black Tree Basics is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Red-Black Tree Basics receives and what output is required."
+      "title": "Check node",
+      "text": "Handle an empty root or finished subtree."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Red-Black Tree Basics."
+      "title": "Read node state",
+      "text": "Inspect balance invariant."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the balanced tree transition and update the algorithm-specific state."
+      "title": "Move/combine",
+      "text": "rotate or recolor when height/color rules are violated."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return tree result",
+      "text": "Return traversal output, path result, or updated tree state."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Red-Black Tree Basics input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Root",
+      "title": "Check current node",
+      "note": "The code starts by handling missing nodes or the current root.",
+      "activeLine": 1,
+      "codeInsight": "The code starts by handling missing nodes or the current root."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Red-Black Tree Basics changes during the dry run.",
-      "activeLine": 3
+      "label": "Node state",
+      "title": "Read balance invariant",
+      "note": "The current node controls the next step.",
+      "activeLine": 3,
+      "codeInsight": "The current node controls the next step."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one balanced tree transition for Red-Black Tree Basics.",
-      "activeLine": 5
+      "label": "Child step",
+      "title": "Rotate or recolor when height/color rules are violated",
+      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "activeLine": 6,
+      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Red-Black Tree Basics answer from the tracked state.",
-      "activeLine": 8
+      "label": "Tree result",
+      "title": "Return result",
+      "note": "The final traversal, path, measurement, or tree state is returned.",
+      "activeLine": 10,
+      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
     }
   ],
   "complexity": {

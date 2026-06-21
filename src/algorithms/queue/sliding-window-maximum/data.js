@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Sliding Window Maximum is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Sliding Window Maximum keeps a deque of indices whose values are decreasing.",
-  "concept": "Sliding Window Maximum keeps a deque of indices whose values are decreasing.",
-  "logicSummary": "Sliding Window Maximum maintains a dedicated data-structure invariant and changes it through one clear push, pop, enqueue, dequeue, heap, or cache transition.",
-  "transitionSummary": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
+  "concept": "Sliding-window logic is useful when the answer depends on a contiguous range that changes one edge at a time. Use this when recomputing every range would repeat work.",
+  "logicSummary": "Expand or slide the window, remove expired items, and keep the answer from the current valid range.",
+  "transitionSummary": "Each step adds the right item and removes or ignores items that no longer belong.",
   "codeInsight": "The implementation names the backing state directly, so the code trace matches the visual data structure on the page.",
   "realLifeExample": "Sliding Window Maximum appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Sliding Window Maximum when its state transition is the natural way to model the problem.",
-  "memoryTrick": "Sliding Window Maximum: the data structure is the algorithm state.",
-  "visualizerCaption": "A monotonic deque walkthrough showing Sliding Window Maximum's input, state, transition, and answer.",
+  "memoryTrick": "Sliding Window Maximum: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Sliding Window Maximum is shown as a moving range over an array. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read operation",
-      "text": "Identify the next value or command."
+      "title": "Open window",
+      "text": "Start with an empty or first valid range."
     },
     {
-      "title": "Update structure",
-      "text": "Push, pop, enqueue, dequeue, rebalance, or evict as required."
+      "title": "Add right edge",
+      "text": "Include the next value."
     },
     {
-      "title": "Preserve invariant",
-      "text": "Keep the structure valid after the update."
+      "title": "Remove stale edge",
+      "text": "Shrink or pop values that no longer belong."
     },
     {
-      "title": "Return output",
-      "text": "Return the accumulated answers or final structure."
+      "title": "Record answer",
+      "text": "Emit the best value for the current window."
     }
   ],
   "variables": [
     {
-      "name": "values, size",
-      "purpose": "values: The candidate values that drive the heap, recursion, subset, or frequency process. size: A numeric limit that controls the window, heap, bucket, or selected result size."
+      "name": "input",
+      "purpose": "Values or operations to process."
     },
     {
-      "name": "queue / deque / cache state",
-      "purpose": "The front, back, capacity, and cached entries affected by each operation. This page visualizes it as monotonic deque."
+      "name": "data structure state",
+      "purpose": "The stack, queue, heap, deque, or cache state."
     },
     {
-      "name": "operation output",
-      "purpose": "The value produced by slidingWindowMaximum after the maintained state reaches the stop rule."
+      "name": "answer",
+      "purpose": "The output after all operations or after each step."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Read the next operation or value, update the owned data structure, and emit the current answer if needed. Stop when no valid work remains or the answer is known."
+      "name": "operations remain",
+      "purpose": "Continue while input values or operations remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Sliding Window Maximum starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Window rule",
+      "title": "Read array and window rule",
+      "note": "The code knows the range size or condition.",
+      "activeLine": 1,
+      "codeInsight": "The code knows the range size or condition."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Right edge",
+      "title": "Consume next value",
+      "note": "The window grows by one new item.",
+      "activeLine": 4,
+      "codeInsight": "The window grows by one new item."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
-      "activeLine": 8
+      "label": "Left edge",
+      "title": "Drop expired state",
+      "note": "Values outside the range are removed.",
+      "activeLine": 6,
+      "codeInsight": "Values outside the range are removed."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Window answer",
+      "title": "Record current result",
+      "note": "The current valid window updates the output.",
+      "activeLine": 8,
+      "codeInsight": "The current valid window updates the output."
     }
   ],
   "complexity": {

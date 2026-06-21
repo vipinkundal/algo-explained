@@ -22,31 +22,31 @@ export const algorithmPage = {
   "originalActiveLine": 5,
   "meaning": "C/C++ Pointer To Structure shows how data is organized, changed, and inspected through a small browser demo with the original C/C++ reference available beside it.",
   "problem": "C/C++ Pointer To Structure explains the C/C++ storage state model and how one focused change updates it.",
-  "concept": "Data structures are easier to learn when each value has a clear place and every change preserves a rule.",
-  "logicSummary": "Track the active state, trace declarations, addresses, and values, and inspect the updated view.",
-  "transitionSummary": "Move one step forward by changing only the slots, links, cursors, or nodes required by this operation.",
+  "concept": "C/C++ Pointer To Structure is useful when C/C++ storage, addresses, structures, or object ownership affect the program result. Use this when the lesson depends on stack memory, heap memory, references, pointers, structs, or classes.",
+  "logicSummary": "Create the C/C++ value, inspect how it is passed or referenced, apply the operation, and read the final memory-visible result.",
+  "transitionSummary": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules.",
   "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the Original C/C++ tab to study the source implementation.",
   "originalCodeInsight": "Dynamic allocation creates storage at runtime; every pointer assignment changes how nodes or arrays are connected.",
   "realLifeExample": "C/C++ Pointer To Structure is useful when you need to understand the mechanics behind library-level data structures.",
   "whenToUse": "Use this page when learning C/C++ Essentials behavior through state changes instead of memorized code.",
-  "memoryTrick": "Name the moving part first, then ask which invariant must still be true.",
-  "visualizerCaption": "A cpp memory model walkthrough for C/C++ Pointer To Structure.",
+  "memoryTrick": "C/C++ Pointer To Structure: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "C/C++ Pointer To Structure is shown as C/C++ memory and value flow. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Map the state",
-      "text": "Identify the values C/C++ Pointer To Structure needs before any operation starts."
+      "title": "Declare value",
+      "text": "Create the variable, pointer, structure, or object."
     },
     {
-      "title": "Set the rule",
-      "text": "Name the C/C++ storage invariant that should remain true after the step."
+      "title": "Inspect storage",
+      "text": "Notice whether the code uses value, address, reference, or member access."
     },
     {
-      "title": "Apply one change",
-      "text": "Run the next action: trace declarations, addresses, and values."
+      "title": "Apply operation",
+      "text": "Run the function, assignment, dereference, or method call."
     },
     {
-      "title": "Read the view",
-      "text": "Compare the before and after state to confirm the transition."
+      "title": "Read result",
+      "text": "Read the changed value, member, pointer target, or object output."
     }
   ],
   "variables": [
@@ -69,36 +69,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "State map",
-      "title": "Prepare the working view",
-      "note": "Start with the values that C/C++ Pointer To Structure needs to inspect or change.",
+      "label": "Declaration",
+      "title": "Create program value",
+      "note": "The code introduces the variable, pointer, structure, or object.",
       "activeLine": 1,
-      "codeInsight": "The JS companion builds a compact state you can edit safely in the browser.",
-      "originalCodeInsight": "Dynamic allocation creates storage at runtime; every pointer assignment changes how nodes or arrays are connected."
+      "codeInsight": "The code introduces the variable, pointer, structure, or object."
     },
     {
-      "label": "Cursor move",
-      "title": "Choose the active part",
-      "note": "Focus on the declared name before changing anything else.",
+      "label": "Storage",
+      "title": "Track address or copy",
+      "note": "Passing by value, pointer, or reference controls what can change.",
       "activeLine": 4,
-      "codeInsight": "Keeping the active part explicit makes the output easier to debug.",
-      "originalCodeInsight": "Initialization lines define the valid memory shape before mutation begins."
+      "codeInsight": "Passing by value, pointer, or reference controls what can change."
     },
     {
-      "label": "State change",
-      "title": "Apply the rule",
-      "note": "Perform one C/C++ storage update and keep the invariant intact.",
+      "label": "C/C++ rule",
+      "title": "Apply C/C++ rule",
+      "note": "Assignment, dereference, member access, or method call changes the state.",
       "activeLine": 7,
-      "codeInsight": "This line group performs the browser-safe version of the same data-structure transition.",
-      "originalCodeInsight": "The important lines update the pointer, index, child link, cursor, or stored value."
+      "codeInsight": "Assignment, dereference, member access, or method call changes the state."
     },
     {
-      "label": "Visible result",
-      "title": "Inspect the answer",
-      "note": "Read the printed output after the update.",
+      "label": "Result",
+      "title": "Read final value",
+      "note": "The visible output follows from the memory model.",
       "activeLine": 10,
-      "codeInsight": "The return object exposes the updated state so edits have immediate feedback.",
-      "originalCodeInsight": "Display, return, or cout lines reveal the observable result."
+      "codeInsight": "The visible output follows from the memory model."
     }
   ],
   "complexity": {

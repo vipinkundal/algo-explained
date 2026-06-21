@@ -20,30 +20,30 @@ export const algorithmPage = {
   ],
   "meaning": "Backtracking Basics is a Foundations technique focused on solutions.",
   "problem": "Backtracking Basics explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Backtracking Basics explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "logicSummary": "Handle the base case, loop through valid choices, add one choice, recurse, then remove that choice.",
-  "transitionSummary": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated.",
+  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
+  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
+  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
   "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
   "realLifeExample": "Backtracking Basics appears when the input is choices and the required result is solutions.",
   "whenToUse": "Use Backtracking Basics when a problem matches the Foundations pattern and the expected state changes match a recursion tree dry run.",
-  "memoryTrick": "Backtracking Basics: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A recursion tree walkthrough showing Backtracking Basics' input, state, transition, and answer.",
+  "memoryTrick": "Backtracking Basics: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Backtracking Basics is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Backtracking Basics receives and what output is required."
+      "title": "Base case",
+      "text": "Stop when the current state is complete or invalid."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Backtracking Basics."
+      "title": "Choose option",
+      "text": "Pick the next valid branch."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the recursion tree transition and update the algorithm-specific state."
+      "title": "Recurse",
+      "text": "Solve the smaller state."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return or undo",
+      "text": "Collect the result or backtrack before the next choice."
     }
   ],
   "variables": [
@@ -66,32 +66,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Backtracking Basics input and decide what result must be produced.",
-      "codeInsight": "Line 7 normalizes the input. If choices is not an array, the function uses an empty list so the rest of the code can iterate safely.",
-      "activeLine": 7
+      "label": "Base",
+      "title": "Check stop condition",
+      "note": "The code first asks whether the current state is complete.",
+      "activeLine": 1,
+      "codeInsight": "The code first asks whether the current state is complete."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Backtracking Basics changes during the dry run.",
-      "codeInsight": "Lines 8 and 9 create separate state: result stores completed paths, while path tracks the current recursive choice trail.",
-      "activeLine": 8
+      "label": "Choice",
+      "title": "Select next option",
+      "note": "One valid move is added to the state.",
+      "activeLine": 4,
+      "codeInsight": "One valid move is added to the state."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one recursion tree transition for Backtracking Basics.",
-      "codeInsight": "Lines 17-19 are the choose, explore, unchoose cycle: push the current value, recurse with it included, then pop to restore the path.",
-      "activeLine": 17
+      "label": "Call",
+      "title": "Recurse deeper",
+      "note": "The same rule runs on a smaller or extended state.",
+      "activeLine": 6,
+      "codeInsight": "The same rule runs on a smaller or extended state."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Backtracking Basics answer from the tracked state.",
-      "codeInsight": "Line 23 returns the collected result after backtrack(0) has explored every include and exclude branch.",
-      "activeLine": 23
+      "label": "Unwind",
+      "title": "Return or backtrack",
+      "note": "The result is combined or the choice is removed.",
+      "activeLine": 9,
+      "codeInsight": "The result is combined or the choice is removed."
     }
   ],
   "complexity": {

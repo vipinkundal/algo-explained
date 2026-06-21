@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "bst-search",
@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "BST Search is a Trees technique focused on index or insertion point.",
   "problem": "BST Search narrows where a target can be by scanning or shrinking a candidate interval.",
-  "concept": "BST Search narrows where a target can be by scanning or shrinking a candidate interval.",
-  "logicSummary": "Compare the current value with the target, discard impossible positions, and keep the best candidate when needed.",
-  "transitionSummary": "Each transition either advances one position or moves a boundary inward.",
+  "concept": "BST Search is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on ordered branch.",
+  "logicSummary": "Start at the root, maintain ordered branch, compare with the current node and move left or right, and return the tree-specific result.",
+  "transitionSummary": "Each step focuses on one node and uses ordered branch to decide the next child, rotation, or returned value.",
   "codeInsight": "The boundary variables are the important state; every branch must make the remaining search interval smaller.",
   "realLifeExample": "BST Search appears when the input is array, target and the required result is index or insertion point.",
   "whenToUse": "Use BST Search when a problem matches the Trees pattern and the expected state changes match a bst path dry run.",
-  "memoryTrick": "BST Search: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A bst path walkthrough showing BST Search's input, state, transition, and answer.",
+  "memoryTrick": "BST Search: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "BST Search is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data BST Search receives and what output is required."
+      "title": "Check node",
+      "text": "Handle an empty root or finished subtree."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by BST Search."
+      "title": "Read node state",
+      "text": "Inspect ordered branch."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the bst path transition and update the algorithm-specific state."
+      "title": "Move/combine",
+      "text": "compare with the current node and move left or right."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return tree result",
+      "text": "Return traversal output, path result, or updated tree state."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the BST Search input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Root",
+      "title": "Check current node",
+      "note": "The code starts by handling missing nodes or the current root.",
+      "activeLine": 1,
+      "codeInsight": "The code starts by handling missing nodes or the current root."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that BST Search changes during the dry run.",
-      "activeLine": 3
+      "label": "Node state",
+      "title": "Read ordered branch",
+      "note": "The current node controls the next step.",
+      "activeLine": 3,
+      "codeInsight": "The current node controls the next step."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one bst path transition for BST Search.",
-      "activeLine": 5
+      "label": "Child step",
+      "title": "Compare with the current node and move left or right",
+      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "activeLine": 6,
+      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final BST Search answer from the tracked state.",
-      "activeLine": 8
+      "label": "Tree result",
+      "title": "Return result",
+      "note": "The final traversal, path, measurement, or tree state is returned.",
+      "activeLine": 10,
+      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
     }
   ],
   "complexity": {

@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Sliding Window is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Sliding Window reuses a contiguous range instead of recomputing it after every move.",
-  "concept": "Sliding Window reuses a contiguous range instead of recomputing it after every move.",
-  "logicSummary": "Sliding Window keeps an array-specific invariant and updates it as the scan moves through the input.",
-  "transitionSummary": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
+  "concept": "Sliding-window logic is useful when the answer depends on a contiguous range that changes one edge at a time. Use this when recomputing every range would repeat work.",
+  "logicSummary": "Expand or slide the window, remove expired items, and keep the answer from the current valid range.",
+  "transitionSummary": "Each step adds the right item and removes or ignores items that no longer belong.",
   "codeInsight": "The code is written around the array invariant, not a generic scan: each variable explains what future positions can still change.",
   "realLifeExample": "Sliding Window appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Sliding Window when the problem statement matches its array invariant.",
-  "memoryTrick": "Sliding Window: write down the invariant before moving the pointer.",
-  "visualizerCaption": "A moving window walkthrough showing Sliding Window's input, state, transition, and answer.",
+  "memoryTrick": "Sliding Window: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Sliding Window is shown as a moving range over an array. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the array",
-      "text": "Identify whether the problem is about a range, window, order, or frequency."
+      "title": "Open window",
+      "text": "Start with an empty or first valid range."
     },
     {
-      "title": "Initialize invariant",
-      "text": "Create only the pointer or running state this pattern needs."
+      "title": "Add right edge",
+      "text": "Include the next value."
     },
     {
-      "title": "Advance scan",
-      "text": "Update the invariant as each position is consumed."
+      "title": "Remove stale edge",
+      "text": "Shrink or pop values that no longer belong."
     },
     {
-      "title": "Return answer",
-      "text": "Return the value maintained by the invariant."
+      "title": "Record answer",
+      "text": "Emit the best value for the current window."
     }
   ],
   "variables": [
     {
-      "name": "array, size",
-      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. size: A numeric limit that controls the window, heap, bucket, or selected result size."
+      "name": "array",
+      "purpose": "The input values."
     },
     {
-      "name": "left, right, and window value",
-      "purpose": "The current window boundaries plus the aggregate maintained inside that window."
+      "name": "invariant state",
+      "purpose": "The running sum, window, pointer, candidate, or frequency state."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by slidingWindow after the maintained state reaches the stop rule."
+      "name": "answer",
+      "purpose": "The best value, transformed array, or matching pair."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant. Stop when no valid work remains or the answer is known."
+      "name": "scan remains",
+      "purpose": "Continue while unchecked positions remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Sliding Window starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Window rule",
+      "title": "Read array and window rule",
+      "note": "The code knows the range size or condition.",
+      "activeLine": 1,
+      "codeInsight": "The code knows the range size or condition."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Right edge",
+      "title": "Consume next value",
+      "note": "The window grows by one new item.",
+      "activeLine": 4,
+      "codeInsight": "The window grows by one new item."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
-      "activeLine": 8
+      "label": "Left edge",
+      "title": "Drop expired state",
+      "note": "Values outside the range are removed.",
+      "activeLine": 6,
+      "codeInsight": "Values outside the range are removed."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Window answer",
+      "title": "Record current result",
+      "note": "The current valid window updates the output.",
+      "activeLine": 8,
+      "codeInsight": "The current valid window updates the output."
     }
   ],
   "complexity": {

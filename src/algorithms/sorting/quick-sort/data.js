@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Quick Sort is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Partition values around a pivot, then recursively sort values smaller and greater than the pivot.",
-  "concept": "Partition values around a pivot, then recursively sort values smaller and greater than the pivot.",
-  "logicSummary": "Quick Sort keeps a clear sorted/unsorted invariant and makes one transition that places values closer to final order.",
-  "transitionSummary": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
+  "concept": "Quick Sort is useful when a pivot can partition values into smaller and larger sides. Use this when in-place average-case n log n sorting fits the dataset.",
+  "logicSummary": "Choose a pivot, partition values around it, then recursively sort the left and right partitions.",
+  "transitionSummary": "Each partition step moves values to the correct side of the pivot and fixes the pivot position.",
   "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
   "realLifeExample": "Quick Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
   "whenToUse": "Use Quick Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Quick Sort: protect the invariant after every comparison or move.",
-  "visualizerCaption": "A partition walkthrough showing Quick Sort's input, state, transition, and answer.",
+  "memoryTrick": "Quick Sort: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Quick Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Copy input",
-      "text": "Avoid mutating the caller's original array."
+      "title": "Choose pivot",
+      "text": "Select the value that splits the range."
     },
     {
-      "title": "Maintain invariant",
-      "text": "Track which part is sorted or partitioned."
+      "title": "Partition range",
+      "text": "Move smaller values left and larger values right."
     },
     {
-      "title": "Move values",
-      "text": "Swap, insert, merge, or bucket according to the algorithm."
+      "title": "Fix pivot",
+      "text": "Place pivot at its final index."
     },
     {
-      "title": "Return sorted result",
-      "text": "Return the fully ordered working array."
+      "title": "Sort partitions",
+      "text": "Recurse on both sides."
     }
   ],
   "variables": [
     {
       "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
+      "purpose": "The values to sort."
     },
     {
-      "name": "working array and boundaries",
-      "purpose": "The in-progress array plus pass, partition, bucket, or merge boundaries. This page visualizes it as partition."
+      "name": "working array",
+      "purpose": "A copy that is rearranged during sorting."
     },
     {
-      "name": "sorted result",
-      "purpose": "The value produced by quickSort after the maintained state reaches the stop rule."
+      "name": "sorted array",
+      "purpose": "The final ordered result."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Compare and move values according to the algorithm's invariant until no unsorted work remains. Stop when no valid work remains or the answer is known."
+      "name": "unsorted work remains",
+      "purpose": "Continue until every value is in final order."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Quick Sort starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Pivot",
+      "title": "Choose pivot value",
+      "note": "The pivot defines the partition rule.",
+      "activeLine": 1,
+      "codeInsight": "The pivot defines the partition rule."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Scan",
+      "title": "Move values by pivot",
+      "note": "Values are compared with the pivot.",
+      "activeLine": 4,
+      "codeInsight": "Values are compared with the pivot."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
-      "activeLine": 8
+      "label": "Place",
+      "title": "Fix pivot index",
+      "note": "The pivot lands between smaller and larger values.",
+      "activeLine": 8,
+      "codeInsight": "The pivot lands between smaller and larger values."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Recurse",
+      "title": "Sort both sides",
+      "note": "The same partition rule handles each side.",
+      "activeLine": 11,
+      "codeInsight": "The same partition rule handles each side."
     }
   ],
   "complexity": {

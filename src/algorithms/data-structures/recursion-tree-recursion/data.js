@@ -22,31 +22,31 @@ export const algorithmPage = {
   "originalActiveLine": 3,
   "meaning": "Tree Recursion shows how data is organized, changed, and inspected through a small browser demo with the original C/C++ reference available beside it.",
   "problem": "Tree Recursion explains the tree state model and how one focused change updates it.",
-  "concept": "Data structures are easier to learn when each value has a clear place and every change preserves a rule.",
-  "logicSummary": "Track the active state, visit nodes in the selected traversal order, and inspect the updated view.",
-  "transitionSummary": "Move one step forward by changing only the slots, links, cursors, or nodes required by this operation.",
+  "concept": "Tree Recursion is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
+  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
+  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
   "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the Original C/C++ tab to study the source implementation.",
   "originalCodeInsight": "The original Tree Recursion source shows the C/C++ memory model and operation order used by this lesson.",
   "realLifeExample": "Tree Recursion is useful when you need to understand the mechanics behind library-level data structures.",
   "whenToUse": "Use this page when learning Recursion behavior through state changes instead of memorized code.",
-  "memoryTrick": "Name the moving part first, then ask which invariant must still be true.",
-  "visualizerCaption": "A call stack walkthrough for Tree Recursion.",
+  "memoryTrick": "Tree Recursion: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Tree Recursion is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Map the state",
-      "text": "Identify the values Tree Recursion needs before any operation starts."
+      "title": "Read stack",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Set the rule",
-      "text": "Name the tree invariant that should remain true after the step."
+      "title": "Inspect stack top",
+      "text": "Look at the active stack fields."
     },
     {
-      "title": "Apply one change",
-      "text": "Run the next action: visit nodes in the selected traversal order."
+      "title": "Push / pop",
+      "text": "push, pop, peek, or resolve stack entries."
     },
     {
-      "title": "Read the view",
-      "text": "Compare the before and after state to confirm the transition."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
@@ -69,36 +69,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "State map",
-      "title": "Prepare the working view",
-      "note": "Start with the values that Tree Recursion needs to inspect or change.",
+      "label": "Stack",
+      "title": "Read stack action",
+      "note": "The code receives the next value or command.",
       "activeLine": 1,
-      "codeInsight": "The JS companion builds a compact state you can edit safely in the browser.",
-      "originalCodeInsight": "The original Tree Recursion source shows the C/C++ memory model and operation order used by this lesson."
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "Cursor move",
-      "title": "Choose the active part",
-      "note": "Focus on the entry node before changing anything else.",
-      "activeLine": 4,
-      "codeInsight": "Keeping the active part explicit makes the output easier to debug.",
-      "originalCodeInsight": "Initialization lines define the valid memory shape before mutation begins."
+      "label": "Stack top",
+      "title": "Inspect stack",
+      "note": "The active state must still satisfy last-in, first-out state.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy last-in, first-out state."
     },
     {
-      "label": "State change",
-      "title": "Apply the rule",
-      "note": "Perform one tree update and keep the invariant intact.",
-      "activeLine": 7,
-      "codeInsight": "This line group performs the browser-safe version of the same data-structure transition.",
-      "originalCodeInsight": "The important lines update the pointer, index, child link, cursor, or stored value."
+      "label": "Push / pop",
+      "title": "Push, pop, peek, or resolve stack entries",
+      "note": "Only the necessary stack fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary stack fields are changed."
     },
     {
-      "label": "Visible result",
-      "title": "Inspect the answer",
-      "note": "Read the visit order after the update.",
-      "activeLine": 10,
-      "codeInsight": "The return object exposes the updated state so edits have immediate feedback.",
-      "originalCodeInsight": "Display, return, or cout lines reveal the observable result."
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

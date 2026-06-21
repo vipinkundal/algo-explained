@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "C++ lower_bound() is a C++ STL Algorithm Pages technique focused on index or insertion point.",
   "problem": "C++ lower_bound() narrows where a target can be by scanning or shrinking a candidate interval.",
-  "concept": "C++ lower_bound() narrows where a target can be by scanning or shrinking a candidate interval.",
-  "logicSummary": "Compare the current value with the target, discard impossible positions, and keep the best candidate when needed.",
-  "transitionSummary": "Each transition either advances one position or moves a boundary inward.",
+  "concept": "C++ lower_bound() is useful when sorted order lets you discard a whole half of the search space. Use this when the input is sorted or the answer predicate changes only once.",
+  "logicSummary": "Maintain low/high boundaries, test the middle, and keep only the half that can still contain the answer.",
+  "transitionSummary": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
   "codeInsight": "The boundary variables are the important state; every branch must make the remaining search interval smaller.",
   "realLifeExample": "C++ lower_bound() appears when the input is array, target and the required result is index or insertion point.",
   "whenToUse": "Use C++ lower_bound() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a array boundaries dry run.",
-  "memoryTrick": "C++ lower_bound(): name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A array boundaries walkthrough showing C++ lower_bound()'s input, state, transition, and answer.",
+  "memoryTrick": "C++ lower_bound(): name the invariant, then trace the exact state change.",
+  "visualizerCaption": "C++ lower_bound() is shown as a shrinking boundary search. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data C++ lower_bound() receives and what output is required."
+      "title": "Read sorted input",
+      "text": "Confirm the array or predicate has monotonic order."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by C++ lower_bound()."
+      "title": "Set boundaries",
+      "text": "Place low and high around every candidate."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the array boundaries transition and update the algorithm-specific state."
+      "title": "Compare middle",
+      "text": "Use mid to decide which half is impossible."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return boundary",
+      "text": "Return the found index or final insertion boundary."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the C++ lower_bound() input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Sorted input",
+      "title": "Read the ordered search space",
+      "note": "The code starts from a range where binary decisions are valid.",
+      "activeLine": 1,
+      "codeInsight": "The code starts from a range where binary decisions are valid."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that C++ lower_bound() changes during the dry run.",
-      "activeLine": 3
+      "label": "low / high",
+      "title": "Open the candidate window",
+      "note": "low and high mark every position that may still answer.",
+      "activeLine": 3,
+      "codeInsight": "low and high mark every position that may still answer."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one array boundaries transition for C++ lower_bound().",
-      "activeLine": 5
+      "label": "mid check",
+      "title": "Compare the midpoint",
+      "note": "The midpoint decides which half is removed.",
+      "activeLine": 5,
+      "codeInsight": "The midpoint decides which half is removed."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final C++ lower_bound() answer from the tracked state.",
-      "activeLine": 8
+      "label": "Return",
+      "title": "Emit index or boundary",
+      "note": "The loop ends with a match or the collapsed boundary.",
+      "activeLine": 9,
+      "codeInsight": "The loop ends with a match or the collapsed boundary."
     }
   ],
   "complexity": {

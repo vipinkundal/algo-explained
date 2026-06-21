@@ -22,31 +22,31 @@ export const algorithmPage = {
   "originalActiveLine": 3,
   "meaning": "Binary Search in Array ADT shows how data is organized, changed, and inspected through a small browser demo with the original C/C++ reference available beside it.",
   "problem": "Binary Search in Array ADT explains the array state model and how one focused change updates it.",
-  "concept": "Data structures are easier to learn when each value has a clear place and every change preserves a rule.",
-  "logicSummary": "Track the active state, move, search, insert, remove, or summarize slots, and inspect the updated view.",
-  "transitionSummary": "Move one step forward by changing only the slots, links, cursors, or nodes required by this operation.",
+  "concept": "Binary Search in Array ADT is useful when sorted order lets you discard a whole half of the search space. Use this when the input is sorted or the answer predicate changes only once.",
+  "logicSummary": "Maintain low/high boundaries, test the middle, and keep only the half that can still contain the answer.",
+  "transitionSummary": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
   "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the Original C/C++ tab to study the source implementation.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
   "realLifeExample": "Binary Search in Array ADT is useful when you need to understand the mechanics behind library-level data structures.",
   "whenToUse": "Use this page when learning Arrays / Array ADT behavior through state changes instead of memorized code.",
-  "memoryTrick": "Name the moving part first, then ask which invariant must still be true.",
-  "visualizerCaption": "An array adt walkthrough for Binary Search in Array ADT.",
+  "memoryTrick": "Binary Search in Array ADT: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Binary Search in Array ADT is shown as a shrinking boundary search. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Map the state",
-      "text": "Identify the values Binary Search in Array ADT needs before any operation starts."
+      "title": "Read sorted input",
+      "text": "Confirm the array or predicate has monotonic order."
     },
     {
-      "title": "Set the rule",
-      "text": "Name the array invariant that should remain true after the step."
+      "title": "Set boundaries",
+      "text": "Place low and high around every candidate."
     },
     {
-      "title": "Apply one change",
-      "text": "Run the next action: move, search, insert, remove, or summarize slots."
+      "title": "Compare middle",
+      "text": "Use mid to decide which half is impossible."
     },
     {
-      "title": "Read the view",
-      "text": "Compare the before and after state to confirm the transition."
+      "title": "Return boundary",
+      "text": "Return the found index or final insertion boundary."
     }
   ],
   "variables": [
@@ -69,36 +69,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "State map",
-      "title": "Prepare the working view",
-      "note": "Start with the values that Binary Search in Array ADT needs to inspect or change.",
+      "label": "Sorted input",
+      "title": "Read the ordered search space",
+      "note": "The code starts from a range where binary decisions are valid.",
       "activeLine": 1,
-      "codeInsight": "The JS companion builds a compact state you can edit safely in the browser.",
-      "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state."
+      "codeInsight": "The code starts from a range where binary decisions are valid."
     },
     {
-      "label": "Cursor move",
-      "title": "Choose the active part",
-      "note": "Focus on the slot index before changing anything else.",
-      "activeLine": 4,
-      "codeInsight": "Keeping the active part explicit makes the output easier to debug.",
-      "originalCodeInsight": "Initialization lines define the valid memory shape before mutation begins."
+      "label": "low / high",
+      "title": "Open the candidate window",
+      "note": "low and high mark every position that may still answer.",
+      "activeLine": 3,
+      "codeInsight": "low and high mark every position that may still answer."
     },
     {
-      "label": "State change",
-      "title": "Apply the rule",
-      "note": "Perform one array update and keep the invariant intact.",
-      "activeLine": 7,
-      "codeInsight": "This line group performs the browser-safe version of the same data-structure transition.",
-      "originalCodeInsight": "The important lines update the pointer, index, child link, cursor, or stored value."
+      "label": "mid check",
+      "title": "Compare the midpoint",
+      "note": "The midpoint decides which half is removed.",
+      "activeLine": 5,
+      "codeInsight": "The midpoint decides which half is removed."
     },
     {
-      "label": "Visible result",
-      "title": "Inspect the answer",
-      "note": "Read the array view after the update.",
-      "activeLine": 10,
-      "codeInsight": "The return object exposes the updated state so edits have immediate feedback.",
-      "originalCodeInsight": "Display, return, or cout lines reveal the observable result."
+      "label": "Return",
+      "title": "Emit index or boundary",
+      "note": "The loop ends with a match or the collapsed boundary.",
+      "activeLine": 9,
+      "codeInsight": "The loop ends with a match or the collapsed boundary."
     }
   ],
   "complexity": {

@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Coin Change is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Coin Change stores the fewest coins needed for every amount up to the target.",
-  "concept": "Coin Change stores the fewest coins needed for every amount up to the target.",
-  "logicSummary": "Coin Change defines subproblems, initializes base cases, fills states in dependency order, and reads the requested state as the answer.",
-  "transitionSummary": "Compute one DP state from already-solved smaller states.",
+  "concept": "Coin Change is useful when the same subproblems appear again and storing answers prevents repeated work. Use this when you can define a state, base cases, and a recurrence.",
+  "logicSummary": "Define what one DP state means, initialize base cases, fill dependent states, and read the target state.",
+  "transitionSummary": "Each step computes one state from already-solved smaller or earlier states.",
   "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
   "realLifeExample": "Coin Change appears when overlapping subproblems would otherwise be recomputed.",
   "whenToUse": "Use Coin Change when the recurrence and base cases match the problem statement.",
-  "memoryTrick": "Coin Change: state definition first, recurrence second, loops third.",
-  "visualizerCaption": "A dp array walkthrough showing Coin Change's input, state, transition, and answer.",
+  "memoryTrick": "Coin Change: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Coin Change is shown as a dependency-ordered DP fill. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
       "title": "Define state",
-      "text": "Name what one DP cell means."
+      "text": "Name exactly what one cell or entry means."
     },
     {
       "title": "Set base cases",
-      "text": "Fill states that do not depend on others."
+      "text": "Fill answers that need no recurrence."
     },
     {
       "title": "Apply recurrence",
-      "text": "Fill each state from solved states."
+      "text": "Compute each state from solved dependencies."
     },
     {
-      "title": "Return target",
-      "text": "Read the requested final state."
+      "title": "Read target",
+      "text": "Return the state requested by the problem."
     }
   ],
   "variables": [
     {
-      "name": "coins, amount",
-      "purpose": "coins: The coin set and target amount that define the dynamic programming states. amount: The coin set and target amount that define the dynamic programming states."
+      "name": "input parameters",
+      "purpose": "The values that define the DP problem."
     },
     {
-      "name": "dp table and dependencies",
-      "purpose": "Stored subproblem answers plus the dependency order needed to fill them. This page visualizes it as dp array."
+      "name": "dp table",
+      "purpose": "Stored answers for subproblems."
     },
     {
-      "name": "target dp answer",
-      "purpose": "The value produced by coinChange after the maintained state reaches the stop rule."
+      "name": "target state",
+      "purpose": "The final state returned as the answer."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Compute one DP state from already-solved smaller states. Stop when no valid work remains or the answer is known."
+      "name": "states remain",
+      "purpose": "Continue until every dependency needed by the answer is filled."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Coin Change starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "State meaning",
+      "title": "Define DP cell",
+      "note": "The code first needs a precise subproblem meaning.",
+      "activeLine": 1,
+      "codeInsight": "The code first needs a precise subproblem meaning."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Base case",
+      "title": "Seed known answers",
+      "note": "Base values stop the recurrence from falling through.",
+      "activeLine": 3,
+      "codeInsight": "Base values stop the recurrence from falling through."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Compute one DP state from already-solved smaller states.",
-      "activeLine": 8
+      "label": "Recurrence",
+      "title": "Fill next state",
+      "note": "The transition combines previously solved states.",
+      "activeLine": 6,
+      "codeInsight": "The transition combines previously solved states."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Target",
+      "title": "Return requested state",
+      "note": "The answer is read from the final DP state.",
+      "activeLine": 10,
+      "codeInsight": "The answer is read from the final DP state."
     }
   ],
   "complexity": {

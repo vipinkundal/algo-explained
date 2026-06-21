@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "binary-search",
@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Binary Search is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Binary Search repeatedly halves a sorted search range using the middle value.",
-  "concept": "Binary Search repeatedly halves a sorted search range using the middle value.",
-  "logicSummary": "Keep low and high boundaries, compare the middle item, then discard the half that cannot contain the target.",
-  "transitionSummary": "Move low to mid + 1 when the middle is too small; move high to mid - 1 when it is too large.",
+  "concept": "Binary Search is useful when sorted order lets you discard a whole half of the search space. Use this when the input is sorted or the answer predicate changes only once.",
+  "logicSummary": "Maintain low/high boundaries, test the middle, and keep only the half that can still contain the answer.",
+  "transitionSummary": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
   "codeInsight": "Every branch must shrink the search window, otherwise binary search can loop forever.",
   "realLifeExample": "Use it for sorted arrays, lookup tables, and monotonic answer spaces.",
   "whenToUse": "Use Binary Search when the range is sorted or the predicate is monotonic.",
-  "memoryTrick": "Binary Search: compare middle, keep only the possible half.",
-  "visualizerCaption": "A array boundaries walkthrough showing Binary Search's input, state, transition, and answer.",
+  "memoryTrick": "Binary Search: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Binary Search is shown as a shrinking boundary search. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
+      "title": "Read sorted input",
+      "text": "Confirm the array or predicate has monotonic order."
+    },
+    {
       "title": "Set boundaries",
-      "text": "low starts at 0 and high at the last index."
+      "text": "Place low and high around every candidate."
     },
     {
-      "title": "Pick middle",
-      "text": "Compute mid inside the current window."
+      "title": "Compare middle",
+      "text": "Use mid to decide which half is impossible."
     },
     {
-      "title": "Discard half",
-      "text": "Use the comparison to move low or high."
-    },
-    {
-      "title": "Return index",
-      "text": "Return mid on equality or -1 after the window closes."
+      "title": "Return boundary",
+      "text": "Return the found index or final insertion boundary."
     }
   ],
   "variables": [
     {
       "name": "array, target",
-      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
+      "purpose": "A sorted array and the value to find."
     },
     {
       "name": "low, high, mid",
-      "purpose": "The shrinking search window and midpoint used to discard impossible positions."
+      "purpose": "The current search window and its midpoint."
     },
     {
-      "name": "found index or boundary",
-      "purpose": "The value produced by binarySearch after the maintained state reaches the stop rule."
+      "name": "index",
+      "purpose": "The target index, or -1 when absent."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Move low to mid + 1 when the middle is too small; move high to mid - 1 when it is too large. Stop when no valid work remains or the answer is known."
+      "name": "low <= high",
+      "purpose": "The loop runs while the window is non-empty."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Binary Search starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Sorted input",
+      "title": "Read the ordered search space",
+      "note": "The code starts from a range where binary decisions are valid.",
+      "activeLine": 1,
+      "codeInsight": "The code starts from a range where binary decisions are valid."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "low / high",
+      "title": "Open the candidate window",
+      "note": "low and high mark every position that may still answer.",
+      "activeLine": 3,
+      "codeInsight": "low and high mark every position that may still answer."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Move low to mid + 1 when the middle is too small; move high to mid - 1 when it is too large.",
-      "activeLine": 8
+      "label": "mid check",
+      "title": "Compare the midpoint",
+      "note": "The midpoint decides which half is removed.",
+      "activeLine": 5,
+      "codeInsight": "The midpoint decides which half is removed."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Return",
+      "title": "Emit index or boundary",
+      "note": "The loop ends with a match or the collapsed boundary.",
+      "activeLine": 9,
+      "codeInsight": "The loop ends with a match or the collapsed boundary."
     }
   ],
   "complexity": {

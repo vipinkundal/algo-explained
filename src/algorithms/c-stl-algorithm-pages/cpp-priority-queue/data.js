@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "C++ priority_queue is a C++ STL Algorithm Pages technique focused on answer.",
   "problem": "C++ priority_queue solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its heap tree transition.",
-  "concept": "C++ priority_queue solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its heap tree transition.",
-  "logicSummary": "C++ priority_queue reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the heap tree transition until the stop condition for C++ priority_queue is reached.",
+  "concept": "C++ priority_queue is useful when queue behavior is the clearest model for the data changes. Use this when the problem is naturally described by first-in, first-out state.",
+  "logicSummary": "Read the next value or operation, maintain first-in, first-out state, then enqueue, dequeue, peek, or evict entries.",
+  "transitionSummary": "Each step changes only the part of the queue required to preserve the invariant.",
   "codeInsight": "The implementation keeps C++ priority_queue's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "C++ priority_queue appears when the input is input and the required result is answer.",
   "whenToUse": "Use C++ priority_queue when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a heap tree dry run.",
-  "memoryTrick": "C++ priority_queue: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A heap tree walkthrough showing C++ priority_queue's input, state, transition, and answer.",
+  "memoryTrick": "C++ priority_queue: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "C++ priority_queue is shown as queue state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data C++ priority_queue receives and what output is required."
+      "title": "Read queue",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by C++ priority_queue."
+      "title": "Inspect queue front",
+      "text": "Look at the active queue fields."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the heap tree transition and update the algorithm-specific state."
+      "title": "Enqueue / dequeue",
+      "text": "enqueue, dequeue, peek, or evict entries."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the C++ priority_queue input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Queue",
+      "title": "Read queue action",
+      "note": "The code receives the next value or command.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that C++ priority_queue changes during the dry run.",
-      "activeLine": 3
+      "label": "Queue front",
+      "title": "Inspect queue",
+      "note": "The active state must still satisfy first-in, first-out state.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy first-in, first-out state."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one heap tree transition for C++ priority_queue.",
-      "activeLine": 5
+      "label": "Enqueue / dequeue",
+      "title": "Enqueue, dequeue, peek, or evict entries",
+      "note": "Only the necessary queue fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary queue fields are changed."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final C++ priority_queue answer from the tracked state.",
-      "activeLine": 8
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

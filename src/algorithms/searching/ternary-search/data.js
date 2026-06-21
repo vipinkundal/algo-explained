@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Ternary Search is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Ternary Search narrows a unimodal range by comparing two interior points.",
-  "concept": "Ternary Search narrows a unimodal range by comparing two interior points.",
-  "logicSummary": "Split the interval into thirds and discard the side that cannot contain the optimum.",
-  "transitionSummary": "For a maximum, if f(mid1) < f(mid2), discard the left third; otherwise discard the right third.",
+  "concept": "Ternary Search is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
+  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
+  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
   "codeInsight": "Ternary search belongs to unimodal functions, not ordinary sorted-array lookup.",
   "realLifeExample": "Use it for discrete or continuous optimization where the function rises then falls.",
   "whenToUse": "Use Ternary Search only when the objective is unimodal.",
-  "memoryTrick": "Two mids reveal which third cannot hold the peak.",
-  "visualizerCaption": "A divided range walkthrough showing Ternary Search's input, state, transition, and answer.",
+  "memoryTrick": "Ternary Search: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Ternary Search is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Create thirds",
-      "text": "Compute mid1 and mid2."
+      "title": "Read algorithm state",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Evaluate both",
-      "text": "Compare objective values."
+      "title": "Inspect invariant",
+      "text": "Look at the active algorithm state fields."
     },
     {
-      "title": "Discard one third",
-      "text": "Remove the side that cannot contain the optimum."
+      "title": "State change",
+      "text": "update the state described by this algorithm."
     },
     {
-      "title": "Return midpoint",
-      "text": "The final range center approximates the answer."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
     {
-      "name": "low, high, evaluate, precision",
-      "purpose": "low: The numeric search interval, objective, or tolerance used by the search transition. high: The numeric search interval, objective, or tolerance used by the search transition. evaluate: The numeric search interval, objective, or tolerance used by the search transition. precision: The numeric search interval, objective, or tolerance used by the search transition."
+      "name": "low, high, evaluate",
+      "purpose": "The search bounds and objective function."
     },
     {
-      "name": "search window or scan index",
-      "purpose": "The index, pointer, or boundary range that can still contain the answer. This page visualizes it as divided range."
+      "name": "mid1, mid2",
+      "purpose": "Two interior probes."
     },
     {
-      "name": "found index or boundary",
-      "purpose": "The value produced by ternarySearch after the maintained state reaches the stop rule."
+      "name": "best position",
+      "purpose": "The remaining optimum candidate."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "For a maximum, if f(mid1) < f(mid2), discard the left third; otherwise discard the right third. Stop when no valid work remains or the answer is known."
+      "name": "high - low > precision",
+      "purpose": "Stop when the range is small enough."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Ternary Search starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Algorithm State",
+      "title": "Read algorithm state action",
+      "note": "The code receives the next value or command.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Invariant",
+      "title": "Inspect algorithm state",
+      "note": "The active state must still satisfy page-specific invariant.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy page-specific invariant."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "For a maximum, if f(mid1) < f(mid2), discard the left third; otherwise discard the right third.",
-      "activeLine": 8
+      "label": "State change",
+      "title": "Update the state described by this algorithm",
+      "note": "Only the necessary algorithm state fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary algorithm state fields are changed."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

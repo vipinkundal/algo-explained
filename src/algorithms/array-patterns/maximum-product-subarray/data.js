@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Maximum Product Subarray is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Maximum Product Subarray tracks both max and min products because a negative value can flip them.",
-  "concept": "Maximum Product Subarray tracks both max and min products because a negative value can flip them.",
-  "logicSummary": "Maximum Product Subarray keeps an array-specific invariant and updates it as the scan moves through the input.",
-  "transitionSummary": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
+  "concept": "Maximum Product Subarray is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
+  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
+  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
   "codeInsight": "The code is written around the array invariant, not a generic scan: each variable explains what future positions can still change.",
   "realLifeExample": "Maximum Product Subarray appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Maximum Product Subarray when the problem statement matches its array invariant.",
-  "memoryTrick": "Maximum Product Subarray: write down the invariant before moving the pointer.",
-  "visualizerCaption": "A min max tracker walkthrough showing Maximum Product Subarray's input, state, transition, and answer.",
+  "memoryTrick": "Maximum Product Subarray: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Maximum Product Subarray is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the array",
-      "text": "Identify whether the problem is about a range, window, order, or frequency."
+      "title": "Read algorithm state",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Initialize invariant",
-      "text": "Create only the pointer or running state this pattern needs."
+      "title": "Inspect invariant",
+      "text": "Look at the active algorithm state fields."
     },
     {
-      "title": "Advance scan",
-      "text": "Update the invariant as each position is consumed."
+      "title": "State change",
+      "text": "update the state described by this algorithm."
     },
     {
-      "title": "Return answer",
-      "text": "Return the value maintained by the invariant."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
     {
       "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
+      "purpose": "The input values."
     },
     {
-      "name": "current min, current max, best",
-      "purpose": "Both extremes are tracked because a negative value can swap min and max products."
+      "name": "invariant state",
+      "purpose": "The running sum, window, pointer, candidate, or frequency state."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by maximumProductSubarray after the maintained state reaches the stop rule."
+      "name": "answer",
+      "purpose": "The best value, transformed array, or matching pair."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant. Stop when no valid work remains or the answer is known."
+      "name": "scan remains",
+      "purpose": "Continue while unchecked positions remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Maximum Product Subarray starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Algorithm State",
+      "title": "Read algorithm state action",
+      "note": "The code receives the next value or command.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Invariant",
+      "title": "Inspect algorithm state",
+      "note": "The active state must still satisfy page-specific invariant.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy page-specific invariant."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
-      "activeLine": 8
+      "label": "State change",
+      "title": "Update the state described by this algorithm",
+      "note": "Only the necessary algorithm state fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary algorithm state fields are changed."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

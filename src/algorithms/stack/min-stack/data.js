@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Min Stack is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Min Stack keeps a normal stack plus a second stack of current minimum values.",
-  "concept": "Min Stack keeps a normal stack plus a second stack of current minimum values.",
-  "logicSummary": "Min Stack maintains a dedicated data-structure invariant and changes it through one clear push, pop, enqueue, dequeue, heap, or cache transition.",
-  "transitionSummary": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
+  "concept": "Min Stack is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
+  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
+  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
   "codeInsight": "The implementation names the backing state directly, so the code trace matches the visual data structure on the page.",
   "realLifeExample": "Min Stack appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Min Stack when its state transition is the natural way to model the problem.",
-  "memoryTrick": "Min Stack: the data structure is the algorithm state.",
-  "visualizerCaption": "A dual stack walkthrough showing Min Stack's input, state, transition, and answer.",
+  "memoryTrick": "Min Stack: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Min Stack is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read operation",
-      "text": "Identify the next value or command."
+      "title": "Read stack",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Update structure",
-      "text": "Push, pop, enqueue, dequeue, rebalance, or evict as required."
+      "title": "Inspect stack top",
+      "text": "Look at the active stack fields."
     },
     {
-      "title": "Preserve invariant",
-      "text": "Keep the structure valid after the update."
+      "title": "Push / pop",
+      "text": "push, pop, peek, or resolve stack entries."
     },
     {
-      "title": "Return output",
-      "text": "Return the accumulated answers or final structure."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
     {
-      "name": "operations",
-      "purpose": "The sequence of commands applied to the data structure state."
+      "name": "input",
+      "purpose": "Values or operations to process."
     },
     {
-      "name": "stack state",
-      "purpose": "The monotonic stack, helper stack, or pushed values that maintain the invariant. This page visualizes it as dual stack."
+      "name": "data structure state",
+      "purpose": "The stack, queue, heap, deque, or cache state."
     },
     {
-      "name": "operation output",
-      "purpose": "The value produced by minStack after the maintained state reaches the stop rule."
+      "name": "answer",
+      "purpose": "The output after all operations or after each step."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Read the next operation or value, update the owned data structure, and emit the current answer if needed. Stop when no valid work remains or the answer is known."
+      "name": "operations remain",
+      "purpose": "Continue while input values or operations remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Min Stack starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Stack",
+      "title": "Read stack action",
+      "note": "The code receives the next value or command.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Stack top",
+      "title": "Inspect stack",
+      "note": "The active state must still satisfy last-in, first-out state.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy last-in, first-out state."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
-      "activeLine": 8
+      "label": "Push / pop",
+      "title": "Push, pop, peek, or resolve stack entries",
+      "note": "Only the necessary stack fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary stack fields are changed."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

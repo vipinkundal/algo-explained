@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Trie-Based Search is a Strings technique focused on matches or string result.",
   "problem": "Trie-Based Search turns character comparisons into reusable state so the string is not rechecked from scratch.",
-  "concept": "Trie-Based Search turns character comparisons into reusable state so the string is not rechecked from scratch.",
-  "logicSummary": "Precompute the helper state, scan the text, update indices or hashes, and record each valid match.",
-  "transitionSummary": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state.",
+  "concept": "Trie-Based Search is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on character path.",
+  "logicSummary": "Start at the root, maintain character path, follow or create the child link for the current character, and return the tree-specific result.",
+  "transitionSummary": "Each step focuses on one node and uses character path to decide the next child, rotation, or returned value.",
   "codeInsight": "String algorithms are safest when index movement is explicit and every mismatch has a defined fallback.",
   "realLifeExample": "Trie-Based Search appears when the input is text and pattern and the required result is matches or string result.",
   "whenToUse": "Use Trie-Based Search when a problem matches the Strings pattern and the expected state changes match a prefix tree dry run.",
-  "memoryTrick": "Trie-Based Search: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A prefix tree walkthrough showing Trie-Based Search's input, state, transition, and answer.",
+  "memoryTrick": "Trie-Based Search: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Trie-Based Search is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Trie-Based Search receives and what output is required."
+      "title": "Check node",
+      "text": "Handle an empty root or finished subtree."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Trie-Based Search."
+      "title": "Read node state",
+      "text": "Inspect character path."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the prefix tree transition and update the algorithm-specific state."
+      "title": "Move/combine",
+      "text": "follow or create the child link for the current character."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return tree result",
+      "text": "Return traversal output, path result, or updated tree state."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Trie-Based Search input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Root",
+      "title": "Check current node",
+      "note": "The code starts by handling missing nodes or the current root.",
+      "activeLine": 1,
+      "codeInsight": "The code starts by handling missing nodes or the current root."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Trie-Based Search changes during the dry run.",
-      "activeLine": 3
+      "label": "Node state",
+      "title": "Read character path",
+      "note": "The current node controls the next step.",
+      "activeLine": 3,
+      "codeInsight": "The current node controls the next step."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one prefix tree transition for Trie-Based Search.",
-      "activeLine": 5
+      "label": "Child step",
+      "title": "Follow or create the child link for the current character",
+      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "activeLine": 6,
+      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Trie-Based Search answer from the tracked state.",
-      "activeLine": 8
+      "label": "Tree result",
+      "title": "Return result",
+      "note": "The final traversal, path, measurement, or tree state is returned.",
+      "activeLine": 10,
+      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
     }
   ],
   "complexity": {

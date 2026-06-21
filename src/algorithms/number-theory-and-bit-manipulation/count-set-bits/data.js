@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Count Set Bits is a Number Theory and Bit Manipulation technique focused on answer.",
   "problem": "Count Set Bits solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its bit count transition.",
-  "concept": "Count Set Bits solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its bit count transition.",
-  "logicSummary": "Count Set Bits reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the bit count transition until the stop condition for Count Set Bits is reached.",
+  "concept": "Number and bit algorithms are useful when arithmetic properties let you skip brute-force work. Use this when divisibility, powers, bits, xor, or modular rules define the answer.",
+  "logicSummary": "Read numeric input, keep the relevant arithmetic state, apply the identity, and return the reduced result.",
+  "transitionSummary": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
   "codeInsight": "The implementation keeps Count Set Bits' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "Count Set Bits appears when the input is input and the required result is answer.",
   "whenToUse": "Use Count Set Bits when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a bit count dry run.",
-  "memoryTrick": "Count Set Bits: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A bit count walkthrough showing Count Set Bits' input, state, transition, and answer.",
+  "memoryTrick": "Count Set Bits: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Count Set Bits is shown as arithmetic-state reduction. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Count Set Bits receives and what output is required."
+      "title": "Read numbers",
+      "text": "Identify the integer, range, or modulus."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Count Set Bits."
+      "title": "Set invariant",
+      "text": "Choose the arithmetic or bit rule."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the bit count transition and update the algorithm-specific state."
+      "title": "Apply operation",
+      "text": "Shift, xor, divide, multiply, or mark values."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return result",
+      "text": "Return the reduced number or boolean answer."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Count Set Bits input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Numbers",
+      "title": "Read numeric state",
+      "note": "The code receives the number, range, or modulus.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the number, range, or modulus."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Count Set Bits changes during the dry run.",
-      "activeLine": 3
+      "label": "Rule",
+      "title": "Select math invariant",
+      "note": "The chosen identity controls every update.",
+      "activeLine": 3,
+      "codeInsight": "The chosen identity controls every update."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one bit count transition for Count Set Bits.",
-      "activeLine": 5
+      "label": "Reduction",
+      "title": "Apply one reduction",
+      "note": "A shift, xor, multiply, divide, or mark changes state.",
+      "activeLine": 5,
+      "codeInsight": "A shift, xor, multiply, divide, or mark changes state."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Count Set Bits answer from the tracked state.",
-      "activeLine": 8
+      "label": "Numeric result",
+      "title": "Return numeric result",
+      "note": "The loop ends when the invariant gives the answer.",
+      "activeLine": 8,
+      "codeInsight": "The loop ends when the invariant gives the answer."
     }
   ],
   "complexity": {

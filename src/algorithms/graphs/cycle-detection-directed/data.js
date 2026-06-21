@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Cycle Detection in Directed Graph is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Directed cycle detection uses a recursion stack to detect edges back into the active DFS path.",
-  "concept": "Directed cycle detection uses a recursion stack to detect edges back into the active DFS path.",
-  "logicSummary": "cycle-detection-directed maintains graph-specific state and updates it through the algorithm's own vertex or edge transition.",
-  "transitionSummary": "Consume the next vertex or edge, update graph state, and preserve the graph invariant.",
+  "concept": "Cycle Detection in Directed Graph is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
+  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
+  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
   "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
   "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
   "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Graph algorithms are state machines: pick the right frontier and update only that state.",
-  "visualizerCaption": "A graph recursion stack walkthrough showing Cycle Detection in Directed Graph's input, state, transition, and answer.",
+  "memoryTrick": "Cycle Detection in Directed Graph: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Cycle Detection in Directed Graph is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Initialize graph state",
-      "text": "Create the state this graph algorithm owns."
+      "title": "Read stack",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Choose next work item",
-      "text": "Pick the next vertex or edge according to the invariant."
+      "title": "Inspect stack top",
+      "text": "Look at the active stack fields."
     },
     {
-      "title": "Update state",
-      "text": "Relax, visit, union, or decrement state."
+      "title": "Push / pop",
+      "text": "push, pop, peek, or resolve stack entries."
     },
     {
-      "title": "Return graph result",
-      "text": "Return the final graph-specific result."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
     {
-      "name": "graph",
-      "purpose": "The adjacency structure that defines which vertices can be reached from each vertex."
+      "name": "graph input",
+      "purpose": "Vertices, edges, weights, or adjacency lists."
     },
     {
-      "name": "frontier / visited / distance state",
-      "purpose": "The graph-owned state that changes as vertices or edges are processed. This page visualizes it as graph recursion stack."
+      "name": "graph state",
+      "purpose": "Visited, distance, parent, indegree, or component state."
     },
     {
       "name": "graph result",
-      "purpose": "The value produced by cycleDetectionDirected after the maintained state reaches the stop rule."
+      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Consume the next vertex or edge, update graph state, and preserve the graph invariant. Stop when no valid work remains or the answer is known."
+      "name": "work remains",
+      "purpose": "Continue while vertices, edges, or frontier items remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Cycle Detection in Directed Graph starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Stack",
+      "title": "Read stack action",
+      "note": "The code receives the next value or command.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Stack top",
+      "title": "Inspect stack",
+      "note": "The active state must still satisfy last-in, first-out state.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy last-in, first-out state."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Consume the next vertex or edge, update graph state, and preserve the graph invariant.",
-      "activeLine": 8
+      "label": "Push / pop",
+      "title": "Push, pop, peek, or resolve stack entries",
+      "note": "Only the necessary stack fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary stack fields are changed."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

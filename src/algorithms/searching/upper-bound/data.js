@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Upper Bound is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Upper Bound finds the first sorted position whose value is strictly greater than the target.",
-  "concept": "Upper Bound finds the first sorted position whose value is strictly greater than the target.",
-  "logicSummary": "Keep [low, high), skip values <= target, and keep values that may be the first greater item.",
-  "transitionSummary": "If array[mid] <= target, move low right; otherwise move high to mid.",
+  "concept": "Upper Bound is useful when sorted order lets you discard a whole half of the search space. Use this when the input is sorted or the answer predicate changes only once.",
+  "logicSummary": "Maintain low/high boundaries, test the middle, and keep only the half that can still contain the answer.",
+  "transitionSummary": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
   "codeInsight": "The only difference from lower bound is the comparison: <= target is discarded.",
   "realLifeExample": "Use it to count duplicates with upperBound - lowerBound.",
   "whenToUse": "Use Upper Bound when you need the first item after all target-equal values.",
-  "memoryTrick": "Upper Bound: first value greater than target.",
-  "visualizerCaption": "A array boundaries walkthrough showing Upper Bound's input, state, transition, and answer.",
+  "memoryTrick": "Upper Bound: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Upper Bound is shown as a shrinking boundary search. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Open full range",
-      "text": "Search [0, array.length)."
+      "title": "Read sorted input",
+      "text": "Confirm the array or predicate has monotonic order."
+    },
+    {
+      "title": "Set boundaries",
+      "text": "Place low and high around every candidate."
     },
     {
       "title": "Compare middle",
-      "text": "Check whether mid still belongs to <= target."
-    },
-    {
-      "title": "Discard equal values",
-      "text": "Move low past mid when array[mid] <= target."
+      "text": "Use mid to decide which half is impossible."
     },
     {
       "title": "Return boundary",
-      "text": "low is the first greater position."
+      "text": "Return the found index or final insertion boundary."
     }
   ],
   "variables": [
     {
       "name": "array, target",
-      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
+      "purpose": "A sorted array and boundary value."
     },
     {
-      "name": "low, high, mid",
-      "purpose": "The shrinking search window and midpoint used to discard impossible positions."
+      "name": "low, high",
+      "purpose": "A half-open search range."
     },
     {
-      "name": "found index or boundary",
-      "purpose": "The value produced by upperBound after the maintained state reaches the stop rule."
+      "name": "upper index",
+      "purpose": "The first index with value > target."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "If array[mid] <= target, move low right; otherwise move high to mid. Stop when no valid work remains or the answer is known."
+      "name": "low < high",
+      "purpose": "Stop when one insertion point remains."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Upper Bound starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Sorted input",
+      "title": "Read the ordered search space",
+      "note": "The code starts from a range where binary decisions are valid.",
+      "activeLine": 1,
+      "codeInsight": "The code starts from a range where binary decisions are valid."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "low / high",
+      "title": "Open the candidate window",
+      "note": "low and high mark every position that may still answer.",
+      "activeLine": 3,
+      "codeInsight": "low and high mark every position that may still answer."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "If array[mid] <= target, move low right; otherwise move high to mid.",
-      "activeLine": 8
+      "label": "mid check",
+      "title": "Compare the midpoint",
+      "note": "The midpoint decides which half is removed.",
+      "activeLine": 5,
+      "codeInsight": "The midpoint decides which half is removed."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Return",
+      "title": "Emit index or boundary",
+      "note": "The loop ends with a match or the collapsed boundary.",
+      "activeLine": 9,
+      "codeInsight": "The loop ends with a match or the collapsed boundary."
     }
   ],
   "complexity": {

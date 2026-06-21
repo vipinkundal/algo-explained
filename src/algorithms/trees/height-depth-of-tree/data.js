@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "height-depth-of-tree",
@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Height / Depth of Tree is a Trees technique focused on tree result.",
   "problem": "Height / Depth of Tree relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "Height / Depth of Tree relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "logicSummary": "Check the base case, process the current node, recurse into children, and combine the returned values.",
-  "transitionSummary": "Move from a node to its child or back from a child to its parent with updated state.",
+  "concept": "Height / Depth of Tree is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on child height/result.",
+  "logicSummary": "Start at the root, maintain child height/result, combine child measurements into the parent answer, and return the tree-specific result.",
+  "transitionSummary": "Each step focuses on one node and uses child height/result to decide the next child, rotation, or returned value.",
   "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
   "realLifeExample": "Height / Depth of Tree appears when the input is root and the required result is tree result.",
   "whenToUse": "Use Height / Depth of Tree when a problem matches the Trees pattern and the expected state changes match a tree height dry run.",
-  "memoryTrick": "Height / Depth of Tree: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A tree height walkthrough showing Height / Depth of Tree's input, state, transition, and answer.",
+  "memoryTrick": "Height / Depth of Tree: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Height / Depth of Tree is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Height / Depth of Tree receives and what output is required."
+      "title": "Check node",
+      "text": "Handle an empty root or finished subtree."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Height / Depth of Tree."
+      "title": "Read node state",
+      "text": "Inspect child height/result."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the tree height transition and update the algorithm-specific state."
+      "title": "Move/combine",
+      "text": "combine child measurements into the parent answer."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return tree result",
+      "text": "Return traversal output, path result, or updated tree state."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Height / Depth of Tree input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Root",
+      "title": "Check current node",
+      "note": "The code starts by handling missing nodes or the current root.",
+      "activeLine": 1,
+      "codeInsight": "The code starts by handling missing nodes or the current root."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Height / Depth of Tree changes during the dry run.",
-      "activeLine": 3
+      "label": "Node state",
+      "title": "Read child height/result",
+      "note": "The current node controls the next step.",
+      "activeLine": 3,
+      "codeInsight": "The current node controls the next step."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one tree height transition for Height / Depth of Tree.",
-      "activeLine": 5
+      "label": "Child step",
+      "title": "Combine child measurements into the parent answer",
+      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "activeLine": 6,
+      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Height / Depth of Tree answer from the tracked state.",
-      "activeLine": 8
+      "label": "Tree result",
+      "title": "Return result",
+      "note": "The final traversal, path, measurement, or tree state is returned.",
+      "activeLine": 10,
+      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
     }
   ],
   "complexity": {

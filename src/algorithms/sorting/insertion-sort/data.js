@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Insertion Sort is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Grow a sorted prefix by inserting each next value into its correct position.",
-  "concept": "Grow a sorted prefix by inserting each next value into its correct position.",
-  "logicSummary": "Insertion Sort keeps a clear sorted/unsorted invariant and makes one transition that places values closer to final order.",
-  "transitionSummary": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
+  "concept": "Insertion Sort is useful when a sorted prefix can absorb one new value at a time. Use this when the input is small, nearly sorted, or you want stable insertion behavior.",
+  "logicSummary": "Take the next unsorted value, shift larger prefix values right, and insert the value into its sorted position.",
+  "transitionSummary": "Each step expands the sorted prefix by inserting one value without disturbing earlier order.",
   "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
   "realLifeExample": "Insertion Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
   "whenToUse": "Use Insertion Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Insertion Sort: protect the invariant after every comparison or move.",
-  "visualizerCaption": "A card insertion walkthrough showing Insertion Sort's input, state, transition, and answer.",
+  "memoryTrick": "Insertion Sort: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Insertion Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Copy input",
-      "text": "Avoid mutating the caller's original array."
+      "title": "Start prefix",
+      "text": "Treat the first value as sorted."
     },
     {
-      "title": "Maintain invariant",
-      "text": "Track which part is sorted or partitioned."
+      "title": "Pick key",
+      "text": "Take the next unsorted value."
     },
     {
-      "title": "Move values",
-      "text": "Swap, insert, merge, or bucket according to the algorithm."
+      "title": "Shift larger values",
+      "text": "Move larger prefix values right."
     },
     {
-      "title": "Return sorted result",
-      "text": "Return the fully ordered working array."
+      "title": "Insert key",
+      "text": "Place the key in the open slot."
     }
   ],
   "variables": [
     {
       "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
+      "purpose": "The values to sort."
     },
     {
-      "name": "working array and boundaries",
-      "purpose": "The in-progress array plus pass, partition, bucket, or merge boundaries. This page visualizes it as card insertion."
+      "name": "working array",
+      "purpose": "A copy that is rearranged during sorting."
     },
     {
-      "name": "sorted result",
-      "purpose": "The value produced by insertionSort after the maintained state reaches the stop rule."
+      "name": "sorted array",
+      "purpose": "The final ordered result."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Compare and move values according to the algorithm's invariant until no unsorted work remains. Stop when no valid work remains or the answer is known."
+      "name": "unsorted work remains",
+      "purpose": "Continue until every value is in final order."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Insertion Sort starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Prefix",
+      "title": "Start sorted area",
+      "note": "The left side is maintained in order.",
+      "activeLine": 1,
+      "codeInsight": "The left side is maintained in order."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Key",
+      "title": "Read next value",
+      "note": "One value is removed from the unsorted side.",
+      "activeLine": 4,
+      "codeInsight": "One value is removed from the unsorted side."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
-      "activeLine": 8
+      "label": "Shift",
+      "title": "Move larger values",
+      "note": "Larger prefix values slide right to create room.",
+      "activeLine": 6,
+      "codeInsight": "Larger prefix values slide right to create room."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Insert",
+      "title": "Place key",
+      "note": "The sorted prefix grows by one.",
+      "activeLine": 9,
+      "codeInsight": "The sorted prefix grows by one."
     }
   ],
   "complexity": {

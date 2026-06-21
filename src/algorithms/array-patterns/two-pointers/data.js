@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Two Pointers is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Two Pointers moves two indices toward a condition without trying every pair.",
-  "concept": "Two Pointers moves two indices toward a condition without trying every pair.",
-  "logicSummary": "Two Pointers keeps an array-specific invariant and updates it as the scan moves through the input.",
-  "transitionSummary": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
+  "concept": "Two pointers are useful when moving one side changes the condition predictably. Use this when order lets you skip many pairs or positions.",
+  "logicSummary": "Place two indices, inspect their combined state, and move the pointer that can still improve the condition.",
+  "transitionSummary": "Each step moves left or right inward instead of trying all combinations.",
   "codeInsight": "The code is written around the array invariant, not a generic scan: each variable explains what future positions can still change.",
   "realLifeExample": "Two Pointers appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Two Pointers when the problem statement matches its array invariant.",
-  "memoryTrick": "Two Pointers: write down the invariant before moving the pointer.",
-  "visualizerCaption": "A two pointer array walkthrough showing Two Pointers' input, state, transition, and answer.",
+  "memoryTrick": "Two Pointers: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Two Pointers is shown as two coordinated indices. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the array",
-      "text": "Identify whether the problem is about a range, window, order, or frequency."
+      "title": "Place pointers",
+      "text": "Start left and right at meaningful boundaries."
     },
     {
-      "title": "Initialize invariant",
-      "text": "Create only the pointer or running state this pattern needs."
+      "title": "Inspect pair",
+      "text": "Read the values or state between them."
     },
     {
-      "title": "Advance scan",
-      "text": "Update the invariant as each position is consumed."
+      "title": "Move one side",
+      "text": "Advance the pointer that cannot produce the answer."
     },
     {
-      "title": "Return answer",
-      "text": "Return the value maintained by the invariant."
+      "title": "Return match",
+      "text": "Return the pair, range, or transformed array."
     }
   ],
   "variables": [
     {
-      "name": "sorted Array, target",
-      "purpose": "sorted Array: A sorted list whose order lets the algorithm move pointers or boundaries safely. target: The value or condition each comparison is trying to locate."
+      "name": "array",
+      "purpose": "The input values."
     },
     {
-      "name": "left and right pointers",
-      "purpose": "Two indices that move toward each other while preserving the pair or boundary invariant."
+      "name": "invariant state",
+      "purpose": "The running sum, window, pointer, candidate, or frequency state."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by twoPointers after the maintained state reaches the stop rule."
+      "name": "answer",
+      "purpose": "The best value, transformed array, or matching pair."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant. Stop when no valid work remains or the answer is known."
+      "name": "scan remains",
+      "purpose": "Continue while unchecked positions remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Two Pointers starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Range",
+      "title": "Read ordered range",
+      "note": "The code receives values where pointer movement has meaning.",
+      "activeLine": 1,
+      "codeInsight": "The code receives values where pointer movement has meaning."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Pointers",
+      "title": "Set left and right",
+      "note": "Both indices define the current candidate state.",
+      "activeLine": 3,
+      "codeInsight": "Both indices define the current candidate state."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
-      "activeLine": 8
+      "label": "Compare",
+      "title": "Choose pointer movement",
+      "note": "The condition decides which pointer moves.",
+      "activeLine": 5,
+      "codeInsight": "The condition decides which pointer moves."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Pair result",
+      "title": "Return pair or state",
+      "note": "The loop stops when the target condition is met or exhausted.",
+      "activeLine": 8,
+      "codeInsight": "The loop stops when the target condition is met or exhausted."
     }
   ],
   "complexity": {

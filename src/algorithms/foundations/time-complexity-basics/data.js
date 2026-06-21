@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Time Complexity Basics is a Foundations technique focused on answer.",
   "problem": "Time Complexity Basics solves a Foundations problem by maintaining only the state needed for its growth chart transition.",
-  "concept": "Time Complexity Basics solves a Foundations problem by maintaining only the state needed for its growth chart transition.",
-  "logicSummary": "Time Complexity Basics reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the growth chart transition until the stop condition for Time Complexity Basics is reached.",
+  "concept": "Time Complexity Basics is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
+  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
+  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
   "codeInsight": "The implementation keeps Time Complexity Basics' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "Time Complexity Basics appears when the input is input and the required result is answer.",
   "whenToUse": "Use Time Complexity Basics when a problem matches the Foundations pattern and the expected state changes match a growth chart dry run.",
-  "memoryTrick": "Time Complexity Basics: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A growth chart walkthrough showing Time Complexity Basics' input, state, transition, and answer.",
+  "memoryTrick": "Time Complexity Basics: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Time Complexity Basics is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Time Complexity Basics receives and what output is required."
+      "title": "Read algorithm state",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Time Complexity Basics."
+      "title": "Inspect invariant",
+      "text": "Look at the active algorithm state fields."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the growth chart transition and update the algorithm-specific state."
+      "title": "State change",
+      "text": "update the state described by this algorithm."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Time Complexity Basics input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Algorithm State",
+      "title": "Read algorithm state action",
+      "note": "The code receives the next value or command.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Time Complexity Basics changes during the dry run.",
-      "activeLine": 3
+      "label": "Invariant",
+      "title": "Inspect algorithm state",
+      "note": "The active state must still satisfy page-specific invariant.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy page-specific invariant."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one growth chart transition for Time Complexity Basics.",
-      "activeLine": 5
+      "label": "State change",
+      "title": "Update the state described by this algorithm",
+      "note": "Only the necessary algorithm state fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary algorithm state fields are changed."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Time Complexity Basics answer from the tracked state.",
-      "activeLine": 8
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

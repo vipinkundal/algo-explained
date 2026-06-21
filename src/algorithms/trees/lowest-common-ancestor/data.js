@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Lowest Common Ancestor is a Trees technique focused on tree result.",
   "problem": "Lowest Common Ancestor relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "Lowest Common Ancestor relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "logicSummary": "Check the base case, process the current node, recurse into children, and combine the returned values.",
-  "transitionSummary": "Move from a node to its child or back from a child to its parent with updated state.",
+  "concept": "Lowest Common Ancestor is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
+  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
+  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
   "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
   "realLifeExample": "Lowest Common Ancestor appears when the input is root and the required result is tree result.",
   "whenToUse": "Use Lowest Common Ancestor when a problem matches the Trees pattern and the expected state changes match a tree paths dry run.",
-  "memoryTrick": "Lowest Common Ancestor: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A tree paths walkthrough showing Lowest Common Ancestor's input, state, transition, and answer.",
+  "memoryTrick": "Lowest Common Ancestor: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Lowest Common Ancestor is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Lowest Common Ancestor receives and what output is required."
+      "title": "Read algorithm state",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Lowest Common Ancestor."
+      "title": "Inspect invariant",
+      "text": "Look at the active algorithm state fields."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the tree paths transition and update the algorithm-specific state."
+      "title": "State change",
+      "text": "update the state described by this algorithm."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Lowest Common Ancestor input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Algorithm State",
+      "title": "Read algorithm state action",
+      "note": "The code receives the next value or command.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Lowest Common Ancestor changes during the dry run.",
-      "activeLine": 3
+      "label": "Invariant",
+      "title": "Inspect algorithm state",
+      "note": "The active state must still satisfy page-specific invariant.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy page-specific invariant."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one tree paths transition for Lowest Common Ancestor.",
-      "activeLine": 5
+      "label": "State change",
+      "title": "Update the state described by this algorithm",
+      "note": "Only the necessary algorithm state fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary algorithm state fields are changed."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Lowest Common Ancestor answer from the tracked state.",
-      "activeLine": 8
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

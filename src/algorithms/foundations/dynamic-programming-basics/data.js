@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Dynamic Programming Basics is a Foundations technique focused on answer.",
   "problem": "Dynamic Programming Basics solves a Foundations problem by maintaining only the state needed for its dp table transition.",
-  "concept": "Dynamic Programming Basics solves a Foundations problem by maintaining only the state needed for its dp table transition.",
-  "logicSummary": "Dynamic Programming Basics reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the dp table transition until the stop condition for Dynamic Programming Basics is reached.",
+  "concept": "Dynamic Programming Basics is useful when the same subproblems appear again and storing answers prevents repeated work. Use this when you can define a state, base cases, and a recurrence.",
+  "logicSummary": "Define what one DP state means, initialize base cases, fill dependent states, and read the target state.",
+  "transitionSummary": "Each step computes one state from already-solved smaller or earlier states.",
   "codeInsight": "The implementation keeps Dynamic Programming Basics' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "Dynamic Programming Basics appears when the input is input and the required result is answer.",
   "whenToUse": "Use Dynamic Programming Basics when a problem matches the Foundations pattern and the expected state changes match a dp table dry run.",
-  "memoryTrick": "Dynamic Programming Basics: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A dp table walkthrough showing Dynamic Programming Basics' input, state, transition, and answer.",
+  "memoryTrick": "Dynamic Programming Basics: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Dynamic Programming Basics is shown as a dependency-ordered DP fill. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Dynamic Programming Basics receives and what output is required."
+      "title": "Define state",
+      "text": "Name exactly what one cell or entry means."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Dynamic Programming Basics."
+      "title": "Set base cases",
+      "text": "Fill answers that need no recurrence."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the dp table transition and update the algorithm-specific state."
+      "title": "Apply recurrence",
+      "text": "Compute each state from solved dependencies."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Read target",
+      "text": "Return the state requested by the problem."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Dynamic Programming Basics input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "State meaning",
+      "title": "Define DP cell",
+      "note": "The code first needs a precise subproblem meaning.",
+      "activeLine": 1,
+      "codeInsight": "The code first needs a precise subproblem meaning."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Dynamic Programming Basics changes during the dry run.",
-      "activeLine": 3
+      "label": "Base case",
+      "title": "Seed known answers",
+      "note": "Base values stop the recurrence from falling through.",
+      "activeLine": 3,
+      "codeInsight": "Base values stop the recurrence from falling through."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one dp table transition for Dynamic Programming Basics.",
-      "activeLine": 5
+      "label": "Recurrence",
+      "title": "Fill next state",
+      "note": "The transition combines previously solved states.",
+      "activeLine": 6,
+      "codeInsight": "The transition combines previously solved states."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Dynamic Programming Basics answer from the tracked state.",
-      "activeLine": 8
+      "label": "Target",
+      "title": "Return requested state",
+      "note": "The answer is read from the final DP state.",
+      "activeLine": 10,
+      "codeInsight": "The answer is read from the final DP state."
     }
   ],
   "complexity": {

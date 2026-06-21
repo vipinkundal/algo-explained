@@ -22,31 +22,31 @@ export const algorithmPage = {
   "originalActiveLine": 1,
   "meaning": "Binary Tree Node shows how data is organized, changed, and inspected through a small browser demo with the original C/C++ reference available beside it.",
   "problem": "Binary Tree Node explains the tree state model and how one focused change updates it.",
-  "concept": "Data structures are easier to learn when each value has a clear place and every change preserves a rule.",
-  "logicSummary": "Track the active state, visit nodes in the selected traversal order, and inspect the updated view.",
-  "transitionSummary": "Move one step forward by changing only the slots, links, cursors, or nodes required by this operation.",
+  "concept": "Binary Tree Node is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on balance invariant.",
+  "logicSummary": "Start at the root, maintain balance invariant, rotate or recolor when height/color rules are violated, and return the tree-specific result.",
+  "transitionSummary": "Each step focuses on one node and uses balance invariant to decide the next child, rotation, or returned value.",
   "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the Original C/C++ tab to study the source implementation.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
   "realLifeExample": "Binary Tree Node is useful when you need to understand the mechanics behind library-level data structures.",
   "whenToUse": "Use this page when learning Trees / BST / AVL / Heap behavior through state changes instead of memorized code.",
-  "memoryTrick": "Name the moving part first, then ask which invariant must still be true.",
-  "visualizerCaption": "A tree structure walkthrough for Binary Tree Node.",
+  "memoryTrick": "Binary Tree Node: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Binary Tree Node is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Map the state",
-      "text": "Identify the values Binary Tree Node needs before any operation starts."
+      "title": "Check node",
+      "text": "Handle an empty root or finished subtree."
     },
     {
-      "title": "Set the rule",
-      "text": "Name the tree invariant that should remain true after the step."
+      "title": "Read node state",
+      "text": "Inspect balance invariant."
     },
     {
-      "title": "Apply one change",
-      "text": "Run the next action: visit nodes in the selected traversal order."
+      "title": "Move/combine",
+      "text": "rotate or recolor when height/color rules are violated."
     },
     {
-      "title": "Read the view",
-      "text": "Compare the before and after state to confirm the transition."
+      "title": "Return tree result",
+      "text": "Return traversal output, path result, or updated tree state."
     }
   ],
   "variables": [
@@ -69,36 +69,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "State map",
-      "title": "Prepare the working view",
-      "note": "Start with the values that Binary Tree Node needs to inspect or change.",
+      "label": "Root",
+      "title": "Check current node",
+      "note": "The code starts by handling missing nodes or the current root.",
       "activeLine": 1,
-      "codeInsight": "The JS companion builds a compact state you can edit safely in the browser.",
-      "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state."
+      "codeInsight": "The code starts by handling missing nodes or the current root."
     },
     {
-      "label": "Cursor move",
-      "title": "Choose the active part",
-      "note": "Focus on the entry node before changing anything else.",
-      "activeLine": 4,
-      "codeInsight": "Keeping the active part explicit makes the output easier to debug.",
-      "originalCodeInsight": "Initialization lines define the valid memory shape before mutation begins."
+      "label": "Node state",
+      "title": "Read balance invariant",
+      "note": "The current node controls the next step.",
+      "activeLine": 3,
+      "codeInsight": "The current node controls the next step."
     },
     {
-      "label": "State change",
-      "title": "Apply the rule",
-      "note": "Perform one tree update and keep the invariant intact.",
-      "activeLine": 7,
-      "codeInsight": "This line group performs the browser-safe version of the same data-structure transition.",
-      "originalCodeInsight": "The important lines update the pointer, index, child link, cursor, or stored value."
+      "label": "Child step",
+      "title": "Rotate or recolor when height/color rules are violated",
+      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "activeLine": 6,
+      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
     },
     {
-      "label": "Visible result",
-      "title": "Inspect the answer",
-      "note": "Read the visit order after the update.",
+      "label": "Tree result",
+      "title": "Return result",
+      "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 10,
-      "codeInsight": "The return object exposes the updated state so edits have immediate feedback.",
-      "originalCodeInsight": "Display, return, or cout lines reveal the observable result."
+      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
     }
   ],
   "complexity": {

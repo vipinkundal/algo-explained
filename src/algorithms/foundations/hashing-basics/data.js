@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Hashing Basics is a Foundations technique focused on answer.",
   "problem": "Hashing Basics solves a Foundations problem by maintaining only the state needed for its hash table transition.",
-  "concept": "Hashing Basics solves a Foundations problem by maintaining only the state needed for its hash table transition.",
-  "logicSummary": "Hashing Basics reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the hash table transition until the stop condition for Hashing Basics is reached.",
+  "concept": "Hashing Basics is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
+  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
+  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
   "codeInsight": "The implementation keeps Hashing Basics' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "Hashing Basics appears when the input is input and the required result is answer.",
   "whenToUse": "Use Hashing Basics when a problem matches the Foundations pattern and the expected state changes match a hash table dry run.",
-  "memoryTrick": "Hashing Basics: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A hash table walkthrough showing Hashing Basics' input, state, transition, and answer.",
+  "memoryTrick": "Hashing Basics: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Hashing Basics is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Hashing Basics receives and what output is required."
+      "title": "Read algorithm state",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Hashing Basics."
+      "title": "Inspect invariant",
+      "text": "Look at the active algorithm state fields."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the hash table transition and update the algorithm-specific state."
+      "title": "State change",
+      "text": "update the state described by this algorithm."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Hashing Basics input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Algorithm State",
+      "title": "Read algorithm state action",
+      "note": "The code receives the next value or command.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Hashing Basics changes during the dry run.",
-      "activeLine": 3
+      "label": "Invariant",
+      "title": "Inspect algorithm state",
+      "note": "The active state must still satisfy page-specific invariant.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy page-specific invariant."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one hash table transition for Hashing Basics.",
-      "activeLine": 5
+      "label": "State change",
+      "title": "Update the state described by this algorithm",
+      "note": "Only the necessary algorithm state fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary algorithm state fields are changed."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Hashing Basics answer from the tracked state.",
-      "activeLine": 8
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

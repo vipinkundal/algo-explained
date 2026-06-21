@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Heap Sort is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Build a max heap and repeatedly move the maximum value to the end.",
-  "concept": "Build a max heap and repeatedly move the maximum value to the end.",
-  "logicSummary": "Heap Sort keeps a clear sorted/unsorted invariant and makes one transition that places values closer to final order.",
-  "transitionSummary": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
+  "concept": "Heap Sort is useful when a heap can repeatedly expose the next largest or smallest value. Use this when in-place n log n sorting with heap structure is the right tradeoff.",
+  "logicSummary": "Build a heap, swap the root into its final position, shrink the heap, and restore heap order.",
+  "transitionSummary": "Each extraction fixes one output position and heapifies the remaining prefix.",
   "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
   "realLifeExample": "Heap Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
   "whenToUse": "Use Heap Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Heap Sort: protect the invariant after every comparison or move.",
-  "visualizerCaption": "A heap tree walkthrough showing Heap Sort's input, state, transition, and answer.",
+  "memoryTrick": "Heap Sort: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Heap Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Copy input",
-      "text": "Avoid mutating the caller's original array."
+      "title": "Build heap",
+      "text": "Arrange values into parent-child priority order."
     },
     {
-      "title": "Maintain invariant",
-      "text": "Track which part is sorted or partitioned."
+      "title": "Swap root",
+      "text": "Move the top priority value to the end."
     },
     {
-      "title": "Move values",
-      "text": "Swap, insert, merge, or bucket according to the algorithm."
+      "title": "Shrink heap",
+      "text": "Exclude the fixed value."
     },
     {
-      "title": "Return sorted result",
-      "text": "Return the fully ordered working array."
+      "title": "Heapify",
+      "text": "Restore the root rule for the remaining values."
     }
   ],
   "variables": [
     {
       "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
+      "purpose": "The values to sort."
     },
     {
-      "name": "heap array",
-      "purpose": "The array-backed heap after each sift, push, or pop operation."
+      "name": "working array",
+      "purpose": "A copy that is rearranged during sorting."
     },
     {
-      "name": "sorted result",
-      "purpose": "The value produced by heapSort after the maintained state reaches the stop rule."
+      "name": "sorted array",
+      "purpose": "The final ordered result."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Compare and move values according to the algorithm's invariant until no unsorted work remains. Stop when no valid work remains or the answer is known."
+      "name": "unsorted work remains",
+      "purpose": "Continue until every value is in final order."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Heap Sort starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Heap",
+      "title": "Build priority tree",
+      "note": "The array is interpreted as a heap.",
+      "activeLine": 1,
+      "codeInsight": "The array is interpreted as a heap."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Root",
+      "title": "Move root to output",
+      "note": "The max or min root becomes fixed.",
+      "activeLine": 5,
+      "codeInsight": "The max or min root becomes fixed."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
-      "activeLine": 8
+      "label": "Size",
+      "title": "Shrink active heap",
+      "note": "Fixed values are no longer heapified.",
+      "activeLine": 7,
+      "codeInsight": "Fixed values are no longer heapified."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Restore",
+      "title": "Heapify remaining range",
+      "note": "The parent-child invariant is repaired.",
+      "activeLine": 9,
+      "codeInsight": "The parent-child invariant is repaired."
     }
   ],
   "complexity": {

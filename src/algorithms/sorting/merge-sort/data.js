@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Merge Sort is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Divide the array into halves, sort each half, then merge two sorted halves.",
-  "concept": "Divide the array into halves, sort each half, then merge two sorted halves.",
-  "logicSummary": "Merge Sort keeps a clear sorted/unsorted invariant and makes one transition that places values closer to final order.",
-  "transitionSummary": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
+  "concept": "Merge Sort is useful when splitting into sorted halves makes merging predictable. Use this when stable n log n sorting is preferred and extra merge space is acceptable.",
+  "logicSummary": "Divide the array into halves, sort each half recursively, then merge the two sorted halves.",
+  "transitionSummary": "Each merge step chooses the smaller front value from two already-sorted halves.",
   "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
   "realLifeExample": "Merge Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
   "whenToUse": "Use Merge Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Merge Sort: protect the invariant after every comparison or move.",
-  "visualizerCaption": "A divide merge walkthrough showing Merge Sort's input, state, transition, and answer.",
+  "memoryTrick": "Merge Sort: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Merge Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Copy input",
-      "text": "Avoid mutating the caller's original array."
+      "title": "Split range",
+      "text": "Divide the current array section."
     },
     {
-      "title": "Maintain invariant",
-      "text": "Track which part is sorted or partitioned."
+      "title": "Sort halves",
+      "text": "Recursively sort left and right sections."
     },
     {
-      "title": "Move values",
-      "text": "Swap, insert, merge, or bucket according to the algorithm."
+      "title": "Merge fronts",
+      "text": "Choose the smaller front value."
     },
     {
-      "title": "Return sorted result",
-      "text": "Return the fully ordered working array."
+      "title": "Return merged array",
+      "text": "Produce one sorted section."
     }
   ],
   "variables": [
     {
       "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
+      "purpose": "The values to sort."
     },
     {
-      "name": "working array and boundaries",
-      "purpose": "The in-progress array plus pass, partition, bucket, or merge boundaries. This page visualizes it as divide merge."
+      "name": "working array",
+      "purpose": "A copy that is rearranged during sorting."
     },
     {
-      "name": "sorted result",
-      "purpose": "The value produced by mergeSort after the maintained state reaches the stop rule."
+      "name": "sorted array",
+      "purpose": "The final ordered result."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Compare and move values according to the algorithm's invariant until no unsorted work remains. Stop when no valid work remains or the answer is known."
+      "name": "unsorted work remains",
+      "purpose": "Continue until every value is in final order."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Merge Sort starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Range",
+      "title": "Split array",
+      "note": "The code divides work into smaller ranges.",
+      "activeLine": 1,
+      "codeInsight": "The code divides work into smaller ranges."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Halves",
+      "title": "Sort recursively",
+      "note": "Each half is solved before merge.",
+      "activeLine": 4,
+      "codeInsight": "Each half is solved before merge."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
-      "activeLine": 8
+      "label": "Merge",
+      "title": "Choose smaller front",
+      "note": "The next output value comes from one sorted half.",
+      "activeLine": 8,
+      "codeInsight": "The next output value comes from one sorted half."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Sorted",
+      "title": "Return merged result",
+      "note": "The merged section is fully ordered.",
+      "activeLine": 12,
+      "codeInsight": "The merged section is fully ordered."
     }
   ],
   "complexity": {

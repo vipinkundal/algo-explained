@@ -1,5 +1,5 @@
 // AUTO-GENERATED ALGORITHM PAGE
-// Edit this file to customize this data-structure page without touching app.js.
+// Edit this file to customize this algorithm page without touching app.js.
 
 export const algorithmPage = {
   "id": "preorder-traversal",
@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Preorder Traversal is a Trees technique focused on tree result.",
   "problem": "Preorder Traversal relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "Preorder Traversal relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "logicSummary": "Check the base case, process the current node, recurse into children, and combine the returned values.",
-  "transitionSummary": "Move from a node to its child or back from a child to its parent with updated state.",
+  "concept": "Preorder Traversal is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on visit order.",
+  "logicSummary": "Start at the root, maintain visit order, visit the current node in preorder, inorder, or postorder position, and return the tree-specific result.",
+  "transitionSummary": "Each step focuses on one node and uses visit order to decide the next child, rotation, or returned value.",
   "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
   "realLifeExample": "Preorder Traversal appears when the input is root and the required result is tree result.",
   "whenToUse": "Use Preorder Traversal when a problem matches the Trees pattern and the expected state changes match a tree traversal dry run.",
-  "memoryTrick": "Preorder Traversal: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A tree traversal walkthrough showing Preorder Traversal's input, state, transition, and answer.",
+  "memoryTrick": "Preorder Traversal: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Preorder Traversal is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Preorder Traversal receives and what output is required."
+      "title": "Check node",
+      "text": "Handle an empty root or finished subtree."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Preorder Traversal."
+      "title": "Read node state",
+      "text": "Inspect visit order."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the tree traversal transition and update the algorithm-specific state."
+      "title": "Move/combine",
+      "text": "visit the current node in preorder, inorder, or postorder position."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return tree result",
+      "text": "Return traversal output, path result, or updated tree state."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Preorder Traversal input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Root",
+      "title": "Check current node",
+      "note": "The code starts by handling missing nodes or the current root.",
+      "activeLine": 1,
+      "codeInsight": "The code starts by handling missing nodes or the current root."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Preorder Traversal changes during the dry run.",
-      "activeLine": 3
+      "label": "Node state",
+      "title": "Read visit order",
+      "note": "The current node controls the next step.",
+      "activeLine": 3,
+      "codeInsight": "The current node controls the next step."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one tree traversal transition for Preorder Traversal.",
-      "activeLine": 5
+      "label": "Child step",
+      "title": "Visit the current node in preorder, inorder, or postorder position",
+      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "activeLine": 6,
+      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Preorder Traversal answer from the tracked state.",
-      "activeLine": 8
+      "label": "Tree result",
+      "title": "Return result",
+      "note": "The final traversal, path, measurement, or tree state is returned.",
+      "activeLine": 10,
+      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
     }
   ],
   "complexity": {

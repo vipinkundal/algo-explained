@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Merge K Sorted Lists is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Merge K Sorted Lists repeatedly chooses the smallest current head among all sorted lists.",
-  "concept": "Merge K Sorted Lists repeatedly chooses the smallest current head among all sorted lists.",
-  "logicSummary": "Merge K Sorted Lists maintains a dedicated data-structure invariant and changes it through one clear push, pop, enqueue, dequeue, heap, or cache transition.",
-  "transitionSummary": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
+  "concept": "Merge K Sorted Lists is useful when splitting into sorted halves makes merging predictable. Use this when stable n log n sorting is preferred and extra merge space is acceptable.",
+  "logicSummary": "Divide the array into halves, sort each half recursively, then merge the two sorted halves.",
+  "transitionSummary": "Each merge step chooses the smaller front value from two already-sorted halves.",
   "codeInsight": "The implementation names the backing state directly, so the code trace matches the visual data structure on the page.",
   "realLifeExample": "Merge K Sorted Lists appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Merge K Sorted Lists when its state transition is the natural way to model the problem.",
-  "memoryTrick": "Merge K Sorted Lists: the data structure is the algorithm state.",
-  "visualizerCaption": "A heap merge walkthrough showing Merge K Sorted Lists' input, state, transition, and answer.",
+  "memoryTrick": "Merge K Sorted Lists: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Merge K Sorted Lists is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read operation",
-      "text": "Identify the next value or command."
+      "title": "Split range",
+      "text": "Divide the current array section."
     },
     {
-      "title": "Update structure",
-      "text": "Push, pop, enqueue, dequeue, rebalance, or evict as required."
+      "title": "Sort halves",
+      "text": "Recursively sort left and right sections."
     },
     {
-      "title": "Preserve invariant",
-      "text": "Keep the structure valid after the update."
+      "title": "Merge fronts",
+      "text": "Choose the smaller front value."
     },
     {
-      "title": "Return output",
-      "text": "Return the accumulated answers or final structure."
+      "title": "Return merged array",
+      "text": "Produce one sorted section."
     }
   ],
   "variables": [
     {
-      "name": "lists",
-      "purpose": "The lists input used by the algorithm."
+      "name": "input",
+      "purpose": "Values or operations to process."
     },
     {
-      "name": "queue / deque / cache state",
-      "purpose": "The front, back, capacity, and cached entries affected by each operation. This page visualizes it as heap merge."
+      "name": "data structure state",
+      "purpose": "The stack, queue, heap, deque, or cache state."
     },
     {
-      "name": "operation output",
-      "purpose": "The value produced by mergeKSortedLists after the maintained state reaches the stop rule."
+      "name": "answer",
+      "purpose": "The output after all operations or after each step."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Read the next operation or value, update the owned data structure, and emit the current answer if needed. Stop when no valid work remains or the answer is known."
+      "name": "operations remain",
+      "purpose": "Continue while input values or operations remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Merge K Sorted Lists starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Range",
+      "title": "Split array",
+      "note": "The code divides work into smaller ranges.",
+      "activeLine": 1,
+      "codeInsight": "The code divides work into smaller ranges."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Halves",
+      "title": "Sort recursively",
+      "note": "Each half is solved before merge.",
+      "activeLine": 4,
+      "codeInsight": "Each half is solved before merge."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Read the next operation or value, update the owned data structure, and emit the current answer if needed.",
-      "activeLine": 8
+      "label": "Merge",
+      "title": "Choose smaller front",
+      "note": "The next output value comes from one sorted half.",
+      "activeLine": 8,
+      "codeInsight": "The next output value comes from one sorted half."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Sorted",
+      "title": "Return merged result",
+      "note": "The merged section is fully ordered.",
+      "activeLine": 12,
+      "codeInsight": "The merged section is fully ordered."
     }
   ],
   "complexity": {

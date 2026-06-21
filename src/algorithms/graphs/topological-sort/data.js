@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Topological Sort is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Topological Sort repeatedly removes zero-indegree vertices from a DAG.",
-  "concept": "Topological Sort repeatedly removes zero-indegree vertices from a DAG.",
-  "logicSummary": "topological-sort maintains graph-specific state and updates it through the algorithm's own vertex or edge transition.",
-  "transitionSummary": "Consume the next vertex or edge, update graph state, and preserve the graph invariant.",
+  "concept": "Topological Sort is useful when values must be placed into a reliable order before later work can be simple. Use this when the algorithm's ordering invariant and cost fit the input size and stability needs.",
+  "logicSummary": "Protect the algorithm's ordering invariant until every value reaches final order.",
+  "transitionSummary": "Each step compares or moves values so the unsorted region gets smaller.",
   "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
   "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
   "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Graph algorithms are state machines: pick the right frontier and update only that state.",
-  "visualizerCaption": "A dag order walkthrough showing Topological Sort's input, state, transition, and answer.",
+  "memoryTrick": "Topological Sort: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Topological Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Initialize graph state",
-      "text": "Create the state this graph algorithm owns."
+      "title": "Copy values",
+      "text": "Work on a mutable array without changing the original input."
     },
     {
-      "title": "Choose next work item",
-      "text": "Pick the next vertex or edge according to the invariant."
+      "title": "Choose invariant",
+      "text": "Track the sorted or partitioned region."
     },
     {
-      "title": "Update state",
-      "text": "Relax, visit, union, or decrement state."
+      "title": "Move values",
+      "text": "Perform the comparison, swap, merge, or placement."
     },
     {
-      "title": "Return graph result",
-      "text": "Return the final graph-specific result."
+      "title": "Return order",
+      "text": "Return the fully sorted array."
     }
   ],
   "variables": [
     {
-      "name": "graph",
-      "purpose": "The adjacency structure that defines which vertices can be reached from each vertex."
+      "name": "graph input",
+      "purpose": "Vertices, edges, weights, or adjacency lists."
     },
     {
-      "name": "frontier / visited / distance state",
-      "purpose": "The graph-owned state that changes as vertices or edges are processed. This page visualizes it as dag order."
+      "name": "graph state",
+      "purpose": "Visited, distance, parent, indegree, or component state."
     },
     {
       "name": "graph result",
-      "purpose": "The value produced by topologicalSort after the maintained state reaches the stop rule."
+      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Consume the next vertex or edge, update graph state, and preserve the graph invariant. Stop when no valid work remains or the answer is known."
+      "name": "work remains",
+      "purpose": "Continue while vertices, edges, or frontier items remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Topological Sort starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Input array",
+      "title": "Copy values",
+      "note": "The code starts with the values to reorder.",
+      "activeLine": 1,
+      "codeInsight": "The code starts with the values to reorder."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Invariant",
+      "title": "Track ordered work",
+      "note": "The algorithm marks what part is already safe.",
+      "activeLine": 3,
+      "codeInsight": "The algorithm marks what part is already safe."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Consume the next vertex or edge, update graph state, and preserve the graph invariant.",
-      "activeLine": 8
+      "label": "Move",
+      "title": "Apply ordering step",
+      "note": "The current operation reduces disorder.",
+      "activeLine": 6,
+      "codeInsight": "The current operation reduces disorder."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Sorted output",
+      "title": "Return final order",
+      "note": "The result is returned when no unsorted work remains.",
+      "activeLine": 10,
+      "codeInsight": "The result is returned when no unsorted work remains."
     }
   ],
   "complexity": {

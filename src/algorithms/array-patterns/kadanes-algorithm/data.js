@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Kadane’s Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Kadane’s Algorithm keeps the best subarray ending here and the best subarray seen anywhere.",
-  "concept": "Kadane’s Algorithm keeps the best subarray ending here and the best subarray seen anywhere.",
-  "logicSummary": "Kadane’s Algorithm keeps an array-specific invariant and updates it as the scan moves through the input.",
-  "transitionSummary": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
+  "concept": "Prefix-style state is useful when a running total or boundary delta lets future queries reuse past work. Use this when range answers or cumulative changes appear repeatedly.",
+  "logicSummary": "Build a running state once, then answer each range or final value by combining saved boundaries.",
+  "transitionSummary": "Each item updates the running total, difference, or accumulator exactly once.",
   "codeInsight": "The code is written around the array invariant, not a generic scan: each variable explains what future positions can still change.",
   "realLifeExample": "Kadane’s Algorithm appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Kadane’s Algorithm when the problem statement matches its array invariant.",
-  "memoryTrick": "Kadane’s Algorithm: write down the invariant before moving the pointer.",
-  "visualizerCaption": "A running sum walkthrough showing Kadane’s Algorithm's input, state, transition, and answer.",
+  "memoryTrick": "Kadane’s Algorithm: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Kadane’s Algorithm is shown as cumulative state over positions. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the array",
-      "text": "Identify whether the problem is about a range, window, order, or frequency."
+      "title": "Initialize accumulator",
+      "text": "Start with zero or the neutral value."
     },
     {
-      "title": "Initialize invariant",
-      "text": "Create only the pointer or running state this pattern needs."
+      "title": "Consume value",
+      "text": "Add the current contribution."
     },
     {
-      "title": "Advance scan",
-      "text": "Update the invariant as each position is consumed."
+      "title": "Store boundary",
+      "text": "Save the cumulative state for later lookup."
     },
     {
-      "title": "Return answer",
-      "text": "Return the value maintained by the invariant."
+      "title": "Answer range",
+      "text": "Use stored boundaries to produce the result."
     }
   ],
   "variables": [
     {
       "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
+      "purpose": "The input values."
     },
     {
-      "name": "running total",
-      "purpose": "The accumulator after processing each item in order."
+      "name": "invariant state",
+      "purpose": "The running sum, window, pointer, candidate, or frequency state."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by kadanesAlgorithm after the maintained state reaches the stop rule."
+      "name": "answer",
+      "purpose": "The best value, transformed array, or matching pair."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant. Stop when no valid work remains or the answer is known."
+      "name": "scan remains",
+      "purpose": "Continue while unchecked positions remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Kadane’s Algorithm starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Values",
+      "title": "Read values or updates",
+      "note": "The code receives the array, ranges, or deltas.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the array, ranges, or deltas."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Accumulator",
+      "title": "Start running state",
+      "note": "A neutral starting value makes every update consistent.",
+      "activeLine": 3,
+      "codeInsight": "A neutral starting value makes every update consistent."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
-      "activeLine": 8
+      "label": "Prefix step",
+      "title": "Apply current contribution",
+      "note": "The running state changes by the current value or boundary delta.",
+      "activeLine": 5,
+      "codeInsight": "The running state changes by the current value or boundary delta."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Range result",
+      "title": "Read saved state",
+      "note": "The stored state gives the final or range answer.",
+      "activeLine": 8,
+      "codeInsight": "The stored state gives the final or range answer."
     }
   ],
   "complexity": {

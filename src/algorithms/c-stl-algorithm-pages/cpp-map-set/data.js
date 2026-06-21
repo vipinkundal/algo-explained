@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "C++ map / set is a C++ STL Algorithm Pages technique focused on answer.",
   "problem": "C++ map / set solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its balanced tree transition.",
-  "concept": "C++ map / set solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its balanced tree transition.",
-  "logicSummary": "C++ map / set reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the balanced tree transition until the stop condition for C++ map / set is reached.",
+  "concept": "C++ map / set is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on balance invariant.",
+  "logicSummary": "Start at the root, maintain balance invariant, rotate or recolor when height/color rules are violated, and return the tree-specific result.",
+  "transitionSummary": "Each step focuses on one node and uses balance invariant to decide the next child, rotation, or returned value.",
   "codeInsight": "The implementation keeps C++ map / set's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "C++ map / set appears when the input is input and the required result is answer.",
   "whenToUse": "Use C++ map / set when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a balanced tree dry run.",
-  "memoryTrick": "C++ map / set: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A balanced tree walkthrough showing C++ map / set's input, state, transition, and answer.",
+  "memoryTrick": "C++ map / set: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "C++ map / set is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data C++ map / set receives and what output is required."
+      "title": "Check node",
+      "text": "Handle an empty root or finished subtree."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by C++ map / set."
+      "title": "Read node state",
+      "text": "Inspect balance invariant."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the balanced tree transition and update the algorithm-specific state."
+      "title": "Move/combine",
+      "text": "rotate or recolor when height/color rules are violated."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return tree result",
+      "text": "Return traversal output, path result, or updated tree state."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the C++ map / set input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Root",
+      "title": "Check current node",
+      "note": "The code starts by handling missing nodes or the current root.",
+      "activeLine": 1,
+      "codeInsight": "The code starts by handling missing nodes or the current root."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that C++ map / set changes during the dry run.",
-      "activeLine": 3
+      "label": "Node state",
+      "title": "Read balance invariant",
+      "note": "The current node controls the next step.",
+      "activeLine": 3,
+      "codeInsight": "The current node controls the next step."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one balanced tree transition for C++ map / set.",
-      "activeLine": 5
+      "label": "Child step",
+      "title": "Rotate or recolor when height/color rules are violated",
+      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "activeLine": 6,
+      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final C++ map / set answer from the tracked state.",
-      "activeLine": 8
+      "label": "Tree result",
+      "title": "Return result",
+      "note": "The final traversal, path, measurement, or tree state is returned.",
+      "activeLine": 10,
+      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
     }
   ],
   "complexity": {

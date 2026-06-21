@@ -22,31 +22,31 @@ export const algorithmPage = {
   "originalActiveLine": 5,
   "meaning": "Queue Enqueue and Dequeue shows how data is organized, changed, and inspected through a small browser demo with the original C/C++ reference available beside it.",
   "problem": "Queue Enqueue and Dequeue explains the queue state model and how one focused change updates it.",
-  "concept": "Data structures are easier to learn when each value has a clear place and every change preserves a rule.",
-  "logicSummary": "Track the active state, enqueue, dequeue, or inspect the next item, and inspect the updated view.",
-  "transitionSummary": "Move one step forward by changing only the slots, links, cursors, or nodes required by this operation.",
+  "concept": "Queue Enqueue and Dequeue is useful when queue behavior is the clearest model for the data changes. Use this when the problem is naturally described by first-in, first-out state.",
+  "logicSummary": "Read the next value or operation, maintain first-in, first-out state, then enqueue, dequeue, peek, or evict entries.",
+  "transitionSummary": "Each step changes only the part of the queue required to preserve the invariant.",
   "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the Original C/C++ tab to study the source implementation.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
   "realLifeExample": "Queue Enqueue and Dequeue is useful when you need to understand the mechanics behind library-level data structures.",
   "whenToUse": "Use this page when learning Queue behavior through state changes instead of memorized code.",
-  "memoryTrick": "Name the moving part first, then ask which invariant must still be true.",
-  "visualizerCaption": "A queue operations walkthrough for Queue Enqueue and Dequeue.",
+  "memoryTrick": "Queue Enqueue and Dequeue: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Queue Enqueue and Dequeue is shown as queue state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Map the state",
-      "text": "Identify the values Queue Enqueue and Dequeue needs before any operation starts."
+      "title": "Read queue",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Set the rule",
-      "text": "Name the queue invariant that should remain true after the step."
+      "title": "Inspect queue front",
+      "text": "Look at the active queue fields."
     },
     {
-      "title": "Apply one change",
-      "text": "Run the next action: enqueue, dequeue, or inspect the next item."
+      "title": "Enqueue / dequeue",
+      "text": "enqueue, dequeue, peek, or evict entries."
     },
     {
-      "title": "Read the view",
-      "text": "Compare the before and after state to confirm the transition."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
@@ -69,36 +69,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "State map",
-      "title": "Prepare the working view",
-      "note": "Start with the values that Queue Enqueue and Dequeue needs to inspect or change.",
+      "label": "Queue",
+      "title": "Read queue action",
+      "note": "The code receives the next value or command.",
       "activeLine": 1,
-      "codeInsight": "The JS companion builds a compact state you can edit safely in the browser.",
-      "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state."
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "Cursor move",
-      "title": "Choose the active part",
-      "note": "Focus on the front cursor before changing anything else.",
-      "activeLine": 4,
-      "codeInsight": "Keeping the active part explicit makes the output easier to debug.",
-      "originalCodeInsight": "Initialization lines define the valid memory shape before mutation begins."
+      "label": "Queue front",
+      "title": "Inspect queue",
+      "note": "The active state must still satisfy first-in, first-out state.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy first-in, first-out state."
     },
     {
-      "label": "State change",
-      "title": "Apply the rule",
-      "note": "Perform one queue update and keep the invariant intact.",
-      "activeLine": 7,
-      "codeInsight": "This line group performs the browser-safe version of the same data-structure transition.",
-      "originalCodeInsight": "The important lines update the pointer, index, child link, cursor, or stored value."
+      "label": "Enqueue / dequeue",
+      "title": "Enqueue, dequeue, peek, or evict entries",
+      "note": "Only the necessary queue fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary queue fields are changed."
     },
     {
-      "label": "Visible result",
-      "title": "Inspect the answer",
-      "note": "Read the served item after the update.",
-      "activeLine": 10,
-      "codeInsight": "The return object exposes the updated state so edits have immediate feedback.",
-      "originalCodeInsight": "Display, return, or cout lines reveal the observable result."
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

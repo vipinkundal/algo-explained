@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Search in Rotated Sorted Array is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Rotated-array search uses binary search while first deciding which half is sorted.",
-  "concept": "Rotated-array search uses binary search while first deciding which half is sorted.",
-  "logicSummary": "Compare mid with target, identify the sorted half, then keep the half that can contain target.",
-  "transitionSummary": "Move low/high according to whether target lies inside the sorted side.",
+  "concept": "Rotated search is useful when sorted data has been shifted but one side of any midpoint is still ordered. Use this when the array is rotated and you still need logarithmic search.",
+  "logicSummary": "Pick mid, identify which side is sorted, then keep the side whose value range can contain the target.",
+  "transitionSummary": "Move low or high after checking whether target fits inside the sorted half.",
   "codeInsight": "The rotation is handled by the sorted-half test; no full pivot search is required.",
   "realLifeExample": "Use it when a sorted array has been rotated at an unknown pivot.",
   "whenToUse": "Use this when values are unique or duplicate handling is explicitly designed.",
-  "memoryTrick": "Find the sorted half, then ask whether target fits there.",
-  "visualizerCaption": "A rotated array walkthrough showing Search in Rotated Sorted Array's input, state, transition, and answer.",
+  "memoryTrick": "Search in Rotated Sorted Array: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Search in Rotated Sorted Array is shown as sorted-half detection inside a rotated array. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
       "title": "Pick mid",
-      "text": "Binary-search the rotated range."
+      "text": "Probe the current rotated range."
     },
     {
       "title": "Find sorted side",
-      "text": "Left side is sorted when array[low] <= array[mid]."
+      "text": "Check whether left or right half is ordered."
     },
     {
-      "title": "Keep fitting side",
-      "text": "Check whether target belongs inside that sorted range."
+      "title": "Keep fitting half",
+      "text": "Keep the half whose boundary values include the target."
     },
     {
-      "title": "Return or miss",
-      "text": "Return mid on match or -1 after exhaustion."
+      "title": "Return match",
+      "text": "Stop when mid equals target or the range empties."
     }
   ],
   "variables": [
     {
       "name": "array, target",
-      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
+      "purpose": "A rotated sorted array and target."
     },
     {
-      "name": "search window or scan index",
-      "purpose": "The index, pointer, or boundary range that can still contain the answer. This page visualizes it as rotated array."
+      "name": "low, high, mid",
+      "purpose": "Current candidate window."
     },
     {
-      "name": "found index or boundary",
-      "purpose": "The value produced by searchInRotatedSortedArray after the maintained state reaches the stop rule."
+      "name": "index",
+      "purpose": "The target index or -1."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Move low/high according to whether target lies inside the sorted side. Stop when no valid work remains or the answer is known."
+      "name": "low <= high",
+      "purpose": "Continue while the window can contain target."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Search in Rotated Sorted Array starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Rotated range",
+      "title": "Read array and target",
+      "note": "The code starts with a sorted array shifted around a pivot.",
+      "activeLine": 1,
+      "codeInsight": "The code starts with a sorted array shifted around a pivot."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "mid probe",
+      "title": "Choose the middle",
+      "note": "mid divides the current candidate window.",
+      "activeLine": 4,
+      "codeInsight": "mid divides the current candidate window."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Move low/high according to whether target lies inside the sorted side.",
-      "activeLine": 8
+      "label": "sorted half",
+      "title": "Detect ordered side",
+      "note": "One side of mid must still be sorted.",
+      "activeLine": 6,
+      "codeInsight": "One side of mid must still be sorted."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Move bounds",
+      "title": "Keep possible side",
+      "note": "Bounds move toward the only half that can contain target.",
+      "activeLine": 8,
+      "codeInsight": "Bounds move toward the only half that can contain target."
     }
   ],
   "complexity": {

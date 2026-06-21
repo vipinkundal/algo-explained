@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Partition DP is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Partition DP tracks which subset sums are reachable to decide whether equal partition is possible.",
-  "concept": "Partition DP tracks which subset sums are reachable to decide whether equal partition is possible.",
-  "logicSummary": "Partition DP defines subproblems, initializes base cases, fills states in dependency order, and reads the requested state as the answer.",
-  "transitionSummary": "Compute one DP state from already-solved smaller states.",
+  "concept": "Partition DP is useful when a pivot can partition values into smaller and larger sides. Use this when in-place average-case n log n sorting fits the dataset.",
+  "logicSummary": "Choose a pivot, partition values around it, then recursively sort the left and right partitions.",
+  "transitionSummary": "Each partition step moves values to the correct side of the pivot and fixes the pivot position.",
   "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
   "realLifeExample": "Partition DP appears when overlapping subproblems would otherwise be recomputed.",
   "whenToUse": "Use Partition DP when the recurrence and base cases match the problem statement.",
-  "memoryTrick": "Partition DP: state definition first, recurrence second, loops third.",
-  "visualizerCaption": "A partition table walkthrough showing Partition DP's input, state, transition, and answer.",
+  "memoryTrick": "Partition DP: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Partition DP is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Define state",
-      "text": "Name what one DP cell means."
+      "title": "Choose pivot",
+      "text": "Select the value that splits the range."
     },
     {
-      "title": "Set base cases",
-      "text": "Fill states that do not depend on others."
+      "title": "Partition range",
+      "text": "Move smaller values left and larger values right."
     },
     {
-      "title": "Apply recurrence",
-      "text": "Fill each state from solved states."
+      "title": "Fix pivot",
+      "text": "Place pivot at its final index."
     },
     {
-      "title": "Return target",
-      "text": "Read the requested final state."
+      "title": "Sort partitions",
+      "text": "Recurse on both sides."
     }
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
+      "name": "input parameters",
+      "purpose": "The values that define the DP problem."
     },
     {
-      "name": "dp table and dependencies",
-      "purpose": "Stored subproblem answers plus the dependency order needed to fill them. This page visualizes it as partition table."
+      "name": "dp table",
+      "purpose": "Stored answers for subproblems."
     },
     {
-      "name": "target dp answer",
-      "purpose": "The value produced by partitionDp after the maintained state reaches the stop rule."
+      "name": "target state",
+      "purpose": "The final state returned as the answer."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Compute one DP state from already-solved smaller states. Stop when no valid work remains or the answer is known."
+      "name": "states remain",
+      "purpose": "Continue until every dependency needed by the answer is filled."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Partition DP starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Pivot",
+      "title": "Choose pivot value",
+      "note": "The pivot defines the partition rule.",
+      "activeLine": 1,
+      "codeInsight": "The pivot defines the partition rule."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Scan",
+      "title": "Move values by pivot",
+      "note": "Values are compared with the pivot.",
+      "activeLine": 4,
+      "codeInsight": "Values are compared with the pivot."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Compute one DP state from already-solved smaller states.",
-      "activeLine": 8
+      "label": "Place",
+      "title": "Fix pivot index",
+      "note": "The pivot lands between smaller and larger values.",
+      "activeLine": 8,
+      "codeInsight": "The pivot lands between smaller and larger values."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Recurse",
+      "title": "Sort both sides",
+      "note": "The same partition rule handles each side.",
+      "activeLine": 11,
+      "codeInsight": "The same partition rule handles each side."
     }
   ],
   "complexity": {

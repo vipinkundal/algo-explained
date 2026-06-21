@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Rat in a Maze is a Recursion and Backtracking technique focused on solutions.",
   "problem": "Rat in a Maze explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Rat in a Maze explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "logicSummary": "Handle the base case, loop through valid choices, add one choice, recurse, then remove that choice.",
-  "transitionSummary": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated.",
+  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
+  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
+  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
   "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
   "realLifeExample": "Rat in a Maze appears when the input is choices and the required result is solutions.",
   "whenToUse": "Use Rat in a Maze when a problem matches the Recursion and Backtracking pattern and the expected state changes match a grid path dry run.",
-  "memoryTrick": "Rat in a Maze: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A grid path walkthrough showing Rat in a Maze's input, state, transition, and answer.",
+  "memoryTrick": "Rat in a Maze: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Rat in a Maze is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Rat in a Maze receives and what output is required."
+      "title": "Read grid",
+      "text": "Identify dimensions and valid cells."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Rat in a Maze."
+      "title": "Choose position",
+      "text": "Select the current row/column or boundary."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the grid path transition and update the algorithm-specific state."
+      "title": "Update neighbors",
+      "text": "Move, fill, rotate, or accumulate according to the rule."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return grid result",
+      "text": "Return count, transformed grid, or lookup answer."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Rat in a Maze input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Grid",
+      "title": "Read rows and columns",
+      "note": "The code starts from the matrix shape.",
+      "activeLine": 1,
+      "codeInsight": "The code starts from the matrix shape."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Rat in a Maze changes during the dry run.",
-      "activeLine": 3
+      "label": "Position",
+      "title": "Choose active cell",
+      "note": "The current row/column controls the next update.",
+      "activeLine": 3,
+      "codeInsight": "The current row/column controls the next update."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one grid path transition for Rat in a Maze.",
-      "activeLine": 5
+      "label": "Move/update",
+      "title": "Apply neighbor or boundary rule",
+      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
+      "activeLine": 6,
+      "codeInsight": "The transition changes reachable cells, boundaries, or accumulated values."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Rat in a Maze answer from the tracked state.",
-      "activeLine": 8
+      "label": "Result",
+      "title": "Return grid output",
+      "note": "The final matrix, count, or query answer is returned.",
+      "activeLine": 9,
+      "codeInsight": "The final matrix, count, or query answer is returned."
     }
   ],
   "complexity": {

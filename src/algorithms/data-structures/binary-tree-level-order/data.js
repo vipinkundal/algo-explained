@@ -22,31 +22,31 @@ export const algorithmPage = {
   "originalActiveLine": 7,
   "meaning": "Binary Tree Level Order Traversal shows how data is organized, changed, and inspected through a small browser demo with the original C/C++ reference available beside it.",
   "problem": "Binary Tree Level Order Traversal explains the tree state model and how one focused change updates it.",
-  "concept": "Data structures are easier to learn when each value has a clear place and every change preserves a rule.",
-  "logicSummary": "Track the active state, visit nodes in the selected traversal order, and inspect the updated view.",
-  "transitionSummary": "Move one step forward by changing only the slots, links, cursors, or nodes required by this operation.",
+  "concept": "Level-order traversal is useful when tree nodes must be processed by depth from top to bottom. Use this when closer-to-root nodes must be handled before deeper nodes.",
+  "logicSummary": "Start with the root in a queue, visit the front node, append its value, then enqueue children.",
+  "transitionSummary": "Each step removes the next queued node and appends its children to the back.",
   "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the Original C/C++ tab to study the source implementation.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
   "realLifeExample": "Binary Tree Level Order Traversal is useful when you need to understand the mechanics behind library-level data structures.",
   "whenToUse": "Use this page when learning Trees / BST / AVL / Heap behavior through state changes instead of memorized code.",
-  "memoryTrick": "Name the moving part first, then ask which invariant must still be true.",
-  "visualizerCaption": "A tree structure walkthrough for Binary Tree Level Order Traversal.",
+  "memoryTrick": "Binary Tree Level Order Traversal: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Binary Tree Level Order Traversal is shown as breadth-first queue traversal. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Map the state",
-      "text": "Identify the values Binary Tree Level Order Traversal needs before any operation starts."
+      "title": "Check root",
+      "text": "Return an empty result for an empty tree."
     },
     {
-      "title": "Set the rule",
-      "text": "Name the tree invariant that should remain true after the step."
+      "title": "Seed queue",
+      "text": "Put the root in the BFS queue."
     },
     {
-      "title": "Apply one change",
-      "text": "Run the next action: visit nodes in the selected traversal order."
+      "title": "Visit front",
+      "text": "Append the next queued node value."
     },
     {
-      "title": "Read the view",
-      "text": "Compare the before and after state to confirm the transition."
+      "title": "Enqueue children",
+      "text": "Push left and right children for the next levels."
     }
   ],
   "variables": [
@@ -69,36 +69,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "State map",
-      "title": "Prepare the working view",
-      "note": "Start with the values that Binary Tree Level Order Traversal needs to inspect or change.",
+      "label": "Root",
+      "title": "Check for empty tree",
+      "note": "If root is missing, there are no levels to visit.",
       "activeLine": 1,
-      "codeInsight": "The JS companion builds a compact state you can edit safely in the browser.",
-      "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state."
+      "codeInsight": "If root is missing, there are no levels to visit."
     },
     {
-      "label": "Cursor move",
-      "title": "Choose the active part",
-      "note": "Focus on the entry node before changing anything else.",
-      "activeLine": 4,
-      "codeInsight": "Keeping the active part explicit makes the output easier to debug.",
-      "originalCodeInsight": "Initialization lines define the valid memory shape before mutation begins."
+      "label": "Queue",
+      "title": "Seed traversal queue",
+      "note": "The root becomes the first discovered node.",
+      "activeLine": 3,
+      "codeInsight": "The root becomes the first discovered node."
     },
     {
-      "label": "State change",
-      "title": "Apply the rule",
-      "note": "Perform one tree update and keep the invariant intact.",
-      "activeLine": 7,
-      "codeInsight": "This line group performs the browser-safe version of the same data-structure transition.",
-      "originalCodeInsight": "The important lines update the pointer, index, child link, cursor, or stored value."
+      "label": "Visit",
+      "title": "Process queue front",
+      "note": "The front node is appended to output.",
+      "activeLine": 6,
+      "codeInsight": "The front node is appended to output."
     },
     {
-      "label": "Visible result",
-      "title": "Inspect the answer",
-      "note": "Read the visit order after the update.",
-      "activeLine": 10,
-      "codeInsight": "The return object exposes the updated state so edits have immediate feedback.",
-      "originalCodeInsight": "Display, return, or cout lines reveal the observable result."
+      "label": "Children",
+      "title": "Discover next level",
+      "note": "Children are pushed to the queue for later visits.",
+      "activeLine": 8,
+      "codeInsight": "Children are pushed to the queue for later visits."
     }
   ],
   "complexity": {

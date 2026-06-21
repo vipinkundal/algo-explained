@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Cycle Detection in Undirected Graph is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Undirected cycle detection tracks each vertex's parent so the edge back to the parent is not mistaken for a cycle.",
-  "concept": "Undirected cycle detection tracks each vertex's parent so the edge back to the parent is not mistaken for a cycle.",
-  "logicSummary": "cycle-detection-undirected maintains graph-specific state and updates it through the algorithm's own vertex or edge transition.",
-  "transitionSummary": "Consume the next vertex or edge, update graph state, and preserve the graph invariant.",
+  "concept": "Cycle Detection in Undirected Graph is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
+  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
+  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
   "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
   "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
   "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Graph algorithms are state machines: pick the right frontier and update only that state.",
-  "visualizerCaption": "A graph visited walkthrough showing Cycle Detection in Undirected Graph's input, state, transition, and answer.",
+  "memoryTrick": "Cycle Detection in Undirected Graph: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Cycle Detection in Undirected Graph is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Initialize graph state",
-      "text": "Create the state this graph algorithm owns."
+      "title": "Read algorithm state",
+      "text": "Identify the next command, value, node, or library call."
     },
     {
-      "title": "Choose next work item",
-      "text": "Pick the next vertex or edge according to the invariant."
+      "title": "Inspect invariant",
+      "text": "Look at the active algorithm state fields."
     },
     {
-      "title": "Update state",
-      "text": "Relax, visit, union, or decrement state."
+      "title": "State change",
+      "text": "update the state described by this algorithm."
     },
     {
-      "title": "Return graph result",
-      "text": "Return the final graph-specific result."
+      "title": "Read result",
+      "text": "Return the emitted value or updated structure."
     }
   ],
   "variables": [
     {
-      "name": "graph",
-      "purpose": "The adjacency structure that defines which vertices can be reached from each vertex."
+      "name": "graph input",
+      "purpose": "Vertices, edges, weights, or adjacency lists."
     },
     {
-      "name": "frontier / visited / distance state",
-      "purpose": "The graph-owned state that changes as vertices or edges are processed. This page visualizes it as graph visited."
+      "name": "graph state",
+      "purpose": "Visited, distance, parent, indegree, or component state."
     },
     {
       "name": "graph result",
-      "purpose": "The value produced by cycleDetectionUndirected after the maintained state reaches the stop rule."
+      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Consume the next vertex or edge, update graph state, and preserve the graph invariant. Stop when no valid work remains or the answer is known."
+      "name": "work remains",
+      "purpose": "Continue while vertices, edges, or frontier items remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Cycle Detection in Undirected Graph starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Algorithm State",
+      "title": "Read algorithm state action",
+      "note": "The code receives the next value or command.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the next value or command."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Invariant",
+      "title": "Inspect algorithm state",
+      "note": "The active state must still satisfy page-specific invariant.",
+      "activeLine": 3,
+      "codeInsight": "The active state must still satisfy page-specific invariant."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Consume the next vertex or edge, update graph state, and preserve the graph invariant.",
-      "activeLine": 8
+      "label": "State change",
+      "title": "Update the state described by this algorithm",
+      "note": "Only the necessary algorithm state fields are changed.",
+      "activeLine": 6,
+      "codeInsight": "Only the necessary algorithm state fields are changed."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Result",
+      "title": "Return visible result",
+      "note": "The return value or printed state confirms the operation.",
+      "activeLine": 9,
+      "codeInsight": "The return value or printed state confirms the operation."
     }
   ],
   "complexity": {

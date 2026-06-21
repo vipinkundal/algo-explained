@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Kruskal’s Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Kruskal’s Algorithm sorts edges and uses Union Find to avoid cycles while building an MST.",
-  "concept": "Kruskal’s Algorithm sorts edges and uses Union Find to avoid cycles while building an MST.",
-  "logicSummary": "kruskal maintains graph-specific state and updates it through the algorithm's own vertex or edge transition.",
-  "transitionSummary": "Consume the next vertex or edge, update graph state, and preserve the graph invariant.",
+  "concept": "Kruskal’s Algorithm is useful when graph structure can be solved by maintaining chosen edge set. Use this when the required result is minimum-spanning-tree growth.",
+  "logicSummary": "Initialize graph input and chosen edge set, choose the next work item, then add the cheapest safe edge.",
+  "transitionSummary": "Each step consumes one vertex or edge and updates chosen edge set without losing the graph invariant.",
   "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
   "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
   "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Graph algorithms are state machines: pick the right frontier and update only that state.",
-  "visualizerCaption": "A mst edges walkthrough showing Kruskal’s Algorithm's input, state, transition, and answer.",
+  "memoryTrick": "Kruskal’s Algorithm: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Kruskal’s Algorithm is shown as graph frontier/state updates. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Initialize graph state",
-      "text": "Create the state this graph algorithm owns."
+      "title": "Read graph",
+      "text": "Identify vertices, edges, weights, and start state."
     },
     {
-      "title": "Choose next work item",
-      "text": "Pick the next vertex or edge according to the invariant."
+      "title": "Build graph state",
+      "text": "Create the chosen edge set."
     },
     {
-      "title": "Update state",
-      "text": "Relax, visit, union, or decrement state."
+      "title": "Process work item",
+      "text": "Add the cheapest safe edge."
     },
     {
       "title": "Return graph result",
-      "text": "Return the final graph-specific result."
+      "text": "Return the minimum-spanning-tree growth."
     }
   ],
   "variables": [
     {
-      "name": "vertex Count, edges",
-      "purpose": "vertex Count: The vertex Count input used by the algorithm. edges: Weighted or unweighted connections considered by the graph transition."
+      "name": "graph input",
+      "purpose": "Vertices, edges, weights, or adjacency lists."
     },
     {
-      "name": "chosen edges and components",
-      "purpose": "The partial spanning tree plus component or frontier state."
+      "name": "graph state",
+      "purpose": "Visited, distance, parent, indegree, or component state."
     },
     {
       "name": "graph result",
-      "purpose": "The value produced by kruskal after the maintained state reaches the stop rule."
+      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Consume the next vertex or edge, update graph state, and preserve the graph invariant. Stop when no valid work remains or the answer is known."
+      "name": "work remains",
+      "purpose": "Continue while vertices, edges, or frontier items remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Kruskal’s Algorithm starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Graph",
+      "title": "Read graph input",
+      "note": "The code receives vertices, edges, weights, or adjacency lists.",
+      "activeLine": 1,
+      "codeInsight": "The code receives vertices, edges, weights, or adjacency lists."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Chosen Edge Set",
+      "title": "Initialize chosen edge set",
+      "note": "Only the graph state owned by this algorithm is created.",
+      "activeLine": 3,
+      "codeInsight": "Only the graph state owned by this algorithm is created."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Consume the next vertex or edge, update graph state, and preserve the graph invariant.",
-      "activeLine": 8
+      "label": "Work item",
+      "title": "Process next vertex or edge",
+      "note": "Add the cheapest safe edge.",
+      "activeLine": 6,
+      "codeInsight": "Add the cheapest safe edge."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Minimum Spanning Tree Growth",
+      "title": "Return minimum-spanning-tree growth",
+      "note": "The final graph state becomes the answer.",
+      "activeLine": 10,
+      "codeInsight": "The final graph state becomes the answer."
     }
   ],
   "complexity": {

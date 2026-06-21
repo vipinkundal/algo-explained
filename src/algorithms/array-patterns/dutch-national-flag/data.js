@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Dutch National Flag is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Dutch National Flag partitions values into low, middle, and high regions in one pass.",
-  "concept": "Dutch National Flag partitions values into low, middle, and high regions in one pass.",
-  "logicSummary": "Dutch National Flag keeps an array-specific invariant and updates it as the scan moves through the input.",
-  "transitionSummary": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
+  "concept": "Dutch National Flag is useful when a pivot can partition values into smaller and larger sides. Use this when in-place average-case n log n sorting fits the dataset.",
+  "logicSummary": "Choose a pivot, partition values around it, then recursively sort the left and right partitions.",
+  "transitionSummary": "Each partition step moves values to the correct side of the pivot and fixes the pivot position.",
   "codeInsight": "The code is written around the array invariant, not a generic scan: each variable explains what future positions can still change.",
   "realLifeExample": "Dutch National Flag appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Dutch National Flag when the problem statement matches its array invariant.",
-  "memoryTrick": "Dutch National Flag: write down the invariant before moving the pointer.",
-  "visualizerCaption": "A three partition walkthrough showing Dutch National Flag's input, state, transition, and answer.",
+  "memoryTrick": "Dutch National Flag: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Dutch National Flag is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the array",
-      "text": "Identify whether the problem is about a range, window, order, or frequency."
+      "title": "Choose pivot",
+      "text": "Select the value that splits the range."
     },
     {
-      "title": "Initialize invariant",
-      "text": "Create only the pointer or running state this pattern needs."
+      "title": "Partition range",
+      "text": "Move smaller values left and larger values right."
     },
     {
-      "title": "Advance scan",
-      "text": "Update the invariant as each position is consumed."
+      "title": "Fix pivot",
+      "text": "Place pivot at its final index."
     },
     {
-      "title": "Return answer",
-      "text": "Return the value maintained by the invariant."
+      "title": "Sort partitions",
+      "text": "Recurse on both sides."
     }
   ],
   "variables": [
     {
       "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
+      "purpose": "The input values."
     },
     {
-      "name": "low, mid, high",
-      "purpose": "Three regions: values below, equal to, and above the pivot category."
+      "name": "invariant state",
+      "purpose": "The running sum, window, pointer, candidate, or frequency state."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by dutchNationalFlag after the maintained state reaches the stop rule."
+      "name": "answer",
+      "purpose": "The best value, transformed array, or matching pair."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant. Stop when no valid work remains or the answer is known."
+      "name": "scan remains",
+      "purpose": "Continue while unchecked positions remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Dutch National Flag starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Pivot",
+      "title": "Choose pivot value",
+      "note": "The pivot defines the partition rule.",
+      "activeLine": 1,
+      "codeInsight": "The pivot defines the partition rule."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Scan",
+      "title": "Move values by pivot",
+      "note": "Values are compared with the pivot.",
+      "activeLine": 4,
+      "codeInsight": "Values are compared with the pivot."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Move the pointer, window, counter, or running value exactly once per step while preserving the invariant.",
-      "activeLine": 8
+      "label": "Place",
+      "title": "Fix pivot index",
+      "note": "The pivot lands between smaller and larger values.",
+      "activeLine": 8,
+      "codeInsight": "The pivot lands between smaller and larger values."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Recurse",
+      "title": "Sort both sides",
+      "note": "The same partition rule handles each side.",
+      "activeLine": 11,
+      "codeInsight": "The same partition rule handles each side."
     }
   ],
   "complexity": {

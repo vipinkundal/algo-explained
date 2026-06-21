@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Bit Basics is a Number Theory and Bit Manipulation technique focused on answer.",
   "problem": "Bit Basics solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its bit toggle transition.",
-  "concept": "Bit Basics solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its bit toggle transition.",
-  "logicSummary": "Bit Basics reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the bit toggle transition until the stop condition for Bit Basics is reached.",
+  "concept": "Number and bit algorithms are useful when arithmetic properties let you skip brute-force work. Use this when divisibility, powers, bits, xor, or modular rules define the answer.",
+  "logicSummary": "Read numeric input, keep the relevant arithmetic state, apply the identity, and return the reduced result.",
+  "transitionSummary": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
   "codeInsight": "The implementation keeps Bit Basics' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "Bit Basics appears when the input is input and the required result is answer.",
   "whenToUse": "Use Bit Basics when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a bit toggle dry run.",
-  "memoryTrick": "Bit Basics: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A bit toggle walkthrough showing Bit Basics' input, state, transition, and answer.",
+  "memoryTrick": "Bit Basics: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Bit Basics is shown as arithmetic-state reduction. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Bit Basics receives and what output is required."
+      "title": "Read numbers",
+      "text": "Identify the integer, range, or modulus."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Bit Basics."
+      "title": "Set invariant",
+      "text": "Choose the arithmetic or bit rule."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the bit toggle transition and update the algorithm-specific state."
+      "title": "Apply operation",
+      "text": "Shift, xor, divide, multiply, or mark values."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return result",
+      "text": "Return the reduced number or boolean answer."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Bit Basics input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Numbers",
+      "title": "Read numeric state",
+      "note": "The code receives the number, range, or modulus.",
+      "activeLine": 1,
+      "codeInsight": "The code receives the number, range, or modulus."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Bit Basics changes during the dry run.",
-      "activeLine": 3
+      "label": "Rule",
+      "title": "Select math invariant",
+      "note": "The chosen identity controls every update.",
+      "activeLine": 3,
+      "codeInsight": "The chosen identity controls every update."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one bit toggle transition for Bit Basics.",
-      "activeLine": 5
+      "label": "Reduction",
+      "title": "Apply one reduction",
+      "note": "A shift, xor, multiply, divide, or mark changes state.",
+      "activeLine": 5,
+      "codeInsight": "A shift, xor, multiply, divide, or mark changes state."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Bit Basics answer from the tracked state.",
-      "activeLine": 8
+      "label": "Numeric result",
+      "title": "Return numeric result",
+      "note": "The loop ends when the invariant gives the answer.",
+      "activeLine": 8,
+      "codeInsight": "The loop ends when the invariant gives the answer."
     }
   ],
   "complexity": {

@@ -14,74 +14,78 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Selection Sort is taught here with its own state, transition, code trace, and stopping rule.",
   "problem": "Select the smallest item from the unsorted suffix and swap it into the next output slot.",
-  "concept": "Select the smallest item from the unsorted suffix and swap it into the next output slot.",
-  "logicSummary": "Selection Sort keeps a clear sorted/unsorted invariant and makes one transition that places values closer to final order.",
-  "transitionSummary": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
+  "concept": "Selection Sort is useful when you can choose the next smallest value and lock one final position at a time. Use this when clear minimum-selection behavior matters more than minimizing swaps.",
+  "logicSummary": "Scan the unsorted suffix for the minimum value, swap it into the next fixed slot, and advance the boundary.",
+  "transitionSummary": "Each pass selects one minimum and grows the sorted prefix by one position.",
   "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
   "realLifeExample": "Selection Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
   "whenToUse": "Use Selection Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Selection Sort: protect the invariant after every comparison or move.",
-  "visualizerCaption": "A min selection walkthrough showing Selection Sort's input, state, transition, and answer.",
+  "memoryTrick": "Selection Sort: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Selection Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Copy input",
-      "text": "Avoid mutating the caller's original array."
+      "title": "Set boundary",
+      "text": "Mark the first unsorted slot."
     },
     {
-      "title": "Maintain invariant",
-      "text": "Track which part is sorted or partitioned."
+      "title": "Find minimum",
+      "text": "Scan the remaining values."
     },
     {
-      "title": "Move values",
-      "text": "Swap, insert, merge, or bucket according to the algorithm."
+      "title": "Place minimum",
+      "text": "Swap the minimum into the boundary slot."
     },
     {
-      "title": "Return sorted result",
-      "text": "Return the fully ordered working array."
+      "title": "Return sorted array",
+      "text": "Finish after every slot is fixed."
     }
   ],
   "variables": [
     {
       "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
+      "purpose": "The values to sort."
     },
     {
-      "name": "working array and boundaries",
-      "purpose": "The in-progress array plus pass, partition, bucket, or merge boundaries. This page visualizes it as min selection."
+      "name": "working array",
+      "purpose": "A copy that is rearranged during sorting."
     },
     {
-      "name": "sorted result",
-      "purpose": "The value produced by selectionSort after the maintained state reaches the stop rule."
+      "name": "sorted array",
+      "purpose": "The final ordered result."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Compare and move values according to the algorithm's invariant until no unsorted work remains. Stop when no valid work remains or the answer is known."
+      "name": "unsorted work remains",
+      "purpose": "Continue until every value is in final order."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read inputs",
-      "note": "Selection Sort starts by reading the exact input shape it owns.",
-      "activeLine": 1
+      "label": "Boundary",
+      "title": "Choose next fixed slot",
+      "note": "The left side is already sorted.",
+      "activeLine": 1,
+      "codeInsight": "The left side is already sorted."
     },
     {
-      "label": "State",
-      "title": "Initialize state",
-      "note": "Create only the state needed for this algorithm's invariant.",
-      "activeLine": 3
+      "label": "Minimum",
+      "title": "Scan unsorted suffix",
+      "note": "The code tracks the smallest remaining value.",
+      "activeLine": 4,
+      "codeInsight": "The code tracks the smallest remaining value."
     },
     {
-      "label": "Loop",
-      "title": "Run transition",
-      "note": "Compare and move values according to the algorithm's invariant until no unsorted work remains.",
-      "activeLine": 8
+      "label": "Swap",
+      "title": "Place selected value",
+      "note": "The minimum moves into its final position.",
+      "activeLine": 7,
+      "codeInsight": "The minimum moves into its final position."
     },
     {
-      "label": "Answer",
-      "title": "Return answer",
-      "note": "Return the value produced by the maintained invariant.",
-      "activeLine": 12
+      "label": "Sorted",
+      "title": "Return final order",
+      "note": "All positions are fixed after the last pass.",
+      "activeLine": 11,
+      "codeInsight": "All positions are fixed after the last pass."
     }
   ],
   "complexity": {

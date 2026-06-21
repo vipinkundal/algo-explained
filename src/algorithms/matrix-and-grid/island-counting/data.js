@@ -14,30 +14,30 @@ export const algorithmPage = {
   "codeFilename": "solution.js",
   "meaning": "Island Counting is a Matrix and Grid technique focused on answer.",
   "problem": "Island Counting solves a Matrix and Grid problem by maintaining only the state needed for its grid bfs dfs transition.",
-  "concept": "Island Counting solves a Matrix and Grid problem by maintaining only the state needed for its grid bfs dfs transition.",
-  "logicSummary": "Island Counting reads the input, initializes its working state, applies the core transition, and returns the tracked answer.",
-  "transitionSummary": "Repeat the grid bfs dfs transition until the stop condition for Island Counting is reached.",
+  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
+  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
+  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
   "codeInsight": "The implementation keeps Island Counting's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
   "realLifeExample": "Island Counting appears when the input is input and the required result is answer.",
   "whenToUse": "Use Island Counting when a problem matches the Matrix and Grid pattern and the expected state changes match a grid bfs dfs dry run.",
-  "memoryTrick": "Island Counting: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A grid bfs dfs walkthrough showing Island Counting's input, state, transition, and answer.",
+  "memoryTrick": "Island Counting: name the invariant, then trace the exact state change.",
+  "visualizerCaption": "Island Counting is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Island Counting receives and what output is required."
+      "title": "Read grid",
+      "text": "Identify dimensions and valid cells."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Island Counting."
+      "title": "Choose position",
+      "text": "Select the current row/column or boundary."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the grid bfs dfs transition and update the algorithm-specific state."
+      "title": "Update neighbors",
+      "text": "Move, fill, rotate, or accumulate according to the rule."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Return grid result",
+      "text": "Return count, transformed grid, or lookup answer."
     }
   ],
   "variables": [
@@ -60,28 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Island Counting input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Grid",
+      "title": "Read rows and columns",
+      "note": "The code starts from the matrix shape.",
+      "activeLine": 1,
+      "codeInsight": "The code starts from the matrix shape."
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Island Counting changes during the dry run.",
-      "activeLine": 3
+      "label": "Position",
+      "title": "Choose active cell",
+      "note": "The current row/column controls the next update.",
+      "activeLine": 3,
+      "codeInsight": "The current row/column controls the next update."
     },
     {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one grid bfs dfs transition for Island Counting.",
-      "activeLine": 5
+      "label": "Move/update",
+      "title": "Apply neighbor or boundary rule",
+      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
+      "activeLine": 6,
+      "codeInsight": "The transition changes reachable cells, boundaries, or accumulated values."
     },
     {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Island Counting answer from the tracked state.",
-      "activeLine": 8
+      "label": "Result",
+      "title": "Return grid output",
+      "note": "The final matrix, count, or query answer is returned.",
+      "activeLine": 9,
+      "codeInsight": "The final matrix, count, or query answer is returned."
     }
   ],
   "complexity": {
