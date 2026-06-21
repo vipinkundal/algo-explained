@@ -25,7 +25,7 @@
     "stepByStepLogic": "Пошаговая логика",
     "whenToUse": "Когда использовать",
     "memoryTrick": "Прием для запоминания",
-    "startVisualizer": "Запустить визуализатор",
+    "startVisualizer": "Continue",
     "algorithmVisualizer": "Визуализатор алгоритма",
     "stepCounter": "Шаг {current}/{total}",
     "concept": "Концепция",

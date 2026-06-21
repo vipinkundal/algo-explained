@@ -12,103 +12,103 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/level-order-traversal/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Level Order Traversal is a Trees technique focused on tree result.",
-  "problem": "Level Order Traversal relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "Level Order Traversal relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "logicSummary": "Check the base case, process the current node, recurse into children, and combine the returned values.",
-  "transitionSummary": "Move from a node to its child or back from a child to its parent with updated state.",
-  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
-  "realLifeExample": "Level Order Traversal appears when the input is root and the required result is tree result.",
-  "whenToUse": "Use Level Order Traversal when a problem matches the Trees pattern and the expected state changes match a tree levels dry run.",
-  "memoryTrick": "Level Order Traversal: name the input, state, answer, and stop condition before writing the loop.",
-  "visualizerCaption": "A tree levels walkthrough showing Level Order Traversal's input, state, transition, and answer.",
+  "meaning": "Level Order Traversal visits a tree breadth-first, reading every node on one level before moving to the next.",
+  "problem": "Level Order Traversal uses a queue so nodes are processed in the same order their parents discover them.",
+  "concept": "Level Order Traversal is breadth-first traversal for trees: visit the root, then its children, then the next level.",
+  "logicSummary": "Start with the root in a queue, visit the front node, append its value, then enqueue its left and right children.",
+  "transitionSummary": "Each step removes the next queued node from the front position and adds its children to the back of the queue.",
+  "codeInsight": "The queue is the invariant: it always holds the nodes that have been discovered but not visited yet.",
+  "realLifeExample": "Use it when rendering a family tree by rows, scanning a folder tree by depth, or finding nodes closest to the root first.",
+  "whenToUse": "Use Level Order Traversal when tree nodes must be processed by depth from top to bottom.",
+  "memoryTrick": "Level Order Traversal: queue the root, visit front, push children, repeat.",
+  "visualizerCaption": "A breadth-first tree walkthrough showing the queue, current node, child enqueue step, and output order.",
   "logicSteps": [
     {
-      "title": "Read the input",
-      "text": "Identify the exact data Level Order Traversal receives and what output is required."
+      "title": "Start at root",
+      "text": "If the root is missing, the traversal is empty; otherwise the root is the first queued node."
     },
     {
-      "title": "Initialize state",
-      "text": "Prepare the working variables used only by Level Order Traversal."
+      "title": "Create queue",
+      "text": "Keep discovered nodes in first-in, first-out order so earlier levels are visited first."
     },
     {
-      "title": "Apply the transition",
-      "text": "Run the tree levels transition and update the algorithm-specific state."
+      "title": "Visit next node",
+      "text": "Read the front queued node and append its value to the traversal output."
     },
     {
-      "title": "Return the answer",
-      "text": "Stop at the correct condition and return the tracked result."
+      "title": "Queue children",
+      "text": "Add the current node's left and right children so the next level is visited after this one."
     }
   ],
   "variables": [
     {
       "name": "root",
-      "purpose": "The tree node where recursion or traversal begins."
+      "purpose": "The first node to visit. If it is missing, the traversal returns an empty list."
     },
     {
-      "name": "current node and recursion state",
-      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as tree levels."
+      "name": "queue",
+      "purpose": "Nodes discovered but not visited yet. Its first-in, first-out order preserves tree levels."
     },
     {
-      "name": "tree result",
-      "purpose": "The value produced by levelOrderTraversal after the maintained state reaches the stop rule."
+      "name": "node",
+      "purpose": "The current queue item being visited; its value is copied into the output."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
+      "name": "order",
+      "purpose": "The final list of node values in breadth-first order."
     }
   ],
   "dryRun": [
     {
-      "label": "Input",
-      "title": "Read the problem data",
-      "note": "Read the Level Order Traversal input and decide what result must be produced.",
-      "activeLine": 1
+      "label": "Root check",
+      "title": "Check for an empty tree",
+      "note": "If root is missing, there are no levels to scan, so the function returns an empty list.",
+      "activeLine": 6
     },
     {
-      "label": "State",
-      "title": "Initialize working state",
-      "note": "Set up the state variables that Level Order Traversal changes during the dry run.",
-      "activeLine": 3
-    },
-    {
-      "label": "Transition",
-      "title": "Run the core step",
-      "note": "Apply one tree levels transition for Level Order Traversal.",
-      "activeLine": 5
-    },
-    {
-      "label": "Answer",
-      "title": "Return the result",
-      "note": "Return the final Level Order Traversal answer from the tracked state.",
+      "label": "Queue setup",
+      "title": "Seed the BFS queue",
+      "note": "Put the root in the queue and create the output list that will receive visited values.",
       "activeLine": 8
+    },
+    {
+      "label": "Visit front",
+      "title": "Process the next queued node",
+      "note": "Read the next queue item and append its value to the level-order output.",
+      "activeLine": 11
+    },
+    {
+      "label": "Enqueue kids",
+      "title": "Discover the next level",
+      "note": "Push the left and right children to the back of the queue, then continue until the queue is exhausted.",
+      "activeLine": 12
     }
   ],
   "complexity": {
     "time": "O(n) over tree nodes.",
-    "space": "O(h) recursion or traversal state."
+    "space": "O(w) for the queue, where w is the maximum tree width."
   },
   "quiz": {
     "question": "Which state choice keeps Level Order Traversal correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track current node and traversal state and update it only through Level Order Traversal's transition.",
+        "text": "Track a queue of discovered nodes and visit them in first-in, first-out order.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Use recursive return values from children to decide the next node.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Use a stack so the deepest node is always visited first.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Level Order Traversal stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Level Order Traversal needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The queue is what keeps the traversal breadth-first.",
+    "incorrectText": "Not quite. Level Order Traversal depends on FIFO queue order, not recursion order or stack order."
   },
   "categorySlug": "trees",
   "algorithmSlug": "level-order-traversal",

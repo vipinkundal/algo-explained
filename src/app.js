@@ -369,25 +369,46 @@ function renderAccountProfile() {
 
 function renderAuthForms() {
   const isSignup = state.authMode === "signup";
+  const primaryLabel = isSignup ? "Create account" : "Continue";
   return `
     <div class="profile-hero auth-hero">
       <span class="profile-avatar">${icon("account_circle")}</span>
       <div>
         <p class="eyebrow">Account</p>
-        <h1 id="profile-title">${isSignup ? "Create your account" : "Sign in"}</h1>
-        <p>Sync saved algorithms, recent activity, daily quizzes, and progress.</p>
+        <h1 id="profile-title">${isSignup ? "Create account" : "Sign in"}</h1>
+        <p>${isSignup ? "Create an account to keep your learning path available." : "Continue to your learning account."}</p>
       </div>
     </div>
-    <div class="auth-tabs" role="tablist" aria-label="Account mode">
-      <button type="button" class="${state.authMode === "login" ? "active" : ""}" data-auth-mode="login">Sign in</button>
-      <button type="button" class="${state.authMode === "signup" ? "active" : ""}" data-auth-mode="signup">Create account</button>
+    <div class="auth-benefits" aria-label="Account benefits">
+      <article>
+        ${icon("quiz")}
+        <strong>Daily quiz access</strong>
+        <p>Get a daily quiz and keep your answer history tied to your account.</p>
+      </article>
+      <article>
+        ${icon("bookmark")}
+        <strong>Saved algorithms</strong>
+        <p>Bookmark algorithm types and lessons you want to revisit later.</p>
+      </article>
+      <article>
+        ${icon("history")}
+        <strong>Recent activity</strong>
+        <p>Resume from recently opened lessons, visualizers, and progress marks.</p>
+      </article>
     </div>
     <form class="auth-form" data-auth-form="${escapeHtml(state.authMode)}">
       ${isSignup ? `<label>Full name<input name="name" autocomplete="name" placeholder="Ada Lovelace" /></label>` : ""}
       <label>Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label>
       <label>Password<input name="password" type="password" autocomplete="${isSignup ? "new-password" : "current-password"}" minlength="8" required /></label>
-      <button class="auth-submit" type="submit">${icon(isSignup ? "person_add" : "login")}<span>${isSignup ? "Create account" : "Sign in"}</span></button>
+      <button class="auth-submit" type="submit">${icon(isSignup ? "person_add" : "login")}<span>${primaryLabel}</span></button>
     </form>
+    <div class="auth-switch">
+      <div>
+        <strong>${isSignup ? "Already have an account?" : "New to Algo Explained?"}</strong>
+        <p>${isSignup ? "Sign in to sync your saved algorithms and quiz progress." : "Create an account to save algorithms and unlock daily quiz history."}</p>
+      </div>
+      <button type="button" data-auth-mode="${isSignup ? "login" : "signup"}">${isSignup ? "Sign in" : "Create account"}</button>
+    </div>
     ${state.authMessage ? `<p class="auth-message ${escapeHtml(state.authMessageType)}">${escapeHtml(state.authMessage)}</p>` : ""}
   `;
 }
@@ -1056,7 +1077,7 @@ function renderSearchResult(record) {
 }
 
 function renderSearchResultGroups(records) {
-  return groupSearchResultsByCategory(records).map(({ category, records: categoryRecords }) => `
+  return groupSearchResultsByCategory(records, Boolean(state.searchQuery.trim())).map(({ category, records: categoryRecords }) => `
     <section class="search-result-group">
       <div class="search-result-group-header">
         <h2>${escapeHtml(category)}</h2>
@@ -1069,20 +1090,48 @@ function renderSearchResultGroups(records) {
   `).join("");
 }
 
-function groupSearchResultsByCategory(records) {
+function groupSearchResultsByCategory(records, isScoredSearch = false) {
   const groups = new Map();
   records.forEach((record) => {
-    const category = record.category || "Algorithms";
-    if (!groups.has(category)) groups.set(category, []);
-    groups.get(category).push(record);
+    const group = getSearchGroup(record);
+    if (!groups.has(group.key)) groups.set(group.key, { ...group, records: [] });
+    groups.get(group.key).records.push(record);
   });
 
-  return [...groups.entries()]
-    .map(([category, categoryRecords]) => ({
-      category,
-      records: categoryRecords.sort(sortSuggestedSearchRecords),
+  return [...groups.values()]
+    .map((group) => ({
+      ...group,
+      score: Math.max(...group.records.map((record) => record.score || 0)),
+      records: group.records.sort(isScoredSearch ? sortScoredSearchRecords : sortSuggestedSearchRecords),
     }))
-    .sort(sortSearchCategoryGroups);
+    .sort(isScoredSearch ? sortScoredSearchGroups : sortSearchCategoryGroups);
+}
+
+function sortScoredSearchRecords(a, b) {
+  return (b.score || 0) - (a.score || 0) || sortSuggestedSearchRecords(a, b);
+}
+
+function sortScoredSearchGroups(a, b) {
+  return (b.score || 0) - (a.score || 0) || sortSearchCategoryGroups(a, b);
+}
+
+function getSearchGroup(record) {
+  const category = record.category || "Algorithms";
+  if (category === "Data Structures" && record.topicGroup) {
+    return {
+      key: `${category}:${record.topicGroup}`,
+      category: `Data Structures: ${record.topicGroup}`,
+      baseCategory: category,
+      topicGroup: record.topicGroup,
+    };
+  }
+
+  return {
+    key: category,
+    category,
+    baseCategory: category,
+    topicGroup: "",
+  };
 }
 
 function sortSearchCategoryGroups(a, b) {
@@ -1105,11 +1154,32 @@ function sortSearchCategoryGroups(a, b) {
     "C++ STL Algorithm Pages",
     "Data Structures",
   ];
-  const aRank = categoryOrder.indexOf(a.category);
-  const bRank = categoryOrder.indexOf(b.category);
+  const dataStructureTopicOrder = [
+    "C/C++ Essentials",
+    "Recursion",
+    "Arrays / Array ADT",
+    "Strings",
+    "Matrix / Sparse Matrix / Polynomial",
+    "Linked List",
+    "Stack",
+    "Queue",
+    "Trees / BST / AVL / Heap",
+  ];
+  const aRank = categoryOrder.indexOf(a.baseCategory || a.category);
+  const bRank = categoryOrder.indexOf(b.baseCategory || b.category);
   const normalizedARank = aRank === -1 ? categoryOrder.length : aRank;
   const normalizedBRank = bRank === -1 ? categoryOrder.length : bRank;
-  return normalizedARank - normalizedBRank || a.category.localeCompare(b.category);
+  if (normalizedARank !== normalizedBRank) return normalizedARank - normalizedBRank;
+
+  if ((a.baseCategory || a.category) === "Data Structures" && (b.baseCategory || b.category) === "Data Structures") {
+    const aTopicRank = dataStructureTopicOrder.indexOf(a.topicGroup || "");
+    const bTopicRank = dataStructureTopicOrder.indexOf(b.topicGroup || "");
+    const normalizedATopicRank = aTopicRank === -1 ? dataStructureTopicOrder.length : aTopicRank;
+    const normalizedBTopicRank = bTopicRank === -1 ? dataStructureTopicOrder.length : bTopicRank;
+    if (normalizedATopicRank !== normalizedBTopicRank) return normalizedATopicRank - normalizedBTopicRank;
+  }
+
+  return a.category.localeCompare(b.category);
 }
 
 function renderNoSearchResults(query) {
@@ -1132,10 +1202,12 @@ function getSearchRecord(algorithm) {
 function createSearchRecord(algorithm, pageData = {}) {
   const title = pageData.title || algorithm.title || algorithm.name;
   const category = pageData.category || algorithm.category || "Algorithms";
+  const topicGroup = pageData.topicGroup || algorithm.topicGroup || "";
   const visualizerType = pageData.visualizerType || algorithm.visualizerType || "lesson";
   const priority = pageData.priority || algorithm.priority || algorithm.level || "medium";
   const iconName = pageData.icon || algorithm.icon || iconForAlgorithm(algorithm);
   const route = pageData.route || algorithm.route || "";
+  const tags = getSearchTags(algorithm, pageData, { category, topicGroup, visualizerType, priority });
   const contentParts = [
     title,
     category,
@@ -1150,11 +1222,12 @@ function createSearchRecord(algorithm, pageData = {}) {
     pageData.whenToUse,
     pageData.memoryTrick,
     pageData.track,
-    pageData.topicGroup,
+    topicGroup,
     pageData.sourceFolder,
     pageData.sourceFile,
     pageData.sourceLanguage,
     pageData.originalCodeFilename,
+    ...tags,
     pageData.visualizerCaption,
     pageData.complexity?.time,
     pageData.complexity?.space,
@@ -1176,13 +1249,49 @@ function createSearchRecord(algorithm, pageData = {}) {
     id: algorithm.id,
     title,
     category,
+    topicGroup,
     visualizerType,
     priority,
+    tags,
     icon: iconName,
     route,
     match: pageData.meaning || summaryForAlgorithm({ ...algorithm, ...pageData, title, category, visualizerType }),
     haystack: contentParts.join(" ").toLowerCase(),
   };
+}
+
+function getSearchTags(algorithm, pageData, { category, topicGroup, visualizerType, priority }) {
+  return uniqueSearchTags([
+    ...normalizeSearchTagList(pageData.tags),
+    category,
+    topicGroup,
+    pageData.track && pageData.track !== category ? pageData.track : "",
+    humanizeSearchTag(visualizerType),
+    pageData.sourceLanguage ? String(pageData.sourceLanguage).toUpperCase() : "",
+    priority,
+    algorithm.level,
+  ]).slice(0, 6);
+}
+
+function normalizeSearchTagList(value) {
+  if (Array.isArray(value)) return value;
+  return value ? [value] : [];
+}
+
+function uniqueSearchTags(values) {
+  const tags = [];
+  values.forEach((value) => {
+    const tag = String(value || "").trim();
+    if (!tag) return;
+    if (!tags.some((current) => current.toLowerCase() === tag.toLowerCase())) tags.push(tag);
+  });
+  return tags;
+}
+
+function humanizeSearchTag(value) {
+  return String(value || "")
+    .replaceAll("-", " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 function scoreSearchRecord(record, query, tokens) {
@@ -1191,11 +1300,14 @@ function scoreSearchRecord(record, query, tokens) {
   if (record.title.toLowerCase().includes(normalizedQuery)) score += 90;
   if (record.category.toLowerCase().includes(normalizedQuery)) score += 35;
   if (record.visualizerType.toLowerCase().includes(normalizedQuery)) score += 30;
+  if ((record.tags || []).some((tag) => tag.toLowerCase() === normalizedQuery)) score += 80;
+  if ((record.tags || []).some((tag) => tag.toLowerCase().includes(normalizedQuery))) score += 45;
   if (record.route.toLowerCase().includes(normalizedQuery)) score += 20;
   tokens.forEach((token) => {
     if (record.title.toLowerCase().includes(token)) score += 30;
     if (record.category.toLowerCase().includes(token)) score += 14;
     if (record.visualizerType.toLowerCase().includes(token)) score += 12;
+    if ((record.tags || []).some((tag) => tag.toLowerCase().includes(token))) score += 12;
     if (record.haystack.includes(token)) score += 6;
   });
   return score;

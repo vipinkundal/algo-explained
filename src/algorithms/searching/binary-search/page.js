@@ -119,7 +119,7 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
             </div>
           `).join("")}
         </div>
-        <button class="primary-action" data-view="visualizer">Start visualizer ${icon("arrow_forward")}</button>
+        <button class="primary-action" data-view="visualizer">Continue ${icon("arrow_forward")}</button>
         <p class="time-note">Estimated time: 12 minutes</p>
       </section>
     `;
@@ -133,7 +133,7 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
           <div class="visualizer-primary">
             <div class="title-row">
               <div>
-                <p class="eyebrow">Algorithm visualizer</p>
+                ${renderPageTags(["Searching", "Array boundaries", "Sorted array", "High"])}
                 <h2 id="visualizer-title">Binary Search</h2>
                 <p>Efficiently searching a sorted array by repeatedly dividing the interval in half.</p>
               </div>
@@ -204,6 +204,14 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
           <span class="window-dots"><i></i><i></i><i></i></span>
         </div>
         <pre>${codeLines.map((line, index) => `<code class="${index + 1 === activeLine ? "active-line" : ""}"><span>${index + 1}</span>${escapeHtml(line)}</code>`).join("")}</pre>
+      </div>
+    `;
+  }
+
+  function renderPageTags(tags) {
+    return `
+      <div class="page-tags" aria-label="Page tags">
+        ${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
       </div>
     `;
   }

@@ -298,7 +298,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       <section class="algorithm-page visualizer-panel" data-algorithm-page="${escapeHtml(algorithmPage.id)}" data-visualizer="${escapeHtml(algorithmPage.visualizerType)}" aria-labelledby="visualizer-title">
         <div class="title-row">
           <div>
-            <p class="eyebrow">${escapeHtml(t("algorithmPage.algorithmVisualizer"))}</p>
+            ${renderPageTags()}
             <h2 id="visualizer-title">${escapeHtml(algorithmPage.title)}</h2>
             <p>${escapeHtml(algorithmPage.visualizerCaption)}</p>
           </div>
@@ -456,6 +456,44 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       variables: variableNames || t("algorithmPage.stateFallback"),
       visualizer: algorithmPage.visualizerType.replaceAll("-", " "),
     });
+  }
+
+  function renderPageTags() {
+    const tags = getPageTags();
+    if (!tags.length) return "";
+
+    return `
+      <div class="page-tags" aria-label="Page tags">
+        ${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
+      </div>
+    `;
+  }
+
+  function getPageTags() {
+    return uniqueTags([
+      algorithmPage.category,
+      algorithmPage.topicGroup,
+      algorithmPage.track && algorithmPage.track !== algorithmPage.category ? algorithmPage.track : "",
+      humanizeTag(algorithmPage.visualizerType),
+      algorithmPage.sourceLanguage ? algorithmPage.sourceLanguage.toUpperCase() : "",
+      algorithmPage.priority,
+    ]).slice(0, 5);
+  }
+
+  function uniqueTags(values) {
+    const tags = [];
+    values.forEach((value) => {
+      const tag = String(value || "").trim();
+      if (!tag) return;
+      if (!tags.some((current) => current.toLowerCase() === tag.toLowerCase())) tags.push(tag);
+    });
+    return tags;
+  }
+
+  function humanizeTag(value) {
+    return String(value || "")
+      .replaceAll("-", " ")
+      .replace(/\b\w/g, (letter) => letter.toUpperCase());
   }
 
   function renderChallenge() {
