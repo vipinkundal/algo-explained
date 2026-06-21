@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Array",
       "title": "Read array request",
       "note": "The code receives an array plus an index, value, or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives an array plus an index, value, or command."
+      "activeLine": 3,
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Index / length",
       "title": "Check active range",
       "note": "Bounds and current length decide whether the operation is valid.",
       "activeLine": 4,
-      "codeInsight": "Bounds and current length decide whether the operation is valid."
+      "codeInsight": "Stores sum so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Slots",
       "title": "Update affected cells",
       "note": "The operation sets, shifts, scans, or resizes array slots.",
-      "activeLine": 7,
-      "codeInsight": "The operation sets, shifts, scans, or resizes array slots."
+      "activeLine": 6,
+      "codeInsight": "Executes this Array ADT Merging Array line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Result",
       "title": "Return array state",
       "note": "The visible value or updated array confirms the operation.",
-      "activeLine": 10,
-      "codeInsight": "The visible value or updated array confirms the operation."
+      "activeLine": 5,
+      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Array ADT Merging Array's state changes are complete."
     }
   ],
   "complexity": {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Read array request",
         "note": "The code receives an array plus an index, value, or command.",
         "ruleLabel": "Array ADT Merging Array invariant",
-        "rule": "The code receives an array plus an index, value, or command.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeIndices": [
           0
         ],
@@ -174,7 +174,7 @@ export const algorithmPage = {
         "title": "Check active range",
         "note": "Bounds and current length decide whether the operation is valid.",
         "ruleLabel": "Array ADT Merging Array invariant",
-        "rule": "Bounds and current length decide whether the operation is valid.",
+        "rule": "Stores sum so the algorithm can reuse this value without recomputing it.",
         "activeIndices": [
           1,
           2
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Update affected cells",
         "note": "The operation sets, shifts, scans, or resizes array slots.",
         "ruleLabel": "Array ADT Merging Array invariant",
-        "rule": "The operation sets, shifts, scans, or resizes array slots.",
+        "rule": "Executes this Array ADT Merging Array line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           2
         ],
@@ -216,7 +216,7 @@ export const algorithmPage = {
         "title": "Return array state",
         "note": "The visible value or updated array confirms the operation.",
         "ruleLabel": "Array ADT Merging Array invariant",
-        "rule": "The visible value or updated array confirms the operation.",
+        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Array ADT Merging Array's state changes are complete.",
         "activeIndices": [
           3,
           4

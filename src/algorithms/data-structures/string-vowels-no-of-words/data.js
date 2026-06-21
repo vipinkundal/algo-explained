@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Text",
       "title": "Read string input",
       "note": "The code receives text, pattern, or character data.",
-      "activeLine": 1,
-      "codeInsight": "The code receives text, pattern, or character data."
+      "activeLine": 3,
+      "codeInsight": "Stores text so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Helper",
       "title": "Prepare string state",
       "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
       "activeLine": 3,
-      "codeInsight": "Prefix, hash, frequency, or radius state avoids repeated work."
+      "codeInsight": "Stores text so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Character",
       "title": "Update on current char",
       "note": "One character changes the active string state.",
       "activeLine": 6,
-      "codeInsight": "One character changes the active string state."
+      "codeInsight": "Executes this String Vowels No Of Words line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Result",
       "title": "Return string answer",
       "note": "Matches or best values are returned after the scan.",
-      "activeLine": 9,
-      "codeInsight": "Matches or best values are returned after the scan."
+      "activeLine": 5,
+      "codeInsight": "Returns { structure: \"string\", input: text, reversed, length: text.length }, the value produced after String Vowels No Of Words's state changes are complete."
     }
   ],
   "complexity": {
@@ -150,7 +150,7 @@ export const algorithmPage = {
         "title": "Read string input",
         "note": "The code receives text, pattern, or character data.",
         "ruleLabel": "String Vowels No Of Words invariant",
-        "rule": "The code receives text, pattern, or character data.",
+        "rule": "Stores text so the algorithm can reuse this value without recomputing it.",
         "activeRange": [
           0,
           2
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Prepare string state",
         "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
         "ruleLabel": "String Vowels No Of Words invariant",
-        "rule": "Prefix, hash, frequency, or radius state avoids repeated work.",
+        "rule": "Stores text so the algorithm can reuse this value without recomputing it.",
         "activeRange": [
           1,
           3
@@ -174,7 +174,7 @@ export const algorithmPage = {
         "title": "Update on current char",
         "note": "One character changes the active string state.",
         "ruleLabel": "String Vowels No Of Words invariant",
-        "rule": "One character changes the active string state.",
+        "rule": "Executes this String Vowels No Of Words line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeRange": [
           2,
           4
@@ -186,7 +186,7 @@ export const algorithmPage = {
         "title": "Return string answer",
         "note": "Matches or best values are returned after the scan.",
         "ruleLabel": "String Vowels No Of Words invariant",
-        "rule": "Matches or best values are returned after the scan.",
+        "rule": "Returns { structure: \"string\", input: text, reversed, length: text.length }, the value produced after String Vowels No Of Words's state changes are complete.",
         "activeRange": [
           3,
           5

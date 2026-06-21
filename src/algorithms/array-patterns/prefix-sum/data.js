@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Values",
       "title": "Read values or updates",
       "note": "The code receives the array, ranges, or deltas.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the array, ranges, or deltas."
+      "activeLine": 6,
+      "codeInsight": "Initializes prefix, the local state that the next highlighted lines will update."
     },
     {
       "label": "Accumulator",
       "title": "Start running state",
       "note": "A neutral starting value makes every update consistent.",
-      "activeLine": 3,
-      "codeInsight": "A neutral starting value makes every update consistent."
+      "activeLine": 6,
+      "codeInsight": "Initializes prefix, the local state that the next highlighted lines will update."
     },
     {
       "label": "Prefix step",
       "title": "Apply current contribution",
       "note": "The running state changes by the current value or boundary delta.",
       "activeLine": 5,
-      "codeInsight": "The running state changes by the current value or boundary delta."
+      "codeInsight": "Defines prefixSum and names the input array; edits to those inputs change the visual state and output."
     },
     {
       "label": "Range result",
       "title": "Read saved state",
       "note": "The stored state gives the final or range answer.",
       "activeLine": 8,
-      "codeInsight": "The stored state gives the final or range answer."
+      "codeInsight": "Returns prefix, the value produced after Prefix Sum's state changes are complete."
     }
   ],
   "complexity": {
@@ -136,7 +136,7 @@ export const algorithmPage = {
         "title": "Read values or updates",
         "note": "The code receives the array, ranges, or deltas.",
         "ruleLabel": "Prefix Sum invariant",
-        "rule": "The code receives the array, ranges, or deltas.",
+        "rule": "Initializes prefix, the local state that the next highlighted lines will update.",
         "activeRange": [
           0,
           2
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Start running state",
         "note": "A neutral starting value makes every update consistent.",
         "ruleLabel": "Prefix Sum invariant",
-        "rule": "A neutral starting value makes every update consistent.",
+        "rule": "Initializes prefix, the local state that the next highlighted lines will update.",
         "activeRange": [
           1,
           3
@@ -160,7 +160,7 @@ export const algorithmPage = {
         "title": "Apply current contribution",
         "note": "The running state changes by the current value or boundary delta.",
         "ruleLabel": "Prefix Sum invariant",
-        "rule": "The running state changes by the current value or boundary delta.",
+        "rule": "Defines prefixSum and names the input array; edits to those inputs change the visual state and output.",
         "activeRange": [
           2,
           4
@@ -172,7 +172,7 @@ export const algorithmPage = {
         "title": "Read saved state",
         "note": "The stored state gives the final or range answer.",
         "ruleLabel": "Prefix Sum invariant",
-        "rule": "The stored state gives the final or range answer.",
+        "rule": "Returns prefix, the value produced after Prefix Sum's state changes are complete.",
         "activeRange": [
           3,
           5

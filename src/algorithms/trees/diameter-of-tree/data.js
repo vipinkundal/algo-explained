@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check current node",
       "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 1,
-      "codeInsight": "The code starts by handling missing nodes or the current root."
+      "activeLine": 5,
+      "codeInsight": "Defines diameterOfTree and names the input root; edits to those inputs change the visual state and output."
     },
     {
       "label": "Node state",
       "title": "Read child height/result",
       "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "The current node controls the next step."
+      "activeLine": 12,
+      "codeInsight": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete."
     },
     {
       "label": "Child step",
       "title": "Combine child measurements into the parent answer",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
+      "activeLine": 12,
+      "codeInsight": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 10,
-      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
+      "activeLine": 12,
+      "codeInsight": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete."
     }
   ],
   "complexity": {
@@ -218,7 +218,7 @@ export const algorithmPage = {
         "title": "Check current node",
         "note": "The code starts by handling missing nodes or the current root.",
         "ruleLabel": "Diameter of Tree invariant",
-        "rule": "The code starts by handling missing nodes or the current root.",
+        "rule": "Defines diameterOfTree and names the input root; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -233,7 +233,7 @@ export const algorithmPage = {
         "title": "Read child height/result",
         "note": "The current node controls the next step.",
         "ruleLabel": "Diameter of Tree invariant",
-        "rule": "The current node controls the next step.",
+        "rule": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -248,7 +248,7 @@ export const algorithmPage = {
         "title": "Combine child measurements into the parent answer",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "Diameter of Tree invariant",
-        "rule": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "rule": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -259,7 +259,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Diameter of Tree invariant",
-        "rule": "The final traversal, path, measurement, or tree state is returned.",
+        "rule": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

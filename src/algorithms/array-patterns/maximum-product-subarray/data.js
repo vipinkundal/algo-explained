@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Algorithm State",
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 10,
+      "codeInsight": "Initializes value, the local state that the next highlighted lines will update."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy page-specific invariant."
+      "activeLine": 10,
+      "codeInsight": "Initializes value, the local state that the next highlighted lines will update."
     },
     {
       "label": "State change",
       "title": "Update the state described by this algorithm",
       "note": "Only the necessary algorithm state fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Only the necessary algorithm state fields are changed."
+      "activeLine": 9,
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 16,
+      "codeInsight": "Returns best, the value produced after Maximum Product Subarray's state changes are complete."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Maximum Product Subarray invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Initializes value, the local state that the next highlighted lines will update.",
         "activeIndices": [
           0
         ],
@@ -159,7 +159,7 @@ export const algorithmPage = {
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "Maximum Product Subarray invariant",
-        "rule": "The active state must still satisfy page-specific invariant.",
+        "rule": "Initializes value, the local state that the next highlighted lines will update.",
         "activeIndices": [
           1,
           2
@@ -178,7 +178,7 @@ export const algorithmPage = {
         "title": "Update the state described by this algorithm",
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "Maximum Product Subarray invariant",
-        "rule": "Only the necessary algorithm state fields are changed.",
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
         "activeIndices": [
           2
         ],
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Maximum Product Subarray invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns best, the value produced after Maximum Product Subarray's state changes are complete.",
         "activeIndices": [
           3,
           3

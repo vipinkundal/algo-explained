@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "State meaning",
       "title": "Define DP cell",
       "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 1,
-      "codeInsight": "The code first needs a precise subproblem meaning."
+      "activeLine": 6,
+      "codeInsight": "Initializes numbers, the local state that the next highlighted lines will update."
     },
     {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
       "activeLine": 3,
-      "codeInsight": "Base values stop the recurrence from falling through."
+      "codeInsight": "Executes this Dynamic Programming Basics line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Recurrence",
       "title": "Fill next state",
       "note": "The transition combines previously solved states.",
       "activeLine": 6,
-      "codeInsight": "The transition combines previously solved states."
+      "codeInsight": "Initializes numbers, the local state that the next highlighted lines will update."
     },
     {
       "label": "Target",
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
-      "activeLine": 10,
-      "codeInsight": "The answer is read from the final DP state."
+      "activeLine": 9,
+      "codeInsight": "Returns { state, answer: state[state.length - 1] }, the value produced after Dynamic Programming Basics's state changes are complete."
     }
   ],
   "complexity": {
@@ -140,7 +140,7 @@ export const algorithmPage = {
         "title": "Define DP cell",
         "note": "The code first needs a precise subproblem meaning.",
         "ruleLabel": "Dynamic Programming Basics invariant",
-        "rule": "The code first needs a precise subproblem meaning.",
+        "rule": "Initializes numbers, the local state that the next highlighted lines will update.",
         "activeState": 0
       },
       {
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "Dynamic Programming Basics invariant",
-        "rule": "Base values stop the recurrence from falling through.",
+        "rule": "Executes this Dynamic Programming Basics line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeState": 1
       },
       {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Fill next state",
         "note": "The transition combines previously solved states.",
         "ruleLabel": "Dynamic Programming Basics invariant",
-        "rule": "The transition combines previously solved states.",
+        "rule": "Initializes numbers, the local state that the next highlighted lines will update.",
         "activeState": 2
       },
       {
@@ -164,7 +164,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "Dynamic Programming Basics invariant",
-        "rule": "The answer is read from the final DP state.",
+        "rule": "Returns { state, answer: state[state.length - 1] }, the value produced after Dynamic Programming Basics's state changes are complete.",
         "activeState": 3
       }
     ]

@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Queue",
       "title": "Read queue action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 5,
+      "codeInsight": "Defines maxHeap and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Queue front",
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy first-in, first-out state."
+      "activeLine": 6,
+      "codeInsight": "Creates heap as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Enqueue / dequeue",
       "title": "Enqueue, dequeue, peek, or evict entries",
       "note": "Only the necessary queue fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary queue fields are changed."
+      "codeInsight": "Creates heap as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 17,
+      "codeInsight": "Returns heap, the value produced after Max Heap's state changes are complete."
     }
   ],
   "complexity": {
@@ -210,7 +210,7 @@ export const algorithmPage = {
         "title": "Read queue action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Max Heap invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Defines maxHeap and names the input values; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -225,7 +225,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "Max Heap invariant",
-        "rule": "The active state must still satisfy first-in, first-out state.",
+        "rule": "Creates heap as empty working state; later lines add and remove values from it.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -240,7 +240,7 @@ export const algorithmPage = {
         "title": "Enqueue, dequeue, peek, or evict entries",
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "Max Heap invariant",
-        "rule": "Only the necessary queue fields are changed.",
+        "rule": "Creates heap as empty working state; later lines add and remove values from it.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -251,7 +251,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Max Heap invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns heap, the value produced after Max Heap's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

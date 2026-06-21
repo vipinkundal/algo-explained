@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check current node",
       "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 1,
-      "codeInsight": "The code starts by handling missing nodes or the current root."
+      "activeLine": 2,
+      "codeInsight": "Defines binaryTreeTraversal as the runnable entry point for this lesson."
     },
     {
       "label": "Node state",
       "title": "Read balance invariant",
       "note": "The current node controls the next step.",
       "activeLine": 3,
-      "codeInsight": "The current node controls the next step."
+      "codeInsight": "Initializes tree, the local state that the next highlighted lines will update."
     },
     {
       "label": "Child step",
       "title": "Rotate or recolor when height/color rules are violated",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
+      "activeLine": 5,
+      "codeInsight": "Executes this Binary Tree Traversal line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 10,
-      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
+      "activeLine": 4,
+      "codeInsight": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Traversal's state changes are complete."
     }
   ],
   "complexity": {
@@ -234,7 +234,7 @@ export const algorithmPage = {
         "title": "Check current node",
         "note": "The code starts by handling missing nodes or the current root.",
         "ruleLabel": "Binary Tree Traversal invariant",
-        "rule": "The code starts by handling missing nodes or the current root.",
+        "rule": "Defines binaryTreeTraversal as the runnable entry point for this lesson.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -249,7 +249,7 @@ export const algorithmPage = {
         "title": "Read balance invariant",
         "note": "The current node controls the next step.",
         "ruleLabel": "Binary Tree Traversal invariant",
-        "rule": "The current node controls the next step.",
+        "rule": "Initializes tree, the local state that the next highlighted lines will update.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -264,7 +264,7 @@ export const algorithmPage = {
         "title": "Rotate or recolor when height/color rules are violated",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "Binary Tree Traversal invariant",
-        "rule": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "rule": "Executes this Binary Tree Traversal line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -275,7 +275,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Binary Tree Traversal invariant",
-        "rule": "The final traversal, path, measurement, or tree state is returned.",
+        "rule": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Traversal's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

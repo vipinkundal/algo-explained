@@ -63,57 +63,57 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "Use vertices A, B, C and weighted edges A -> B (1), B -> C (2), and A -> C (5).",
-      "activeLine": 5,
-      "codeInsight": "The function receives vertices, weighted directed edges, and the start vertex."
+      "activeLine": 6,
+      "codeInsight": "Builds distance as a lookup table so each key has an explicit starting state."
     },
     {
       "label": "Start distance",
       "title": "Initialize distances",
       "note": "Every vertex starts at infinity except A, because the distance from A to itself is 0.",
-      "activeLine": 7,
-      "codeInsight": "Lines 6-7 create the distance table and set only the start vertex to 0."
+      "activeLine": 6,
+      "codeInsight": "Builds distance as a lookup table so each key has an explicit starting state."
     },
     {
       "label": "Relax A -> B",
       "title": "Improve B",
       "note": "A is reachable with cost 0, so A -> B gives B a better cost of 1.",
-      "activeLine": 11,
-      "codeInsight": "The relaxation condition succeeds, so distance[B] becomes distance[A] + 1."
+      "activeLine": 8,
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Relax B -> C",
       "title": "Improve C",
       "note": "B is now reachable with cost 1, so B -> C improves C from infinity to 3.",
-      "activeLine": 11,
-      "codeInsight": "The same rule applies again: distance[C] becomes distance[B] + 2."
+      "activeLine": 8,
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Check A -> C",
       "title": "Skip worse edge",
       "note": "A -> C costs 5, but C already has cost 3, so the table does not change.",
       "activeLine": 10,
-      "codeInsight": "The if statement blocks a worse route from overwriting the better distance."
+      "codeInsight": "Checks distance[from] !== Infinity && distance[from] + weight < distance[to]; only the branch that preserves Bellman-Ford Algorithm's invariant is allowed to change state."
     },
     {
       "label": "Next pass",
       "title": "Repeat edge scan",
       "note": "The second pass checks every edge again, but no distance improves.",
       "activeLine": 8,
-      "codeInsight": "Bellman-Ford repeats edge scans V - 1 times so longer paths can propagate."
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Cycle check",
       "title": "Detect negative cycle",
       "note": "A final scan asks whether any edge can still improve a distance.",
       "activeLine": 15,
-      "codeInsight": "If an edge can still relax after V - 1 passes, a reachable negative cycle exists."
+      "codeInsight": "Initializes hasNegativeCycle, the local state that the next highlighted lines will update."
     },
     {
       "label": "Result",
       "title": "Return distances",
       "note": "The final answer is A: 0, B: 1, C: 3 with no negative cycle.",
       "activeLine": 16,
-      "codeInsight": "The function returns both the shortest-distance table and the negative-cycle flag."
+      "codeInsight": "Returns { distance, hasNegativeCycle }, the value produced after Bellman-Ford Algorithm's state changes are complete."
     }
   ],
   "animation": {
@@ -165,7 +165,8 @@ export const algorithmPage = {
           "A": "∞",
           "B": "∞",
           "C": "∞"
-        }
+        },
+        "rule": "Builds distance as a lookup table so each key has an explicit starting state."
       },
       {
         "pass": "Setup",
@@ -176,7 +177,8 @@ export const algorithmPage = {
           "A": 0,
           "B": "∞",
           "C": "∞"
-        }
+        },
+        "rule": "Builds distance as a lookup table so each key has an explicit starting state."
       },
       {
         "pass": "Pass 1",
@@ -191,7 +193,8 @@ export const algorithmPage = {
           "A": 0,
           "B": 1,
           "C": "∞"
-        }
+        },
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
       },
       {
         "pass": "Pass 1",
@@ -206,7 +209,8 @@ export const algorithmPage = {
           "A": 0,
           "B": 1,
           "C": 3
-        }
+        },
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
       },
       {
         "pass": "Pass 1",
@@ -220,7 +224,8 @@ export const algorithmPage = {
           "A": 0,
           "B": 1,
           "C": 3
-        }
+        },
+        "rule": "Checks distance[from] !== Infinity && distance[from] + weight < distance[to]; only the branch that preserves Bellman-Ford Algorithm's invariant is allowed to change state."
       },
       {
         "pass": "Pass 2",
@@ -234,7 +239,8 @@ export const algorithmPage = {
           "A": 0,
           "B": 1,
           "C": 3
-        }
+        },
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
       },
       {
         "pass": "Final scan",
@@ -244,7 +250,8 @@ export const algorithmPage = {
           "A": 0,
           "B": 1,
           "C": 3
-        }
+        },
+        "rule": "Initializes hasNegativeCycle, the local state that the next highlighted lines will update."
       },
       {
         "pass": "Answer",
@@ -254,7 +261,8 @@ export const algorithmPage = {
           "A": 0,
           "B": 1,
           "C": 3
-        }
+        },
+        "rule": "Returns { distance, hasNegativeCycle }, the value produced after Bellman-Ford Algorithm's state changes are complete."
       }
     ]
   },

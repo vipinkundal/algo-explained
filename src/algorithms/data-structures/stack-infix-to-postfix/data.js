@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Stack",
       "title": "Read stack action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 3,
+      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
     },
     {
       "label": "Stack top",
       "title": "Inspect stack",
       "note": "The active state must still satisfy last-in, first-out state.",
       "activeLine": 3,
-      "codeInsight": "The active state must still satisfy last-in, first-out state."
+      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
     },
     {
       "label": "Push / pop",
       "title": "Push, pop, peek, or resolve stack entries",
       "note": "Only the necessary stack fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Only the necessary stack fields are changed."
+      "activeLine": 5,
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 7,
+      "codeInsight": "Returns { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, the value produced after Stack Infix To Postfix's state changes are complete."
     }
   ],
   "complexity": {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Read stack action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Stack Infix To Postfix invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear.",
         "activeItems": [
           0
         ],
@@ -171,7 +171,7 @@ export const algorithmPage = {
         "title": "Inspect stack",
         "note": "The active state must still satisfy last-in, first-out state.",
         "ruleLabel": "Stack Infix To Postfix invariant",
-        "rule": "The active state must still satisfy last-in, first-out state.",
+        "rule": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear.",
         "activeItems": [
           1
         ],
@@ -186,7 +186,7 @@ export const algorithmPage = {
         "title": "Push, pop, peek, or resolve stack entries",
         "note": "Only the necessary stack fields are changed.",
         "ruleLabel": "Stack Infix To Postfix invariant",
-        "rule": "Only the necessary stack fields are changed.",
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
         "activeItems": [
           2
         ],
@@ -201,7 +201,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Stack Infix To Postfix invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, the value produced after Stack Infix To Postfix's state changes are complete.",
         "activeItems": [
           3
         ],

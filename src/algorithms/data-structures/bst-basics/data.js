@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check current node",
       "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 1,
-      "codeInsight": "The code starts by handling missing nodes or the current root."
+      "activeLine": 2,
+      "codeInsight": "Defines bstBasics as the runnable entry point for this lesson."
     },
     {
       "label": "Node state",
       "title": "Read ordered branch",
       "note": "The current node controls the next step.",
       "activeLine": 3,
-      "codeInsight": "The current node controls the next step."
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Child step",
       "title": "Compare with the current node and move left or right",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
       "activeLine": 6,
-      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
+      "codeInsight": "Returns { structure: \"binary search tree\", values, search, path, found: true }, the value produced after BST Basics's state changes are complete."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 10,
-      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
+      "activeLine": 6,
+      "codeInsight": "Returns { structure: \"binary search tree\", values, search, path, found: true }, the value produced after BST Basics's state changes are complete."
     }
   ],
   "complexity": {
@@ -228,7 +228,7 @@ export const algorithmPage = {
         "title": "Check current node",
         "note": "The code starts by handling missing nodes or the current root.",
         "ruleLabel": "BST Basics invariant",
-        "rule": "The code starts by handling missing nodes or the current root.",
+        "rule": "Defines bstBasics as the runnable entry point for this lesson.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -243,7 +243,7 @@ export const algorithmPage = {
         "title": "Read ordered branch",
         "note": "The current node controls the next step.",
         "ruleLabel": "BST Basics invariant",
-        "rule": "The current node controls the next step.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -258,7 +258,7 @@ export const algorithmPage = {
         "title": "Compare with the current node and move left or right",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "BST Basics invariant",
-        "rule": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "rule": "Returns { structure: \"binary search tree\", values, search, path, found: true }, the value produced after BST Basics's state changes are complete.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -269,7 +269,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "BST Basics invariant",
-        "rule": "The final traversal, path, measurement, or tree state is returned.",
+        "rule": "Returns { structure: \"binary search tree\", values, search, path, found: true }, the value produced after BST Basics's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

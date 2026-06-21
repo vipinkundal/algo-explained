@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Copy values",
       "note": "The code starts with the values to reorder.",
-      "activeLine": 1,
-      "codeInsight": "The code starts with the values to reorder."
+      "activeLine": 6,
+      "codeInsight": "Builds indegree as a lookup table so each key has an explicit starting state."
     },
     {
       "label": "Invariant",
       "title": "Track ordered work",
       "note": "The algorithm marks what part is already safe.",
       "activeLine": 3,
-      "codeInsight": "The algorithm marks what part is already safe."
+      "codeInsight": "Executes this Topological Sort line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Move",
       "title": "Apply ordering step",
       "note": "The current operation reduces disorder.",
       "activeLine": 6,
-      "codeInsight": "The current operation reduces disorder."
+      "codeInsight": "Builds indegree as a lookup table so each key has an explicit starting state."
     },
     {
       "label": "Sorted output",
       "title": "Return final order",
       "note": "The result is returned when no unsorted work remains.",
-      "activeLine": 10,
-      "codeInsight": "The result is returned when no unsorted work remains."
+      "activeLine": 18,
+      "codeInsight": "Returns order.length === Object.keys(indegree).length ? order : null, the value produced after Topological Sort's state changes are complete."
     }
   ],
   "complexity": {
@@ -186,7 +186,7 @@ export const algorithmPage = {
         "title": "Copy values",
         "note": "The code starts with the values to reorder.",
         "ruleLabel": "Topological Sort invariant",
-        "rule": "The code starts with the values to reorder.",
+        "rule": "Builds indegree as a lookup table so each key has an explicit starting state.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -202,7 +202,7 @@ export const algorithmPage = {
         "title": "Track ordered work",
         "note": "The algorithm marks what part is already safe.",
         "ruleLabel": "Topological Sort invariant",
-        "rule": "The algorithm marks what part is already safe.",
+        "rule": "Executes this Topological Sort line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -220,7 +220,7 @@ export const algorithmPage = {
         "title": "Apply ordering step",
         "note": "The current operation reduces disorder.",
         "ruleLabel": "Topological Sort invariant",
-        "rule": "The current operation reduces disorder.",
+        "rule": "Builds indegree as a lookup table so each key has an explicit starting state.",
         "activeNode": "C",
         "visitedNodes": [
           "A",
@@ -239,7 +239,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "The result is returned when no unsorted work remains.",
         "ruleLabel": "Topological Sort invariant",
-        "rule": "The result is returned when no unsorted work remains.",
+        "rule": "Returns order.length === Object.keys(indegree).length ? order : null, the value produced after Topological Sort's state changes are complete.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

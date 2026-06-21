@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Queue",
       "title": "Read queue action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 5,
+      "codeInsight": "Defines lruCache and names the input capacity, operations; edits to those inputs change the visual state and output."
     },
     {
       "label": "Queue front",
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy first-in, first-out state."
+      "activeLine": 6,
+      "codeInsight": "Creates cache for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Enqueue / dequeue",
       "title": "Enqueue, dequeue, peek, or evict entries",
       "note": "Only the necessary queue fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary queue fields are changed."
+      "codeInsight": "Creates cache for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 24,
+      "codeInsight": "Returns output, the value produced after LRU Cache's state changes are complete."
     }
   ],
   "complexity": {
@@ -181,7 +181,7 @@ export const algorithmPage = {
         "title": "Read queue action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "LRU Cache invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Defines lruCache and names the input capacity, operations; edits to those inputs change the visual state and output.",
         "activeItems": [
           0
         ],
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "LRU Cache invariant",
-        "rule": "The active state must still satisfy first-in, first-out state.",
+        "rule": "Creates cache for fast membership or lookup checks while the scan runs.",
         "activeItems": [
           1
         ],
@@ -211,7 +211,7 @@ export const algorithmPage = {
         "title": "Enqueue, dequeue, peek, or evict entries",
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "LRU Cache invariant",
-        "rule": "Only the necessary queue fields are changed.",
+        "rule": "Creates cache for fast membership or lookup checks while the scan runs.",
         "activeItems": [
           2
         ],
@@ -226,7 +226,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "LRU Cache invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns output, the value produced after LRU Cache's state changes are complete.",
         "activeItems": [
           3
         ],

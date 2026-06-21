@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Range",
       "title": "Read key bounds",
       "note": "Counting needs a finite integer range.",
-      "activeLine": 1,
-      "codeInsight": "Counting needs a finite integer range."
+      "activeLine": 6,
+      "codeInsight": "Checks !array.length; only the branch that preserves Counting Sort's invariant is allowed to change state."
     },
     {
       "label": "Counts",
       "title": "Increment frequency",
       "note": "Each input value updates one bucket.",
       "activeLine": 4,
-      "codeInsight": "Each input value updates one bucket."
+      "codeInsight": "This blank line separates Counting Sort's setup from the next code block."
     },
     {
       "label": "Emit",
       "title": "Write repeated keys",
       "note": "Counts turn into ordered output values.",
       "activeLine": 8,
-      "codeInsight": "Counts turn into ordered output values."
+      "codeInsight": "Computes max from the current values before the algorithm decides the next move."
     },
     {
       "label": "Sorted",
       "title": "Return output",
       "note": "The rebuilt list is sorted by key.",
-      "activeLine": 10,
-      "codeInsight": "The rebuilt list is sorted by key."
+      "activeLine": 15,
+      "codeInsight": "Returns result, the value produced after Counting Sort's state changes are complete."
     }
   ],
   "complexity": {
@@ -152,7 +152,7 @@ export const algorithmPage = {
         "title": "Read key bounds",
         "note": "Counting needs a finite integer range.",
         "ruleLabel": "Counting Sort invariant",
-        "rule": "Counting needs a finite integer range.",
+        "rule": "Checks !array.length; only the branch that preserves Counting Sort's invariant is allowed to change state.",
         "activeValue": 4,
         "bucketIndex": 1,
         "bucketValues": [
@@ -168,7 +168,7 @@ export const algorithmPage = {
         "title": "Increment frequency",
         "note": "Each input value updates one bucket.",
         "ruleLabel": "Counting Sort invariant",
-        "rule": "Each input value updates one bucket.",
+        "rule": "This blank line separates Counting Sort's setup from the next code block.",
         "activeValue": 1,
         "bucketIndex": 1,
         "bucketValues": [
@@ -185,7 +185,7 @@ export const algorithmPage = {
         "title": "Write repeated keys",
         "note": "Counts turn into ordered output values.",
         "ruleLabel": "Counting Sort invariant",
-        "rule": "Counts turn into ordered output values.",
+        "rule": "Computes max from the current values before the algorithm decides the next move.",
         "activeValue": 3,
         "bucketIndex": 0,
         "bucketValues": [
@@ -204,7 +204,7 @@ export const algorithmPage = {
         "title": "Return output",
         "note": "The rebuilt list is sorted by key.",
         "ruleLabel": "Counting Sort invariant",
-        "rule": "The rebuilt list is sorted by key.",
+        "rule": "Returns result, the value produced after Counting Sort's state changes are complete.",
         "activeValue": 2,
         "bucketIndex": 2,
         "bucketValues": [

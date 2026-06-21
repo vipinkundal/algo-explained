@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Range",
       "title": "Split array",
       "note": "The code divides work into smaller ranges.",
-      "activeLine": 1,
-      "codeInsight": "The code divides work into smaller ranges."
+      "activeLine": 6,
+      "codeInsight": "Checks array.length <= 1; only the branch that preserves Merge Sort's invariant is allowed to change state."
     },
     {
       "label": "Halves",
       "title": "Sort recursively",
       "note": "Each half is solved before merge.",
       "activeLine": 4,
-      "codeInsight": "Each half is solved before merge."
+      "codeInsight": "This blank line separates Merge Sort's setup from the next code block."
     },
     {
       "label": "Merge",
       "title": "Choose smaller front",
       "note": "The next output value comes from one sorted half.",
-      "activeLine": 8,
-      "codeInsight": "The next output value comes from one sorted half."
+      "activeLine": 6,
+      "codeInsight": "Checks array.length <= 1; only the branch that preserves Merge Sort's invariant is allowed to change state."
     },
     {
       "label": "Sorted",
       "title": "Return merged result",
       "note": "The merged section is fully ordered.",
-      "activeLine": 12,
-      "codeInsight": "The merged section is fully ordered."
+      "activeLine": 8,
+      "codeInsight": "Returns merge(mergeSort(array.slice(0, mid)), mergeSort(array.slice(mid))), the value produced after Merge Sort's state changes are complete."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Split array",
         "note": "The code divides work into smaller ranges.",
         "ruleLabel": "Merge Sort invariant",
-        "rule": "The code divides work into smaller ranges.",
+        "rule": "Checks array.length <= 1; only the branch that preserves Merge Sort's invariant is allowed to change state.",
         "activeIndices": [
           0
         ],
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Sort recursively",
         "note": "Each half is solved before merge.",
         "ruleLabel": "Merge Sort invariant",
-        "rule": "Each half is solved before merge.",
+        "rule": "This blank line separates Merge Sort's setup from the next code block.",
         "activeIndices": [
           1,
           2
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Choose smaller front",
         "note": "The next output value comes from one sorted half.",
         "ruleLabel": "Merge Sort invariant",
-        "rule": "The next output value comes from one sorted half.",
+        "rule": "Checks array.length <= 1; only the branch that preserves Merge Sort's invariant is allowed to change state.",
         "activeIndices": [
           2
         ],
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Return merged result",
         "note": "The merged section is fully ordered.",
         "ruleLabel": "Merge Sort invariant",
-        "rule": "The merged section is fully ordered.",
+        "rule": "Returns merge(mergeSort(array.slice(0, mid)), mergeSort(array.slice(mid))), the value produced after Merge Sort's state changes are complete.",
         "activeIndices": [
           3,
           3

@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Prefix",
       "title": "Start sorted area",
       "note": "The left side is maintained in order.",
-      "activeLine": 1,
-      "codeInsight": "The left side is maintained in order."
+      "activeLine": 6,
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Key",
       "title": "Read next value",
       "note": "One value is removed from the unsorted side.",
-      "activeLine": 4,
-      "codeInsight": "One value is removed from the unsorted side."
+      "activeLine": 6,
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Shift",
       "title": "Move larger values",
       "note": "Larger prefix values slide right to create room.",
       "activeLine": 6,
-      "codeInsight": "Larger prefix values slide right to create room."
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Insert",
       "title": "Place key",
       "note": "The sorted prefix grows by one.",
       "activeLine": 9,
-      "codeInsight": "The sorted prefix grows by one."
+      "codeInsight": "Initializes scan as mutable state; later branches update it as the search window or traversal changes."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Start sorted area",
         "note": "The left side is maintained in order.",
         "ruleLabel": "Insertion Sort invariant",
-        "rule": "The left side is maintained in order.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeIndices": [
           0
         ],
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Read next value",
         "note": "One value is removed from the unsorted side.",
         "ruleLabel": "Insertion Sort invariant",
-        "rule": "One value is removed from the unsorted side.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeIndices": [
           1,
           2
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Move larger values",
         "note": "Larger prefix values slide right to create room.",
         "ruleLabel": "Insertion Sort invariant",
-        "rule": "Larger prefix values slide right to create room.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeIndices": [
           2
         ],
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Place key",
         "note": "The sorted prefix grows by one.",
         "ruleLabel": "Insertion Sort invariant",
-        "rule": "The sorted prefix grows by one.",
+        "rule": "Initializes scan as mutable state; later branches update it as the search window or traversal changes.",
         "activeIndices": [
           3,
           3

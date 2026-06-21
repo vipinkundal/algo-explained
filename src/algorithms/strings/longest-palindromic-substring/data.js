@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Text",
       "title": "Read string input",
       "note": "The code receives text, pattern, or character data.",
-      "activeLine": 1,
-      "codeInsight": "The code receives text, pattern, or character data."
+      "activeLine": 6,
+      "codeInsight": "Initializes best as mutable state; later branches update it as the search window or traversal changes."
     },
     {
       "label": "Helper",
       "title": "Prepare string state",
       "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-      "activeLine": 3,
-      "codeInsight": "Prefix, hash, frequency, or radius state avoids repeated work."
+      "activeLine": 12,
+      "codeInsight": "Stores current so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Character",
       "title": "Update on current char",
       "note": "One character changes the active string state.",
-      "activeLine": 6,
-      "codeInsight": "One character changes the active string state."
+      "activeLine": 8,
+      "codeInsight": "Repeats while left >= 0 && right < text.length && text[left] === text[right] is true, so the algorithm keeps resolving current work before moving on."
     },
     {
       "label": "Result",
       "title": "Return string answer",
       "note": "Matches or best values are returned after the scan.",
-      "activeLine": 9,
-      "codeInsight": "Matches or best values are returned after the scan."
+      "activeLine": 19,
+      "codeInsight": "Returns best, the value produced after Longest Palindromic Substring's state changes are complete."
     }
   ],
   "complexity": {
@@ -198,7 +198,7 @@ export const algorithmPage = {
         "title": "Read string input",
         "note": "The code receives text, pattern, or character data.",
         "ruleLabel": "Longest Palindromic Substring invariant",
-        "rule": "The code receives text, pattern, or character data.",
+        "rule": "Initializes best as mutable state; later branches update it as the search window or traversal changes.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -213,7 +213,7 @@ export const algorithmPage = {
         "title": "Prepare string state",
         "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
         "ruleLabel": "Longest Palindromic Substring invariant",
-        "rule": "Prefix, hash, frequency, or radius state avoids repeated work.",
+        "rule": "Stores current so the algorithm can reuse this value without recomputing it.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -228,7 +228,7 @@ export const algorithmPage = {
         "title": "Update on current char",
         "note": "One character changes the active string state.",
         "ruleLabel": "Longest Palindromic Substring invariant",
-        "rule": "One character changes the active string state.",
+        "rule": "Repeats while left >= 0 && right < text.length && text[left] === text[right] is true, so the algorithm keeps resolving current work before moving on.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -239,7 +239,7 @@ export const algorithmPage = {
         "title": "Return string answer",
         "note": "Matches or best values are returned after the scan.",
         "ruleLabel": "Longest Palindromic Substring invariant",
-        "rule": "Matches or best values are returned after the scan.",
+        "rule": "Returns best, the value produced after Longest Palindromic Substring's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

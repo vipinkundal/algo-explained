@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Algorithm State",
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 6,
+      "codeInsight": "Creates result as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy page-specific invariant."
+      "activeLine": 6,
+      "codeInsight": "Creates result as empty working state; later lines add and remove values from it."
     },
     {
       "label": "State change",
       "title": "Update the state described by this algorithm",
       "note": "Only the necessary algorithm state fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Only the necessary algorithm state fields are changed."
+      "activeLine": 8,
+      "codeInsight": "Checks result.length === 0 || result[result.length - 1] !== value) result.push(value; only the branch that preserves C++ unique()'s invariant is allowed to change state."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 10,
+      "codeInsight": "Returns result, the value produced after C++ unique()'s state changes are complete."
     }
   ],
   "complexity": {
@@ -142,7 +142,7 @@ export const algorithmPage = {
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "C++ unique() invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Creates result as empty working state; later lines add and remove values from it.",
         "activeState": 0
       },
       {
@@ -150,7 +150,7 @@ export const algorithmPage = {
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "C++ unique() invariant",
-        "rule": "The active state must still satisfy page-specific invariant.",
+        "rule": "Creates result as empty working state; later lines add and remove values from it.",
         "activeState": 1
       },
       {
@@ -158,7 +158,7 @@ export const algorithmPage = {
         "title": "Update the state described by this algorithm",
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "C++ unique() invariant",
-        "rule": "Only the necessary algorithm state fields are changed.",
+        "rule": "Checks result.length === 0 || result[result.length - 1] !== value) result.push(value; only the branch that preserves C++ unique()'s invariant is allowed to change state.",
         "activeState": 2
       },
       {
@@ -166,7 +166,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "C++ unique() invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns result, the value produced after C++ unique()'s state changes are complete.",
         "activeState": 3
       }
     ]

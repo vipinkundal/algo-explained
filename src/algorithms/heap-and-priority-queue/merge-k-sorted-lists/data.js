@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Range",
       "title": "Split array",
       "note": "The code divides work into smaller ranges.",
-      "activeLine": 1,
-      "codeInsight": "The code divides work into smaller ranges."
+      "activeLine": 6,
+      "codeInsight": "Prepares indices with a default value so unresolved positions already have the correct fallback answer."
     },
     {
       "label": "Halves",
       "title": "Sort recursively",
       "note": "Each half is solved before merge.",
       "activeLine": 4,
-      "codeInsight": "Each half is solved before merge."
+      "codeInsight": "This blank line separates Merge K Sorted Lists's setup from the next code block."
     },
     {
       "label": "Merge",
       "title": "Choose smaller front",
       "note": "The next output value comes from one sorted half.",
-      "activeLine": 8,
-      "codeInsight": "The next output value comes from one sorted half."
+      "activeLine": 10,
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Sorted",
       "title": "Return merged result",
       "note": "The merged section is fully ordered.",
-      "activeLine": 12,
-      "codeInsight": "The merged section is fully ordered."
+      "activeLine": 17,
+      "codeInsight": "Returns result, the value produced after Merge K Sorted Lists's state changes are complete."
     }
   ],
   "complexity": {
@@ -211,7 +211,7 @@ export const algorithmPage = {
         "title": "Split array",
         "note": "The code divides work into smaller ranges.",
         "ruleLabel": "Merge K Sorted Lists invariant",
-        "rule": "The code divides work into smaller ranges.",
+        "rule": "Prepares indices with a default value so unresolved positions already have the correct fallback answer.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -226,7 +226,7 @@ export const algorithmPage = {
         "title": "Sort recursively",
         "note": "Each half is solved before merge.",
         "ruleLabel": "Merge K Sorted Lists invariant",
-        "rule": "Each half is solved before merge.",
+        "rule": "This blank line separates Merge K Sorted Lists's setup from the next code block.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -241,7 +241,7 @@ export const algorithmPage = {
         "title": "Choose smaller front",
         "note": "The next output value comes from one sorted half.",
         "ruleLabel": "Merge K Sorted Lists invariant",
-        "rule": "The next output value comes from one sorted half.",
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -252,7 +252,7 @@ export const algorithmPage = {
         "title": "Return merged result",
         "note": "The merged section is fully ordered.",
         "ruleLabel": "Merge K Sorted Lists invariant",
-        "rule": "The merged section is fully ordered.",
+        "rule": "Returns result, the value produced after Merge K Sorted Lists's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

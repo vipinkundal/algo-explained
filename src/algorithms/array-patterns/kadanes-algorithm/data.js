@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Values",
       "title": "Read values or updates",
       "note": "The code receives the array, ranges, or deltas.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the array, ranges, or deltas."
+      "activeLine": 6,
+      "codeInsight": "Initializes bestEndingHere as mutable state; later branches update it as the search window or traversal changes."
     },
     {
       "label": "Accumulator",
       "title": "Start running state",
       "note": "A neutral starting value makes every update consistent.",
-      "activeLine": 3,
-      "codeInsight": "A neutral starting value makes every update consistent."
+      "activeLine": 5,
+      "codeInsight": "Defines kadanesAlgorithm and names the input array; edits to those inputs change the visual state and output."
     },
     {
       "label": "Prefix step",
       "title": "Apply current contribution",
       "note": "The running state changes by the current value or boundary delta.",
       "activeLine": 5,
-      "codeInsight": "The running state changes by the current value or boundary delta."
+      "codeInsight": "Defines kadanesAlgorithm and names the input array; edits to those inputs change the visual state and output."
     },
     {
       "label": "Range result",
       "title": "Read saved state",
       "note": "The stored state gives the final or range answer.",
-      "activeLine": 8,
-      "codeInsight": "The stored state gives the final or range answer."
+      "activeLine": 12,
+      "codeInsight": "Returns best, the value produced after Kadane’s Algorithm's state changes are complete."
     }
   ],
   "complexity": {
@@ -150,7 +150,7 @@ export const algorithmPage = {
         "title": "Read values or updates",
         "note": "The code receives the array, ranges, or deltas.",
         "ruleLabel": "Kadane’s Algorithm invariant",
-        "rule": "The code receives the array, ranges, or deltas.",
+        "rule": "Initializes bestEndingHere as mutable state; later branches update it as the search window or traversal changes.",
         "activeIndices": [
           0
         ],
@@ -168,7 +168,7 @@ export const algorithmPage = {
         "title": "Start running state",
         "note": "A neutral starting value makes every update consistent.",
         "ruleLabel": "Kadane’s Algorithm invariant",
-        "rule": "A neutral starting value makes every update consistent.",
+        "rule": "Defines kadanesAlgorithm and names the input array; edits to those inputs change the visual state and output.",
         "activeIndices": [
           1,
           2
@@ -192,7 +192,7 @@ export const algorithmPage = {
         "title": "Apply current contribution",
         "note": "The running state changes by the current value or boundary delta.",
         "ruleLabel": "Kadane’s Algorithm invariant",
-        "rule": "The running state changes by the current value or boundary delta.",
+        "rule": "Defines kadanesAlgorithm and names the input array; edits to those inputs change the visual state and output.",
         "activeIndices": [
           2
         ],
@@ -214,7 +214,7 @@ export const algorithmPage = {
         "title": "Read saved state",
         "note": "The stored state gives the final or range answer.",
         "ruleLabel": "Kadane’s Algorithm invariant",
-        "rule": "The stored state gives the final or range answer.",
+        "rule": "Returns best, the value produced after Kadane’s Algorithm's state changes are complete.",
         "activeIndices": [
           3,
           4

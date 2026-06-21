@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Stack",
       "title": "Read stack action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 3,
+      "codeInsight": "Creates calls as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Stack top",
       "title": "Inspect stack",
       "note": "The active state must still satisfy last-in, first-out state.",
       "activeLine": 3,
-      "codeInsight": "The active state must still satisfy last-in, first-out state."
+      "codeInsight": "Creates calls as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Push / pop",
       "title": "Push, pop, peek, or resolve stack entries",
       "note": "Only the necessary stack fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Only the necessary stack fields are changed."
+      "activeLine": 5,
+      "codeInsight": "Adds the current value to calls, keeping it available for later comparisons or traversal."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 6,
+      "codeInsight": "Returns value <= 1 ? 1 : value * factorial(value - 1), the value produced after Nested Recursion's state changes are complete."
     }
   ],
   "complexity": {
@@ -154,7 +154,7 @@ export const algorithmPage = {
         "title": "Read stack action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Nested Recursion invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Creates calls as empty working state; later lines add and remove values from it.",
         "activeCall": 0,
         "returningCalls": []
       },
@@ -163,7 +163,7 @@ export const algorithmPage = {
         "title": "Inspect stack",
         "note": "The active state must still satisfy last-in, first-out state.",
         "ruleLabel": "Nested Recursion invariant",
-        "rule": "The active state must still satisfy last-in, first-out state.",
+        "rule": "Creates calls as empty working state; later lines add and remove values from it.",
         "activeCall": 1,
         "returningCalls": []
       },
@@ -172,7 +172,7 @@ export const algorithmPage = {
         "title": "Push, pop, peek, or resolve stack entries",
         "note": "Only the necessary stack fields are changed.",
         "ruleLabel": "Nested Recursion invariant",
-        "rule": "Only the necessary stack fields are changed.",
+        "rule": "Adds the current value to calls, keeping it available for later comparisons or traversal.",
         "activeCall": 2,
         "returningCalls": []
       },
@@ -181,7 +181,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Nested Recursion invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns value <= 1 ? 1 : value * factorial(value - 1), the value produced after Nested Recursion's state changes are complete.",
         "activeCall": 3,
         "returningCalls": [
           0,

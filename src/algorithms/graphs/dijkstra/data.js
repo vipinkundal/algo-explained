@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 1,
-      "codeInsight": "The code receives vertices, edges, weights, or adjacency lists."
+      "activeLine": 6,
+      "codeInsight": "Builds distances as a lookup table so each key has an explicit starting state."
     },
     {
       "label": "Distance Table",
       "title": "Initialize distance table",
       "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 3,
-      "codeInsight": "Only the graph state owned by this algorithm is created."
+      "activeLine": 6,
+      "codeInsight": "Builds distances as a lookup table so each key has an explicit starting state."
     },
     {
       "label": "Work item",
       "title": "Process next vertex or edge",
       "note": "Relax outgoing edges when a better distance is found.",
       "activeLine": 6,
-      "codeInsight": "Relax outgoing edges when a better distance is found."
+      "codeInsight": "Builds distances as a lookup table so each key has an explicit starting state."
     },
     {
       "label": "Shortest Path Relaxation",
       "title": "Return shortest-path relaxation",
       "note": "The final graph state becomes the answer.",
-      "activeLine": 10,
-      "codeInsight": "The final graph state becomes the answer."
+      "activeLine": 17,
+      "codeInsight": "Returns distances, the value produced after Dijkstra’s Algorithm's state changes are complete."
     }
   ],
   "complexity": {
@@ -193,7 +193,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Dijkstra’s Algorithm invariant",
-        "rule": "The code receives vertices, edges, weights, or adjacency lists.",
+        "rule": "Builds distances as a lookup table so each key has an explicit starting state.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -209,7 +209,7 @@ export const algorithmPage = {
         "title": "Initialize distance table",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Dijkstra’s Algorithm invariant",
-        "rule": "Only the graph state owned by this algorithm is created.",
+        "rule": "Builds distances as a lookup table so each key has an explicit starting state.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -227,7 +227,7 @@ export const algorithmPage = {
         "title": "Process next vertex or edge",
         "note": "Relax outgoing edges when a better distance is found.",
         "ruleLabel": "Dijkstra’s Algorithm invariant",
-        "rule": "Relax outgoing edges when a better distance is found.",
+        "rule": "Builds distances as a lookup table so each key has an explicit starting state.",
         "activeNode": "C",
         "visitedNodes": [
           "A",
@@ -246,7 +246,7 @@ export const algorithmPage = {
         "title": "Return shortest-path relaxation",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Dijkstra’s Algorithm invariant",
-        "rule": "The final graph state becomes the answer.",
+        "rule": "Returns distances, the value produced after Dijkstra’s Algorithm's state changes are complete.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

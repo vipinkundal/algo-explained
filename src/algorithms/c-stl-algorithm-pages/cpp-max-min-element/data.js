@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Read values",
       "note": "The code receives the list and any target condition.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the list and any target condition."
+      "activeLine": 6,
+      "codeInsight": "Checks !values.length; only the branch that preserves C++ max_element() / min_element()'s invariant is allowed to change state."
     },
     {
       "label": "Index",
       "title": "Select current item",
       "note": "The loop focuses on one position at a time.",
       "activeLine": 3,
-      "codeInsight": "The loop focuses on one position at a time."
+      "codeInsight": "Executes this C++ max_element() / min_element() line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Update",
       "title": "Apply comparison or count",
       "note": "The current value changes the running state only if the rule says so.",
-      "activeLine": 5,
-      "codeInsight": "The current value changes the running state only if the rule says so."
+      "activeLine": 6,
+      "codeInsight": "Checks !values.length; only the branch that preserves C++ max_element() / min_element()'s invariant is allowed to change state."
     },
     {
       "label": "Result",
       "title": "Return scan output",
       "note": "When the scan ends, the tracked result is returned.",
-      "activeLine": 8,
-      "codeInsight": "When the scan ends, the tracked result is returned."
+      "activeLine": 13,
+      "codeInsight": "Returns { min: values[minIndex], max: values[maxIndex], minIndex, maxIndex }, the value produced after C++ max_element() / min_element()'s state changes are complete."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Read values",
         "note": "The code receives the list and any target condition.",
         "ruleLabel": "C++ max_element() / min_element() invariant",
-        "rule": "The code receives the list and any target condition.",
+        "rule": "Checks !values.length; only the branch that preserves C++ max_element() / min_element()'s invariant is allowed to change state.",
         "activeIndices": [
           0
         ],
@@ -159,7 +159,7 @@ export const algorithmPage = {
         "title": "Select current item",
         "note": "The loop focuses on one position at a time.",
         "ruleLabel": "C++ max_element() / min_element() invariant",
-        "rule": "The loop focuses on one position at a time.",
+        "rule": "Executes this C++ max_element() / min_element() line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           1,
           2
@@ -178,7 +178,7 @@ export const algorithmPage = {
         "title": "Apply comparison or count",
         "note": "The current value changes the running state only if the rule says so.",
         "ruleLabel": "C++ max_element() / min_element() invariant",
-        "rule": "The current value changes the running state only if the rule says so.",
+        "rule": "Checks !values.length; only the branch that preserves C++ max_element() / min_element()'s invariant is allowed to change state.",
         "activeIndices": [
           2
         ],
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Return scan output",
         "note": "When the scan ends, the tracked result is returned.",
         "ruleLabel": "C++ max_element() / min_element() invariant",
-        "rule": "When the scan ends, the tracked result is returned.",
+        "rule": "Returns { min: values[minIndex], max: values[maxIndex], minIndex, maxIndex }, the value produced after C++ max_element() / min_element()'s state changes are complete.",
         "activeIndices": [
           3,
           3

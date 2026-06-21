@@ -64,28 +64,28 @@ export const algorithmPage = {
       "title": "Choose next fixed slot",
       "note": "The left side is already sorted.",
       "activeLine": 1,
-      "codeInsight": "The left side is already sorted."
+      "codeInsight": "Executes this Selection Sort line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Minimum",
       "title": "Scan unsorted suffix",
       "note": "The code tracks the smallest remaining value.",
       "activeLine": 4,
-      "codeInsight": "The code tracks the smallest remaining value."
+      "codeInsight": "This blank line separates Selection Sort's setup from the next code block."
     },
     {
       "label": "Swap",
       "title": "Place selected value",
       "note": "The minimum moves into its final position.",
       "activeLine": 7,
-      "codeInsight": "The minimum moves into its final position."
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Sorted",
       "title": "Return final order",
       "note": "All positions are fixed after the last pass.",
-      "activeLine": 11,
-      "codeInsight": "All positions are fixed after the last pass."
+      "activeLine": 14,
+      "codeInsight": "Returns values, the value produced after Selection Sort's state changes are complete."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Choose next fixed slot",
         "note": "The left side is already sorted.",
         "ruleLabel": "Selection Sort invariant",
-        "rule": "The left side is already sorted.",
+        "rule": "Executes this Selection Sort line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           0
         ],
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Scan unsorted suffix",
         "note": "The code tracks the smallest remaining value.",
         "ruleLabel": "Selection Sort invariant",
-        "rule": "The code tracks the smallest remaining value.",
+        "rule": "This blank line separates Selection Sort's setup from the next code block.",
         "activeIndices": [
           1,
           2
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Place selected value",
         "note": "The minimum moves into its final position.",
         "ruleLabel": "Selection Sort invariant",
-        "rule": "The minimum moves into its final position.",
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
         "activeIndices": [
           2
         ],
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "All positions are fixed after the last pass.",
         "ruleLabel": "Selection Sort invariant",
-        "rule": "All positions are fixed after the last pass.",
+        "rule": "Returns values, the value produced after Selection Sort's state changes are complete.",
         "activeIndices": [
           3,
           3

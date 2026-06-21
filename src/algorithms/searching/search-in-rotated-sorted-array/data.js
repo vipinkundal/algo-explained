@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Rotated range",
       "title": "Read array and target",
       "note": "The code starts with a sorted array shifted around a pivot.",
-      "activeLine": 1,
-      "codeInsight": "The code starts with a sorted array shifted around a pivot."
+      "activeLine": 6,
+      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
     },
     {
       "label": "mid probe",
       "title": "Choose the middle",
       "note": "mid divides the current candidate window.",
       "activeLine": 4,
-      "codeInsight": "mid divides the current candidate window."
+      "codeInsight": "This blank line separates Search in Rotated Sorted Array's setup from the next code block."
     },
     {
       "label": "sorted half",
       "title": "Detect ordered side",
       "note": "One side of mid must still be sorted.",
       "activeLine": 6,
-      "codeInsight": "One side of mid must still be sorted."
+      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
     },
     {
       "label": "Move bounds",
       "title": "Keep possible side",
       "note": "Bounds move toward the only half that can contain target.",
       "activeLine": 8,
-      "codeInsight": "Bounds move toward the only half that can contain target."
+      "codeInsight": "Repeats while low <= high is true, so the algorithm keeps resolving current work before moving on."
     }
   ],
   "complexity": {
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Read array and target",
         "note": "The code starts with a sorted array shifted around a pivot.",
         "ruleLabel": "Search in Rotated Sorted Array invariant",
-        "rule": "The code starts with a sorted array shifted around a pivot.",
+        "rule": "Initializes low as mutable state; later branches update it as the search window or traversal changes.",
         "activeIndices": [
           0
         ],
@@ -166,7 +166,7 @@ export const algorithmPage = {
         "title": "Choose the middle",
         "note": "mid divides the current candidate window.",
         "ruleLabel": "Search in Rotated Sorted Array invariant",
-        "rule": "mid divides the current candidate window.",
+        "rule": "This blank line separates Search in Rotated Sorted Array's setup from the next code block.",
         "activeIndices": [
           1,
           2
@@ -189,7 +189,7 @@ export const algorithmPage = {
         "title": "Detect ordered side",
         "note": "One side of mid must still be sorted.",
         "ruleLabel": "Search in Rotated Sorted Array invariant",
-        "rule": "One side of mid must still be sorted.",
+        "rule": "Initializes low as mutable state; later branches update it as the search window or traversal changes.",
         "activeIndices": [
           2
         ],
@@ -210,7 +210,7 @@ export const algorithmPage = {
         "title": "Keep possible side",
         "note": "Bounds move toward the only half that can contain target.",
         "ruleLabel": "Search in Rotated Sorted Array invariant",
-        "rule": "Bounds move toward the only half that can contain target.",
+        "rule": "Repeats while low <= high is true, so the algorithm keeps resolving current work before moving on.",
         "activeIndices": [
           3,
           4

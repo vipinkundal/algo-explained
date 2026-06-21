@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Values",
       "title": "Read values or updates",
       "note": "The code receives the array, ranges, or deltas.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the array, ranges, or deltas."
+      "activeLine": 6,
+      "codeInsight": "Prepares diff with a default value so unresolved positions already have the correct fallback answer."
     },
     {
       "label": "Accumulator",
       "title": "Start running state",
       "note": "A neutral starting value makes every update consistent.",
-      "activeLine": 3,
-      "codeInsight": "A neutral starting value makes every update consistent."
+      "activeLine": 6,
+      "codeInsight": "Prepares diff with a default value so unresolved positions already have the correct fallback answer."
     },
     {
       "label": "Prefix step",
       "title": "Apply current contribution",
       "note": "The running state changes by the current value or boundary delta.",
       "activeLine": 5,
-      "codeInsight": "The running state changes by the current value or boundary delta."
+      "codeInsight": "Defines differenceArray and names the input length, updates; edits to those inputs change the visual state and output."
     },
     {
       "label": "Range result",
       "title": "Read saved state",
       "note": "The stored state gives the final or range answer.",
-      "activeLine": 8,
-      "codeInsight": "The stored state gives the final or range answer."
+      "activeLine": 17,
+      "codeInsight": "Returns result, the value produced after Difference Array's state changes are complete."
     }
   ],
   "complexity": {
@@ -150,7 +150,7 @@ export const algorithmPage = {
         "title": "Read values or updates",
         "note": "The code receives the array, ranges, or deltas.",
         "ruleLabel": "Difference Array invariant",
-        "rule": "The code receives the array, ranges, or deltas.",
+        "rule": "Prepares diff with a default value so unresolved positions already have the correct fallback answer.",
         "activeIndices": [
           0
         ],
@@ -168,7 +168,7 @@ export const algorithmPage = {
         "title": "Start running state",
         "note": "A neutral starting value makes every update consistent.",
         "ruleLabel": "Difference Array invariant",
-        "rule": "A neutral starting value makes every update consistent.",
+        "rule": "Prepares diff with a default value so unresolved positions already have the correct fallback answer.",
         "activeIndices": [
           1,
           2
@@ -190,7 +190,7 @@ export const algorithmPage = {
         "title": "Apply current contribution",
         "note": "The running state changes by the current value or boundary delta.",
         "ruleLabel": "Difference Array invariant",
-        "rule": "The running state changes by the current value or boundary delta.",
+        "rule": "Defines differenceArray and names the input length, updates; edits to those inputs change the visual state and output.",
         "activeIndices": [
           2
         ],
@@ -210,7 +210,7 @@ export const algorithmPage = {
         "title": "Read saved state",
         "note": "The stored state gives the final or range answer.",
         "ruleLabel": "Difference Array invariant",
-        "rule": "The stored state gives the final or range answer.",
+        "rule": "Returns result, the value produced after Difference Array's state changes are complete.",
         "activeIndices": [
           3,
           4

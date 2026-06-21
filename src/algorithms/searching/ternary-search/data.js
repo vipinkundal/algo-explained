@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Algorithm State",
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 7,
+      "codeInsight": "Stores mid1 so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy page-specific invariant."
+      "activeLine": 7,
+      "codeInsight": "Stores mid1 so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "State change",
       "title": "Update the state described by this algorithm",
       "note": "Only the necessary algorithm state fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary algorithm state fields are changed."
+      "codeInsight": "Repeats while high - low > precision is true, so the algorithm keeps resolving current work before moving on."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 12,
+      "codeInsight": "Returns (low + high) / 2, the value produced after Ternary Search's state changes are complete."
     }
   ],
   "complexity": {
@@ -135,7 +135,7 @@ export const algorithmPage = {
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Ternary Search invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Stores mid1 so the algorithm can reuse this value without recomputing it.",
         "activeIndices": [
           0
         ],
@@ -153,7 +153,7 @@ export const algorithmPage = {
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "Ternary Search invariant",
-        "rule": "The active state must still satisfy page-specific invariant.",
+        "rule": "Stores mid1 so the algorithm can reuse this value without recomputing it.",
         "activeIndices": [
           1,
           2
@@ -175,7 +175,7 @@ export const algorithmPage = {
         "title": "Update the state described by this algorithm",
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "Ternary Search invariant",
-        "rule": "Only the necessary algorithm state fields are changed.",
+        "rule": "Repeats while high - low > precision is true, so the algorithm keeps resolving current work before moving on.",
         "activeIndices": [
           2
         ],
@@ -195,7 +195,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Ternary Search invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns (low + high) / 2, the value produced after Ternary Search's state changes are complete.",
         "activeIndices": [
           3,
           4

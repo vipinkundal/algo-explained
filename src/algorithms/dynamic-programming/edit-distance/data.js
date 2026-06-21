@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "State meaning",
       "title": "Define DP cell",
       "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 1,
-      "codeInsight": "The code first needs a precise subproblem meaning."
+      "activeLine": 6,
+      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
     },
     {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
       "activeLine": 3,
-      "codeInsight": "Base values stop the recurrence from falling through."
+      "codeInsight": "Executes this Edit Distance line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Recurrence",
       "title": "Fill next state",
       "note": "The transition combines previously solved states.",
       "activeLine": 6,
-      "codeInsight": "The transition combines previously solved states."
+      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
     },
     {
       "label": "Target",
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
-      "activeLine": 10,
-      "codeInsight": "The answer is read from the final DP state."
+      "activeLine": 15,
+      "codeInsight": "Returns dp[a.length][b.length], the value produced after Edit Distance's state changes are complete."
     }
   ],
   "complexity": {
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Define DP cell",
         "note": "The code first needs a precise subproblem meaning.",
         "ruleLabel": "Edit Distance invariant",
-        "rule": "The code first needs a precise subproblem meaning.",
+        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
         "activeCells": [
           [
             0,
@@ -167,7 +167,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "Edit Distance invariant",
-        "rule": "Base values stop the recurrence from falling through.",
+        "rule": "Executes this Edit Distance line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeCells": [
           [
             0,
@@ -190,7 +190,7 @@ export const algorithmPage = {
         "title": "Fill next state",
         "note": "The transition combines previously solved states.",
         "ruleLabel": "Edit Distance invariant",
-        "rule": "The transition combines previously solved states.",
+        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
         "activeCells": [
           [
             0,
@@ -217,7 +217,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "Edit Distance invariant",
-        "rule": "The answer is read from the final DP state.",
+        "rule": "Returns dp[a.length][b.length], the value produced after Edit Distance's state changes are complete.",
         "activeCells": [
           [
             1,

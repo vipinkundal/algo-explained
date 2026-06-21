@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 1,
-      "codeInsight": "The code starts from the matrix shape."
+      "activeLine": 6,
+      "codeInsight": "Stores n so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
       "activeLine": 3,
-      "codeInsight": "The current row/column controls the next update."
+      "codeInsight": "Executes this Rat in a Maze line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Move/update",
       "title": "Apply neighbor or boundary rule",
       "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 6,
-      "codeInsight": "The transition changes reachable cells, boundaries, or accumulated values."
+      "activeLine": 11,
+      "codeInsight": "Checks row === n - 1 && col === n - 1; only the branch that preserves Rat in a Maze's invariant is allowed to change state."
     },
     {
       "label": "Result",
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
-      "activeLine": 9,
-      "codeInsight": "The final matrix, count, or query answer is returned."
+      "activeLine": 13,
+      "codeInsight": "Executes this Rat in a Maze line as part of the highlighted code path, linking the visual step to the implementation."
     }
   ],
   "complexity": {
@@ -163,7 +163,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Rat in a Maze invariant",
-        "rule": "The code starts from the matrix shape.",
+        "rule": "Stores n so the algorithm can reuse this value without recomputing it.",
         "activeCells": [
           [
             0,
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Rat in a Maze invariant",
-        "rule": "The current row/column controls the next update.",
+        "rule": "Executes this Rat in a Maze line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeCells": [
           [
             0,
@@ -205,7 +205,7 @@ export const algorithmPage = {
         "title": "Apply neighbor or boundary rule",
         "note": "The transition changes reachable cells, boundaries, or accumulated values.",
         "ruleLabel": "Rat in a Maze invariant",
-        "rule": "The transition changes reachable cells, boundaries, or accumulated values.",
+        "rule": "Checks row === n - 1 && col === n - 1; only the branch that preserves Rat in a Maze's invariant is allowed to change state.",
         "activeCells": [
           [
             0,
@@ -232,7 +232,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Rat in a Maze invariant",
-        "rule": "The final matrix, count, or query answer is returned.",
+        "rule": "Executes this Rat in a Maze line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeCells": [
           [
             1,

@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Stack",
       "title": "Read stack action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 6,
+      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Stack top",
       "title": "Inspect stack",
       "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy last-in, first-out state."
+      "activeLine": 6,
+      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Push / pop",
       "title": "Push, pop, peek, or resolve stack entries",
       "note": "Only the necessary stack fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary stack fields are changed."
+      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 15,
+      "codeInsight": "Returns false, the value produced after Cycle Detection in Directed Graph's state changes are complete."
     }
   ],
   "complexity": {
@@ -184,7 +184,7 @@ export const algorithmPage = {
         "title": "Read stack action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Cycle Detection in Directed Graph invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -200,7 +200,7 @@ export const algorithmPage = {
         "title": "Inspect stack",
         "note": "The active state must still satisfy last-in, first-out state.",
         "ruleLabel": "Cycle Detection in Directed Graph invariant",
-        "rule": "The active state must still satisfy last-in, first-out state.",
+        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -218,7 +218,7 @@ export const algorithmPage = {
         "title": "Push, pop, peek, or resolve stack entries",
         "note": "Only the necessary stack fields are changed.",
         "ruleLabel": "Cycle Detection in Directed Graph invariant",
-        "rule": "Only the necessary stack fields are changed.",
+        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
         "activeNode": "C",
         "visitedNodes": [
           "A",
@@ -237,7 +237,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Cycle Detection in Directed Graph invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns false, the value produced after Cycle Detection in Directed Graph's state changes are complete.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

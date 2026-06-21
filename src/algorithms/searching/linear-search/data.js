@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Read values",
       "note": "The code receives the list and any target condition.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the list and any target condition."
+      "activeLine": 6,
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Index",
       "title": "Select current item",
       "note": "The loop focuses on one position at a time.",
       "activeLine": 3,
-      "codeInsight": "The loop focuses on one position at a time."
+      "codeInsight": "Executes this Linear Search line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Update",
       "title": "Apply comparison or count",
       "note": "The current value changes the running state only if the rule says so.",
-      "activeLine": 5,
-      "codeInsight": "The current value changes the running state only if the rule says so."
+      "activeLine": 6,
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Result",
       "title": "Return scan output",
       "note": "When the scan ends, the tracked result is returned.",
-      "activeLine": 8,
-      "codeInsight": "When the scan ends, the tracked result is returned."
+      "activeLine": 9,
+      "codeInsight": "Returns -1, the value produced after Linear Search's state changes are complete."
     }
   ],
   "complexity": {
@@ -152,7 +152,7 @@ export const algorithmPage = {
         "title": "Read values",
         "note": "The code receives the list and any target condition.",
         "ruleLabel": "Linear Search invariant",
-        "rule": "The code receives the list and any target condition.",
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
         "activeIndices": [
           0
         ],
@@ -170,7 +170,7 @@ export const algorithmPage = {
         "title": "Select current item",
         "note": "The loop focuses on one position at a time.",
         "ruleLabel": "Linear Search invariant",
-        "rule": "The loop focuses on one position at a time.",
+        "rule": "Executes this Linear Search line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           1,
           2
@@ -189,7 +189,7 @@ export const algorithmPage = {
         "title": "Apply comparison or count",
         "note": "The current value changes the running state only if the rule says so.",
         "ruleLabel": "Linear Search invariant",
-        "rule": "The current value changes the running state only if the rule says so.",
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
         "activeIndices": [
           2
         ],
@@ -207,7 +207,7 @@ export const algorithmPage = {
         "title": "Return scan output",
         "note": "When the scan ends, the tracked result is returned.",
         "ruleLabel": "Linear Search invariant",
-        "rule": "When the scan ends, the tracked result is returned.",
+        "rule": "Returns -1, the value produced after Linear Search's state changes are complete.",
         "activeIndices": [
           2,
           2

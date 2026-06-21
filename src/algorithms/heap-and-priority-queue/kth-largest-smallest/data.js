@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Queue",
       "title": "Read queue action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 5,
+      "codeInsight": "Defines kthLargestSmallest and names the input values, k; edits to those inputs change the visual state and output."
     },
     {
       "label": "Queue front",
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy first-in, first-out state."
+      "activeLine": 6,
+      "codeInsight": "Initializes sorted, the local state that the next highlighted lines will update."
     },
     {
       "label": "Enqueue / dequeue",
       "title": "Enqueue, dequeue, peek, or evict entries",
       "note": "Only the necessary queue fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary queue fields are changed."
+      "codeInsight": "Initializes sorted, the local state that the next highlighted lines will update."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 7,
+      "codeInsight": "Returns {, the value produced after Kth Largest / Smallest Element's state changes are complete."
     }
   ],
   "complexity": {
@@ -206,7 +206,7 @@ export const algorithmPage = {
         "title": "Read queue action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Kth Largest / Smallest Element invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Defines kthLargestSmallest and names the input values, k; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -221,7 +221,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "Kth Largest / Smallest Element invariant",
-        "rule": "The active state must still satisfy first-in, first-out state.",
+        "rule": "Initializes sorted, the local state that the next highlighted lines will update.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -236,7 +236,7 @@ export const algorithmPage = {
         "title": "Enqueue, dequeue, peek, or evict entries",
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "Kth Largest / Smallest Element invariant",
-        "rule": "Only the necessary queue fields are changed.",
+        "rule": "Initializes sorted, the local state that the next highlighted lines will update.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -247,7 +247,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Kth Largest / Smallest Element invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns {, the value produced after Kth Largest / Smallest Element's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

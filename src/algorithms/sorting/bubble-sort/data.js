@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Array",
       "title": "Copy values",
       "note": "The code starts with the list to reorder.",
-      "activeLine": 1,
-      "codeInsight": "The code starts with the list to reorder."
+      "activeLine": 6,
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Pair",
       "title": "Compare neighbors",
       "note": "Only adjacent values are inspected.",
-      "activeLine": 4,
-      "codeInsight": "Only adjacent values are inspected."
+      "activeLine": 10,
+      "codeInsight": "Checks values[index] > values[index + 1]; only the branch that preserves Bubble Sort's invariant is allowed to change state."
     },
     {
       "label": "Swap",
       "title": "Move larger right",
       "note": "Out-of-order neighbors exchange positions.",
-      "activeLine": 6,
-      "codeInsight": "Out-of-order neighbors exchange positions."
+      "activeLine": 7,
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Sorted",
       "title": "Return final order",
       "note": "The last pass confirms every pair is ordered.",
-      "activeLine": 10,
-      "codeInsight": "The last pass confirms every pair is ordered."
+      "activeLine": 17,
+      "codeInsight": "Returns values, the value produced after Bubble Sort's state changes are complete."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Copy values",
         "note": "The code starts with the list to reorder.",
         "ruleLabel": "Bubble Sort invariant",
-        "rule": "The code starts with the list to reorder.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeIndices": [
           0
         ],
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Compare neighbors",
         "note": "Only adjacent values are inspected.",
         "ruleLabel": "Bubble Sort invariant",
-        "rule": "Only adjacent values are inspected.",
+        "rule": "Checks values[index] > values[index + 1]; only the branch that preserves Bubble Sort's invariant is allowed to change state.",
         "activeIndices": [
           1,
           2
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Move larger right",
         "note": "Out-of-order neighbors exchange positions.",
         "ruleLabel": "Bubble Sort invariant",
-        "rule": "Out-of-order neighbors exchange positions.",
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
         "activeIndices": [
           2
         ],
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "The last pass confirms every pair is ordered.",
         "ruleLabel": "Bubble Sort invariant",
-        "rule": "The last pass confirms every pair is ordered.",
+        "rule": "Returns values, the value produced after Bubble Sort's state changes are complete.",
         "activeIndices": [
           3,
           3

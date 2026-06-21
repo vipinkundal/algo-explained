@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Stack",
       "title": "Read stack action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 3,
+      "codeInsight": "Initializes tree, the local state that the next highlighted lines will update."
     },
     {
       "label": "Stack top",
       "title": "Inspect stack",
       "note": "The active state must still satisfy last-in, first-out state.",
       "activeLine": 3,
-      "codeInsight": "The active state must still satisfy last-in, first-out state."
+      "codeInsight": "Initializes tree, the local state that the next highlighted lines will update."
     },
     {
       "label": "Push / pop",
       "title": "Push, pop, peek, or resolve stack entries",
       "note": "Only the necessary stack fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Only the necessary stack fields are changed."
+      "activeLine": 3,
+      "codeInsight": "Initializes tree, the local state that the next highlighted lines will update."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 4,
+      "codeInsight": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Tree Recursion's state changes are complete."
     }
   ],
   "complexity": {
@@ -222,7 +222,7 @@ export const algorithmPage = {
         "title": "Read stack action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Tree Recursion invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Initializes tree, the local state that the next highlighted lines will update.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -237,7 +237,7 @@ export const algorithmPage = {
         "title": "Inspect stack",
         "note": "The active state must still satisfy last-in, first-out state.",
         "ruleLabel": "Tree Recursion invariant",
-        "rule": "The active state must still satisfy last-in, first-out state.",
+        "rule": "Initializes tree, the local state that the next highlighted lines will update.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -252,7 +252,7 @@ export const algorithmPage = {
         "title": "Push, pop, peek, or resolve stack entries",
         "note": "Only the necessary stack fields are changed.",
         "ruleLabel": "Tree Recursion invariant",
-        "rule": "Only the necessary stack fields are changed.",
+        "rule": "Initializes tree, the local state that the next highlighted lines will update.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -263,7 +263,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Tree Recursion invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Tree Recursion's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

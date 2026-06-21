@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check current node",
       "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 1,
-      "codeInsight": "The code starts by handling missing nodes or the current root."
+      "activeLine": 5,
+      "codeInsight": "Defines bstSearch and names the input root, target; edits to those inputs change the visual state and output."
     },
     {
       "label": "Node state",
       "title": "Read ordered branch",
       "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "The current node controls the next step."
+      "activeLine": 10,
+      "codeInsight": "Computes mid from the current values before the algorithm decides the next move."
     },
     {
       "label": "Child step",
       "title": "Compare with the current node and move left or right",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
       "activeLine": 6,
-      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
+      "codeInsight": "Checks Array.isArray(root); only the branch that preserves BST Search's invariant is allowed to change state."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 10,
-      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
+      "activeLine": 15,
+      "codeInsight": "Returns -1, the value produced after BST Search's state changes are complete."
     }
   ],
   "complexity": {
@@ -226,7 +226,7 @@ export const algorithmPage = {
         "title": "Check current node",
         "note": "The code starts by handling missing nodes or the current root.",
         "ruleLabel": "BST Search invariant",
-        "rule": "The code starts by handling missing nodes or the current root.",
+        "rule": "Defines bstSearch and names the input root, target; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -241,7 +241,7 @@ export const algorithmPage = {
         "title": "Read ordered branch",
         "note": "The current node controls the next step.",
         "ruleLabel": "BST Search invariant",
-        "rule": "The current node controls the next step.",
+        "rule": "Computes mid from the current values before the algorithm decides the next move.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -256,7 +256,7 @@ export const algorithmPage = {
         "title": "Compare with the current node and move left or right",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "BST Search invariant",
-        "rule": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "rule": "Checks Array.isArray(root); only the branch that preserves BST Search's invariant is allowed to change state.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -267,7 +267,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "BST Search invariant",
-        "rule": "The final traversal, path, measurement, or tree state is returned.",
+        "rule": "Returns -1, the value produced after BST Search's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

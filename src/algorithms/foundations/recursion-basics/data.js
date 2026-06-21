@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Stack",
       "title": "Read stack action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 6,
+      "codeInsight": "Initializes input, the local state that the next highlighted lines will update."
     },
     {
       "label": "Stack top",
       "title": "Inspect stack",
       "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy last-in, first-out state."
+      "activeLine": 6,
+      "codeInsight": "Initializes input, the local state that the next highlighted lines will update."
     },
     {
       "label": "Push / pop",
       "title": "Push, pop, peek, or resolve stack entries",
       "note": "Only the necessary stack fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Only the necessary stack fields are changed."
+      "activeLine": 10,
+      "codeInsight": "Adds the current value to result, keeping it available for later comparisons or traversal."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 11,
+      "codeInsight": "Executes this Recursion Basics line as part of the highlighted code path, linking the visual step to the implementation."
     }
   ],
   "complexity": {
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Read stack action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Recursion Basics invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Initializes input, the local state that the next highlighted lines will update.",
         "activeCall": 0,
         "returningCalls": []
       },
@@ -170,7 +170,7 @@ export const algorithmPage = {
         "title": "Inspect stack",
         "note": "The active state must still satisfy last-in, first-out state.",
         "ruleLabel": "Recursion Basics invariant",
-        "rule": "The active state must still satisfy last-in, first-out state.",
+        "rule": "Initializes input, the local state that the next highlighted lines will update.",
         "activeCall": 1,
         "returningCalls": []
       },
@@ -179,7 +179,7 @@ export const algorithmPage = {
         "title": "Push, pop, peek, or resolve stack entries",
         "note": "Only the necessary stack fields are changed.",
         "ruleLabel": "Recursion Basics invariant",
-        "rule": "Only the necessary stack fields are changed.",
+        "rule": "Adds the current value to result, keeping it available for later comparisons or traversal.",
         "activeCall": 2,
         "returningCalls": []
       },
@@ -188,7 +188,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Recursion Basics invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Executes this Recursion Basics line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeCall": 3,
         "returningCalls": [
           0,

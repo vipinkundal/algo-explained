@@ -64,28 +64,28 @@ export const algorithmPage = {
       "title": "Check stop condition",
       "note": "The code first asks whether the current state is complete.",
       "activeLine": 1,
-      "codeInsight": "The code first asks whether the current state is complete."
+      "codeInsight": "Executes this Fibonacci Recursion line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Choice",
       "title": "Select next option",
       "note": "One valid move is added to the state.",
       "activeLine": 4,
-      "codeInsight": "One valid move is added to the state."
+      "codeInsight": "This blank line separates Fibonacci Recursion's setup from the next code block."
     },
     {
       "label": "Call",
       "title": "Recurse deeper",
       "note": "The same rule runs on a smaller or extended state.",
       "activeLine": 6,
-      "codeInsight": "The same rule runs on a smaller or extended state."
+      "codeInsight": "Checks value <= 1; only the branch that preserves Fibonacci Recursion's invariant is allowed to change state."
     },
     {
       "label": "Unwind",
       "title": "Return or backtrack",
       "note": "The result is combined or the choice is removed.",
-      "activeLine": 9,
-      "codeInsight": "The result is combined or the choice is removed."
+      "activeLine": 7,
+      "codeInsight": "Returns fibonacciRecursion(value - 1) + fibonacciRecursion(value - 2), the value produced after Fibonacci Recursion's state changes are complete."
     }
   ],
   "complexity": {
@@ -205,7 +205,7 @@ export const algorithmPage = {
         "title": "Check stop condition",
         "note": "The code first asks whether the current state is complete.",
         "ruleLabel": "Fibonacci Recursion invariant",
-        "rule": "The code first asks whether the current state is complete.",
+        "rule": "Executes this Fibonacci Recursion line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -220,7 +220,7 @@ export const algorithmPage = {
         "title": "Select next option",
         "note": "One valid move is added to the state.",
         "ruleLabel": "Fibonacci Recursion invariant",
-        "rule": "One valid move is added to the state.",
+        "rule": "This blank line separates Fibonacci Recursion's setup from the next code block.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -235,7 +235,7 @@ export const algorithmPage = {
         "title": "Recurse deeper",
         "note": "The same rule runs on a smaller or extended state.",
         "ruleLabel": "Fibonacci Recursion invariant",
-        "rule": "The same rule runs on a smaller or extended state.",
+        "rule": "Checks value <= 1; only the branch that preserves Fibonacci Recursion's invariant is allowed to change state.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -246,7 +246,7 @@ export const algorithmPage = {
         "title": "Return or backtrack",
         "note": "The result is combined or the choice is removed.",
         "ruleLabel": "Fibonacci Recursion invariant",
-        "rule": "The result is combined or the choice is removed.",
+        "rule": "Returns fibonacciRecursion(value - 1) + fibonacciRecursion(value - 2), the value produced after Fibonacci Recursion's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

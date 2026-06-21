@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Stack",
       "title": "Read stack action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 6,
+      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
     },
     {
       "label": "Stack top",
       "title": "Inspect stack",
       "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy last-in, first-out state."
+      "activeLine": 10,
+      "codeInsight": "Peeks at the stack top and keeps popping while the current value is greater, resolving every smaller value that was waiting."
     },
     {
       "label": "Push / pop",
       "title": "Push, pop, peek, or resolve stack entries",
       "note": "Only the necessary stack fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Only the necessary stack fields are changed."
+      "activeLine": 10,
+      "codeInsight": "Peeks at the stack top and keeps popping while the current value is greater, resolving every smaller value that was waiting."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 17,
+      "codeInsight": "Returns best, the value produced after Largest Rectangle in Histogram's state changes are complete."
     }
   ],
   "complexity": {
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Read stack action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Largest Rectangle in Histogram invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear.",
         "activeItems": [
           0
         ],
@@ -160,7 +160,7 @@ export const algorithmPage = {
         "title": "Inspect stack",
         "note": "The active state must still satisfy last-in, first-out state.",
         "ruleLabel": "Largest Rectangle in Histogram invariant",
-        "rule": "The active state must still satisfy last-in, first-out state.",
+        "rule": "Peeks at the stack top and keeps popping while the current value is greater, resolving every smaller value that was waiting.",
         "activeItems": [
           1
         ],
@@ -175,7 +175,7 @@ export const algorithmPage = {
         "title": "Push, pop, peek, or resolve stack entries",
         "note": "Only the necessary stack fields are changed.",
         "ruleLabel": "Largest Rectangle in Histogram invariant",
-        "rule": "Only the necessary stack fields are changed.",
+        "rule": "Peeks at the stack top and keeps popping while the current value is greater, resolving every smaller value that was waiting.",
         "activeItems": [
           2
         ],
@@ -190,7 +190,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Largest Rectangle in Histogram invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns best, the value produced after Largest Rectangle in Histogram's state changes are complete.",
         "activeItems": [
           3
         ],

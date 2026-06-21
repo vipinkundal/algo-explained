@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 1,
-      "codeInsight": "The code receives vertices, edges, weights, or adjacency lists."
+      "activeLine": 6,
+      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Chosen Edge Set",
       "title": "Initialize chosen edge set",
       "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 3,
-      "codeInsight": "Only the graph state owned by this algorithm is created."
+      "activeLine": 6,
+      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Work item",
       "title": "Process next vertex or edge",
       "note": "Add the cheapest safe edge.",
       "activeLine": 6,
-      "codeInsight": "Add the cheapest safe edge."
+      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Minimum Spanning Tree Growth",
       "title": "Return minimum-spanning-tree growth",
       "note": "The final graph state becomes the answer.",
-      "activeLine": 10,
-      "codeInsight": "The final graph state becomes the answer."
+      "activeLine": 19,
+      "codeInsight": "Returns mst, the value produced after Prim’s Algorithm's state changes are complete."
     }
   ],
   "complexity": {
@@ -206,7 +206,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Prim’s Algorithm invariant",
-        "rule": "The code receives vertices, edges, weights, or adjacency lists.",
+        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -222,7 +222,7 @@ export const algorithmPage = {
         "title": "Initialize chosen edge set",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Prim’s Algorithm invariant",
-        "rule": "Only the graph state owned by this algorithm is created.",
+        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -240,7 +240,7 @@ export const algorithmPage = {
         "title": "Process next vertex or edge",
         "note": "Add the cheapest safe edge.",
         "ruleLabel": "Prim’s Algorithm invariant",
-        "rule": "Add the cheapest safe edge.",
+        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
         "activeNode": "C",
         "visitedNodes": [
           "A",
@@ -259,7 +259,7 @@ export const algorithmPage = {
         "title": "Return minimum-spanning-tree growth",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Prim’s Algorithm invariant",
-        "rule": "The final graph state becomes the answer.",
+        "rule": "Returns mst, the value produced after Prim’s Algorithm's state changes are complete.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

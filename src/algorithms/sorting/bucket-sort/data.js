@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Buckets",
       "title": "Create bucket ranges",
       "note": "The code creates containers for value ranges.",
-      "activeLine": 1,
-      "codeInsight": "The code creates containers for value ranges."
+      "activeLine": 10,
+      "codeInsight": "Creates buckets as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Value",
       "title": "Assign to bucket",
       "note": "Each input value lands in one bucket.",
-      "activeLine": 5,
-      "codeInsight": "Each input value lands in one bucket."
+      "activeLine": 10,
+      "codeInsight": "Creates buckets as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Inside bucket",
       "title": "Sort local values",
       "note": "Small bucket lists are ordered independently.",
-      "activeLine": 9,
-      "codeInsight": "Small bucket lists are ordered independently."
+      "activeLine": 10,
+      "codeInsight": "Creates buckets as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Concatenate",
       "title": "Concatenate buckets",
       "note": "Buckets are joined in range order.",
       "activeLine": 12,
-      "codeInsight": "Buckets are joined in range order."
+      "codeInsight": "Computes bucketIndex from the current values before the algorithm decides the next move."
     }
   ],
   "complexity": {
@@ -152,7 +152,7 @@ export const algorithmPage = {
         "title": "Create bucket ranges",
         "note": "The code creates containers for value ranges.",
         "ruleLabel": "Bucket Sort invariant",
-        "rule": "The code creates containers for value ranges.",
+        "rule": "Creates buckets as empty working state; later lines add and remove values from it.",
         "activeValue": 4,
         "bucketIndex": 1,
         "bucketValues": [
@@ -168,7 +168,7 @@ export const algorithmPage = {
         "title": "Assign to bucket",
         "note": "Each input value lands in one bucket.",
         "ruleLabel": "Bucket Sort invariant",
-        "rule": "Each input value lands in one bucket.",
+        "rule": "Creates buckets as empty working state; later lines add and remove values from it.",
         "activeValue": 1,
         "bucketIndex": 1,
         "bucketValues": [
@@ -185,7 +185,7 @@ export const algorithmPage = {
         "title": "Sort local values",
         "note": "Small bucket lists are ordered independently.",
         "ruleLabel": "Bucket Sort invariant",
-        "rule": "Small bucket lists are ordered independently.",
+        "rule": "Creates buckets as empty working state; later lines add and remove values from it.",
         "activeValue": 3,
         "bucketIndex": 0,
         "bucketValues": [
@@ -204,7 +204,7 @@ export const algorithmPage = {
         "title": "Concatenate buckets",
         "note": "Buckets are joined in range order.",
         "ruleLabel": "Bucket Sort invariant",
-        "rule": "Buckets are joined in range order.",
+        "rule": "Computes bucketIndex from the current values before the algorithm decides the next move.",
         "activeValue": 2,
         "bucketIndex": 2,
         "bucketValues": [

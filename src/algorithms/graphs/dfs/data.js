@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 1,
-      "codeInsight": "The code receives vertices, edges, weights, or adjacency lists."
+      "activeLine": 6,
+      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Stack Or Recursion Frontier",
       "title": "Initialize stack or recursion frontier",
       "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 3,
-      "codeInsight": "Only the graph state owned by this algorithm is created."
+      "activeLine": 6,
+      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Work item",
       "title": "Process next vertex or edge",
       "note": "Visit one unvisited neighbor before backtracking.",
       "activeLine": 6,
-      "codeInsight": "Visit one unvisited neighbor before backtracking."
+      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Deep Traversal",
       "title": "Return deep traversal",
       "note": "The final graph state becomes the answer.",
-      "activeLine": 10,
-      "codeInsight": "The final graph state becomes the answer."
+      "activeLine": 15,
+      "codeInsight": "Returns order, the value produced after Depth-First Search's state changes are complete."
     }
   ],
   "complexity": {
@@ -187,7 +187,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Depth-First Search invariant",
-        "rule": "The code receives vertices, edges, weights, or adjacency lists.",
+        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Initialize stack or recursion frontier",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Depth-First Search invariant",
-        "rule": "Only the graph state owned by this algorithm is created.",
+        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -221,7 +221,7 @@ export const algorithmPage = {
         "title": "Process next vertex or edge",
         "note": "Visit one unvisited neighbor before backtracking.",
         "ruleLabel": "Depth-First Search invariant",
-        "rule": "Visit one unvisited neighbor before backtracking.",
+        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
         "activeNode": "C",
         "visitedNodes": [
           "A",
@@ -240,7 +240,7 @@ export const algorithmPage = {
         "title": "Return deep traversal",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Depth-First Search invariant",
-        "rule": "The final graph state becomes the answer.",
+        "rule": "Returns order, the value produced after Depth-First Search's state changes are complete.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

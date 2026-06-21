@@ -64,28 +64,28 @@ export const algorithmPage = {
       "title": "Choose pivot value",
       "note": "The pivot defines the partition rule.",
       "activeLine": 1,
-      "codeInsight": "The pivot defines the partition rule."
+      "codeInsight": "Executes this Dutch National Flag line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Scan",
       "title": "Move values by pivot",
       "note": "Values are compared with the pivot.",
       "activeLine": 4,
-      "codeInsight": "Values are compared with the pivot."
+      "codeInsight": "This blank line separates Dutch National Flag's setup from the next code block."
     },
     {
       "label": "Place",
       "title": "Fix pivot index",
       "note": "The pivot lands between smaller and larger values.",
       "activeLine": 8,
-      "codeInsight": "The pivot lands between smaller and larger values."
+      "codeInsight": "Initializes mid as mutable state; later branches update it as the search window or traversal changes."
     },
     {
       "label": "Recurse",
       "title": "Sort both sides",
       "note": "The same partition rule handles each side.",
       "activeLine": 11,
-      "codeInsight": "The same partition rule handles each side."
+      "codeInsight": "Checks values[mid] === 0; only the branch that preserves Dutch National Flag's invariant is allowed to change state."
     }
   ],
   "complexity": {
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Choose pivot value",
         "note": "The pivot defines the partition rule.",
         "ruleLabel": "Dutch National Flag invariant",
-        "rule": "The pivot defines the partition rule.",
+        "rule": "Executes this Dutch National Flag line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           0
         ],
@@ -163,7 +163,7 @@ export const algorithmPage = {
         "title": "Move values by pivot",
         "note": "Values are compared with the pivot.",
         "ruleLabel": "Dutch National Flag invariant",
-        "rule": "Values are compared with the pivot.",
+        "rule": "This blank line separates Dutch National Flag's setup from the next code block.",
         "activeIndices": [
           1,
           2
@@ -185,7 +185,7 @@ export const algorithmPage = {
         "title": "Fix pivot index",
         "note": "The pivot lands between smaller and larger values.",
         "ruleLabel": "Dutch National Flag invariant",
-        "rule": "The pivot lands between smaller and larger values.",
+        "rule": "Initializes mid as mutable state; later branches update it as the search window or traversal changes.",
         "activeIndices": [
           2
         ],
@@ -205,7 +205,7 @@ export const algorithmPage = {
         "title": "Sort both sides",
         "note": "The same partition rule handles each side.",
         "ruleLabel": "Dutch National Flag invariant",
-        "rule": "The same partition rule handles each side.",
+        "rule": "Checks values[mid] === 0; only the branch that preserves Dutch National Flag's invariant is allowed to change state.",
         "activeIndices": [
           3,
           4

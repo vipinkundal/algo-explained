@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Text",
       "title": "Read string input",
       "note": "The code receives text, pattern, or character data.",
-      "activeLine": 1,
-      "codeInsight": "The code receives text, pattern, or character data."
+      "activeLine": 6,
+      "codeInsight": "Stores combined so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Helper",
       "title": "Prepare string state",
       "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-      "activeLine": 3,
-      "codeInsight": "Prefix, hash, frequency, or radius state avoids repeated work."
+      "activeLine": 7,
+      "codeInsight": "Prepares z with a default value so unresolved positions already have the correct fallback answer."
     },
     {
       "label": "Character",
       "title": "Update on current char",
       "note": "One character changes the active string state.",
-      "activeLine": 6,
-      "codeInsight": "One character changes the active string state."
+      "activeLine": 8,
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Result",
       "title": "Return string answer",
       "note": "Matches or best values are returned after the scan.",
-      "activeLine": 9,
-      "codeInsight": "Matches or best values are returned after the scan."
+      "activeLine": 20,
+      "codeInsight": "Returns matches, the value produced after Z Algorithm's state changes are complete."
     }
   ],
   "complexity": {
@@ -133,7 +133,7 @@ export const algorithmPage = {
         "title": "Read string input",
         "note": "The code receives text, pattern, or character data.",
         "ruleLabel": "Z Algorithm invariant",
-        "rule": "The code receives text, pattern, or character data.",
+        "rule": "Stores combined so the algorithm can reuse this value without recomputing it.",
         "activeRange": [
           0,
           3
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Prepare string state",
         "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
         "ruleLabel": "Z Algorithm invariant",
-        "rule": "Prefix, hash, frequency, or radius state avoids repeated work.",
+        "rule": "Prepares z with a default value so unresolved positions already have the correct fallback answer.",
         "activeRange": [
           1,
           4
@@ -157,7 +157,7 @@ export const algorithmPage = {
         "title": "Update on current char",
         "note": "One character changes the active string state.",
         "ruleLabel": "Z Algorithm invariant",
-        "rule": "One character changes the active string state.",
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
         "activeRange": [
           2,
           5
@@ -169,7 +169,7 @@ export const algorithmPage = {
         "title": "Return string answer",
         "note": "Matches or best values are returned after the scan.",
         "ruleLabel": "Z Algorithm invariant",
-        "rule": "Matches or best values are returned after the scan.",
+        "rule": "Returns matches, the value produced after Z Algorithm's state changes are complete.",
         "activeRange": [
           3,
           6

@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Read values",
       "note": "The code receives the list and any target condition.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the list and any target condition."
+      "activeLine": 3,
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Index",
       "title": "Select current item",
       "note": "The loop focuses on one position at a time.",
       "activeLine": 3,
-      "codeInsight": "The loop focuses on one position at a time."
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Update",
       "title": "Apply comparison or count",
       "note": "The current value changes the running state only if the rule says so.",
       "activeLine": 5,
-      "codeInsight": "The current value changes the running state only if the rule says so."
+      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Linear Search in Array ADT with Transposition's state changes are complete."
     },
     {
       "label": "Result",
       "title": "Return scan output",
       "note": "When the scan ends, the tracked result is returned.",
-      "activeLine": 8,
-      "codeInsight": "When the scan ends, the tracked result is returned."
+      "activeLine": 5,
+      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Linear Search in Array ADT with Transposition's state changes are complete."
     }
   ],
   "complexity": {
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Read values",
         "note": "The code receives the list and any target condition.",
         "ruleLabel": "Linear Search in Array ADT with Transposition invariant",
-        "rule": "The code receives the list and any target condition.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeIndices": [
           0
         ],
@@ -180,7 +180,7 @@ export const algorithmPage = {
         "title": "Select current item",
         "note": "The loop focuses on one position at a time.",
         "ruleLabel": "Linear Search in Array ADT with Transposition invariant",
-        "rule": "The loop focuses on one position at a time.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeIndices": [
           1,
           2
@@ -202,7 +202,7 @@ export const algorithmPage = {
         "title": "Apply comparison or count",
         "note": "The current value changes the running state only if the rule says so.",
         "ruleLabel": "Linear Search in Array ADT with Transposition invariant",
-        "rule": "The current value changes the running state only if the rule says so.",
+        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Linear Search in Array ADT with Transposition's state changes are complete.",
         "activeIndices": [
           2
         ],
@@ -222,7 +222,7 @@ export const algorithmPage = {
         "title": "Return scan output",
         "note": "When the scan ends, the tracked result is returned.",
         "ruleLabel": "Linear Search in Array ADT with Transposition invariant",
-        "rule": "When the scan ends, the tracked result is returned.",
+        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Linear Search in Array ADT with Transposition's state changes are complete.",
         "activeIndices": [
           3,
           4

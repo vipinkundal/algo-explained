@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 1,
-      "codeInsight": "The code starts from the matrix shape."
+      "activeLine": 6,
+      "codeInsight": "Prepares prime with a default value so unresolved positions already have the correct fallback answer."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
       "activeLine": 3,
-      "codeInsight": "The current row/column controls the next update."
+      "codeInsight": "Executes this Sieve of Eratosthenes line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Move/update",
       "title": "Apply neighbor or boundary rule",
       "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 6,
-      "codeInsight": "The transition changes reachable cells, boundaries, or accumulated values."
+      "activeLine": 8,
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Result",
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
-      "activeLine": 9,
-      "codeInsight": "The final matrix, count, or query answer is returned."
+      "activeLine": 14,
+      "codeInsight": "Returns result, the value produced after Sieve of Eratosthenes's state changes are complete."
     }
   ],
   "complexity": {
@@ -147,7 +147,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Sieve of Eratosthenes invariant",
-        "rule": "The code starts from the matrix shape.",
+        "rule": "Prepares prime with a default value so unresolved positions already have the correct fallback answer.",
         "activeCells": [
           [
             0,
@@ -166,7 +166,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Sieve of Eratosthenes invariant",
-        "rule": "The current row/column controls the next update.",
+        "rule": "Executes this Sieve of Eratosthenes line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeCells": [
           [
             0,
@@ -189,7 +189,7 @@ export const algorithmPage = {
         "title": "Apply neighbor or boundary rule",
         "note": "The transition changes reachable cells, boundaries, or accumulated values.",
         "ruleLabel": "Sieve of Eratosthenes invariant",
-        "rule": "The transition changes reachable cells, boundaries, or accumulated values.",
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
         "activeCells": [
           [
             0,
@@ -216,7 +216,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Sieve of Eratosthenes invariant",
-        "rule": "The final matrix, count, or query answer is returned.",
+        "rule": "Returns result, the value produced after Sieve of Eratosthenes's state changes are complete.",
         "activeCells": [
           [
             1,

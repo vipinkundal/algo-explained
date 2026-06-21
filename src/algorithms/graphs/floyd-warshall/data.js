@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 1,
-      "codeInsight": "The code receives vertices, edges, weights, or adjacency lists."
+      "activeLine": 6,
+      "codeInsight": "Initializes dist, the local state that the next highlighted lines will update."
     },
     {
       "label": "Distance Table",
       "title": "Initialize distance table",
       "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 3,
-      "codeInsight": "Only the graph state owned by this algorithm is created."
+      "activeLine": 6,
+      "codeInsight": "Initializes dist, the local state that the next highlighted lines will update."
     },
     {
       "label": "Work item",
       "title": "Process next vertex or edge",
       "note": "Relax outgoing edges when a better distance is found.",
       "activeLine": 6,
-      "codeInsight": "Relax outgoing edges when a better distance is found."
+      "codeInsight": "Initializes dist, the local state that the next highlighted lines will update."
     },
     {
       "label": "Shortest Path Relaxation",
       "title": "Return shortest-path relaxation",
       "note": "The final graph state becomes the answer.",
-      "activeLine": 10,
-      "codeInsight": "The final graph state becomes the answer."
+      "activeLine": 14,
+      "codeInsight": "Returns dist, the value produced after Floyd-Warshall Algorithm's state changes are complete."
     }
   ],
   "complexity": {
@@ -190,7 +190,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "The code receives vertices, edges, weights, or adjacency lists.",
+        "rule": "Initializes dist, the local state that the next highlighted lines will update.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -206,7 +206,7 @@ export const algorithmPage = {
         "title": "Initialize distance table",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "Only the graph state owned by this algorithm is created.",
+        "rule": "Initializes dist, the local state that the next highlighted lines will update.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -224,7 +224,7 @@ export const algorithmPage = {
         "title": "Process next vertex or edge",
         "note": "Relax outgoing edges when a better distance is found.",
         "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "Relax outgoing edges when a better distance is found.",
+        "rule": "Initializes dist, the local state that the next highlighted lines will update.",
         "activeNode": "C",
         "visitedNodes": [
           "A",
@@ -243,7 +243,7 @@ export const algorithmPage = {
         "title": "Return shortest-path relaxation",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "The final graph state becomes the answer.",
+        "rule": "Returns dist, the value produced after Floyd-Warshall Algorithm's state changes are complete.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

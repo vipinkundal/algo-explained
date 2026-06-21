@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Range",
       "title": "Read ordered range",
       "note": "The code receives values where pointer movement has meaning.",
-      "activeLine": 1,
-      "codeInsight": "The code receives values where pointer movement has meaning."
+      "activeLine": 6,
+      "codeInsight": "Initializes left as mutable state; later branches update it as the search window or traversal changes."
     },
     {
       "label": "Pointers",
       "title": "Set left and right",
       "note": "Both indices define the current candidate state.",
-      "activeLine": 3,
-      "codeInsight": "Both indices define the current candidate state."
+      "activeLine": 9,
+      "codeInsight": "Initializes sum, the local state that the next highlighted lines will update."
     },
     {
       "label": "Compare",
       "title": "Choose pointer movement",
       "note": "The condition decides which pointer moves.",
-      "activeLine": 5,
-      "codeInsight": "The condition decides which pointer moves."
+      "activeLine": 10,
+      "codeInsight": "Checks sum === target; only the branch that preserves Two Pointers's invariant is allowed to change state."
     },
     {
       "label": "Pair result",
       "title": "Return pair or state",
       "note": "The loop stops when the target condition is met or exhausted.",
-      "activeLine": 8,
-      "codeInsight": "The loop stops when the target condition is met or exhausted."
+      "activeLine": 14,
+      "codeInsight": "Returns [-1, -1], the value produced after Two Pointers's state changes are complete."
     }
   ],
   "complexity": {
@@ -144,7 +144,7 @@ export const algorithmPage = {
         "title": "Read ordered range",
         "note": "The code receives values where pointer movement has meaning.",
         "ruleLabel": "Two Pointers invariant",
-        "rule": "The code receives values where pointer movement has meaning.",
+        "rule": "Initializes left as mutable state; later branches update it as the search window or traversal changes.",
         "activeIndices": [
           0
         ],
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Set left and right",
         "note": "Both indices define the current candidate state.",
         "ruleLabel": "Two Pointers invariant",
-        "rule": "Both indices define the current candidate state.",
+        "rule": "Initializes sum, the local state that the next highlighted lines will update.",
         "activeIndices": [
           1,
           2
@@ -183,7 +183,7 @@ export const algorithmPage = {
         "title": "Choose pointer movement",
         "note": "The condition decides which pointer moves.",
         "ruleLabel": "Two Pointers invariant",
-        "rule": "The condition decides which pointer moves.",
+        "rule": "Checks sum === target; only the branch that preserves Two Pointers's invariant is allowed to change state.",
         "activeIndices": [
           2
         ],
@@ -201,7 +201,7 @@ export const algorithmPage = {
         "title": "Return pair or state",
         "note": "The loop stops when the target condition is met or exhausted.",
         "ruleLabel": "Two Pointers invariant",
-        "rule": "The loop stops when the target condition is met or exhausted.",
+        "rule": "Returns [-1, -1], the value produced after Two Pointers's state changes are complete.",
         "activeIndices": [
           3,
           4

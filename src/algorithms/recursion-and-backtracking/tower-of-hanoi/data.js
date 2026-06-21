@@ -64,28 +64,28 @@ export const algorithmPage = {
       "title": "Check stop condition",
       "note": "The code first asks whether the current state is complete.",
       "activeLine": 1,
-      "codeInsight": "The code first asks whether the current state is complete."
+      "codeInsight": "Executes this Tower of Hanoi line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Choice",
       "title": "Select next option",
       "note": "One valid move is added to the state.",
       "activeLine": 4,
-      "codeInsight": "One valid move is added to the state."
+      "codeInsight": "This blank line separates Tower of Hanoi's setup from the next code block."
     },
     {
       "label": "Call",
       "title": "Recurse deeper",
       "note": "The same rule runs on a smaller or extended state.",
       "activeLine": 6,
-      "codeInsight": "The same rule runs on a smaller or extended state."
+      "codeInsight": "Creates moves as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Unwind",
       "title": "Return or backtrack",
       "note": "The result is combined or the choice is removed.",
-      "activeLine": 9,
-      "codeInsight": "The result is combined or the choice is removed."
+      "activeLine": 14,
+      "codeInsight": "Returns moves, the value produced after Tower of Hanoi's state changes are complete."
     }
   ],
   "complexity": {
@@ -143,7 +143,7 @@ export const algorithmPage = {
         "title": "Check stop condition",
         "note": "The code first asks whether the current state is complete.",
         "ruleLabel": "Tower of Hanoi invariant",
-        "rule": "The code first asks whether the current state is complete.",
+        "rule": "Executes this Tower of Hanoi line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeCall": 0,
         "returningCalls": []
       },
@@ -152,7 +152,7 @@ export const algorithmPage = {
         "title": "Select next option",
         "note": "One valid move is added to the state.",
         "ruleLabel": "Tower of Hanoi invariant",
-        "rule": "One valid move is added to the state.",
+        "rule": "This blank line separates Tower of Hanoi's setup from the next code block.",
         "activeCall": 1,
         "returningCalls": []
       },
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Recurse deeper",
         "note": "The same rule runs on a smaller or extended state.",
         "ruleLabel": "Tower of Hanoi invariant",
-        "rule": "The same rule runs on a smaller or extended state.",
+        "rule": "Creates moves as empty working state; later lines add and remove values from it.",
         "activeCall": 2,
         "returningCalls": []
       },
@@ -170,7 +170,7 @@ export const algorithmPage = {
         "title": "Return or backtrack",
         "note": "The result is combined or the choice is removed.",
         "ruleLabel": "Tower of Hanoi invariant",
-        "rule": "The result is combined or the choice is removed.",
+        "rule": "Returns moves, the value produced after Tower of Hanoi's state changes are complete.",
         "activeCall": 3,
         "returningCalls": [
           0,

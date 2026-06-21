@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Stack",
       "title": "Read stack action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 6,
+      "codeInsight": "Checks value <= 1; only the branch that preserves Factorial Recursion's invariant is allowed to change state."
     },
     {
       "label": "Stack top",
       "title": "Inspect stack",
       "note": "The active state must still satisfy last-in, first-out state.",
       "activeLine": 3,
-      "codeInsight": "The active state must still satisfy last-in, first-out state."
+      "codeInsight": "Executes this Factorial Recursion line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Push / pop",
       "title": "Push, pop, peek, or resolve stack entries",
       "note": "Only the necessary stack fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary stack fields are changed."
+      "codeInsight": "Checks value <= 1; only the branch that preserves Factorial Recursion's invariant is allowed to change state."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 7,
+      "codeInsight": "Returns value * factorialRecursion(value - 1), the value produced after Factorial Recursion's state changes are complete."
     }
   ],
   "complexity": {
@@ -143,7 +143,7 @@ export const algorithmPage = {
         "title": "Read stack action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Factorial Recursion invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Checks value <= 1; only the branch that preserves Factorial Recursion's invariant is allowed to change state.",
         "activeCall": 0,
         "returningCalls": []
       },
@@ -152,7 +152,7 @@ export const algorithmPage = {
         "title": "Inspect stack",
         "note": "The active state must still satisfy last-in, first-out state.",
         "ruleLabel": "Factorial Recursion invariant",
-        "rule": "The active state must still satisfy last-in, first-out state.",
+        "rule": "Executes this Factorial Recursion line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeCall": 1,
         "returningCalls": []
       },
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Push, pop, peek, or resolve stack entries",
         "note": "Only the necessary stack fields are changed.",
         "ruleLabel": "Factorial Recursion invariant",
-        "rule": "Only the necessary stack fields are changed.",
+        "rule": "Checks value <= 1; only the branch that preserves Factorial Recursion's invariant is allowed to change state.",
         "activeCall": 2,
         "returningCalls": []
       },
@@ -170,7 +170,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Factorial Recursion invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns value * factorialRecursion(value - 1), the value produced after Factorial Recursion's state changes are complete.",
         "activeCall": 3,
         "returningCalls": [
           0,

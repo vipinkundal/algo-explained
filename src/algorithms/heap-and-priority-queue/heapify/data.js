@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Queue",
       "title": "Read queue action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 5,
+      "codeInsight": "Defines heapify and names the input values, index = 0, size = values.length; edits to those inputs change the visual state and output."
     },
     {
       "label": "Queue front",
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy first-in, first-out state."
+      "activeLine": 6,
+      "codeInsight": "Initializes heap, the local state that the next highlighted lines will update."
     },
     {
       "label": "Enqueue / dequeue",
       "title": "Enqueue, dequeue, peek, or evict entries",
       "note": "Only the necessary queue fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary queue fields are changed."
+      "codeInsight": "Initializes heap, the local state that the next highlighted lines will update."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 8,
+      "codeInsight": "Returns heap, the value produced after Heapify's state changes are complete."
     }
   ],
   "complexity": {
@@ -211,7 +211,7 @@ export const algorithmPage = {
         "title": "Read queue action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Heapify invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Defines heapify and names the input values, index = 0, size = values.length; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -226,7 +226,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "Heapify invariant",
-        "rule": "The active state must still satisfy first-in, first-out state.",
+        "rule": "Initializes heap, the local state that the next highlighted lines will update.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -241,7 +241,7 @@ export const algorithmPage = {
         "title": "Enqueue, dequeue, peek, or evict entries",
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "Heapify invariant",
-        "rule": "Only the necessary queue fields are changed.",
+        "rule": "Initializes heap, the local state that the next highlighted lines will update.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -252,7 +252,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Heapify invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns heap, the value produced after Heapify's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

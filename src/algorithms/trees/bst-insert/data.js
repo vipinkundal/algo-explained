@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check current node",
       "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 1,
-      "codeInsight": "The code starts by handling missing nodes or the current root."
+      "activeLine": 5,
+      "codeInsight": "Defines bstInsert and names the input root, value; edits to those inputs change the visual state and output."
     },
     {
       "label": "Node state",
       "title": "Read ordered branch",
       "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "The current node controls the next step."
+      "activeLine": 13,
+      "codeInsight": "Stores tree so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Child step",
       "title": "Compare with the current node and move left or right",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
+      "activeLine": 7,
+      "codeInsight": "Checks !node; only the branch that preserves BST Insert's invariant is allowed to change state."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 10,
-      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
+      "activeLine": 11,
+      "codeInsight": "Returns copy, the value produced after BST Insert's state changes are complete."
     }
   ],
   "complexity": {
@@ -226,7 +226,7 @@ export const algorithmPage = {
         "title": "Check current node",
         "note": "The code starts by handling missing nodes or the current root.",
         "ruleLabel": "BST Insert invariant",
-        "rule": "The code starts by handling missing nodes or the current root.",
+        "rule": "Defines bstInsert and names the input root, value; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -241,7 +241,7 @@ export const algorithmPage = {
         "title": "Read ordered branch",
         "note": "The current node controls the next step.",
         "ruleLabel": "BST Insert invariant",
-        "rule": "The current node controls the next step.",
+        "rule": "Stores tree so the algorithm can reuse this value without recomputing it.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -256,7 +256,7 @@ export const algorithmPage = {
         "title": "Compare with the current node and move left or right",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "BST Insert invariant",
-        "rule": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "rule": "Checks !node; only the branch that preserves BST Insert's invariant is allowed to change state.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -267,7 +267,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "BST Insert invariant",
-        "rule": "The final traversal, path, measurement, or tree state is returned.",
+        "rule": "Returns copy, the value produced after BST Insert's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

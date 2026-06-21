@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Stack",
       "title": "Read stack action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 6,
+      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
     },
     {
       "label": "Stack top",
       "title": "Inspect stack",
       "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy last-in, first-out state."
+      "activeLine": 6,
+      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
     },
     {
       "label": "Push / pop",
       "title": "Push, pop, peek, or resolve stack entries",
       "note": "Only the necessary stack fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Only the necessary stack fields are changed."
+      "activeLine": 11,
+      "codeInsight": "Adds the current value to stack, keeping it available for later comparisons or traversal."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 20,
+      "codeInsight": "Returns output, the value produced after Min Stack's state changes are complete."
     }
   ],
   "complexity": {
@@ -168,7 +168,7 @@ export const algorithmPage = {
         "title": "Read stack action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Min Stack invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear.",
         "activeItems": [
           0
         ],
@@ -183,7 +183,7 @@ export const algorithmPage = {
         "title": "Inspect stack",
         "note": "The active state must still satisfy last-in, first-out state.",
         "ruleLabel": "Min Stack invariant",
-        "rule": "The active state must still satisfy last-in, first-out state.",
+        "rule": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear.",
         "activeItems": [
           1
         ],
@@ -198,7 +198,7 @@ export const algorithmPage = {
         "title": "Push, pop, peek, or resolve stack entries",
         "note": "Only the necessary stack fields are changed.",
         "ruleLabel": "Min Stack invariant",
-        "rule": "Only the necessary stack fields are changed.",
+        "rule": "Adds the current value to stack, keeping it available for later comparisons or traversal.",
         "activeItems": [
           2
         ],
@@ -213,7 +213,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Min Stack invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns output, the value produced after Min Stack's state changes are complete.",
         "activeItems": [
           3
         ],

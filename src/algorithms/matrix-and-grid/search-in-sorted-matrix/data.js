@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Copy values",
       "note": "The code starts with the values to reorder.",
-      "activeLine": 1,
-      "codeInsight": "The code starts with the values to reorder."
+      "activeLine": 6,
+      "codeInsight": "Checks !matrix.length || !matrix[0].length; only the branch that preserves Search in Sorted Matrix's invariant is allowed to change state."
     },
     {
       "label": "Invariant",
       "title": "Track ordered work",
       "note": "The algorithm marks what part is already safe.",
       "activeLine": 3,
-      "codeInsight": "The algorithm marks what part is already safe."
+      "codeInsight": "Executes this Search in Sorted Matrix line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Move",
       "title": "Apply ordering step",
       "note": "The current operation reduces disorder.",
       "activeLine": 6,
-      "codeInsight": "The current operation reduces disorder."
+      "codeInsight": "Checks !matrix.length || !matrix[0].length; only the branch that preserves Search in Sorted Matrix's invariant is allowed to change state."
     },
     {
       "label": "Sorted output",
       "title": "Return final order",
       "note": "The result is returned when no unsorted work remains.",
-      "activeLine": 10,
-      "codeInsight": "The result is returned when no unsorted work remains."
+      "activeLine": 14,
+      "codeInsight": "Returns [-1, -1], the value produced after Search in Sorted Matrix's state changes are complete."
     }
   ],
   "complexity": {
@@ -154,7 +154,7 @@ export const algorithmPage = {
         "title": "Copy values",
         "note": "The code starts with the values to reorder.",
         "ruleLabel": "Search in Sorted Matrix invariant",
-        "rule": "The code starts with the values to reorder.",
+        "rule": "Checks !matrix.length || !matrix[0].length; only the branch that preserves Search in Sorted Matrix's invariant is allowed to change state.",
         "activeCells": [
           [
             0,
@@ -173,7 +173,7 @@ export const algorithmPage = {
         "title": "Track ordered work",
         "note": "The algorithm marks what part is already safe.",
         "ruleLabel": "Search in Sorted Matrix invariant",
-        "rule": "The algorithm marks what part is already safe.",
+        "rule": "Executes this Search in Sorted Matrix line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeCells": [
           [
             0,
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Apply ordering step",
         "note": "The current operation reduces disorder.",
         "ruleLabel": "Search in Sorted Matrix invariant",
-        "rule": "The current operation reduces disorder.",
+        "rule": "Checks !matrix.length || !matrix[0].length; only the branch that preserves Search in Sorted Matrix's invariant is allowed to change state.",
         "activeCells": [
           [
             0,
@@ -223,7 +223,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "The result is returned when no unsorted work remains.",
         "ruleLabel": "Search in Sorted Matrix invariant",
-        "rule": "The result is returned when no unsorted work remains.",
+        "rule": "Returns [-1, -1], the value produced after Search in Sorted Matrix's state changes are complete.",
         "activeCells": [
           [
             1,

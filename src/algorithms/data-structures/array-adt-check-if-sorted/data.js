@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Copy values",
       "note": "The code starts with the values to reorder.",
-      "activeLine": 1,
-      "codeInsight": "The code starts with the values to reorder."
+      "activeLine": 3,
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Invariant",
       "title": "Track ordered work",
       "note": "The algorithm marks what part is already safe.",
       "activeLine": 3,
-      "codeInsight": "The algorithm marks what part is already safe."
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Move",
       "title": "Apply ordering step",
       "note": "The current operation reduces disorder.",
       "activeLine": 6,
-      "codeInsight": "The current operation reduces disorder."
+      "codeInsight": "Executes this Check Sorted Array line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Sorted output",
       "title": "Return final order",
       "note": "The result is returned when no unsorted work remains.",
-      "activeLine": 10,
-      "codeInsight": "The result is returned when no unsorted work remains."
+      "activeLine": 5,
+      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Check Sorted Array's state changes are complete."
     }
   ],
   "complexity": {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Copy values",
         "note": "The code starts with the values to reorder.",
         "ruleLabel": "Check Sorted Array invariant",
-        "rule": "The code starts with the values to reorder.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeIndices": [
           0
         ],
@@ -174,7 +174,7 @@ export const algorithmPage = {
         "title": "Track ordered work",
         "note": "The algorithm marks what part is already safe.",
         "ruleLabel": "Check Sorted Array invariant",
-        "rule": "The algorithm marks what part is already safe.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeIndices": [
           1,
           2
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Apply ordering step",
         "note": "The current operation reduces disorder.",
         "ruleLabel": "Check Sorted Array invariant",
-        "rule": "The current operation reduces disorder.",
+        "rule": "Executes this Check Sorted Array line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           2
         ],
@@ -216,7 +216,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "The result is returned when no unsorted work remains.",
         "ruleLabel": "Check Sorted Array invariant",
-        "rule": "The result is returned when no unsorted work remains.",
+        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Check Sorted Array's state changes are complete.",
         "activeIndices": [
           3,
           4

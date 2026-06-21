@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Linked List",
       "title": "Read linked list action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 3,
+      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
     },
     {
       "label": "Node links",
       "title": "Inspect linked list",
       "note": "The active state must still satisfy node-link structure.",
       "activeLine": 3,
-      "codeInsight": "The active state must still satisfy node-link structure."
+      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
     },
     {
       "label": "Pointer update",
       "title": "Move pointers without losing the rest of the chain",
       "note": "Only the necessary linked list fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Only the necessary linked list fields are changed."
+      "activeLine": 5,
+      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Deleting From Circular Linked List's state changes are complete."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 5,
+      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Deleting From Circular Linked List's state changes are complete."
     }
   ],
   "complexity": {
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Read linked list action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Deleting From Circular Linked List invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
         "activeNode": "head",
         "previousNode": "head",
         "nextNode": "n2"
@@ -172,7 +172,7 @@ export const algorithmPage = {
         "title": "Inspect linked list",
         "note": "The active state must still satisfy node-link structure.",
         "ruleLabel": "Deleting From Circular Linked List invariant",
-        "rule": "The active state must still satisfy node-link structure.",
+        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
         "activeNode": "n2",
         "previousNode": "head",
         "nextNode": "n3"
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Move pointers without losing the rest of the chain",
         "note": "Only the necessary linked list fields are changed.",
         "ruleLabel": "Deleting From Circular Linked List invariant",
-        "rule": "Only the necessary linked list fields are changed.",
+        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Deleting From Circular Linked List's state changes are complete.",
         "activeNode": "n3",
         "previousNode": "n2",
         "nextNode": "tail"
@@ -192,7 +192,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Deleting From Circular Linked List invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Deleting From Circular Linked List's state changes are complete.",
         "activeNode": "tail",
         "previousNode": "n3",
         "nextNode": "tail"

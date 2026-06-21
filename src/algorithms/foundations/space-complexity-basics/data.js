@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Algorithm State",
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 6,
+      "codeInsight": "Creates copy as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy page-specific invariant."
+      "activeLine": 6,
+      "codeInsight": "Creates copy as empty working state; later lines add and remove values from it."
     },
     {
       "label": "State change",
       "title": "Update the state described by this algorithm",
       "note": "Only the necessary algorithm state fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary algorithm state fields are changed."
+      "codeInsight": "Creates copy as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 7,
+      "codeInsight": "Returns { inputSize: copy.length, auxiliarySpace: copy.length, note: \"O(n) copied state\" }, the value produced after Space Complexity Basics's state changes are complete."
     }
   ],
   "complexity": {
@@ -140,7 +140,7 @@ export const algorithmPage = {
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Space Complexity Basics invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Creates copy as empty working state; later lines add and remove values from it.",
         "activeState": 0
       },
       {
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "Space Complexity Basics invariant",
-        "rule": "The active state must still satisfy page-specific invariant.",
+        "rule": "Creates copy as empty working state; later lines add and remove values from it.",
         "activeState": 1
       },
       {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Update the state described by this algorithm",
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "Space Complexity Basics invariant",
-        "rule": "Only the necessary algorithm state fields are changed.",
+        "rule": "Creates copy as empty working state; later lines add and remove values from it.",
         "activeState": 2
       },
       {
@@ -164,7 +164,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Space Complexity Basics invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns { inputSize: copy.length, auxiliarySpace: copy.length, note: \"O(n) copied state\" }, the value produced after Space Complexity Basics's state changes are complete.",
         "activeState": 3
       }
     ]

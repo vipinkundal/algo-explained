@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check current node",
       "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 1,
-      "codeInsight": "The code starts by handling missing nodes or the current root."
+      "activeLine": 5,
+      "codeInsight": "Defines trieSearch and names the input words, query; edits to those inputs change the visual state and output."
     },
     {
       "label": "Node state",
       "title": "Read character path",
       "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "The current node controls the next step."
+      "activeLine": 6,
+      "codeInsight": "Initializes root, the local state that the next highlighted lines will update."
     },
     {
       "label": "Child step",
       "title": "Follow or create the child link for the current character",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
       "activeLine": 6,
-      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
+      "codeInsight": "Initializes root, the local state that the next highlighted lines will update."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 10,
-      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
+      "activeLine": 17,
+      "codeInsight": "Returns Boolean(node.$), the value produced after Trie-Based Search's state changes are complete."
     }
   ],
   "complexity": {
@@ -202,7 +202,7 @@ export const algorithmPage = {
         "title": "Check current node",
         "note": "The code starts by handling missing nodes or the current root.",
         "ruleLabel": "Trie-Based Search invariant",
-        "rule": "The code starts by handling missing nodes or the current root.",
+        "rule": "Defines trieSearch and names the input words, query; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -217,7 +217,7 @@ export const algorithmPage = {
         "title": "Read character path",
         "note": "The current node controls the next step.",
         "ruleLabel": "Trie-Based Search invariant",
-        "rule": "The current node controls the next step.",
+        "rule": "Initializes root, the local state that the next highlighted lines will update.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -232,7 +232,7 @@ export const algorithmPage = {
         "title": "Follow or create the child link for the current character",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "Trie-Based Search invariant",
-        "rule": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "rule": "Initializes root, the local state that the next highlighted lines will update.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -243,7 +243,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Trie-Based Search invariant",
-        "rule": "The final traversal, path, measurement, or tree state is returned.",
+        "rule": "Returns Boolean(node.$), the value produced after Trie-Based Search's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

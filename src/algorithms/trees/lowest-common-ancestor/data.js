@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Algorithm State",
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 7,
+      "codeInsight": "Stores left so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy page-specific invariant."
+      "activeLine": 7,
+      "codeInsight": "Stores left so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "State change",
       "title": "Update the state described by this algorithm",
       "note": "Only the necessary algorithm state fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary algorithm state fields are changed."
+      "codeInsight": "Checks !root || root.value === first || root.value === second; only the branch that preserves Lowest Common Ancestor's invariant is allowed to change state."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 10,
+      "codeInsight": "Returns left !== null ? left : right, the value produced after Lowest Common Ancestor's state changes are complete."
     }
   ],
   "complexity": {
@@ -220,7 +220,7 @@ export const algorithmPage = {
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Lowest Common Ancestor invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Stores left so the algorithm can reuse this value without recomputing it.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -235,7 +235,7 @@ export const algorithmPage = {
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "Lowest Common Ancestor invariant",
-        "rule": "The active state must still satisfy page-specific invariant.",
+        "rule": "Stores left so the algorithm can reuse this value without recomputing it.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -250,7 +250,7 @@ export const algorithmPage = {
         "title": "Update the state described by this algorithm",
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "Lowest Common Ancestor invariant",
-        "rule": "Only the necessary algorithm state fields are changed.",
+        "rule": "Checks !root || root.value === first || root.value === second; only the branch that preserves Lowest Common Ancestor's invariant is allowed to change state.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -261,7 +261,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Lowest Common Ancestor invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns left !== null ? left : right, the value produced after Lowest Common Ancestor's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

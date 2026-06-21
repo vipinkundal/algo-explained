@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "State meaning",
       "title": "Define DP cell",
       "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 1,
-      "codeInsight": "The code first needs a precise subproblem meaning."
+      "activeLine": 6,
+      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
     },
     {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
       "activeLine": 3,
-      "codeInsight": "Base values stop the recurrence from falling through."
+      "codeInsight": "Executes this Coin Change line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Recurrence",
       "title": "Fill next state",
       "note": "The transition combines previously solved states.",
       "activeLine": 6,
-      "codeInsight": "The transition combines previously solved states."
+      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
     },
     {
       "label": "Target",
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
-      "activeLine": 10,
-      "codeInsight": "The answer is read from the final DP state."
+      "activeLine": 13,
+      "codeInsight": "Returns dp[amount] === Infinity ? -1 : dp[amount], the value produced after Coin Change's state changes are complete."
     }
   ],
   "complexity": {
@@ -140,7 +140,7 @@ export const algorithmPage = {
         "title": "Define DP cell",
         "note": "The code first needs a precise subproblem meaning.",
         "ruleLabel": "Coin Change invariant",
-        "rule": "The code first needs a precise subproblem meaning.",
+        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
         "activeIndices": [
           0
         ],
@@ -158,7 +158,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "Coin Change invariant",
-        "rule": "Base values stop the recurrence from falling through.",
+        "rule": "Executes this Coin Change line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           1,
           2
@@ -177,7 +177,7 @@ export const algorithmPage = {
         "title": "Fill next state",
         "note": "The transition combines previously solved states.",
         "ruleLabel": "Coin Change invariant",
-        "rule": "The transition combines previously solved states.",
+        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
         "activeIndices": [
           2
         ],
@@ -195,7 +195,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "Coin Change invariant",
-        "rule": "The answer is read from the final DP state.",
+        "rule": "Returns dp[amount] === Infinity ? -1 : dp[amount], the value produced after Coin Change's state changes are complete.",
         "activeIndices": [
           2,
           2

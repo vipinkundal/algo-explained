@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "State meaning",
       "title": "Define DP cell",
       "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 1,
-      "codeInsight": "The code first needs a precise subproblem meaning."
+      "activeLine": 8,
+      "codeInsight": "Stores left so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
       "activeLine": 3,
-      "codeInsight": "Base values stop the recurrence from falling through."
+      "codeInsight": "Executes this DP on Trees line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Recurrence",
       "title": "Fill next state",
       "note": "The transition combines previously solved states.",
-      "activeLine": 6,
-      "codeInsight": "The transition combines previously solved states."
+      "activeLine": 8,
+      "codeInsight": "Stores left so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Target",
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
       "activeLine": 10,
-      "codeInsight": "The answer is read from the final DP state."
+      "codeInsight": "Returns {, the value produced after DP on Trees's state changes are complete."
     }
   ],
   "complexity": {
@@ -212,7 +212,7 @@ export const algorithmPage = {
         "title": "Define DP cell",
         "note": "The code first needs a precise subproblem meaning.",
         "ruleLabel": "DP on Trees invariant",
-        "rule": "The code first needs a precise subproblem meaning.",
+        "rule": "Stores left so the algorithm can reuse this value without recomputing it.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -227,7 +227,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "DP on Trees invariant",
-        "rule": "Base values stop the recurrence from falling through.",
+        "rule": "Executes this DP on Trees line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -242,7 +242,7 @@ export const algorithmPage = {
         "title": "Fill next state",
         "note": "The transition combines previously solved states.",
         "ruleLabel": "DP on Trees invariant",
-        "rule": "The transition combines previously solved states.",
+        "rule": "Stores left so the algorithm can reuse this value without recomputing it.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -253,7 +253,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "DP on Trees invariant",
-        "rule": "The answer is read from the final DP state.",
+        "rule": "Returns {, the value produced after DP on Trees's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

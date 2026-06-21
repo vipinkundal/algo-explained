@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Queue",
       "title": "Read queue action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 5,
+      "codeInsight": "Defines circularQueue and names the input capacity, operations; edits to those inputs change the visual state and output."
     },
     {
       "label": "Queue front",
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy first-in, first-out state."
+      "activeLine": 6,
+      "codeInsight": "Stores data so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Enqueue / dequeue",
       "title": "Enqueue, dequeue, peek, or evict entries",
       "note": "Only the necessary queue fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary queue fields are changed."
+      "codeInsight": "Stores data so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 21,
+      "codeInsight": "Returns output, the value produced after Circular Queue's state changes are complete."
     }
   ],
   "complexity": {
@@ -186,7 +186,7 @@ export const algorithmPage = {
         "title": "Read queue action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Circular Queue invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Defines circularQueue and names the input capacity, operations; edits to those inputs change the visual state and output.",
         "activeItems": [
           0
         ],
@@ -201,7 +201,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "Circular Queue invariant",
-        "rule": "The active state must still satisfy first-in, first-out state.",
+        "rule": "Stores data so the algorithm can reuse this value without recomputing it.",
         "activeItems": [
           1
         ],
@@ -216,7 +216,7 @@ export const algorithmPage = {
         "title": "Enqueue, dequeue, peek, or evict entries",
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "Circular Queue invariant",
-        "rule": "Only the necessary queue fields are changed.",
+        "rule": "Stores data so the algorithm can reuse this value without recomputing it.",
         "activeItems": [
           2
         ],
@@ -231,7 +231,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Circular Queue invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns output, the value produced after Circular Queue's state changes are complete.",
         "activeItems": [
           3
         ],

@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check current node",
       "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 1,
-      "codeInsight": "The code starts by handling missing nodes or the current root."
+      "activeLine": 2,
+      "codeInsight": "Defines treesStack as the runnable entry point for this lesson."
     },
     {
       "label": "Node state",
       "title": "Read balance invariant",
       "note": "The current node controls the next step.",
       "activeLine": 3,
-      "codeInsight": "The current node controls the next step."
+      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
     },
     {
       "label": "Child step",
       "title": "Rotate or recolor when height/color rules are violated",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
       "activeLine": 6,
-      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
+      "codeInsight": "Adds the current value to output, keeping it available for later comparisons or traversal."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 10,
-      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
+      "activeLine": 7,
+      "codeInsight": "Returns { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, the value produced after Binary Tree Stack's state changes are complete."
     }
   ],
   "complexity": {
@@ -222,7 +222,7 @@ export const algorithmPage = {
         "title": "Check current node",
         "note": "The code starts by handling missing nodes or the current root.",
         "ruleLabel": "Binary Tree Stack invariant",
-        "rule": "The code starts by handling missing nodes or the current root.",
+        "rule": "Defines treesStack as the runnable entry point for this lesson.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -237,7 +237,7 @@ export const algorithmPage = {
         "title": "Read balance invariant",
         "note": "The current node controls the next step.",
         "ruleLabel": "Binary Tree Stack invariant",
-        "rule": "The current node controls the next step.",
+        "rule": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -252,7 +252,7 @@ export const algorithmPage = {
         "title": "Rotate or recolor when height/color rules are violated",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "Binary Tree Stack invariant",
-        "rule": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "rule": "Adds the current value to output, keeping it available for later comparisons or traversal.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -263,7 +263,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Binary Tree Stack invariant",
-        "rule": "The final traversal, path, measurement, or tree state is returned.",
+        "rule": "Returns { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, the value produced after Binary Tree Stack's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

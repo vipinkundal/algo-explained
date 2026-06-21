@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Range",
       "title": "Read ordered range",
       "note": "The code receives values where pointer movement has meaning.",
-      "activeLine": 1,
-      "codeInsight": "The code receives values where pointer movement has meaning."
+      "activeLine": 5,
+      "codeInsight": "Defines cppReverse and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Pointers",
       "title": "Set left and right",
       "note": "Both indices define the current candidate state.",
       "activeLine": 3,
-      "codeInsight": "Both indices define the current candidate state."
+      "codeInsight": "Executes this C++ reverse() line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Compare",
       "title": "Choose pointer movement",
       "note": "The condition decides which pointer moves.",
       "activeLine": 5,
-      "codeInsight": "The condition decides which pointer moves."
+      "codeInsight": "Defines cppReverse and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Pair result",
       "title": "Return pair or state",
       "note": "The loop stops when the target condition is met or exhausted.",
-      "activeLine": 8,
-      "codeInsight": "The loop stops when the target condition is met or exhausted."
+      "activeLine": 6,
+      "codeInsight": "Returns [...values].reverse(), the value produced after C++ reverse()'s state changes are complete."
     }
   ],
   "complexity": {
@@ -139,7 +139,7 @@ export const algorithmPage = {
         "title": "Read ordered range",
         "note": "The code receives values where pointer movement has meaning.",
         "ruleLabel": "C++ reverse() invariant",
-        "rule": "The code receives values where pointer movement has meaning.",
+        "rule": "Defines cppReverse and names the input values; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -157,7 +157,7 @@ export const algorithmPage = {
         "title": "Set left and right",
         "note": "Both indices define the current candidate state.",
         "ruleLabel": "C++ reverse() invariant",
-        "rule": "Both indices define the current candidate state.",
+        "rule": "Executes this C++ reverse() line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           1,
           2
@@ -176,7 +176,7 @@ export const algorithmPage = {
         "title": "Choose pointer movement",
         "note": "The condition decides which pointer moves.",
         "ruleLabel": "C++ reverse() invariant",
-        "rule": "The condition decides which pointer moves.",
+        "rule": "Defines cppReverse and names the input values; edits to those inputs change the visual state and output.",
         "activeIndices": [
           2
         ],
@@ -194,7 +194,7 @@ export const algorithmPage = {
         "title": "Return pair or state",
         "note": "The loop stops when the target condition is met or exhausted.",
         "ruleLabel": "C++ reverse() invariant",
-        "rule": "The loop stops when the target condition is met or exhausted.",
+        "rule": "Returns [...values].reverse(), the value produced after C++ reverse()'s state changes are complete.",
         "activeIndices": [
           2,
           2

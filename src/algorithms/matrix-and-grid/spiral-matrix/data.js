@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 1,
-      "codeInsight": "The code starts from the matrix shape."
+      "activeLine": 6,
+      "codeInsight": "Creates result as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
       "activeLine": 3,
-      "codeInsight": "The current row/column controls the next update."
+      "codeInsight": "Executes this Spiral Matrix line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Move/update",
       "title": "Apply neighbor or boundary rule",
       "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 6,
-      "codeInsight": "The transition changes reachable cells, boundaries, or accumulated values."
+      "activeLine": 11,
+      "codeInsight": "Repeats while top <= bottom && left <= right is true, so the algorithm keeps resolving current work before moving on."
     },
     {
       "label": "Result",
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
-      "activeLine": 9,
-      "codeInsight": "The final matrix, count, or query answer is returned."
+      "activeLine": 25,
+      "codeInsight": "Returns result, the value produced after Spiral Matrix's state changes are complete."
     }
   ],
   "complexity": {
@@ -163,7 +163,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Spiral Matrix invariant",
-        "rule": "The code starts from the matrix shape.",
+        "rule": "Creates result as empty working state; later lines add and remove values from it.",
         "activeCells": [
           [
             0,
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Spiral Matrix invariant",
-        "rule": "The current row/column controls the next update.",
+        "rule": "Executes this Spiral Matrix line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeCells": [
           [
             0,
@@ -205,7 +205,7 @@ export const algorithmPage = {
         "title": "Apply neighbor or boundary rule",
         "note": "The transition changes reachable cells, boundaries, or accumulated values.",
         "ruleLabel": "Spiral Matrix invariant",
-        "rule": "The transition changes reachable cells, boundaries, or accumulated values.",
+        "rule": "Repeats while top <= bottom && left <= right is true, so the algorithm keeps resolving current work before moving on.",
         "activeCells": [
           [
             0,
@@ -232,7 +232,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Spiral Matrix invariant",
-        "rule": "The final matrix, count, or query answer is returned.",
+        "rule": "Returns result, the value produced after Spiral Matrix's state changes are complete.",
         "activeCells": [
           [
             1,

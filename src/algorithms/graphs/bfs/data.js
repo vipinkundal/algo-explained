@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 1,
-      "codeInsight": "The code receives vertices, edges, weights, or adjacency lists."
+      "activeLine": 6,
+      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Queue Frontier",
       "title": "Initialize queue frontier",
       "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 3,
-      "codeInsight": "Only the graph state owned by this algorithm is created."
+      "activeLine": 7,
+      "codeInsight": "Initializes queue, the local state that the next highlighted lines will update."
     },
     {
       "label": "Work item",
       "title": "Process next vertex or edge",
       "note": "Enqueue newly discovered neighbors.",
       "activeLine": 6,
-      "codeInsight": "Enqueue newly discovered neighbors."
+      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
     },
     {
       "label": "Level By Level Traversal",
       "title": "Return level-by-level traversal",
       "note": "The final graph state becomes the answer.",
-      "activeLine": 10,
-      "codeInsight": "The final graph state becomes the answer."
+      "activeLine": 18,
+      "codeInsight": "Returns order, the value produced after Breadth-First Search's state changes are complete."
     }
   ],
   "complexity": {
@@ -187,7 +187,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Breadth-First Search invariant",
-        "rule": "The code receives vertices, edges, weights, or adjacency lists.",
+        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Initialize queue frontier",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Breadth-First Search invariant",
-        "rule": "Only the graph state owned by this algorithm is created.",
+        "rule": "Initializes queue, the local state that the next highlighted lines will update.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -221,7 +221,7 @@ export const algorithmPage = {
         "title": "Process next vertex or edge",
         "note": "Enqueue newly discovered neighbors.",
         "ruleLabel": "Breadth-First Search invariant",
-        "rule": "Enqueue newly discovered neighbors.",
+        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
         "activeNode": "C",
         "visitedNodes": [
           "A",
@@ -240,7 +240,7 @@ export const algorithmPage = {
         "title": "Return level-by-level traversal",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Breadth-First Search invariant",
-        "rule": "The final graph state becomes the answer.",
+        "rule": "Returns order, the value produced after Breadth-First Search's state changes are complete.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

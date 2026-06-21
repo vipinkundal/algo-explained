@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 1,
-      "codeInsight": "The code starts from the matrix shape."
+      "activeLine": 6,
+      "codeInsight": "Stores seen so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
       "activeLine": 3,
-      "codeInsight": "The current row/column controls the next update."
+      "codeInsight": "Executes this Island Counting line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Move/update",
       "title": "Apply neighbor or boundary rule",
       "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 6,
-      "codeInsight": "The transition changes reachable cells, boundaries, or accumulated values."
+      "activeLine": 9,
+      "codeInsight": "Checks row < 0 || col < 0 || row >= grid.length || col >= grid[0].length; only the branch that preserves Island Counting's invariant is allowed to change state."
     },
     {
       "label": "Result",
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
-      "activeLine": 9,
-      "codeInsight": "The final matrix, count, or query answer is returned."
+      "activeLine": 25,
+      "codeInsight": "Returns count, the value produced after Island Counting's state changes are complete."
     }
   ],
   "complexity": {
@@ -163,7 +163,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Island Counting invariant",
-        "rule": "The code starts from the matrix shape.",
+        "rule": "Stores seen so the algorithm can reuse this value without recomputing it.",
         "activeCells": [
           [
             0,
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Island Counting invariant",
-        "rule": "The current row/column controls the next update.",
+        "rule": "Executes this Island Counting line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeCells": [
           [
             0,
@@ -205,7 +205,7 @@ export const algorithmPage = {
         "title": "Apply neighbor or boundary rule",
         "note": "The transition changes reachable cells, boundaries, or accumulated values.",
         "ruleLabel": "Island Counting invariant",
-        "rule": "The transition changes reachable cells, boundaries, or accumulated values.",
+        "rule": "Checks row < 0 || col < 0 || row >= grid.length || col >= grid[0].length; only the branch that preserves Island Counting's invariant is allowed to change state.",
         "activeCells": [
           [
             0,
@@ -232,7 +232,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Island Counting invariant",
-        "rule": "The final matrix, count, or query answer is returned.",
+        "rule": "Returns count, the value produced after Island Counting's state changes are complete.",
         "activeCells": [
           [
             1,

@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Numbers",
       "title": "Read numeric state",
       "note": "The code receives the number, range, or modulus.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the number, range, or modulus."
+      "activeLine": 5,
+      "codeInsight": "Defines singleNumber and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
       "activeLine": 3,
-      "codeInsight": "The chosen identity controls every update."
+      "codeInsight": "Executes this Single Number line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Reduction",
       "title": "Apply one reduction",
       "note": "A shift, xor, multiply, divide, or mark changes state.",
       "activeLine": 5,
-      "codeInsight": "A shift, xor, multiply, divide, or mark changes state."
+      "codeInsight": "Defines singleNumber and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Numeric result",
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
-      "activeLine": 8,
-      "codeInsight": "The loop ends when the invariant gives the answer."
+      "activeLine": 6,
+      "codeInsight": "Returns values.reduce((answer, value) => answer ^ value, 0), the value produced after Single Number's state changes are complete."
     }
   ],
   "complexity": {
@@ -140,7 +140,7 @@ export const algorithmPage = {
         "title": "Read numeric state",
         "note": "The code receives the number, range, or modulus.",
         "ruleLabel": "Single Number invariant",
-        "rule": "The code receives the number, range, or modulus.",
+        "rule": "Defines singleNumber and names the input values; edits to those inputs change the visual state and output.",
         "activeState": 0
       },
       {
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "Single Number invariant",
-        "rule": "The chosen identity controls every update.",
+        "rule": "Executes this Single Number line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeState": 1
       },
       {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Apply one reduction",
         "note": "A shift, xor, multiply, divide, or mark changes state.",
         "ruleLabel": "Single Number invariant",
-        "rule": "A shift, xor, multiply, divide, or mark changes state.",
+        "rule": "Defines singleNumber and names the input values; edits to those inputs change the visual state and output.",
         "activeState": 2
       },
       {
@@ -164,7 +164,7 @@ export const algorithmPage = {
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "Single Number invariant",
-        "rule": "The loop ends when the invariant gives the answer.",
+        "rule": "Returns values.reduce((answer, value) => answer ^ value, 0), the value produced after Single Number's state changes are complete.",
         "activeState": 3
       }
     ]

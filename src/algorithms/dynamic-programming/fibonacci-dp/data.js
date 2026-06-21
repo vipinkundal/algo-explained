@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "State meaning",
       "title": "Define DP cell",
       "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 1,
-      "codeInsight": "The code first needs a precise subproblem meaning."
+      "activeLine": 7,
+      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
     },
     {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
       "activeLine": 3,
-      "codeInsight": "Base values stop the recurrence from falling through."
+      "codeInsight": "Executes this Fibonacci DP line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Recurrence",
       "title": "Fill next state",
       "note": "The transition combines previously solved states.",
-      "activeLine": 6,
-      "codeInsight": "The transition combines previously solved states."
+      "activeLine": 7,
+      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
     },
     {
       "label": "Target",
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
       "activeLine": 10,
-      "codeInsight": "The answer is read from the final DP state."
+      "codeInsight": "Returns dp[n], the value produced after Fibonacci DP's state changes are complete."
     }
   ],
   "complexity": {
@@ -136,7 +136,7 @@ export const algorithmPage = {
         "title": "Define DP cell",
         "note": "The code first needs a precise subproblem meaning.",
         "ruleLabel": "Fibonacci DP invariant",
-        "rule": "The code first needs a precise subproblem meaning.",
+        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
         "activeState": 0
       },
       {
@@ -144,7 +144,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "Fibonacci DP invariant",
-        "rule": "Base values stop the recurrence from falling through.",
+        "rule": "Executes this Fibonacci DP line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeState": 1
       },
       {
@@ -152,7 +152,7 @@ export const algorithmPage = {
         "title": "Fill next state",
         "note": "The transition combines previously solved states.",
         "ruleLabel": "Fibonacci DP invariant",
-        "rule": "The transition combines previously solved states.",
+        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
         "activeState": 2
       },
       {
@@ -160,7 +160,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "Fibonacci DP invariant",
-        "rule": "The answer is read from the final DP state.",
+        "rule": "Returns dp[n], the value produced after Fibonacci DP's state changes are complete.",
         "activeState": 3
       }
     ]

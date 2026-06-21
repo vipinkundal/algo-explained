@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Sorted input",
       "title": "Read the ordered search space",
       "note": "The code starts from a range where binary decisions are valid.",
-      "activeLine": 1,
-      "codeInsight": "The code starts from a range where binary decisions are valid."
+      "activeLine": 6,
+      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
     },
     {
       "label": "low / high",
       "title": "Open the candidate window",
       "note": "low and high mark every position that may still answer.",
-      "activeLine": 3,
-      "codeInsight": "low and high mark every position that may still answer."
+      "activeLine": 6,
+      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
     },
     {
       "label": "mid check",
       "title": "Compare the midpoint",
       "note": "The midpoint decides which half is removed.",
-      "activeLine": 5,
-      "codeInsight": "The midpoint decides which half is removed."
+      "activeLine": 10,
+      "codeInsight": "Checks values[mid] <= target; only the branch that preserves C++ upper_bound()'s invariant is allowed to change state."
     },
     {
       "label": "Return",
       "title": "Emit index or boundary",
       "note": "The loop ends with a match or the collapsed boundary.",
-      "activeLine": 9,
-      "codeInsight": "The loop ends with a match or the collapsed boundary."
+      "activeLine": 13,
+      "codeInsight": "Returns low, the value produced after C++ upper_bound()'s state changes are complete."
     }
   ],
   "complexity": {
@@ -142,7 +142,7 @@ export const algorithmPage = {
         "title": "Read the ordered search space",
         "note": "The code starts from a range where binary decisions are valid.",
         "ruleLabel": "C++ upper_bound() invariant",
-        "rule": "The code starts from a range where binary decisions are valid.",
+        "rule": "Initializes low as mutable state; later branches update it as the search window or traversal changes.",
         "activeIndices": [
           0
         ],
@@ -160,7 +160,7 @@ export const algorithmPage = {
         "title": "Open the candidate window",
         "note": "low and high mark every position that may still answer.",
         "ruleLabel": "C++ upper_bound() invariant",
-        "rule": "low and high mark every position that may still answer.",
+        "rule": "Initializes low as mutable state; later branches update it as the search window or traversal changes.",
         "activeIndices": [
           1,
           2
@@ -179,7 +179,7 @@ export const algorithmPage = {
         "title": "Compare the midpoint",
         "note": "The midpoint decides which half is removed.",
         "ruleLabel": "C++ upper_bound() invariant",
-        "rule": "The midpoint decides which half is removed.",
+        "rule": "Checks values[mid] <= target; only the branch that preserves C++ upper_bound()'s invariant is allowed to change state.",
         "activeIndices": [
           2
         ],
@@ -197,7 +197,7 @@ export const algorithmPage = {
         "title": "Emit index or boundary",
         "note": "The loop ends with a match or the collapsed boundary.",
         "ruleLabel": "C++ upper_bound() invariant",
-        "rule": "The loop ends with a match or the collapsed boundary.",
+        "rule": "Returns low, the value produced after C++ upper_bound()'s state changes are complete.",
         "activeIndices": [
           3,
           3

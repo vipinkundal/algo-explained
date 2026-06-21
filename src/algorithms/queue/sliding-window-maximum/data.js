@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Window rule",
       "title": "Read array and window rule",
       "note": "The code knows the range size or condition.",
-      "activeLine": 1,
-      "codeInsight": "The code knows the range size or condition."
+      "activeLine": 5,
+      "codeInsight": "Defines slidingWindowMaximum and names the input values, size; edits to those inputs change the visual state and output."
     },
     {
       "label": "Right edge",
       "title": "Consume next value",
       "note": "The window grows by one new item.",
       "activeLine": 4,
-      "codeInsight": "The window grows by one new item."
+      "codeInsight": "This blank line separates Sliding Window Maximum's setup from the next code block."
     },
     {
       "label": "Left edge",
       "title": "Drop expired state",
       "note": "Values outside the range are removed.",
       "activeLine": 6,
-      "codeInsight": "Values outside the range are removed."
+      "codeInsight": "Creates deque as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Window answer",
       "title": "Record current result",
       "note": "The current valid window updates the output.",
-      "activeLine": 8,
-      "codeInsight": "The current valid window updates the output."
+      "activeLine": 14,
+      "codeInsight": "Returns result, the value produced after Sliding Window Maximum's state changes are complete."
     }
   ],
   "complexity": {
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Read array and window rule",
         "note": "The code knows the range size or condition.",
         "ruleLabel": "Sliding Window Maximum invariant",
-        "rule": "The code knows the range size or condition.",
+        "rule": "Defines slidingWindowMaximum and names the input values, size; edits to those inputs change the visual state and output.",
         "activeItems": [
           0
         ],
@@ -163,7 +163,7 @@ export const algorithmPage = {
         "title": "Consume next value",
         "note": "The window grows by one new item.",
         "ruleLabel": "Sliding Window Maximum invariant",
-        "rule": "The window grows by one new item.",
+        "rule": "This blank line separates Sliding Window Maximum's setup from the next code block.",
         "activeItems": [
           1
         ],
@@ -178,7 +178,7 @@ export const algorithmPage = {
         "title": "Drop expired state",
         "note": "Values outside the range are removed.",
         "ruleLabel": "Sliding Window Maximum invariant",
-        "rule": "Values outside the range are removed.",
+        "rule": "Creates deque as empty working state; later lines add and remove values from it.",
         "activeItems": [
           2
         ],
@@ -193,7 +193,7 @@ export const algorithmPage = {
         "title": "Record current result",
         "note": "The current valid window updates the output.",
         "ruleLabel": "Sliding Window Maximum invariant",
-        "rule": "The current valid window updates the output.",
+        "rule": "Returns result, the value produced after Sliding Window Maximum's state changes are complete.",
         "activeItems": [
           3
         ],

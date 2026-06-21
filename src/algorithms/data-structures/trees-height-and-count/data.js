@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check current node",
       "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 1,
-      "codeInsight": "The code starts by handling missing nodes or the current root."
+      "activeLine": 2,
+      "codeInsight": "Defines treesHeightAndCount as the runnable entry point for this lesson."
     },
     {
       "label": "Node state",
       "title": "Read child height/result",
       "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "The current node controls the next step."
+      "activeLine": 4,
+      "codeInsight": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete."
     },
     {
       "label": "Child step",
       "title": "Combine child measurements into the parent answer",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
+      "activeLine": 4,
+      "codeInsight": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 10,
-      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
+      "activeLine": 4,
+      "codeInsight": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete."
     }
   ],
   "complexity": {
@@ -222,7 +222,7 @@ export const algorithmPage = {
         "title": "Check current node",
         "note": "The code starts by handling missing nodes or the current root.",
         "ruleLabel": "Binary Tree Height and Node Count invariant",
-        "rule": "The code starts by handling missing nodes or the current root.",
+        "rule": "Defines treesHeightAndCount as the runnable entry point for this lesson.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -237,7 +237,7 @@ export const algorithmPage = {
         "title": "Read child height/result",
         "note": "The current node controls the next step.",
         "ruleLabel": "Binary Tree Height and Node Count invariant",
-        "rule": "The current node controls the next step.",
+        "rule": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -252,7 +252,7 @@ export const algorithmPage = {
         "title": "Combine child measurements into the parent answer",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "Binary Tree Height and Node Count invariant",
-        "rule": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "rule": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -263,7 +263,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Binary Tree Height and Node Count invariant",
-        "rule": "The final traversal, path, measurement, or tree state is returned.",
+        "rule": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Values",
       "title": "Read values or updates",
       "note": "The code receives the array, ranges, or deltas.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the array, ranges, or deltas."
+      "activeLine": 5,
+      "codeInsight": "Defines cppAccumulate and names the input values, initialValue = 0; edits to those inputs change the visual state and output."
     },
     {
       "label": "Accumulator",
       "title": "Start running state",
       "note": "A neutral starting value makes every update consistent.",
-      "activeLine": 3,
-      "codeInsight": "A neutral starting value makes every update consistent."
+      "activeLine": 5,
+      "codeInsight": "Defines cppAccumulate and names the input values, initialValue = 0; edits to those inputs change the visual state and output."
     },
     {
       "label": "Prefix step",
       "title": "Apply current contribution",
       "note": "The running state changes by the current value or boundary delta.",
       "activeLine": 5,
-      "codeInsight": "The running state changes by the current value or boundary delta."
+      "codeInsight": "Defines cppAccumulate and names the input values, initialValue = 0; edits to those inputs change the visual state and output."
     },
     {
       "label": "Range result",
       "title": "Read saved state",
       "note": "The stored state gives the final or range answer.",
-      "activeLine": 8,
-      "codeInsight": "The stored state gives the final or range answer."
+      "activeLine": 6,
+      "codeInsight": "Returns values.reduce((total, value) => total + value, initialValue), the value produced after C++ accumulate()'s state changes are complete."
     }
   ],
   "complexity": {
@@ -140,7 +140,7 @@ export const algorithmPage = {
         "title": "Read values or updates",
         "note": "The code receives the array, ranges, or deltas.",
         "ruleLabel": "C++ accumulate() invariant",
-        "rule": "The code receives the array, ranges, or deltas.",
+        "rule": "Defines cppAccumulate and names the input values, initialValue = 0; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -158,7 +158,7 @@ export const algorithmPage = {
         "title": "Start running state",
         "note": "A neutral starting value makes every update consistent.",
         "ruleLabel": "C++ accumulate() invariant",
-        "rule": "A neutral starting value makes every update consistent.",
+        "rule": "Defines cppAccumulate and names the input values, initialValue = 0; edits to those inputs change the visual state and output.",
         "activeIndices": [
           1,
           2
@@ -177,7 +177,7 @@ export const algorithmPage = {
         "title": "Apply current contribution",
         "note": "The running state changes by the current value or boundary delta.",
         "ruleLabel": "C++ accumulate() invariant",
-        "rule": "The running state changes by the current value or boundary delta.",
+        "rule": "Defines cppAccumulate and names the input values, initialValue = 0; edits to those inputs change the visual state and output.",
         "activeIndices": [
           2
         ],
@@ -195,7 +195,7 @@ export const algorithmPage = {
         "title": "Read saved state",
         "note": "The stored state gives the final or range answer.",
         "ruleLabel": "C++ accumulate() invariant",
-        "rule": "The stored state gives the final or range answer.",
+        "rule": "Returns values.reduce((total, value) => total + value, initialValue), the value produced after C++ accumulate()'s state changes are complete.",
         "activeIndices": [
           2,
           2

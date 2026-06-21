@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Algorithm State",
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 6,
+      "codeInsight": "Initializes counts, the local state that the next highlighted lines will update."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy page-specific invariant."
+      "activeLine": 6,
+      "codeInsight": "Initializes counts, the local state that the next highlighted lines will update."
     },
     {
       "label": "State change",
       "title": "Update the state described by this algorithm",
       "note": "Only the necessary algorithm state fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Only the necessary algorithm state fields are changed."
+      "activeLine": 7,
+      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 8,
+      "codeInsight": "Returns { unorderedMap: counts, unorderedSet: [...new Set(values)] }, the value produced after C++ unordered_map / unordered_set's state changes are complete."
     }
   ],
   "complexity": {
@@ -136,7 +136,7 @@ export const algorithmPage = {
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "C++ unordered_map / unordered_set invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Initializes counts, the local state that the next highlighted lines will update.",
         "activeRange": [
           0,
           2
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "C++ unordered_map / unordered_set invariant",
-        "rule": "The active state must still satisfy page-specific invariant.",
+        "rule": "Initializes counts, the local state that the next highlighted lines will update.",
         "activeRange": [
           1,
           3
@@ -160,7 +160,7 @@ export const algorithmPage = {
         "title": "Update the state described by this algorithm",
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "C++ unordered_map / unordered_set invariant",
-        "rule": "Only the necessary algorithm state fields are changed.",
+        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
         "activeRange": [
           2,
           4
@@ -172,7 +172,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "C++ unordered_map / unordered_set invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns { unorderedMap: counts, unorderedSet: [...new Set(values)] }, the value produced after C++ unordered_map / unordered_set's state changes are complete.",
         "activeRange": [
           3,
           5

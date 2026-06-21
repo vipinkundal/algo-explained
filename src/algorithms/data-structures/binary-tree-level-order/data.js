@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check for empty tree",
       "note": "If root is missing, there are no levels to visit.",
-      "activeLine": 1,
-      "codeInsight": "If root is missing, there are no levels to visit."
+      "activeLine": 2,
+      "codeInsight": "Defines binaryTreeLevelOrder as the runnable entry point for this lesson."
     },
     {
       "label": "Queue",
       "title": "Seed traversal queue",
       "note": "The root becomes the first discovered node.",
       "activeLine": 3,
-      "codeInsight": "The root becomes the first discovered node."
+      "codeInsight": "Initializes tree, the local state that the next highlighted lines will update."
     },
     {
       "label": "Visit",
       "title": "Process queue front",
       "note": "The front node is appended to output.",
-      "activeLine": 6,
-      "codeInsight": "The front node is appended to output."
+      "activeLine": 5,
+      "codeInsight": "Executes this Binary Tree Level Order Traversal line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Children",
       "title": "Discover next level",
       "note": "Children are pushed to the queue for later visits.",
-      "activeLine": 8,
-      "codeInsight": "Children are pushed to the queue for later visits."
+      "activeLine": 5,
+      "codeInsight": "Executes this Binary Tree Level Order Traversal line as part of the highlighted code path, linking the visual step to the implementation."
     }
   ],
   "complexity": {
@@ -234,7 +234,7 @@ export const algorithmPage = {
         "title": "Check for empty tree",
         "note": "If root is missing, there are no levels to visit.",
         "ruleLabel": "Binary Tree Level Order Traversal invariant",
-        "rule": "If root is missing, there are no levels to visit.",
+        "rule": "Defines binaryTreeLevelOrder as the runnable entry point for this lesson.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -249,7 +249,7 @@ export const algorithmPage = {
         "title": "Seed traversal queue",
         "note": "The root becomes the first discovered node.",
         "ruleLabel": "Binary Tree Level Order Traversal invariant",
-        "rule": "The root becomes the first discovered node.",
+        "rule": "Initializes tree, the local state that the next highlighted lines will update.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -264,7 +264,7 @@ export const algorithmPage = {
         "title": "Process queue front",
         "note": "The front node is appended to output.",
         "ruleLabel": "Binary Tree Level Order Traversal invariant",
-        "rule": "The front node is appended to output.",
+        "rule": "Executes this Binary Tree Level Order Traversal line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -275,7 +275,7 @@ export const algorithmPage = {
         "title": "Discover next level",
         "note": "Children are pushed to the queue for later visits.",
         "ruleLabel": "Binary Tree Level Order Traversal invariant",
-        "rule": "Children are pushed to the queue for later visits.",
+        "rule": "Executes this Binary Tree Level Order Traversal line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

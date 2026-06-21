@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check for empty tree",
       "note": "If root is missing, there are no levels to visit.",
-      "activeLine": 1,
-      "codeInsight": "If root is missing, there are no levels to visit."
+      "activeLine": 5,
+      "codeInsight": "Defines levelOrderTraversal and names the input root; edits to those inputs change the visual state and output."
     },
     {
       "label": "Queue",
       "title": "Seed traversal queue",
       "note": "The root becomes the first discovered node.",
-      "activeLine": 3,
-      "codeInsight": "The root becomes the first discovered node."
+      "activeLine": 8,
+      "codeInsight": "Initializes queue, the local state that the next highlighted lines will update."
     },
     {
       "label": "Visit",
       "title": "Process queue front",
       "note": "The front node is appended to output.",
       "activeLine": 6,
-      "codeInsight": "The front node is appended to output."
+      "codeInsight": "Checks !root; only the branch that preserves Level Order Traversal's invariant is allowed to change state."
     },
     {
       "label": "Children",
       "title": "Discover next level",
       "note": "Children are pushed to the queue for later visits.",
       "activeLine": 8,
-      "codeInsight": "Children are pushed to the queue for later visits."
+      "codeInsight": "Initializes queue, the local state that the next highlighted lines will update."
     }
   ],
   "complexity": {
@@ -240,7 +240,7 @@ export const algorithmPage = {
         "title": "Check for empty tree",
         "note": "If root is missing, there are no levels to visit.",
         "ruleLabel": "Level Order Traversal invariant",
-        "rule": "If root is missing, there are no levels to visit.",
+        "rule": "Defines levelOrderTraversal and names the input root; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -255,7 +255,7 @@ export const algorithmPage = {
         "title": "Seed traversal queue",
         "note": "The root becomes the first discovered node.",
         "ruleLabel": "Level Order Traversal invariant",
-        "rule": "The root becomes the first discovered node.",
+        "rule": "Initializes queue, the local state that the next highlighted lines will update.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -270,7 +270,7 @@ export const algorithmPage = {
         "title": "Process queue front",
         "note": "The front node is appended to output.",
         "ruleLabel": "Level Order Traversal invariant",
-        "rule": "The front node is appended to output.",
+        "rule": "Checks !root; only the branch that preserves Level Order Traversal's invariant is allowed to change state.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -281,7 +281,7 @@ export const algorithmPage = {
         "title": "Discover next level",
         "note": "Children are pushed to the queue for later visits.",
         "ruleLabel": "Level Order Traversal invariant",
-        "rule": "Children are pushed to the queue for later visits.",
+        "rule": "Initializes queue, the local state that the next highlighted lines will update.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

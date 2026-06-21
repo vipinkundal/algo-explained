@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check current node",
       "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 1,
-      "codeInsight": "The code starts by handling missing nodes or the current root."
+      "activeLine": 5,
+      "codeInsight": "Defines avlTreeBasics and names the input root; edits to those inputs change the visual state and output."
     },
     {
       "label": "Node state",
       "title": "Read balance invariant",
       "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "The current node controls the next step."
+      "activeLine": 5,
+      "codeInsight": "Defines avlTreeBasics and names the input root; edits to those inputs change the visual state and output."
     },
     {
       "label": "Child step",
       "title": "Rotate or recolor when height/color rules are violated",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
+      "activeLine": 7,
+      "codeInsight": "Checks !node; only the branch that preserves AVL Tree Basics's invariant is allowed to change state."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 10,
-      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
+      "activeLine": 8,
+      "codeInsight": "Returns 1 + Math.max(height(node.left), height(node.right)), the value produced after AVL Tree Basics's state changes are complete."
     }
   ],
   "complexity": {
@@ -225,7 +225,7 @@ export const algorithmPage = {
         "title": "Check current node",
         "note": "The code starts by handling missing nodes or the current root.",
         "ruleLabel": "AVL Tree Basics invariant",
-        "rule": "The code starts by handling missing nodes or the current root.",
+        "rule": "Defines avlTreeBasics and names the input root; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -240,7 +240,7 @@ export const algorithmPage = {
         "title": "Read balance invariant",
         "note": "The current node controls the next step.",
         "ruleLabel": "AVL Tree Basics invariant",
-        "rule": "The current node controls the next step.",
+        "rule": "Defines avlTreeBasics and names the input root; edits to those inputs change the visual state and output.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -255,7 +255,7 @@ export const algorithmPage = {
         "title": "Rotate or recolor when height/color rules are violated",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "AVL Tree Basics invariant",
-        "rule": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "rule": "Checks !node; only the branch that preserves AVL Tree Basics's invariant is allowed to change state.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -266,7 +266,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "AVL Tree Basics invariant",
-        "rule": "The final traversal, path, measurement, or tree state is returned.",
+        "rule": "Returns 1 + Math.max(height(node.left), height(node.right)), the value produced after AVL Tree Basics's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

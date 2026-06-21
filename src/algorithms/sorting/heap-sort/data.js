@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Heap",
       "title": "Build priority tree",
       "note": "The array is interpreted as a heap.",
-      "activeLine": 1,
-      "codeInsight": "The array is interpreted as a heap."
+      "activeLine": 6,
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Root",
       "title": "Move root to output",
       "note": "The max or min root becomes fixed.",
-      "activeLine": 5,
-      "codeInsight": "The max or min root becomes fixed."
+      "activeLine": 12,
+      "codeInsight": "Returns values, the value produced after Heap Sort's state changes are complete."
     },
     {
       "label": "Size",
       "title": "Shrink active heap",
       "note": "Fixed values are no longer heapified.",
-      "activeLine": 7,
-      "codeInsight": "Fixed values are no longer heapified."
+      "activeLine": 6,
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "Restore",
       "title": "Heapify remaining range",
       "note": "The parent-child invariant is repaired.",
       "activeLine": 9,
-      "codeInsight": "The parent-child invariant is repaired."
+      "codeInsight": "Updates [values[0], values[end]] with [values[end], values[0]]; this is the state change the animation should reflect."
     }
   ],
   "complexity": {
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Build priority tree",
         "note": "The array is interpreted as a heap.",
         "ruleLabel": "Heap Sort invariant",
-        "rule": "The array is interpreted as a heap.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -218,7 +218,7 @@ export const algorithmPage = {
         "title": "Move root to output",
         "note": "The max or min root becomes fixed.",
         "ruleLabel": "Heap Sort invariant",
-        "rule": "The max or min root becomes fixed.",
+        "rule": "Returns values, the value produced after Heap Sort's state changes are complete.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -233,7 +233,7 @@ export const algorithmPage = {
         "title": "Shrink active heap",
         "note": "Fixed values are no longer heapified.",
         "ruleLabel": "Heap Sort invariant",
-        "rule": "Fixed values are no longer heapified.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -244,7 +244,7 @@ export const algorithmPage = {
         "title": "Heapify remaining range",
         "note": "The parent-child invariant is repaired.",
         "ruleLabel": "Heap Sort invariant",
-        "rule": "The parent-child invariant is repaired.",
+        "rule": "Updates [values[0], values[end]] with [values[end], values[0]]; this is the state change the animation should reflect.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

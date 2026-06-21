@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Queue",
       "title": "Read queue action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 5,
+      "codeInsight": "Defines cppPriorityQueue and names the input values, count = values.length; edits to those inputs change the visual state and output."
     },
     {
       "label": "Queue front",
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
       "activeLine": 3,
-      "codeInsight": "The active state must still satisfy first-in, first-out state."
+      "codeInsight": "Executes this C++ priority_queue line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Enqueue / dequeue",
       "title": "Enqueue, dequeue, peek, or evict entries",
       "note": "Only the necessary queue fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary queue fields are changed."
+      "codeInsight": "Returns [...values].sort((a, b) => b - a).slice(0, count), the value produced after C++ priority_queue's state changes are complete."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 6,
+      "codeInsight": "Returns [...values].sort((a, b) => b - a).slice(0, count), the value produced after C++ priority_queue's state changes are complete."
     }
   ],
   "complexity": {
@@ -204,7 +204,7 @@ export const algorithmPage = {
         "title": "Read queue action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "C++ priority_queue invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Defines cppPriorityQueue and names the input values, count = values.length; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -219,7 +219,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "C++ priority_queue invariant",
-        "rule": "The active state must still satisfy first-in, first-out state.",
+        "rule": "Executes this C++ priority_queue line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -234,7 +234,7 @@ export const algorithmPage = {
         "title": "Enqueue, dequeue, peek, or evict entries",
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "C++ priority_queue invariant",
-        "rule": "Only the necessary queue fields are changed.",
+        "rule": "Returns [...values].sort((a, b) => b - a).slice(0, count), the value produced after C++ priority_queue's state changes are complete.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -245,7 +245,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "C++ priority_queue invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns [...values].sort((a, b) => b - a).slice(0, count), the value produced after C++ priority_queue's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check current node",
       "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 1,
-      "codeInsight": "The code starts by handling missing nodes or the current root."
+      "activeLine": 5,
+      "codeInsight": "Defines postorderTraversal and names the input root; edits to those inputs change the visual state and output."
     },
     {
       "label": "Node state",
       "title": "Read visit order",
       "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "The current node controls the next step."
+      "activeLine": 8,
+      "codeInsight": "Checks !node; only the branch that preserves Postorder Traversal's invariant is allowed to change state."
     },
     {
       "label": "Child step",
       "title": "Visit the current node in preorder, inorder, or postorder position",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "The algorithm moves to a child, combines a value, or repairs structure."
+      "activeLine": 8,
+      "codeInsight": "Checks !node; only the branch that preserves Postorder Traversal's invariant is allowed to change state."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 10,
-      "codeInsight": "The final traversal, path, measurement, or tree state is returned."
+      "activeLine": 14,
+      "codeInsight": "Returns result, the value produced after Postorder Traversal's state changes are complete."
     }
   ],
   "complexity": {
@@ -230,7 +230,7 @@ export const algorithmPage = {
         "title": "Check current node",
         "note": "The code starts by handling missing nodes or the current root.",
         "ruleLabel": "Postorder Traversal invariant",
-        "rule": "The code starts by handling missing nodes or the current root.",
+        "rule": "Defines postorderTraversal and names the input root; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -245,7 +245,7 @@ export const algorithmPage = {
         "title": "Read visit order",
         "note": "The current node controls the next step.",
         "ruleLabel": "Postorder Traversal invariant",
-        "rule": "The current node controls the next step.",
+        "rule": "Checks !node; only the branch that preserves Postorder Traversal's invariant is allowed to change state.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -260,7 +260,7 @@ export const algorithmPage = {
         "title": "Visit the current node in preorder, inorder, or postorder position",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "Postorder Traversal invariant",
-        "rule": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "rule": "Checks !node; only the branch that preserves Postorder Traversal's invariant is allowed to change state.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -271,7 +271,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Postorder Traversal invariant",
-        "rule": "The final traversal, path, measurement, or tree state is returned.",
+        "rule": "Returns result, the value produced after Postorder Traversal's state changes are complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

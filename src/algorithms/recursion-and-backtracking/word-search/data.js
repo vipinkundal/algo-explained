@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 1,
-      "codeInsight": "The code starts from the matrix shape."
+      "activeLine": 6,
+      "codeInsight": "Stores rows so the algorithm can reuse this value without recomputing it."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
       "activeLine": 3,
-      "codeInsight": "The current row/column controls the next update."
+      "codeInsight": "Executes this Word Search line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Move/update",
       "title": "Apply neighbor or boundary rule",
       "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 6,
-      "codeInsight": "The transition changes reachable cells, boundaries, or accumulated values."
+      "activeLine": 10,
+      "codeInsight": "Checks index === word.length; only the branch that preserves Word Search's invariant is allowed to change state."
     },
     {
       "label": "Result",
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
-      "activeLine": 9,
-      "codeInsight": "The final matrix, count, or query answer is returned."
+      "activeLine": 16,
+      "codeInsight": "Returns found, the value produced after Word Search's state changes are complete."
     }
   ],
   "complexity": {
@@ -170,7 +170,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Word Search invariant",
-        "rule": "The code starts from the matrix shape.",
+        "rule": "Stores rows so the algorithm can reuse this value without recomputing it.",
         "activeCells": [
           [
             0,
@@ -189,7 +189,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Word Search invariant",
-        "rule": "The current row/column controls the next update.",
+        "rule": "Executes this Word Search line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeCells": [
           [
             0,
@@ -212,7 +212,7 @@ export const algorithmPage = {
         "title": "Apply neighbor or boundary rule",
         "note": "The transition changes reachable cells, boundaries, or accumulated values.",
         "ruleLabel": "Word Search invariant",
-        "rule": "The transition changes reachable cells, boundaries, or accumulated values.",
+        "rule": "Checks index === word.length; only the branch that preserves Word Search's invariant is allowed to change state.",
         "activeCells": [
           [
             0,
@@ -239,7 +239,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Word Search invariant",
-        "rule": "The final matrix, count, or query answer is returned.",
+        "rule": "Returns found, the value produced after Word Search's state changes are complete.",
         "activeCells": [
           [
             0,

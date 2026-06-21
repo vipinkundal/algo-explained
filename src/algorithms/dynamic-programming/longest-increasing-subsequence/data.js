@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "State meaning",
       "title": "Define DP cell",
       "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 1,
-      "codeInsight": "The code first needs a precise subproblem meaning."
+      "activeLine": 6,
+      "codeInsight": "Creates tails as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
       "activeLine": 3,
-      "codeInsight": "Base values stop the recurrence from falling through."
+      "codeInsight": "Executes this Longest Increasing Subsequence line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Recurrence",
       "title": "Fill next state",
       "note": "The transition combines previously solved states.",
       "activeLine": 6,
-      "codeInsight": "The transition combines previously solved states."
+      "codeInsight": "Creates tails as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Target",
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
-      "activeLine": 10,
-      "codeInsight": "The answer is read from the final DP state."
+      "activeLine": 17,
+      "codeInsight": "Returns tails.length, the value produced after Longest Increasing Subsequence's state changes are complete."
     }
   ],
   "complexity": {
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Define DP cell",
         "note": "The code first needs a precise subproblem meaning.",
         "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "The code first needs a precise subproblem meaning.",
+        "rule": "Creates tails as empty working state; later lines add and remove values from it.",
         "activeState": 0
       },
       {
@@ -153,7 +153,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "Base values stop the recurrence from falling through.",
+        "rule": "Executes this Longest Increasing Subsequence line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeState": 1
       },
       {
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Fill next state",
         "note": "The transition combines previously solved states.",
         "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "The transition combines previously solved states.",
+        "rule": "Creates tails as empty working state; later lines add and remove values from it.",
         "activeState": 2
       },
       {
@@ -169,7 +169,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "The answer is read from the final DP state.",
+        "rule": "Returns tails.length, the value produced after Longest Increasing Subsequence's state changes are complete.",
         "activeState": 3
       }
     ]

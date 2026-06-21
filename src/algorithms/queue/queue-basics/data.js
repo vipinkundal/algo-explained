@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Queue",
       "title": "Read queue action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 6,
+      "codeInsight": "Creates queue as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Queue front",
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "The active state must still satisfy first-in, first-out state."
+      "activeLine": 6,
+      "codeInsight": "Creates queue as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Enqueue / dequeue",
       "title": "Enqueue, dequeue, peek, or evict entries",
       "note": "Only the necessary queue fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Only the necessary queue fields are changed."
+      "codeInsight": "Creates queue as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 13,
+      "codeInsight": "Returns output, the value produced after Queue Basics's state changes are complete."
     }
   ],
   "complexity": {
@@ -185,7 +185,7 @@ export const algorithmPage = {
         "title": "Read queue action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Queue Basics invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Creates queue as empty working state; later lines add and remove values from it.",
         "activeItems": [
           0
         ],
@@ -200,7 +200,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "Queue Basics invariant",
-        "rule": "The active state must still satisfy first-in, first-out state.",
+        "rule": "Creates queue as empty working state; later lines add and remove values from it.",
         "activeItems": [
           1
         ],
@@ -215,7 +215,7 @@ export const algorithmPage = {
         "title": "Enqueue, dequeue, peek, or evict entries",
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "Queue Basics invariant",
-        "rule": "Only the necessary queue fields are changed.",
+        "rule": "Creates queue as empty working state; later lines add and remove values from it.",
         "activeItems": [
           2
         ],
@@ -230,7 +230,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Queue Basics invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns output, the value produced after Queue Basics's state changes are complete.",
         "activeItems": [
           3
         ],

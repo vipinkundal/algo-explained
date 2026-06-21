@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 1,
-      "codeInsight": "The code receives vertices, edges, weights, or adjacency lists."
+      "activeLine": 6,
+      "codeInsight": "Initializes parent, the local state that the next highlighted lines will update."
     },
     {
       "label": "Parent Array",
       "title": "Initialize parent array",
       "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 3,
-      "codeInsight": "Only the graph state owned by this algorithm is created."
+      "activeLine": 6,
+      "codeInsight": "Initializes parent, the local state that the next highlighted lines will update."
     },
     {
       "label": "Work item",
       "title": "Process next vertex or edge",
       "note": "Find roots and union separate sets.",
       "activeLine": 6,
-      "codeInsight": "Find roots and union separate sets."
+      "codeInsight": "Initializes parent, the local state that the next highlighted lines will update."
     },
     {
       "label": "Component Merging",
       "title": "Return component merging",
       "note": "The final graph state becomes the answer.",
-      "activeLine": 10,
-      "codeInsight": "The final graph state becomes the answer."
+      "activeLine": 16,
+      "codeInsight": "Returns true, the value produced after Disjoint Set Union / Union Find's state changes are complete."
     }
   ],
   "complexity": {
@@ -192,7 +192,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "The code receives vertices, edges, weights, or adjacency lists.",
+        "rule": "Initializes parent, the local state that the next highlighted lines will update.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -208,7 +208,7 @@ export const algorithmPage = {
         "title": "Initialize parent array",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "Only the graph state owned by this algorithm is created.",
+        "rule": "Initializes parent, the local state that the next highlighted lines will update.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -226,7 +226,7 @@ export const algorithmPage = {
         "title": "Process next vertex or edge",
         "note": "Find roots and union separate sets.",
         "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "Find roots and union separate sets.",
+        "rule": "Initializes parent, the local state that the next highlighted lines will update.",
         "activeNode": "C",
         "visitedNodes": [
           "A",
@@ -245,7 +245,7 @@ export const algorithmPage = {
         "title": "Return component merging",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "The final graph state becomes the answer.",
+        "rule": "Returns true, the value produced after Disjoint Set Union / Union Find's state changes are complete.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

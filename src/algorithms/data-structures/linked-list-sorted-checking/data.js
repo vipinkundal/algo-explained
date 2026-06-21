@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Copy values",
       "note": "The code starts with the values to reorder.",
-      "activeLine": 1,
-      "codeInsight": "The code starts with the values to reorder."
+      "activeLine": 3,
+      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
     },
     {
       "label": "Invariant",
       "title": "Track ordered work",
       "note": "The algorithm marks what part is already safe.",
       "activeLine": 3,
-      "codeInsight": "The algorithm marks what part is already safe."
+      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
     },
     {
       "label": "Move",
       "title": "Apply ordering step",
       "note": "The current operation reduces disorder.",
       "activeLine": 6,
-      "codeInsight": "The current operation reduces disorder."
+      "codeInsight": "Executes this Linked List Sorted Checking line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Sorted output",
       "title": "Return final order",
       "note": "The result is returned when no unsorted work remains.",
-      "activeLine": 10,
-      "codeInsight": "The result is returned when no unsorted work remains."
+      "activeLine": 5,
+      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Sorted Checking's state changes are complete."
     }
   ],
   "complexity": {
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Copy values",
         "note": "The code starts with the values to reorder.",
         "ruleLabel": "Linked List Sorted Checking invariant",
-        "rule": "The code starts with the values to reorder.",
+        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
         "activeNode": "head",
         "previousNode": "head",
         "nextNode": "n2"
@@ -172,7 +172,7 @@ export const algorithmPage = {
         "title": "Track ordered work",
         "note": "The algorithm marks what part is already safe.",
         "ruleLabel": "Linked List Sorted Checking invariant",
-        "rule": "The algorithm marks what part is already safe.",
+        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
         "activeNode": "n2",
         "previousNode": "head",
         "nextNode": "n3"
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Apply ordering step",
         "note": "The current operation reduces disorder.",
         "ruleLabel": "Linked List Sorted Checking invariant",
-        "rule": "The current operation reduces disorder.",
+        "rule": "Executes this Linked List Sorted Checking line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeNode": "n3",
         "previousNode": "n2",
         "nextNode": "tail"
@@ -192,7 +192,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "The result is returned when no unsorted work remains.",
         "ruleLabel": "Linked List Sorted Checking invariant",
-        "rule": "The result is returned when no unsorted work remains.",
+        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Sorted Checking's state changes are complete.",
         "activeNode": "tail",
         "previousNode": "n3",
         "nextNode": "tail"

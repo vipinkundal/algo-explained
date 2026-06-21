@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Numbers",
       "title": "Read numeric state",
       "note": "The code receives the number, range, or modulus.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the number, range, or modulus."
+      "activeLine": 6,
+      "codeInsight": "Computes gcd from the current values before the algorithm decides the next move."
     },
     {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
       "activeLine": 3,
-      "codeInsight": "The chosen identity controls every update."
+      "codeInsight": "Executes this LCM line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Reduction",
       "title": "Apply one reduction",
       "note": "A shift, xor, multiply, divide, or mark changes state.",
       "activeLine": 5,
-      "codeInsight": "A shift, xor, multiply, divide, or mark changes state."
+      "codeInsight": "Defines lcm and names the input a, b; edits to those inputs change the visual state and output."
     },
     {
       "label": "Numeric result",
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
-      "activeLine": 8,
-      "codeInsight": "The loop ends when the invariant gives the answer."
+      "activeLine": 7,
+      "codeInsight": "Returns a === 0 || b === 0 ? 0 : Math.abs(a * b) / gcd(a, b), the value produced after LCM's state changes are complete."
     }
   ],
   "complexity": {
@@ -137,7 +137,7 @@ export const algorithmPage = {
         "title": "Read numeric state",
         "note": "The code receives the number, range, or modulus.",
         "ruleLabel": "LCM invariant",
-        "rule": "The code receives the number, range, or modulus.",
+        "rule": "Computes gcd from the current values before the algorithm decides the next move.",
         "activeState": 0
       },
       {
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "LCM invariant",
-        "rule": "The chosen identity controls every update.",
+        "rule": "Executes this LCM line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeState": 1
       },
       {
@@ -153,7 +153,7 @@ export const algorithmPage = {
         "title": "Apply one reduction",
         "note": "A shift, xor, multiply, divide, or mark changes state.",
         "ruleLabel": "LCM invariant",
-        "rule": "A shift, xor, multiply, divide, or mark changes state.",
+        "rule": "Defines lcm and names the input a, b; edits to those inputs change the visual state and output.",
         "activeState": 2
       },
       {
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "LCM invariant",
-        "rule": "The loop ends when the invariant gives the answer.",
+        "rule": "Returns a === 0 || b === 0 ? 0 : Math.abs(a * b) / gcd(a, b), the value produced after LCM's state changes are complete.",
         "activeState": 3
       }
     ]

@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 1,
-      "codeInsight": "The code receives vertices, edges, weights, or adjacency lists."
+      "activeLine": 6,
+      "codeInsight": "Initializes index as mutable state; later branches update it as the search window or traversal changes."
     },
     {
       "label": "Discovery Component State",
       "title": "Initialize discovery/component state",
       "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 3,
-      "codeInsight": "Only the graph state owned by this algorithm is created."
+      "activeLine": 7,
+      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
     },
     {
       "label": "Work item",
       "title": "Process next vertex or edge",
       "note": "Update low-link/order state and emit components.",
       "activeLine": 6,
-      "codeInsight": "Update low-link/order state and emit components."
+      "codeInsight": "Initializes index as mutable state; later branches update it as the search window or traversal changes."
     },
     {
       "label": "Component Discovery",
       "title": "Return component discovery",
       "note": "The final graph state becomes the answer.",
-      "activeLine": 10,
-      "codeInsight": "The final graph state becomes the answer."
+      "activeLine": 34,
+      "codeInsight": "Returns components, the value produced after Tarjan’s Algorithm's state changes are complete."
     }
   ],
   "complexity": {
@@ -188,7 +188,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Tarjan’s Algorithm invariant",
-        "rule": "The code receives vertices, edges, weights, or adjacency lists.",
+        "rule": "Initializes index as mutable state; later branches update it as the search window or traversal changes.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -204,7 +204,7 @@ export const algorithmPage = {
         "title": "Initialize discovery/component state",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Tarjan’s Algorithm invariant",
-        "rule": "Only the graph state owned by this algorithm is created.",
+        "rule": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -222,7 +222,7 @@ export const algorithmPage = {
         "title": "Process next vertex or edge",
         "note": "Update low-link/order state and emit components.",
         "ruleLabel": "Tarjan’s Algorithm invariant",
-        "rule": "Update low-link/order state and emit components.",
+        "rule": "Initializes index as mutable state; later branches update it as the search window or traversal changes.",
         "activeNode": "C",
         "visitedNodes": [
           "A",
@@ -241,7 +241,7 @@ export const algorithmPage = {
         "title": "Return component discovery",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Tarjan’s Algorithm invariant",
-        "rule": "The final graph state becomes the answer.",
+        "rule": "Returns components, the value produced after Tarjan’s Algorithm's state changes are complete.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

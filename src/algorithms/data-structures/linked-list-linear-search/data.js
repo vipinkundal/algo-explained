@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Read values",
       "note": "The code receives the list and any target condition.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the list and any target condition."
+      "activeLine": 3,
+      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
     },
     {
       "label": "Index",
       "title": "Select current item",
       "note": "The loop focuses on one position at a time.",
       "activeLine": 3,
-      "codeInsight": "The loop focuses on one position at a time."
+      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
     },
     {
       "label": "Update",
       "title": "Apply comparison or count",
       "note": "The current value changes the running state only if the rule says so.",
       "activeLine": 5,
-      "codeInsight": "The current value changes the running state only if the rule says so."
+      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Linear Search's state changes are complete."
     },
     {
       "label": "Result",
       "title": "Return scan output",
       "note": "When the scan ends, the tracked result is returned.",
-      "activeLine": 8,
-      "codeInsight": "When the scan ends, the tracked result is returned."
+      "activeLine": 5,
+      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Linear Search's state changes are complete."
     }
   ],
   "complexity": {
@@ -170,7 +170,7 @@ export const algorithmPage = {
         "title": "Read values",
         "note": "The code receives the list and any target condition.",
         "ruleLabel": "Linked List Linear Search invariant",
-        "rule": "The code receives the list and any target condition.",
+        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
         "activeNode": "head",
         "previousNode": "head",
         "nextNode": "n2"
@@ -180,7 +180,7 @@ export const algorithmPage = {
         "title": "Select current item",
         "note": "The loop focuses on one position at a time.",
         "ruleLabel": "Linked List Linear Search invariant",
-        "rule": "The loop focuses on one position at a time.",
+        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
         "activeNode": "n2",
         "previousNode": "head",
         "nextNode": "n3"
@@ -190,7 +190,7 @@ export const algorithmPage = {
         "title": "Apply comparison or count",
         "note": "The current value changes the running state only if the rule says so.",
         "ruleLabel": "Linked List Linear Search invariant",
-        "rule": "The current value changes the running state only if the rule says so.",
+        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Linear Search's state changes are complete.",
         "activeNode": "n3",
         "previousNode": "n2",
         "nextNode": "tail"
@@ -200,7 +200,7 @@ export const algorithmPage = {
         "title": "Return scan output",
         "note": "When the scan ends, the tracked result is returned.",
         "ruleLabel": "Linked List Linear Search invariant",
-        "rule": "When the scan ends, the tracked result is returned.",
+        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Linear Search's state changes are complete.",
         "activeNode": "tail",
         "previousNode": "n3",
         "nextNode": "tail"

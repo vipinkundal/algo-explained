@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Sorted input",
       "title": "Read the ordered search space",
       "note": "The code starts from a range where binary decisions are valid.",
-      "activeLine": 1,
-      "codeInsight": "The code starts from a range where binary decisions are valid."
+      "activeLine": 3,
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "low / high",
       "title": "Open the candidate window",
       "note": "low and high mark every position that may still answer.",
       "activeLine": 3,
-      "codeInsight": "low and high mark every position that may still answer."
+      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
     },
     {
       "label": "mid check",
       "title": "Compare the midpoint",
       "note": "The midpoint decides which half is removed.",
       "activeLine": 5,
-      "codeInsight": "The midpoint decides which half is removed."
+      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Binary Search in Array ADT's state changes are complete."
     },
     {
       "label": "Return",
       "title": "Emit index or boundary",
       "note": "The loop ends with a match or the collapsed boundary.",
-      "activeLine": 9,
-      "codeInsight": "The loop ends with a match or the collapsed boundary."
+      "activeLine": 5,
+      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Binary Search in Array ADT's state changes are complete."
     }
   ],
   "complexity": {
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Read the ordered search space",
         "note": "The code starts from a range where binary decisions are valid.",
         "ruleLabel": "Binary Search in Array ADT invariant",
-        "rule": "The code starts from a range where binary decisions are valid.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeIndices": [
           0
         ],
@@ -180,7 +180,7 @@ export const algorithmPage = {
         "title": "Open the candidate window",
         "note": "low and high mark every position that may still answer.",
         "ruleLabel": "Binary Search in Array ADT invariant",
-        "rule": "low and high mark every position that may still answer.",
+        "rule": "Initializes values, the local state that the next highlighted lines will update.",
         "activeIndices": [
           1,
           2
@@ -202,7 +202,7 @@ export const algorithmPage = {
         "title": "Compare the midpoint",
         "note": "The midpoint decides which half is removed.",
         "ruleLabel": "Binary Search in Array ADT invariant",
-        "rule": "The midpoint decides which half is removed.",
+        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Binary Search in Array ADT's state changes are complete.",
         "activeIndices": [
           2
         ],
@@ -222,7 +222,7 @@ export const algorithmPage = {
         "title": "Emit index or boundary",
         "note": "The loop ends with a match or the collapsed boundary.",
         "ruleLabel": "Binary Search in Array ADT invariant",
-        "rule": "The loop ends with a match or the collapsed boundary.",
+        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Binary Search in Array ADT's state changes are complete.",
         "activeIndices": [
           3,
           4

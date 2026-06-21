@@ -293,7 +293,9 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   }
 
   function renderVisualizer() {
-    const current = algorithmPage.dryRun[state.step];
+    const current = getCurrentStep();
+    const activeLine = getActiveLine(current);
+    const stepTotal = getStepCount();
     return `
       <section class="algorithm-page visualizer-panel" data-algorithm-page="${escapeHtml(algorithmPage.id)}" data-visualizer="${escapeHtml(algorithmPage.visualizerType)}" aria-labelledby="visualizer-title">
         <div class="title-row">
@@ -302,7 +304,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             <h2 id="visualizer-title">${escapeHtml(algorithmPage.title)}</h2>
             <p>${escapeHtml(algorithmPage.visualizerCaption)}</p>
           </div>
-          <span class="step-pill">${escapeHtml(t("algorithmPage.stepCounter", { current: state.step + 1, total: algorithmPage.dryRun.length }))}</span>
+          <span class="step-pill">${escapeHtml(t("algorithmPage.stepCounter", { current: state.step + 1, total: stepTotal }))}</span>
         </div>
         <div class="concept-loop-grid">
           <article>
@@ -325,24 +327,57 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
           <button data-action="reset" aria-label="${escapeHtml(t("algorithmPage.resetVisualizer"))}">${icon("replay")}</button>
         </div>
         <div class="trace-layout">
-          ${renderCodeTrace(current.activeLine)}
+          ${renderCodeTrace(activeLine)}
           <aside class="explanation-bubble">
             ${icon("tips_and_updates")}
             <strong>${escapeHtml(t("algorithmPage.codeInsight"))}</strong>
-            <p>${escapeHtml(getCodeInsight(current))}</p>
+            <p>${escapeHtml(getCodeInsight(current, activeLine))}</p>
           </aside>
-        </div>
-        <div class="variable-grid">
-          ${algorithmPage.variables.map((variable) => `
-            <article>
-              <strong>${escapeHtml(variable.name)}</strong>
-              <p>${escapeHtml(variable.purpose)}</p>
-            </article>
-          `).join("")}
         </div>
         ${renderRelatedLinks()}
       </section>
     `;
+  }
+
+  function getStepCount() {
+    const dryRunCount = Array.isArray(algorithmPage.dryRun) ? algorithmPage.dryRun.length : 0;
+    const animationStepCount = Array.isArray(algorithmPage.animation?.steps) ? algorithmPage.animation.steps.length : 0;
+    const stackItemCount = algorithmPage.animation?.type === "stack-queue-flow" && Array.isArray(algorithmPage.animation.items)
+      ? algorithmPage.animation.items.length
+      : 0;
+    return Math.max(dryRunCount, animationStepCount, stackItemCount, 1);
+  }
+
+  function getAnimationStep(stepIndex = state.step) {
+    const animation = algorithmPage.animation || {};
+    const existingStep = animation.steps?.[stepIndex];
+    if (existingStep) return existingStep;
+    if (animation.type === "stack-queue-flow" && Array.isArray(animation.items) && stepIndex < animation.items.length) {
+      return {
+        phase: `Slot ${stepIndex}`,
+        title: `Inspect slot ${stepIndex}`,
+        note: "The visualizer advances to this stack position before wrapping.",
+        ruleLabel: `${algorithmPage.title} invariant`,
+        rule: "Every stack slot can become the active visual state as the controls advance.",
+        activeItems: [stepIndex],
+        topIndex: stepIndex,
+        queueWindow: [stepIndex, animation.items.length - 1],
+      };
+    }
+    return {};
+  }
+
+  function getCurrentStep() {
+    const dryRunStep = algorithmPage.dryRun[state.step];
+    if (dryRunStep) return dryRunStep;
+    const animationStep = getAnimationStep(state.step);
+    return {
+      label: animationStep.phase || `Step ${state.step + 1}`,
+      title: animationStep.title || `Step ${state.step + 1}`,
+      note: animationStep.note || animationStep.rule || algorithmPage.transitionSummary || "",
+      activeLine: algorithmPage.dryRun.at(-1)?.activeLine || 1,
+      codeInsight: animationStep.rule || algorithmPage.codeInsight,
+    };
   }
 
   function renderRelatedLinks() {
@@ -378,18 +413,9 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     return renderStateFlowStage(current);
   }
 
-  function renderDryRunNodes() {
-    return algorithmPage.dryRun.map((step, index) => `
-      <div class="dry-run-node ${index === state.step ? "active" : ""} ${index < state.step ? "complete" : ""}">
-        <b>${index + 1}</b>
-        <span>${escapeHtml(step.label)}</span>
-      </div>
-    `).join("");
-  }
-
   function renderEdgeRelaxationStage(current) {
     const animation = algorithmPage.animation || {};
-    const animationStep = animation.steps?.[state.step] || {};
+    const animationStep = getAnimationStep(state.step);
     const nodes = Array.isArray(animation.nodes) ? animation.nodes : [];
     const edges = Array.isArray(animation.edges) ? animation.edges : [];
     const distances = animationStep.distances || {};
@@ -421,9 +447,6 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
               </span>
             `).join("")}
           </div>
-          <div class="relaxation-timeline" aria-label="Relaxation steps">
-            ${renderDryRunNodes()}
-          </div>
         </div>
       </div>
     `;
@@ -432,29 +455,23 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   function renderStateFlowStage(current) {
     const stepNumber = state.step + 1;
     const variableFocus = algorithmPage.variables[state.step % Math.max(algorithmPage.variables.length, 1)];
+    const activeLine = getActiveLine(current);
 
     return `
       <div class="dry-run-stage state-flow-stage" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.dryRun")}`)}">
         <div class="state-flow-current">
-          <p class="state-flow-kicker">${escapeHtml(humanizeTag(algorithmPage.visualizerType))} · ${escapeHtml(t("algorithmPage.activeLine", { line: current.activeLine || 1 }))}</p>
+          <p class="state-flow-kicker">${escapeHtml(humanizeTag(algorithmPage.visualizerType))} · ${escapeHtml(t("algorithmPage.activeLine", { line: activeLine }))}</p>
           <h3>${escapeHtml(current.title || current.label)}</h3>
-          <p>${escapeHtml(current.note || getCodeInsight(current))}</p>
+          <p>${escapeHtml(current.note || getCodeInsight(current, activeLine))}</p>
           <div class="state-flow-code-link">
             <span>${stepNumber}</span>
             <div>
               <strong>${escapeHtml(current.label)}</strong>
-              <em>${escapeHtml(getCodeInsight(current))}</em>
+              <em>${escapeHtml(getCodeInsight(current, activeLine))}</em>
             </div>
           </div>
         </div>
         <div class="state-flow-visual" aria-hidden="true">
-          <div class="state-flow-track">
-            ${algorithmPage.dryRun.map((step, index) => `
-              <span class="${index === state.step ? "active" : ""} ${index < state.step ? "complete" : ""}">
-                <b>${index + 1}</b>
-              </span>
-            `).join("")}
-          </div>
           <div class="state-flow-focus">
             <span>${escapeHtml(variableFocus?.name || current.label)}</span>
             <strong>${escapeHtml(variableFocus?.purpose || current.note || "")}</strong>
@@ -467,16 +484,13 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             `).join("")}
           </div>
         </div>
-        <div class="state-flow-timeline">
-          ${renderDryRunNodes()}
-        </div>
       </div>
     `;
   }
 
   function renderTreeOperationStage(current) {
     const animation = algorithmPage.animation || {};
-    const animationStep = animation.steps?.[state.step] || {};
+    const animationStep = getAnimationStep(state.step);
     const nodes = Array.isArray(animation.nodes) ? animation.nodes : [];
     const edges = Array.isArray(animation.edges) ? animation.edges : [];
     const activeNode = animationStep.activeNode || "";
@@ -513,9 +527,6 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             <span><i class="current"></i> Current</span>
             <span><i class="target"></i> Target</span>
             <span><i class="replacement"></i> Replacement</span>
-          </div>
-          <div class="relaxation-timeline" aria-label="Tree operation steps">
-            ${renderDryRunNodes()}
           </div>
         </div>
       </div>
@@ -597,7 +608,8 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
 
   function renderStructuredAnimationStage(current) {
     const animation = algorithmPage.animation || {};
-    const animationStep = animation.steps?.[state.step] || {};
+    const animationStep = getAnimationStep(state.step);
+    const activeLine = getActiveLine(current);
 
     return `
       <div class="dry-run-stage structured-animation-stage ${escapeHtml(animation.type)}" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.dryRun")}`)}">
@@ -610,10 +622,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
           <p>${escapeHtml(animationStep.note || current.note)}</p>
           <div class="structured-animation-rule">
             <span>${escapeHtml(animationStep.ruleLabel || animation.ruleLabel || "State rule")}</span>
-            <strong>${escapeHtml(animationStep.rule || animation.rule || getCodeInsight(current))}</strong>
-          </div>
-          <div class="relaxation-timeline" aria-label="Animation steps">
-            ${renderDryRunNodes()}
+            <strong>${escapeHtml(getCodeInsight(current, activeLine) || animationStep.rule || animation.rule)}</strong>
           </div>
         </div>
       </div>
@@ -892,11 +901,145 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     return state.originalCodeSource || `// ${t("algorithmPage.loadingOriginalCpp")}`;
   }
 
-  function getCodeInsight(current) {
+  function getActiveLine(current) {
+    if (state.activeCodeTab === "original") return algorithmPage.originalActiveLine || current.activeLine || 1;
+    const codeLines = getCodeSource().split(/\r?\n/);
+    const resolvedLine = resolveCodeLineForStep(current, codeLines) || current.activeLine || 1;
+    const activeLine = Math.min(Math.max(resolvedLine, 1), Math.max(codeLines.length, 1));
+    return findExecutableLine(codeLines, activeLine);
+  }
+
+  function findExecutableLine(codeLines, preferredLine) {
+    const isExecutable = (line) => {
+      const text = String(line || "").trim();
+      return text && text !== "{" && text !== "}" && !text.startsWith("//") && !text.startsWith("/*") && !text.startsWith("*");
+    };
+    const preferredIndex = Math.min(Math.max(preferredLine - 1, 0), Math.max(codeLines.length - 1, 0));
+    if (isExecutable(codeLines[preferredIndex])) return preferredIndex + 1;
+
+    for (let index = preferredIndex + 1; index < codeLines.length; index += 1) {
+      if (isExecutable(codeLines[index])) return index + 1;
+    }
+    for (let index = preferredIndex - 1; index >= 0; index -= 1) {
+      if (isExecutable(codeLines[index])) return index + 1;
+    }
+    return preferredLine;
+  }
+
+  function resolveCodeLineForStep(current, codeLines) {
+    const label = `${current.label || ""} ${current.title || ""}`.toLowerCase();
+    const candidates = codeLines.map((line, index) => ({ text: line.trim(), number: index + 1 }));
+    const findLine = (matcher) => candidates.find(({ text }) => matcher(text))?.number;
+    const firstAlgorithmLine = () => findLine((text) => /^(const|let)\s+\w+\s*=|^for\s*\(|^while\s*\(|^if\s*\(/.test(text));
+
+    if (/\b(result|answer|return|output|visible)\b/.test(label)) {
+      return findLine((text) => /^return\b/.test(text));
+    }
+
+    if (/\b(push|pop|resolve)\b/.test(label)) {
+      return findLine((text) => /^while\b/.test(text) && /stack|\.at|\.length/.test(text))
+        || findLine((text) => /\.pop\(\)|\.push\(/.test(text));
+    }
+
+    if (/\bstack\b/.test(label) && /\b(top|inspect|check)\b/.test(label)) {
+      return findLine((text) => /^while\b/.test(text) && /stack|\.at|\.length/.test(text))
+        || findLine((text) => /^(const|let)\s+stack\b/.test(text));
+    }
+
+    if (/\bstack\b/.test(label) && /\b(read|state|stack)\b/.test(label)) {
+      return findLine((text) => /^(const|let)\s+stack\b/.test(text))
+        || firstAlgorithmLine();
+    }
+
+    if (/\b(compare|check|inspect)\b/.test(label)) {
+      return findLine((text) => /^if\b/.test(text))
+        || findLine((text) => /^const\b/.test(text) && /mid|pivot|current|candidate|target/i.test(text));
+    }
+
+    if (/\bstack\b/.test(label)) return findLine((text) => /^(const|let)\s+stack\b/.test(text));
+    if (/\bqueue\b/.test(label)) return findLine((text) => /^(const|let)\s+queue\b/.test(text));
+    if (/\b(low|high|window|boundary)\b/.test(label)) return findLine((text) => /^(const|let)\s+(low|left|start|high|right|end)\b/.test(text));
+    if (/\bdistance\b/.test(label)) return findLine((text) => /^(const|let)\s+distance\b/.test(text));
+
+    if (/\b(input|read|graph|array|text|root|start)\b/.test(label) && !/\b(top|inspect|check|compare|push|pop|resolve|relax)\b/.test(label)) {
+      return firstAlgorithmLine();
+    }
+
+    if (/\b(loop|transition|swap|relax|merge|partition|visit|rotate|update)\b/.test(label)) {
+      return findLine((text) => /\b(while|for|if)\b/.test(text) && /[<>!=]=?|\.length|\.at|includes|has\(/.test(text))
+        || findLine((text) => /=/.test(text) && !/^(const|let)\b/.test(text));
+    }
+
+    if (/\b(state|table|heap|set|map|visited|bucket)\b/.test(label)) {
+      return findLine((text) => /^(const|let)\s+\w+\s*=/.test(text));
+    }
+
+    return null;
+  }
+
+  function getCodeInsight(current, activeLine = getActiveLine(current)) {
+    const source = state.activeCodeTab === "original" ? getOriginalCodeSource() : getCodeSource();
+    const sourceLine = source.split(/\r?\n/)[activeLine - 1] || "";
+    const lineInsight = describeCodeLine(sourceLine, current);
+    if (lineInsight) return lineInsight;
     if (state.activeCodeTab === "original") {
       return current.originalCodeInsight || algorithmPage.originalCodeInsight || current.codeInsight || current.note || algorithmPage.codeInsight;
     }
     return current.codeInsight || current.note || algorithmPage.codeInsight;
+  }
+
+  function describeCodeLine(line, current) {
+    const text = line.trim();
+    if (!text || text === "}") return "";
+
+    const functionMatch = text.match(/^export function\s+(\w+)\(([^)]*)\)/);
+    if (functionMatch) {
+      const params = functionMatch[2].trim();
+      return params
+        ? `This line defines the runnable function and its input (${params}), so changing those values changes the animation and output.`
+        : "This line defines the runnable function used by the visualizer.";
+    }
+
+    const declarationMatch = text.match(/^(const|let)\s+(\w+)\s*=\s*(.+);?$/);
+    if (declarationMatch) {
+      const [, declarationKind, name, expression] = declarationMatch;
+      if (name === "stack" && /\[\]/.test(expression)) return "This line creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear.";
+      if (name === "result" && /Array\(/.test(expression) && /\.fill\(/.test(expression)) return "This line creates the answer array and fills it with the fallback value for items that never find a next greater element.";
+      if (/\[\]/.test(expression)) return `This line creates ${name} as empty working state; later steps push, pop, or scan values through it.`;
+      if (/Array\(/.test(expression) && /\.fill\(/.test(expression)) return `This line prepares ${name} with default values, so unresolved answers already have the correct fallback.`;
+      if (/Object\.fromEntries/.test(expression)) return `This line builds ${name} as a lookup table, giving every key a clear starting value.`;
+      if (/Math\./.test(expression)) return `This line computes ${name}; the next branch uses that value to decide what part of the state changes.`;
+      if (declarationKind === "let") return `This line initializes mutable state (${name}); later branches update it as the algorithm moves.`;
+      return `This line stores ${name}, a local value the following code depends on.`;
+    }
+
+    const whileMatch = text.match(/^while\s*\((.+)\)/);
+    if (whileMatch) {
+      if (/stack\.length/.test(whileMatch[1]) && /\.at\(-1\)/.test(whileMatch[1])) {
+        return "This line peeks at the stack top and keeps popping while the current value is greater, resolving every smaller value that was waiting.";
+      }
+      return `This condition (${whileMatch[1]}) decides whether more pending state must be resolved before the scan can continue.`;
+    }
+
+    if (/^for\s*\(/.test(text)) return "This loop scans the input from left to right so each value gets one chance to resolve earlier pending values.";
+
+    const ifMatch = text.match(/^if\s*\((.+)\)/);
+    if (ifMatch) return `This branch checks ${ifMatch[1]}; only the matching branch is allowed to update the algorithm state.`;
+
+    if (/result\[stack\.pop\(\)\]\s*=/.test(text)) return "This line pops an index from the stack and writes the current value as that index's next greater element.";
+    if (/\.pop\(\)/.test(text)) return "This line removes the most recent pending item and resolves it with the current value.";
+    if (/stack\.push\(index\)/.test(text)) return "This line pushes the current index because its next greater value has not been found yet.";
+    if (/\.push\(/.test(text)) return "This line stores the current item for a future step, which is why it appears in the visual state.";
+
+    const returnMatch = text.match(/^return\s+(.+);?$/);
+    if (returnMatch) return `This line returns ${returnMatch[1].replace(/;$/, "")}, which is the final value shown by the code output.`;
+
+    const assignmentMatch = text.match(/^(.+?)\s*=\s*(.+);?$/);
+    if (assignmentMatch) return `This line updates ${assignmentMatch[1].trim()} from the current code state.`;
+
+    if (/^\/\//.test(text)) return "This comment labels the code section; the executable behavior starts on the next highlighted code line.";
+
+    return `This highlighted line is the code step currently connected to the visualizer state: ${text}`;
   }
 
   function getTransitionSummary(current) {
@@ -987,8 +1130,9 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       await runCode();
       return;
     }
-    if (action === "prev") state.step = Math.max(0, state.step - 1);
-    if (action === "next") state.step = Math.min(algorithmPage.dryRun.length - 1, state.step + 1);
+    const stepCount = getStepCount();
+    if (action === "prev") state.step = (state.step - 1 + stepCount) % stepCount;
+    if (action === "next") state.step = (state.step + 1) % stepCount;
     if (action === "reset") state.step = 0;
     requestRender();
   }

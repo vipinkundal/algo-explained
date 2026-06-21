@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Algorithm State",
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
-      "activeLine": 1,
-      "codeInsight": "The code receives the next value or command."
+      "activeLine": 5,
+      "codeInsight": "Defines majorityElement and names the input array; edits to those inputs change the visual state and output."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
       "activeLine": 3,
-      "codeInsight": "The active state must still satisfy page-specific invariant."
+      "codeInsight": "Executes this Majority Element line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "State change",
       "title": "Update the state described by this algorithm",
       "note": "Only the necessary algorithm state fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Only the necessary algorithm state fields are changed."
+      "activeLine": 9,
+      "codeInsight": "Checks votes === 0; only the branch that preserves Majority Element's invariant is allowed to change state."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
-      "activeLine": 9,
-      "codeInsight": "The return value or printed state confirms the operation."
+      "activeLine": 12,
+      "codeInsight": "Returns candidate, the value produced after Majority Element's state changes are complete."
     }
   ],
   "complexity": {
@@ -147,7 +147,7 @@ export const algorithmPage = {
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Majority Element invariant",
-        "rule": "The code receives the next value or command.",
+        "rule": "Defines majorityElement and names the input array; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -165,7 +165,7 @@ export const algorithmPage = {
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "Majority Element invariant",
-        "rule": "The active state must still satisfy page-specific invariant.",
+        "rule": "Executes this Majority Element line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           1,
           2
@@ -188,7 +188,7 @@ export const algorithmPage = {
         "title": "Update the state described by this algorithm",
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "Majority Element invariant",
-        "rule": "Only the necessary algorithm state fields are changed.",
+        "rule": "Checks votes === 0; only the branch that preserves Majority Element's invariant is allowed to change state.",
         "activeIndices": [
           2
         ],
@@ -209,7 +209,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Majority Element invariant",
-        "rule": "The return value or printed state confirms the operation.",
+        "rule": "Returns candidate, the value produced after Majority Element's state changes are complete.",
         "activeIndices": [
           3,
           4

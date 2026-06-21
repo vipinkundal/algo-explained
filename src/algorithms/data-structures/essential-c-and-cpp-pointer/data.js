@@ -73,28 +73,28 @@ export const algorithmPage = {
       "title": "Create program value",
       "note": "The code introduces the variable, pointer, structure, or object.",
       "activeLine": 1,
-      "codeInsight": "The code introduces the variable, pointer, structure, or object."
+      "codeInsight": "Executes this C/C++ Pointer line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Storage",
       "title": "Track address or copy",
       "note": "Passing by value, pointer, or reference controls what can change.",
       "activeLine": 4,
-      "codeInsight": "Passing by value, pointer, or reference controls what can change."
+      "codeInsight": "Executes this C/C++ Pointer line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "C/C++ rule",
       "title": "Apply C/C++ rule",
       "note": "Assignment, dereference, member access, or method call changes the state.",
       "activeLine": 7,
-      "codeInsight": "Assignment, dereference, member access, or method call changes the state."
+      "codeInsight": "Executes this C/C++ Pointer line as part of the highlighted code path, linking the visual step to the implementation."
     },
     {
       "label": "Result",
       "title": "Read final value",
       "note": "The visible output follows from the memory model.",
-      "activeLine": 10,
-      "codeInsight": "The visible output follows from the memory model."
+      "activeLine": 3,
+      "codeInsight": "Returns {, the value produced after C/C++ Pointer's state changes are complete."
     }
   ],
   "complexity": {
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Create program value",
         "note": "The code introduces the variable, pointer, structure, or object.",
         "ruleLabel": "C/C++ Pointer invariant",
-        "rule": "The code introduces the variable, pointer, structure, or object.",
+        "rule": "Executes this C/C++ Pointer line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           0
         ],
@@ -166,7 +166,7 @@ export const algorithmPage = {
         "title": "Track address or copy",
         "note": "Passing by value, pointer, or reference controls what can change.",
         "ruleLabel": "C/C++ Pointer invariant",
-        "rule": "Passing by value, pointer, or reference controls what can change.",
+        "rule": "Executes this C/C++ Pointer line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           1,
           2
@@ -188,7 +188,7 @@ export const algorithmPage = {
         "title": "Apply C/C++ rule",
         "note": "Assignment, dereference, member access, or method call changes the state.",
         "ruleLabel": "C/C++ Pointer invariant",
-        "rule": "Assignment, dereference, member access, or method call changes the state.",
+        "rule": "Executes this C/C++ Pointer line as part of the highlighted code path, linking the visual step to the implementation.",
         "activeIndices": [
           2
         ],
@@ -208,7 +208,7 @@ export const algorithmPage = {
         "title": "Read final value",
         "note": "The visible output follows from the memory model.",
         "ruleLabel": "C/C++ Pointer invariant",
-        "rule": "The visible output follows from the memory model.",
+        "rule": "Returns {, the value produced after C/C++ Pointer's state changes are complete.",
         "activeIndices": [
           3,
           4

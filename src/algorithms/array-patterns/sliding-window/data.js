@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Window rule",
       "title": "Read array and window rule",
       "note": "The code knows the range size or condition.",
-      "activeLine": 1,
-      "codeInsight": "The code knows the range size or condition."
+      "activeLine": 5,
+      "codeInsight": "Defines slidingWindow and names the input array, size; edits to those inputs change the visual state and output."
     },
     {
       "label": "Right edge",
       "title": "Consume next value",
       "note": "The window grows by one new item.",
       "activeLine": 4,
-      "codeInsight": "The window grows by one new item."
+      "codeInsight": "This blank line separates Sliding Window's setup from the next code block."
     },
     {
       "label": "Left edge",
       "title": "Drop expired state",
       "note": "Values outside the range are removed.",
-      "activeLine": 6,
-      "codeInsight": "Values outside the range are removed."
+      "activeLine": 7,
+      "codeInsight": "Creates sums as empty working state; later lines add and remove values from it."
     },
     {
       "label": "Window answer",
       "title": "Record current result",
       "note": "The current valid window updates the output.",
-      "activeLine": 8,
-      "codeInsight": "The current valid window updates the output."
+      "activeLine": 14,
+      "codeInsight": "Returns sums, the value produced after Sliding Window's state changes are complete."
     }
   ],
   "complexity": {
@@ -144,7 +144,7 @@ export const algorithmPage = {
         "title": "Read array and window rule",
         "note": "The code knows the range size or condition.",
         "ruleLabel": "Sliding Window invariant",
-        "rule": "The code knows the range size or condition.",
+        "rule": "Defines slidingWindow and names the input array, size; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Consume next value",
         "note": "The window grows by one new item.",
         "ruleLabel": "Sliding Window invariant",
-        "rule": "The window grows by one new item.",
+        "rule": "This blank line separates Sliding Window's setup from the next code block.",
         "activeIndices": [
           1,
           2
@@ -183,7 +183,7 @@ export const algorithmPage = {
         "title": "Drop expired state",
         "note": "Values outside the range are removed.",
         "ruleLabel": "Sliding Window invariant",
-        "rule": "Values outside the range are removed.",
+        "rule": "Creates sums as empty working state; later lines add and remove values from it.",
         "activeIndices": [
           2
         ],
@@ -201,7 +201,7 @@ export const algorithmPage = {
         "title": "Record current result",
         "note": "The current valid window updates the output.",
         "ruleLabel": "Sliding Window invariant",
-        "rule": "The current valid window updates the output.",
+        "rule": "Returns sums, the value produced after Sliding Window's state changes are complete.",
         "activeIndices": [
           3,
           4
