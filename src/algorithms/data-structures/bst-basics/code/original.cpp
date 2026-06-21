@@ -4,169 +4,169 @@
 #include<stack>
 using namespace std;
 
-struct Node {
-    Node* bstBasicsLchild;
-    int nodeValue;
-    Node* bstBasicsRchild;
-}*treeRoot=NULL;
+struct BstBasicsNode {
+    BstBasicsNode* leftChild;
+    int bstBasicsNodeValue;
+    BstBasicsNode* rightChild;
+}*bstBasicsTreeRoot=NULL;
 
-struct Node* Rinsert(struct Node *currentNode,int searchKey)
+struct BstBasicsNode* Rinsert(struct BstBasicsNode *bstBasicsCurrentNode,int bstBasicsSearchKey)
 {
-    struct Node *swapValue;
-    if(currentNode==NULL)
+    struct BstBasicsNode *bstBasicsSwapValue;
+    if(bstBasicsCurrentNode==NULL)
     {
-        swapValue=new Node ;
-        swapValue->nodeValue=searchKey;
-        swapValue->bstBasicsLchild=swapValue->bstBasicsRchild=NULL;
-        return swapValue;
+        bstBasicsSwapValue=new BstBasicsNode ;
+        bstBasicsSwapValue->bstBasicsNodeValue=bstBasicsSearchKey;
+        bstBasicsSwapValue->leftChild=bstBasicsSwapValue->rightChild=NULL;
+        return bstBasicsSwapValue;
     }
-    if(currentNode->nodeValue>searchKey)
-        currentNode->bstBasicsLchild=Rinsert(currentNode->bstBasicsLchild,searchKey);
-    else if(currentNode->nodeValue<searchKey)
-        currentNode->bstBasicsRchild=Rinsert(currentNode->bstBasicsRchild,searchKey);
-    return currentNode;
+    if(bstBasicsCurrentNode->bstBasicsNodeValue>bstBasicsSearchKey)
+        bstBasicsCurrentNode->leftChild=Rinsert(bstBasicsCurrentNode->leftChild,bstBasicsSearchKey);
+    else if(bstBasicsCurrentNode->bstBasicsNodeValue<bstBasicsSearchKey)
+        bstBasicsCurrentNode->rightChild=Rinsert(bstBasicsCurrentNode->rightChild,bstBasicsSearchKey);
+    return bstBasicsCurrentNode;
 }
-void insert(int searchKey)
+void insert(int bstBasicsSearchKey)
 {
-    Node *currentNode=treeRoot,*rightIndex;
-    if(currentNode==NULL)
+    BstBasicsNode *bstBasicsCurrentNode=bstBasicsTreeRoot,*bstBasicsRightIndex;
+    if(bstBasicsCurrentNode==NULL)
     {
-        currentNode=new Node;
-        currentNode->bstBasicsLchild=currentNode->bstBasicsRchild=NULL;
-        currentNode->nodeValue=searchKey;
-        treeRoot=currentNode;
+        bstBasicsCurrentNode=new BstBasicsNode;
+        bstBasicsCurrentNode->leftChild=bstBasicsCurrentNode->rightChild=NULL;
+        bstBasicsCurrentNode->bstBasicsNodeValue=bstBasicsSearchKey;
+        bstBasicsTreeRoot=bstBasicsCurrentNode;
         return;
     }
     else{
-        while(currentNode!=NULL)
+        while(bstBasicsCurrentNode!=NULL)
         {
-            rightIndex=currentNode;
-            if(currentNode->nodeValue<searchKey)
-                currentNode=currentNode->bstBasicsRchild;
-            else if(currentNode->nodeValue>searchKey)
-                currentNode=currentNode->bstBasicsLchild;
+            bstBasicsRightIndex=bstBasicsCurrentNode;
+            if(bstBasicsCurrentNode->bstBasicsNodeValue<bstBasicsSearchKey)
+                bstBasicsCurrentNode=bstBasicsCurrentNode->rightChild;
+            else if(bstBasicsCurrentNode->bstBasicsNodeValue>bstBasicsSearchKey)
+                bstBasicsCurrentNode=bstBasicsCurrentNode->leftChild;
             else 
                 return;
         }
-        currentNode=new Node;
-        currentNode->bstBasicsLchild=currentNode->bstBasicsRchild=NULL;
-        currentNode->nodeValue=searchKey;
-        if(rightIndex->nodeValue<searchKey)
-            rightIndex->bstBasicsRchild=currentNode;
+        bstBasicsCurrentNode=new BstBasicsNode;
+        bstBasicsCurrentNode->leftChild=bstBasicsCurrentNode->rightChild=NULL;
+        bstBasicsCurrentNode->bstBasicsNodeValue=bstBasicsSearchKey;
+        if(bstBasicsRightIndex->bstBasicsNodeValue<bstBasicsSearchKey)
+            bstBasicsRightIndex->rightChild=bstBasicsCurrentNode;
         else
-            rightIndex->bstBasicsLchild=currentNode;
+            bstBasicsRightIndex->leftChild=bstBasicsCurrentNode;
     }
 }
 
-void inorder(Node *currentNode)
+void inorder(BstBasicsNode *bstBasicsCurrentNode)
 {
-    if(currentNode)
+    if(bstBasicsCurrentNode)
     {
-        inorder(currentNode->bstBasicsLchild);
-        cout<<currentNode->nodeValue<<" "<<flush;
-        inorder(currentNode->bstBasicsRchild);
+        inorder(bstBasicsCurrentNode->leftChild);
+        cout<<bstBasicsCurrentNode->bstBasicsNodeValue<<" "<<flush;
+        inorder(bstBasicsCurrentNode->rightChild);
     }
 }
 
-int Height(struct Node *swapValue)
+int Height(struct BstBasicsNode *bstBasicsSwapValue)
 {
-    if(swapValue==NULL)
+    if(bstBasicsSwapValue==NULL)
         return 0;
-    int bstBasicsLh=Height(swapValue->bstBasicsLchild);
-    int bstBasicsRh=Height(swapValue->bstBasicsRchild);
-    return bstBasicsLh<bstBasicsRh?bstBasicsRh+1:bstBasicsLh+1;
+    int leftHeight=Height(bstBasicsSwapValue->leftChild);
+    int rightHeight=Height(bstBasicsSwapValue->rightChild);
+    return leftHeight<rightHeight?rightHeight+1:leftHeight+1;
 }
-struct Node *Inprec(Node *currentNode)
+struct BstBasicsNode *Inprec(BstBasicsNode *bstBasicsCurrentNode)
 {
-    while(currentNode && currentNode->bstBasicsRchild!=NULL)
-        currentNode=currentNode->bstBasicsRchild;
-    return currentNode;
-}
-
-struct Node *Insucc(Node *currentNode)
-{
-    while(currentNode && currentNode->bstBasicsLchild!=NULL)
-        currentNode=currentNode->bstBasicsLchild;
-    return currentNode;
+    while(bstBasicsCurrentNode && bstBasicsCurrentNode->rightChild!=NULL)
+        bstBasicsCurrentNode=bstBasicsCurrentNode->rightChild;
+    return bstBasicsCurrentNode;
 }
 
-struct Node *Delete(Node *currentNode,int searchKey)
+struct BstBasicsNode *Insucc(BstBasicsNode *bstBasicsCurrentNode)
 {
-    struct Node *swapValue=NULL;
-    if (currentNode==NULL)
+    while(bstBasicsCurrentNode && bstBasicsCurrentNode->leftChild!=NULL)
+        bstBasicsCurrentNode=bstBasicsCurrentNode->leftChild;
+    return bstBasicsCurrentNode;
+}
+
+struct BstBasicsNode *Delete(BstBasicsNode *bstBasicsCurrentNode,int bstBasicsSearchKey)
+{
+    struct BstBasicsNode *bstBasicsSwapValue=NULL;
+    if (bstBasicsCurrentNode==NULL)
         return nullptr;
-    if(currentNode->bstBasicsLchild==NULL && currentNode->bstBasicsRchild==NULL)
+    if(bstBasicsCurrentNode->leftChild==NULL && bstBasicsCurrentNode->rightChild==NULL)
     {
-        if (currentNode == treeRoot){
-            treeRoot = nullptr;
+        if (bstBasicsCurrentNode == bstBasicsTreeRoot){
+            bstBasicsTreeRoot = nullptr;
         }
-        delete currentNode;
+        delete bstBasicsCurrentNode;
         return nullptr;
     }
-    if(currentNode->nodeValue>searchKey)
-        currentNode->bstBasicsLchild=Delete(currentNode->bstBasicsLchild,searchKey);
-    else if(currentNode->nodeValue<searchKey)
-        currentNode->bstBasicsRchild=Delete(currentNode->bstBasicsRchild,searchKey);
+    if(bstBasicsCurrentNode->bstBasicsNodeValue>bstBasicsSearchKey)
+        bstBasicsCurrentNode->leftChild=Delete(bstBasicsCurrentNode->leftChild,bstBasicsSearchKey);
+    else if(bstBasicsCurrentNode->bstBasicsNodeValue<bstBasicsSearchKey)
+        bstBasicsCurrentNode->rightChild=Delete(bstBasicsCurrentNode->rightChild,bstBasicsSearchKey);
     else
     {
-        if(Height(currentNode->bstBasicsLchild)>Height(currentNode->bstBasicsRchild))
+        if(Height(bstBasicsCurrentNode->leftChild)>Height(bstBasicsCurrentNode->rightChild))
         {
-            swapValue=Inprec(currentNode->bstBasicsLchild);
-            currentNode->nodeValue=swapValue->nodeValue;
-            currentNode->bstBasicsLchild=Delete(currentNode->bstBasicsLchild,swapValue->nodeValue);
+            bstBasicsSwapValue=Inprec(bstBasicsCurrentNode->leftChild);
+            bstBasicsCurrentNode->bstBasicsNodeValue=bstBasicsSwapValue->bstBasicsNodeValue;
+            bstBasicsCurrentNode->leftChild=Delete(bstBasicsCurrentNode->leftChild,bstBasicsSwapValue->bstBasicsNodeValue);
         }
         else
         {
-            swapValue=Insucc(currentNode->bstBasicsRchild);
-            currentNode->nodeValue=swapValue->nodeValue;
-            currentNode->bstBasicsRchild=Delete(currentNode->bstBasicsRchild,swapValue->nodeValue);
+            bstBasicsSwapValue=Insucc(bstBasicsCurrentNode->rightChild);
+            bstBasicsCurrentNode->bstBasicsNodeValue=bstBasicsSwapValue->bstBasicsNodeValue;
+            bstBasicsCurrentNode->rightChild=Delete(bstBasicsCurrentNode->rightChild,bstBasicsSwapValue->bstBasicsNodeValue);
         }
     }
-    return currentNode;
+    return bstBasicsCurrentNode;
 }
 
 void CreatePre()
 {
-    int bstBasicsPre[]={30,20,10,15,25,40,50,45};
-    int itemCount=8;
-    stack<Node *> bstBasicsSt;
-    Node *currentNode,*swapValue;
-    treeRoot=new Node;
-    int scanIndex=0;
-    treeRoot->nodeValue=bstBasicsPre[scanIndex++];
-    treeRoot->bstBasicsLchild=treeRoot->bstBasicsRchild=NULL;
-    currentNode=treeRoot;
-    while (scanIndex<itemCount)
+    int bstBasicsState[]={30,20,10,15,25,40,50,45};
+    int bstBasicsItemCount=8;
+    stack<BstBasicsNode *> bstBasicsState2;
+    BstBasicsNode *bstBasicsCurrentNode,*bstBasicsSwapValue;
+    bstBasicsTreeRoot=new BstBasicsNode;
+    int bstBasicsScanIndex=0;
+    bstBasicsTreeRoot->bstBasicsNodeValue=bstBasicsState[bstBasicsScanIndex++];
+    bstBasicsTreeRoot->leftChild=bstBasicsTreeRoot->rightChild=NULL;
+    bstBasicsCurrentNode=bstBasicsTreeRoot;
+    while (bstBasicsScanIndex<bstBasicsItemCount)
     {
-       if(currentNode->nodeValue>bstBasicsPre[scanIndex])
+       if(bstBasicsCurrentNode->bstBasicsNodeValue>bstBasicsState[bstBasicsScanIndex])
        {
-        swapValue=new Node;
-        swapValue->nodeValue=bstBasicsPre[scanIndex++];
-        swapValue->bstBasicsLchild=swapValue->bstBasicsRchild=NULL;
-        currentNode->bstBasicsLchild=swapValue;
-        bstBasicsSt.emplace(currentNode);
-        currentNode=swapValue;
+        bstBasicsSwapValue=new BstBasicsNode;
+        bstBasicsSwapValue->bstBasicsNodeValue=bstBasicsState[bstBasicsScanIndex++];
+        bstBasicsSwapValue->leftChild=bstBasicsSwapValue->rightChild=NULL;
+        bstBasicsCurrentNode->leftChild=bstBasicsSwapValue;
+        bstBasicsState2.emplace(bstBasicsCurrentNode);
+        bstBasicsCurrentNode=bstBasicsSwapValue;
        }
-       else if(currentNode->nodeValue<bstBasicsPre[scanIndex] && bstBasicsSt.empty()?1:(bstBasicsSt.top()->nodeValue>bstBasicsPre[scanIndex]?1:0))
+       else if(bstBasicsCurrentNode->bstBasicsNodeValue<bstBasicsState[bstBasicsScanIndex] && bstBasicsState2.empty()?1:(bstBasicsState2.top()->bstBasicsNodeValue>bstBasicsState[bstBasicsScanIndex]?1:0))
        {
-        swapValue=new Node;
-        swapValue->nodeValue=bstBasicsPre[scanIndex++];
-        swapValue->bstBasicsLchild=swapValue->bstBasicsRchild=NULL;
-        currentNode->bstBasicsRchild=swapValue;
-        currentNode=swapValue;
+        bstBasicsSwapValue=new BstBasicsNode;
+        bstBasicsSwapValue->bstBasicsNodeValue=bstBasicsState[bstBasicsScanIndex++];
+        bstBasicsSwapValue->leftChild=bstBasicsSwapValue->rightChild=NULL;
+        bstBasicsCurrentNode->rightChild=bstBasicsSwapValue;
+        bstBasicsCurrentNode=bstBasicsSwapValue;
        }
        else
         {
-            currentNode=bstBasicsSt.top();
-            bstBasicsSt.pop();
+            bstBasicsCurrentNode=bstBasicsState2.top();
+            bstBasicsState2.pop();
         }
     }
     
 }
 int main()
 {
-    int firstItems[]={30,20,10,15,25,40,50,45};
+    int bstBasicsFirstItems[]={30,20,10,15,25,40,50,45};
     CreatePre();
-    inorder(treeRoot);
+    inorder(bstBasicsTreeRoot);
     return 0;
 }

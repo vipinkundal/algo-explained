@@ -58,9 +58,9 @@
     "activeLine": "Baris aktif {line}",
     "codeView": "Tampilan kode",
     "runnableJs": "JS yang dapat dijalankan",
-    "originalCpp": "C/C++ asli",
-    "originalCppSource": "Sumber C/C++ asli",
-    "loadingOriginalCpp": "Memuat sumber C/C++ asli"
+    "originalCpp": "C/C++ Reference",
+    "originalCppSource": "C/C++ reference source",
+    "loadingOriginalCpp": "Loading C/C++ reference source"
   },
   "algorithmPages": {
     "backtracking-basics": {

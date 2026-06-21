@@ -2,34 +2,34 @@
 #include<iostream>
 #include<stdio.h>
 using namespace std;
-class Rectangle//class rectangle
+class EssentialCRectangleModel//class rectangle
 {
     private:
-    int textLength;
-    int essentialCBreath;
+    int essentialCTextLength;
+    int essentialCState;
     public:
-    Rectangle (int leftIndex,int secondaryValue)//constructor of rectangle class ,it gets initalize as soon as class rectangle is declared in main 
+    EssentialCRectangleModel (int essentialCLeftIndex,int essentialCSecondaryValue)//constructor of rectangle class ,it gets initalize as soon as class rectangle is declared in main 
     {
-        textLength=leftIndex;
-        essentialCBreath=secondaryValue;
+        essentialCTextLength=essentialCLeftIndex;
+        essentialCState=essentialCSecondaryValue;
     }
     int area()
     {
-        return textLength*essentialCBreath;
+        return essentialCTextLength*essentialCState;
     }
     int peri()
     {
-        return 2*(textLength+essentialCBreath);
+        return 2*(essentialCTextLength+essentialCState);
     }      
 };
 int main()
 {
-    int leftIndex,secondaryValue;
+    int essentialCLeftIndex,essentialCSecondaryValue;
     cout<<"Enter lenth and breath of rectangle ";
-    cin>>leftIndex>>secondaryValue;
-    Rectangle rightIndex(leftIndex,secondaryValue);
-    int primaryValue=rightIndex.area();
-    int currentNode=rightIndex.peri();
-    printf("%d is area\n%d is perimeter",primaryValue,currentNode);
+    cin>>essentialCLeftIndex>>essentialCSecondaryValue;
+    EssentialCRectangleModel essentialCRightIndex(essentialCLeftIndex,essentialCSecondaryValue);
+    int essentialCPrimaryValue=essentialCRightIndex.area();
+    int essentialCCurrentNode=essentialCRightIndex.peri();
+    printf("%d is area\n%d is perimeter",essentialCPrimaryValue,essentialCCurrentNode);
     return 0;
 }

@@ -2,87 +2,87 @@
 #include<stdlib.h>
 #include <cstring>
 using namespace std;
-struct Stack{
-    int itemCapacity;
-    int stackTop;
-    char *stackStorage;
+struct StackParenthesisStackModel{
+    int stackParenthesisItemCapacity;
+    int stackParenthesisStackTop;
+    char *stackParenthesisStackStorage;
 };
 
 
-void create(Stack *stackParenthesisSt,char *workingText)
+void create(StackParenthesisStackModel *stackParenthesisState,char *stackParenthesisWorkingText)
 {
-    int inputValue=strlen(workingText);
-    stackParenthesisSt->itemCapacity=inputValue;
-    stackParenthesisSt->stackTop=-1;
-    stackParenthesisSt->stackStorage=new char[stackParenthesisSt->itemCapacity];
+    int stackParenthesisInputValue=strlen(stackParenthesisWorkingText);
+    stackParenthesisState->stackParenthesisItemCapacity=stackParenthesisInputValue;
+    stackParenthesisState->stackParenthesisStackTop=-1;
+    stackParenthesisState->stackParenthesisStackStorage=new char[stackParenthesisState->stackParenthesisItemCapacity];
 }
 
-void push(Stack *stackParenthesisSt,char inputValue)
+void push(StackParenthesisStackModel *stackParenthesisState,char stackParenthesisInputValue)
 {
-    if(stackParenthesisSt->itemCapacity-stackParenthesisSt->stackTop==1)
+    if(stackParenthesisState->stackParenthesisItemCapacity-stackParenthesisState->stackParenthesisStackTop==1)
     {
         cout<<"stack is overflow\n";
     }
     else{
-        stackParenthesisSt->stackTop++;
-        stackParenthesisSt->stackStorage[stackParenthesisSt->stackTop]=inputValue;
+        stackParenthesisState->stackParenthesisStackTop++;
+        stackParenthesisState->stackParenthesisStackStorage[stackParenthesisState->stackParenthesisStackTop]=stackParenthesisInputValue;
     }
 }
 
-char pop(Stack *stackParenthesisSt)
+char pop(StackParenthesisStackModel *stackParenthesisState)
 {
-    char inputValue=-1;
-    if(stackParenthesisSt->stackTop==-1)
+    char stackParenthesisInputValue=-1;
+    if(stackParenthesisState->stackParenthesisStackTop==-1)
     {
         cout<<"Stack is underflow\n";
     }
     else{
-        inputValue=stackParenthesisSt->stackStorage[stackParenthesisSt->stackTop];
-        stackParenthesisSt->stackTop--;
+        stackParenthesisInputValue=stackParenthesisState->stackParenthesisStackStorage[stackParenthesisState->stackParenthesisStackTop];
+        stackParenthesisState->stackParenthesisStackTop--;
     }
-    return inputValue;
+    return stackParenthesisInputValue;
 }
 
 
-int isEmpty(Stack stackParenthesisSt)
+int isEmpty(StackParenthesisStackModel stackParenthesisState)
 {
-    if(stackParenthesisSt.stackTop==-1)
+    if(stackParenthesisState.stackParenthesisStackTop==-1)
         return 1;
     else
         return 0;
 }
 
-int isFull(Stack stackParenthesisSt)
+int isFull(StackParenthesisStackModel stackParenthesisState)
 {
-    if(stackParenthesisSt.itemCapacity-stackParenthesisSt.stackTop==1)
+    if(stackParenthesisState.stackParenthesisItemCapacity-stackParenthesisState.stackParenthesisStackTop==1)
         return 1;
     else
         return 0;
 }
 
-int isBalanced(char *workingText)
+int isBalanced(char *stackParenthesisWorkingText)
 {
-    int scanIndex;
-    struct Stack stackParenthesisSt;
-    create(&stackParenthesisSt,workingText);
+    int stackParenthesisScanIndex;
+    struct StackParenthesisStackModel stackParenthesisState;
+    create(&stackParenthesisState,stackParenthesisWorkingText);
 
-    for(scanIndex=0;workingText[scanIndex]!='\0';scanIndex++)
+    for(stackParenthesisScanIndex=0;stackParenthesisWorkingText[stackParenthesisScanIndex]!='\0';stackParenthesisScanIndex++)
     {
-        if(workingText[scanIndex]=='(' || workingText[scanIndex]=='{' || workingText[scanIndex]=='[')
-            push(&stackParenthesisSt,workingText[scanIndex]);
-        else if(workingText[scanIndex]==')' || workingText[scanIndex]==']' || workingText[scanIndex]=='}')
+        if(stackParenthesisWorkingText[stackParenthesisScanIndex]=='(' || stackParenthesisWorkingText[stackParenthesisScanIndex]=='{' || stackParenthesisWorkingText[stackParenthesisScanIndex]=='[')
+            push(&stackParenthesisState,stackParenthesisWorkingText[stackParenthesisScanIndex]);
+        else if(stackParenthesisWorkingText[stackParenthesisScanIndex]==')' || stackParenthesisWorkingText[stackParenthesisScanIndex]==']' || stackParenthesisWorkingText[stackParenthesisScanIndex]=='}')
         {
-            if(isEmpty(stackParenthesisSt))
+            if(isEmpty(stackParenthesisState))
                 return 0;
-            char inputValue=pop(&stackParenthesisSt);
-            if((workingText[scanIndex]-inputValue) <=2)//working with ascii code
+            char stackParenthesisInputValue=pop(&stackParenthesisState);
+            if((stackParenthesisWorkingText[stackParenthesisScanIndex]-stackParenthesisInputValue) <=2)//working with ascii code
                 continue;
             else
                 return 0;
 
         }
     }
-    if(isEmpty(stackParenthesisSt))
+    if(isEmpty(stackParenthesisState))
         return 1;
     else
         return 0;
@@ -90,8 +90,8 @@ int isBalanced(char *workingText)
 }
 int main()
 {
-    char workingText[]="{([hedfsdfllo])}";
-    cout<<isBalanced(workingText);
+    char stackParenthesisWorkingText[]="{([hedfsdfllo])}";
+    cout<<isBalanced(stackParenthesisWorkingText);
 
     return 0;
 }

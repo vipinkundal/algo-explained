@@ -2,147 +2,147 @@
 #include<stdlib.h>
 #include <cstring>
 using namespace std;
-struct Stack{
-    int itemCapacity;
-    int stackTop;
-    char *stackStorage;
+struct StackInfixStackModel{
+    int stackInfixItemCapacity;
+    int stackInfixStackTop;
+    char *stackInfixStackStorage;
 };
 
 
-void create(Stack *stackInfixSt,char *workingText)
+void create(StackInfixStackModel *stackInfixState2,char *stackInfixWorkingText)
 {
-    int inputValue=strlen(workingText);
-    stackInfixSt->itemCapacity=inputValue;
-    stackInfixSt->stackTop=-1;
-    stackInfixSt->stackStorage=new char[stackInfixSt->itemCapacity];
+    int stackInfixInputValue=strlen(stackInfixWorkingText);
+    stackInfixState2->stackInfixItemCapacity=stackInfixInputValue;
+    stackInfixState2->stackInfixStackTop=-1;
+    stackInfixState2->stackInfixStackStorage=new char[stackInfixState2->stackInfixItemCapacity];
 }
 
-void push(Stack *stackInfixSt,char inputValue)
+void push(StackInfixStackModel *stackInfixState2,char stackInfixInputValue)
 {
-    if(stackInfixSt->itemCapacity-stackInfixSt->stackTop==1)
+    if(stackInfixState2->stackInfixItemCapacity-stackInfixState2->stackInfixStackTop==1)
     {
         cout<<"stack is overflow\n";
     }
     else{
-        stackInfixSt->stackTop++;
-        stackInfixSt->stackStorage[stackInfixSt->stackTop]=inputValue;
+        stackInfixState2->stackInfixStackTop++;
+        stackInfixState2->stackInfixStackStorage[stackInfixState2->stackInfixStackTop]=stackInfixInputValue;
     }
 }
 
-char TopValue(Stack stackInfixSt)
+char TopValue(StackInfixStackModel stackInfixState2)
 {
-    if(stackInfixSt.stackTop==-1)
+    if(stackInfixState2.stackInfixStackTop==-1)
         return -1;
     else
-        return stackInfixSt.stackStorage[stackInfixSt.stackTop];
+        return stackInfixState2.stackInfixStackStorage[stackInfixState2.stackInfixStackTop];
 }
 
-char pop(Stack *stackInfixSt)
+char pop(StackInfixStackModel *stackInfixState2)
 {
-    char inputValue=-1;
-    if(stackInfixSt->stackTop==-1)
+    char stackInfixInputValue=-1;
+    if(stackInfixState2->stackInfixStackTop==-1)
     {
         cout<<"Stack is underflow\n";
     }
     else{
-        inputValue=stackInfixSt->stackStorage[stackInfixSt->stackTop];
-        stackInfixSt->stackTop--;
+        stackInfixInputValue=stackInfixState2->stackInfixStackStorage[stackInfixState2->stackInfixStackTop];
+        stackInfixState2->stackInfixStackTop--;
     }
-    return inputValue;
+    return stackInfixInputValue;
 }
 
 
-int isEmpty(Stack stackInfixSt)
+int isEmpty(StackInfixStackModel stackInfixState2)
 {
-    if(stackInfixSt.stackTop==-1)
+    if(stackInfixState2.stackInfixStackTop==-1)
         return 1;
     else
         return 0;
 }
 
-int isFull(Stack stackInfixSt)
+int isFull(StackInfixStackModel stackInfixState2)
 {
-    if(stackInfixSt.itemCapacity-stackInfixSt.stackTop==1)
+    if(stackInfixState2.stackInfixItemCapacity-stackInfixState2.stackInfixStackTop==1)
         return 1;
     else
         return 0;
 }
 
-int isOperand(char workingText)
+int isOperand(char stackInfixWorkingText)
 {
-    if(workingText=='*' || workingText=='/' || workingText=='+' || workingText=='-' || workingText=='^' || workingText=='(' || workingText==')')
+    if(stackInfixWorkingText=='*' || stackInfixWorkingText=='/' || stackInfixWorkingText=='+' || stackInfixWorkingText=='-' || stackInfixWorkingText=='^' || stackInfixWorkingText=='(' || stackInfixWorkingText==')')
         return 0;
     else 
         return 1;
 }
 
-int out_pre(char workingText)
+int out_pre(char stackInfixWorkingText)
 {
-    if(workingText=='+' || workingText=='-')
+    if(stackInfixWorkingText=='+' || stackInfixWorkingText=='-')
         return 1;
-    else if(workingText=='*' || workingText=='/')
+    else if(stackInfixWorkingText=='*' || stackInfixWorkingText=='/')
         return 3;
-    else if(workingText=='^')
+    else if(stackInfixWorkingText=='^')
         return 6;
-    else if(workingText=='(')
+    else if(stackInfixWorkingText=='(')
         return 7;
-    else if(workingText==')')
+    else if(stackInfixWorkingText==')')
         return 0;
     return 0;
 }
 
-int ins_pre(char workingText)
+int ins_pre(char stackInfixWorkingText)
 {
-    if(workingText=='+' || workingText=='-')
+    if(stackInfixWorkingText=='+' || stackInfixWorkingText=='-')
         return 2;
-    else if(workingText=='*' || workingText=='/')
+    else if(stackInfixWorkingText=='*' || stackInfixWorkingText=='/')
         return 4;
-    else if(workingText=='^')
+    else if(stackInfixWorkingText=='^')
         return 5;
-    else if(workingText=='(')
+    else if(stackInfixWorkingText=='(')
         return 0;
     return -1;
 }
 
-char* ToPost(char *workingText)
+char* ToPost(char *stackInfixWorkingText)
 {
-    char *stackInfixPostfix;
-    int scanIndex=0,writeIndex=0;
-    stackInfixPostfix=new char[strlen(workingText+2)];
-    Stack stackInfixSt;
-    create(&stackInfixSt,workingText);
-    push(&stackInfixSt,'#');//because of comaprison of top vale with string 1st value # is pushed
+    char *stackInfixState;
+    int stackInfixScanIndex=0,stackInfixWriteIndex=0;
+    stackInfixState=new char[strlen(stackInfixWorkingText+2)];
+    StackInfixStackModel stackInfixState2;
+    create(&stackInfixState2,stackInfixWorkingText);
+    push(&stackInfixState2,'#');//because of comaprison of top vale with string 1st value # is pushed
                     //so there wont be any error
-    while(workingText[scanIndex]!='\0')
+    while(stackInfixWorkingText[stackInfixScanIndex]!='\0')
     {
-        if(isOperand(workingText[scanIndex]))
-           stackInfixPostfix[writeIndex++]=workingText[scanIndex++];
+        if(isOperand(stackInfixWorkingText[stackInfixScanIndex]))
+           stackInfixState[stackInfixWriteIndex++]=stackInfixWorkingText[stackInfixScanIndex++];
         else
         {
-            if(out_pre(workingText[scanIndex])>ins_pre(TopValue(stackInfixSt)))//because of this comparison stack cant be expty so # is pushed
-                push(&stackInfixSt,workingText[scanIndex++]);
-            else if(out_pre(workingText[scanIndex])<ins_pre(TopValue(stackInfixSt)))
+            if(out_pre(stackInfixWorkingText[stackInfixScanIndex])>ins_pre(TopValue(stackInfixState2)))//because of this comparison stack cant be expty so # is pushed
+                push(&stackInfixState2,stackInfixWorkingText[stackInfixScanIndex++]);
+            else if(out_pre(stackInfixWorkingText[stackInfixScanIndex])<ins_pre(TopValue(stackInfixState2)))
             {
-                   stackInfixPostfix[writeIndex++]=pop(&stackInfixSt);
+                   stackInfixState[stackInfixWriteIndex++]=pop(&stackInfixState2);
             }
             else{
-                pop(&stackInfixSt);
-                scanIndex++;
+                pop(&stackInfixState2);
+                stackInfixScanIndex++;
             }
         }
     }
-    while(!isEmpty(stackInfixSt))
+    while(!isEmpty(stackInfixState2))
     {
-        stackInfixPostfix[writeIndex++]=pop(&stackInfixSt);
+        stackInfixState[stackInfixWriteIndex++]=pop(&stackInfixState2);
     }
-    stackInfixPostfix[writeIndex]='\0';
-    return stackInfixPostfix;
+    stackInfixState[stackInfixWriteIndex]='\0';
+    return stackInfixState;
 }
 
 int main()
 {
-    char workingText[]="((a+b)*c)-d^e^f";
-    char *stackInfixPostfix=ToPost(workingText);
-    cout<<stackInfixPostfix;
+    char stackInfixWorkingText[]="((a+b)*c)-d^e^f";
+    char *stackInfixState=ToPost(stackInfixWorkingText);
+    cout<<stackInfixState;
     return 0;
 }

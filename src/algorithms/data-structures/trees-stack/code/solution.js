@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Binary Tree Stack
-// Original source: 13_Trees/Stack.h
 export function treesStack() {
   const stack = [];
   const output = [];

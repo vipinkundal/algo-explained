@@ -1,82 +1,82 @@
 #include<iostream>
 using namespace std;
-struct Array
+struct ArrayAdtArrayModel
 {
-    int firstItems[10];
-    int itemCapacity;
-    int textLength;
+    int arrayAdtFirstItems[10];
+    int arrayAdtItemCapacity;
+    int arrayAdtTextLength;
 };
-void Display(struct Array items)
+void Display(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        std::cout<<items.firstItems[scanIndex]<<" ";
+        std::cout<<arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex]<<" ";
     }
 }
-void swap(int *inputValue,int *compareValue)
+void swap(int *arrayAdtInputValue,int *arrayAdtCompareValue)
 {
-    int swapValue=*inputValue;
-    *inputValue=*compareValue;
-    *compareValue=swapValue;
+    int arrayAdtSwapValue=*arrayAdtInputValue;
+    *arrayAdtInputValue=*arrayAdtCompareValue;
+    *arrayAdtCompareValue=arrayAdtSwapValue;
 }
-int Get(struct Array items,int targetIndex)
+int Get(struct ArrayAdtArrayModel arrayAdtItems,int arrayAdtTargetIndex)
 {
-    if(targetIndex>=0 && targetIndex<=items.textLength )
-        return items.firstItems[targetIndex];
+    if(arrayAdtTargetIndex>=0 && arrayAdtTargetIndex<=arrayAdtItems.arrayAdtTextLength )
+        return arrayAdtItems.arrayAdtFirstItems[arrayAdtTargetIndex];
     return -1;
 }
-void Set(struct Array *items,int targetIndex,int storedValue)
+void Set(struct ArrayAdtArrayModel *arrayAdtItems,int arrayAdtTargetIndex,int arrayAdtStoredValue)
 {
-    if(targetIndex>=0 && targetIndex<=items->textLength )
-        items->firstItems[targetIndex]=storedValue;
+    if(arrayAdtTargetIndex>=0 && arrayAdtTargetIndex<=arrayAdtItems->arrayAdtTextLength )
+        arrayAdtItems->arrayAdtFirstItems[arrayAdtTargetIndex]=arrayAdtStoredValue;
 }
-int Max(struct Array items)
+int Max(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    int arrayAdtMax=items.firstItems[0];
-    for(int scanIndex=1;scanIndex<items.textLength;scanIndex++)
+    int arrayAdtState=arrayAdtItems.arrayAdtFirstItems[0];
+    for(int arrayAdtScanIndex=1;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        if(items.firstItems[scanIndex]>arrayAdtMax)
-            arrayAdtMax=items.firstItems[scanIndex];
+        if(arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex]>arrayAdtState)
+            arrayAdtState=arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex];
     }
-    return arrayAdtMax;
+    return arrayAdtState;
 }
-int Min(struct Array items)
+int Min(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    int arrayAdtMin=items.firstItems[0];
-    for(int scanIndex=1;scanIndex<items.textLength;scanIndex++)
+    int arrayAdtState2=arrayAdtItems.arrayAdtFirstItems[0];
+    for(int arrayAdtScanIndex=1;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        if(items.firstItems[scanIndex]<arrayAdtMin)
-            arrayAdtMin=items.firstItems[scanIndex];
+        if(arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex]<arrayAdtState2)
+            arrayAdtState2=arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex];
     }
-    return arrayAdtMin;
+    return arrayAdtState2;
 }
-int Sum(struct Array items)
+int Sum(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    int arrayAdtSum=0;
-    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
+    int arrayAdtState3=0;
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        arrayAdtSum=arrayAdtSum+items.firstItems[scanIndex];
+        arrayAdtState3=arrayAdtState3+arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex];
     }
-    return arrayAdtSum;
+    return arrayAdtState3;
 }
-float Avg(struct Array items)//u can call function sum in avg and type cast it as float-> (float)Sum(arr)/arr.length
+float Avg(struct ArrayAdtArrayModel arrayAdtItems)//u can call function sum in avg and type cast it as float-> (float)Sum(arr)/arr.length
 {
-    float arrayAdtSum=0;
-    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
+    float arrayAdtState3=0;
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        arrayAdtSum=arrayAdtSum+items.firstItems[scanIndex];
+        arrayAdtState3=arrayAdtState3+arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex];
     }
-    return arrayAdtSum/items.textLength;
+    return arrayAdtState3/arrayAdtItems.arrayAdtTextLength;
 }
-int RSum(struct Array items,int itemCount)//by recursion
+int RSum(struct ArrayAdtArrayModel arrayAdtItems,int arrayAdtItemCount)//by recursion
 {
-    if(itemCount>=0)
-        return RSum(items,itemCount-1)+items.firstItems[itemCount];
+    if(arrayAdtItemCount>=0)
+        return RSum(arrayAdtItems,arrayAdtItemCount-1)+arrayAdtItems.arrayAdtFirstItems[arrayAdtItemCount];
     return 0;
 }
 int main()
 {
-    struct Array items={{1,2,3,4,5,6,8},10,7};
-    cout<<Avg(items);
+    struct ArrayAdtArrayModel arrayAdtItems={{1,2,3,4,5,6,8},10,7};
+    cout<<Avg(arrayAdtItems);
     return 0;
 }

@@ -1,40 +1,40 @@
 #include<iostream>
 int main()
 {
-    char sourceText[]="Anurag";
+    char stringReverseSourceText[]="Anurag";
     //method 1
-    char reverseBuffer[10];
-    int scanIndex,writeIndex;
-    for(scanIndex=0;sourceText[scanIndex]!='\0';scanIndex++)
+    char stringReverseReverseBuffer[10];
+    int stringReverseScanIndex,stringReverseWriteIndex;
+    for(stringReverseScanIndex=0;stringReverseSourceText[stringReverseScanIndex]!='\0';stringReverseScanIndex++)
     {}
-    scanIndex--;
-    for(writeIndex=0;scanIndex>=0;writeIndex++,scanIndex--)
+    stringReverseScanIndex--;
+    for(stringReverseWriteIndex=0;stringReverseScanIndex>=0;stringReverseWriteIndex++,stringReverseScanIndex--)
     {
-        reverseBuffer[writeIndex]=sourceText[scanIndex];
+        stringReverseReverseBuffer[stringReverseWriteIndex]=stringReverseSourceText[stringReverseScanIndex];
     }
-    reverseBuffer[writeIndex]='\0';
-    for(scanIndex=0;reverseBuffer[scanIndex]!='\0';scanIndex++)
+    stringReverseReverseBuffer[stringReverseWriteIndex]='\0';
+    for(stringReverseScanIndex=0;stringReverseReverseBuffer[stringReverseScanIndex]!='\0';stringReverseScanIndex++)
     {
-        sourceText[scanIndex]=reverseBuffer[scanIndex];
+        stringReverseSourceText[stringReverseScanIndex]=stringReverseReverseBuffer[stringReverseScanIndex];
     }
-    std::cout<<sourceText<<std::endl;
+    std::cout<<stringReverseSourceText<<std::endl;
 
     //Method 2
-    char inPlaceText[]="Anurag";
-    for(writeIndex=0;inPlaceText[writeIndex]!='\0';writeIndex++)
+    char stringReverseInPlaceText[]="Anurag";
+    for(stringReverseWriteIndex=0;stringReverseInPlaceText[stringReverseWriteIndex]!='\0';stringReverseWriteIndex++)
     {}
-    writeIndex--;
-    scanIndex=0;
-    while(scanIndex<writeIndex)
+    stringReverseWriteIndex--;
+    stringReverseScanIndex=0;
+    while(stringReverseScanIndex<stringReverseWriteIndex)
     {
-        char swapValue;
-        swapValue=inPlaceText[scanIndex];
-        inPlaceText[scanIndex]=inPlaceText[writeIndex];
-        inPlaceText[writeIndex]=swapValue;
-        scanIndex++;
-        writeIndex--;
+        char stringReverseSwapValue;
+        stringReverseSwapValue=stringReverseInPlaceText[stringReverseScanIndex];
+        stringReverseInPlaceText[stringReverseScanIndex]=stringReverseInPlaceText[stringReverseWriteIndex];
+        stringReverseInPlaceText[stringReverseWriteIndex]=stringReverseSwapValue;
+        stringReverseScanIndex++;
+        stringReverseWriteIndex--;
     }
-    std::cout<<inPlaceText;
+    std::cout<<stringReverseInPlaceText;
 
     return 0;
 }

@@ -1,41 +1,41 @@
 #include<stdio.h>
 #include<stdlib.h>
-struct matrixLowerMatrix{ //structure of matrix
-    int itemCount;
-    int *firstItems;
+struct matrixLowerState{ //structure of matrix
+    int matrixLowerItemCount;
+    int *matrixLowerFirstItems;
 };
-void set(struct matrixLowerMatrix *primaryValue,int scanIndex,int writeIndex,int inputValue)//set for row major mapping
+void set(struct matrixLowerState *matrixLowerPrimaryValue,int matrixLowerScanIndex,int matrixLowerWriteIndex,int matrixLowerInputValue)//set for row major mapping
 {
     
-    if(scanIndex>=writeIndex)
+    if(matrixLowerScanIndex>=matrixLowerWriteIndex)
     {
-        int swapValue=((scanIndex*(scanIndex-1)/2)+(writeIndex-1));// it means sum of i-1 rows then   the jth element in matrix 
-        primaryValue->firstItems[swapValue]=inputValue;
+        int matrixLowerSwapValue=((matrixLowerScanIndex*(matrixLowerScanIndex-1)/2)+(matrixLowerWriteIndex-1));// it means sum of i-1 rows then   the jth element in matrix 
+        matrixLowerPrimaryValue->matrixLowerFirstItems[matrixLowerSwapValue]=matrixLowerInputValue;
     }
 
 }
 
-int get(struct matrixLowerMatrix *primaryValue,int scanIndex,int writeIndex)//get for row major mapping
+int get(struct matrixLowerState *matrixLowerPrimaryValue,int matrixLowerScanIndex,int matrixLowerWriteIndex)//get for row major mapping
 {
     
-    if(scanIndex>=writeIndex)
+    if(matrixLowerScanIndex>=matrixLowerWriteIndex)
     {
-        int swapValue=((scanIndex*(scanIndex-1)/2)+(writeIndex-1));
-        return primaryValue->firstItems[swapValue];
+        int matrixLowerSwapValue=((matrixLowerScanIndex*(matrixLowerScanIndex-1)/2)+(matrixLowerWriteIndex-1));
+        return matrixLowerPrimaryValue->matrixLowerFirstItems[matrixLowerSwapValue];
     }
     else
         return 0;
 }
-void Display(struct matrixLowerMatrix *primaryValue)//Display for row major mapping
+void Display(struct matrixLowerState *matrixLowerPrimaryValue)//Display for row major mapping
 {
-    for(int scanIndex=1;scanIndex<=(primaryValue->itemCount);scanIndex++)//here  i is considered as matrix index so is started from 1
+    for(int matrixLowerScanIndex=1;matrixLowerScanIndex<=(matrixLowerPrimaryValue->matrixLowerItemCount);matrixLowerScanIndex++)//here  i is considered as matrix index so is started from 1
     {
-        for(int writeIndex=1;writeIndex<=(primaryValue->itemCount);writeIndex++)
+        for(int matrixLowerWriteIndex=1;matrixLowerWriteIndex<=(matrixLowerPrimaryValue->matrixLowerItemCount);matrixLowerWriteIndex++)
         {
-            if(scanIndex>=writeIndex)
+            if(matrixLowerScanIndex>=matrixLowerWriteIndex)
             {
-                int swapValue=((scanIndex*(scanIndex-1)/2)+(writeIndex-1));
-                printf("%d ",primaryValue->firstItems[swapValue]);
+                int matrixLowerSwapValue=((matrixLowerScanIndex*(matrixLowerScanIndex-1)/2)+(matrixLowerWriteIndex-1));
+                printf("%d ",matrixLowerPrimaryValue->matrixLowerFirstItems[matrixLowerSwapValue]);
             }
             else
             printf("%d ",0);
@@ -43,38 +43,38 @@ void Display(struct matrixLowerMatrix *primaryValue)//Display for row major mapp
         printf("\n");
     }
 }
-void cset(struct matrixLowerMatrix *primaryValue,int scanIndex,int writeIndex,int inputValue)//set for column major mapping
+void cset(struct matrixLowerState *matrixLowerPrimaryValue,int matrixLowerScanIndex,int matrixLowerWriteIndex,int matrixLowerInputValue)//set for column major mapping
 {   
-    if(scanIndex>=writeIndex)
+    if(matrixLowerScanIndex>=matrixLowerWriteIndex)
     {
-        if(scanIndex>=writeIndex)
+        if(matrixLowerScanIndex>=matrixLowerWriteIndex)
         {
-            primaryValue->firstItems[primaryValue->itemCount*(writeIndex-1)-(writeIndex-1)*(writeIndex-2)/2+(scanIndex-writeIndex)]=inputValue;
+            matrixLowerPrimaryValue->matrixLowerFirstItems[matrixLowerPrimaryValue->matrixLowerItemCount*(matrixLowerWriteIndex-1)-(matrixLowerWriteIndex-1)*(matrixLowerWriteIndex-2)/2+(matrixLowerScanIndex-matrixLowerWriteIndex)]=matrixLowerInputValue;
         }
 
     }
 
 }
 
-int cget(struct matrixLowerMatrix *primaryValue,int scanIndex,int writeIndex)//get for column major mapping
+int cget(struct matrixLowerState *matrixLowerPrimaryValue,int matrixLowerScanIndex,int matrixLowerWriteIndex)//get for column major mapping
 {
     
-    if(scanIndex>=writeIndex)
+    if(matrixLowerScanIndex>=matrixLowerWriteIndex)
     {
-        return primaryValue->firstItems[primaryValue->itemCount*(writeIndex-1)-(writeIndex-1)*(writeIndex-2)/2+(scanIndex-writeIndex)];
+        return matrixLowerPrimaryValue->matrixLowerFirstItems[matrixLowerPrimaryValue->matrixLowerItemCount*(matrixLowerWriteIndex-1)-(matrixLowerWriteIndex-1)*(matrixLowerWriteIndex-2)/2+(matrixLowerScanIndex-matrixLowerWriteIndex)];
     }
     else
         return 0;
 }
-void cDisplay(struct matrixLowerMatrix *primaryValue)//Display column major mapping
+void cDisplay(struct matrixLowerState *matrixLowerPrimaryValue)//Display column major mapping
 {
-    for(int scanIndex=1;scanIndex<=(primaryValue->itemCount);scanIndex++)//here  i is considered as matrix index so is started from 1
+    for(int matrixLowerScanIndex=1;matrixLowerScanIndex<=(matrixLowerPrimaryValue->matrixLowerItemCount);matrixLowerScanIndex++)//here  i is considered as matrix index so is started from 1
     {
-        for(int writeIndex=1;writeIndex<=(primaryValue->itemCount);writeIndex++)
+        for(int matrixLowerWriteIndex=1;matrixLowerWriteIndex<=(matrixLowerPrimaryValue->matrixLowerItemCount);matrixLowerWriteIndex++)
         {
-            if(scanIndex>=writeIndex)
+            if(matrixLowerScanIndex>=matrixLowerWriteIndex)
             {
-                printf("%d ",primaryValue->firstItems[primaryValue->itemCount*(writeIndex-1)-(writeIndex-1)*(writeIndex-2)/2+(scanIndex-writeIndex)]);
+                printf("%d ",matrixLowerPrimaryValue->matrixLowerFirstItems[matrixLowerPrimaryValue->matrixLowerItemCount*(matrixLowerWriteIndex-1)-(matrixLowerWriteIndex-1)*(matrixLowerWriteIndex-2)/2+(matrixLowerScanIndex-matrixLowerWriteIndex)]);
             }
             else
             printf("%d ",0);
@@ -84,43 +84,43 @@ void cDisplay(struct matrixLowerMatrix *primaryValue)//Display column major mapp
 }
 int main()
 {
-    int matrixLowerNum,inputValue;
+    int matrixLowerState2,matrixLowerInputValue;
     //using row major formula
-    struct matrixLowerMatrix columnCount;
+    struct matrixLowerState matrixLowerColumnCount;
     printf("Enter number dimension of matrix ");
-    scanf("%d",&matrixLowerNum);
-    columnCount.itemCount=matrixLowerNum;
-    columnCount.firstItems=(int *)malloc((columnCount.itemCount*(columnCount.itemCount+1)/2)*sizeof(int));//as it contains this many number of elements
+    scanf("%d",&matrixLowerState2);
+    matrixLowerColumnCount.matrixLowerItemCount=matrixLowerState2;
+    matrixLowerColumnCount.matrixLowerFirstItems=(int *)malloc((matrixLowerColumnCount.matrixLowerItemCount*(matrixLowerColumnCount.matrixLowerItemCount+1)/2)*sizeof(int));//as it contains this many number of elements
     printf("Enter the elements ");
-    for(int scanIndex=1;scanIndex<=matrixLowerNum;scanIndex++)
+    for(int matrixLowerScanIndex=1;matrixLowerScanIndex<=matrixLowerState2;matrixLowerScanIndex++)
     {
-        for(int writeIndex=1;writeIndex<=matrixLowerNum;writeIndex++)
+        for(int matrixLowerWriteIndex=1;matrixLowerWriteIndex<=matrixLowerState2;matrixLowerWriteIndex++)
         {
-            scanf("%d",&inputValue);
-            set(&columnCount,scanIndex,writeIndex,inputValue);
+            scanf("%d",&matrixLowerInputValue);
+            set(&matrixLowerColumnCount,matrixLowerScanIndex,matrixLowerWriteIndex,matrixLowerInputValue);
         }
     }
     
-    Display(&columnCount);
+    Display(&matrixLowerColumnCount);
     printf("\n\n");
 
 
     //using column major formula
     printf("Enter number of elements ");
-    scanf("%d",&matrixLowerNum);
-    columnCount.itemCount=matrixLowerNum;
-    columnCount.firstItems=(int *)malloc((columnCount.itemCount*(columnCount.itemCount+1)/2)*sizeof(int));
+    scanf("%d",&matrixLowerState2);
+    matrixLowerColumnCount.matrixLowerItemCount=matrixLowerState2;
+    matrixLowerColumnCount.matrixLowerFirstItems=(int *)malloc((matrixLowerColumnCount.matrixLowerItemCount*(matrixLowerColumnCount.matrixLowerItemCount+1)/2)*sizeof(int));
     printf("Enter the elements ");
-    for(int scanIndex=1;scanIndex<=matrixLowerNum;scanIndex++)
+    for(int matrixLowerScanIndex=1;matrixLowerScanIndex<=matrixLowerState2;matrixLowerScanIndex++)
     {
-        for(int writeIndex=1;writeIndex<=matrixLowerNum;writeIndex++)
+        for(int matrixLowerWriteIndex=1;matrixLowerWriteIndex<=matrixLowerState2;matrixLowerWriteIndex++)
         {
-            scanf("%d",&inputValue);
-            cset(&columnCount,scanIndex,writeIndex,inputValue);
+            scanf("%d",&matrixLowerInputValue);
+            cset(&matrixLowerColumnCount,matrixLowerScanIndex,matrixLowerWriteIndex,matrixLowerInputValue);
         }
     }
     
-    cDisplay(&columnCount);
+    cDisplay(&matrixLowerColumnCount);
     
     return 0;
 }

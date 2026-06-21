@@ -64,7 +64,13 @@ const PREFERRED_NAMES = new Map(Object.entries({
   root: "treeRoot",
   left: "leftChild",
   right: "rightChild",
+  lchild: "leftChild",
+  rchild: "rightChild",
+  lChild: "leftChild",
+  rChild: "rightChild",
   height: "nodeHeight",
+  lh: "leftHeight",
+  rh: "rightHeight",
   row: "rowIndex",
   col: "columnIndex",
   rows: "rowCount",
@@ -82,6 +88,23 @@ const PREFERRED_NAMES = new Map(Object.entries({
   S: "stackStorage",
   H: "hashStorage",
   Res: "resultText",
+}));
+
+const STRUCTURE_NAMES = new Map(Object.entries({
+  Array: "ArrayModel",
+  Bst: "BstModel",
+  BST: "BstModel",
+  Element: "Entry",
+  Heap: "HeapModel",
+  Matrix: "MatrixModel",
+  Node: "Node",
+  Polynomial: "PolynomialModel",
+  Queue: "QueueModel",
+  Rectangle: "RectangleModel",
+  Sparse: "SparseModel",
+  Stack: "StackModel",
+  Term: "PolynomialTerm",
+  Tree: "TreeModel",
 }));
 
 async function walk(dir, out = []) {
@@ -187,7 +210,27 @@ function splitSource(source) {
   return segments;
 }
 
-function collectIdentifiers(segments) {
+function collectTypeIdentifiers(segments) {
+  const names = new Set();
+
+  for (const segment of segments) {
+    if (segment.kind !== "code") continue;
+    const text = segment.text;
+    const declarationRe = /\b(?:struct|class)\s+([A-Za-z_][A-Za-z0-9_]*)\b/g;
+    let match;
+    while ((match = declarationRe.exec(text))) {
+      const name = match[1];
+      if (!KEYWORDS.has(name) && !RESERVED.has(name)) names.add(name);
+    }
+  }
+
+  return [...names].filter((name) => {
+    if (/^_[A-Z_]/.test(name)) return false;
+    return /^[A-Z][A-Za-z0-9_]*$/.test(name) || STRUCTURE_NAMES.has(name);
+  });
+}
+
+function collectIdentifiers(segments, typeNames = new Set()) {
   const stats = new Map();
 
   const touch = (name, key) => {
@@ -205,6 +248,7 @@ function collectIdentifiers(segments) {
     while ((match = identifierRe.exec(text))) {
       const name = match[0];
       if (KEYWORDS.has(name) || RESERVED.has(name)) continue;
+      if (typeNames.has(name)) continue;
       const before = text.slice(Math.max(0, match.index - 4), match.index);
       const after = text.slice(match.index + name.length);
       if (before.endsWith("::")) continue;
@@ -235,20 +279,61 @@ function toPascal(value) {
     .replace(/^[0-9]+/, "");
 }
 
+function toUpperPascal(value) {
+  const pascal = toPascal(value);
+  return pascal.replace(/^[a-z]/, (letter) => letter.toUpperCase());
+}
+
 function topicPrefix(filePath) {
   const lesson = path.basename(path.dirname(path.dirname(filePath)));
   const prefix = lesson.split("-").filter(Boolean).slice(0, 2).join("-");
   return toPascal(prefix || "lesson") || "lesson";
 }
 
-function createRenameMap(names, filePath) {
+function stripExistingPrefix(name, prefix) {
+  if (name.startsWith(prefix) && name.length > prefix.length && /[A-Z]/.test(name[prefix.length])) {
+    const stripped = name.slice(prefix.length);
+    return stripped.replace(/^[A-Z]/, (letter) => letter.toLowerCase());
+  }
+  const upperPrefix = toUpperPascal(prefix);
+  if (name.startsWith(upperPrefix) && name.length > upperPrefix.length && /[A-Z]/.test(name[upperPrefix.length])) {
+    return name.slice(upperPrefix.length);
+  }
+  return name;
+}
+
+function createTypeRenameMap(names, filePath) {
   const used = new Set([...KEYWORDS, ...RESERVED, ...names]);
+  const map = new Map();
+  const rawPrefix = topicPrefix(filePath);
+  const prefix = toUpperPascal(rawPrefix);
+
+  for (const name of names.sort((a, b) => b.length - a.length)) {
+    const normalizedName = stripExistingPrefix(name, rawPrefix);
+    const suffix = STRUCTURE_NAMES.get(normalizedName) || toUpperPascal(normalizedName);
+    const base = `${prefix}${suffix}`;
+    let nextName = base;
+    let count = 2;
+    while (used.has(nextName) || nextName === name) {
+      nextName = `${base}${count}`;
+      count += 1;
+    }
+    used.add(nextName);
+    map.set(name, nextName);
+  }
+
+  return map;
+}
+
+function createRenameMap(names, filePath, reservedNames = new Set()) {
+  const used = new Set([...KEYWORDS, ...RESERVED, ...names, ...reservedNames]);
   const map = new Map();
   const prefix = topicPrefix(filePath);
 
   for (const name of names.sort((a, b) => b.length - a.length)) {
-    let base = PREFERRED_NAMES.get(name) || PREFERRED_NAMES.get(name.toLowerCase());
-    if (!base) base = `${prefix}${toPascal(name).replace(/^[a-z]/, (letter) => letter.toUpperCase())}`;
+    const normalizedName = stripExistingPrefix(name, prefix);
+    let base = PREFERRED_NAMES.get(normalizedName) || PREFERRED_NAMES.get(normalizedName.toLowerCase());
+    if (!base) base = `${prefix}${toPascal(normalizedName).replace(/^[a-z]/, (letter) => letter.toUpperCase())}`;
     if (!base || base === name) base = `${prefix}State`;
 
     let nextName = base;
@@ -271,25 +356,31 @@ function replaceCodeIdentifiers(text, renameMap) {
 const files = await walk(ROOT);
 let updated = 0;
 let renamed = 0;
+let typeRenamed = 0;
 
 for (const file of files) {
   const source = await readBaselineSource(file);
   const segments = splitSource(source);
-  const names = collectIdentifiers(segments);
-  if (!names.length) continue;
+  const typeNames = collectTypeIdentifiers(segments);
+  const typeRenameMap = createTypeRenameMap(typeNames, file);
+  const names = collectIdentifiers(segments, new Set(typeNames));
+  const renameMap = createRenameMap(names, file, new Set(typeRenameMap.values()));
+  const combinedRenameMap = new Map([...typeRenameMap, ...renameMap]);
+  if (!combinedRenameMap.size) continue;
 
-  const renameMap = createRenameMap(names, file);
   const nextSource = segments
-    .map((segment) => segment.kind === "code" ? replaceCodeIdentifiers(segment.text, renameMap) : segment.text)
+    .map((segment) => segment.kind === "code" ? replaceCodeIdentifiers(segment.text, combinedRenameMap) : segment.text)
     .join("");
 
   if (nextSource !== source) {
     await fs.writeFile(file, nextSource, "utf8");
     updated += 1;
     renamed += renameMap.size;
+    typeRenamed += typeRenameMap.size;
   }
 }
 
-console.log(`Original C/C++ files scanned: ${files.length}`);
-console.log(`Original C/C++ files updated: ${updated}`);
+console.log(`C/C++ reference files scanned: ${files.length}`);
+console.log(`C/C++ reference files updated: ${updated}`);
 console.log(`Identifier mappings applied: ${renamed}`);
+console.log(`Structure/type mappings applied: ${typeRenamed}`);

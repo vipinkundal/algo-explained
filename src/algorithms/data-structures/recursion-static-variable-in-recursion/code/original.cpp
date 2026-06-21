@@ -1,20 +1,20 @@
 #include<iostream>
-int compareValue=0;//global variable
+int recursionStaticCompareValue=0;//global variable
 using namespace std;
-int static_fun(int itemCount)
+int static_fun(int recursionStaticItemCount)
 {
-    static int inputValue=0;//static variable
-    if(itemCount>0)
+    static int recursionStaticInputValue=0;//static variable
+    if(recursionStaticItemCount>0)
     {
-        inputValue++;
-        return static_fun(itemCount-1)+inputValue;
+        recursionStaticInputValue++;
+        return static_fun(recursionStaticItemCount-1)+recursionStaticInputValue;
     }
     return 0;
 }
 int main()
 {
-    int primaryValue,secondaryValue=5;
-    primaryValue=static_fun(secondaryValue);
-    cout<<primaryValue;
+    int recursionStaticPrimaryValue,recursionStaticSecondaryValue=5;
+    recursionStaticPrimaryValue=static_fun(recursionStaticSecondaryValue);
+    cout<<recursionStaticPrimaryValue;
     return 0;
 }

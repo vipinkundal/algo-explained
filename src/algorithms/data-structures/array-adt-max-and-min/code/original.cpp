@@ -1,30 +1,30 @@
 #include<iostream>
 using namespace std;
-struct Array
+struct ArrayAdtArrayModel
 {
-    int firstItems2[100];
-    int itemCapacity;
-    int textLength;
+    int arrayAdtFirstItems2[100];
+    int arrayAdtItemCapacity;
+    int arrayAdtTextLength;
 };
-void Display(struct Array items)
+void Display(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        std::cout<<items.firstItems2[scanIndex]<<" ";
+        std::cout<<arrayAdtItems.arrayAdtFirstItems2[arrayAdtScanIndex]<<" ";
     }
 }
 int main()
 {
-    Array firstItems={{1,2,3,4,6,8,9,12,14,17},100,10};
-    int arrayAdtMax=firstItems.firstItems2[0],arrayAdtMin=firstItems.firstItems2[0];
+    ArrayAdtArrayModel arrayAdtFirstItems={{1,2,3,4,6,8,9,12,14,17},100,10};
+    int arrayAdtState=arrayAdtFirstItems.arrayAdtFirstItems2[0],arrayAdtState2=arrayAdtFirstItems.arrayAdtFirstItems2[0];
 
-    for(int scanIndex=1;scanIndex<firstItems.textLength;scanIndex++)
+    for(int arrayAdtScanIndex=1;arrayAdtScanIndex<arrayAdtFirstItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        if(firstItems.firstItems2[scanIndex]<arrayAdtMin)
-            arrayAdtMin=firstItems.firstItems2[scanIndex];
-        else if(firstItems.firstItems2[scanIndex]>arrayAdtMax)
-            arrayAdtMax=firstItems.firstItems2[scanIndex];
+        if(arrayAdtFirstItems.arrayAdtFirstItems2[arrayAdtScanIndex]<arrayAdtState2)
+            arrayAdtState2=arrayAdtFirstItems.arrayAdtFirstItems2[arrayAdtScanIndex];
+        else if(arrayAdtFirstItems.arrayAdtFirstItems2[arrayAdtScanIndex]>arrayAdtState)
+            arrayAdtState=arrayAdtFirstItems.arrayAdtFirstItems2[arrayAdtScanIndex];
     }
-    cout<<arrayAdtMax<<" "<<arrayAdtMin;
+    cout<<arrayAdtState<<" "<<arrayAdtState2;
     return 0;
 }

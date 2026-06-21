@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Recursion Tower of Hanoi
-// Original source: 03_recursion/13_toh.cpp
 export function recursionToh(n = 5) {
   const calls = [];
   function factorial(value) {

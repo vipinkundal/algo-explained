@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Infix to Postfix Conversion
-// Original source: 11_Stack/06_infix_to_posstfix.cpp
 export function stackInfixToPostfix2() {
   const stack = [];
   const output = [];

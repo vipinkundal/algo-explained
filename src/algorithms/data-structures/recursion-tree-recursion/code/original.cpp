@@ -1,12 +1,12 @@
 #include<iostream>
 using namespace std;
-void fun(int itemCount)
+void fun(int recursionTreeItemCount)
 {
-    if(itemCount>0)
+    if(recursionTreeItemCount>0)
     {
-        cout<<itemCount<<" ";
-        fun(itemCount-1);
-        fun(itemCount-1); 
+        cout<<recursionTreeItemCount<<" ";
+        fun(recursionTreeItemCount-1);
+        fun(recursionTreeItemCount-1); 
     }
       
 }

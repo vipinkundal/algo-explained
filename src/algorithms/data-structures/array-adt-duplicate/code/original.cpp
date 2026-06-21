@@ -1,16 +1,16 @@
 #include<iostream>
 using namespace std;
-struct Array
+struct ArrayAdtArrayModel
 {
-    int firstItems[100];
-    int itemCapacity;
-    int textLength;
+    int arrayAdtFirstItems[100];
+    int arrayAdtItemCapacity;
+    int arrayAdtTextLength;
 };
-void Display(struct Array items)
+void Display(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        std::cout<<items.firstItems[scanIndex]<<" ";
+        std::cout<<arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex]<<" ";
     }
 }
 int main()
@@ -72,20 +72,20 @@ int main()
     //     }
     // }
 
-    Array arrayAdtA5={{5,4,8,4,6,7,5,4},100,8};//Method 5 for unsorted using hashing
+    ArrayAdtArrayModel arrayAdtState={{5,4,8,4,6,7,5,4},100,8};//Method 5 for unsorted using hashing
 
     //here l is 4 and h is 8
-    int arrayAdtH=8;
-    int A1[arrayAdtH+1]={0};
+    int arrayAdtState2=8;
+    int A1[arrayAdtState2+1]={0};
 
-    for(int scanIndex=0;scanIndex<arrayAdtA5.textLength;scanIndex++)
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtState.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        A1[arrayAdtA5.firstItems[scanIndex]]++;
+        A1[arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]]++;
     }
-    for(int scanIndex=1;scanIndex<=arrayAdtH;scanIndex++)
+    for(int arrayAdtScanIndex=1;arrayAdtScanIndex<=arrayAdtState2;arrayAdtScanIndex++)
     {
-        if(A1[scanIndex]>1)
-            cout<<scanIndex<<" is repeated "<<A1[scanIndex]<<" times"<<endl;
+        if(A1[arrayAdtScanIndex]>1)
+            cout<<arrayAdtScanIndex<<" is repeated "<<A1[arrayAdtScanIndex]<<" times"<<endl;
     }
 
 

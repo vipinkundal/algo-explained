@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Linked List Count And Sum
-// Original source: 09_Linked_list/03_count_and_sum.cpp
 export function linkedListCountAndSum() {
   const nodes = [10, 20, 30].map((value, index, values) => ({ value, next: index + 1 < values.length ? values[index + 1] : null }));
   nodes.splice(1, 0, { value: 15, next: 20 });

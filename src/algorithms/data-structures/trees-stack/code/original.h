@@ -1,68 +1,68 @@
 
-struct Stack{
-    int itemCapacity;
-    int stackTop;
-    long int *stackStorage;
+struct TreesStackStackModel{
+    int treesStackItemCapacity;
+    int treesStackStackTop;
+    long int *treesStackStackStorage;
 };
 
-void create(Stack *treesStackSt)
+void create(TreesStackStackModel *treesStackState)
 {
     cout<<"Enter the size of stack : ";
-    cin>>treesStackSt->itemCapacity;
-    treesStackSt->stackTop=-1;
-    treesStackSt->stackStorage=new long int[treesStackSt->itemCapacity];
+    cin>>treesStackState->treesStackItemCapacity;
+    treesStackState->treesStackStackTop=-1;
+    treesStackState->treesStackStackStorage=new long int[treesStackState->treesStackItemCapacity];
 }
 
 
 
-void push(Stack *treesStackSt,long int inputValue)
+void push(TreesStackStackModel *treesStackState,long int treesStackInputValue)
 {
-    if(treesStackSt->itemCapacity-treesStackSt->stackTop==1)
+    if(treesStackState->treesStackItemCapacity-treesStackState->treesStackStackTop==1)
     {
         cout<<"stack is overflow\n";
     }
     else{
-        treesStackSt->stackTop++;
-        treesStackSt->stackStorage[treesStackSt->stackTop]=inputValue;
+        treesStackState->treesStackStackTop++;
+        treesStackState->treesStackStackStorage[treesStackState->treesStackStackTop]=treesStackInputValue;
     }
 }
 
-long int pop(Stack *treesStackSt)
+long int pop(TreesStackStackModel *treesStackState)
 {
-    long int inputValue=-1;
-    if(treesStackSt->stackTop==-1)
+    long int treesStackInputValue=-1;
+    if(treesStackState->treesStackStackTop==-1)
     {
         cout<<"Stack is underflow\n";
     }
     else{
-        inputValue=treesStackSt->stackStorage[treesStackSt->stackTop];
-        treesStackSt->stackTop--;
+        treesStackInputValue=treesStackState->treesStackStackStorage[treesStackState->treesStackStackTop];
+        treesStackState->treesStackStackTop--;
     }
-    return inputValue;
+    return treesStackInputValue;
 }
 
 
 
-long int StackTop(Stack treesStackSt)
+long int StackTop(TreesStackStackModel treesStackState)
 {
-    long int inputValue=-1;
-    if(treesStackSt.stackTop!=-1){
-        inputValue=treesStackSt.stackStorage[treesStackSt.stackTop];
+    long int treesStackInputValue=-1;
+    if(treesStackState.treesStackStackTop!=-1){
+        treesStackInputValue=treesStackState.treesStackStackStorage[treesStackState.treesStackStackTop];
     }
-    return inputValue;
+    return treesStackInputValue;
 }
 
-int isEmpty(Stack treesStackSt)
+int isEmpty(TreesStackStackModel treesStackState)
 {
-    if(treesStackSt.stackTop==-1)
+    if(treesStackState.treesStackStackTop==-1)
         return 1;
     else
         return 0;
 }
 
-int isFull(Stack treesStackSt)
+int isFull(TreesStackStackModel treesStackState)
 {
-    if(treesStackSt.itemCapacity-treesStackSt.stackTop==1)
+    if(treesStackState.treesStackItemCapacity-treesStackState.treesStackStackTop==1)
         return 1;
     else
         return 0;

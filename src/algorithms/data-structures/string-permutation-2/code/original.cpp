@@ -1,29 +1,29 @@
 #include<iostream>
 using namespace std;
-void swap(char *stringPermutationC1,char *stringPermutationC2)
+void swap(char *stringPermutationState,char *stringPermutationState2)
 {
-    char swapValue=*stringPermutationC1;
-    *stringPermutationC1=*stringPermutationC2;
-    *stringPermutationC2=swapValue;
+    char stringPermutationSwapValue=*stringPermutationState;
+    *stringPermutationState=*stringPermutationState2;
+    *stringPermutationState2=stringPermutationSwapValue;
 }
-void perm(char workingText[],int leftIndex,int stringPermutationH)
+void perm(char stringPermutationWorkingText[],int stringPermutationLeftIndex,int stringPermutationState3)
 {
-    if(leftIndex==stringPermutationH)
+    if(stringPermutationLeftIndex==stringPermutationState3)
     {
-        cout<<workingText<<endl;
+        cout<<stringPermutationWorkingText<<endl;
     }
     else
     {
-        for(int scanIndex=leftIndex;scanIndex<=stringPermutationH;scanIndex++)
+        for(int stringPermutationScanIndex=stringPermutationLeftIndex;stringPermutationScanIndex<=stringPermutationState3;stringPermutationScanIndex++)
         {
-            swap(&workingText[scanIndex],&workingText[leftIndex]);
-            perm(workingText,leftIndex+1,stringPermutationH);
-            swap(&workingText[scanIndex],&workingText[leftIndex]);
+            swap(&stringPermutationWorkingText[stringPermutationScanIndex],&stringPermutationWorkingText[stringPermutationLeftIndex]);
+            perm(stringPermutationWorkingText,stringPermutationLeftIndex+1,stringPermutationState3);
+            swap(&stringPermutationWorkingText[stringPermutationScanIndex],&stringPermutationWorkingText[stringPermutationLeftIndex]);
         }
     }
 }
 int main()
 {
-    char workingText[]="ABC";
-    perm(workingText,0,2);
+    char stringPermutationWorkingText[]="ABC";
+    perm(stringPermutationWorkingText,0,2);
 }

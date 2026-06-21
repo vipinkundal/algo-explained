@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Queue Using Linked List
-// Original source: 12_Queue/03_queue_using_ll.cpp
 export function queueUsingLinkedList() {
   const queue = [];
   const output = [];

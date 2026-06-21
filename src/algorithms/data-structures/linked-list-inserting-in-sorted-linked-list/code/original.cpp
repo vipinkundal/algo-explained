@@ -2,67 +2,67 @@
 #include<stdlib.h>
 using namespace std;
 
-struct Node
+struct LinkedListNode
 {
-    int nodeValue;
-    struct Node *nextLink;
-}*firstNode=NULL;
+    int linkedListNodeValue;
+    struct LinkedListNode *linkedListNextLink;
+}*linkedListFirstNode=NULL;
 
-void create(int firstItems[],int itemCount)
+void create(int linkedListFirstItems[],int linkedListItemCount)
 {
-    int scanIndex;
-    struct Node *lastNode, *swapValue;
-    firstNode=new Node;
-    firstNode->nodeValue=firstItems[0];
-    firstNode->nextLink=NULL;
-    lastNode=firstNode;//addreess is passed and now first is refferd as last
+    int linkedListScanIndex;
+    struct LinkedListNode *linkedListLastNode, *linkedListSwapValue;
+    linkedListFirstNode=new LinkedListNode;
+    linkedListFirstNode->linkedListNodeValue=linkedListFirstItems[0];
+    linkedListFirstNode->linkedListNextLink=NULL;
+    linkedListLastNode=linkedListFirstNode;//addreess is passed and now first is refferd as last
 
-    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
+    for(int linkedListScanIndex=1;linkedListScanIndex<linkedListItemCount;linkedListScanIndex++)
     {
-        swapValue=new Node;
-        swapValue->nodeValue=firstItems[scanIndex];
-        swapValue->nextLink=NULL;
-        lastNode->nextLink=swapValue;//putting address of current node in the next of last node 
-        lastNode=swapValue;//assigning current node as last node
+        linkedListSwapValue=new LinkedListNode;
+        linkedListSwapValue->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+        linkedListSwapValue->linkedListNextLink=NULL;
+        linkedListLastNode->linkedListNextLink=linkedListSwapValue;//putting address of current node in the next of last node 
+        linkedListLastNode=linkedListSwapValue;//assigning current node as last node
     }
 }
 
 void Display()
 {
-    struct Node *currentNode;
-    currentNode=firstNode;
-    while(currentNode!=NULL)
+    struct LinkedListNode *linkedListCurrentNode;
+    linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListCurrentNode!=NULL)
     {
-        cout<<currentNode->nodeValue<<endl;
-        currentNode=currentNode->nextLink;
+        cout<<linkedListCurrentNode->linkedListNodeValue<<endl;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
 }
 
-void S_Insert(struct Node *currentNode,int storedValue)
+void S_Insert(struct LinkedListNode *linkedListCurrentNode,int linkedListStoredValue)
 {
-    struct Node *nextNode;
-    struct Node *swapValue;
-    swapValue=new Node;
-    swapValue->nodeValue=storedValue;
-    swapValue->nextLink=NULL;
+    struct LinkedListNode *linkedListNextNode;
+    struct LinkedListNode *linkedListSwapValue;
+    linkedListSwapValue=new LinkedListNode;
+    linkedListSwapValue->linkedListNodeValue=linkedListStoredValue;
+    linkedListSwapValue->linkedListNextLink=NULL;
 
-    if(firstNode==NULL)
-        firstNode=swapValue;
+    if(linkedListFirstNode==NULL)
+        linkedListFirstNode=linkedListSwapValue;
     else
     {
-        while (currentNode && currentNode->nodeValue<storedValue)
+        while (linkedListCurrentNode && linkedListCurrentNode->linkedListNodeValue<linkedListStoredValue)
         {
-            nextNode=currentNode;
-            currentNode=currentNode->nextLink;
+            linkedListNextNode=linkedListCurrentNode;
+            linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
         }
-        if(currentNode==firstNode)
+        if(linkedListCurrentNode==linkedListFirstNode)
         {
-            swapValue->nextLink=firstNode;
-            firstNode=swapValue;
+            linkedListSwapValue->linkedListNextLink=linkedListFirstNode;
+            linkedListFirstNode=linkedListSwapValue;
         }
         else{
-            nextNode->nextLink=swapValue;
-            swapValue->nextLink=currentNode;
+            linkedListNextNode->linkedListNextLink=linkedListSwapValue;
+            linkedListSwapValue->linkedListNextLink=linkedListCurrentNode;
         }
         
     }
@@ -71,9 +71,9 @@ void S_Insert(struct Node *currentNode,int storedValue)
 
 int main()
 {
-    int firstItems[]={4,7,9,12,18};
-    create(firstItems,5);
-    S_Insert(firstNode,8);
+    int linkedListFirstItems[]={4,7,9,12,18};
+    create(linkedListFirstItems,5);
+    S_Insert(linkedListFirstNode,8);
     Display();
 
     return 0;

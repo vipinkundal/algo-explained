@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Linked List Linear Search
-// Original source: 09_Linked_list/05_linear_search.cpp
 export function linkedListLinearSearch() {
   const nodes = [10, 20, 30].map((value, index, values) => ({ value, next: index + 1 < values.length ? values[index + 1] : null }));
   nodes.splice(1, 0, { value: 15, next: 20 });

@@ -1,146 +1,146 @@
 #include<iostream>
 
 using namespace std;
-class Node{
+class LinkedListNode{
     public:
-        int nodeValue;
-        Node *nextLink;
+        int linkedListNodeValue;
+        LinkedListNode *linkedListNextLink;
 };
 
-class LinkedList
+class LinkedListLinkedList
 {
 private:
-    Node *firstNode;
+    LinkedListNode *linkedListFirstNode;
 public:
-    LinkedList()
+    LinkedListLinkedList()
     {
-        firstNode=NULL;
+        linkedListFirstNode=NULL;
     }
-    LinkedList(int firstItems[],int itemCount);
+    LinkedListLinkedList(int linkedListFirstItems[],int linkedListItemCount);
     void display();
     int length();
-    void insert(int targetPosition ,int storedValue);
-    int del(int targetIndex);
-    ~LinkedList();
+    void insert(int linkedListTargetPosition ,int linkedListStoredValue);
+    int del(int linkedListTargetIndex);
+    ~LinkedListLinkedList();
     
 };
 
-LinkedList::~LinkedList()
+LinkedListLinkedList::~LinkedListLinkedList()
 {
-    Node *currentNode=firstNode;
-    while(firstNode)
+    LinkedListNode *linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListFirstNode)
     {
-        firstNode=firstNode->nextLink;
-        delete currentNode;
-        currentNode=firstNode;
+        linkedListFirstNode=linkedListFirstNode->linkedListNextLink;
+        delete linkedListCurrentNode;
+        linkedListCurrentNode=linkedListFirstNode;
     }
 }
-int LinkedList::del(int targetIndex)
+int LinkedListLinkedList::del(int linkedListTargetIndex)
 {
-    Node *nextNode=NULL,*currentNode=firstNode;
-    int inputValue=-1;//to store data of deleted node
-    if(targetIndex<0 || targetIndex>length())
+    LinkedListNode *linkedListNextNode=NULL,*linkedListCurrentNode=linkedListFirstNode;
+    int linkedListInputValue=-1;//to store data of deleted node
+    if(linkedListTargetIndex<0 || linkedListTargetIndex>length())
         return -1;
-    if(targetIndex==0)
+    if(linkedListTargetIndex==0)
     {
-        inputValue=firstNode->nodeValue;
-        firstNode=firstNode->nextLink;
+        linkedListInputValue=linkedListFirstNode->linkedListNodeValue;
+        linkedListFirstNode=linkedListFirstNode->linkedListNextLink;
     }
     else
     {
-        for(int scanIndex=0;scanIndex<targetIndex;scanIndex++)
+        for(int linkedListScanIndex=0;linkedListScanIndex<linkedListTargetIndex;linkedListScanIndex++)
         {
-            nextNode=currentNode;
-            currentNode=currentNode->nextLink;
+            linkedListNextNode=linkedListCurrentNode;
+            linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
         }
-        inputValue=currentNode->nodeValue;
-        nextNode->nextLink=currentNode->nextLink;
+        linkedListInputValue=linkedListCurrentNode->linkedListNodeValue;
+        linkedListNextNode->linkedListNextLink=linkedListCurrentNode->linkedListNextLink;
     }
 
-    delete currentNode;
-    return inputValue;
+    delete linkedListCurrentNode;
+    return linkedListInputValue;
 }
-LinkedList::LinkedList(int firstItems[],int itemCount)
+LinkedListLinkedList::LinkedListLinkedList(int linkedListFirstItems[],int linkedListItemCount)
     {
-        int scanIndex;
-        Node *lastNode, *swapValue;
-        firstNode=new Node;
-        firstNode->nodeValue=firstItems[0];
-        firstNode->nextLink=NULL;
-        lastNode=firstNode;//addreess is passed and now first is refferd as last
+        int linkedListScanIndex;
+        LinkedListNode *linkedListLastNode, *linkedListSwapValue;
+        linkedListFirstNode=new LinkedListNode;
+        linkedListFirstNode->linkedListNodeValue=linkedListFirstItems[0];
+        linkedListFirstNode->linkedListNextLink=NULL;
+        linkedListLastNode=linkedListFirstNode;//addreess is passed and now first is refferd as last
 
-        for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
+        for(int linkedListScanIndex=1;linkedListScanIndex<linkedListItemCount;linkedListScanIndex++)
         {
-            swapValue=new Node;
-            swapValue->nodeValue=firstItems[scanIndex];
-            swapValue->nextLink=NULL;
-            lastNode->nextLink=swapValue;//putting address of current node in the next of last node 
-            lastNode=swapValue;//assigning current node as last node
+            linkedListSwapValue=new LinkedListNode;
+            linkedListSwapValue->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+            linkedListSwapValue->linkedListNextLink=NULL;
+            linkedListLastNode->linkedListNextLink=linkedListSwapValue;//putting address of current node in the next of last node 
+            linkedListLastNode=linkedListSwapValue;//assigning current node as last node
         }
     }
-int LinkedList::length()//counting of nodes
+int LinkedListLinkedList::length()//counting of nodes
 {
-    int columnIndex=0;
-    Node *currentNode;
-    currentNode=firstNode;
-    while(currentNode)
+    int linkedListColumnIndex=0;
+    LinkedListNode *linkedListCurrentNode;
+    linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListCurrentNode)
     {
-        columnIndex++;
-        currentNode=currentNode->nextLink;
+        linkedListColumnIndex++;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
-    return columnIndex;
+    return linkedListColumnIndex;
 }
-void LinkedList::display()
+void LinkedListLinkedList::display()
 {
-    Node *currentNode;
-    currentNode=firstNode;
-    while(currentNode!=NULL)
+    LinkedListNode *linkedListCurrentNode;
+    linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListCurrentNode!=NULL)
     {
-        cout<<currentNode->nodeValue<<endl;
-        currentNode=currentNode->nextLink;
+        cout<<linkedListCurrentNode->linkedListNodeValue<<endl;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
 }
-void LinkedList::insert(int targetPosition ,int storedValue)
+void LinkedListLinkedList::insert(int linkedListTargetPosition ,int linkedListStoredValue)
 {
-    if(targetPosition<0 || targetPosition>length())
+    if(linkedListTargetPosition<0 || linkedListTargetPosition>length())
     return ;
 
-    Node * currentNode;
-    Node *swapValue;
-    currentNode=firstNode;
-    swapValue=new Node;
-    if(targetPosition==0)
+    LinkedListNode * linkedListCurrentNode;
+    LinkedListNode *linkedListSwapValue;
+    linkedListCurrentNode=linkedListFirstNode;
+    linkedListSwapValue=new LinkedListNode;
+    if(linkedListTargetPosition==0)
     {
-        swapValue->nodeValue=storedValue;
-        swapValue->nextLink=firstNode;
-        firstNode=swapValue;
+        linkedListSwapValue->linkedListNodeValue=linkedListStoredValue;
+        linkedListSwapValue->linkedListNextLink=linkedListFirstNode;
+        linkedListFirstNode=linkedListSwapValue;
     }
-    else if(targetPosition>0)
+    else if(linkedListTargetPosition>0)
     {
-        for(int scanIndex=0;scanIndex<targetPosition-1 && currentNode;scanIndex++)//as it go to next node after one loop  and the node starts from 0
+        for(int linkedListScanIndex=0;linkedListScanIndex<linkedListTargetPosition-1 && linkedListCurrentNode;linkedListScanIndex++)//as it go to next node after one loop  and the node starts from 0
                                     //where as position starts from 1
         {
-            currentNode=currentNode->nextLink;
+            linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
         }
-        swapValue->nodeValue=storedValue;
-        swapValue->nextLink=currentNode->nextLink;
-        currentNode->nextLink=swapValue;
+        linkedListSwapValue->linkedListNodeValue=linkedListStoredValue;
+        linkedListSwapValue->linkedListNextLink=linkedListCurrentNode->linkedListNextLink;
+        linkedListCurrentNode->linkedListNextLink=linkedListSwapValue;
     }
 }
 int main()
 {
-    int firstItems[]={1,6,8,12,56};
-    LinkedList leftIndex(firstItems,5);
+    int linkedListFirstItems[]={1,6,8,12,56};
+    LinkedListLinkedList linkedListLeftIndex(linkedListFirstItems,5);
    
-    leftIndex.insert(2,67);
+    linkedListLeftIndex.insert(2,67);
 
-     leftIndex.display();
+     linkedListLeftIndex.display();
 
-    cout<<"lenght "<<leftIndex.length()<<endl;
+    cout<<"lenght "<<linkedListLeftIndex.length()<<endl;
 
 
-    leftIndex.del(1);
+    linkedListLeftIndex.del(1);
     cout<<"After deletion"<<endl;
-    leftIndex.display();
+    linkedListLeftIndex.display();
     return  0;
 }

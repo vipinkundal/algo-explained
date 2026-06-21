@@ -2,85 +2,85 @@
 #include<stdlib.h>
 using namespace std;
 
-struct Node
+struct LinkedListNode
 {
-    int nodeValue;
-    struct Node *nextLink;
-}*firstNode=NULL;
+    int linkedListNodeValue;
+    struct LinkedListNode *linkedListNextLink;
+}*linkedListFirstNode=NULL;
 
-void create(int firstItems[],int itemCount)
+void create(int linkedListFirstItems[],int linkedListItemCount)
 {
-    int scanIndex;
-    struct Node *lastNode, *swapValue;
-    firstNode=new Node;
-    firstNode->nodeValue=firstItems[0];
-    firstNode->nextLink=NULL;
-    lastNode=firstNode;//addreess is passed and now first is refferd as last
+    int linkedListScanIndex;
+    struct LinkedListNode *linkedListLastNode, *linkedListSwapValue;
+    linkedListFirstNode=new LinkedListNode;
+    linkedListFirstNode->linkedListNodeValue=linkedListFirstItems[0];
+    linkedListFirstNode->linkedListNextLink=NULL;
+    linkedListLastNode=linkedListFirstNode;//addreess is passed and now first is refferd as last
 
-    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
+    for(int linkedListScanIndex=1;linkedListScanIndex<linkedListItemCount;linkedListScanIndex++)
     {
-        swapValue=new Node;
-        swapValue->nodeValue=firstItems[scanIndex];
-        swapValue->nextLink=NULL;
-        lastNode->nextLink=swapValue;//putting address of current node in the next of last node 
-        lastNode=swapValue;//assigning current node as last node
+        linkedListSwapValue=new LinkedListNode;
+        linkedListSwapValue->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+        linkedListSwapValue->linkedListNextLink=NULL;
+        linkedListLastNode->linkedListNextLink=linkedListSwapValue;//putting address of current node in the next of last node 
+        linkedListLastNode=linkedListSwapValue;//assigning current node as last node
     }
 }
 
 void Display()
 {
-    struct Node *currentNode;
-    currentNode=firstNode;
-    while(currentNode!=NULL)
+    struct LinkedListNode *linkedListCurrentNode;
+    linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListCurrentNode!=NULL)
     {
-        cout<<currentNode->nodeValue<<endl;
-        currentNode=currentNode->nextLink;
+        cout<<linkedListCurrentNode->linkedListNodeValue<<endl;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
 }
 
-struct Node *Linear_Search(struct Node *currentNode,int searchKey)
+struct LinkedListNode *Linear_Search(struct LinkedListNode *linkedListCurrentNode,int linkedListSearchKey)
 {
-    while(currentNode!=NULL)
+    while(linkedListCurrentNode!=NULL)
     {
-        if(currentNode->nodeValue == searchKey)
-            return currentNode;
-        currentNode=currentNode->nextLink;
+        if(linkedListCurrentNode->linkedListNodeValue == linkedListSearchKey)
+            return linkedListCurrentNode;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
 
     }
     return NULL;
 }
 
-struct Node *RLinear_Search(struct Node *currentNode,int searchKey)
+struct LinkedListNode *RLinear_Search(struct LinkedListNode *linkedListCurrentNode,int linkedListSearchKey)
 {
-    if(currentNode==NULL)
+    if(linkedListCurrentNode==NULL)
         return NULL;
-    else if(currentNode->nodeValue == searchKey)
-        return currentNode;
+    else if(linkedListCurrentNode->linkedListNodeValue == linkedListSearchKey)
+        return linkedListCurrentNode;
     else
-        return RLinear_Search(currentNode->nextLink,searchKey);
+        return RLinear_Search(linkedListCurrentNode->linkedListNextLink,linkedListSearchKey);
 
 }
 
-struct Node *ILinear_Search(struct Node *currentNode,int searchKey)
+struct LinkedListNode *ILinear_Search(struct LinkedListNode *linkedListCurrentNode,int linkedListSearchKey)
 {
-    struct Node *nextNode;
-    while(currentNode!=NULL)
+    struct LinkedListNode *linkedListNextNode;
+    while(linkedListCurrentNode!=NULL)
     {
-        if(currentNode->nodeValue == searchKey)
+        if(linkedListCurrentNode->linkedListNodeValue == linkedListSearchKey)
         {
-            if(currentNode==firstNode)//  very  important as in case if the first element is same to key there
+            if(linkedListCurrentNode==linkedListFirstNode)//  very  important as in case if the first element is same to key there
                         // wont be any value to q 
-                return currentNode;
+                return linkedListCurrentNode;
             else
             {
-            nextNode->nextLink=currentNode->nextLink;
-            currentNode->nextLink=firstNode;
-            firstNode=currentNode;
+            linkedListNextNode->linkedListNextLink=linkedListCurrentNode->linkedListNextLink;
+            linkedListCurrentNode->linkedListNextLink=linkedListFirstNode;
+            linkedListFirstNode=linkedListCurrentNode;
             }
-            return currentNode;
+            return linkedListCurrentNode;
         }
-        nextNode=currentNode;
-        currentNode=currentNode->nextLink;
+        linkedListNextNode=linkedListCurrentNode;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
     return NULL;
 }
@@ -88,12 +88,12 @@ struct Node *ILinear_Search(struct Node *currentNode,int searchKey)
 
 int main()
 {
-    int firstItems[]={4,5,8,9,7};
-    create(firstItems,5);
-    struct Node *temporaryValue;
-    temporaryValue=ILinear_Search(firstNode,8);
-    if(temporaryValue)
-        cout<<"Key founded  "<<temporaryValue->nodeValue<<endl;
+    int linkedListFirstItems[]={4,5,8,9,7};
+    create(linkedListFirstItems,5);
+    struct LinkedListNode *linkedListTemporaryValue;
+    linkedListTemporaryValue=ILinear_Search(linkedListFirstNode,8);
+    if(linkedListTemporaryValue)
+        cout<<"Key founded  "<<linkedListTemporaryValue->linkedListNodeValue<<endl;
     else
         cout<<"Key not found"<<endl;
     Display();

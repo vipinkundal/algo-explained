@@ -2,73 +2,73 @@
 #include<stdio.h>
 #include<stdlib.h>
 using namespace std;
-struct Term
+struct SparseMatrixPolynomialTerm
 {
-    int sparseMatrixCoeff;
-    int sparseMatrixExpo;
+    int sparseMatrixState2;
+    int sparseMatrixState3;
 };
-struct sparseMatrixPolynomial
+struct sparseMatrixState
 {
-    int itemCount;
-    struct Term *swapValue;
+    int sparseMatrixItemCount;
+    struct SparseMatrixPolynomialTerm *sparseMatrixSwapValue;
 };
-void create(struct sparseMatrixPolynomial * currentNode)
+void create(struct sparseMatrixState * sparseMatrixCurrentNode)
 {
     cout<<"Enter number of elements ";
-    cin>>currentNode->itemCount;
+    cin>>sparseMatrixCurrentNode->sparseMatrixItemCount;
     cout<<endl;
-    currentNode->swapValue=new struct Term [currentNode->itemCount];
-    for(int scanIndex=0;scanIndex<currentNode->itemCount;scanIndex++)
+    sparseMatrixCurrentNode->sparseMatrixSwapValue=new struct SparseMatrixPolynomialTerm [sparseMatrixCurrentNode->sparseMatrixItemCount];
+    for(int sparseMatrixScanIndex=0;sparseMatrixScanIndex<sparseMatrixCurrentNode->sparseMatrixItemCount;sparseMatrixScanIndex++)
     {
-        cout<<"Enter "<<scanIndex<<"th term coeff ";
-        cin>>currentNode->swapValue[scanIndex].sparseMatrixCoeff;
-        cout<<"Enter "<<scanIndex<<"th term expo ";
-        cin>>currentNode->swapValue[scanIndex].sparseMatrixExpo;
+        cout<<"Enter "<<sparseMatrixScanIndex<<"th term coeff ";
+        cin>>sparseMatrixCurrentNode->sparseMatrixSwapValue[sparseMatrixScanIndex].sparseMatrixState2;
+        cout<<"Enter "<<sparseMatrixScanIndex<<"th term expo ";
+        cin>>sparseMatrixCurrentNode->sparseMatrixSwapValue[sparseMatrixScanIndex].sparseMatrixState3;
         cout<<endl;
     }
 }
-void display(struct sparseMatrixPolynomial *currentNode)
+void display(struct sparseMatrixState *sparseMatrixCurrentNode)
 {
-    for(int scanIndex=0;scanIndex<currentNode->itemCount;scanIndex++)
+    for(int sparseMatrixScanIndex=0;sparseMatrixScanIndex<sparseMatrixCurrentNode->sparseMatrixItemCount;sparseMatrixScanIndex++)
     {
-        cout<<currentNode->swapValue[scanIndex].sparseMatrixCoeff<<"x"<<currentNode->swapValue[scanIndex].sparseMatrixExpo;
-        if(scanIndex!=(currentNode->itemCount)-1)
+        cout<<sparseMatrixCurrentNode->sparseMatrixSwapValue[sparseMatrixScanIndex].sparseMatrixState2<<"x"<<sparseMatrixCurrentNode->sparseMatrixSwapValue[sparseMatrixScanIndex].sparseMatrixState3;
+        if(sparseMatrixScanIndex!=(sparseMatrixCurrentNode->sparseMatrixItemCount)-1)
             cout<<" + ";
     }
     cout<<endl;
 }
-struct sparseMatrixPolynomial addition(struct sparseMatrixPolynomial *sparseMatrixP1,struct sparseMatrixPolynomial *sparseMatrixP2)
+struct sparseMatrixState addition(struct sparseMatrixState *sparseMatrixState5,struct sparseMatrixState *sparseMatrixState6)
 {
-    int scanIndex=0,writeIndex=0,probeIndex=0;
-    struct sparseMatrixPolynomial sparseMatrixSum;
-    sparseMatrixSum.swapValue=new Term[sparseMatrixP1->itemCount + sparseMatrixP2->itemCount];
-    while(scanIndex<sparseMatrixP1->itemCount && writeIndex<sparseMatrixP2->itemCount)
+    int sparseMatrixScanIndex=0,sparseMatrixWriteIndex=0,sparseMatrixProbeIndex=0;
+    struct sparseMatrixState sparseMatrixState4;
+    sparseMatrixState4.sparseMatrixSwapValue=new SparseMatrixPolynomialTerm[sparseMatrixState5->sparseMatrixItemCount + sparseMatrixState6->sparseMatrixItemCount];
+    while(sparseMatrixScanIndex<sparseMatrixState5->sparseMatrixItemCount && sparseMatrixWriteIndex<sparseMatrixState6->sparseMatrixItemCount)
     {
-        if(sparseMatrixP1->swapValue[scanIndex].sparseMatrixExpo>sparseMatrixP2->swapValue[writeIndex].sparseMatrixExpo)
-            sparseMatrixSum.swapValue[probeIndex++]=sparseMatrixP1->swapValue[scanIndex++];
-        else if(sparseMatrixP2->swapValue[writeIndex].sparseMatrixExpo>sparseMatrixP1->swapValue[scanIndex].sparseMatrixExpo)
-            sparseMatrixSum.swapValue[probeIndex++]=sparseMatrixP2->swapValue[writeIndex++];
+        if(sparseMatrixState5->sparseMatrixSwapValue[sparseMatrixScanIndex].sparseMatrixState3>sparseMatrixState6->sparseMatrixSwapValue[sparseMatrixWriteIndex].sparseMatrixState3)
+            sparseMatrixState4.sparseMatrixSwapValue[sparseMatrixProbeIndex++]=sparseMatrixState5->sparseMatrixSwapValue[sparseMatrixScanIndex++];
+        else if(sparseMatrixState6->sparseMatrixSwapValue[sparseMatrixWriteIndex].sparseMatrixState3>sparseMatrixState5->sparseMatrixSwapValue[sparseMatrixScanIndex].sparseMatrixState3)
+            sparseMatrixState4.sparseMatrixSwapValue[sparseMatrixProbeIndex++]=sparseMatrixState6->sparseMatrixSwapValue[sparseMatrixWriteIndex++];
         else
         {
-            sparseMatrixSum.swapValue[probeIndex].sparseMatrixExpo=sparseMatrixP1->swapValue[scanIndex].sparseMatrixExpo;
-            sparseMatrixSum.swapValue[probeIndex++].sparseMatrixCoeff=sparseMatrixP1->swapValue[scanIndex++].sparseMatrixCoeff+sparseMatrixP2->swapValue[writeIndex++].sparseMatrixCoeff;
+            sparseMatrixState4.sparseMatrixSwapValue[sparseMatrixProbeIndex].sparseMatrixState3=sparseMatrixState5->sparseMatrixSwapValue[sparseMatrixScanIndex].sparseMatrixState3;
+            sparseMatrixState4.sparseMatrixSwapValue[sparseMatrixProbeIndex++].sparseMatrixState2=sparseMatrixState5->sparseMatrixSwapValue[sparseMatrixScanIndex++].sparseMatrixState2+sparseMatrixState6->sparseMatrixSwapValue[sparseMatrixWriteIndex++].sparseMatrixState2;
         }
     }
-    for(;scanIndex<sparseMatrixP1->itemCount;scanIndex++)
-        sparseMatrixSum.swapValue[probeIndex++]=sparseMatrixP1->swapValue[scanIndex];
-    for(;writeIndex<sparseMatrixP2->itemCount;writeIndex++)
-        sparseMatrixSum.swapValue[probeIndex++]=sparseMatrixP2->swapValue[writeIndex];
-    sparseMatrixSum.itemCount=probeIndex;
-    return sparseMatrixSum;
+    for(;sparseMatrixScanIndex<sparseMatrixState5->sparseMatrixItemCount;sparseMatrixScanIndex++)
+        sparseMatrixState4.sparseMatrixSwapValue[sparseMatrixProbeIndex++]=sparseMatrixState5->sparseMatrixSwapValue[sparseMatrixScanIndex];
+    for(;sparseMatrixWriteIndex<sparseMatrixState6->sparseMatrixItemCount;sparseMatrixWriteIndex++)
+        sparseMatrixState4.sparseMatrixSwapValue[sparseMatrixProbeIndex++]=sparseMatrixState6->sparseMatrixSwapValue[sparseMatrixWriteIndex];
+    sparseMatrixState4.sparseMatrixItemCount=sparseMatrixProbeIndex;
+    return sparseMatrixState4;
 }
 int main()
 {
-    struct sparseMatrixPolynomial sparseMatrixP1,sparseMatrixP2,sparseMatrixSum;
-    create(&sparseMatrixP1);
-    display(&sparseMatrixP1);
-    create(&sparseMatrixP2);
-    display(&sparseMatrixP2);
-    sparseMatrixSum=addition(&sparseMatrixP1,&sparseMatrixP2);
-    display(&sparseMatrixSum);
+    struct sparseMatrixState sparseMatrixState5,sparseMatrixState6,sparseMatrixState4;
+    create(&sparseMatrixState5);
+    display(&sparseMatrixState5);
+    create(&sparseMatrixState6);
+    display(&sparseMatrixState6);
+    sparseMatrixState4=addition(&sparseMatrixState5,&sparseMatrixState6);
+    display(&sparseMatrixState4);
     return 0;
 }

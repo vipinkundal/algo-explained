@@ -2,65 +2,65 @@
 #include<stdlib.h>
 using namespace std;
 
-class Queue
+class QueueArrayQueueModel
 {
     private:
-        int itemCapacity;
-        int queueFront;
-        int queueRear;
-        int *queueStorage;
+        int queueArrayItemCapacity;
+        int queueArrayQueueFront;
+        int queueArrayQueueRear;
+        int *queueArrayQueueStorage;
     public:
-        Queue();
-        void enqueue(int inputValue);
+        QueueArrayQueueModel();
+        void enqueue(int queueArrayInputValue);
         int dequeue();
         void display();
 };
-Queue::Queue()
+QueueArrayQueueModel::QueueArrayQueueModel()
 {
     cout<<"Enter the size of queue\n";
-    cin>>itemCapacity;
-    queueStorage=new int[itemCapacity];
-    queueFront=queueRear=-1;
+    cin>>queueArrayItemCapacity;
+    queueArrayQueueStorage=new int[queueArrayItemCapacity];
+    queueArrayQueueFront=queueArrayQueueRear=-1;
 }
 
-void Queue::enqueue(int inputValue)
+void QueueArrayQueueModel::enqueue(int queueArrayInputValue)
 {
-    if(queueRear==itemCapacity-1)
+    if(queueArrayQueueRear==queueArrayItemCapacity-1)
         cout<<"Queue is full\n";
     else{
-        ++queueRear;
-        queueStorage[queueRear]=inputValue;
+        ++queueArrayQueueRear;
+        queueArrayQueueStorage[queueArrayQueueRear]=queueArrayInputValue;
 
     }
 }
 
-int Queue::dequeue()
+int QueueArrayQueueModel::dequeue()
 {
-    int inputValue=-1;
-    if(queueFront==queueRear)
+    int queueArrayInputValue=-1;
+    if(queueArrayQueueFront==queueArrayQueueRear)
         cout<<"Queue is Empty\n";
     else{
-        ++queueFront;
-        inputValue=queueStorage[queueFront];
+        ++queueArrayQueueFront;
+        queueArrayInputValue=queueArrayQueueStorage[queueArrayQueueFront];
     }
-    return inputValue;
+    return queueArrayInputValue;
 }
 
-void  Queue::display()
+void  QueueArrayQueueModel::display()
 {
-    int scanIndex=queueFront+1;
-    for(;scanIndex<=queueRear;scanIndex++)
-        cout<<queueStorage[scanIndex]<<" ";
+    int queueArrayScanIndex=queueArrayQueueFront+1;
+    for(;queueArrayScanIndex<=queueArrayQueueRear;queueArrayScanIndex++)
+        cout<<queueArrayQueueStorage[queueArrayScanIndex]<<" ";
     cout<<"\n";
 }
 int main()
 {
-    Queue nextNode;
-    nextNode.enqueue(1);
-    nextNode.enqueue(2);
-    nextNode.enqueue(3);
-    nextNode.enqueue(4);
-    nextNode.enqueue(5);
-    cout<<"Deleted "<<nextNode.dequeue()<<endl;
-    nextNode.display();
+    QueueArrayQueueModel queueArrayNextNode;
+    queueArrayNextNode.enqueue(1);
+    queueArrayNextNode.enqueue(2);
+    queueArrayNextNode.enqueue(3);
+    queueArrayNextNode.enqueue(4);
+    queueArrayNextNode.enqueue(5);
+    cout<<"Deleted "<<queueArrayNextNode.dequeue()<<endl;
+    queueArrayNextNode.display();
 }

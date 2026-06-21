@@ -1,94 +1,94 @@
 #include<iostream>
 using namespace std;
-class Element
+class SparseMatrixEntry
 {
     public:
-    int scanIndex;
-    int writeIndex;
-    int inputValue;
+    int sparseMatrixScanIndex;
+    int sparseMatrixWriteIndex;
+    int sparseMatrixInputValue;
 };
-class Sparse
+class SparseMatrixSparseModel
 {
     private:
-    int columnCount;
-    int itemCount;
-    int sparseMatrixNum;
-    Element *sparseMatrixElm;
+    int sparseMatrixColumnCount;
+    int sparseMatrixItemCount;
+    int sparseMatrixState3;
+    SparseMatrixEntry *sparseMatrixState4;
     public:
-    Sparse(int columnCount,int itemCount,int sparseMatrixNum)
+    SparseMatrixSparseModel(int sparseMatrixColumnCount,int sparseMatrixItemCount,int sparseMatrixState3)
     {
-        this->columnCount=columnCount;
-        this->itemCount=itemCount;
-        this->sparseMatrixNum=sparseMatrixNum;
-        sparseMatrixElm=new Element[this->sparseMatrixNum];
+        this->sparseMatrixColumnCount=sparseMatrixColumnCount;
+        this->sparseMatrixItemCount=sparseMatrixItemCount;
+        this->sparseMatrixState3=sparseMatrixState3;
+        sparseMatrixState4=new SparseMatrixEntry[this->sparseMatrixState3];
     }
-    friend sparseMatrixIstream & operator >>(sparseMatrixIstream &sparseMatrixIs,Sparse &workingText);// friend is a global function
-    friend sparseMatrixOstream & operator << (sparseMatrixOstream &sparseMatrixOs,Sparse &workingText);
-    Sparse operator+(Sparse &workingText);
+    friend sparseMatrixState & operator >>(sparseMatrixState &sparseMatrixState6,SparseMatrixSparseModel &sparseMatrixWorkingText);// friend is a global function
+    friend sparseMatrixState2 & operator << (sparseMatrixState2 &sparseMatrixState7,SparseMatrixSparseModel &sparseMatrixWorkingText);
+    SparseMatrixSparseModel operator+(SparseMatrixSparseModel &sparseMatrixWorkingText);
 };
-Sparse Sparse::operator+(Sparse &workingText)
+SparseMatrixSparseModel SparseMatrixSparseModel::operator+(SparseMatrixSparseModel &sparseMatrixWorkingText)
 {
-    int scanIndex=0,writeIndex=0,probeIndex=0;//i for referrring elements of array of struct Element pointed by elm  in sparse structure pointed by s1
+    int sparseMatrixScanIndex=0,sparseMatrixWriteIndex=0,sparseMatrixProbeIndex=0;//i for referrring elements of array of struct Element pointed by elm  in sparse structure pointed by s1
                     // j for s2 and k for sum
-    Sparse *sparseMatrixSum=new Sparse(columnCount,itemCount,sparseMatrixNum+workingText.sparseMatrixNum);
-    sparseMatrixSum->sparseMatrixElm=new Element[sparseMatrixNum+workingText.sparseMatrixNum];
-    while (scanIndex<sparseMatrixNum && writeIndex<workingText.sparseMatrixNum)
+    SparseMatrixSparseModel *sparseMatrixState5=new SparseMatrixSparseModel(sparseMatrixColumnCount,sparseMatrixItemCount,sparseMatrixState3+sparseMatrixWorkingText.sparseMatrixState3);
+    sparseMatrixState5->sparseMatrixState4=new SparseMatrixEntry[sparseMatrixState3+sparseMatrixWorkingText.sparseMatrixState3];
+    while (sparseMatrixScanIndex<sparseMatrixState3 && sparseMatrixWriteIndex<sparseMatrixWorkingText.sparseMatrixState3)
     {
-        if(sparseMatrixElm[scanIndex].scanIndex<workingText.sparseMatrixElm[writeIndex].scanIndex)// row of s1 is less than s2
-            sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixElm[scanIndex++];
+        if(sparseMatrixState4[sparseMatrixScanIndex].sparseMatrixScanIndex<sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixWriteIndex].sparseMatrixScanIndex)// row of s1 is less than s2
+            sparseMatrixState5->sparseMatrixState4[sparseMatrixProbeIndex++]=sparseMatrixState4[sparseMatrixScanIndex++];
 
-        else if(sparseMatrixElm[scanIndex].scanIndex>workingText.sparseMatrixElm[writeIndex].scanIndex)//row of s2 is less than s1
-            sparseMatrixSum->sparseMatrixElm[probeIndex++]=workingText.sparseMatrixElm[writeIndex++];
+        else if(sparseMatrixState4[sparseMatrixScanIndex].sparseMatrixScanIndex>sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixWriteIndex].sparseMatrixScanIndex)//row of s2 is less than s1
+            sparseMatrixState5->sparseMatrixState4[sparseMatrixProbeIndex++]=sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixWriteIndex++];
 
         else
         {
-            if(sparseMatrixElm[scanIndex].writeIndex<workingText.sparseMatrixElm[writeIndex].writeIndex)//row of s1 and s2 is same but column of s1 is less than s2
-                sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixElm[scanIndex++];
+            if(sparseMatrixState4[sparseMatrixScanIndex].sparseMatrixWriteIndex<sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixWriteIndex].sparseMatrixWriteIndex)//row of s1 and s2 is same but column of s1 is less than s2
+                sparseMatrixState5->sparseMatrixState4[sparseMatrixProbeIndex++]=sparseMatrixState4[sparseMatrixScanIndex++];
 
-            else if(sparseMatrixElm[scanIndex].writeIndex>workingText.sparseMatrixElm[writeIndex].writeIndex)//row of s1 and s2 is same but column of s2 is less than s1
-            sparseMatrixSum->sparseMatrixElm[probeIndex++]=workingText.sparseMatrixElm[writeIndex++];
+            else if(sparseMatrixState4[sparseMatrixScanIndex].sparseMatrixWriteIndex>sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixWriteIndex].sparseMatrixWriteIndex)//row of s1 and s2 is same but column of s2 is less than s1
+            sparseMatrixState5->sparseMatrixState4[sparseMatrixProbeIndex++]=sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixWriteIndex++];
             
             else//row and column both are same
             {
-                sparseMatrixSum->sparseMatrixElm[probeIndex]=sparseMatrixElm[scanIndex];//copy comple s1 struct elm elements
-                sparseMatrixSum->sparseMatrixElm[probeIndex++].inputValue=workingText.sparseMatrixElm[writeIndex++].inputValue+sparseMatrixElm[scanIndex++].inputValue;//add s1 and s2 values
+                sparseMatrixState5->sparseMatrixState4[sparseMatrixProbeIndex]=sparseMatrixState4[sparseMatrixScanIndex];//copy comple s1 struct elm elements
+                sparseMatrixState5->sparseMatrixState4[sparseMatrixProbeIndex++].sparseMatrixInputValue=sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixWriteIndex++].sparseMatrixInputValue+sparseMatrixState4[sparseMatrixScanIndex++].sparseMatrixInputValue;//add s1 and s2 values
             }
         }
         
     }
     //remaining elements 
-    for(;scanIndex<sparseMatrixNum;scanIndex++)
-        sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixElm[scanIndex];
+    for(;sparseMatrixScanIndex<sparseMatrixState3;sparseMatrixScanIndex++)
+        sparseMatrixState5->sparseMatrixState4[sparseMatrixProbeIndex++]=sparseMatrixState4[sparseMatrixScanIndex];
 
-    for(;writeIndex<this->sparseMatrixNum;writeIndex++)
-        sparseMatrixSum->sparseMatrixElm[probeIndex++]=workingText.sparseMatrixElm[writeIndex];
+    for(;sparseMatrixWriteIndex<this->sparseMatrixState3;sparseMatrixWriteIndex++)
+        sparseMatrixState5->sparseMatrixState4[sparseMatrixProbeIndex++]=sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixWriteIndex];
 
-    sparseMatrixSum->sparseMatrixNum=probeIndex;
-    return *sparseMatrixSum;
+    sparseMatrixState5->sparseMatrixState3=sparseMatrixProbeIndex;
+    return *sparseMatrixState5;
 }
-sparseMatrixIstream & operator >> (sparseMatrixIstream &sparseMatrixIs,Sparse &workingText)
+sparseMatrixState & operator >> (sparseMatrixState &sparseMatrixState6,SparseMatrixSparseModel &sparseMatrixWorkingText)
 {
     cout<<"Enter non-zero element\n";
-    int scanIndex;
-    for(scanIndex=0;scanIndex<workingText.sparseMatrixNum;scanIndex++)
+    int sparseMatrixScanIndex;
+    for(sparseMatrixScanIndex=0;sparseMatrixScanIndex<sparseMatrixWorkingText.sparseMatrixState3;sparseMatrixScanIndex++)
     {
-        cin>>workingText.sparseMatrixElm[scanIndex].scanIndex>>workingText.sparseMatrixElm[scanIndex].writeIndex>>workingText.sparseMatrixElm[scanIndex].inputValue;
+        cin>>sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixScanIndex].sparseMatrixScanIndex>>sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixScanIndex].sparseMatrixWriteIndex>>sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixScanIndex].sparseMatrixInputValue;
     }
-    return sparseMatrixIs;
+    return sparseMatrixState6;
 }
-sparseMatrixOstream & operator << (sparseMatrixOstream &sparseMatrixOs,Sparse &workingText)
+sparseMatrixState2 & operator << (sparseMatrixState2 &sparseMatrixState7,SparseMatrixSparseModel &sparseMatrixWorkingText)
 {
-    int scanIndex,writeIndex;
-    int primaryValue;
-    primaryValue=0;
+    int sparseMatrixScanIndex,sparseMatrixWriteIndex;
+    int sparseMatrixPrimaryValue;
+    sparseMatrixPrimaryValue=0;
     cout<<endl;
-    for(scanIndex=0;scanIndex<workingText.columnCount;scanIndex++)
+    for(sparseMatrixScanIndex=0;sparseMatrixScanIndex<sparseMatrixWorkingText.sparseMatrixColumnCount;sparseMatrixScanIndex++)
     {
-        for(writeIndex=0;writeIndex<workingText.itemCount;writeIndex++)
+        for(sparseMatrixWriteIndex=0;sparseMatrixWriteIndex<sparseMatrixWorkingText.sparseMatrixItemCount;sparseMatrixWriteIndex++)
         {
-            if(scanIndex==workingText.sparseMatrixElm[primaryValue].scanIndex && writeIndex==workingText.sparseMatrixElm[primaryValue].writeIndex)
+            if(sparseMatrixScanIndex==sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixPrimaryValue].sparseMatrixScanIndex && sparseMatrixWriteIndex==sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixPrimaryValue].sparseMatrixWriteIndex)
             {
-                cout<<workingText.sparseMatrixElm[primaryValue++].inputValue<<" ";
+                cout<<sparseMatrixWorkingText.sparseMatrixState4[sparseMatrixPrimaryValue++].sparseMatrixInputValue<<" ";
             }
             else{
                 cout<<"0 ";
@@ -100,13 +100,13 @@ sparseMatrixOstream & operator << (sparseMatrixOstream &sparseMatrixOs,Sparse &w
 }
 int main()
 {
-    Sparse sparseMatrixS1(3,3,3);
-    cin>>sparseMatrixS1;
-    cout<<sparseMatrixS1;
-    Sparse sparseMatrixS2(3,3,3);
-    cin>>sparseMatrixS2;
-    cout<<sparseMatrixS2;
-    Sparse sparseMatrixS3=sparseMatrixS1+sparseMatrixS2;
-    cout<<sparseMatrixS3;
+    SparseMatrixSparseModel sparseMatrixState8(3,3,3);
+    cin>>sparseMatrixState8;
+    cout<<sparseMatrixState8;
+    SparseMatrixSparseModel sparseMatrixState9(3,3,3);
+    cin>>sparseMatrixState9;
+    cout<<sparseMatrixState9;
+    SparseMatrixSparseModel sparseMatrixState10=sparseMatrixState8+sparseMatrixState9;
+    cout<<sparseMatrixState10;
     return 0;
 }

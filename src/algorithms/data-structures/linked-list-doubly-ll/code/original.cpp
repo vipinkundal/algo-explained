@@ -1,151 +1,151 @@
 #include<iostream>
 #include<stdlib.h>
 using namespace std;
-class Node {
+class LinkedListNode {
     public:
-    Node *previousLink;
-    int nodeValue;
-    Node *nextLink;
+    LinkedListNode *linkedListPreviousLink;
+    int linkedListNodeValue;
+    LinkedListNode *linkedListNextLink;
 };
-class DoublyLL
+class LinkedListDoublyLL
 {
 private:
-    Node *firstNode=NULL;
+    LinkedListNode *linkedListFirstNode=NULL;
 public:
-    DoublyLL(int firstItems[],int itemCount);
+    LinkedListDoublyLL(int linkedListFirstItems[],int linkedListItemCount);
     void Display();
     int Length();
-    void Insert(int targetIndex,int inputValue);
-    int Delete(int targetIndex);
+    void Insert(int linkedListTargetIndex,int linkedListInputValue);
+    int Delete(int linkedListTargetIndex);
     void Reverse();
-    ~DoublyLL();
+    ~LinkedListDoublyLL();
 
 };
-void DoublyLL::Reverse()
+void LinkedListDoublyLL::Reverse()
 {
-    Node *temporaryValue,*currentNode=firstNode;
-    while(currentNode)
+    LinkedListNode *linkedListTemporaryValue,*linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListCurrentNode)
     {
-        temporaryValue=currentNode->previousLink;
-        currentNode->previousLink=currentNode->nextLink;
-        currentNode->nextLink=temporaryValue;
-        currentNode=currentNode->previousLink;
-        if(currentNode && currentNode->nextLink==NULL)//
-            firstNode=currentNode;
+        linkedListTemporaryValue=linkedListCurrentNode->linkedListPreviousLink;
+        linkedListCurrentNode->linkedListPreviousLink=linkedListCurrentNode->linkedListNextLink;
+        linkedListCurrentNode->linkedListNextLink=linkedListTemporaryValue;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListPreviousLink;
+        if(linkedListCurrentNode && linkedListCurrentNode->linkedListNextLink==NULL)//
+            linkedListFirstNode=linkedListCurrentNode;
     }
 }
-int DoublyLL::Delete(int targetIndex)
+int LinkedListDoublyLL::Delete(int linkedListTargetIndex)
 {
-    if(targetIndex<0 || targetIndex>Length())
+    if(linkedListTargetIndex<0 || linkedListTargetIndex>Length())
         return -1;
 
-    Node *currentNode=firstNode;
-    int inputValue;
+    LinkedListNode *linkedListCurrentNode=linkedListFirstNode;
+    int linkedListInputValue;
 
-    if(targetIndex==1)
+    if(linkedListTargetIndex==1)
     {
-        firstNode=firstNode->nextLink;
-        inputValue=currentNode->nodeValue;
-        delete currentNode;
-        if(firstNode)
-            firstNode->previousLink=NULL;
-        return inputValue;
+        linkedListFirstNode=linkedListFirstNode->linkedListNextLink;
+        linkedListInputValue=linkedListCurrentNode->linkedListNodeValue;
+        delete linkedListCurrentNode;
+        if(linkedListFirstNode)
+            linkedListFirstNode->linkedListPreviousLink=NULL;
+        return linkedListInputValue;
     }
     else{
-        for(int scanIndex=0;scanIndex<targetIndex-1;scanIndex++)
-            currentNode=currentNode->nextLink;
-        currentNode->previousLink->nextLink=currentNode->nextLink;
-        if(currentNode->nextLink)
-            currentNode->nextLink->previousLink=currentNode->previousLink;
-        inputValue=currentNode->nodeValue;
-        delete currentNode;
-        return inputValue;
+        for(int linkedListScanIndex=0;linkedListScanIndex<linkedListTargetIndex-1;linkedListScanIndex++)
+            linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
+        linkedListCurrentNode->linkedListPreviousLink->linkedListNextLink=linkedListCurrentNode->linkedListNextLink;
+        if(linkedListCurrentNode->linkedListNextLink)
+            linkedListCurrentNode->linkedListNextLink->linkedListPreviousLink=linkedListCurrentNode->linkedListPreviousLink;
+        linkedListInputValue=linkedListCurrentNode->linkedListNodeValue;
+        delete linkedListCurrentNode;
+        return linkedListInputValue;
     }
 }
-void DoublyLL::Insert(int targetIndex,int inputValue)
+void LinkedListDoublyLL::Insert(int linkedListTargetIndex,int linkedListInputValue)
 {
-    if(targetIndex<0 || targetIndex>Length())
+    if(linkedListTargetIndex<0 || linkedListTargetIndex>Length())
         return;
-    Node *swapValue,*currentNode=firstNode;
-    swapValue=new Node;
-        swapValue->nodeValue=inputValue;
-    if(targetIndex==0)//before first node
+    LinkedListNode *linkedListSwapValue,*linkedListCurrentNode=linkedListFirstNode;
+    linkedListSwapValue=new LinkedListNode;
+        linkedListSwapValue->linkedListNodeValue=linkedListInputValue;
+    if(linkedListTargetIndex==0)//before first node
     {
-        swapValue->nextLink=firstNode;
-        swapValue->previousLink=NULL;
-        firstNode=swapValue;
+        linkedListSwapValue->linkedListNextLink=linkedListFirstNode;
+        linkedListSwapValue->linkedListPreviousLink=NULL;
+        linkedListFirstNode=linkedListSwapValue;
     }
     else{
-        for(int scanIndex=0;scanIndex<targetIndex-1;scanIndex++)
-            currentNode=currentNode->nextLink;
-        swapValue->nextLink=currentNode->nextLink;
-        if(currentNode->nextLink) 
-            currentNode->nextLink->previousLink=swapValue;
-        currentNode->nextLink=swapValue;
-        swapValue->previousLink=currentNode;
+        for(int linkedListScanIndex=0;linkedListScanIndex<linkedListTargetIndex-1;linkedListScanIndex++)
+            linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
+        linkedListSwapValue->linkedListNextLink=linkedListCurrentNode->linkedListNextLink;
+        if(linkedListCurrentNode->linkedListNextLink) 
+            linkedListCurrentNode->linkedListNextLink->linkedListPreviousLink=linkedListSwapValue;
+        linkedListCurrentNode->linkedListNextLink=linkedListSwapValue;
+        linkedListSwapValue->linkedListPreviousLink=linkedListCurrentNode;
     }
 }
-int DoublyLL::Length()
+int LinkedListDoublyLL::Length()
 {
-    Node *currentNode=firstNode;
-    int inputValue=0;
-    while(currentNode)
+    LinkedListNode *linkedListCurrentNode=linkedListFirstNode;
+    int linkedListInputValue=0;
+    while(linkedListCurrentNode)
     {
-        ++inputValue;
-        currentNode=currentNode->nextLink;
+        ++linkedListInputValue;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
-    return inputValue;
+    return linkedListInputValue;
 }
-void DoublyLL::Display()
+void LinkedListDoublyLL::Display()
 {
-    Node *currentNode=firstNode;
-    while(currentNode)
+    LinkedListNode *linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListCurrentNode)
     {
-        cout<<currentNode->nodeValue<<"->";
-        currentNode=currentNode->nextLink;
+        cout<<linkedListCurrentNode->linkedListNodeValue<<"->";
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
     cout<<"\n";
 }
-DoublyLL::DoublyLL(int firstItems[],int itemCount)
+LinkedListDoublyLL::LinkedListDoublyLL(int linkedListFirstItems[],int linkedListItemCount)
 {
-    Node *lastNode,*swapValue;
-    firstNode=new Node;
-    firstNode->nodeValue=firstItems[0];
-    firstNode->previousLink=firstNode->nextLink=NULL;
-    lastNode=firstNode;
-    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
+    LinkedListNode *linkedListLastNode,*linkedListSwapValue;
+    linkedListFirstNode=new LinkedListNode;
+    linkedListFirstNode->linkedListNodeValue=linkedListFirstItems[0];
+    linkedListFirstNode->linkedListPreviousLink=linkedListFirstNode->linkedListNextLink=NULL;
+    linkedListLastNode=linkedListFirstNode;
+    for(int linkedListScanIndex=1;linkedListScanIndex<linkedListItemCount;linkedListScanIndex++)
     {
-        swapValue=new Node;
-        swapValue->nextLink=lastNode->nextLink;
-        swapValue->nodeValue=firstItems[scanIndex];
-        swapValue->previousLink=lastNode;
-        lastNode->nextLink=swapValue;
-        lastNode=swapValue;
+        linkedListSwapValue=new LinkedListNode;
+        linkedListSwapValue->linkedListNextLink=linkedListLastNode->linkedListNextLink;
+        linkedListSwapValue->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+        linkedListSwapValue->linkedListPreviousLink=linkedListLastNode;
+        linkedListLastNode->linkedListNextLink=linkedListSwapValue;
+        linkedListLastNode=linkedListSwapValue;
     }
     
 }
 
-DoublyLL::~DoublyLL()
+LinkedListDoublyLL::~LinkedListDoublyLL()
 {
-    Node *currentNode=firstNode,*nextNode;
-    while(currentNode)
+    LinkedListNode *linkedListCurrentNode=linkedListFirstNode,*linkedListNextNode;
+    while(linkedListCurrentNode)
     {
-        nextNode=currentNode;
-        currentNode=currentNode->nextLink;
-        cout<<"\n"<<"Deleted :"<<nextNode->nodeValue;
-        delete nextNode;
+        linkedListNextNode=linkedListCurrentNode;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
+        cout<<"\n"<<"Deleted :"<<linkedListNextNode->linkedListNodeValue;
+        delete linkedListNextNode;
     }
 }
 
 int main()
 {
-    int firstItems[]={1,4,6,7,9};
-    DoublyLL primaryValue(firstItems,5);
+    int linkedListFirstItems[]={1,4,6,7,9};
+    LinkedListDoublyLL linkedListPrimaryValue(linkedListFirstItems,5);
     cout<<"Before "<<endl;
-    primaryValue.Display();
-    primaryValue.Reverse();
+    linkedListPrimaryValue.Display();
+    linkedListPrimaryValue.Reverse();
     cout<<"After "<<endl;
-    primaryValue.Display();
-    cout<<"\nLength : "<<primaryValue.Length();
+    linkedListPrimaryValue.Display();
+    cout<<"\nLength : "<<linkedListPrimaryValue.Length();
     return 0;
 }

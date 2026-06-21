@@ -1,32 +1,32 @@
 #include<iostream>
 using namespace std;
-int recursionSumSum(int itemCount)
+int recursionSumState2(int recursionSumItemCount)
 {
-    if(itemCount<=0)
+    if(recursionSumItemCount<=0)
         return 0;
-    return itemCount+recursionSumSum(itemCount-1);
+    return recursionSumItemCount+recursionSumState2(recursionSumItemCount-1);
     
 }
-int Isum(int itemCount)
+int Isum(int recursionSumItemCount)
 {
-    int scanIndex;
-    int recursionSumSum=0;
-    for (scanIndex=0;scanIndex<=itemCount;scanIndex++)
+    int recursionSumScanIndex;
+    int recursionSumState2=0;
+    for (recursionSumScanIndex=0;recursionSumScanIndex<=recursionSumItemCount;recursionSumScanIndex++)
     {
-        recursionSumSum=recursionSumSum+scanIndex;
+        recursionSumState2=recursionSumState2+recursionSumScanIndex;
     }
-    return recursionSumSum;
+    return recursionSumState2;
 }
-int Isum(int itemCount)
+int Isum(int recursionSumItemCount)
 {
-    int scanIndex,recursionSumFactorial=1;
-    for(scanIndex=1;scanIndex<=itemCount;scanIndex++)
-        recursionSumFactorial=recursionSumFactorial*scanIndex;
-    return recursionSumFactorial;
+    int recursionSumScanIndex,recursionSumState=1;
+    for(recursionSumScanIndex=1;recursionSumScanIndex<=recursionSumItemCount;recursionSumScanIndex++)
+        recursionSumState=recursionSumState*recursionSumScanIndex;
+    return recursionSumState;
 
 }
 int main()
 {
-    int recursionSumSum=Isum(5);
-    cout<<recursionSumSum;
+    int recursionSumState2=Isum(5);
+    cout<<recursionSumState2;
 }

@@ -2,69 +2,69 @@
 #include<stdlib.h>
 using namespace std;
 
-class Queue
+class CircularQueueQueueModel
 {
     private:
-        int itemCapacity;
-        int queueFront;
-        int queueRear;
-        int *queueStorage;
+        int circularQueueItemCapacity;
+        int circularQueueQueueFront;
+        int circularQueueQueueRear;
+        int *circularQueueQueueStorage;
     public:
-        Queue();
-        void enqueue(int inputValue);
+        CircularQueueQueueModel();
+        void enqueue(int circularQueueInputValue);
         int dequeue();
         void display();
 };
-Queue::Queue()
+CircularQueueQueueModel::CircularQueueQueueModel()
 {
     cout<<"Enter the size of queue\n";
-    cin>>itemCapacity;
-    itemCapacity++;
-    queueStorage=new int[itemCapacity];
-    queueFront=queueRear=0;
+    cin>>circularQueueItemCapacity;
+    circularQueueItemCapacity++;
+    circularQueueQueueStorage=new int[circularQueueItemCapacity];
+    circularQueueQueueFront=circularQueueQueueRear=0;
 }
 
-void Queue::enqueue(int inputValue)
+void CircularQueueQueueModel::enqueue(int circularQueueInputValue)
 {
-    if((queueRear+1)%itemCapacity==queueFront)
+    if((circularQueueQueueRear+1)%circularQueueItemCapacity==circularQueueQueueFront)
         cout<<"Queue is full\n";
     else{
-        queueRear=(queueRear+1)%itemCapacity;
-        queueStorage[queueRear]=inputValue;
+        circularQueueQueueRear=(circularQueueQueueRear+1)%circularQueueItemCapacity;
+        circularQueueQueueStorage[circularQueueQueueRear]=circularQueueInputValue;
 
     }
 }
 
-int Queue::dequeue()
+int CircularQueueQueueModel::dequeue()
 {
-    int inputValue=-1;
-    if(queueFront==queueRear)
+    int circularQueueInputValue=-1;
+    if(circularQueueQueueFront==circularQueueQueueRear)
         cout<<"Queue is full\n";
     else{
-        queueFront=(queueFront+1)%itemCapacity;
-        inputValue=queueStorage[queueFront];
+        circularQueueQueueFront=(circularQueueQueueFront+1)%circularQueueItemCapacity;
+        circularQueueInputValue=circularQueueQueueStorage[circularQueueQueueFront];
     }
-    return inputValue;
+    return circularQueueInputValue;
 }
 
-void  Queue::display()
+void  CircularQueueQueueModel::display()
 {
-    int scanIndex=queueFront+1;
+    int circularQueueScanIndex=circularQueueQueueFront+1;
     do{
-        cout<<queueStorage[scanIndex]<<" ";
-        scanIndex=(scanIndex+1)%itemCapacity;
-    }while(scanIndex!=(queueRear+1)%itemCapacity);
+        cout<<circularQueueQueueStorage[circularQueueScanIndex]<<" ";
+        circularQueueScanIndex=(circularQueueScanIndex+1)%circularQueueItemCapacity;
+    }while(circularQueueScanIndex!=(circularQueueQueueRear+1)%circularQueueItemCapacity);
     cout<<"\n";
 }
 int main()
 {
-    Queue nextNode;
-    nextNode.enqueue(1);
-    nextNode.enqueue(2);
-    nextNode.enqueue(3);
-    nextNode.enqueue(4);
-    nextNode.enqueue(5);
-    cout<<"Deleted "<<nextNode.dequeue()<<endl;
-    nextNode.enqueue(67);
-    nextNode.display();
+    CircularQueueQueueModel circularQueueNextNode;
+    circularQueueNextNode.enqueue(1);
+    circularQueueNextNode.enqueue(2);
+    circularQueueNextNode.enqueue(3);
+    circularQueueNextNode.enqueue(4);
+    circularQueueNextNode.enqueue(5);
+    cout<<"Deleted "<<circularQueueNextNode.dequeue()<<endl;
+    circularQueueNextNode.enqueue(67);
+    circularQueueNextNode.display();
 }

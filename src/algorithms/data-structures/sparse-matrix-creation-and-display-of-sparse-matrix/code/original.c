@@ -1,39 +1,39 @@
 #include<stdio.h>
 #include<stdlib.h>
-struct Element{
-    int scanIndex;
-    int writeIndex;
-    int inputValue;
+struct SparseMatrixEntry{
+    int sparseMatrixScanIndex;
+    int sparseMatrixWriteIndex;
+    int sparseMatrixInputValue;
 };
-struct sparseMatrixSparse
+struct sparseMatrixState
 {
-    int columnCount;
-    int itemCount;
-    int sparseMatrixNum;
-    struct Element *sparseMatrixElm;
+    int sparseMatrixColumnCount;
+    int sparseMatrixItemCount;
+    int sparseMatrixState2;
+    struct SparseMatrixEntry *sparseMatrixState3;
 };
-void create(struct sparseMatrixSparse *workingText)
+void create(struct sparseMatrixState *sparseMatrixWorkingText)
 {
     printf("Enter Dimension of sparse natrix ");
-    scanf("%d%d",&workingText->columnCount,&workingText->itemCount);
+    scanf("%d%d",&sparseMatrixWorkingText->sparseMatrixColumnCount,&sparseMatrixWorkingText->sparseMatrixItemCount);
     printf("\nEnter number of non-zero element ");
-    scanf("%d",&workingText->sparseMatrixNum);
-    workingText->sparseMatrixElm=(struct Element *)malloc(workingText->sparseMatrixNum*sizeof(struct Element));
-    for(int scanIndex=0;scanIndex<workingText->sparseMatrixNum;scanIndex++)
+    scanf("%d",&sparseMatrixWorkingText->sparseMatrixState2);
+    sparseMatrixWorkingText->sparseMatrixState3=(struct SparseMatrixEntry *)malloc(sparseMatrixWorkingText->sparseMatrixState2*sizeof(struct SparseMatrixEntry));
+    for(int sparseMatrixScanIndex=0;sparseMatrixScanIndex<sparseMatrixWorkingText->sparseMatrixState2;sparseMatrixScanIndex++)
     {
-        printf("\nEnter %d non-zero elememt ",scanIndex+1);
-        scanf("%d%d%d",&workingText->sparseMatrixElm[scanIndex].scanIndex,&workingText->sparseMatrixElm[scanIndex].writeIndex,&workingText->sparseMatrixElm[scanIndex].inputValue);
+        printf("\nEnter %d non-zero elememt ",sparseMatrixScanIndex+1);
+        scanf("%d%d%d",&sparseMatrixWorkingText->sparseMatrixState3[sparseMatrixScanIndex].sparseMatrixScanIndex,&sparseMatrixWorkingText->sparseMatrixState3[sparseMatrixScanIndex].sparseMatrixWriteIndex,&sparseMatrixWorkingText->sparseMatrixState3[sparseMatrixScanIndex].sparseMatrixInputValue);
     }
 }
-void display(struct sparseMatrixSparse workingText)
+void display(struct sparseMatrixState sparseMatrixWorkingText)
 {
-    int probeIndex=0;
-    for(int scanIndex=0;scanIndex<workingText.columnCount;scanIndex++)
+    int sparseMatrixProbeIndex=0;
+    for(int sparseMatrixScanIndex=0;sparseMatrixScanIndex<sparseMatrixWorkingText.sparseMatrixColumnCount;sparseMatrixScanIndex++)
     {
-        for(int writeIndex=0;writeIndex<workingText.itemCount;writeIndex++)
+        for(int sparseMatrixWriteIndex=0;sparseMatrixWriteIndex<sparseMatrixWorkingText.sparseMatrixItemCount;sparseMatrixWriteIndex++)
         {
-            if(scanIndex==workingText.sparseMatrixElm[probeIndex].scanIndex && writeIndex==workingText.sparseMatrixElm[probeIndex].writeIndex)
-            printf("%d ",workingText.sparseMatrixElm[probeIndex++].inputValue);
+            if(sparseMatrixScanIndex==sparseMatrixWorkingText.sparseMatrixState3[sparseMatrixProbeIndex].sparseMatrixScanIndex && sparseMatrixWriteIndex==sparseMatrixWorkingText.sparseMatrixState3[sparseMatrixProbeIndex].sparseMatrixWriteIndex)
+            printf("%d ",sparseMatrixWorkingText.sparseMatrixState3[sparseMatrixProbeIndex++].sparseMatrixInputValue);
             else
             printf("0 ");
         }
@@ -43,8 +43,8 @@ void display(struct sparseMatrixSparse workingText)
 
 int main()
 {
-    struct sparseMatrixSparse workingText;
-    create(&workingText);
-    display(workingText);
+    struct sparseMatrixState sparseMatrixWorkingText;
+    create(&sparseMatrixWorkingText);
+    display(sparseMatrixWorkingText);
     return 0;
 }

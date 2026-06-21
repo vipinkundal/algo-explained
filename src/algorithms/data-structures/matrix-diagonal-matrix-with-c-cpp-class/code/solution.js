@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Diagonal Matrix With C++ Class
-// Original source: 07_Matrix/02_Diagonal_matrix_with_c++_class.cpp
 export function matrixDiagonalMatrixWithCCppClass() {
   const matrix = [[1, 0, 0], [0, 2, 0], [0, 0, 3]];
   const nonZero = matrix.flatMap((row, r) => row.map((value, c) => ({ r, c, value }))).filter((cell) => cell.value !== 0);

@@ -1,32 +1,32 @@
 #include<iostream>
 #include<stdio.h>
 using namespace std;
-void perm(char workingText[],int probeIndex)
+void perm(char stringPermutationWorkingText[],int stringPermutationProbeIndex)
 {
-    static int firstItems[10]={0};
-    static char resultText[10];
-    int scanIndex;
-    if(workingText[probeIndex]=='\0')
+    static int stringPermutationFirstItems[10]={0};
+    static char stringPermutationResultText[10];
+    int stringPermutationScanIndex;
+    if(stringPermutationWorkingText[stringPermutationProbeIndex]=='\0')
     {
-        resultText[probeIndex]='\0';
-        cout<<resultText<<endl;
+        stringPermutationResultText[stringPermutationProbeIndex]='\0';
+        cout<<stringPermutationResultText<<endl;
     }
     else
     {
-        for(int scanIndex=0;workingText[scanIndex]!='\0';scanIndex++)
+        for(int stringPermutationScanIndex=0;stringPermutationWorkingText[stringPermutationScanIndex]!='\0';stringPermutationScanIndex++)
         {
-            if(firstItems[scanIndex]==0)
+            if(stringPermutationFirstItems[stringPermutationScanIndex]==0)
             {
-                resultText[probeIndex]=workingText[scanIndex];
-                firstItems[scanIndex]=1;
-                perm(workingText,probeIndex+1);
-                firstItems[scanIndex]=0;
+                stringPermutationResultText[stringPermutationProbeIndex]=stringPermutationWorkingText[stringPermutationScanIndex];
+                stringPermutationFirstItems[stringPermutationScanIndex]=1;
+                perm(stringPermutationWorkingText,stringPermutationProbeIndex+1);
+                stringPermutationFirstItems[stringPermutationScanIndex]=0;
             }
         }
     }
 }
 int main()
 {
-    char workingText[]="ABC";
-    perm(workingText,0);
+    char stringPermutationWorkingText[]="ABC";
+    perm(stringPermutationWorkingText,0);
     return 0;}

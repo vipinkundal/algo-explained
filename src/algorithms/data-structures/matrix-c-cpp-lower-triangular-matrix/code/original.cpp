@@ -1,57 +1,57 @@
 #include<iostream>
 using namespace std;
-class matrixCRMatrix//row major representaion
+class matrixCState//row major representaion
 {
     private:
-    int itemCount;
-    int *firstItems;
+    int matrixCItemCount;
+    int *matrixCFirstItems;
     public:
-    matrixCRMatrix(int itemCount)//constructor of matrix
+    matrixCState(int matrixCItemCount)//constructor of matrix
     {
-        this->itemCount=itemCount;
-        firstItems=new int[itemCount];   
+        this->matrixCItemCount=matrixCItemCount;
+        matrixCFirstItems=new int[matrixCItemCount];   
     }
 
-    void set(int scanIndex,int writeIndex,int inputValue);
+    void set(int matrixCScanIndex,int matrixCWriteIndex,int matrixCInputValue);
 
-    int get(int scanIndex,int writeIndex);
+    int get(int matrixCScanIndex,int matrixCWriteIndex);
 
     void Display();
 
-    ~ matrixCRMatrix(){//destructor destructs/clear heap memory allocated
-        delete []firstItems;
+    ~ matrixCState(){//destructor destructs/clear heap memory allocated
+        delete []matrixCFirstItems;
 
     }
 
 };
-void matrixCRMatrix::set(int scanIndex,int writeIndex,int inputValue)// :: scope resolution operator to indicate function belong to class matrix
+void matrixCState::set(int matrixCScanIndex,int matrixCWriteIndex,int matrixCInputValue)// :: scope resolution operator to indicate function belong to class matrix
 {
-    if(scanIndex>=writeIndex)
+    if(matrixCScanIndex>=matrixCWriteIndex)
     {
-        int swapValue=((scanIndex*(scanIndex-1)/2)+(writeIndex-1));
-        firstItems[swapValue]=inputValue;
+        int matrixCSwapValue=((matrixCScanIndex*(matrixCScanIndex-1)/2)+(matrixCWriteIndex-1));
+        matrixCFirstItems[matrixCSwapValue]=matrixCInputValue;
     }
 }
-int matrixCRMatrix::get(int scanIndex,int writeIndex)
+int matrixCState::get(int matrixCScanIndex,int matrixCWriteIndex)
 {
-    if(scanIndex>=writeIndex)
+    if(matrixCScanIndex>=matrixCWriteIndex)
     {
-        int swapValue=((scanIndex*(scanIndex-1)/2)+(writeIndex-1));
-        return firstItems[swapValue];
+        int matrixCSwapValue=((matrixCScanIndex*(matrixCScanIndex-1)/2)+(matrixCWriteIndex-1));
+        return matrixCFirstItems[matrixCSwapValue];
     }
     else
         return 0;
 }
-void matrixCRMatrix::Display()
+void matrixCState::Display()
 {
-    for(int scanIndex=1;scanIndex<=(itemCount);scanIndex++)//here  i is considered as matrix index so is started from 1
+    for(int matrixCScanIndex=1;matrixCScanIndex<=(matrixCItemCount);matrixCScanIndex++)//here  i is considered as matrix index so is started from 1
     {
-        for(int writeIndex=1;writeIndex<=(itemCount);writeIndex++)
+        for(int matrixCWriteIndex=1;matrixCWriteIndex<=(matrixCItemCount);matrixCWriteIndex++)
         {
-            if(scanIndex>=writeIndex)
+            if(matrixCScanIndex>=matrixCWriteIndex)
             {
-                int swapValue=((scanIndex*(scanIndex-1)/2)+(writeIndex-1));
-                printf("%d ",firstItems[swapValue]);
+                int matrixCSwapValue=((matrixCScanIndex*(matrixCScanIndex-1)/2)+(matrixCWriteIndex-1));
+                printf("%d ",matrixCFirstItems[matrixCSwapValue]);
             }
             else
             printf("%d ",0);
@@ -60,59 +60,59 @@ void matrixCRMatrix::Display()
     }
 }
 
-class matrixCCMatrix//row major representaion
+class matrixCState2//row major representaion
 {
     private:
-    int itemCount;
-    int *firstItems;
+    int matrixCItemCount;
+    int *matrixCFirstItems;
     public:
-    matrixCCMatrix(int itemCount)//constructor of matrix
+    matrixCState2(int matrixCItemCount)//constructor of matrix
     {
-        this->itemCount=itemCount;
-        firstItems=new int[itemCount];   
+        this->matrixCItemCount=matrixCItemCount;
+        matrixCFirstItems=new int[matrixCItemCount];   
     }
 
-    void cset(int scanIndex,int writeIndex,int inputValue);
+    void cset(int matrixCScanIndex,int matrixCWriteIndex,int matrixCInputValue);
 
-    int cget(int scanIndex,int writeIndex);
+    int cget(int matrixCScanIndex,int matrixCWriteIndex);
 
     void cDisplay();
 
-    ~ matrixCCMatrix(){//destructor destructs/clear heap memory allocated
-        delete []firstItems;
+    ~ matrixCState2(){//destructor destructs/clear heap memory allocated
+        delete []matrixCFirstItems;
 
     }
 
 };
-void matrixCCMatrix::cset(int scanIndex,int writeIndex,int inputValue)// :: scope resolution operator to indicate function belong to class matrix
+void matrixCState2::cset(int matrixCScanIndex,int matrixCWriteIndex,int matrixCInputValue)// :: scope resolution operator to indicate function belong to class matrix
 {
-    if(scanIndex>=writeIndex)
+    if(matrixCScanIndex>=matrixCWriteIndex)
     {
-        if(scanIndex>=writeIndex)
+        if(matrixCScanIndex>=matrixCWriteIndex)
         {
-            firstItems[itemCount*(writeIndex-1)-(writeIndex-1)*(writeIndex-2)/2+(scanIndex-writeIndex)]=inputValue;
+            matrixCFirstItems[matrixCItemCount*(matrixCWriteIndex-1)-(matrixCWriteIndex-1)*(matrixCWriteIndex-2)/2+(matrixCScanIndex-matrixCWriteIndex)]=matrixCInputValue;
         }
 
     }
 }
-int matrixCCMatrix::cget(int scanIndex,int writeIndex)
+int matrixCState2::cget(int matrixCScanIndex,int matrixCWriteIndex)
 {
-    if(scanIndex>=writeIndex)
+    if(matrixCScanIndex>=matrixCWriteIndex)
     {
-        return firstItems[itemCount*(writeIndex-1)-(writeIndex-1)*(writeIndex-2)/2+(scanIndex-writeIndex)];
+        return matrixCFirstItems[matrixCItemCount*(matrixCWriteIndex-1)-(matrixCWriteIndex-1)*(matrixCWriteIndex-2)/2+(matrixCScanIndex-matrixCWriteIndex)];
     }
     else
         return 0;
 }
-void matrixCCMatrix::cDisplay()
+void matrixCState2::cDisplay()
 {
-    for(int scanIndex=1;scanIndex<=itemCount;scanIndex++)//here  i is considered as matrix index so is started from 1
+    for(int matrixCScanIndex=1;matrixCScanIndex<=matrixCItemCount;matrixCScanIndex++)//here  i is considered as matrix index so is started from 1
     {
-        for(int writeIndex=1;writeIndex<=itemCount;writeIndex++)
+        for(int matrixCWriteIndex=1;matrixCWriteIndex<=matrixCItemCount;matrixCWriteIndex++)
         {
-            if(scanIndex>=writeIndex)
+            if(matrixCScanIndex>=matrixCWriteIndex)
             {
-                printf("%d ",firstItems[itemCount*(writeIndex-1)-(writeIndex-1)*(writeIndex-2)/2+(scanIndex-writeIndex)]);
+                printf("%d ",matrixCFirstItems[matrixCItemCount*(matrixCWriteIndex-1)-(matrixCWriteIndex-1)*(matrixCWriteIndex-2)/2+(matrixCScanIndex-matrixCWriteIndex)]);
             }
             else
             printf("%d ",0);
@@ -122,39 +122,39 @@ void matrixCCMatrix::cDisplay()
 }
 int main()
 {
-    int matrixCNum,inputValue;
+    int matrixCState4,matrixCInputValue;
     //using row major formula
     
     printf("Enter number of elements ");
-    scanf("%d",&matrixCNum);
-    class matrixCRMatrix columnCount(matrixCNum);
+    scanf("%d",&matrixCState4);
+    class matrixCState matrixCColumnCount(matrixCState4);
     printf("Enter the elements ");
-    for(int scanIndex=1;scanIndex<=matrixCNum;scanIndex++)
+    for(int matrixCScanIndex=1;matrixCScanIndex<=matrixCState4;matrixCScanIndex++)
     {
-        for(int writeIndex=1;writeIndex<=matrixCNum;writeIndex++)
+        for(int matrixCWriteIndex=1;matrixCWriteIndex<=matrixCState4;matrixCWriteIndex++)
         {
-            scanf("%d",&inputValue);
-            columnCount.set(scanIndex,writeIndex,inputValue);
+            scanf("%d",&matrixCInputValue);
+            matrixCColumnCount.set(matrixCScanIndex,matrixCWriteIndex,matrixCInputValue);
         }
     }
     
-    columnCount.Display();
+    matrixCColumnCount.Display();
     printf("\n\n");
-    int matrixCNum2;
+    int matrixCState3;
     //using column major formula
     printf("Enter number of elements ");
-    scanf("%d",&matrixCNum2);
-    class matrixCCMatrix matrixCM2(matrixCNum2);
+    scanf("%d",&matrixCState3);
+    class matrixCState2 matrixCState5(matrixCState3);
     printf("Enter the elements ");
-    for(int scanIndex=1;scanIndex<=matrixCNum2;scanIndex++)
+    for(int matrixCScanIndex=1;matrixCScanIndex<=matrixCState3;matrixCScanIndex++)
     {
-        for(int writeIndex=1;writeIndex<=matrixCNum2;writeIndex++)
+        for(int matrixCWriteIndex=1;matrixCWriteIndex<=matrixCState3;matrixCWriteIndex++)
         {
-            scanf("%d",&inputValue);
-            matrixCM2.cset(scanIndex,writeIndex,inputValue);
+            scanf("%d",&matrixCInputValue);
+            matrixCState5.cset(matrixCScanIndex,matrixCWriteIndex,matrixCInputValue);
         }
     }
-    matrixCM2.cDisplay();
+    matrixCState5.cDisplay();
     
     return 0;
 }

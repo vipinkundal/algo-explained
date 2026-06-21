@@ -1,50 +1,50 @@
 #include<iostream>
 using namespace std;
-struct Array
+struct ArrayAdtArrayModel
 {
-    int firstItems[100];
-    int itemCapacity;
-    int textLength;
+    int arrayAdtFirstItems[100];
+    int arrayAdtItemCapacity;
+    int arrayAdtTextLength;
 };
-void Display(struct Array items)
+void Display(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        std::cout<<items.firstItems[scanIndex]<<" ";
+        std::cout<<arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex]<<" ";
     }
 }
 int main()
 {
-    Array items={{1,2,3,4,5,7,8},100,7};
-    int arrayAdtSum=0,workingText=0;
-    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)//method 1
-        arrayAdtSum=arrayAdtSum+items.firstItems[scanIndex];
+    ArrayAdtArrayModel arrayAdtItems={{1,2,3,4,5,7,8},100,7};
+    int arrayAdtState4=0,arrayAdtWorkingText=0;
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)//method 1
+        arrayAdtState4=arrayAdtState4+arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex];
     
-    workingText=items.firstItems[items.textLength-1]*(items.firstItems[items.textLength-1]-1)/2;
+    arrayAdtWorkingText=arrayAdtItems.arrayAdtFirstItems[arrayAdtItems.arrayAdtTextLength-1]*(arrayAdtItems.arrayAdtFirstItems[arrayAdtItems.arrayAdtTextLength-1]-1)/2;
 
-    Array arrayAdtArr2={{6,7,10,11,13,14,15},100,7};//Menthod 2 for multiple missing element
-    int arrayAdtDiff=arrayAdtArr2.firstItems[0]-0;
-    for(int scanIndex=0;scanIndex<arrayAdtArr2.textLength;scanIndex++)
+    ArrayAdtArrayModel arrayAdtState={{6,7,10,11,13,14,15},100,7};//Menthod 2 for multiple missing element
+    int arrayAdtState2=arrayAdtState.arrayAdtFirstItems[0]-0;
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtState.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        if(arrayAdtArr2.firstItems[scanIndex]-scanIndex!=arrayAdtDiff)
+        if(arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]-arrayAdtScanIndex!=arrayAdtState2)
         {
-            while(arrayAdtDiff<(arrayAdtArr2.firstItems[scanIndex]-scanIndex))
+            while(arrayAdtState2<(arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]-arrayAdtScanIndex))
             {
-                cout<<arrayAdtDiff+scanIndex<<endl;
-                arrayAdtDiff++;
+                cout<<arrayAdtState2+arrayAdtScanIndex<<endl;
+                arrayAdtState2++;
             }
         }
     }
 
-    Array arrayAdtArr3={{1,7,5,2,3},100,5};//Menthod 3 for multiple missing element using hashing
+    ArrayAdtArrayModel arrayAdtState3={{1,7,5,2,3},100,5};//Menthod 3 for multiple missing element using hashing
     //here l=1 h=7
     int A1[8]={0};
-    for(int scanIndex=0;scanIndex<arrayAdtArr3.textLength;scanIndex++)
-        A1[arrayAdtArr3.firstItems[scanIndex]]++;
-    for(int scanIndex=1;scanIndex<8;scanIndex++)
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtState3.arrayAdtTextLength;arrayAdtScanIndex++)
+        A1[arrayAdtState3.arrayAdtFirstItems[arrayAdtScanIndex]]++;
+    for(int arrayAdtScanIndex=1;arrayAdtScanIndex<8;arrayAdtScanIndex++)
     {
-        if(A1[scanIndex]==0)
-            cout<<"element "<<scanIndex<< " is missing"<<endl;
+        if(A1[arrayAdtScanIndex]==0)
+            cout<<"element "<<arrayAdtScanIndex<< " is missing"<<endl;
     }
     return 0;
     }

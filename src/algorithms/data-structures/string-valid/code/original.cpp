@@ -1,16 +1,16 @@
 #include<iostream>
-bool valid(char stringValidName[])
+bool valid(char stringValidState[])
 {
-    for(int scanIndex=0;stringValidName[scanIndex]!='\0';scanIndex++)
+    for(int stringValidScanIndex=0;stringValidState[stringValidScanIndex]!='\0';stringValidScanIndex++)
     {
-        if(!(stringValidName[scanIndex]>=65 && stringValidName[scanIndex]<=90) && !(stringValidName[scanIndex]>=97 && stringValidName[scanIndex]<=122) && !(stringValidName[scanIndex]>=48 && stringValidName[scanIndex]<=57))
+        if(!(stringValidState[stringValidScanIndex]>=65 && stringValidState[stringValidScanIndex]<=90) && !(stringValidState[stringValidScanIndex]>=97 && stringValidState[stringValidScanIndex]<=122) && !(stringValidState[stringValidScanIndex]>=48 && stringValidState[stringValidScanIndex]<=57))
             return false;
     }
     return true;
 }
 int main()
 {
-    char stringValidName[] ="An3ura835)6HHHg";
-    std::cout<<valid(stringValidName);
+    char stringValidState[] ="An3ura835)6HHHg";
+    std::cout<<valid(stringValidState);
     return 0;
 }

@@ -1,27 +1,27 @@
 #include<iostream>
 int main()
 {
-    char stringVowelsSampleWord[11]={'T','a','j',' ',' ','m','a','h','a','l','\0'};
-    int stringVowelsVCount=0,stringVowelsCCount=0;
-    for(int scanIndex=0;stringVowelsSampleWord[scanIndex]!='\0';scanIndex++)
+    char stringVowelsState[11]={'T','a','j',' ',' ','m','a','h','a','l','\0'};
+    int stringVowelsState2=0,stringVowelsState3=0;
+    for(int stringVowelsScanIndex=0;stringVowelsState[stringVowelsScanIndex]!='\0';stringVowelsScanIndex++)
     {
-        if(stringVowelsSampleWord[scanIndex]=='a'||stringVowelsSampleWord[scanIndex]=='e'|| stringVowelsSampleWord[scanIndex]=='i'|| stringVowelsSampleWord[scanIndex]=='o' || stringVowelsSampleWord[scanIndex]=='u' || 
-        stringVowelsSampleWord[scanIndex]=='A'|| stringVowelsSampleWord[scanIndex]=='E' || stringVowelsSampleWord[scanIndex]=='I'|| stringVowelsSampleWord[scanIndex]=='O' || stringVowelsSampleWord[scanIndex]=='U')
-        stringVowelsVCount++;//counting as vowel
+        if(stringVowelsState[stringVowelsScanIndex]=='a'||stringVowelsState[stringVowelsScanIndex]=='e'|| stringVowelsState[stringVowelsScanIndex]=='i'|| stringVowelsState[stringVowelsScanIndex]=='o' || stringVowelsState[stringVowelsScanIndex]=='u' || 
+        stringVowelsState[stringVowelsScanIndex]=='A'|| stringVowelsState[stringVowelsScanIndex]=='E' || stringVowelsState[stringVowelsScanIndex]=='I'|| stringVowelsState[stringVowelsScanIndex]=='O' || stringVowelsState[stringVowelsScanIndex]=='U')
+        stringVowelsState2++;//counting as vowel
         
-        else if(stringVowelsSampleWord[scanIndex]>=65 && stringVowelsSampleWord[scanIndex]<=90||stringVowelsSampleWord[scanIndex]>=97 && stringVowelsSampleWord[scanIndex]<122)
-            stringVowelsCCount++;//counting consonent
+        else if(stringVowelsState[stringVowelsScanIndex]>=65 && stringVowelsState[stringVowelsScanIndex]<=90||stringVowelsState[stringVowelsScanIndex]>=97 && stringVowelsState[stringVowelsScanIndex]<122)
+            stringVowelsState3++;//counting consonent
     }
-    std::cout<<"number of vowels = "<<stringVowelsVCount<<"\n"<<"number of consonent = "<<stringVowelsCCount<<std::endl;
+    std::cout<<"number of vowels = "<<stringVowelsState2<<"\n"<<"number of consonent = "<<stringVowelsState3<<std::endl;
 
     //count words
-    int stringVowelsSpace=0;
-    for(int scanIndex=0;stringVowelsSampleWord[scanIndex]!='\0';scanIndex++)
+    int stringVowelsState4=0;
+    for(int stringVowelsScanIndex=0;stringVowelsState[stringVowelsScanIndex]!='\0';stringVowelsScanIndex++)
     {
-        if(stringVowelsSampleWord[scanIndex]==' '&& stringVowelsSampleWord[scanIndex-1]!=' ')//checking if its a space and not white space
-            stringVowelsSpace++;//counting space
+        if(stringVowelsState[stringVowelsScanIndex]==' '&& stringVowelsState[stringVowelsScanIndex-1]!=' ')//checking if its a space and not white space
+            stringVowelsState4++;//counting space
     }
-    std::cout<<"number of words = "<<stringVowelsSpace+1;;
+    std::cout<<"number of words = "<<stringVowelsState4+1;;
     
     return 0;
 }

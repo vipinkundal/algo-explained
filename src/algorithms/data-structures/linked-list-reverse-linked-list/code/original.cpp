@@ -2,101 +2,101 @@
 #include<stdlib.h>
 using namespace std;
 
-struct Node
+struct LinkedListNode
 {
-    int nodeValue;
-    struct Node *nextLink;
-}*firstNode=NULL;
+    int linkedListNodeValue;
+    struct LinkedListNode *linkedListNextLink;
+}*linkedListFirstNode=NULL;
 
-void create(int firstItems[],int itemCount)
+void create(int linkedListFirstItems[],int linkedListItemCount)
 {
-    int scanIndex;
-    struct Node *lastNode, *swapValue;
-    firstNode=new Node;
-    firstNode->nodeValue=firstItems[0];
-    firstNode->nextLink=NULL;
-    lastNode=firstNode;//addreess is passed and now first is refferd as last
+    int linkedListScanIndex;
+    struct LinkedListNode *linkedListLastNode, *linkedListSwapValue;
+    linkedListFirstNode=new LinkedListNode;
+    linkedListFirstNode->linkedListNodeValue=linkedListFirstItems[0];
+    linkedListFirstNode->linkedListNextLink=NULL;
+    linkedListLastNode=linkedListFirstNode;//addreess is passed and now first is refferd as last
 
-    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
+    for(int linkedListScanIndex=1;linkedListScanIndex<linkedListItemCount;linkedListScanIndex++)
     {
-        swapValue=new Node;
-        swapValue->nodeValue=firstItems[scanIndex];
-        swapValue->nextLink=NULL;
-        lastNode->nextLink=swapValue;//putting address of current node in the next of last node 
-        lastNode=swapValue;//assigning current node as last node
+        linkedListSwapValue=new LinkedListNode;
+        linkedListSwapValue->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+        linkedListSwapValue->linkedListNextLink=NULL;
+        linkedListLastNode->linkedListNextLink=linkedListSwapValue;//putting address of current node in the next of last node 
+        linkedListLastNode=linkedListSwapValue;//assigning current node as last node
     }
 }
 
 void Display()
 {
-    struct Node *currentNode;
-    currentNode=firstNode;
-    while(currentNode!=NULL)
+    struct LinkedListNode *linkedListCurrentNode;
+    linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListCurrentNode!=NULL)
     {
-        cout<<currentNode->nodeValue<<endl;
-        currentNode=currentNode->nextLink;
+        cout<<linkedListCurrentNode->linkedListNodeValue<<endl;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
 }
 
-int count(struct Node *currentNode)//counting of nodes
+int count(struct LinkedListNode *linkedListCurrentNode)//counting of nodes
 {
-    int columnIndex=0;
+    int linkedListColumnIndex=0;
     
-    currentNode=firstNode;
-    while(currentNode)
+    linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListCurrentNode)
     {
-        columnIndex++;
-        currentNode=currentNode->nextLink;
+        linkedListColumnIndex++;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
-    return columnIndex;
+    return linkedListColumnIndex;
 }
 
-void reverse1(struct Node *currentNode)//Reverse using (Auxiliary)array
+void reverse1(struct LinkedListNode *linkedListCurrentNode)//Reverse using (Auxiliary)array
 {
-    int *firstItems,scanIndex=0;
-    struct Node *nextNode;
-    firstItems=new int[count(currentNode)];
-    nextNode=currentNode;
-    while(nextNode!=NULL)
+    int *linkedListFirstItems,linkedListScanIndex=0;
+    struct LinkedListNode *linkedListNextNode;
+    linkedListFirstItems=new int[count(linkedListCurrentNode)];
+    linkedListNextNode=linkedListCurrentNode;
+    while(linkedListNextNode!=NULL)
     {
-        firstItems[scanIndex]=nextNode->nodeValue;
-        nextNode=nextNode->nextLink;
-        scanIndex++;
+        linkedListFirstItems[linkedListScanIndex]=linkedListNextNode->linkedListNodeValue;
+        linkedListNextNode=linkedListNextNode->linkedListNextLink;
+        linkedListScanIndex++;
     }
-    nextNode=currentNode;
-    scanIndex--;
-    while(nextNode!=NULL)
+    linkedListNextNode=linkedListCurrentNode;
+    linkedListScanIndex--;
+    while(linkedListNextNode!=NULL)
     {
-        nextNode->nodeValue=firstItems[scanIndex];
-        nextNode=nextNode->nextLink;
-        scanIndex--;
+        linkedListNextNode->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+        linkedListNextNode=linkedListNextNode->linkedListNextLink;
+        linkedListScanIndex--;
     }
 
 }
 
-void reverse2(struct Node *currentNode)//reversing by reversing the links
+void reverse2(struct LinkedListNode *linkedListCurrentNode)//reversing by reversing the links
 {
-    struct Node *nextNode=NULL,*rightIndex=NULL;
-    while(currentNode!=NULL)
+    struct LinkedListNode *linkedListNextNode=NULL,*linkedListRightIndex=NULL;
+    while(linkedListCurrentNode!=NULL)
     {
-        rightIndex=nextNode;
-        nextNode=currentNode;
-        currentNode=currentNode->nextLink;
-        nextNode->nextLink=rightIndex;
+        linkedListRightIndex=linkedListNextNode;
+        linkedListNextNode=linkedListCurrentNode;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
+        linkedListNextNode->linkedListNextLink=linkedListRightIndex;
     }
-    firstNode=nextNode;//make first the q as links are reveresed at q is at the last node after loop
+    linkedListFirstNode=linkedListNextNode;//make first the q as links are reveresed at q is at the last node after loop
 }
 
-void reverse3(struct Node *nextNode,struct Node *currentNode)
+void reverse3(struct LinkedListNode *linkedListNextNode,struct LinkedListNode *linkedListCurrentNode)
 {
-    if(currentNode!=NULL)
+    if(linkedListCurrentNode!=NULL)
     {
-        reverse3(currentNode,currentNode->nextLink);
-        currentNode->nextLink=nextNode;
+        reverse3(linkedListCurrentNode,linkedListCurrentNode->linkedListNextLink);
+        linkedListCurrentNode->linkedListNextLink=linkedListNextNode;
     }
     else
     {
-        firstNode=nextNode;
+        linkedListFirstNode=linkedListNextNode;
     }
 }
 
@@ -104,11 +104,11 @@ void reverse3(struct Node *nextNode,struct Node *currentNode)
 
 int main()
 {
-    int firstItems[]={4,7,19,12,15,18};
-    create(firstItems,6);
+    int linkedListFirstItems[]={4,7,19,12,15,18};
+    create(linkedListFirstItems,6);
     cout<<"Before"<<endl;
     Display();
-    reverse3(NULL,firstNode);
+    reverse3(NULL,linkedListFirstNode);
     cout<<"After"<<endl;
     Display();    
 

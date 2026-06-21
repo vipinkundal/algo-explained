@@ -2,54 +2,54 @@
 #include<stdlib.h>
 using namespace std;
 
-struct Node
+struct LinkedListNode
 {
-    int nodeValue;
-    struct Node *nextLink;
-}*firstNode=NULL;
+    int linkedListNodeValue;
+    struct LinkedListNode *linkedListNextLink;
+}*linkedListFirstNode=NULL;
 
-void create(int firstItems[],int itemCount)
+void create(int linkedListFirstItems[],int linkedListItemCount)
 {
-    int scanIndex;
-    struct Node *lastNode, *swapValue;
-    firstNode=new Node;
-    firstNode->nodeValue=firstItems[0];
-    firstNode->nextLink=NULL;
-    lastNode=firstNode;//addreess is passed and now first is refferd as last
+    int linkedListScanIndex;
+    struct LinkedListNode *linkedListLastNode, *linkedListSwapValue;
+    linkedListFirstNode=new LinkedListNode;
+    linkedListFirstNode->linkedListNodeValue=linkedListFirstItems[0];
+    linkedListFirstNode->linkedListNextLink=NULL;
+    linkedListLastNode=linkedListFirstNode;//addreess is passed and now first is refferd as last
 
-    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
+    for(int linkedListScanIndex=1;linkedListScanIndex<linkedListItemCount;linkedListScanIndex++)
     {
-        swapValue=new Node;
-        swapValue->nodeValue=firstItems[scanIndex];
-        swapValue->nextLink=NULL;
-        lastNode->nextLink=swapValue; //putting address of current node in the next of last node 
-        lastNode=swapValue; //assigning current node as last node
+        linkedListSwapValue=new LinkedListNode;
+        linkedListSwapValue->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+        linkedListSwapValue->linkedListNextLink=NULL;
+        linkedListLastNode->linkedListNextLink=linkedListSwapValue; //putting address of current node in the next of last node 
+        linkedListLastNode=linkedListSwapValue; //assigning current node as last node
     }
 }
 
-void Display(struct Node *currentNode) //display using recurssion
+void Display(struct LinkedListNode *linkedListCurrentNode) //display using recurssion
 {
-    if(currentNode!=NULL)
+    if(linkedListCurrentNode!=NULL)
     {
-        cout<<currentNode->nodeValue<<endl;
+        cout<<linkedListCurrentNode->linkedListNodeValue<<endl;
     }
-    Display(currentNode->nextLink);
+    Display(linkedListCurrentNode->linkedListNextLink);
 }
-void RDisplay(struct Node *currentNode)// reverse display using recurssion
+void RDisplay(struct LinkedListNode *linkedListCurrentNode)// reverse display using recurssion
 {
-    if(currentNode!=NULL)
+    if(linkedListCurrentNode!=NULL)
     {
-        RDisplay(currentNode->nextLink);
-        cout<<currentNode->nodeValue<<endl;
+        RDisplay(linkedListCurrentNode->linkedListNextLink);
+        cout<<linkedListCurrentNode->linkedListNodeValue<<endl;
     }
     
 }
 
 int main()
 {
-    int firstItems[]={4,5,8,9,7};
-    create(firstItems,5);
-    RDisplay(firstNode);
+    int linkedListFirstItems[]={4,5,8,9,7};
+    create(linkedListFirstItems,5);
+    RDisplay(linkedListFirstNode);
 
     return 0;
 }

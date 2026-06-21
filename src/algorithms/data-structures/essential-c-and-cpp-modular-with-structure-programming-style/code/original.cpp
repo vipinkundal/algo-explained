@@ -2,33 +2,33 @@
 #include<iostream>
 #include<stdio.h>
 using namespace std;
-struct Rectangle
+struct EssentialCRectangleModel
 {
-    int textLength;
-    int essentialCBreath;
+    int essentialCTextLength;
+    int essentialCState;
 };
-int initialization(struct Rectangle *rightIndex,int leftIndex,int secondaryValue)
+int initialization(struct EssentialCRectangleModel *essentialCRightIndex,int essentialCLeftIndex,int essentialCSecondaryValue)
 {
-    rightIndex->textLength=leftIndex;
-    rightIndex->essentialCBreath=secondaryValue;
+    essentialCRightIndex->essentialCTextLength=essentialCLeftIndex;
+    essentialCRightIndex->essentialCState=essentialCSecondaryValue;
 }
-int area(struct Rectangle essentialCR1)
+int area(struct EssentialCRectangleModel essentialCState2)
 {
-    return essentialCR1.textLength*essentialCR1.essentialCBreath;
+    return essentialCState2.essentialCTextLength*essentialCState2.essentialCState;
 }
-int peri(Rectangle essentialCR1)
+int peri(EssentialCRectangleModel essentialCState2)
 {
-    return 2*(essentialCR1.textLength+essentialCR1.essentialCBreath);
+    return 2*(essentialCState2.essentialCTextLength+essentialCState2.essentialCState);
 }
 int main()
 {
-    struct Rectangle rightIndex={0,0};
-    int leftIndex,secondaryValue;
+    struct EssentialCRectangleModel essentialCRightIndex={0,0};
+    int essentialCLeftIndex,essentialCSecondaryValue;
     cout<<"Enter lenth and breath of rectangle ";
-    cin>>leftIndex>>secondaryValue;
-    initialization(&rightIndex,leftIndex,secondaryValue);
-    int primaryValue=area(rightIndex);
-    int currentNode=peri(rightIndex);
-    printf("%d is area\n%d is perimeter",primaryValue,currentNode);
+    cin>>essentialCLeftIndex>>essentialCSecondaryValue;
+    initialization(&essentialCRightIndex,essentialCLeftIndex,essentialCSecondaryValue);
+    int essentialCPrimaryValue=area(essentialCRightIndex);
+    int essentialCCurrentNode=peri(essentialCRightIndex);
+    printf("%d is area\n%d is perimeter",essentialCPrimaryValue,essentialCCurrentNode);
     return 0;
 }

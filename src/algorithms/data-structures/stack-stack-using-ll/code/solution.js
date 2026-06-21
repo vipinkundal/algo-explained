@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Stack Using Linked List
-// Original source: 11_Stack/02_Stack_using_LL.cpp
 export function stackStackUsingLl() {
   const stack = [];
   const output = [];

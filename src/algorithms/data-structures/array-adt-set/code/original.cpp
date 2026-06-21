@@ -1,186 +1,186 @@
 #include<iostream>
 using namespace std;
-struct Array
+struct ArrayAdtArrayModel
 {
-    int firstItems[100];
-    int itemCapacity;
-    int textLength;
+    int arrayAdtFirstItems[100];
+    int arrayAdtItemCapacity;
+    int arrayAdtTextLength;
 };
-void Display(struct Array items)
+void Display(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        std::cout<<items.firstItems[scanIndex]<<" ";
+        std::cout<<arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex]<<" ";
      }
 }
-void swap(int *inputValue,int *compareValue)
+void swap(int *arrayAdtInputValue,int *arrayAdtCompareValue)
 {
-    int swapValue=*inputValue;
-    *inputValue=*compareValue;
-    *compareValue=swapValue;
+    int arrayAdtSwapValue=*arrayAdtInputValue;
+    *arrayAdtInputValue=*arrayAdtCompareValue;
+    *arrayAdtCompareValue=arrayAdtSwapValue;
 }
-bool sort(struct Array items)
+bool sort(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    int scanIndex=0;
-    while(scanIndex<items.textLength-1)
+    int arrayAdtScanIndex=0;
+    while(arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength-1)
     {
-        if(items.firstItems[scanIndex]>items.firstItems[scanIndex+1])
+        if(arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex]>arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex+1])
             return false;
-        scanIndex++;
+        arrayAdtScanIndex++;
 
     }
     return true;
 }
-struct Array Union(struct Array arrayAdtArr1,struct Array arrayAdtArr2)
+struct ArrayAdtArrayModel Union(struct ArrayAdtArrayModel arrayAdtState,struct ArrayAdtArrayModel arrayAdtState2)
 {
-    struct Array arrayAdtArr3;
-    if(sort(arrayAdtArr1) && sort(arrayAdtArr2))//if arr1 and arr2 are sorted
+    struct ArrayAdtArrayModel arrayAdtState3;
+    if(sort(arrayAdtState) && sort(arrayAdtState2))//if arr1 and arr2 are sorted
     {
-        int scanIndex=0,writeIndex=0,probeIndex=0;
-        while(scanIndex<arrayAdtArr1.textLength &&  writeIndex<arrayAdtArr2.textLength)
+        int arrayAdtScanIndex=0,arrayAdtWriteIndex=0,arrayAdtProbeIndex=0;
+        while(arrayAdtScanIndex<arrayAdtState.arrayAdtTextLength &&  arrayAdtWriteIndex<arrayAdtState2.arrayAdtTextLength)
         {
-            if(arrayAdtArr1.firstItems[scanIndex]<arrayAdtArr2.firstItems[writeIndex])
-                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex++];
-            else if(arrayAdtArr1.firstItems[scanIndex]==arrayAdtArr2.firstItems[writeIndex])
+            if(arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]<arrayAdtState2.arrayAdtFirstItems[arrayAdtWriteIndex])
+                arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex++];
+            else if(arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]==arrayAdtState2.arrayAdtFirstItems[arrayAdtWriteIndex])
             {
-                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex++];
-                writeIndex++;
+                arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex++];
+                arrayAdtWriteIndex++;
             }
             else
-                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr2.firstItems[writeIndex++];
+                arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState2.arrayAdtFirstItems[arrayAdtWriteIndex++];
         }
-        for(;scanIndex<arrayAdtArr1.textLength;scanIndex++)
-            arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex];
-        for(;writeIndex<arrayAdtArr2.textLength;writeIndex++)
-            arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr2.firstItems[writeIndex];
-        arrayAdtArr3.textLength=probeIndex;
-        arrayAdtArr3.itemCapacity=100;
-        return arrayAdtArr3;
+        for(;arrayAdtScanIndex<arrayAdtState.arrayAdtTextLength;arrayAdtScanIndex++)
+            arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex];
+        for(;arrayAdtWriteIndex<arrayAdtState2.arrayAdtTextLength;arrayAdtWriteIndex++)
+            arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState2.arrayAdtFirstItems[arrayAdtWriteIndex];
+        arrayAdtState3.arrayAdtTextLength=arrayAdtProbeIndex;
+        arrayAdtState3.arrayAdtItemCapacity=100;
+        return arrayAdtState3;
     }
     else
     {
-        int scanIndex=0,writeIndex=0,probeIndex=0,columnCount=0;
-        for(scanIndex=0;scanIndex<arrayAdtArr1.textLength;scanIndex++,probeIndex++)
-            arrayAdtArr3.firstItems[probeIndex]=arrayAdtArr1.firstItems[scanIndex];
-        for(scanIndex=0;scanIndex<arrayAdtArr2.textLength;scanIndex++)
+        int arrayAdtScanIndex=0,arrayAdtWriteIndex=0,arrayAdtProbeIndex=0,arrayAdtColumnCount=0;
+        for(arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtState.arrayAdtTextLength;arrayAdtScanIndex++,arrayAdtProbeIndex++)
+            arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex]=arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex];
+        for(arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtState2.arrayAdtTextLength;arrayAdtScanIndex++)
         {
-            int leftIndex=0,writeIndex=0;
-            while(writeIndex<arrayAdtArr1.textLength)
+            int arrayAdtLeftIndex=0,arrayAdtWriteIndex=0;
+            while(arrayAdtWriteIndex<arrayAdtState.arrayAdtTextLength)
             {
-                if(arrayAdtArr2.firstItems[scanIndex]==arrayAdtArr3.firstItems[writeIndex])//checking for every element of array 1 if it exist in array 2
+                if(arrayAdtState2.arrayAdtFirstItems[arrayAdtScanIndex]==arrayAdtState3.arrayAdtFirstItems[arrayAdtWriteIndex])//checking for every element of array 1 if it exist in array 2
                 {
-                    leftIndex=1;
+                    arrayAdtLeftIndex=1;
                     break;
                 }
-                writeIndex++;
+                arrayAdtWriteIndex++;
 
             }
-            if(leftIndex==0)
-                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr2.firstItems[scanIndex];
+            if(arrayAdtLeftIndex==0)
+                arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState2.arrayAdtFirstItems[arrayAdtScanIndex];
         }
-        arrayAdtArr3.textLength=probeIndex;
-        arrayAdtArr3.itemCapacity=100;
-        return arrayAdtArr3;
+        arrayAdtState3.arrayAdtTextLength=arrayAdtProbeIndex;
+        arrayAdtState3.arrayAdtItemCapacity=100;
+        return arrayAdtState3;
     }
 }
 
-struct Array Intersection(struct Array arrayAdtArr1,struct Array arrayAdtArr2)
+struct ArrayAdtArrayModel Intersection(struct ArrayAdtArrayModel arrayAdtState,struct ArrayAdtArrayModel arrayAdtState2)
 {
-    struct Array arrayAdtArr3;
-    if(sort(arrayAdtArr1) && sort(arrayAdtArr2))//if arr1 and arr2 are sorted
+    struct ArrayAdtArrayModel arrayAdtState3;
+    if(sort(arrayAdtState) && sort(arrayAdtState2))//if arr1 and arr2 are sorted
     {
-        int scanIndex=0,writeIndex=0,probeIndex=0;
-        while(scanIndex<arrayAdtArr1.textLength &&  writeIndex<arrayAdtArr2.textLength)
+        int arrayAdtScanIndex=0,arrayAdtWriteIndex=0,arrayAdtProbeIndex=0;
+        while(arrayAdtScanIndex<arrayAdtState.arrayAdtTextLength &&  arrayAdtWriteIndex<arrayAdtState2.arrayAdtTextLength)
         {
-            if(arrayAdtArr1.firstItems[scanIndex]<arrayAdtArr2.firstItems[writeIndex])
-                scanIndex++;
-            else if(arrayAdtArr1.firstItems[scanIndex]==arrayAdtArr2.firstItems[writeIndex])
+            if(arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]<arrayAdtState2.arrayAdtFirstItems[arrayAdtWriteIndex])
+                arrayAdtScanIndex++;
+            else if(arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]==arrayAdtState2.arrayAdtFirstItems[arrayAdtWriteIndex])
             {
-                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex];
-                scanIndex++;
-                writeIndex++;
+                arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex];
+                arrayAdtScanIndex++;
+                arrayAdtWriteIndex++;
             }
             else
-                writeIndex++;
+                arrayAdtWriteIndex++;
         }
-        arrayAdtArr3.textLength=probeIndex;
-        arrayAdtArr3.itemCapacity=100;
-        return arrayAdtArr3;
+        arrayAdtState3.arrayAdtTextLength=arrayAdtProbeIndex;
+        arrayAdtState3.arrayAdtItemCapacity=100;
+        return arrayAdtState3;
     }
     else
     {
-        int scanIndex=0,writeIndex=0,probeIndex=0;
-        for(scanIndex=0;scanIndex<arrayAdtArr1.textLength;scanIndex++)
+        int arrayAdtScanIndex=0,arrayAdtWriteIndex=0,arrayAdtProbeIndex=0;
+        for(arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtState.arrayAdtTextLength;arrayAdtScanIndex++)
         {
-            for(writeIndex=0;writeIndex<arrayAdtArr2.textLength;writeIndex++)
+            for(arrayAdtWriteIndex=0;arrayAdtWriteIndex<arrayAdtState2.arrayAdtTextLength;arrayAdtWriteIndex++)
             {
-                if(arrayAdtArr1.firstItems[scanIndex]==arrayAdtArr2.firstItems[writeIndex])
+                if(arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]==arrayAdtState2.arrayAdtFirstItems[arrayAdtWriteIndex])
                     {
-                        arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex];
+                        arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex];
                         break;
                     }
             }
         }
-        arrayAdtArr3.textLength=probeIndex;
-        arrayAdtArr3.itemCapacity=100;
-        return arrayAdtArr3;
+        arrayAdtState3.arrayAdtTextLength=arrayAdtProbeIndex;
+        arrayAdtState3.arrayAdtItemCapacity=100;
+        return arrayAdtState3;
     }
 }
 
-struct Array Difference(struct Array arrayAdtArr1,struct Array arrayAdtArr2)
+struct ArrayAdtArrayModel Difference(struct ArrayAdtArrayModel arrayAdtState,struct ArrayAdtArrayModel arrayAdtState2)
 {
-    struct Array arrayAdtArr3;
-    if(sort(arrayAdtArr1) && sort(arrayAdtArr2))//if arr1 and arr2 are sorted
+    struct ArrayAdtArrayModel arrayAdtState3;
+    if(sort(arrayAdtState) && sort(arrayAdtState2))//if arr1 and arr2 are sorted
     {
-        int scanIndex=0,writeIndex=0,probeIndex=0;
-        while(scanIndex<arrayAdtArr1.textLength &&  writeIndex<arrayAdtArr2.textLength)
+        int arrayAdtScanIndex=0,arrayAdtWriteIndex=0,arrayAdtProbeIndex=0;
+        while(arrayAdtScanIndex<arrayAdtState.arrayAdtTextLength &&  arrayAdtWriteIndex<arrayAdtState2.arrayAdtTextLength)
         {
-            if(arrayAdtArr1.firstItems[scanIndex]<arrayAdtArr2.firstItems[writeIndex])
-                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex++];
+            if(arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]<arrayAdtState2.arrayAdtFirstItems[arrayAdtWriteIndex])
+                arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex++];
 
-            else if(arrayAdtArr2.firstItems[writeIndex]<arrayAdtArr1.firstItems[scanIndex])
-                writeIndex++;
+            else if(arrayAdtState2.arrayAdtFirstItems[arrayAdtWriteIndex]<arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex])
+                arrayAdtWriteIndex++;
                 
-            else if(arrayAdtArr1.firstItems[scanIndex]==arrayAdtArr2.firstItems[writeIndex])
+            else if(arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]==arrayAdtState2.arrayAdtFirstItems[arrayAdtWriteIndex])
             {
-                scanIndex++;
-                writeIndex++;
+                arrayAdtScanIndex++;
+                arrayAdtWriteIndex++;
             }
         }
-        for(;scanIndex<arrayAdtArr1.textLength;scanIndex++)
-            arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex];
-        arrayAdtArr3.textLength=probeIndex;
-        arrayAdtArr3.itemCapacity=100;
-        return arrayAdtArr3;
+        for(;arrayAdtScanIndex<arrayAdtState.arrayAdtTextLength;arrayAdtScanIndex++)
+            arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex];
+        arrayAdtState3.arrayAdtTextLength=arrayAdtProbeIndex;
+        arrayAdtState3.arrayAdtItemCapacity=100;
+        return arrayAdtState3;
     }
     else
     {
-        int scanIndex=0,writeIndex=0,probeIndex=0,columnCount=0;
-        for(scanIndex=0;scanIndex<arrayAdtArr1.textLength;scanIndex++)
+        int arrayAdtScanIndex=0,arrayAdtWriteIndex=0,arrayAdtProbeIndex=0,arrayAdtColumnCount=0;
+        for(arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtState.arrayAdtTextLength;arrayAdtScanIndex++)
         {
-            columnCount=0;
-            for(writeIndex=0;writeIndex<arrayAdtArr2.textLength;writeIndex++)
+            arrayAdtColumnCount=0;
+            for(arrayAdtWriteIndex=0;arrayAdtWriteIndex<arrayAdtState2.arrayAdtTextLength;arrayAdtWriteIndex++)
             {
-                if(arrayAdtArr1.firstItems[scanIndex]==arrayAdtArr2.firstItems[writeIndex])
+                if(arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]==arrayAdtState2.arrayAdtFirstItems[arrayAdtWriteIndex])
                     {
-                        columnCount=1;
+                        arrayAdtColumnCount=1;
                         break;
                     }
             }
-            if(columnCount==0)
-                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex];
+            if(arrayAdtColumnCount==0)
+                arrayAdtState3.arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex];
         }
-        arrayAdtArr3.textLength=probeIndex;
-        arrayAdtArr3.itemCapacity=100;
-        return arrayAdtArr3;
+        arrayAdtState3.arrayAdtTextLength=arrayAdtProbeIndex;
+        arrayAdtState3.arrayAdtItemCapacity=100;
+        return arrayAdtState3;
     }
 }
 
 int main()
 {
-    struct Array arrayAdtArr1={{2,6,10,15,12,25},100,6};
-    struct Array arrayAdtArr2={{3,6,7,15,20},100,5};
-    struct Array arrayAdtD=Difference(arrayAdtArr1,arrayAdtArr2);
-    Display(arrayAdtD);
+    struct ArrayAdtArrayModel arrayAdtState={{2,6,10,15,12,25},100,6};
+    struct ArrayAdtArrayModel arrayAdtState2={{3,6,7,15,20},100,5};
+    struct ArrayAdtArrayModel arrayAdtState4=Difference(arrayAdtState,arrayAdtState2);
+    Display(arrayAdtState4);
     return 0;
 }

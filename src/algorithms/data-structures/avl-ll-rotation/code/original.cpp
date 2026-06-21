@@ -4,48 +4,48 @@
 #include<stack>
 using namespace std;
 
-struct Node {
-    Node* avlLlLchild;
-    int nodeValue;
-    int nodeHeight;
-    Node* avlLlRchild;
-}*treeRoot=NULL;
+struct AvlLlNode {
+    AvlLlNode* leftChild;
+    int avlLlNodeValue;
+    int avlLlNodeHeight;
+    AvlLlNode* rightChild;
+}*avlLlTreeRoot=NULL;
 
-int NodeHeight(struct Node *currentNode)
+int NodeHeight(struct AvlLlNode *avlLlCurrentNode)
 {
-    if(currentNode==NULL)
+    if(avlLlCurrentNode==NULL)
         return 0;
-    int avlLlHl,avlLlHr;
-    avlLlHl=currentNode && currentNode->avlLlLchild?currentNode->avlLlLchild->nodeHeight:0;
-    avlLlHr=currentNode && currentNode->avlLlRchild?currentNode->avlLlRchild->nodeHeight:0;
+    int avlLlState3,avlLlState4;
+    avlLlState3=avlLlCurrentNode && avlLlCurrentNode->leftChild?avlLlCurrentNode->leftChild->avlLlNodeHeight:0;
+    avlLlState4=avlLlCurrentNode && avlLlCurrentNode->rightChild?avlLlCurrentNode->rightChild->avlLlNodeHeight:0;
 
-    return avlLlHl>avlLlHr?avlLlHl+1:avlLlHr+1;
+    return avlLlState3>avlLlState4?avlLlState3+1:avlLlState4+1;
 }
 
-int BalanceFactor(struct Node *currentNode)
+int BalanceFactor(struct AvlLlNode *avlLlCurrentNode)
 {
-    int avlLlHl,avlLlHr;
-    avlLlHl=currentNode && currentNode->avlLlLchild?currentNode->avlLlLchild->nodeHeight:0;
-    avlLlHr=currentNode && currentNode->avlLlRchild?currentNode->avlLlRchild->nodeHeight:0;
-    return  avlLlHl-avlLlHr;
+    int avlLlState3,avlLlState4;
+    avlLlState3=avlLlCurrentNode && avlLlCurrentNode->leftChild?avlLlCurrentNode->leftChild->avlLlNodeHeight:0;
+    avlLlState4=avlLlCurrentNode && avlLlCurrentNode->rightChild?avlLlCurrentNode->rightChild->avlLlNodeHeight:0;
+    return  avlLlState3-avlLlState4;
 }
 
-struct Node * LLRotation(struct Node *currentNode)
+struct AvlLlNode * LLRotation(struct AvlLlNode *avlLlCurrentNode)
 {
-    Node *avlLlPl=currentNode->avlLlLchild;
-    Node *avlLlPlr=avlLlPl->avlLlRchild;
+    AvlLlNode *avlLlState5=avlLlCurrentNode->leftChild;
+    AvlLlNode *avlLlState=avlLlState5->rightChild;
 
-    currentNode->avlLlLchild=avlLlPlr;
-    avlLlPl->avlLlRchild=currentNode;
+    avlLlCurrentNode->leftChild=avlLlState;
+    avlLlState5->rightChild=avlLlCurrentNode;
 
-    currentNode->nodeHeight=NodeHeight(currentNode);
-    avlLlPl->nodeHeight=NodeHeight(avlLlPl);
+    avlLlCurrentNode->avlLlNodeHeight=NodeHeight(avlLlCurrentNode);
+    avlLlState5->avlLlNodeHeight=NodeHeight(avlLlState5);
 
-    if(currentNode==treeRoot)
-    {   treeRoot=avlLlPl;
-        return avlLlPl;
+    if(avlLlCurrentNode==avlLlTreeRoot)
+    {   avlLlTreeRoot=avlLlState5;
+        return avlLlState5;
     }
-    return currentNode;
+    return avlLlCurrentNode;
 
 }
 
@@ -53,194 +53,194 @@ struct Node * LLRotation(struct Node *currentNode)
 
 
 
-struct Node * RRRotation(struct Node *currentNode)
+struct AvlLlNode * RRRotation(struct AvlLlNode *avlLlCurrentNode)
 {
-    Node *avlLlPr=currentNode->avlLlRchild;
-    Node *avlLlPrl=avlLlPr->avlLlLchild;
+    AvlLlNode *avlLlState6=avlLlCurrentNode->rightChild;
+    AvlLlNode *avlLlState2=avlLlState6->leftChild;
 
-    currentNode->avlLlRchild=avlLlPrl;
-    avlLlPr->avlLlLchild=currentNode;
+    avlLlCurrentNode->rightChild=avlLlState2;
+    avlLlState6->leftChild=avlLlCurrentNode;
 
-    currentNode->nodeHeight=NodeHeight(currentNode);
-    avlLlPr->nodeHeight=NodeHeight(avlLlPr);
+    avlLlCurrentNode->avlLlNodeHeight=NodeHeight(avlLlCurrentNode);
+    avlLlState6->avlLlNodeHeight=NodeHeight(avlLlState6);
 
-    if(currentNode==treeRoot)
+    if(avlLlCurrentNode==avlLlTreeRoot)
     {  
-       treeRoot=avlLlPr;
-        return avlLlPr;
+       avlLlTreeRoot=avlLlState6;
+        return avlLlState6;
     }
 
-    return currentNode;
+    return avlLlCurrentNode;
 
 }
 
-struct Node * LRRotation(struct Node *currentNode)
+struct AvlLlNode * LRRotation(struct AvlLlNode *avlLlCurrentNode)
 {
-    Node *avlLlPl=currentNode->avlLlLchild;
-    Node *avlLlPlr=avlLlPl->avlLlRchild;
+    AvlLlNode *avlLlState5=avlLlCurrentNode->leftChild;
+    AvlLlNode *avlLlState=avlLlState5->rightChild;
 
-    avlLlPl->avlLlRchild=avlLlPlr->avlLlLchild;
-    currentNode->avlLlLchild=avlLlPlr->avlLlRchild;
-    avlLlPlr->avlLlLchild=avlLlPl;
-    avlLlPlr->avlLlRchild=currentNode;
+    avlLlState5->rightChild=avlLlState->leftChild;
+    avlLlCurrentNode->leftChild=avlLlState->rightChild;
+    avlLlState->leftChild=avlLlState5;
+    avlLlState->rightChild=avlLlCurrentNode;
 
-    currentNode->nodeHeight=NodeHeight(currentNode);
-    avlLlPl->nodeHeight=NodeHeight(avlLlPl);
-    avlLlPlr->nodeHeight=NodeHeight(avlLlPlr);
+    avlLlCurrentNode->avlLlNodeHeight=NodeHeight(avlLlCurrentNode);
+    avlLlState5->avlLlNodeHeight=NodeHeight(avlLlState5);
+    avlLlState->avlLlNodeHeight=NodeHeight(avlLlState);
 
-    if(currentNode==treeRoot)
-        treeRoot=avlLlPlr;
+    if(avlLlCurrentNode==avlLlTreeRoot)
+        avlLlTreeRoot=avlLlState;
 
-    return avlLlPlr;
+    return avlLlState;
 
 }
 
-struct Node * RLRotation(struct Node *currentNode)
+struct AvlLlNode * RLRotation(struct AvlLlNode *avlLlCurrentNode)
 {
-    Node *avlLlPr=currentNode->avlLlRchild;
-    Node *avlLlPrl=avlLlPr->avlLlLchild;
+    AvlLlNode *avlLlState6=avlLlCurrentNode->rightChild;
+    AvlLlNode *avlLlState2=avlLlState6->leftChild;
 
-    currentNode->avlLlRchild=avlLlPrl->avlLlLchild;
-    avlLlPr->avlLlLchild=avlLlPrl->avlLlRchild;
-    avlLlPrl->avlLlLchild=currentNode;
-    avlLlPrl->avlLlRchild=avlLlPr;
+    avlLlCurrentNode->rightChild=avlLlState2->leftChild;
+    avlLlState6->leftChild=avlLlState2->rightChild;
+    avlLlState2->leftChild=avlLlCurrentNode;
+    avlLlState2->rightChild=avlLlState6;
 
-    currentNode->nodeHeight=NodeHeight(currentNode);
-    avlLlPr->nodeHeight=NodeHeight(avlLlPr);
-    avlLlPrl->nodeHeight=NodeHeight(avlLlPrl);
+    avlLlCurrentNode->avlLlNodeHeight=NodeHeight(avlLlCurrentNode);
+    avlLlState6->avlLlNodeHeight=NodeHeight(avlLlState6);
+    avlLlState2->avlLlNodeHeight=NodeHeight(avlLlState2);
 
-    if(currentNode==treeRoot)
-        treeRoot=avlLlPrl;
+    if(avlLlCurrentNode==avlLlTreeRoot)
+        avlLlTreeRoot=avlLlState2;
 
-    return avlLlPrl;
+    return avlLlState2;
 
 }
 
 
-struct Node* Rinsert(struct Node *currentNode,int searchKey)
+struct AvlLlNode* Rinsert(struct AvlLlNode *avlLlCurrentNode,int avlLlSearchKey)
 {
-    struct Node *swapValue;
-    if(currentNode==NULL)
+    struct AvlLlNode *avlLlSwapValue;
+    if(avlLlCurrentNode==NULL)
     {
-        swapValue=new Node ;
-        swapValue->nodeValue=searchKey;
-        swapValue->nodeHeight=1;
-        swapValue->avlLlLchild=swapValue->avlLlRchild=NULL;
-        return swapValue;
+        avlLlSwapValue=new AvlLlNode ;
+        avlLlSwapValue->avlLlNodeValue=avlLlSearchKey;
+        avlLlSwapValue->avlLlNodeHeight=1;
+        avlLlSwapValue->leftChild=avlLlSwapValue->rightChild=NULL;
+        return avlLlSwapValue;
     }
-    if(currentNode->nodeValue>searchKey)
-        currentNode->avlLlLchild=Rinsert(currentNode->avlLlLchild,searchKey);
-    else if(currentNode->nodeValue<searchKey)
-        currentNode->avlLlRchild=Rinsert(currentNode->avlLlRchild,searchKey);
-    currentNode->nodeHeight=NodeHeight(currentNode);
+    if(avlLlCurrentNode->avlLlNodeValue>avlLlSearchKey)
+        avlLlCurrentNode->leftChild=Rinsert(avlLlCurrentNode->leftChild,avlLlSearchKey);
+    else if(avlLlCurrentNode->avlLlNodeValue<avlLlSearchKey)
+        avlLlCurrentNode->rightChild=Rinsert(avlLlCurrentNode->rightChild,avlLlSearchKey);
+    avlLlCurrentNode->avlLlNodeHeight=NodeHeight(avlLlCurrentNode);
 
-    if(BalanceFactor(currentNode)==2 && BalanceFactor(currentNode->avlLlLchild)==1)
-        return LLRotation(currentNode);
-    else if(BalanceFactor(currentNode)==2 && BalanceFactor(currentNode->avlLlLchild)==-1)
-        return LRRotation(currentNode);
-    else if(BalanceFactor(currentNode)==-2 && BalanceFactor(currentNode->avlLlRchild)==1)
-        return RLRotation(currentNode);
-    else if(BalanceFactor(currentNode)==-2 && BalanceFactor(currentNode->avlLlRchild)==-1)
-        return RRRotation(currentNode);
-    return currentNode;
+    if(BalanceFactor(avlLlCurrentNode)==2 && BalanceFactor(avlLlCurrentNode->leftChild)==1)
+        return LLRotation(avlLlCurrentNode);
+    else if(BalanceFactor(avlLlCurrentNode)==2 && BalanceFactor(avlLlCurrentNode->leftChild)==-1)
+        return LRRotation(avlLlCurrentNode);
+    else if(BalanceFactor(avlLlCurrentNode)==-2 && BalanceFactor(avlLlCurrentNode->rightChild)==1)
+        return RLRotation(avlLlCurrentNode);
+    else if(BalanceFactor(avlLlCurrentNode)==-2 && BalanceFactor(avlLlCurrentNode->rightChild)==-1)
+        return RRRotation(avlLlCurrentNode);
+    return avlLlCurrentNode;
 }
-struct Node *Inprec(Node *currentNode)
+struct AvlLlNode *Inprec(AvlLlNode *avlLlCurrentNode)
 {
-    while(currentNode && currentNode->avlLlRchild!=NULL)
-        currentNode=currentNode->avlLlRchild;
-    return currentNode;
+    while(avlLlCurrentNode && avlLlCurrentNode->rightChild!=NULL)
+        avlLlCurrentNode=avlLlCurrentNode->rightChild;
+    return avlLlCurrentNode;
 }
 
-struct Node *Insucc(Node *currentNode)
+struct AvlLlNode *Insucc(AvlLlNode *avlLlCurrentNode)
 {
-    while(currentNode && currentNode->avlLlLchild!=NULL)
-        currentNode=currentNode->avlLlLchild;
-    return currentNode;
+    while(avlLlCurrentNode && avlLlCurrentNode->leftChild!=NULL)
+        avlLlCurrentNode=avlLlCurrentNode->leftChild;
+    return avlLlCurrentNode;
 }
-struct Node *Delete(Node *currentNode,int searchKey)
+struct AvlLlNode *Delete(AvlLlNode *avlLlCurrentNode,int avlLlSearchKey)
 {
-    struct Node *swapValue=NULL;
-    if (currentNode==NULL)
+    struct AvlLlNode *avlLlSwapValue=NULL;
+    if (avlLlCurrentNode==NULL)
         return nullptr;
-    if(currentNode->avlLlLchild==NULL && currentNode->avlLlRchild==NULL)
+    if(avlLlCurrentNode->leftChild==NULL && avlLlCurrentNode->rightChild==NULL)
     {
-        if (currentNode == treeRoot){
-            treeRoot = nullptr;
+        if (avlLlCurrentNode == avlLlTreeRoot){
+            avlLlTreeRoot = nullptr;
         }
-        delete currentNode;
+        delete avlLlCurrentNode;
         return nullptr;
     }
-    if(currentNode->nodeValue>searchKey)
+    if(avlLlCurrentNode->avlLlNodeValue>avlLlSearchKey)
     {
-        currentNode->avlLlLchild=Delete(currentNode->avlLlLchild,searchKey);
+        avlLlCurrentNode->leftChild=Delete(avlLlCurrentNode->leftChild,avlLlSearchKey);
     }
-    else if(currentNode->nodeValue<searchKey)
-        currentNode->avlLlRchild=Delete(currentNode->avlLlRchild,searchKey);
+    else if(avlLlCurrentNode->avlLlNodeValue<avlLlSearchKey)
+        avlLlCurrentNode->rightChild=Delete(avlLlCurrentNode->rightChild,avlLlSearchKey);
     else
     {
-        if(NodeHeight(currentNode->avlLlLchild)>NodeHeight(currentNode->avlLlRchild))
+        if(NodeHeight(avlLlCurrentNode->leftChild)>NodeHeight(avlLlCurrentNode->rightChild))
         {
-            swapValue=Inprec(currentNode->avlLlLchild);
-            currentNode->nodeValue=swapValue->nodeValue;
-            currentNode->avlLlLchild=Delete(currentNode->avlLlLchild,swapValue->nodeValue);
+            avlLlSwapValue=Inprec(avlLlCurrentNode->leftChild);
+            avlLlCurrentNode->avlLlNodeValue=avlLlSwapValue->avlLlNodeValue;
+            avlLlCurrentNode->leftChild=Delete(avlLlCurrentNode->leftChild,avlLlSwapValue->avlLlNodeValue);
 
         }
         else
         {
-            swapValue=Insucc(currentNode->avlLlRchild);
-            currentNode->nodeValue=swapValue->nodeValue;
-            currentNode->avlLlRchild=Delete(currentNode->avlLlRchild,swapValue->nodeValue);
+            avlLlSwapValue=Insucc(avlLlCurrentNode->rightChild);
+            avlLlCurrentNode->avlLlNodeValue=avlLlSwapValue->avlLlNodeValue;
+            avlLlCurrentNode->rightChild=Delete(avlLlCurrentNode->rightChild,avlLlSwapValue->avlLlNodeValue);
         }
     }
      // Update height
-    currentNode->nodeHeight = NodeHeight(currentNode);
+    avlLlCurrentNode->avlLlNodeHeight = NodeHeight(avlLlCurrentNode);
  
     // Balance Factor and Rotation
-    if (BalanceFactor(currentNode) == 2 && BalanceFactor(currentNode->avlLlLchild) == 1) {  // L1 Rotation
-        return LLRotation(currentNode);
-    } else if (BalanceFactor(currentNode) == 2 && BalanceFactor(currentNode->avlLlLchild) == -1){  // L-1 Rotation
-        return LRRotation(currentNode);
-    } else if (BalanceFactor(currentNode) == -2 && BalanceFactor(currentNode->avlLlRchild) == -1){  // R-1 Rotation
-        return RRRotation(currentNode);
-    } else if (BalanceFactor(currentNode) == -2 && BalanceFactor(currentNode->avlLlRchild) == 1){  // R1 Rotation
-        return RLRotation(currentNode);
-    } else if (BalanceFactor(currentNode) == 2 && BalanceFactor(currentNode->avlLlLchild) == 0){  // L0 Rotation
-        return LLRotation(currentNode);
-    } else if (BalanceFactor(currentNode) == -2 && BalanceFactor(currentNode->avlLlRchild) == 0){  // R0 Rotation
-        return RRRotation(currentNode);
+    if (BalanceFactor(avlLlCurrentNode) == 2 && BalanceFactor(avlLlCurrentNode->leftChild) == 1) {  // L1 Rotation
+        return LLRotation(avlLlCurrentNode);
+    } else if (BalanceFactor(avlLlCurrentNode) == 2 && BalanceFactor(avlLlCurrentNode->leftChild) == -1){  // L-1 Rotation
+        return LRRotation(avlLlCurrentNode);
+    } else if (BalanceFactor(avlLlCurrentNode) == -2 && BalanceFactor(avlLlCurrentNode->rightChild) == -1){  // R-1 Rotation
+        return RRRotation(avlLlCurrentNode);
+    } else if (BalanceFactor(avlLlCurrentNode) == -2 && BalanceFactor(avlLlCurrentNode->rightChild) == 1){  // R1 Rotation
+        return RLRotation(avlLlCurrentNode);
+    } else if (BalanceFactor(avlLlCurrentNode) == 2 && BalanceFactor(avlLlCurrentNode->leftChild) == 0){  // L0 Rotation
+        return LLRotation(avlLlCurrentNode);
+    } else if (BalanceFactor(avlLlCurrentNode) == -2 && BalanceFactor(avlLlCurrentNode->rightChild) == 0){  // R0 Rotation
+        return RRRotation(avlLlCurrentNode);
     }
  
-    return currentNode;
+    return avlLlCurrentNode;
 }
 
-void Display(struct Node *currentNode)
+void Display(struct AvlLlNode *avlLlCurrentNode)
 {
-    cout<<currentNode->nodeValue<<endl;
-    if(currentNode->avlLlLchild)
+    cout<<avlLlCurrentNode->avlLlNodeValue<<endl;
+    if(avlLlCurrentNode->leftChild)
     {
-        cout<<"left child of "<<currentNode->nodeValue<<" is ";
-        Display(currentNode->avlLlLchild);
+        cout<<"left child of "<<avlLlCurrentNode->avlLlNodeValue<<" is ";
+        Display(avlLlCurrentNode->leftChild);
     }
         
-    if(currentNode->avlLlRchild)
+    if(avlLlCurrentNode->rightChild)
     {
-        cout<<"right child of "<<currentNode->nodeValue<<" is ";
-        Display(currentNode->avlLlRchild);
+        cout<<"right child of "<<avlLlCurrentNode->avlLlNodeValue<<" is ";
+        Display(avlLlCurrentNode->rightChild);
     }
 }
 
 
 int main()
 {
-    treeRoot=Rinsert(treeRoot,50);
-    Rinsert(treeRoot,60);
-    Rinsert(treeRoot,40);
-    Rinsert(treeRoot,30);
-    Rinsert(treeRoot,55);
-    Rinsert(treeRoot,45);
-    Rinsert(treeRoot,35);
+    avlLlTreeRoot=Rinsert(avlLlTreeRoot,50);
+    Rinsert(avlLlTreeRoot,60);
+    Rinsert(avlLlTreeRoot,40);
+    Rinsert(avlLlTreeRoot,30);
+    Rinsert(avlLlTreeRoot,55);
+    Rinsert(avlLlTreeRoot,45);
+    Rinsert(avlLlTreeRoot,35);
 
-    Delete(treeRoot,60);
-    Display(treeRoot);
+    Delete(avlLlTreeRoot,60);
+    Display(avlLlTreeRoot);
     return 0;
 }

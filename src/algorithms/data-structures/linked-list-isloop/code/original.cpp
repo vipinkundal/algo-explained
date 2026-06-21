@@ -2,64 +2,64 @@
 #include<stdlib.h>
 using namespace std;
 
-struct Node
+struct LinkedListNode
 {
-    int nodeValue;
-    struct Node *nextLink;
-}*firstNode=NULL;
+    int linkedListNodeValue;
+    struct LinkedListNode *linkedListNextLink;
+}*linkedListFirstNode=NULL;
 
-void create(int firstItems[],int itemCount)
+void create(int linkedListFirstItems[],int linkedListItemCount)
 {
-    int scanIndex;
-    struct Node *lastNode, *swapValue;
-    firstNode=new Node;
-    firstNode->nodeValue=firstItems[0];
-    firstNode->nextLink=NULL;
-    lastNode=firstNode;//addreess is passed and now first is refferd as last
+    int linkedListScanIndex;
+    struct LinkedListNode *linkedListLastNode, *linkedListSwapValue;
+    linkedListFirstNode=new LinkedListNode;
+    linkedListFirstNode->linkedListNodeValue=linkedListFirstItems[0];
+    linkedListFirstNode->linkedListNextLink=NULL;
+    linkedListLastNode=linkedListFirstNode;//addreess is passed and now first is refferd as last
 
-    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
+    for(int linkedListScanIndex=1;linkedListScanIndex<linkedListItemCount;linkedListScanIndex++)
     {
-        swapValue=new Node;
-        swapValue->nodeValue=firstItems[scanIndex];
-        swapValue->nextLink=NULL;
-        lastNode->nextLink=swapValue;//putting address of current node in the next of last node 
-        lastNode=swapValue;//assigning current node as last node
+        linkedListSwapValue=new LinkedListNode;
+        linkedListSwapValue->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+        linkedListSwapValue->linkedListNextLink=NULL;
+        linkedListLastNode->linkedListNextLink=linkedListSwapValue;//putting address of current node in the next of last node 
+        linkedListLastNode=linkedListSwapValue;//assigning current node as last node
     }
 }
 
 void Display()
 {
-    struct Node *currentNode;
-    currentNode=firstNode;
-    while(currentNode!=NULL)
+    struct LinkedListNode *linkedListCurrentNode;
+    linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListCurrentNode!=NULL)
     {
-        cout<<currentNode->nodeValue<<endl;
-        currentNode=currentNode->nextLink;
+        cout<<linkedListCurrentNode->linkedListNodeValue<<endl;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
 }
-bool isloop(struct Node *linkedListF)
+bool isloop(struct LinkedListNode *linkedListState)
 {
-    struct Node *currentNode,*nextNode;
-    currentNode=nextNode=linkedListF;
+    struct LinkedListNode *linkedListCurrentNode,*linkedListNextNode;
+    linkedListCurrentNode=linkedListNextNode=linkedListState;
     do
     {
-        currentNode=currentNode->nextLink;
-        nextNode=nextNode->nextLink;
-        nextNode=nextNode->nextLink!=NULL?nextNode->nextLink:NULL;
-    } while (currentNode && nextNode && currentNode!=nextNode);
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
+        linkedListNextNode=linkedListNextNode->linkedListNextLink;
+        linkedListNextNode=linkedListNextNode->linkedListNextLink!=NULL?linkedListNextNode->linkedListNextLink:NULL;
+    } while (linkedListCurrentNode && linkedListNextNode && linkedListCurrentNode!=linkedListNextNode);
     
-    return currentNode==nextNode?true:false;
+    return linkedListCurrentNode==linkedListNextNode?true:false;
 }
 
 int main()
 {
-    struct Node *currentNode,*nextNode;
-    int firstItems[]={4,7,19,12,15,18};
-    create(firstItems,6);   
-    currentNode=firstNode->nextLink->nextLink;
-    nextNode=firstNode->nextLink->nextLink->nextLink->nextLink->nextLink;
-    nextNode->nextLink=currentNode;
-    if(isloop(firstNode))
+    struct LinkedListNode *linkedListCurrentNode,*linkedListNextNode;
+    int linkedListFirstItems[]={4,7,19,12,15,18};
+    create(linkedListFirstItems,6);   
+    linkedListCurrentNode=linkedListFirstNode->linkedListNextLink->linkedListNextLink;
+    linkedListNextNode=linkedListFirstNode->linkedListNextLink->linkedListNextLink->linkedListNextLink->linkedListNextLink->linkedListNextLink;
+    linkedListNextNode->linkedListNextLink=linkedListCurrentNode;
+    if(isloop(linkedListFirstNode))
     {
         cout<<"there\'s  a loop";
     }

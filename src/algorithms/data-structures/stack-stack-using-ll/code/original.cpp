@@ -2,78 +2,78 @@
 #include<stdlib.h>
 using namespace std;
  
-class Node{
+class StackStackNode{
     public:
-        int nodeValue;
-        Node *nextLink;
+        int stackStackNodeValue;
+        StackStackNode *stackStackNextLink;
 };
 
-class Stack{
+class StackStackStackModel{
     private:
-     Node *stackTop;
+     StackStackNode *stackStackStackTop;
     public:
-        Stack(){stackTop=NULL;}
-        void push(int inputValue);
+        StackStackStackModel(){stackStackStackTop=NULL;}
+        void push(int stackStackInputValue);
         int pop();
         void Display();
 };
 
-void Stack::push(int inputValue)
+void StackStackStackModel::push(int stackStackInputValue)
 {
-    Node *swapValue=new Node;
-    if(swapValue==NULL) 
+    StackStackNode *stackStackSwapValue=new StackStackNode;
+    if(stackStackSwapValue==NULL) 
         cout<<"Stack overflow\n";
     else{
-        swapValue->nodeValue=inputValue;
-        if(stackTop)
+        stackStackSwapValue->stackStackNodeValue=stackStackInputValue;
+        if(stackStackStackTop)
         {
-            swapValue->nextLink=stackTop;
-            stackTop=swapValue;
+            stackStackSwapValue->stackStackNextLink=stackStackStackTop;
+            stackStackStackTop=stackStackSwapValue;
         }
         else{
-            stackTop=swapValue;
-            swapValue->nextLink=NULL;
+            stackStackStackTop=stackStackSwapValue;
+            stackStackSwapValue->stackStackNextLink=NULL;
         }
     }
 }
 
-int Stack::pop()
+int StackStackStackModel::pop()
 {
-    int inputValue=-1;
-    if(stackTop==NULL)
+    int stackStackInputValue=-1;
+    if(stackStackStackTop==NULL)
         cout<<"Stack underflow\n";
     else{
-        Node *swapValue=stackTop;
-        stackTop=stackTop->nextLink;
-        inputValue=swapValue->nodeValue;
-        delete swapValue;
+        StackStackNode *stackStackSwapValue=stackStackStackTop;
+        stackStackStackTop=stackStackStackTop->stackStackNextLink;
+        stackStackInputValue=stackStackSwapValue->stackStackNodeValue;
+        delete stackStackSwapValue;
     }
-    return inputValue;
+    return stackStackInputValue;
 }
 
-void Stack::Display()
+void StackStackStackModel::Display()
 {
     
-    if(stackTop==NULL)
+    if(stackStackStackTop==NULL)
         cout<<"Stack is Empty\n";
     else{
-        Node *swapValue=stackTop;
-        while(swapValue)
+        StackStackNode *stackStackSwapValue=stackStackStackTop;
+        while(stackStackSwapValue)
         {
-            cout<<swapValue->nodeValue<<" ";
-            swapValue=swapValue->nextLink;
+            cout<<stackStackSwapValue->stackStackNodeValue<<" ";
+            stackStackSwapValue=stackStackSwapValue->stackStackNextLink;
         }
     }
 }
 
 int main()
 {
-    Stack stackStackSt;
-    stackStackSt.pop();
-    stackStackSt.push(5);
-    stackStackSt.push(3);
-    stackStackSt.push(8);
-    cout<<"popped "<<stackStackSt.pop()<<endl;
-    stackStackSt.Display();
+    StackStackStackModel stackStackState;
+    stackStackState.pop();
+    stackStackState.push(5);
+    stackStackState.push(3);
+    stackStackState.push(8);
+    cout<<"popped "<<stackStackState.pop()<<endl;
+    stackStackState.Display();
     return 0;
 }

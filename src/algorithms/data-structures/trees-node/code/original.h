@@ -1,7 +1,7 @@
-class Node
+class TreesNodeNode
 {
     public:
-    Node *treesNodeLchild;
-    int nodeValue;
-    Node *treesNodeRchild;
-}*treeRoot=new Node;
+    TreesNodeNode *leftChild;
+    int treesNodeNodeValue;
+    TreesNodeNode *rightChild;
+}*treesNodeTreeRoot=new TreesNodeNode;

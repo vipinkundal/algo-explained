@@ -1,47 +1,47 @@
-class Queue
+class TreesQueueQueueModel
 {
     private:
-        int itemCapacity;
-        int queueFront=-1;
-        int queueRear=-1;
-        Node  **queueStorage;
+        int treesQueueItemCapacity;
+        int treesQueueQueueFront=-1;
+        int treesQueueQueueRear=-1;
+        Node  **treesQueueQueueStorage;
     public:
-        Queue();
-        void enqueue(Node* inputValue);
+        TreesQueueQueueModel();
+        void enqueue(Node* treesQueueInputValue);
         Node* dequeue();
         int isEmpty();
 };
-Queue::Queue()
+TreesQueueQueueModel::TreesQueueQueueModel()
 {
-    itemCapacity=100;
-    queueStorage=new Node*[itemCapacity];
-    queueFront=queueRear=-1;
+    treesQueueItemCapacity=100;
+    treesQueueQueueStorage=new Node*[treesQueueItemCapacity];
+    treesQueueQueueFront=treesQueueQueueRear=-1;
 }
 
-void Queue::enqueue(Node *inputValue)
+void TreesQueueQueueModel::enqueue(Node *treesQueueInputValue)
 {
-    if(queueRear==itemCapacity-1)
+    if(treesQueueQueueRear==treesQueueItemCapacity-1)
         cout<<"Queue is full\n";
     else {
-        ++queueRear;
-        queueStorage[queueRear]=inputValue;
+        ++treesQueueQueueRear;
+        treesQueueQueueStorage[treesQueueQueueRear]=treesQueueInputValue;
 
     }
 }
 
-Node *Queue::dequeue()
+Node *TreesQueueQueueModel::dequeue()
 {
-    Node *inputValue=NULL;
-    if(queueFront==queueRear)
+    Node *treesQueueInputValue=NULL;
+    if(treesQueueQueueFront==treesQueueQueueRear)
         cout<<"Queue is Empty\n";
     else{
-        ++queueFront;
-        inputValue=queueStorage[queueFront];
+        ++treesQueueQueueFront;
+        treesQueueInputValue=treesQueueQueueStorage[treesQueueQueueFront];
     }
-    return inputValue;
+    return treesQueueInputValue;
 }
 
-int Queue::isEmpty()
+int TreesQueueQueueModel::isEmpty()
 {
-    return queueFront==queueRear;
+    return treesQueueQueueFront==treesQueueQueueRear;
 }

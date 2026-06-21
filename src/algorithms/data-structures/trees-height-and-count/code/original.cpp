@@ -4,108 +4,108 @@ using namespace std;
 #include<queue>
 #include "Node.h"
 
-class treesHeightCreatetree
+class treesHeightState
 {
     public:
-    Node *currentNode,*swapValue;
-    int inputValue;
-    queue<Node*> nextNode;
-    treesHeightCreatetree();
+    Node *treesHeightCurrentNode,*treesHeightSwapValue;
+    int treesHeightInputValue;
+    queue<Node*> treesHeightNextNode;
+    treesHeightState();
     void Levelorder();
-    int count(Node *currentNode);
-    int count(){ count(treeRoot); }
-    int height(Node *currentNode);
-    int height(){height(treeRoot);}
-    int leafNodeCount(Node *currentNode);
-    int leafNodeCount(){ leafNodeCount(treeRoot); }
+    int count(Node *treesHeightCurrentNode);
+    int count(){ count(treesHeightTreeRoot); }
+    int height(Node *treesHeightCurrentNode);
+    int height(){height(treesHeightTreeRoot);}
+    int leafNodeCount(Node *treesHeightCurrentNode);
+    int leafNodeCount(){ leafNodeCount(treesHeightTreeRoot); }
 };
-int treesHeightCreatetree::leafNodeCount(Node *currentNode) {
-    int inputValue;
-    int compareValue;
-    if (currentNode != nullptr){
-        inputValue = leafNodeCount(currentNode->treesHeightLchild);
-        compareValue = leafNodeCount(currentNode->treesHeightRchild);
-        if (currentNode->treesHeightLchild == nullptr && currentNode->treesHeightRchild == nullptr){
-            return inputValue + compareValue + 1;
+int treesHeightState::leafNodeCount(Node *treesHeightCurrentNode) {
+    int treesHeightInputValue;
+    int treesHeightCompareValue;
+    if (treesHeightCurrentNode != nullptr){
+        treesHeightInputValue = leafNodeCount(treesHeightCurrentNode->leftChild);
+        treesHeightCompareValue = leafNodeCount(treesHeightCurrentNode->rightChild);
+        if (treesHeightCurrentNode->leftChild == nullptr && treesHeightCurrentNode->rightChild == nullptr){
+            return treesHeightInputValue + treesHeightCompareValue + 1;
         } else {
-            return inputValue + compareValue;
+            return treesHeightInputValue + treesHeightCompareValue;
         }
     }
     return 0;
 }
-int treesHeightCreatetree::count(Node *currentNode)
+int treesHeightState::count(Node *treesHeightCurrentNode)
 {
-    if(currentNode!=NULL)
-        return count(currentNode->treesHeightLchild)+count(currentNode->treesHeightRchild)+1;
+    if(treesHeightCurrentNode!=NULL)
+        return count(treesHeightCurrentNode->leftChild)+count(treesHeightCurrentNode->rightChild)+1;
     
     return 0;
 }
-int treesHeightCreatetree::height(Node *currentNode)
+int treesHeightState::height(Node *treesHeightCurrentNode)
 {
-    int inputValue,compareValue;
-    if(currentNode)
+    int treesHeightInputValue,treesHeightCompareValue;
+    if(treesHeightCurrentNode)
     {
-        inputValue=height(currentNode->treesHeightLchild);
-        compareValue=height(currentNode->treesHeightRchild);
-        if(inputValue>compareValue)
-            return inputValue+1;
+        treesHeightInputValue=height(treesHeightCurrentNode->leftChild);
+        treesHeightCompareValue=height(treesHeightCurrentNode->rightChild);
+        if(treesHeightInputValue>treesHeightCompareValue)
+            return treesHeightInputValue+1;
         else
-            return compareValue+1;
+            return treesHeightCompareValue+1;
     }
     return 0;
 }
-void treesHeightCreatetree::Levelorder()
+void treesHeightState::Levelorder()
 {
-    queue<Node*> nextNode;
-    Node *swapValue=treeRoot;
-    nextNode.emplace(swapValue);
-    while(!nextNode.empty())
+    queue<Node*> treesHeightNextNode;
+    Node *treesHeightSwapValue=treesHeightTreeRoot;
+    treesHeightNextNode.emplace(treesHeightSwapValue);
+    while(!treesHeightNextNode.empty())
     {
-        swapValue=nextNode.front();
-        nextNode.pop();
-        std::cout<<swapValue->nodeValue<<" ";
-        if(swapValue->treesHeightLchild)
+        treesHeightSwapValue=treesHeightNextNode.front();
+        treesHeightNextNode.pop();
+        std::cout<<treesHeightSwapValue->treesHeightNodeValue<<" ";
+        if(treesHeightSwapValue->leftChild)
         {
-            nextNode.emplace(swapValue->treesHeightLchild);
+            treesHeightNextNode.emplace(treesHeightSwapValue->leftChild);
         }
-        if(swapValue->treesHeightRchild)
+        if(treesHeightSwapValue->rightChild)
         {
-            nextNode.emplace(swapValue->treesHeightRchild);
+            treesHeightNextNode.emplace(treesHeightSwapValue->rightChild);
         }
         
     }
 
     
 }
-treesHeightCreatetree::treesHeightCreatetree()
+treesHeightState::treesHeightState()
 {   
         cout<<"Enter the root Node data  ";
-        cin>>treeRoot->nodeValue;
-        treeRoot->treesHeightLchild=treeRoot->treesHeightRchild=NULL;
-        nextNode.emplace(treeRoot);
-        while(!nextNode.empty())
+        cin>>treesHeightTreeRoot->treesHeightNodeValue;
+        treesHeightTreeRoot->leftChild=treesHeightTreeRoot->rightChild=NULL;
+        treesHeightNextNode.emplace(treesHeightTreeRoot);
+        while(!treesHeightNextNode.empty())
         {
-            currentNode=nextNode.front();
-            nextNode.pop();
-            cout<<"Enter the value of left child of "<<currentNode->nodeValue<<" ";
-            cin>>inputValue;
-            if(inputValue!=-1)
+            treesHeightCurrentNode=treesHeightNextNode.front();
+            treesHeightNextNode.pop();
+            cout<<"Enter the value of left child of "<<treesHeightCurrentNode->treesHeightNodeValue<<" ";
+            cin>>treesHeightInputValue;
+            if(treesHeightInputValue!=-1)
             {
-                swapValue=new Node;
-                swapValue->nodeValue=inputValue;
-                swapValue->treesHeightLchild=swapValue->treesHeightRchild=nullptr;
-                currentNode->treesHeightLchild=swapValue;
-                nextNode.emplace(swapValue);
+                treesHeightSwapValue=new Node;
+                treesHeightSwapValue->treesHeightNodeValue=treesHeightInputValue;
+                treesHeightSwapValue->leftChild=treesHeightSwapValue->rightChild=nullptr;
+                treesHeightCurrentNode->leftChild=treesHeightSwapValue;
+                treesHeightNextNode.emplace(treesHeightSwapValue);
             }
-            cout<<"Enter the value of right child of  "<<currentNode->nodeValue<<" ";
-            cin>>inputValue;
-            if(inputValue!=-1)
+            cout<<"Enter the value of right child of  "<<treesHeightCurrentNode->treesHeightNodeValue<<" ";
+            cin>>treesHeightInputValue;
+            if(treesHeightInputValue!=-1)
             {
-                swapValue=new Node;
-                swapValue->nodeValue=inputValue;
-                swapValue->treesHeightLchild=swapValue->treesHeightRchild=nullptr;
-                currentNode->treesHeightRchild=swapValue;
-                nextNode.emplace(swapValue);
+                treesHeightSwapValue=new Node;
+                treesHeightSwapValue->treesHeightNodeValue=treesHeightInputValue;
+                treesHeightSwapValue->leftChild=treesHeightSwapValue->rightChild=nullptr;
+                treesHeightCurrentNode->rightChild=treesHeightSwapValue;
+                treesHeightNextNode.emplace(treesHeightSwapValue);
             }
 
         }
@@ -113,7 +113,7 @@ treesHeightCreatetree::treesHeightCreatetree()
 
 int main()
 {
-    treesHeightCreatetree swapValue;
-    cout<<"\nleaf Node "<<swapValue.leafNodeCount();
+    treesHeightState treesHeightSwapValue;
+    cout<<"\nleaf Node "<<treesHeightSwapValue.leafNodeCount();
     return 0;
 }

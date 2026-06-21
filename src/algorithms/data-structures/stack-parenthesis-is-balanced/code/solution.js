@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Balanced Parentheses with Stack
-// Original source: 11_Stack/03_parenthesis_is_balanced.cpp
 export function stackParenthesisIsBalanced() {
   const stack = [];
   const output = [];

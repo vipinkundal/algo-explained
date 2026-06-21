@@ -1,52 +1,52 @@
 #include<iostream>
 using namespace std;
-class Matrix
+class MatrixDiagonalMatrixModel
 {
     private:
-    int itemCount;
-    int *firstItems;
+    int matrixDiagonalItemCount;
+    int *matrixDiagonalFirstItems;
     public:
-    Matrix(int itemCount)//constructor of matrix
+    MatrixDiagonalMatrixModel(int matrixDiagonalItemCount)//constructor of matrix
     {
-        this->itemCount=itemCount;
-        firstItems=new int[itemCount];   
+        this->matrixDiagonalItemCount=matrixDiagonalItemCount;
+        matrixDiagonalFirstItems=new int[matrixDiagonalItemCount];   
     }
 
-    void set(int scanIndex,int writeIndex,int inputValue);
+    void set(int matrixDiagonalScanIndex,int matrixDiagonalWriteIndex,int matrixDiagonalInputValue);
 
-    int get(int scanIndex,int writeIndex);
+    int get(int matrixDiagonalScanIndex,int matrixDiagonalWriteIndex);
 
     void Display();
 
-    ~ Matrix(){//destructor destructs/clear heap memory allocated
-        delete []firstItems;
+    ~ MatrixDiagonalMatrixModel(){//destructor destructs/clear heap memory allocated
+        delete []matrixDiagonalFirstItems;
 
     }
 
 };
-void Matrix::set(int scanIndex,int writeIndex,int inputValue)// :: scope resolution operator to indicate function belong to class matrix
+void MatrixDiagonalMatrixModel::set(int matrixDiagonalScanIndex,int matrixDiagonalWriteIndex,int matrixDiagonalInputValue)// :: scope resolution operator to indicate function belong to class matrix
 {
-    if(scanIndex==writeIndex)
+    if(matrixDiagonalScanIndex==matrixDiagonalWriteIndex)
     {
-        firstItems[scanIndex-1]=inputValue;
+        matrixDiagonalFirstItems[matrixDiagonalScanIndex-1]=matrixDiagonalInputValue;
     }
 
 }
-int Matrix::get(int scanIndex,int writeIndex)
+int MatrixDiagonalMatrixModel::get(int matrixDiagonalScanIndex,int matrixDiagonalWriteIndex)
 {
-    if(scanIndex==writeIndex)
-        return firstItems[scanIndex-1];
+    if(matrixDiagonalScanIndex==matrixDiagonalWriteIndex)
+        return matrixDiagonalFirstItems[matrixDiagonalScanIndex-1];
     else
         return 0;
 }
-void Matrix::Display()
+void MatrixDiagonalMatrixModel::Display()
 {
-    for(int scanIndex=0;scanIndex<(itemCount);scanIndex++)
+    for(int matrixDiagonalScanIndex=0;matrixDiagonalScanIndex<(matrixDiagonalItemCount);matrixDiagonalScanIndex++)
     {
-        for(int writeIndex=0;writeIndex<(itemCount);writeIndex++)
+        for(int matrixDiagonalWriteIndex=0;matrixDiagonalWriteIndex<(matrixDiagonalItemCount);matrixDiagonalWriteIndex++)
         {
-            if(scanIndex==writeIndex)
-            cout<<firstItems[scanIndex]<<" ";
+            if(matrixDiagonalScanIndex==matrixDiagonalWriteIndex)
+            cout<<matrixDiagonalFirstItems[matrixDiagonalScanIndex]<<" ";
             else
             cout<<"0 ";
         }
@@ -55,12 +55,12 @@ void Matrix::Display()
 }
 int main()
 {
-    Matrix columnCount(3);
-    columnCount.set(1,1,4);
-    columnCount.set(2,2,5);
-    columnCount.set(3,3,6);
-    columnCount.Display();
-    cout<<columnCount.get(3,3);
+    MatrixDiagonalMatrixModel matrixDiagonalColumnCount(3);
+    matrixDiagonalColumnCount.set(1,1,4);
+    matrixDiagonalColumnCount.set(2,2,5);
+    matrixDiagonalColumnCount.set(3,3,6);
+    matrixDiagonalColumnCount.Display();
+    cout<<matrixDiagonalColumnCount.get(3,3);
 
     return 0;
 }

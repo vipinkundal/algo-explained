@@ -1,66 +1,66 @@
 #include <iostream>
 using namespace std;
  
-class Array{
+class ArrayAdtArrayModel{
  
 private:
-    int* firstItems;
-    int itemCapacity;
-    int textLength;
+    int* arrayAdtFirstItems;
+    int arrayAdtItemCapacity;
+    int arrayAdtTextLength;
  
 public:
-    Array(int itemCapacity){
-        this->itemCapacity = itemCapacity;
-        firstItems = new int [itemCapacity];
+    ArrayAdtArrayModel(int arrayAdtItemCapacity){
+        this->arrayAdtItemCapacity = arrayAdtItemCapacity;
+        arrayAdtFirstItems = new int [arrayAdtItemCapacity];
     }
  
     void create(){
         cout << "Enter number of elements: " << flush;
-        cin >> textLength;
+        cin >> arrayAdtTextLength;
         cout << "Enter the array elements: " << endl;
-        for (int scanIndex = 0; scanIndex < textLength; scanIndex++){
-            cout << "Array element: " << scanIndex << " = " << flush;
-            cin >> firstItems[scanIndex];
+        for (int arrayAdtScanIndex = 0; arrayAdtScanIndex < arrayAdtTextLength; arrayAdtScanIndex++){
+            cout << "Array element: " << arrayAdtScanIndex << " = " << flush;
+            cin >> arrayAdtFirstItems[arrayAdtScanIndex];
         }
     }
-    void append(int primaryValue)
+    void append(int arrayAdtPrimaryValue)
     {
-        if(textLength<itemCapacity)
+        if(arrayAdtTextLength<arrayAdtItemCapacity)
         {
-            firstItems[textLength]=primaryValue;
-            textLength++;
+            arrayAdtFirstItems[arrayAdtTextLength]=arrayAdtPrimaryValue;
+            arrayAdtTextLength++;
         }
     }
  
     void display(){
-        for (int scanIndex = 0; scanIndex < textLength; scanIndex++){
-            cout << firstItems[scanIndex] << " ";
+        for (int arrayAdtScanIndex = 0; arrayAdtScanIndex < arrayAdtTextLength; arrayAdtScanIndex++){
+            cout << arrayAdtFirstItems[arrayAdtScanIndex] << " ";
         }
     }
-    void insert(int targetIndex,int storedValue){
-        if(targetIndex>=0 && targetIndex<=itemCapacity){
-        for(int scanIndex=textLength;scanIndex>targetIndex;scanIndex--)
+    void insert(int arrayAdtTargetIndex,int arrayAdtStoredValue){
+        if(arrayAdtTargetIndex>=0 && arrayAdtTargetIndex<=arrayAdtItemCapacity){
+        for(int arrayAdtScanIndex=arrayAdtTextLength;arrayAdtScanIndex>arrayAdtTargetIndex;arrayAdtScanIndex--)
         {
-            firstItems[scanIndex]=firstItems[scanIndex-1];
+            arrayAdtFirstItems[arrayAdtScanIndex]=arrayAdtFirstItems[arrayAdtScanIndex-1];
         }
-        firstItems[targetIndex]=storedValue;
-        textLength++;
+        arrayAdtFirstItems[arrayAdtTargetIndex]=arrayAdtStoredValue;
+        arrayAdtTextLength++;
         }
     }
  
-    ~Array(){//destructor
-        delete[] firstItems;
+    ~ArrayAdtArrayModel(){//destructor
+        delete[] arrayAdtFirstItems;
         cout << "Array destroyed" << endl;
     }
 };
 
 int main() {
  
-    Array items(10);
-    items.create();
-    items.append(2);
-    items.insert(3,78);
-    items.display();
+    ArrayAdtArrayModel arrayAdtItems(10);
+    arrayAdtItems.create();
+    arrayAdtItems.append(2);
+    arrayAdtItems.insert(3,78);
+    arrayAdtItems.display();
     
 
     return 0;

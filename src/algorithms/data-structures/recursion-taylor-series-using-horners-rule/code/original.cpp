@@ -1,22 +1,22 @@
 #include<iostream>
 
-float e1(float inputValue,int itemCount)//using loop
+float e1(float recursionTaylorInputValue,int recursionTaylorItemCount)//using loop
 {
-    float workingText=1;
-    for(;itemCount>0;itemCount--)
+    float recursionTaylorWorkingText=1;
+    for(;recursionTaylorItemCount>0;recursionTaylorItemCount--)
     {
-        workingText=1+inputValue/itemCount*workingText;
+        recursionTaylorWorkingText=1+recursionTaylorInputValue/recursionTaylorItemCount*recursionTaylorWorkingText;
     }
-    return workingText;
+    return recursionTaylorWorkingText;
 }
 
-float e(float inputValue,int itemCount)//using recursion
+float e(float recursionTaylorInputValue,int recursionTaylorItemCount)//using recursion
 {
-    static float workingText=1;
-    if(itemCount==0)
-        return workingText;
-    workingText=1+inputValue/itemCount*workingText;
-    return e(inputValue,itemCount-1);
+    static float recursionTaylorWorkingText=1;
+    if(recursionTaylorItemCount==0)
+        return recursionTaylorWorkingText;
+    recursionTaylorWorkingText=1+recursionTaylorInputValue/recursionTaylorItemCount*recursionTaylorWorkingText;
+    return e(recursionTaylorInputValue,recursionTaylorItemCount-1);
 }
 int main()
 {

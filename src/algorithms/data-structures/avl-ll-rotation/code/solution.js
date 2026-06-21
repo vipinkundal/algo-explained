@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for AVL LL Rotation
-// Original source: 15_AVL_Tree/01_LL_Rotation.cpp
 export function avlLlRotation() {
   return {
     structure: "AVL tree",

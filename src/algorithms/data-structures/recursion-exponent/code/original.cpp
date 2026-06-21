@@ -1,33 +1,33 @@
 #include<iostream>
 using namespace std;
-int expo(int columnCount,int itemCount)
+int expo(int recursionExponentColumnCount,int recursionExponentItemCount)
 {
-    if(itemCount<=0)
+    if(recursionExponentItemCount<=0)
         return 1;
-    return columnCount*expo(columnCount,itemCount-1);
+    return recursionExponentColumnCount*expo(recursionExponentColumnCount,recursionExponentItemCount-1);
 }
-int expo1(int columnCount,int itemCount)
+int expo1(int recursionExponentColumnCount,int recursionExponentItemCount)
 {
-    if(itemCount==0)
+    if(recursionExponentItemCount==0)
         return 1;
-    if(itemCount%2==0)
-        return expo1(columnCount*columnCount,itemCount/2);
+    if(recursionExponentItemCount%2==0)
+        return expo1(recursionExponentColumnCount*recursionExponentColumnCount,recursionExponentItemCount/2);
     else 
-        return columnCount*expo1(columnCount*columnCount,(itemCount-1)/2);
+        return recursionExponentColumnCount*expo1(recursionExponentColumnCount*recursionExponentColumnCount,(recursionExponentItemCount-1)/2);
 }
-int iexpo(int columnCount,int itemCount)
+int iexpo(int recursionExponentColumnCount,int recursionExponentItemCount)
 {
-    int recursionExponentE=1,scanIndex;
-    for(scanIndex=1;scanIndex<=itemCount;scanIndex++)
+    int recursionExponentState=1,recursionExponentScanIndex;
+    for(recursionExponentScanIndex=1;recursionExponentScanIndex<=recursionExponentItemCount;recursionExponentScanIndex++)
     {
-        recursionExponentE=recursionExponentE*columnCount;
+        recursionExponentState=recursionExponentState*recursionExponentColumnCount;
     }
-    return recursionExponentE;
+    return recursionExponentState;
 }
 
 int main()
 {
-    int recursionExponentE=expo1(2,3);
-    cout<<recursionExponentE;
+    int recursionExponentState=expo1(2,3);
+    cout<<recursionExponentState;
     return 0;
 }

@@ -1,80 +1,80 @@
 #include<iostream>
 #include<stdlib.h>
 using namespace std;
-class Node{
+class QueueUsingNode{
 public:
-    int nodeValue;
-    Node *nextLink;
+    int queueUsingNodeValue;
+    QueueUsingNode *queueUsingNextLink;
 };
-class Queue
+class QueueUsingQueueModel
 {
     private:
-        Node *queueFront;
-        Node *queueRear;
+        QueueUsingNode *queueUsingQueueFront;
+        QueueUsingNode *queueUsingQueueRear;
     public:
-        Queue(){queueFront=queueRear=NULL;}
-        void enqueue(int inputValue);
+        QueueUsingQueueModel(){queueUsingQueueFront=queueUsingQueueRear=NULL;}
+        void enqueue(int queueUsingInputValue);
         int dequeue();
         void display();
 };
 
-void Queue::enqueue(int inputValue)
+void QueueUsingQueueModel::enqueue(int queueUsingInputValue)
 {
-    Node *swapValue;
-    swapValue=new Node;
-    if(swapValue==NULL)
+    QueueUsingNode *queueUsingSwapValue;
+    queueUsingSwapValue=new QueueUsingNode;
+    if(queueUsingSwapValue==NULL)
         cout<<"Queue is full\n";
     else{
-        swapValue->nodeValue=inputValue;
-        swapValue->nextLink=NULL;
-        if(queueFront==NULL)
-            queueFront=queueRear=swapValue;
+        queueUsingSwapValue->queueUsingNodeValue=queueUsingInputValue;
+        queueUsingSwapValue->queueUsingNextLink=NULL;
+        if(queueUsingQueueFront==NULL)
+            queueUsingQueueFront=queueUsingQueueRear=queueUsingSwapValue;
         else{
-            queueRear->nextLink=swapValue;
-            queueRear=swapValue;
+            queueUsingQueueRear->queueUsingNextLink=queueUsingSwapValue;
+            queueUsingQueueRear=queueUsingSwapValue;
         }
     }
 }
 
-int Queue::dequeue()
+int QueueUsingQueueModel::dequeue()
 {
-    int inputValue=-1;
-    Node *swapValue;
-    if(queueFront==NULL)
+    int queueUsingInputValue=-1;
+    QueueUsingNode *queueUsingSwapValue;
+    if(queueUsingQueueFront==NULL)
         cout<<"Queue is Empty\n";
     else{
-        swapValue=queueFront;
-        if(queueFront->nextLink)
-            queueFront=queueFront->nextLink;
+        queueUsingSwapValue=queueUsingQueueFront;
+        if(queueUsingQueueFront->queueUsingNextLink)
+            queueUsingQueueFront=queueUsingQueueFront->queueUsingNextLink;
         else
-            queueFront=NULL;
-        inputValue=swapValue->nodeValue;
-        delete swapValue;
+            queueUsingQueueFront=NULL;
+        queueUsingInputValue=queueUsingSwapValue->queueUsingNodeValue;
+        delete queueUsingSwapValue;
     }
-    return inputValue;
+    return queueUsingInputValue;
 }
 
-void  Queue::display()
+void  QueueUsingQueueModel::display()
 {
-    Node *scanIndex=queueFront;
-    while(scanIndex)
+    QueueUsingNode *queueUsingScanIndex=queueUsingQueueFront;
+    while(queueUsingScanIndex)
     {
-        cout<<scanIndex->nodeValue<<" ";
-        scanIndex=scanIndex->nextLink;
+        cout<<queueUsingScanIndex->queueUsingNodeValue<<" ";
+        queueUsingScanIndex=queueUsingScanIndex->queueUsingNextLink;
     }
     cout<<"\n";
 }
 int main()
 {
-    Queue nextNode;
-    nextNode.enqueue(1);
-    nextNode.enqueue(2);
-    nextNode.enqueue(3);
-    nextNode.enqueue(4);
-    nextNode.enqueue(5);
-    cout<<"Deleted "<<nextNode.dequeue()<<endl;
-    nextNode.enqueue(14);
-    nextNode.enqueue(15);
+    QueueUsingQueueModel queueUsingNextNode;
+    queueUsingNextNode.enqueue(1);
+    queueUsingNextNode.enqueue(2);
+    queueUsingNextNode.enqueue(3);
+    queueUsingNextNode.enqueue(4);
+    queueUsingNextNode.enqueue(5);
+    cout<<"Deleted "<<queueUsingNextNode.dequeue()<<endl;
+    queueUsingNextNode.enqueue(14);
+    queueUsingNextNode.enqueue(15);
 
-    nextNode.display();
+    queueUsingNextNode.display();
 }

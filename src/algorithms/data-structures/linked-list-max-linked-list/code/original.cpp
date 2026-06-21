@@ -2,56 +2,56 @@
 #include<stdlib.h>
 using namespace std;
 
-struct Node
+struct LinkedListNode
 {
-    int nodeValue;
-    struct Node *nextLink;
-}*firstNode=NULL;
+    int linkedListNodeValue;
+    struct LinkedListNode *linkedListNextLink;
+}*linkedListFirstNode=NULL;
 
-void create(int firstItems[],int itemCount)
+void create(int linkedListFirstItems[],int linkedListItemCount)
 {
-    int scanIndex;
-    struct Node *lastNode, *swapValue;
-    firstNode=new Node;
-    firstNode->nodeValue=firstItems[0];
-    firstNode->nextLink=NULL;
-    lastNode=firstNode;//addreess is passed and now first is refferd as last
+    int linkedListScanIndex;
+    struct LinkedListNode *linkedListLastNode, *linkedListSwapValue;
+    linkedListFirstNode=new LinkedListNode;
+    linkedListFirstNode->linkedListNodeValue=linkedListFirstItems[0];
+    linkedListFirstNode->linkedListNextLink=NULL;
+    linkedListLastNode=linkedListFirstNode;//addreess is passed and now first is refferd as last
 
-    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
+    for(int linkedListScanIndex=1;linkedListScanIndex<linkedListItemCount;linkedListScanIndex++)
     {
-        swapValue=new Node;
-        swapValue->nodeValue=firstItems[scanIndex];
-        swapValue->nextLink=NULL;
-        lastNode->nextLink=swapValue; //putting address of current node in the next of last node 
-        lastNode=swapValue; //assigning current node as last node
+        linkedListSwapValue=new LinkedListNode;
+        linkedListSwapValue->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+        linkedListSwapValue->linkedListNextLink=NULL;
+        linkedListLastNode->linkedListNextLink=linkedListSwapValue; //putting address of current node in the next of last node 
+        linkedListLastNode=linkedListSwapValue; //assigning current node as last node
     }
 }
 
-int Max(struct Node * currentNode)
+int Max(struct LinkedListNode * linkedListCurrentNode)
 {
-    int linkedListMax=INT32_MIN;
-    while (currentNode!=NULL)
+    int linkedListState=INT32_MIN;
+    while (linkedListCurrentNode!=NULL)
     {
-        if(linkedListMax<currentNode->nodeValue)
-            linkedListMax=currentNode->nodeValue;
-        currentNode=currentNode->nextLink;
+        if(linkedListState<linkedListCurrentNode->linkedListNodeValue)
+            linkedListState=linkedListCurrentNode->linkedListNodeValue;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
-    return linkedListMax;
+    return linkedListState;
     
 }
 
-int RMax(struct Node * currentNode)
+int RMax(struct LinkedListNode * linkedListCurrentNode)
 {
-    int inputValue=0;
-    if(currentNode==0)
+    int linkedListInputValue=0;
+    if(linkedListCurrentNode==0)
         return INT32_MIN;
     else
     {
-        inputValue=RMax(currentNode->nextLink);
-        if(inputValue>currentNode->nodeValue)
-            return inputValue;
+        linkedListInputValue=RMax(linkedListCurrentNode->linkedListNextLink);
+        if(linkedListInputValue>linkedListCurrentNode->linkedListNodeValue)
+            return linkedListInputValue;
         else
-            return currentNode->nodeValue;
+            return linkedListCurrentNode->linkedListNodeValue;
     }
     
     
@@ -59,9 +59,9 @@ int RMax(struct Node * currentNode)
 
 int main()
 {
-    int firstItems[]={4,5,78,8,94,7222};
-    create(firstItems,6);
-    cout<<RMax(firstNode);
+    int linkedListFirstItems[]={4,5,78,8,94,7222};
+    create(linkedListFirstItems,6);
+    cout<<RMax(linkedListFirstNode);
 
     return 0;
 }

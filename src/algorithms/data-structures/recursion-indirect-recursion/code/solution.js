@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Indirect Recursion
-// Original source: 03_recursion/04_indirect_recursion.cpp
 export function recursionIndirectRecursion(n = 5) {
   const calls = [];
   function factorial(value) {

@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Recursion Factorial
-// Original source: 03_recursion/07_factorial.cpp
 export function recursionFactorial(n = 5) {
   const calls = [];
   function factorial(value) {

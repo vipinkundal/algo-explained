@@ -2,115 +2,115 @@
 #include<stdlib.h>
 #include <cstring>
 using namespace std;
-struct Stack{
-    int itemCapacity;
-    int stackTop;
-    int *stackStorage;
+struct StackPostfixStackModel{
+    int stackPostfixItemCapacity;
+    int stackPostfixStackTop;
+    int *stackPostfixStackStorage;
 };
 
 
-void create(Stack *stackPostfixSt,char *workingText)
+void create(StackPostfixStackModel *stackPostfixState3,char *stackPostfixWorkingText)
 {
-    int inputValue=strlen(workingText);
-    stackPostfixSt->itemCapacity=inputValue;
-    stackPostfixSt->stackTop=-1;
-    stackPostfixSt->stackStorage=new int[stackPostfixSt->itemCapacity];
+    int stackPostfixInputValue=strlen(stackPostfixWorkingText);
+    stackPostfixState3->stackPostfixItemCapacity=stackPostfixInputValue;
+    stackPostfixState3->stackPostfixStackTop=-1;
+    stackPostfixState3->stackPostfixStackStorage=new int[stackPostfixState3->stackPostfixItemCapacity];
 }
 
-void push(Stack *stackPostfixSt,int inputValue)
+void push(StackPostfixStackModel *stackPostfixState3,int stackPostfixInputValue)
 {
-    if(stackPostfixSt->itemCapacity-stackPostfixSt->stackTop==1)
+    if(stackPostfixState3->stackPostfixItemCapacity-stackPostfixState3->stackPostfixStackTop==1)
     {
         cout<<"stack is overflow\n";
     }
     else{
-        stackPostfixSt->stackTop++;
-        stackPostfixSt->stackStorage[stackPostfixSt->stackTop]=inputValue;
+        stackPostfixState3->stackPostfixStackTop++;
+        stackPostfixState3->stackPostfixStackStorage[stackPostfixState3->stackPostfixStackTop]=stackPostfixInputValue;
     }
 }
 
 
 
-int pop(Stack *stackPostfixSt)
+int pop(StackPostfixStackModel *stackPostfixState3)
 {
-    int inputValue=-1;
-    if(stackPostfixSt->stackTop==-1)
+    int stackPostfixInputValue=-1;
+    if(stackPostfixState3->stackPostfixStackTop==-1)
     {
         cout<<"Stack is underflow\n";
     }
     else{
-        inputValue=stackPostfixSt->stackStorage[stackPostfixSt->stackTop];
-        stackPostfixSt->stackTop--;
+        stackPostfixInputValue=stackPostfixState3->stackPostfixStackStorage[stackPostfixState3->stackPostfixStackTop];
+        stackPostfixState3->stackPostfixStackTop--;
     }
-    return inputValue;
+    return stackPostfixInputValue;
 }
 
 
-int isEmpty(Stack stackPostfixSt)
+int isEmpty(StackPostfixStackModel stackPostfixState3)
 {
-    if(stackPostfixSt.stackTop==-1)
+    if(stackPostfixState3.stackPostfixStackTop==-1)
         return 1;
     else
         return 0;
 }
 
-int isFull(Stack stackPostfixSt)
+int isFull(StackPostfixStackModel stackPostfixState3)
 {
-    if(stackPostfixSt.itemCapacity-stackPostfixSt.stackTop==1)
+    if(stackPostfixState3.stackPostfixItemCapacity-stackPostfixState3.stackPostfixStackTop==1)
         return 1;
     else
         return 0;
 }
 
-int isOperand(char workingText)
+int isOperand(char stackPostfixWorkingText)
 {
-    if(workingText=='*' || workingText=='/' || workingText=='+' || workingText=='-' || workingText=='^' || workingText=='(' || workingText==')')
+    if(stackPostfixWorkingText=='*' || stackPostfixWorkingText=='/' || stackPostfixWorkingText=='+' || stackPostfixWorkingText=='-' || stackPostfixWorkingText=='^' || stackPostfixWorkingText=='(' || stackPostfixWorkingText==')')
         return 0;
     else 
         return 1;
 }
 
 
-int eval(char *stackPostfixPostfix)
+int eval(char *stackPostfixState)
 {
-    Stack stackPostfixSt;
-    create(&stackPostfixSt,stackPostfixPostfix);
-    int scanIndex,stackPostfixX1,stackPostfixX2,rightIndex;
-    for(scanIndex=0;stackPostfixPostfix[scanIndex]!='\0';scanIndex++)
+    StackPostfixStackModel stackPostfixState3;
+    create(&stackPostfixState3,stackPostfixState);
+    int stackPostfixScanIndex,stackPostfixState4,stackPostfixState5,stackPostfixRightIndex;
+    for(stackPostfixScanIndex=0;stackPostfixState[stackPostfixScanIndex]!='\0';stackPostfixScanIndex++)
     {
-        if(isOperand(stackPostfixPostfix[scanIndex]))
+        if(isOperand(stackPostfixState[stackPostfixScanIndex]))
         {
-            push(&stackPostfixSt,(stackPostfixPostfix[scanIndex]-'0'));
+            push(&stackPostfixState3,(stackPostfixState[stackPostfixScanIndex]-'0'));
         }
         else{
-            stackPostfixX2=pop(&stackPostfixSt);
-            stackPostfixX1=pop(&stackPostfixSt);
-            switch(stackPostfixPostfix[scanIndex])
+            stackPostfixState5=pop(&stackPostfixState3);
+            stackPostfixState4=pop(&stackPostfixState3);
+            switch(stackPostfixState[stackPostfixScanIndex])
             {
                 case '+':
-                   rightIndex=stackPostfixX1+stackPostfixX2;
+                   stackPostfixRightIndex=stackPostfixState4+stackPostfixState5;
                    break;
                 case '-':
-                   rightIndex=stackPostfixX1-stackPostfixX2;
+                   stackPostfixRightIndex=stackPostfixState4-stackPostfixState5;
                    break;
                 case '*':
-                   rightIndex=stackPostfixX1*stackPostfixX2;
+                   stackPostfixRightIndex=stackPostfixState4*stackPostfixState5;
                    break;
                 case '/':
-                   rightIndex=stackPostfixX1/stackPostfixX2;
+                   stackPostfixRightIndex=stackPostfixState4/stackPostfixState5;
                    break;
                 default:
                     break;
 
-            } push(&stackPostfixSt,rightIndex);
+            } push(&stackPostfixState3,stackPostfixRightIndex);
         }
     }
-    return pop(&stackPostfixSt);
+    return pop(&stackPostfixState3);
 }
 int main()
 {
-    char workingText[]="2362/*+";
-    int stackPostfixAnswer=eval(workingText);
-    cout<<stackPostfixAnswer;
+    char stackPostfixWorkingText[]="2362/*+";
+    int stackPostfixState2=eval(stackPostfixWorkingText);
+    cout<<stackPostfixState2;
     return 0;
 }

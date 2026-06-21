@@ -3,9 +3,9 @@
 using namespace std;
 int main()
 {
-    int primaryValue=10;
-    int &essentialCRef=primaryValue;//declaring and initializing reference variable
-    printf("%d\n",primaryValue);
-    cout<<essentialCRef;
+    int essentialCPrimaryValue=10;
+    int &essentialCState=essentialCPrimaryValue;//declaring and initializing reference variable
+    printf("%d\n",essentialCPrimaryValue);
+    cout<<essentialCState;
     return 0;
 }

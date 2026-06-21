@@ -1,62 +1,62 @@
 #include<iostream>
 using namespace std;
-struct Array
+struct ArrayAdtArrayModel
 {
-    int firstItems[10];
-    int itemCapacity;
-    int textLength;
+    int arrayAdtFirstItems[10];
+    int arrayAdtItemCapacity;
+    int arrayAdtTextLength;
 };
-void Display(struct Array items)
+void Display(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        std::cout<<items.firstItems[scanIndex]<<" ";
+        std::cout<<arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex]<<" ";
     }
 }
-void swap(int *inputValue,int *compareValue)
+void swap(int *arrayAdtInputValue,int *arrayAdtCompareValue)
 {
-    int swapValue=*inputValue;
-    *inputValue=*compareValue;
-    *compareValue=swapValue;
+    int arrayAdtSwapValue=*arrayAdtInputValue;
+    *arrayAdtInputValue=*arrayAdtCompareValue;
+    *arrayAdtCompareValue=arrayAdtSwapValue;
 }
-int BinarySearch(struct Array items,int storedValue)
+int BinarySearch(struct ArrayAdtArrayModel arrayAdtItems,int arrayAdtStoredValue)
 {
-    if(items.textLength>0)
+    if(arrayAdtItems.arrayAdtTextLength>0)
     {
-        int leftIndex=0;
-        int arrayAdtH=items.textLength-1;
-        while(leftIndex<=arrayAdtH)
+        int arrayAdtLeftIndex=0;
+        int arrayAdtState3=arrayAdtItems.arrayAdtTextLength-1;
+        while(arrayAdtLeftIndex<=arrayAdtState3)
         {
-            int arrayAdtMid=(leftIndex+arrayAdtH)/2;
-            if(storedValue==items.firstItems[arrayAdtMid])
-                return arrayAdtMid;
-            else if(items.firstItems[arrayAdtMid]<storedValue)
-                leftIndex=arrayAdtMid+1;
+            int arrayAdtState=(arrayAdtLeftIndex+arrayAdtState3)/2;
+            if(arrayAdtStoredValue==arrayAdtItems.arrayAdtFirstItems[arrayAdtState])
+                return arrayAdtState;
+            else if(arrayAdtItems.arrayAdtFirstItems[arrayAdtState]<arrayAdtStoredValue)
+                arrayAdtLeftIndex=arrayAdtState+1;
             else
-                arrayAdtH=arrayAdtMid-1;
+                arrayAdtState3=arrayAdtState-1;
         }
     }
     return -1;
 }
-int RBinarySearch(struct Array items,int storedValue,int leftIndex,int arrayAdtH)
+int RBinarySearch(struct ArrayAdtArrayModel arrayAdtItems,int arrayAdtStoredValue,int arrayAdtLeftIndex,int arrayAdtState3)
 {
-    if(leftIndex<=arrayAdtH)
+    if(arrayAdtLeftIndex<=arrayAdtState3)
     {
-        int arrayAdtMid=(leftIndex+arrayAdtH)/2;
-        if(storedValue==items.firstItems[arrayAdtMid])
-            return arrayAdtMid;  
-        else if(storedValue<arrayAdtAr rightIndex.firstItems[arrayAdtMid])
-            return RBinarySearch(items,storedValue,leftIndex,arrayAdtMid-1);
+        int arrayAdtState=(arrayAdtLeftIndex+arrayAdtState3)/2;
+        if(arrayAdtStoredValue==arrayAdtItems.arrayAdtFirstItems[arrayAdtState])
+            return arrayAdtState;  
+        else if(arrayAdtStoredValue<arrayAdtState2 arrayAdtRightIndex.arrayAdtFirstItems[arrayAdtState])
+            return RBinarySearch(arrayAdtItems,arrayAdtStoredValue,arrayAdtLeftIndex,arrayAdtState-1);
         else 
-            return RBinarySearch(items,storedValue,arrayAdtMid+1,arrayAdtH);
+            return RBinarySearch(arrayAdtItems,arrayAdtStoredValue,arrayAdtState+1,arrayAdtState3);
         } 
     return -1;
 }
 
 int main()
 {
-    struct Array items={{1,2,3,4,5,6,7},10,7};
-    cout<<RBinarySearch(items,6,0,items.textLength-1)<<endl;
-    Display(items);
+    struct ArrayAdtArrayModel arrayAdtItems={{1,2,3,4,5,6,7},10,7};
+    cout<<RBinarySearch(arrayAdtItems,6,0,arrayAdtItems.arrayAdtTextLength-1)<<endl;
+    Display(arrayAdtItems);
     return 0;
 }

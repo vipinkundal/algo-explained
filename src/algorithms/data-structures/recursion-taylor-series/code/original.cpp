@@ -1,17 +1,17 @@
 #include<iostream>
 #include<stdio.h>
 using namespace std;
-double tay(int inputValue,int itemCount)
+double tay(int recursionTaylorInputValue,int recursionTaylorItemCount)
 {
-    static float currentNode=1,recursionTaylorF=1;
-    if(itemCount==0)
+    static float recursionTaylorCurrentNode=1,recursionTaylorState=1;
+    if(recursionTaylorItemCount==0)
         return 1;
     else 
     {
-        double rightIndex=tay(inputValue,itemCount-1);
-        currentNode=currentNode*inputValue;
-        recursionTaylorF=recursionTaylorF*itemCount;
-        return rightIndex+(currentNode/recursionTaylorF);
+        double recursionTaylorRightIndex=tay(recursionTaylorInputValue,recursionTaylorItemCount-1);
+        recursionTaylorCurrentNode=recursionTaylorCurrentNode*recursionTaylorInputValue;
+        recursionTaylorState=recursionTaylorState*recursionTaylorItemCount;
+        return recursionTaylorRightIndex+(recursionTaylorCurrentNode/recursionTaylorState);
     }
            
 }

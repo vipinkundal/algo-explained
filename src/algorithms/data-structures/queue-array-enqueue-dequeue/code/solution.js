@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Queue Enqueue and Dequeue
-// Original source: 12_Queue/01_enqueue_and_dequeue.cpp
 export function queueArrayEnqueueDequeue() {
   const queue = [];
   const output = [];

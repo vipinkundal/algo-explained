@@ -1,17 +1,17 @@
 #include<iostream>
 
 using namespace std;
-void funct1(int itemCount)
+void funct1(int recursionFirstItemCount)
 {
-    if(itemCount>0)
+    if(recursionFirstItemCount>0)
     {
-        cout<<itemCount;
-        funct1(itemCount-1);
+        cout<<recursionFirstItemCount;
+        funct1(recursionFirstItemCount-1);
     }
 }
 int main()
 {
-    int scanIndex=3;
-    funct1(scanIndex);
+    int recursionFirstScanIndex=3;
+    funct1(recursionFirstScanIndex);
     return 0;
 }

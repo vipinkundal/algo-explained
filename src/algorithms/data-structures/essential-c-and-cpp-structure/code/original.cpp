@@ -1,30 +1,30 @@
 #include<iostream>
 using namespace std;
-struct essentialCReportcard
+struct essentialCState
 {
-    char essentialCName[20];
-    int essentialCRoll;
-    int essentialCTotMarks;
+    char essentialCState3[20];
+    int essentialCState4;
+    int essentialCState2;
 
 };
 
 int main()
 {
-    int scanIndex;
-    struct essentialCReportcard rightIndex[3];//declartion
-    for(scanIndex=0;scanIndex<3;scanIndex++)//initialization
+    int essentialCScanIndex;
+    struct essentialCState essentialCRightIndex[3];//declartion
+    for(essentialCScanIndex=0;essentialCScanIndex<3;essentialCScanIndex++)//initialization
     {
         cout<<"Name ";
-        cin>>rightIndex[scanIndex].essentialCName;
+        cin>>essentialCRightIndex[essentialCScanIndex].essentialCState3;
         cout<<"roll no ";
-        cin>>rightIndex[scanIndex].essentialCRoll;
+        cin>>essentialCRightIndex[essentialCScanIndex].essentialCState4;
         cout<<"Total Marks ";
-        cin>>rightIndex[scanIndex].essentialCTotMarks;
+        cin>>essentialCRightIndex[essentialCScanIndex].essentialCState2;
         cout<<endl;
     }
-    for(scanIndex=0;scanIndex<3;scanIndex++)
+    for(essentialCScanIndex=0;essentialCScanIndex<3;essentialCScanIndex++)
     {
-        cout<<rightIndex[scanIndex].essentialCName<<" "<< rightIndex[scanIndex].essentialCRoll << " "<< rightIndex[scanIndex].essentialCTotMarks << endl;
+        cout<<essentialCRightIndex[essentialCScanIndex].essentialCState3<<" "<< essentialCRightIndex[essentialCScanIndex].essentialCState4 << " "<< essentialCRightIndex[essentialCScanIndex].essentialCState2 << endl;
     }
 
     return 0;

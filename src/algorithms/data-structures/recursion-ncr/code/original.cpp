@@ -1,23 +1,23 @@
 #include<iostream>
-int fact(int itemCount)
+int fact(int recursionNcrItemCount)
 {
-    if(itemCount<=1)
+    if(recursionNcrItemCount<=1)
         return 1;
     else 
-        return fact(itemCount-1)*itemCount;
+        return fact(recursionNcrItemCount-1)*recursionNcrItemCount;
 }
-int ncr(int itemCount,int rightIndex)//ncr combination using factorial function
+int ncr(int recursionNcrItemCount,int recursionNcrRightIndex)//ncr combination using factorial function
 {
-    int recursionNcrNum=fact(itemCount);
-    int recursionNcrDen=fact(rightIndex)*fact(itemCount-rightIndex);
-    return recursionNcrNum/recursionNcrDen;
+    int recursionNcrState=fact(recursionNcrItemCount);
+    int recursionNcrState2=fact(recursionNcrRightIndex)*fact(recursionNcrItemCount-recursionNcrRightIndex);
+    return recursionNcrState/recursionNcrState2;
 }
 
-int pncr(int itemCount,int rightIndex)//using pascal triangle
+int pncr(int recursionNcrItemCount,int recursionNcrRightIndex)//using pascal triangle
 {
-    if((itemCount==1) || (itemCount==rightIndex))
+    if((recursionNcrItemCount==1) || (recursionNcrItemCount==recursionNcrRightIndex))
         return 1;
-    return pncr(itemCount-1,rightIndex-1)+pncr(itemCount-1,rightIndex);
+    return pncr(recursionNcrItemCount-1,recursionNcrRightIndex-1)+pncr(recursionNcrItemCount-1,recursionNcrRightIndex);
 }
 int main()
 {

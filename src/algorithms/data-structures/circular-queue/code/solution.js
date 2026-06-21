@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Circular Queue
-// Original source: 12_Queue/02_circular_queue.cpp
 export function circularQueue() {
   const queue = [];
   const output = [];

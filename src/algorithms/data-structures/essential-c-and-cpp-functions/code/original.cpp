@@ -1,20 +1,20 @@
 #include<iostream>
 #include<stdio.h>
 using namespace std;
-void func(int inputValue,int *compareValue,int &resultValue)
+void func(int essentialCInputValue,int *essentialCCompareValue,int &essentialCResultValue)
 {
-    inputValue++;
-    (*compareValue)++;
-    resultValue++;
+    essentialCInputValue++;
+    (*essentialCCompareValue)++;
+    essentialCResultValue++;
 }
 int main()
 {
-    int primaryValue=5,secondaryValue=10,columnIndex=15;
+    int essentialCPrimaryValue=5,essentialCSecondaryValue=10,essentialCColumnIndex=15;
 
-    cout<<"\nBefore calling function "<<endl<<"a = "<<primaryValue<<"\nb = "<<secondaryValue<<"\na = "<<columnIndex;
+    cout<<"\nBefore calling function "<<endl<<"a = "<<essentialCPrimaryValue<<"\nb = "<<essentialCSecondaryValue<<"\na = "<<essentialCColumnIndex;
 
-    func(primaryValue,&secondaryValue,columnIndex);//here a is call by value ,b is call by address//c is call by refence
+    func(essentialCPrimaryValue,&essentialCSecondaryValue,essentialCColumnIndex);//here a is call by value ,b is call by address//c is call by refence
 
-    cout<<endl<<"\nAfter calling function "<<endl<<"a = "<<primaryValue<<"\nb = "<<secondaryValue<<"\na = "<<columnIndex;//here a is call by value ,b is call by address//c is call by refence    
+    cout<<endl<<"\nAfter calling function "<<endl<<"a = "<<essentialCPrimaryValue<<"\nb = "<<essentialCSecondaryValue<<"\na = "<<essentialCColumnIndex;//here a is call by value ,b is call by address//c is call by refence    
     return 0;
 }

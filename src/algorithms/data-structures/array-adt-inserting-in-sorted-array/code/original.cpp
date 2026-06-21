@@ -1,40 +1,40 @@
 #include<iostream>
 using namespace std;
-struct Array
+struct ArrayAdtArrayModel
 {
-    int firstItems[10];
-    int itemCapacity;
-    int textLength;
+    int arrayAdtFirstItems[10];
+    int arrayAdtItemCapacity;
+    int arrayAdtTextLength;
 };
-void Display(struct Array items)
+void Display(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        std::cout<<items.firstItems[scanIndex]<<" ";
+        std::cout<<arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex]<<" ";
     }
 }
-void swap(int *inputValue,int *compareValue)
+void swap(int *arrayAdtInputValue,int *arrayAdtCompareValue)
 {
-    int swapValue=*inputValue;
-    *inputValue=*compareValue;
-    *compareValue=swapValue;
+    int arrayAdtSwapValue=*arrayAdtInputValue;
+    *arrayAdtInputValue=*arrayAdtCompareValue;
+    *arrayAdtCompareValue=arrayAdtSwapValue;
 }
-void insert(struct Array *items,int inputValue)
+void insert(struct ArrayAdtArrayModel *arrayAdtItems,int arrayAdtInputValue)
 {   
-    int scanIndex=items->textLength-1;
-    while(scanIndex>=0 && items->firstItems[scanIndex]>inputValue)
+    int arrayAdtScanIndex=arrayAdtItems->arrayAdtTextLength-1;
+    while(arrayAdtScanIndex>=0 && arrayAdtItems->arrayAdtFirstItems[arrayAdtScanIndex]>arrayAdtInputValue)
     {   
-        items->firstItems[scanIndex+1]=items->firstItems[scanIndex];
-        scanIndex--;
+        arrayAdtItems->arrayAdtFirstItems[arrayAdtScanIndex+1]=arrayAdtItems->arrayAdtFirstItems[arrayAdtScanIndex];
+        arrayAdtScanIndex--;
     }
-    items->firstItems[scanIndex+1]=inputValue;
-    items->textLength++;
+    arrayAdtItems->arrayAdtFirstItems[arrayAdtScanIndex+1]=arrayAdtInputValue;
+    arrayAdtItems->arrayAdtTextLength++;
 }
 
 int main()
 {
-    struct Array items={{1,2,3,4,6,8,10},10,7};
-    insert(&items,7);
-    Display(items);
+    struct ArrayAdtArrayModel arrayAdtItems={{1,2,3,4,6,8,10},10,7};
+    insert(&arrayAdtItems,7);
+    Display(arrayAdtItems);
     return 0;
 }

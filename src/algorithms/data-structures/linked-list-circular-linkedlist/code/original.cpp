@@ -1,68 +1,68 @@
 #include<iostream>
 #include<stdlib.h>
 using namespace std;
-class Node{
+class LinkedListNode{
     public:
-        int nodeValue;
-        Node *nextLink;
+        int linkedListNodeValue;
+        LinkedListNode *linkedListNextLink;
 };
 
-class CircularLinkedList{
+class LinkedListCircularLinkedList{
     private:
-        Node *Head;
+        LinkedListNode *Head;
     public:
-    CircularLinkedList(int firstItems[],int itemCount);
-    Node * getHead(){return Head;}
+    LinkedListCircularLinkedList(int linkedListFirstItems[],int linkedListItemCount);
+    LinkedListNode * getHead(){return Head;}
     void display();
-    void Rdisplay(Node *currentNode);
+    void Rdisplay(LinkedListNode *linkedListCurrentNode);
 };
-void CircularLinkedList::Rdisplay(Node *currentNode)
+void LinkedListCircularLinkedList::Rdisplay(LinkedListNode *linkedListCurrentNode)
 {
-    static int linkedListFlag=0;
-    if(currentNode!=Head || linkedListFlag==0)
+    static int linkedListState=0;
+    if(linkedListCurrentNode!=Head || linkedListState==0)
     {
-        linkedListFlag=1;
-        cout<<currentNode->nodeValue<<"->";
-        Rdisplay(currentNode->nextLink);
+        linkedListState=1;
+        cout<<linkedListCurrentNode->linkedListNodeValue<<"->";
+        Rdisplay(linkedListCurrentNode->linkedListNextLink);
     }
-    linkedListFlag=0;
+    linkedListState=0;
 }
-void CircularLinkedList::display()
+void LinkedListCircularLinkedList::display()
 {
-    Node *currentNode=Head;
+    LinkedListNode *linkedListCurrentNode=Head;
     do{
-        cout<<currentNode->nodeValue<<"->";
-        currentNode=currentNode->nextLink;
+        cout<<linkedListCurrentNode->linkedListNodeValue<<"->";
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
 
-    }while(currentNode!=Head);
+    }while(linkedListCurrentNode!=Head);
     cout<<endl;
 }
-CircularLinkedList::CircularLinkedList(int firstItems[],int itemCount)
+LinkedListCircularLinkedList::LinkedListCircularLinkedList(int linkedListFirstItems[],int linkedListItemCount)
 {
-    Node *lastNode,*swapValue;
+    LinkedListNode *linkedListLastNode,*linkedListSwapValue;
     
-    Head=new Node;
-    Head->nodeValue=firstItems[0];
-    Head->nextLink=Head;
-    lastNode=Head;
-    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
+    Head=new LinkedListNode;
+    Head->linkedListNodeValue=linkedListFirstItems[0];
+    Head->linkedListNextLink=Head;
+    linkedListLastNode=Head;
+    for(int linkedListScanIndex=1;linkedListScanIndex<linkedListItemCount;linkedListScanIndex++)
     {
-        swapValue=new Node;
-        swapValue->nodeValue=firstItems[scanIndex];
-        swapValue->nextLink=lastNode->nextLink;
-        lastNode->nextLink=swapValue;
-        lastNode=swapValue;
+        linkedListSwapValue=new LinkedListNode;
+        linkedListSwapValue->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+        linkedListSwapValue->linkedListNextLink=linkedListLastNode->linkedListNextLink;
+        linkedListLastNode->linkedListNextLink=linkedListSwapValue;
+        linkedListLastNode=linkedListSwapValue;
     }
 }
 
 int main()
 {
     
-    int firstItems[]={1,3,5,8,9};
+    int linkedListFirstItems[]={1,3,5,8,9};
 
-    CircularLinkedList leftIndex(firstItems,5);
-    leftIndex.display();
-    Node *linkedListH=leftIndex.getHead();
-    leftIndex.Rdisplay(linkedListH);
+    LinkedListCircularLinkedList linkedListLeftIndex(linkedListFirstItems,5);
+    linkedListLeftIndex.display();
+    LinkedListNode *linkedListState2=linkedListLeftIndex.getHead();
+    linkedListLeftIndex.Rdisplay(linkedListState2);
     return 0;
 }

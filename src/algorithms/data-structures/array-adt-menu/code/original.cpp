@@ -1,126 +1,126 @@
 #include <iostream>
 using namespace std;
 
-template<class T>
-class Array{
+template<class ArrayAdtT>
+class ArrayAdtArrayModel{
 private:
-    T * firstItems;
-    int itemCapacity;
-    int textLength;
+    ArrayAdtT * arrayAdtFirstItems;
+    int arrayAdtItemCapacity;
+    int arrayAdtTextLength;
 public:
-    Array()
+    ArrayAdtArrayModel()
     {
-        itemCapacity=10;
-        textLength=0;
-        firstItems=new T[itemCapacity];
+        arrayAdtItemCapacity=10;
+        arrayAdtTextLength=0;
+        arrayAdtFirstItems=new ArrayAdtT[arrayAdtItemCapacity];
 
     }
-    Array(int itemCapacity)
+    ArrayAdtArrayModel(int arrayAdtItemCapacity)
     {
-        this->itemCapacity=itemCapacity;
-        textLength=0;
-        firstItems=new T[itemCapacity];
+        this->arrayAdtItemCapacity=arrayAdtItemCapacity;
+        arrayAdtTextLength=0;
+        arrayAdtFirstItems=new ArrayAdtT[arrayAdtItemCapacity];
 
     }
-    void insert(int targetIndex,T storedValue){
-        if(targetIndex>=0 && targetIndex<=itemCapacity){
-        for(int scanIndex=textLength;scanIndex>targetIndex;scanIndex--)
+    void insert(int arrayAdtTargetIndex,ArrayAdtT arrayAdtStoredValue){
+        if(arrayAdtTargetIndex>=0 && arrayAdtTargetIndex<=arrayAdtItemCapacity){
+        for(int arrayAdtScanIndex=arrayAdtTextLength;arrayAdtScanIndex>arrayAdtTargetIndex;arrayAdtScanIndex--)
         {
-            firstItems[scanIndex]=firstItems[scanIndex-1];
+            arrayAdtFirstItems[arrayAdtScanIndex]=arrayAdtFirstItems[arrayAdtScanIndex-1];
         }
-        firstItems[targetIndex]=storedValue;
-        textLength++;
+        arrayAdtFirstItems[arrayAdtTargetIndex]=arrayAdtStoredValue;
+        arrayAdtTextLength++;
         }
     }
-    void append(T inputValue){
-        if(textLength<itemCapacity)
+    void append(ArrayAdtT arrayAdtInputValue){
+        if(arrayAdtTextLength<arrayAdtItemCapacity)
         {
-            firstItems[textLength]=inputValue;
-            textLength++;
+            arrayAdtFirstItems[arrayAdtTextLength]=arrayAdtInputValue;
+            arrayAdtTextLength++;
         }
     }
     
     void display(){
-        for (int scanIndex = 0; scanIndex < textLength; scanIndex++){
-            std::cout<<firstItems[scanIndex] << " ";
+        for (int arrayAdtScanIndex = 0; arrayAdtScanIndex < arrayAdtTextLength; arrayAdtScanIndex++){
+            std::cout<<arrayAdtFirstItems[arrayAdtScanIndex] << " ";
         }
     }
-    int l_search(T storedValue)
+    int l_search(ArrayAdtT arrayAdtStoredValue)
     {
-        for(int scanIndex=0;scanIndex<textLength;scanIndex++)
+        for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtTextLength;arrayAdtScanIndex++)
         {
-            if(firstItems[scanIndex]==storedValue)
+            if(arrayAdtFirstItems[arrayAdtScanIndex]==arrayAdtStoredValue)
             {
-                return scanIndex;
+                return arrayAdtScanIndex;
             }
         }
         return -1;
     }
-    void deletion(int targetIndex)
+    void deletion(int arrayAdtTargetIndex)
     {
-        if(targetIndex>=0 && targetIndex<=textLength)
+        if(arrayAdtTargetIndex>=0 && arrayAdtTargetIndex<=arrayAdtTextLength)
         {
-            for(int scanIndex=targetIndex;scanIndex<textLength-1;scanIndex++)
+            for(int arrayAdtScanIndex=arrayAdtTargetIndex;arrayAdtScanIndex<arrayAdtTextLength-1;arrayAdtScanIndex++)
             {
-                firstItems[scanIndex]=firstItems[scanIndex+1];
+                arrayAdtFirstItems[arrayAdtScanIndex]=arrayAdtFirstItems[arrayAdtScanIndex+1];
             }
-            textLength--;
-            std::cout<<"deleted index "<<targetIndex<<" element in array"<<std::endl;
+            arrayAdtTextLength--;
+            std::cout<<"deleted index "<<arrayAdtTargetIndex<<" element in array"<<std::endl;
         }    
     }
-    T Sum()
+    ArrayAdtT Sum()
     {
-        T arrayAdtSum=0;
-        for(int scanIndex=0;scanIndex<textLength;scanIndex++)
-            arrayAdtSum=arrayAdtSum+firstItems[scanIndex];
-        return arrayAdtSum;
+        ArrayAdtT arrayAdtState3=0;
+        for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtTextLength;arrayAdtScanIndex++)
+            arrayAdtState3=arrayAdtState3+arrayAdtFirstItems[arrayAdtScanIndex];
+        return arrayAdtState3;
     }
 
-    Array* Union(Array);
+    ArrayAdtArrayModel* Union(ArrayAdtArrayModel);
 
-    ~Array()
+    ~ArrayAdtArrayModel()
     {
-        delete []firstItems;
+        delete []arrayAdtFirstItems;
     }
     
 };
-template<class T>
-Array<T>* Array<T>::Union(Array<T> arrayAdtArr2)
+template<class ArrayAdtT>
+ArrayAdtArrayModel<ArrayAdtT>* ArrayAdtArrayModel<ArrayAdtT>::Union(ArrayAdtArrayModel<ArrayAdtT> arrayAdtState)
 {
-    Array* arrayAdtArr3=new Array[10];
-    int scanIndex=0,writeIndex=0,probeIndex=0,columnCount=0;
-    for(scanIndex=0;scanIndex<textLength;scanIndex++,probeIndex++)
-        arrayAdtArr3->firstItems[probeIndex]=firstItems[scanIndex];
-    for(scanIndex=0;scanIndex<arrayAdtArr2.textLength;scanIndex++)
+    ArrayAdtArrayModel* arrayAdtState2=new ArrayAdtArrayModel[10];
+    int arrayAdtScanIndex=0,arrayAdtWriteIndex=0,arrayAdtProbeIndex=0,arrayAdtColumnCount=0;
+    for(arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtTextLength;arrayAdtScanIndex++,arrayAdtProbeIndex++)
+        arrayAdtState2->arrayAdtFirstItems[arrayAdtProbeIndex]=arrayAdtFirstItems[arrayAdtScanIndex];
+    for(arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtState.arrayAdtTextLength;arrayAdtScanIndex++)
         {
-            int leftIndex=0,writeIndex=0;
-            while(writeIndex<textLength)
+            int arrayAdtLeftIndex=0,arrayAdtWriteIndex=0;
+            while(arrayAdtWriteIndex<arrayAdtTextLength)
             {
-                if(arrayAdtArr2.firstItems[scanIndex]==firstItems[writeIndex])
+                if(arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex]==arrayAdtFirstItems[arrayAdtWriteIndex])
                 {
-                    leftIndex=1;
+                    arrayAdtLeftIndex=1;
                     break;
                 }
-                writeIndex++;
+                arrayAdtWriteIndex++;
 
             }
-            if(leftIndex==0)
-                arrayAdtArr3->firstItems[probeIndex++]=arrayAdtArr2.firstItems[scanIndex];
+            if(arrayAdtLeftIndex==0)
+                arrayAdtState2->arrayAdtFirstItems[arrayAdtProbeIndex++]=arrayAdtState.arrayAdtFirstItems[arrayAdtScanIndex];
         }
-        arrayAdtArr3->textLength=probeIndex;
-        arrayAdtArr3->itemCapacity=100;
-        return arrayAdtArr3;
+        arrayAdtState2->arrayAdtTextLength=arrayAdtProbeIndex;
+        arrayAdtState2->arrayAdtItemCapacity=100;
+        return arrayAdtState2;
     }
 
 
 
 int main() {
-    int scanIndex,arrayAdtSz;
-    int inputValue;
+    int arrayAdtScanIndex,arrayAdtState4;
+    int arrayAdtInputValue;
     cout<<"Enter size of array ";
-    cin>>arrayAdtSz;
-    Array<int> items(arrayAdtSz);
-    int currentChar;
+    cin>>arrayAdtState4;
+    ArrayAdtArrayModel<int> arrayAdtItems(arrayAdtState4);
+    int arrayAdtCurrentChar;
     do{
         cout<<"\nMenu\n";
         cout<<"1.Append\n";
@@ -131,56 +131,56 @@ int main() {
         cout<<"6.Delete\n";
         cout<<"7.Exit\n";
 
-        cin>>currentChar;
-        switch(currentChar)
+        cin>>arrayAdtCurrentChar;
+        switch(arrayAdtCurrentChar)
         {
             case 1:
                 cout<<"Enter element to appended\n";
-                cin>>inputValue;
-                items.append(inputValue);
+                cin>>arrayAdtInputValue;
+                arrayAdtItems.append(arrayAdtInputValue);
                 break;
 
             case 2:
                 cout<<"Enter element to be inserted\n";
-                cin>>inputValue;
+                cin>>arrayAdtInputValue;
                 cout<<"Enter position of element\n";
-                cin>>scanIndex;
-                items.insert(scanIndex,inputValue);
+                cin>>arrayAdtScanIndex;
+                arrayAdtItems.insert(arrayAdtScanIndex,arrayAdtInputValue);
                 break;
 
             case 3:
                 cout<<"Enter element to be searched\n";
-                cin>>inputValue;
-                scanIndex=items.l_search(inputValue);
-                if(scanIndex==-1)
+                cin>>arrayAdtInputValue;
+                arrayAdtScanIndex=arrayAdtItems.l_search(arrayAdtInputValue);
+                if(arrayAdtScanIndex==-1)
                     cout<<"Element not found\n";
                 else
-                    cout<<"Element found at "<<scanIndex<<" position ";
+                    cout<<"Element found at "<<arrayAdtScanIndex<<" position ";
                 break;
 
             case 4:
-                cout<<"Sum of array elements is "<<items.Sum();
+                cout<<"Sum of array elements is "<<arrayAdtItems.Sum();
                 break;
 
             case 5:
-                items.display();
+                arrayAdtItems.display();
                 break;
 
             case 6:
                 cout<<"Enter index at which elements will be deleted\n";
-                cin>>scanIndex;
-                items.deletion(scanIndex);
+                cin>>arrayAdtScanIndex;
+                arrayAdtItems.deletion(arrayAdtScanIndex);
                 break;
 
         }
-    }while(currentChar<7);
+    }while(arrayAdtCurrentChar<7);
 
-    Array<int> secondItems(10);
-    secondItems.append(4);
-    secondItems.append(5);
-    secondItems.append(6);
-    Array<int> *mergedItems=items.Union(secondItems);
-    mergedItems->display();
+    ArrayAdtArrayModel<int> arrayAdtSecondItems(10);
+    arrayAdtSecondItems.append(4);
+    arrayAdtSecondItems.append(5);
+    arrayAdtSecondItems.append(6);
+    ArrayAdtArrayModel<int> *arrayAdtMergedItems=arrayAdtItems.Union(arrayAdtSecondItems);
+    arrayAdtMergedItems->display();
 
     return 0;
 }

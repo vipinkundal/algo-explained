@@ -3,62 +3,62 @@ using namespace std;
 int main()
 {
     //Anagram using method 1 i.e for loop
-    char stringAnagramWord1[]="elbow";
-    char inPlaceText[]="below";
-    int scanIndex,writeIndex;
-    for(scanIndex=0;stringAnagramWord1[scanIndex]!='\0';scanIndex++)
+    char stringAnagramState[]="elbow";
+    char stringAnagramInPlaceText[]="below";
+    int stringAnagramScanIndex,stringAnagramWriteIndex;
+    for(stringAnagramScanIndex=0;stringAnagramState[stringAnagramScanIndex]!='\0';stringAnagramScanIndex++)
     {
-        for(writeIndex=0;inPlaceText[writeIndex]!='\0';writeIndex++)
+        for(stringAnagramWriteIndex=0;stringAnagramInPlaceText[stringAnagramWriteIndex]!='\0';stringAnagramWriteIndex++)
         {
-            if(stringAnagramWord1[scanIndex]==inPlaceText[writeIndex])
+            if(stringAnagramState[stringAnagramScanIndex]==stringAnagramInPlaceText[stringAnagramWriteIndex])
                 break;
         }
-        if(inPlaceText[writeIndex]=='\0')
+        if(stringAnagramInPlaceText[stringAnagramWriteIndex]=='\0')
             break;
     }
-    if(stringAnagramWord1[scanIndex]=='\0')
+    if(stringAnagramState[stringAnagramScanIndex]=='\0')
     cout<<"Its an anagram "<<endl;
     else
     cout<<"Its not an angram"<<endl;
 
     //Anagram using method 2 using hasing
 
-    char stringAnagramWord3[]="cat";
-    char stringAnagramWord4[]="tac";
+    char stringAnagramState2[]="cat";
+    char stringAnagramState3[]="tac";
 
-    int stringAnagramH[25]={0};
-    for(scanIndex=0;stringAnagramWord3[scanIndex]!='\0';scanIndex++)
-        stringAnagramH[stringAnagramWord3[scanIndex]-97]++;
+    int stringAnagramState6[25]={0};
+    for(stringAnagramScanIndex=0;stringAnagramState2[stringAnagramScanIndex]!='\0';stringAnagramScanIndex++)
+        stringAnagramState6[stringAnagramState2[stringAnagramScanIndex]-97]++;
 
-    for(scanIndex=0;stringAnagramWord4[scanIndex]!='\0';scanIndex++)
-    {    if((stringAnagramH[stringAnagramWord4[scanIndex]-97]-1)<0)
+    for(stringAnagramScanIndex=0;stringAnagramState3[stringAnagramScanIndex]!='\0';stringAnagramScanIndex++)
+    {    if((stringAnagramState6[stringAnagramState3[stringAnagramScanIndex]-97]-1)<0)
         {
             cout<<"Its not a anagram"<<endl;
             break;
         }
     }
-    if(stringAnagramWord4[scanIndex]=='\0')
+    if(stringAnagramState3[stringAnagramScanIndex]=='\0')
     cout<<"Its an anagram"<<endl;
 
     //method 3 using betwise operator 
 
-    char stringAnagramWord5[]="tac";
-    char stringAnagramWord6[]="cat";
-    int primaryValue=0;
-    for(scanIndex=0;stringAnagramWord5[scanIndex]!='\0';scanIndex++)//assigning word6 character as per bit
+    char stringAnagramState4[]="tac";
+    char stringAnagramState5[]="cat";
+    int stringAnagramPrimaryValue=0;
+    for(stringAnagramScanIndex=0;stringAnagramState4[stringAnagramScanIndex]!='\0';stringAnagramScanIndex++)//assigning word6 character as per bit
     {
-        int secondaryValue=1;//assigning 0 bit as 1 i.e turning is on
-        secondaryValue=secondaryValue<<stringAnagramWord5[scanIndex]-97;//turning on the bit for that particular char
-        if(primaryValue&secondaryValue)
+        int stringAnagramSecondaryValue=1;//assigning 0 bit as 1 i.e turning is on
+        stringAnagramSecondaryValue=stringAnagramSecondaryValue<<stringAnagramState4[stringAnagramScanIndex]-97;//turning on the bit for that particular char
+        if(stringAnagramPrimaryValue&stringAnagramSecondaryValue)
             continue;
         else
-            primaryValue=primaryValue|secondaryValue;
+            stringAnagramPrimaryValue=stringAnagramPrimaryValue|stringAnagramSecondaryValue;
     }
-    for(scanIndex=0;stringAnagramWord6[scanIndex]!='\0';scanIndex++)
+    for(stringAnagramScanIndex=0;stringAnagramState5[stringAnagramScanIndex]!='\0';stringAnagramScanIndex++)
     {
-        int secondaryValue=1;//assigning 0 bit as 1 i.e turning is on
-        secondaryValue=secondaryValue<<stringAnagramWord6[scanIndex]-97;//turning on the bit for that particular char
-        if(primaryValue&secondaryValue)
+        int stringAnagramSecondaryValue=1;//assigning 0 bit as 1 i.e turning is on
+        stringAnagramSecondaryValue=stringAnagramSecondaryValue<<stringAnagramState5[stringAnagramScanIndex]-97;//turning on the bit for that particular char
+        if(stringAnagramPrimaryValue&stringAnagramSecondaryValue)
             continue;
         else
         {
@@ -66,7 +66,7 @@ int main()
             break;
         }
     }
-    if(stringAnagramWord6[scanIndex]=='\0')
+    if(stringAnagramState5[stringAnagramScanIndex]=='\0')
     cout<<"Its an anagram";
     return 0;
 }

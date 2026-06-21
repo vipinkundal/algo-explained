@@ -1,99 +1,99 @@
 #include<iostream>
 #include<stdlib.h>
 using namespace std;
-struct Stack{
-    int itemCapacity;
-    int stackTop;
-    int *stackStorage;
+struct StackUsingStackModel{
+    int stackUsingItemCapacity;
+    int stackUsingStackTop;
+    int *stackUsingStackStorage;
 };
 
-void create(Stack *stackUsingSt)
+void create(StackUsingStackModel *stackUsingState)
 {
     cout<<"Enter the size of stack : ";
-    cin>>stackUsingSt->itemCapacity;
-    stackUsingSt->stackTop=-1;
-    stackUsingSt->stackStorage=new int[stackUsingSt->itemCapacity];
+    cin>>stackUsingState->stackUsingItemCapacity;
+    stackUsingState->stackUsingStackTop=-1;
+    stackUsingState->stackUsingStackStorage=new int[stackUsingState->stackUsingItemCapacity];
 }
 
-void display(Stack stackUsingSt)
+void display(StackUsingStackModel stackUsingState)
 {
-    if(stackUsingSt.stackTop==-1)
+    if(stackUsingState.stackUsingStackTop==-1)
         cout<<"stack is Empty";
     else{
-        int scanIndex;
-        for(scanIndex=stackUsingSt.stackTop;scanIndex>=0;scanIndex--)
+        int stackUsingScanIndex;
+        for(stackUsingScanIndex=stackUsingState.stackUsingStackTop;stackUsingScanIndex>=0;stackUsingScanIndex--)
         {
-            cout<<stackUsingSt.stackStorage[scanIndex]<<" ";
+            cout<<stackUsingState.stackUsingStackStorage[stackUsingScanIndex]<<" ";
         }
         cout<<endl;
     }
 }
 
-void push(Stack *stackUsingSt,int inputValue)
+void push(StackUsingStackModel *stackUsingState,int stackUsingInputValue)
 {
-    if(stackUsingSt->itemCapacity-stackUsingSt->stackTop==1)
+    if(stackUsingState->stackUsingItemCapacity-stackUsingState->stackUsingStackTop==1)
     {
         cout<<"stack is overflow\n";
     }
     else{
-        stackUsingSt->stackTop++;
-        stackUsingSt->stackStorage[stackUsingSt->stackTop]=inputValue;
+        stackUsingState->stackUsingStackTop++;
+        stackUsingState->stackUsingStackStorage[stackUsingState->stackUsingStackTop]=stackUsingInputValue;
     }
 }
 
-int pop(Stack *stackUsingSt)
+int pop(StackUsingStackModel *stackUsingState)
 {
-    int inputValue=-1;
-    if(stackUsingSt->stackTop==-1)
+    int stackUsingInputValue=-1;
+    if(stackUsingState->stackUsingStackTop==-1)
     {
         cout<<"Stack is underflow\n";
     }
     else{
-        inputValue=stackUsingSt->stackStorage[stackUsingSt->stackTop];
-        stackUsingSt->stackTop--;
+        stackUsingInputValue=stackUsingState->stackUsingStackStorage[stackUsingState->stackUsingStackTop];
+        stackUsingState->stackUsingStackTop--;
     }
-    return inputValue;
+    return stackUsingInputValue;
 }
 
-int peek(Stack stackUsingSt,int targetIndex)
+int peek(StackUsingStackModel stackUsingState,int stackUsingTargetIndex)
 {
-    int inputValue=-1;
-    if(stackUsingSt.stackTop-targetIndex+1<0)
+    int stackUsingInputValue=-1;
+    if(stackUsingState.stackUsingStackTop-stackUsingTargetIndex+1<0)
         cout<<"Invalid Index\n";
     else{
-        inputValue=stackUsingSt.stackStorage[stackUsingSt.stackTop-targetIndex+1];
+        stackUsingInputValue=stackUsingState.stackUsingStackStorage[stackUsingState.stackUsingStackTop-stackUsingTargetIndex+1];
     }
-    return inputValue;
+    return stackUsingInputValue;
 }
 
-int StackTop(Stack stackUsingSt)
+int StackTop(StackUsingStackModel stackUsingState)
 {
-    int inputValue=-1;
-    if(stackUsingSt.stackTop!=-1){
-        inputValue=stackUsingSt.stackStorage[stackUsingSt.stackTop];
+    int stackUsingInputValue=-1;
+    if(stackUsingState.stackUsingStackTop!=-1){
+        stackUsingInputValue=stackUsingState.stackUsingStackStorage[stackUsingState.stackUsingStackTop];
     }
-    return inputValue;
+    return stackUsingInputValue;
 }
 
-int isEmpty(Stack stackUsingSt)
+int isEmpty(StackUsingStackModel stackUsingState)
 {
-    if(stackUsingSt.stackTop==-1)
+    if(stackUsingState.stackUsingStackTop==-1)
         return 1;
     else
         return 0;
 }
 
-int isFull(Stack stackUsingSt)
+int isFull(StackUsingStackModel stackUsingState)
 {
-    if(stackUsingSt.itemCapacity-stackUsingSt.stackTop==1)
+    if(stackUsingState.stackUsingItemCapacity-stackUsingState.stackUsingStackTop==1)
         return 1;
     else
         return 0;
 }
 int main()
 {
-    struct Stack stackUsingSt;
-    create(&stackUsingSt);
-    display(stackUsingSt);
+    struct StackUsingStackModel stackUsingState;
+    create(&stackUsingState);
+    display(stackUsingState);
     return 0;
 }

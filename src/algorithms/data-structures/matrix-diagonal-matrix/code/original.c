@@ -1,32 +1,32 @@
 #include<stdio.h>
-struct matrixDiagonalMatrix
+struct matrixDiagonalState
 {
-    int itemCount;
-    int firstItems[10];
+    int matrixDiagonalItemCount;
+    int matrixDiagonalFirstItems[10];
 };
-void set(struct matrixDiagonalMatrix *primaryValue,int scanIndex,int writeIndex,int inputValue)
+void set(struct matrixDiagonalState *matrixDiagonalPrimaryValue,int matrixDiagonalScanIndex,int matrixDiagonalWriteIndex,int matrixDiagonalInputValue)
 {
-    if(scanIndex==writeIndex)
+    if(matrixDiagonalScanIndex==matrixDiagonalWriteIndex)
     {
-        primaryValue->firstItems[scanIndex-1]=inputValue;
+        matrixDiagonalPrimaryValue->matrixDiagonalFirstItems[matrixDiagonalScanIndex-1]=matrixDiagonalInputValue;
     }
 
 }
-int get(struct matrixDiagonalMatrix *primaryValue,int scanIndex,int writeIndex)
+int get(struct matrixDiagonalState *matrixDiagonalPrimaryValue,int matrixDiagonalScanIndex,int matrixDiagonalWriteIndex)
 {
-    if(scanIndex==writeIndex)
-        primaryValue->firstItems[scanIndex-1];
+    if(matrixDiagonalScanIndex==matrixDiagonalWriteIndex)
+        matrixDiagonalPrimaryValue->matrixDiagonalFirstItems[matrixDiagonalScanIndex-1];
     else
         return 0;
 }
-void Display(struct matrixDiagonalMatrix *primaryValue)
+void Display(struct matrixDiagonalState *matrixDiagonalPrimaryValue)
 {
-    for(int scanIndex=0;scanIndex<(primaryValue->itemCount);scanIndex++)
+    for(int matrixDiagonalScanIndex=0;matrixDiagonalScanIndex<(matrixDiagonalPrimaryValue->matrixDiagonalItemCount);matrixDiagonalScanIndex++)
     {
-        for(int writeIndex=0;writeIndex<(primaryValue->itemCount);writeIndex++)
+        for(int matrixDiagonalWriteIndex=0;matrixDiagonalWriteIndex<(matrixDiagonalPrimaryValue->matrixDiagonalItemCount);matrixDiagonalWriteIndex++)
         {
-            if(scanIndex==writeIndex)
-            printf("%d ",primaryValue->firstItems[scanIndex]);
+            if(matrixDiagonalScanIndex==matrixDiagonalWriteIndex)
+            printf("%d ",matrixDiagonalPrimaryValue->matrixDiagonalFirstItems[matrixDiagonalScanIndex]);
             else
             printf("%d ",0);
         }
@@ -35,13 +35,13 @@ void Display(struct matrixDiagonalMatrix *primaryValue)
 }
 int main()
 {
-    struct matrixDiagonalMatrix columnCount;
-    columnCount.itemCount=4;
-    set(&columnCount,1,1,7);
-    set(&columnCount,2,2,5);
-    set(&columnCount,3,3,6);
-    set(&columnCount,4,4,3);
-    Display(&columnCount);
+    struct matrixDiagonalState matrixDiagonalColumnCount;
+    matrixDiagonalColumnCount.matrixDiagonalItemCount=4;
+    set(&matrixDiagonalColumnCount,1,1,7);
+    set(&matrixDiagonalColumnCount,2,2,5);
+    set(&matrixDiagonalColumnCount,3,3,6);
+    set(&matrixDiagonalColumnCount,4,4,3);
+    Display(&matrixDiagonalColumnCount);
 
     return 0;
 }

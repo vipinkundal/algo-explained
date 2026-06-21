@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Recursion nCr
-// Original source: 03_recursion/12_ncr.cpp
 export function recursionNcr(n = 5) {
   const calls = [];
   function factorial(value) {

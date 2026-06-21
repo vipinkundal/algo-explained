@@ -240,7 +240,7 @@ function indefiniteArticle(value) {
 }
 
 function titleSentence(title) {
-  return `${title} shows how data is organized, changed, and inspected through a small browser demo with the original C/C++ reference available beside it.`;
+  return `${title} shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.`;
 }
 
 function focusNoun(kind) {
@@ -365,8 +365,7 @@ function stateFields(kind, title) {
 
 function jsDemo(title, folder, fileName, functionName) {
   const kind = operationKind(folder, title, fileName);
-  const header = `// Runnable JavaScript companion for ${title}\n// Original source: ${folder}/${fileName}\n`;
-
+  const header = `// Runnable JavaScript companion for ${title}\n
   if (kind === "queue") return `${header}export function ${functionName}() {
   const queue = [];
   const output = [];
@@ -464,7 +463,7 @@ function originalInsight(source, title) {
   if (/\bclass\b/.test(source)) return "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.";
   if (/\bnew\b|\bmalloc\b/.test(source)) return "Dynamic allocation creates storage at runtime; every pointer assignment changes how nodes or arrays are connected.";
   if (/\bfor\s*\(|\bwhile\s*\(/.test(source)) return "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.";
-  return `The original ${title} source shows the C/C++ memory model and operation order used by this lesson.`;
+  return `The C/C++ reference ${title} source shows the C/C++ memory model and operation order used by this lesson.`;
 }
 
 function pageData(record) {
@@ -498,7 +497,7 @@ function pageData(record) {
     concept: `Data structures are easier to learn when each value has a clear place and every change preserves a rule.`,
     logicSummary: `Track the active state, ${actionText}, and inspect the updated view.`,
     transitionSummary: `Move one step forward by changing only the slots, links, cursors, or nodes required by this operation.`,
-    codeInsight: "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the Original C/C++ tab to study the source implementation.",
+    codeInsight: "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
     originalCodeInsight: originalInsight(record.source, record.title),
     realLifeExample: `${record.title} is useful when you need to understand the mechanics behind library-level data structures.`,
     whenToUse: `Use this page when learning ${record.group} behavior through state changes instead of memorized code.`,

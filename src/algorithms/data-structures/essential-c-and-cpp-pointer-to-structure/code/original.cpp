@@ -2,30 +2,30 @@
 #include<stdlib.h>
 #include<stdio.h>
 using namespace std;
-struct  RECTANGLE
+struct  EssentialCRECTANGLE
 {
-    int textLength;
-    int essentialCBreath;
+    int essentialCTextLength;
+    int essentialCState;
     /* data */
 };
 int main()
 {
-    struct RECTANGLE rightIndex={5,5};
-    rightIndex.textLength=10;//editing rectangle value
-    cout<<"Structure Rectangle in stack and accessed using variable "<<rightIndex.textLength<<" "<<rightIndex.essentialCBreath<<endl;
+    struct EssentialCRECTANGLE essentialCRightIndex={5,5};
+    essentialCRightIndex.essentialCTextLength=10;//editing rectangle value
+    cout<<"Structure Rectangle in stack and accessed using variable "<<essentialCRightIndex.essentialCTextLength<<" "<<essentialCRightIndex.essentialCState<<endl;
 
 
     //Now Using Pointer
-    struct RECTANGLE *essentialCP1=&rightIndex;
-    essentialCP1->textLength=2;//could even be (*p).length=2
-    cout<<"Structure Rectangle in stack and accessed using pointer "<<essentialCP1->textLength<<" "<<essentialCP1->essentialCBreath<<endl;
+    struct EssentialCRECTANGLE *essentialCState2=&essentialCRightIndex;
+    essentialCState2->essentialCTextLength=2;//could even be (*p).length=2
+    cout<<"Structure Rectangle in stack and accessed using pointer "<<essentialCState2->essentialCTextLength<<" "<<essentialCState2->essentialCState<<endl;
 
 
     //Now creating object structure rectangle in heap memory using pointer
-    RECTANGLE *essentialCP2;//struct can be skipped in c++
-    essentialCP2=new RECTANGLE;//this is for c++ for c it would be p2=(return datatype *)malloc(size of object need to be created)
+    EssentialCRECTANGLE *essentialCState3;//struct can be skipped in c++
+    essentialCState3=new EssentialCRECTANGLE;//this is for c++ for c it would be p2=(return datatype *)malloc(size of object need to be created)
                     //here it would be p2=(struct RECTANGLE *)malloc(sizeof(struct RECTANGLE))
-    essentialCP2->textLength=14;
-    essentialCP2->essentialCBreath=15; 
-    cout<<"Structure Rectangle in heap and accessed using pointer "<<essentialCP2->textLength<<" "<<essentialCP2->essentialCBreath<<endl;
+    essentialCState3->essentialCTextLength=14;
+    essentialCState3->essentialCState=15; 
+    cout<<"Structure Rectangle in heap and accessed using pointer "<<essentialCState3->essentialCTextLength<<" "<<essentialCState3->essentialCState<<endl;
 }

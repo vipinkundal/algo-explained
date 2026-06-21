@@ -1,149 +1,149 @@
 #include<iostream>
 #include<stdlib.h>
 using namespace std;
-class Node{
+class LinkedListNode{
     public:
-        int nodeValue;
-        Node *nextLink;
+        int linkedListNodeValue;
+        LinkedListNode *linkedListNextLink;
 };
 
-class CircularLinkedList{
+class LinkedListCircularLinkedList{
     private:
-        Node *Head;
+        LinkedListNode *Head;
     public:
-    CircularLinkedList(){Head=NULL;}
-    CircularLinkedList(int firstItems[],int itemCount);
-    Node * getHead(){return Head;}
+    LinkedListCircularLinkedList(){Head=NULL;}
+    LinkedListCircularLinkedList(int linkedListFirstItems[],int linkedListItemCount);
+    LinkedListNode * getHead(){return Head;}
     void display();
-    void Rdisplay(Node *currentNode);
+    void Rdisplay(LinkedListNode *linkedListCurrentNode);
     int length();
-    void insert(int targetIndex,int storedValue);
-    int Delete(int targetIndex);
+    void insert(int linkedListTargetIndex,int linkedListStoredValue);
+    int Delete(int linkedListTargetIndex);
 };
-int CircularLinkedList::Delete(int targetIndex)
+int LinkedListCircularLinkedList::Delete(int linkedListTargetIndex)
 {
-    if(targetIndex<0 || targetIndex>length())
+    if(linkedListTargetIndex<0 || linkedListTargetIndex>length())
         return -1;
-    Node *currentNode=Head,*nextNode;
-    int inputValue,scanIndex;
-    if(targetIndex==1)
+    LinkedListNode *linkedListCurrentNode=Head,*linkedListNextNode;
+    int linkedListInputValue,linkedListScanIndex;
+    if(linkedListTargetIndex==1)
     {
-        while(currentNode->nextLink!=Head)
-            currentNode=currentNode->nextLink;
-        if(currentNode==Head)
+        while(linkedListCurrentNode->linkedListNextLink!=Head)
+            linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
+        if(linkedListCurrentNode==Head)
         {
-            inputValue=currentNode->nodeValue;
-            delete currentNode;
+            linkedListInputValue=linkedListCurrentNode->linkedListNodeValue;
+            delete linkedListCurrentNode;
             Head=NULL;
-            return inputValue;
+            return linkedListInputValue;
         }
-        inputValue=Head->nodeValue;
-        currentNode->nextLink=Head->nextLink;
+        linkedListInputValue=Head->linkedListNodeValue;
+        linkedListCurrentNode->linkedListNextLink=Head->linkedListNextLink;
         delete Head;
-        Head=currentNode->nextLink;
-        return inputValue;
+        Head=linkedListCurrentNode->linkedListNextLink;
+        return linkedListInputValue;
     }
     else{
-        for(scanIndex=0;scanIndex<targetIndex-2;scanIndex++)
-            currentNode=currentNode->nextLink;
-        nextNode=currentNode->nextLink;
-        inputValue=nextNode->nodeValue;
-        currentNode->nextLink=nextNode->nextLink;
-        delete nextNode;
-        return inputValue;
+        for(linkedListScanIndex=0;linkedListScanIndex<linkedListTargetIndex-2;linkedListScanIndex++)
+            linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
+        linkedListNextNode=linkedListCurrentNode->linkedListNextLink;
+        linkedListInputValue=linkedListNextNode->linkedListNodeValue;
+        linkedListCurrentNode->linkedListNextLink=linkedListNextNode->linkedListNextLink;
+        delete linkedListNextNode;
+        return linkedListInputValue;
     }
 }
-void CircularLinkedList::insert(int targetIndex,int storedValue)
+void LinkedListCircularLinkedList::insert(int linkedListTargetIndex,int linkedListStoredValue)
 {
-    if(targetIndex<0 || targetIndex>length())
+    if(linkedListTargetIndex<0 || linkedListTargetIndex>length())
         return ;
-    Node *currentNode=Head,*swapValue;
-    swapValue=new Node;
-    swapValue->nodeValue=storedValue;
-    if(targetIndex==0)
+    LinkedListNode *linkedListCurrentNode=Head,*linkedListSwapValue;
+    linkedListSwapValue=new LinkedListNode;
+    linkedListSwapValue->linkedListNodeValue=linkedListStoredValue;
+    if(linkedListTargetIndex==0)
     {
         
         if(Head==NULL)
         {
-            swapValue->nextLink=swapValue;
-            Head=swapValue;
+            linkedListSwapValue->linkedListNextLink=linkedListSwapValue;
+            Head=linkedListSwapValue;
         }
         else
         {
-            while(currentNode->nextLink!=Head)
-                currentNode=currentNode->nextLink;
-            swapValue->nextLink=currentNode->nextLink;
-            currentNode->nextLink=swapValue;
+            while(linkedListCurrentNode->linkedListNextLink!=Head)
+                linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
+            linkedListSwapValue->linkedListNextLink=linkedListCurrentNode->linkedListNextLink;
+            linkedListCurrentNode->linkedListNextLink=linkedListSwapValue;
 
         }
     }
     else{
-        for(int scanIndex=0;scanIndex<targetIndex-1;scanIndex++)
-            currentNode=currentNode->nextLink;
-        swapValue->nextLink=currentNode->nextLink;
-            currentNode->nextLink=swapValue;
+        for(int linkedListScanIndex=0;linkedListScanIndex<linkedListTargetIndex-1;linkedListScanIndex++)
+            linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
+        linkedListSwapValue->linkedListNextLink=linkedListCurrentNode->linkedListNextLink;
+            linkedListCurrentNode->linkedListNextLink=linkedListSwapValue;
     }
 }
-int CircularLinkedList::length()
+int LinkedListCircularLinkedList::length()
 {
-    Node *currentNode=Head;
-    int leftIndex=0;
+    LinkedListNode *linkedListCurrentNode=Head;
+    int linkedListLeftIndex=0;
     do
     {
-        leftIndex++;
-        currentNode=currentNode->nextLink;
-    }while(currentNode!=Head);
-    return leftIndex;
+        linkedListLeftIndex++;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
+    }while(linkedListCurrentNode!=Head);
+    return linkedListLeftIndex;
 
 }
-void CircularLinkedList::Rdisplay(Node *currentNode)
+void LinkedListCircularLinkedList::Rdisplay(LinkedListNode *linkedListCurrentNode)
 {
-    static int linkedListFlag=0;
-    if(currentNode!=Head || linkedListFlag==0)
+    static int linkedListState=0;
+    if(linkedListCurrentNode!=Head || linkedListState==0)
     {
-        linkedListFlag=1;
-        cout<<currentNode->nodeValue<<"->";
-        Rdisplay(currentNode->nextLink);
+        linkedListState=1;
+        cout<<linkedListCurrentNode->linkedListNodeValue<<"->";
+        Rdisplay(linkedListCurrentNode->linkedListNextLink);
     }
-    linkedListFlag=0;
+    linkedListState=0;
 }
-void CircularLinkedList::display()
+void LinkedListCircularLinkedList::display()
 {
-    Node *currentNode=Head;
+    LinkedListNode *linkedListCurrentNode=Head;
     do{
-        cout<<currentNode->nodeValue<<"->";
-        currentNode=currentNode->nextLink;
+        cout<<linkedListCurrentNode->linkedListNodeValue<<"->";
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
 
-    }while(currentNode!=Head);
+    }while(linkedListCurrentNode!=Head);
     cout<<endl;
 }
-CircularLinkedList::CircularLinkedList(int firstItems[],int itemCount)
+LinkedListCircularLinkedList::LinkedListCircularLinkedList(int linkedListFirstItems[],int linkedListItemCount)
 {
-    Node *lastNode,*swapValue;
+    LinkedListNode *linkedListLastNode,*linkedListSwapValue;
     
-    Head=new Node;
-    Head->nodeValue=firstItems[0];
-    Head->nextLink=Head;
-    lastNode=Head;
-    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
+    Head=new LinkedListNode;
+    Head->linkedListNodeValue=linkedListFirstItems[0];
+    Head->linkedListNextLink=Head;
+    linkedListLastNode=Head;
+    for(int linkedListScanIndex=1;linkedListScanIndex<linkedListItemCount;linkedListScanIndex++)
     {
-        swapValue=new Node;
-        swapValue->nodeValue=firstItems[scanIndex];
-        swapValue->nextLink=lastNode->nextLink;
-        lastNode->nextLink=swapValue;
-        lastNode=swapValue;
+        linkedListSwapValue=new LinkedListNode;
+        linkedListSwapValue->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+        linkedListSwapValue->linkedListNextLink=linkedListLastNode->linkedListNextLink;
+        linkedListLastNode->linkedListNextLink=linkedListSwapValue;
+        linkedListLastNode=linkedListSwapValue;
     }
 }
 
 int main()
 {
     
-    int firstItems[]={1,3,5,8,9};
-    CircularLinkedList leftIndex(firstItems,5);
+    int linkedListFirstItems[]={1,3,5,8,9};
+    LinkedListCircularLinkedList linkedListLeftIndex(linkedListFirstItems,5);
     cout<<"Before :";
-    leftIndex.display();
-    cout<<"Deleted : "<<leftIndex.Delete(1)<<endl;
+    linkedListLeftIndex.display();
+    cout<<"Deleted : "<<linkedListLeftIndex.Delete(1)<<endl;
     cout<<"After : ";
-    leftIndex.display();
+    linkedListLeftIndex.display();
     return 0;
 }

@@ -58,9 +58,9 @@
     "activeLine": "Active line {line}",
     "codeView": "Code view",
     "runnableJs": "Runnable JS",
-    "originalCpp": "Original C/C++",
-    "originalCppSource": "Original C/C++ source",
-    "loadingOriginalCpp": "Loading original C/C++ source"
+    "originalCpp": "C/C++ Reference",
+    "originalCppSource": "C/C++ reference source",
+    "loadingOriginalCpp": "Loading C/C++ reference source"
   },
   "algorithmPages": {
     "backtracking-basics": {

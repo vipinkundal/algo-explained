@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Linear Search in Array ADT
-// Original source: 05_Array_ADT/03_01_linear_search.cpp
 export function arrayAdtLinearSearch() {
   const values = [3, 1, 4, 1, 5];
   const sum = values.reduce((total, value) => total + value, 0);

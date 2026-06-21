@@ -3,22 +3,22 @@
 using namespace std;
 int main()
 {
-    char stringDuplicatesA4[10]="Hesllsos";//method 1 using for loop
-    for(int scanIndex=0;stringDuplicatesA4[scanIndex]!='\0';scanIndex++)
+    char stringDuplicatesState2[10]="Hesllsos";//method 1 using for loop
+    for(int stringDuplicatesScanIndex=0;stringDuplicatesState2[stringDuplicatesScanIndex]!='\0';stringDuplicatesScanIndex++)
     {
-    if(stringDuplicatesA4[scanIndex]!=-1)
+    if(stringDuplicatesState2[stringDuplicatesScanIndex]!=-1)
     {
-    int stringDuplicatesCount=1;
-    for(int writeIndex=scanIndex+1;stringDuplicatesA4[writeIndex]!='\0';writeIndex++)
+    int stringDuplicatesState=1;
+    for(int stringDuplicatesWriteIndex=stringDuplicatesScanIndex+1;stringDuplicatesState2[stringDuplicatesWriteIndex]!='\0';stringDuplicatesWriteIndex++)
     {
-        if(stringDuplicatesA4[scanIndex]==stringDuplicatesA4[writeIndex])
+        if(stringDuplicatesState2[stringDuplicatesScanIndex]==stringDuplicatesState2[stringDuplicatesWriteIndex])
         {
-            stringDuplicatesA4[writeIndex]=-1;
-            stringDuplicatesCount++;
+            stringDuplicatesState2[stringDuplicatesWriteIndex]=-1;
+            stringDuplicatesState++;
         }
     }
-    if(stringDuplicatesCount>1)
-    cout<<stringDuplicatesA4[scanIndex]<<" is duplicated "<<stringDuplicatesCount-1<<" times"<<endl;
+    if(stringDuplicatesState>1)
+    cout<<stringDuplicatesState2[stringDuplicatesScanIndex]<<" is duplicated "<<stringDuplicatesState-1<<" times"<<endl;
     }
     }
     cout<<"\n\n\n\n";
@@ -26,17 +26,17 @@ int main()
 
 
     //method 2 using hash table i.e hashing
-    char sourceText[]="helloehl";
-    int primaryValue[26]={0},scanIndex;
-    for(int scanIndex=0;sourceText[scanIndex]!='\0';scanIndex++)
-        primaryValue[sourceText[scanIndex]-97]++;//writing program for lowercase word only
+    char stringDuplicatesSourceText[]="helloehl";
+    int stringDuplicatesPrimaryValue[26]={0},stringDuplicatesScanIndex;
+    for(int stringDuplicatesScanIndex=0;stringDuplicatesSourceText[stringDuplicatesScanIndex]!='\0';stringDuplicatesScanIndex++)
+        stringDuplicatesPrimaryValue[stringDuplicatesSourceText[stringDuplicatesScanIndex]-97]++;//writing program for lowercase word only
 
-    for(int scanIndex=0;scanIndex<=25;scanIndex++)
+    for(int stringDuplicatesScanIndex=0;stringDuplicatesScanIndex<=25;stringDuplicatesScanIndex++)
     {
-        if(primaryValue[scanIndex]>1)
+        if(stringDuplicatesPrimaryValue[stringDuplicatesScanIndex]>1)
         {
-            char probeIndex=scanIndex+97;
-            cout<<probeIndex<<" is repeated "<<primaryValue[scanIndex]-1<<" times"<<endl;
+            char stringDuplicatesProbeIndex=stringDuplicatesScanIndex+97;
+            cout<<stringDuplicatesProbeIndex<<" is repeated "<<stringDuplicatesPrimaryValue[stringDuplicatesScanIndex]-1<<" times"<<endl;
         }
     }
 

@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Binary Tree Queue
-// Original source: 13_Trees/Queue.h
 export function treesQueue() {
   const queue = [];
   const output = [];

@@ -1,56 +1,56 @@
 #include<iostream>
 using namespace std;
-int ifib1(int itemCount)//fibonacci series using loops/iteration
+int ifib1(int recursionFibonacciItemCount)//fibonacci series using loops/iteration
 {
 
-    int recursionFibonacciT0=0;
-    int recursionFibonacciT1=1,workingText;
-    for(int scanIndex=2;scanIndex<=itemCount;scanIndex++)
+    int recursionFibonacciState=0;
+    int recursionFibonacciState2=1,recursionFibonacciWorkingText;
+    for(int recursionFibonacciScanIndex=2;recursionFibonacciScanIndex<=recursionFibonacciItemCount;recursionFibonacciScanIndex++)
     {
-        workingText=recursionFibonacciT1+recursionFibonacciT0;
-        recursionFibonacciT0=recursionFibonacciT1;
-        recursionFibonacciT1=workingText;
+        recursionFibonacciWorkingText=recursionFibonacciState2+recursionFibonacciState;
+        recursionFibonacciState=recursionFibonacciState2;
+        recursionFibonacciState2=recursionFibonacciWorkingText;
     }
-    return workingText;
+    return recursionFibonacciWorkingText;
 }
-int ifib2(int itemCount)//fibonacci series using loops/iteration
+int ifib2(int recursionFibonacciItemCount)//fibonacci series using loops/iteration
 {
 
-    int recursionFibonacciF[itemCount];
-    recursionFibonacciF[0]=0;
-    recursionFibonacciF[1]=1;
-    for(int scanIndex=2;scanIndex<=itemCount;scanIndex++)
+    int recursionFibonacciState3[recursionFibonacciItemCount];
+    recursionFibonacciState3[0]=0;
+    recursionFibonacciState3[1]=1;
+    for(int recursionFibonacciScanIndex=2;recursionFibonacciScanIndex<=recursionFibonacciItemCount;recursionFibonacciScanIndex++)
     {
-       recursionFibonacciF[scanIndex]=recursionFibonacciF[scanIndex-2]+recursionFibonacciF[scanIndex-1];
+       recursionFibonacciState3[recursionFibonacciScanIndex]=recursionFibonacciState3[recursionFibonacciScanIndex-2]+recursionFibonacciState3[recursionFibonacciScanIndex-1];
     }
-    return recursionFibonacciF[itemCount];
+    return recursionFibonacciState3[recursionFibonacciItemCount];
 }
-int rfib(int itemCount)//fibonacci series using recursion
+int rfib(int recursionFibonacciItemCount)//fibonacci series using recursion
 {
-    if(itemCount<=1)
-        return itemCount;
-    return rfib(itemCount-1)+rfib(itemCount-2);
+    if(recursionFibonacciItemCount<=1)
+        return recursionFibonacciItemCount;
+    return rfib(recursionFibonacciItemCount-1)+rfib(recursionFibonacciItemCount-2);
 }
 int F[10];
-int mfib(int itemCount)//fibonacci series using recursion using memoization
+int mfib(int recursionFibonacciItemCount)//fibonacci series using recursion using memoization
 {
-    if(itemCount<=1)
-        return itemCount;
+    if(recursionFibonacciItemCount<=1)
+        return recursionFibonacciItemCount;
     else
     {
-        if(F[itemCount-1]==-1)//it means no value entered till yet as it is -1
-            F[itemCount-1]=mfib(itemCount-1);
-        if(F[itemCount-2]==-1)
-            F[itemCount-2]=mfib(itemCount-2);
-        F[itemCount]=F[itemCount-1]+F[itemCount-2];
-        return F[itemCount-1]+F[itemCount-2];
+        if(F[recursionFibonacciItemCount-1]==-1)//it means no value entered till yet as it is -1
+            F[recursionFibonacciItemCount-1]=mfib(recursionFibonacciItemCount-1);
+        if(F[recursionFibonacciItemCount-2]==-1)
+            F[recursionFibonacciItemCount-2]=mfib(recursionFibonacciItemCount-2);
+        F[recursionFibonacciItemCount]=F[recursionFibonacciItemCount-1]+F[recursionFibonacciItemCount-2];
+        return F[recursionFibonacciItemCount-1]+F[recursionFibonacciItemCount-2];
     }
 }
 
 int main()
 {
-    for(int scanIndex=0;scanIndex<=10;scanIndex++)
-        F[scanIndex]=-1;
+    for(int recursionFibonacciScanIndex=0;recursionFibonacciScanIndex<=10;recursionFibonacciScanIndex++)
+        F[recursionFibonacciScanIndex]=-1;
     cout<<ifib1(7)<<endl;
     cout<<ifib2(7)<<endl;
     cout<<rfib(7)<<endl;

@@ -2,74 +2,74 @@
 #include<stdlib.h>
 using namespace std;
 
-struct Node
+struct LinkedListNode
 {
-    int nodeValue;
-    struct Node *nextLink;
-}*firstNode=NULL;
+    int linkedListNodeValue;
+    struct LinkedListNode *linkedListNextLink;
+}*linkedListFirstNode=NULL;
 
-void create(int firstItems[],int itemCount)
+void create(int linkedListFirstItems[],int linkedListItemCount)
 {
-    int scanIndex;
-    struct Node *lastNode, *swapValue;
-    firstNode=new Node;
-    firstNode->nodeValue=firstItems[0];
-    firstNode->nextLink=NULL;
-    lastNode=firstNode;//addreess is passed and now first is refferd as last
+    int linkedListScanIndex;
+    struct LinkedListNode *linkedListLastNode, *linkedListSwapValue;
+    linkedListFirstNode=new LinkedListNode;
+    linkedListFirstNode->linkedListNodeValue=linkedListFirstItems[0];
+    linkedListFirstNode->linkedListNextLink=NULL;
+    linkedListLastNode=linkedListFirstNode;//addreess is passed and now first is refferd as last
 
-    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
+    for(int linkedListScanIndex=1;linkedListScanIndex<linkedListItemCount;linkedListScanIndex++)
     {
-        swapValue=new Node;
-        swapValue->nodeValue=firstItems[scanIndex];
-        swapValue->nextLink=NULL;
-        lastNode->nextLink=swapValue; //putting address of current node in the next of last node 
-        lastNode=swapValue; //assigning current node as last node
+        linkedListSwapValue=new LinkedListNode;
+        linkedListSwapValue->linkedListNodeValue=linkedListFirstItems[linkedListScanIndex];
+        linkedListSwapValue->linkedListNextLink=NULL;
+        linkedListLastNode->linkedListNextLink=linkedListSwapValue; //putting address of current node in the next of last node 
+        linkedListLastNode=linkedListSwapValue; //assigning current node as last node
     }
 }
 void count()//counting of nodes
 {
-    int columnIndex=0;
-    struct Node *currentNode;
-    currentNode=firstNode;
-    while(currentNode)
+    int linkedListColumnIndex=0;
+    struct LinkedListNode *linkedListCurrentNode;
+    linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListCurrentNode)
     {
-        columnIndex++;
-        currentNode=currentNode->nextLink;
+        linkedListColumnIndex++;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
-    cout<<" Count is "<<columnIndex<<endl;
+    cout<<" Count is "<<linkedListColumnIndex<<endl;
 }
-int Rcount(struct Node *currentNode)//recursive counting of nodes
+int Rcount(struct LinkedListNode *linkedListCurrentNode)//recursive counting of nodes
 {
-    if(currentNode)
-        return Rcount(currentNode->nextLink)+1;
+    if(linkedListCurrentNode)
+        return Rcount(linkedListCurrentNode->linkedListNextLink)+1;
     return 0;
 }
 void sum()// sum of data of nodes
 {
-    int workingText=0;
-    struct Node *currentNode;
-    currentNode=firstNode;
-    while(currentNode)
+    int linkedListWorkingText=0;
+    struct LinkedListNode *linkedListCurrentNode;
+    linkedListCurrentNode=linkedListFirstNode;
+    while(linkedListCurrentNode)
     {
-        workingText=workingText+currentNode->nodeValue;
-        currentNode=currentNode->nextLink;
+        linkedListWorkingText=linkedListWorkingText+linkedListCurrentNode->linkedListNodeValue;
+        linkedListCurrentNode=linkedListCurrentNode->linkedListNextLink;
     }
-    cout<<" sum is "<<workingText<<endl;
+    cout<<" sum is "<<linkedListWorkingText<<endl;
 }
-int Rsum(struct Node *currentNode)// recursive sum of data of nodes
+int Rsum(struct LinkedListNode *linkedListCurrentNode)// recursive sum of data of nodes
 {
-    if(currentNode)
-        return currentNode->nodeValue+Rsum(currentNode->nextLink);
+    if(linkedListCurrentNode)
+        return linkedListCurrentNode->linkedListNodeValue+Rsum(linkedListCurrentNode->linkedListNextLink);
     return 0;
 }
 
 int main()
 {
-    int firstItems[]={4,5,8,9,7,1,9,4,7};
-    create(firstItems,9);
+    int linkedListFirstItems[]={4,5,8,9,7,1,9,4,7};
+    create(linkedListFirstItems,9);
     count();
-    cout<<"count is : "<<Rcount(firstNode)<<endl;
+    cout<<"count is : "<<Rcount(linkedListFirstNode)<<endl;
     sum();
-    cout<<"sum  is : "<<Rsum(firstNode)<<endl;
+    cout<<"sum  is : "<<Rsum(linkedListFirstNode)<<endl;
     return 0;
 }

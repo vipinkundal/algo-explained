@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for BST Basics
-// Original source: 14_BST/01_bst.cpp
 export function bstBasics() {
   const values = [40, 20, 60, 10, 30, 50, 70];
   const search = 50;

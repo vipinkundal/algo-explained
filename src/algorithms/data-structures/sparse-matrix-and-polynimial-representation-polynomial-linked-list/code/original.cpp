@@ -2,58 +2,58 @@
 #include<stdlib.h>
 #include<math.h>
 using namespace std;
-struct Node{
-    int sparseMatrixCoeff;
-    int sparseMatrixExp;
-    struct Node *nextLink;
-}*sparseMatrixPoly=NULL;
+struct SparseMatrixNode{
+    int sparseMatrixState;
+    int sparseMatrixState3;
+    struct SparseMatrixNode *sparseMatrixNextLink;
+}*sparseMatrixState2=NULL;
 
 void create()
 {
-    struct Node *swapValue=NULL,*lastNode=NULL;
-    int sparseMatrixNum;
+    struct SparseMatrixNode *sparseMatrixSwapValue=NULL,*sparseMatrixLastNode=NULL;
+    int sparseMatrixState4;
     cout<<"Enter the number of polynomials ";
-    cin>>sparseMatrixNum;
+    cin>>sparseMatrixState4;
     
     cout<<"Enter the coefficient and exponent of each polynomial ";
-    for(int scanIndex=0;scanIndex<sparseMatrixNum;scanIndex++)
+    for(int sparseMatrixScanIndex=0;sparseMatrixScanIndex<sparseMatrixState4;sparseMatrixScanIndex++)
     {
-        swapValue=new Node;
-        cin>>swapValue->sparseMatrixCoeff>>swapValue->sparseMatrixExp;
-        if(sparseMatrixPoly==NULL)
+        sparseMatrixSwapValue=new SparseMatrixNode;
+        cin>>sparseMatrixSwapValue->sparseMatrixState>>sparseMatrixSwapValue->sparseMatrixState3;
+        if(sparseMatrixState2==NULL)
         {
-            sparseMatrixPoly=lastNode=swapValue;
+            sparseMatrixState2=sparseMatrixLastNode=sparseMatrixSwapValue;
         }
         else{
-            lastNode->nextLink=swapValue;
-            lastNode=swapValue;
+            sparseMatrixLastNode->sparseMatrixNextLink=sparseMatrixSwapValue;
+            sparseMatrixLastNode=sparseMatrixSwapValue;
         }
-        lastNode->nextLink=NULL;
+        sparseMatrixLastNode->sparseMatrixNextLink=NULL;
     }
 }
 
-void display(struct Node *currentNode)
+void display(struct SparseMatrixNode *sparseMatrixCurrentNode)
 {
-    while(currentNode)
+    while(sparseMatrixCurrentNode)
     {
-        cout<<currentNode->sparseMatrixCoeff<<"x**"<<currentNode->sparseMatrixExp<<" + ";
-        currentNode=currentNode->nextLink;
+        cout<<sparseMatrixCurrentNode->sparseMatrixState<<"x**"<<sparseMatrixCurrentNode->sparseMatrixState3<<" + ";
+        sparseMatrixCurrentNode=sparseMatrixCurrentNode->sparseMatrixNextLink;
     }
 }
 
-long eva(struct Node *currentNode,int inputValue)
+long eva(struct SparseMatrixNode *sparseMatrixCurrentNode,int sparseMatrixInputValue)
 {
-    long sparseMatrixVal=0;
-    while(currentNode)
+    long sparseMatrixState5=0;
+    while(sparseMatrixCurrentNode)
     {
-        sparseMatrixVal+=currentNode->sparseMatrixCoeff*pow(inputValue,currentNode->sparseMatrixExp);
-        currentNode=currentNode->nextLink;
+        sparseMatrixState5+=sparseMatrixCurrentNode->sparseMatrixState*pow(sparseMatrixInputValue,sparseMatrixCurrentNode->sparseMatrixState3);
+        sparseMatrixCurrentNode=sparseMatrixCurrentNode->sparseMatrixNextLink;
     }
-    return sparseMatrixVal;
+    return sparseMatrixState5;
 }
 int main()
 {
     create();
-    display(sparseMatrixPoly);
-    cout<<"\nAnswer of Evaluation"<<eva(sparseMatrixPoly,1);
+    display(sparseMatrixState2);
+    cout<<"\nAnswer of Evaluation"<<eva(sparseMatrixState2,1);
 }

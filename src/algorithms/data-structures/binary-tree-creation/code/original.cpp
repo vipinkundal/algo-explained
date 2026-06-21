@@ -4,41 +4,41 @@
 #include"Queue.h"
 using namespace std;
 
-class binaryTreeCreatetree
+class binaryTreeState
 {
     public:
-    Node *currentNode,*swapValue;
-    int inputValue;
-    Queue nextNode;
+    Node *binaryTreeCurrentNode,*binaryTreeSwapValue;
+    int binaryTreeInputValue;
+    Queue binaryTreeNextNode;
    
-    binaryTreeCreatetree()
+    binaryTreeState()
     {   
         cout<<"Enter the root Node data  ";
-        cin>>treeRoot->nodeValue;
-        treeRoot->binaryTreeLchild=treeRoot->binaryTreeRchild=NULL;
-        nextNode.enqueue(treeRoot);
-        while(!nextNode.isEmpty())
+        cin>>binaryTreeTreeRoot->binaryTreeNodeValue;
+        binaryTreeTreeRoot->leftChild=binaryTreeTreeRoot->rightChild=NULL;
+        binaryTreeNextNode.enqueue(binaryTreeTreeRoot);
+        while(!binaryTreeNextNode.isEmpty())
         {
-            currentNode=nextNode.dequeue();
-            cout<<"Enter the value of left child of "<<currentNode->nodeValue<<" ";
-            cin>>inputValue;
-            if(inputValue!=-1)
+            binaryTreeCurrentNode=binaryTreeNextNode.dequeue();
+            cout<<"Enter the value of left child of "<<binaryTreeCurrentNode->binaryTreeNodeValue<<" ";
+            cin>>binaryTreeInputValue;
+            if(binaryTreeInputValue!=-1)
             {
-                swapValue=new Node;
-                swapValue->nodeValue=inputValue;
-                swapValue->binaryTreeLchild=swapValue->binaryTreeRchild=nullptr;
-                currentNode->binaryTreeLchild=swapValue;
-                nextNode.enqueue(swapValue);
+                binaryTreeSwapValue=new Node;
+                binaryTreeSwapValue->binaryTreeNodeValue=binaryTreeInputValue;
+                binaryTreeSwapValue->leftChild=binaryTreeSwapValue->rightChild=nullptr;
+                binaryTreeCurrentNode->leftChild=binaryTreeSwapValue;
+                binaryTreeNextNode.enqueue(binaryTreeSwapValue);
             }
-            cout<<"Enter the value of right child of  "<<currentNode->nodeValue<<" ";
-            cin>>inputValue;
-            if(inputValue!=-1)
+            cout<<"Enter the value of right child of  "<<binaryTreeCurrentNode->binaryTreeNodeValue<<" ";
+            cin>>binaryTreeInputValue;
+            if(binaryTreeInputValue!=-1)
             {
-                swapValue=new Node;
-                swapValue->nodeValue=inputValue;
-                swapValue->binaryTreeLchild=swapValue->binaryTreeRchild=nullptr;
-                currentNode->binaryTreeRchild=swapValue;
-                nextNode.enqueue(swapValue);
+                binaryTreeSwapValue=new Node;
+                binaryTreeSwapValue->binaryTreeNodeValue=binaryTreeInputValue;
+                binaryTreeSwapValue->leftChild=binaryTreeSwapValue->rightChild=nullptr;
+                binaryTreeCurrentNode->rightChild=binaryTreeSwapValue;
+                binaryTreeNextNode.enqueue(binaryTreeSwapValue);
             }
 
         }
@@ -46,17 +46,17 @@ class binaryTreeCreatetree
 
     void display()
     {
-        Node *swapValue;
-        Queue nextNode;
-        nextNode.enqueue(treeRoot);
-        while(!nextNode.isEmpty())
+        Node *binaryTreeSwapValue;
+        Queue binaryTreeNextNode;
+        binaryTreeNextNode.enqueue(binaryTreeTreeRoot);
+        while(!binaryTreeNextNode.isEmpty())
         {
-            swapValue=nextNode.dequeue();
-            cout<<swapValue->nodeValue<<" ";
-            if(swapValue->binaryTreeLchild)
-                nextNode.enqueue(swapValue->binaryTreeLchild);
-            if(swapValue->binaryTreeRchild)
-                nextNode.enqueue(swapValue->binaryTreeRchild);
+            binaryTreeSwapValue=binaryTreeNextNode.dequeue();
+            cout<<binaryTreeSwapValue->binaryTreeNodeValue<<" ";
+            if(binaryTreeSwapValue->leftChild)
+                binaryTreeNextNode.enqueue(binaryTreeSwapValue->leftChild);
+            if(binaryTreeSwapValue->rightChild)
+                binaryTreeNextNode.enqueue(binaryTreeSwapValue->rightChild);
         
         }
 
@@ -65,8 +65,8 @@ class binaryTreeCreatetree
 
 int main()
 {
-    binaryTreeCreatetree rightIndex;
-    rightIndex.display();
+    binaryTreeState binaryTreeRightIndex;
+    binaryTreeRightIndex.display();
     return 0;
 
 }

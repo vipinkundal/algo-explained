@@ -1,20 +1,20 @@
 #include<iostream>
-void TOH(int itemCount,int firstItems,int secondItems,int thirdItems)
+void TOH(int recursionTohItemCount,int recursionTohFirstItems,int recursionTohSecondItems,int recursionTohThirdItems)
 {
-    if(itemCount>0)
+    if(recursionTohItemCount>0)
     {
-    TOH(itemCount-1,firstItems,thirdItems,secondItems);
-    std::cout<<"Moving from "<<firstItems<<" to "<<thirdItems<<std::endl<<std::endl;
-    TOH(itemCount-1,secondItems,firstItems,thirdItems);
+    TOH(recursionTohItemCount-1,recursionTohFirstItems,recursionTohThirdItems,recursionTohSecondItems);
+    std::cout<<"Moving from "<<recursionTohFirstItems<<" to "<<recursionTohThirdItems<<std::endl<<std::endl;
+    TOH(recursionTohItemCount-1,recursionTohSecondItems,recursionTohFirstItems,recursionTohThirdItems);
     }
 }
-void TOH1(int itemCount,int firstItems,int secondItems,int thirdItems,int spareItems)//for four towes
+void TOH1(int recursionTohItemCount,int recursionTohFirstItems,int recursionTohSecondItems,int recursionTohThirdItems,int recursionTohSpareItems)//for four towes
 {
-    if(itemCount>0)
+    if(recursionTohItemCount>0)
     {
-    TOH1(itemCount-1,firstItems,secondItems,spareItems,thirdItems);
-    std::cout<<"("<<firstItems<<","<<spareItems<<")"<<std::endl;
-    TOH1(itemCount-1,thirdItems,firstItems,secondItems,spareItems); 
+    TOH1(recursionTohItemCount-1,recursionTohFirstItems,recursionTohSecondItems,recursionTohSpareItems,recursionTohThirdItems);
+    std::cout<<"("<<recursionTohFirstItems<<","<<recursionTohSpareItems<<")"<<std::endl;
+    TOH1(recursionTohItemCount-1,recursionTohThirdItems,recursionTohFirstItems,recursionTohSecondItems,recursionTohSpareItems); 
     }
 }
 

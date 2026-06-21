@@ -1,48 +1,48 @@
 #include<iostream>
 #include<stdlib.h>
 using namespace std;
-struct RECTANGLE
+struct EssentialCRECTANGLE
 {
-    int textLength;
-    int essentialCBreath;
+    int essentialCTextLength;
+    int essentialCState;
 };
-void fun1(struct RECTANGLE essentialCR1)
+void fun1(struct EssentialCRECTANGLE essentialCState3)
 {
-    (essentialCR1.textLength)++;
-    (essentialCR1.essentialCBreath)++;
+    (essentialCState3.essentialCTextLength)++;
+    (essentialCState3.essentialCState)++;
 }
-void fun2(struct RECTANGLE &essentialCR1)
+void fun2(struct EssentialCRECTANGLE &essentialCState3)
 {
-    (essentialCR1.textLength)++;
-    (essentialCR1.essentialCBreath)++;
+    (essentialCState3.essentialCTextLength)++;
+    (essentialCState3.essentialCState)++;
 }
-void fun3(struct RECTANGLE *essentialCR1)
+void fun3(struct EssentialCRECTANGLE *essentialCState3)
 {
-    essentialCR1->textLength++;
-    essentialCR1->essentialCBreath++;
+    essentialCState3->essentialCTextLength++;
+    essentialCState3->essentialCState++;
 }
-struct RECTANGLE * fun4()
+struct EssentialCRECTANGLE * fun4()
 {
-    struct RECTANGLE *essentialCR2;
-    essentialCR2=new RECTANGLE;// or r2=(struct RECTANGLE *)malloc(sizeof(struct RECTANGLE));
-    essentialCR2->textLength=1;
-    essentialCR2->essentialCBreath=2;
-    return essentialCR2;
+    struct EssentialCRECTANGLE *essentialCState4;
+    essentialCState4=new EssentialCRECTANGLE;// or r2=(struct RECTANGLE *)malloc(sizeof(struct RECTANGLE));
+    essentialCState4->essentialCTextLength=1;
+    essentialCState4->essentialCState=2;
+    return essentialCState4;
 
 }
 int main()
 {
-    struct RECTANGLE rightIndex={10,5};
-    cout<<"Before any call "<<rightIndex.textLength<<"  "<<rightIndex.essentialCBreath<<endl;
-    fun1(rightIndex);
-    cout<<"After call by value "<<rightIndex.textLength<<"  "<<rightIndex.essentialCBreath<<endl;
-    fun2(rightIndex);
-    cout<<"After call by referece "<<rightIndex.textLength<<"  "<<rightIndex.essentialCBreath<<endl;
-    fun3(&rightIndex);
-    cout<<"After call by address "<<rightIndex.textLength<<"  "<<rightIndex.essentialCBreath<<endl;
+    struct EssentialCRECTANGLE essentialCRightIndex={10,5};
+    cout<<"Before any call "<<essentialCRightIndex.essentialCTextLength<<"  "<<essentialCRightIndex.essentialCState<<endl;
+    fun1(essentialCRightIndex);
+    cout<<"After call by value "<<essentialCRightIndex.essentialCTextLength<<"  "<<essentialCRightIndex.essentialCState<<endl;
+    fun2(essentialCRightIndex);
+    cout<<"After call by referece "<<essentialCRightIndex.essentialCTextLength<<"  "<<essentialCRightIndex.essentialCState<<endl;
+    fun3(&essentialCRightIndex);
+    cout<<"After call by address "<<essentialCRightIndex.essentialCTextLength<<"  "<<essentialCRightIndex.essentialCState<<endl;
 
     // creating structure in heap memory and accesing them using function
-    struct RECTANGLE *essentialCPtr=fun4();
-    cout<<"After creating structure in heap memory "<<essentialCPtr->textLength<<" "<< essentialCPtr->essentialCBreath<<endl;// -> is to access struct elements using pointer
+    struct EssentialCRECTANGLE *essentialCState2=fun4();
+    cout<<"After creating structure in heap memory "<<essentialCState2->essentialCTextLength<<" "<< essentialCState2->essentialCState<<endl;// -> is to access struct elements using pointer
     return 0;
 }

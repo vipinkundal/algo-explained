@@ -4,68 +4,68 @@ using namespace std;
 #include<queue>
 #include "Node.h"
 
-class binaryTreeCreatetree
+class binaryTreeState
 {
     public:
-    Node *currentNode,*swapValue;
-    int inputValue;
-    queue<Node*> nextNode;
-    binaryTreeCreatetree();
+    Node *binaryTreeCurrentNode,*binaryTreeSwapValue;
+    int binaryTreeInputValue;
+    queue<Node*> binaryTreeNextNode;
+    binaryTreeState();
     void Levelorder();
     
 };
-void binaryTreeCreatetree::Levelorder()
+void binaryTreeState::Levelorder()
 {
-    queue<Node*> nextNode;
-    Node *swapValue=treeRoot;
-    nextNode.emplace(swapValue);
-    while(!nextNode.empty())
+    queue<Node*> binaryTreeNextNode;
+    Node *binaryTreeSwapValue=binaryTreeTreeRoot;
+    binaryTreeNextNode.emplace(binaryTreeSwapValue);
+    while(!binaryTreeNextNode.empty())
     {
-        swapValue=nextNode.front();
-        nextNode.pop();
-        std::cout<<swapValue->nodeValue<<" ";
-        if(swapValue->binaryTreeLchild)
+        binaryTreeSwapValue=binaryTreeNextNode.front();
+        binaryTreeNextNode.pop();
+        std::cout<<binaryTreeSwapValue->binaryTreeNodeValue<<" ";
+        if(binaryTreeSwapValue->leftChild)
         {
-            nextNode.emplace(swapValue->binaryTreeLchild);
+            binaryTreeNextNode.emplace(binaryTreeSwapValue->leftChild);
         }
-        if(swapValue->binaryTreeRchild)
+        if(binaryTreeSwapValue->rightChild)
         {
-            nextNode.emplace(swapValue->binaryTreeRchild);
+            binaryTreeNextNode.emplace(binaryTreeSwapValue->rightChild);
         }
         
     }
 
     
 }
-binaryTreeCreatetree::binaryTreeCreatetree()
+binaryTreeState::binaryTreeState()
 {   
         cout<<"Enter the root Node data  ";
-        cin>>treeRoot->nodeValue;
-        treeRoot->binaryTreeLchild=treeRoot->binaryTreeRchild=NULL;
-        nextNode.emplace(treeRoot);
-        while(!nextNode.empty())
+        cin>>binaryTreeTreeRoot->binaryTreeNodeValue;
+        binaryTreeTreeRoot->leftChild=binaryTreeTreeRoot->rightChild=NULL;
+        binaryTreeNextNode.emplace(binaryTreeTreeRoot);
+        while(!binaryTreeNextNode.empty())
         {
-            currentNode=nextNode.front();
-            nextNode.pop();
-            cout<<"Enter the value of left child of "<<currentNode->nodeValue<<" ";
-            cin>>inputValue;
-            if(inputValue!=-1)
+            binaryTreeCurrentNode=binaryTreeNextNode.front();
+            binaryTreeNextNode.pop();
+            cout<<"Enter the value of left child of "<<binaryTreeCurrentNode->binaryTreeNodeValue<<" ";
+            cin>>binaryTreeInputValue;
+            if(binaryTreeInputValue!=-1)
             {
-                swapValue=new Node;
-                swapValue->nodeValue=inputValue;
-                swapValue->binaryTreeLchild=swapValue->binaryTreeRchild=nullptr;
-                currentNode->binaryTreeLchild=swapValue;
-                nextNode.emplace(swapValue);
+                binaryTreeSwapValue=new Node;
+                binaryTreeSwapValue->binaryTreeNodeValue=binaryTreeInputValue;
+                binaryTreeSwapValue->leftChild=binaryTreeSwapValue->rightChild=nullptr;
+                binaryTreeCurrentNode->leftChild=binaryTreeSwapValue;
+                binaryTreeNextNode.emplace(binaryTreeSwapValue);
             }
-            cout<<"Enter the value of right child of  "<<currentNode->nodeValue<<" ";
-            cin>>inputValue;
-            if(inputValue!=-1)
+            cout<<"Enter the value of right child of  "<<binaryTreeCurrentNode->binaryTreeNodeValue<<" ";
+            cin>>binaryTreeInputValue;
+            if(binaryTreeInputValue!=-1)
             {
-                swapValue=new Node;
-                swapValue->nodeValue=inputValue;
-                swapValue->binaryTreeLchild=swapValue->binaryTreeRchild=nullptr;
-                currentNode->binaryTreeRchild=swapValue;
-                nextNode.emplace(swapValue);
+                binaryTreeSwapValue=new Node;
+                binaryTreeSwapValue->binaryTreeNodeValue=binaryTreeInputValue;
+                binaryTreeSwapValue->leftChild=binaryTreeSwapValue->rightChild=nullptr;
+                binaryTreeCurrentNode->rightChild=binaryTreeSwapValue;
+                binaryTreeNextNode.emplace(binaryTreeSwapValue);
             }
 
         }
@@ -73,7 +73,7 @@ binaryTreeCreatetree::binaryTreeCreatetree()
 
 int main()
 {
-    binaryTreeCreatetree swapValue;
-    swapValue.Levelorder();
+    binaryTreeState binaryTreeSwapValue;
+    binaryTreeSwapValue.Levelorder();
     return 0;
 }

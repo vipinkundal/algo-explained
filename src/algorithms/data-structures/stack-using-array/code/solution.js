@@ -1,5 +1,4 @@
 // Runnable JavaScript companion for Stack Using Array
-// Original source: 11_Stack/01_Stack_using_Arry.cpp
 export function stackUsingArray() {
   const stack = [];
   const output = [];

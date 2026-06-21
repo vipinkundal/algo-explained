@@ -1,17 +1,17 @@
 #include<iostream>
 using namespace std;
-int fun(int itemCount)
+int fun(int recursionNestedItemCount)
 {
-    if(itemCount>100)
-        return itemCount-10;
+    if(recursionNestedItemCount>100)
+        return recursionNestedItemCount-10;
     else 
-        return fun(fun(itemCount+11));
+        return fun(fun(recursionNestedItemCount+11));
 }
 
 int main()
 {
 
-    int scanIndex=fun(97);
-    cout<<scanIndex;
+    int recursionNestedScanIndex=fun(97);
+    cout<<recursionNestedScanIndex;
     return 0;
 }

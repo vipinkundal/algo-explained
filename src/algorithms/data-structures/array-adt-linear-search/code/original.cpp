@@ -1,32 +1,32 @@
 #include<iostream>
 using namespace std;
-struct Array
+struct ArrayAdtArrayModel
 {
-    int firstItems[10];
-    int itemCapacity;
-    int textLength;
+    int arrayAdtFirstItems[10];
+    int arrayAdtItemCapacity;
+    int arrayAdtTextLength;
 };
-void Display(struct Array items)
+void Display(struct ArrayAdtArrayModel arrayAdtItems)
 {
-    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems.arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        std::cout<<items.firstItems[scanIndex]<<" ";
+        std::cout<<arrayAdtItems.arrayAdtFirstItems[arrayAdtScanIndex]<<" ";
     }
 }
-void swap(int *inputValue,int *compareValue)
+void swap(int *arrayAdtInputValue,int *arrayAdtCompareValue)
 {
-    int swapValue=*inputValue;
-    *inputValue=*compareValue;
-    *compareValue=swapValue;
+    int arrayAdtSwapValue=*arrayAdtInputValue;
+    *arrayAdtInputValue=*arrayAdtCompareValue;
+    *arrayAdtCompareValue=arrayAdtSwapValue;
 }
-int LinearSearch(struct Array *items,int storedValue)
+int LinearSearch(struct ArrayAdtArrayModel *arrayAdtItems,int arrayAdtStoredValue)
 {
-    for(int scanIndex=0;scanIndex<items->textLength;scanIndex++)
+    for(int arrayAdtScanIndex=0;arrayAdtScanIndex<arrayAdtItems->arrayAdtTextLength;arrayAdtScanIndex++)
     {
-        if(items->firstItems[scanIndex]==storedValue)
+        if(arrayAdtItems->arrayAdtFirstItems[arrayAdtScanIndex]==arrayAdtStoredValue)
         {
-            swap(&items->firstItems[scanIndex-1],&items->firstItems[scanIndex]);
-            return scanIndex;
+            swap(&arrayAdtItems->arrayAdtFirstItems[arrayAdtScanIndex-1],&arrayAdtItems->arrayAdtFirstItems[arrayAdtScanIndex]);
+            return arrayAdtScanIndex;
         }
     }
     return -1;
@@ -34,8 +34,8 @@ int LinearSearch(struct Array *items,int storedValue)
 
 int main()
 {
-    struct Array items={{1,2,3,4,5,6,7},10,7};
-    cout<<LinearSearch(&items,4)<<endl;
-    Display(items);
+    struct ArrayAdtArrayModel arrayAdtItems={{1,2,3,4,5,6,7},10,7};
+    cout<<LinearSearch(&arrayAdtItems,4)<<endl;
+    Display(arrayAdtItems);
     return 0;
 }

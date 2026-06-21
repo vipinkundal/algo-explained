@@ -1,66 +1,66 @@
 #include<iostream>
 using namespace std;
-class Rectangle
+class EssentialCRectangleModel
 {
     private:
-    int textLength;
-    int essentialCBreadth;
+    int essentialCTextLength;
+    int essentialCState;
     public:
-    Rectangle()//default constructor if no parameter is passed
+    EssentialCRectangleModel()//default constructor if no parameter is passed
     {
-        textLength=0;
-        essentialCBreadth=0;
+        essentialCTextLength=0;
+        essentialCState=0;
     }
-    Rectangle(int leftIndex,int secondaryValue);
+    EssentialCRectangleModel(int essentialCLeftIndex,int essentialCSecondaryValue);
     int area();
     int perimeter();//perimeter ,area,rectangle code could even be written inside class like getlength and others have
-    void setLength(int leftIndex)
+    void setLength(int essentialCLeftIndex)
     {
-        textLength=leftIndex;
+        essentialCTextLength=essentialCLeftIndex;
     }
-    void setbreadth(int secondaryValue)
+    void setbreadth(int essentialCSecondaryValue)
     {
-        essentialCBreadth=secondaryValue;
+        essentialCState=essentialCSecondaryValue;
     }
     int getLength()
     {
-        return textLength;
+        return essentialCTextLength;
     }
     int getbreadth()
     {
-        return essentialCBreadth;
+        return essentialCState;
     }
-    ~Rectangle()
+    ~EssentialCRectangleModel()
     {
         cout<<"Destructor";
     }
 };
-Rectangle::Rectangle(int leftIndex,int secondaryValue)
+EssentialCRectangleModel::EssentialCRectangleModel(int essentialCLeftIndex,int essentialCSecondaryValue)
 {
-    textLength=leftIndex;
-    essentialCBreadth=secondaryValue;
+    essentialCTextLength=essentialCLeftIndex;
+    essentialCState=essentialCSecondaryValue;
 }
-int Rectangle::area()
+int EssentialCRectangleModel::area()
 {
-    return textLength*essentialCBreadth;
+    return essentialCTextLength*essentialCState;
 }
-int Rectangle::perimeter()
+int EssentialCRectangleModel::perimeter()
 {
-    return 2*(textLength+essentialCBreadth);
+    return 2*(essentialCTextLength+essentialCState);
 }
 int main()
 {
-    Rectangle rightIndex(10,4);
-    int primaryValue=rightIndex.area();
-    int currentNode=rightIndex.perimeter();
-    printf("area = %d perimerter = %d\n",primaryValue,currentNode);
-    rightIndex.setLength(5);
-    rightIndex.setbreadth(4);
-    primaryValue=rightIndex.area();
-    currentNode=rightIndex.perimeter();
-    printf("area = %d perimerter = %d\n",primaryValue,currentNode);
-    int leftIndex=rightIndex.getLength();
-    int secondaryValue=rightIndex.getbreadth();
-    printf("Length = %d breadth = %d\n",leftIndex,secondaryValue);
+    EssentialCRectangleModel essentialCRightIndex(10,4);
+    int essentialCPrimaryValue=essentialCRightIndex.area();
+    int essentialCCurrentNode=essentialCRightIndex.perimeter();
+    printf("area = %d perimerter = %d\n",essentialCPrimaryValue,essentialCCurrentNode);
+    essentialCRightIndex.setLength(5);
+    essentialCRightIndex.setbreadth(4);
+    essentialCPrimaryValue=essentialCRightIndex.area();
+    essentialCCurrentNode=essentialCRightIndex.perimeter();
+    printf("area = %d perimerter = %d\n",essentialCPrimaryValue,essentialCCurrentNode);
+    int essentialCLeftIndex=essentialCRightIndex.getLength();
+    int essentialCSecondaryValue=essentialCRightIndex.getbreadth();
+    printf("Length = %d breadth = %d\n",essentialCLeftIndex,essentialCSecondaryValue);
     return 0;
 }
