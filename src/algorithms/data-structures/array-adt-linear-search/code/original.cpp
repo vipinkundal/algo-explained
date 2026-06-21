@@ -2,31 +2,31 @@
 using namespace std;
 struct Array
 {
-    int A[10];
-    int size;
-    int length;
+    int firstItems[10];
+    int itemCapacity;
+    int textLength;
 };
-void Display(struct Array arr)
+void Display(struct Array items)
 {
-    for(int i=0;i<arr.length;i++)
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        std::cout<<arr.A[i]<<" ";
+        std::cout<<items.firstItems[scanIndex]<<" ";
     }
 }
-void swap(int *x,int *y)
+void swap(int *inputValue,int *compareValue)
 {
-    int t=*x;
-    *x=*y;
-    *y=t;
+    int swapValue=*inputValue;
+    *inputValue=*compareValue;
+    *compareValue=swapValue;
 }
-int LinearSearch(struct Array *arr,int value)
+int LinearSearch(struct Array *items,int storedValue)
 {
-    for(int i=0;i<arr->length;i++)
+    for(int scanIndex=0;scanIndex<items->textLength;scanIndex++)
     {
-        if(arr->A[i]==value)
+        if(items->firstItems[scanIndex]==storedValue)
         {
-            swap(&arr->A[i-1],&arr->A[i]);
-            return i;
+            swap(&items->firstItems[scanIndex-1],&items->firstItems[scanIndex]);
+            return scanIndex;
         }
     }
     return -1;
@@ -34,8 +34,8 @@ int LinearSearch(struct Array *arr,int value)
 
 int main()
 {
-    struct Array arr={{1,2,3,4,5,6,7},10,7};
-    cout<<LinearSearch(&arr,4)<<endl;
-    Display(arr);
+    struct Array items={{1,2,3,4,5,6,7},10,7};
+    cout<<LinearSearch(&items,4)<<endl;
+    Display(items);
     return 0;
 }

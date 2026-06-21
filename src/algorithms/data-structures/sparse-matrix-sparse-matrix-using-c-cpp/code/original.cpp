@@ -3,92 +3,92 @@ using namespace std;
 class Element
 {
     public:
-    int i;
-    int j;
-    int x;
+    int scanIndex;
+    int writeIndex;
+    int inputValue;
 };
 class Sparse
 {
     private:
-    int m;
-    int n;
-    int num;
-    Element *elm;
+    int columnCount;
+    int itemCount;
+    int sparseMatrixNum;
+    Element *sparseMatrixElm;
     public:
-    Sparse(int m,int n,int num)
+    Sparse(int columnCount,int itemCount,int sparseMatrixNum)
     {
-        this->m=m;
-        this->n=n;
-        this->num=num;
-        elm=new Element[this->num];
+        this->columnCount=columnCount;
+        this->itemCount=itemCount;
+        this->sparseMatrixNum=sparseMatrixNum;
+        sparseMatrixElm=new Element[this->sparseMatrixNum];
     }
-    friend istream & operator >>(istream &is,Sparse &s);// friend is a global function
-    friend ostream & operator << (ostream &os,Sparse &s);
-    Sparse operator+(Sparse &s);
+    friend sparseMatrixIstream & operator >>(sparseMatrixIstream &sparseMatrixIs,Sparse &workingText);// friend is a global function
+    friend sparseMatrixOstream & operator << (sparseMatrixOstream &sparseMatrixOs,Sparse &workingText);
+    Sparse operator+(Sparse &workingText);
 };
-Sparse Sparse::operator+(Sparse &s)
+Sparse Sparse::operator+(Sparse &workingText)
 {
-    int i=0,j=0,k=0;//i for referrring elements of array of struct Element pointed by elm  in sparse structure pointed by s1
+    int scanIndex=0,writeIndex=0,probeIndex=0;//i for referrring elements of array of struct Element pointed by elm  in sparse structure pointed by s1
                     // j for s2 and k for sum
-    Sparse *sum=new Sparse(m,n,num+s.num);
-    sum->elm=new Element[num+s.num];
-    while (i<num && j<s.num)
+    Sparse *sparseMatrixSum=new Sparse(columnCount,itemCount,sparseMatrixNum+workingText.sparseMatrixNum);
+    sparseMatrixSum->sparseMatrixElm=new Element[sparseMatrixNum+workingText.sparseMatrixNum];
+    while (scanIndex<sparseMatrixNum && writeIndex<workingText.sparseMatrixNum)
     {
-        if(elm[i].i<s.elm[j].i)// row of s1 is less than s2
-            sum->elm[k++]=elm[i++];
+        if(sparseMatrixElm[scanIndex].scanIndex<workingText.sparseMatrixElm[writeIndex].scanIndex)// row of s1 is less than s2
+            sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixElm[scanIndex++];
 
-        else if(elm[i].i>s.elm[j].i)//row of s2 is less than s1
-            sum->elm[k++]=s.elm[j++];
+        else if(sparseMatrixElm[scanIndex].scanIndex>workingText.sparseMatrixElm[writeIndex].scanIndex)//row of s2 is less than s1
+            sparseMatrixSum->sparseMatrixElm[probeIndex++]=workingText.sparseMatrixElm[writeIndex++];
 
         else
         {
-            if(elm[i].j<s.elm[j].j)//row of s1 and s2 is same but column of s1 is less than s2
-                sum->elm[k++]=elm[i++];
+            if(sparseMatrixElm[scanIndex].writeIndex<workingText.sparseMatrixElm[writeIndex].writeIndex)//row of s1 and s2 is same but column of s1 is less than s2
+                sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixElm[scanIndex++];
 
-            else if(elm[i].j>s.elm[j].j)//row of s1 and s2 is same but column of s2 is less than s1
-            sum->elm[k++]=s.elm[j++];
+            else if(sparseMatrixElm[scanIndex].writeIndex>workingText.sparseMatrixElm[writeIndex].writeIndex)//row of s1 and s2 is same but column of s2 is less than s1
+            sparseMatrixSum->sparseMatrixElm[probeIndex++]=workingText.sparseMatrixElm[writeIndex++];
             
             else//row and column both are same
             {
-                sum->elm[k]=elm[i];//copy comple s1 struct elm elements
-                sum->elm[k++].x=s.elm[j++].x+elm[i++].x;//add s1 and s2 values
+                sparseMatrixSum->sparseMatrixElm[probeIndex]=sparseMatrixElm[scanIndex];//copy comple s1 struct elm elements
+                sparseMatrixSum->sparseMatrixElm[probeIndex++].inputValue=workingText.sparseMatrixElm[writeIndex++].inputValue+sparseMatrixElm[scanIndex++].inputValue;//add s1 and s2 values
             }
         }
         
     }
     //remaining elements 
-    for(;i<num;i++)
-        sum->elm[k++]=elm[i];
+    for(;scanIndex<sparseMatrixNum;scanIndex++)
+        sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixElm[scanIndex];
 
-    for(;j<this->num;j++)
-        sum->elm[k++]=s.elm[j];
+    for(;writeIndex<this->sparseMatrixNum;writeIndex++)
+        sparseMatrixSum->sparseMatrixElm[probeIndex++]=workingText.sparseMatrixElm[writeIndex];
 
-    sum->num=k;
-    return *sum;
+    sparseMatrixSum->sparseMatrixNum=probeIndex;
+    return *sparseMatrixSum;
 }
-istream & operator >> (istream &is,Sparse &s)
+sparseMatrixIstream & operator >> (sparseMatrixIstream &sparseMatrixIs,Sparse &workingText)
 {
     cout<<"Enter non-zero element\n";
-    int i;
-    for(i=0;i<s.num;i++)
+    int scanIndex;
+    for(scanIndex=0;scanIndex<workingText.sparseMatrixNum;scanIndex++)
     {
-        cin>>s.elm[i].i>>s.elm[i].j>>s.elm[i].x;
+        cin>>workingText.sparseMatrixElm[scanIndex].scanIndex>>workingText.sparseMatrixElm[scanIndex].writeIndex>>workingText.sparseMatrixElm[scanIndex].inputValue;
     }
-    return is;
+    return sparseMatrixIs;
 }
-ostream & operator << (ostream &os,Sparse &s)
+sparseMatrixOstream & operator << (sparseMatrixOstream &sparseMatrixOs,Sparse &workingText)
 {
-    int i,j;
-    int a;
-    a=0;
+    int scanIndex,writeIndex;
+    int primaryValue;
+    primaryValue=0;
     cout<<endl;
-    for(i=0;i<s.m;i++)
+    for(scanIndex=0;scanIndex<workingText.columnCount;scanIndex++)
     {
-        for(j=0;j<s.n;j++)
+        for(writeIndex=0;writeIndex<workingText.itemCount;writeIndex++)
         {
-            if(i==s.elm[a].i && j==s.elm[a].j)
+            if(scanIndex==workingText.sparseMatrixElm[primaryValue].scanIndex && writeIndex==workingText.sparseMatrixElm[primaryValue].writeIndex)
             {
-                cout<<s.elm[a++].x<<" ";
+                cout<<workingText.sparseMatrixElm[primaryValue++].inputValue<<" ";
             }
             else{
                 cout<<"0 ";
@@ -100,13 +100,13 @@ ostream & operator << (ostream &os,Sparse &s)
 }
 int main()
 {
-    Sparse s1(3,3,3);
-    cin>>s1;
-    cout<<s1;
-    Sparse s2(3,3,3);
-    cin>>s2;
-    cout<<s2;
-    Sparse s3=s1+s2;
-    cout<<s3;
+    Sparse sparseMatrixS1(3,3,3);
+    cin>>sparseMatrixS1;
+    cout<<sparseMatrixS1;
+    Sparse sparseMatrixS2(3,3,3);
+    cin>>sparseMatrixS2;
+    cout<<sparseMatrixS2;
+    Sparse sparseMatrixS3=sparseMatrixS1+sparseMatrixS2;
+    cout<<sparseMatrixS3;
     return 0;
 }

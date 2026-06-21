@@ -2,38 +2,38 @@
 using namespace std;
 struct Array
 {
-    int A[10];
-    int size;
-    int length;
+    int firstItems[10];
+    int itemCapacity;
+    int textLength;
 };
-void Display(struct Array arr)
+void Display(struct Array items)
 {
-    for(int i=0;i<arr.length;i++)
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        std::cout<<arr.A[i]<<" ";
+        std::cout<<items.firstItems[scanIndex]<<" ";
     }
 }
-void swap(int *x,int *y)
+void swap(int *inputValue,int *compareValue)
 {
-    int t=*x;
-    *x=*y;
-    *y=t;
+    int swapValue=*inputValue;
+    *inputValue=*compareValue;
+    *compareValue=swapValue;
 }
-void neg(struct Array *arr)
+void neg(struct Array *items)
 {   
-    int i=0,j=arr->length-1;
-    while(i<j)
+    int scanIndex=0,writeIndex=items->textLength-1;
+    while(scanIndex<writeIndex)
     {   
-        while (arr->A[i]<0)i++;
-        while(arr->A[j]>0)j--;
-        if(i<j) swap(&arr->A[i],&arr->A[j]);       
+        while (items->firstItems[scanIndex]<0)scanIndex++;
+        while(items->firstItems[writeIndex]>0)writeIndex--;
+        if(scanIndex<writeIndex) swap(&items->firstItems[scanIndex],&items->firstItems[writeIndex]);       
     }
 }
 
 int main()
 {
-    struct Array arr={{-1,2,-3,4,-5,8,-10},10,7};
-    neg(&arr);
-    Display(arr);
+    struct Array items={{-1,2,-3,4,-5,8,-10},10,7};
+    neg(&items);
+    Display(items);
     return 0;
 }

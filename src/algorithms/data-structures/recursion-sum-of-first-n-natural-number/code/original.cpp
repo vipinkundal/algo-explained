@@ -1,32 +1,32 @@
 #include<iostream>
 using namespace std;
-int sum(int n)
+int recursionSumSum(int itemCount)
 {
-    if(n<=0)
+    if(itemCount<=0)
         return 0;
-    return n+sum(n-1);
+    return itemCount+recursionSumSum(itemCount-1);
     
 }
-int Isum(int n)
+int Isum(int itemCount)
 {
-    int i;
-    int sum=0;
-    for (i=0;i<=n;i++)
+    int scanIndex;
+    int recursionSumSum=0;
+    for (scanIndex=0;scanIndex<=itemCount;scanIndex++)
     {
-        sum=sum+i;
+        recursionSumSum=recursionSumSum+scanIndex;
     }
-    return sum;
+    return recursionSumSum;
 }
-int Isum(int n)
+int Isum(int itemCount)
 {
-    int i,factorial=1;
-    for(i=1;i<=n;i++)
-        factorial=factorial*i;
-    return factorial;
+    int scanIndex,recursionSumFactorial=1;
+    for(scanIndex=1;scanIndex<=itemCount;scanIndex++)
+        recursionSumFactorial=recursionSumFactorial*scanIndex;
+    return recursionSumFactorial;
 
 }
 int main()
 {
-    int sum=Isum(5);
-    cout<<sum;
+    int recursionSumSum=Isum(5);
+    cout<<recursionSumSum;
 }

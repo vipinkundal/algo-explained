@@ -3,144 +3,144 @@
 using namespace std;
 class Node{
     public:
-        int data;
-        Node *next;
+        int nodeValue;
+        Node *nextLink;
 };
 
 class LinkedList
 {
 private:
-    Node *first;
+    Node *firstNode;
 public:
     LinkedList()
     {
-        first=NULL;
+        firstNode=NULL;
     }
-    LinkedList(int A[],int n);
+    LinkedList(int firstItems[],int itemCount);
     void display();
     int length();
-    void insert(int pos ,int value);
-    int del(int index);
+    void insert(int targetPosition ,int storedValue);
+    int del(int targetIndex);
     ~LinkedList();
     
 };
 
 LinkedList::~LinkedList()
 {
-    Node *p=first;
-    while(first)
+    Node *currentNode=firstNode;
+    while(firstNode)
     {
-        first=first->next;
-        delete p;
-        p=first;
+        firstNode=firstNode->nextLink;
+        delete currentNode;
+        currentNode=firstNode;
     }
 }
-int LinkedList::del(int index)
+int LinkedList::del(int targetIndex)
 {
-    Node *q=NULL,*p=first;
-    int x=-1;//to store data of deleted node
-    if(index<0 || index>length())
+    Node *nextNode=NULL,*currentNode=firstNode;
+    int inputValue=-1;//to store data of deleted node
+    if(targetIndex<0 || targetIndex>length())
         return -1;
-    if(index==0)
+    if(targetIndex==0)
     {
-        x=first->data;
-        first=first->next;
+        inputValue=firstNode->nodeValue;
+        firstNode=firstNode->nextLink;
     }
     else
     {
-        for(int i=0;i<index;i++)
+        for(int scanIndex=0;scanIndex<targetIndex;scanIndex++)
         {
-            q=p;
-            p=p->next;
+            nextNode=currentNode;
+            currentNode=currentNode->nextLink;
         }
-        x=p->data;
-        q->next=p->next;
+        inputValue=currentNode->nodeValue;
+        nextNode->nextLink=currentNode->nextLink;
     }
 
-    delete p;
-    return x;
+    delete currentNode;
+    return inputValue;
 }
-LinkedList::LinkedList(int A[],int n)
+LinkedList::LinkedList(int firstItems[],int itemCount)
     {
-        int i;
-        Node *last, *t;
-        first=new Node;
-        first->data=A[0];
-        first->next=NULL;
-        last=first;//addreess is passed and now first is refferd as last
+        int scanIndex;
+        Node *lastNode, *swapValue;
+        firstNode=new Node;
+        firstNode->nodeValue=firstItems[0];
+        firstNode->nextLink=NULL;
+        lastNode=firstNode;//addreess is passed and now first is refferd as last
 
-        for(int i=1;i<n;i++)
+        for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
         {
-            t=new Node;
-            t->data=A[i];
-            t->next=NULL;
-            last->next=t;//putting address of current node in the next of last node 
-            last=t;//assigning current node as last node
+            swapValue=new Node;
+            swapValue->nodeValue=firstItems[scanIndex];
+            swapValue->nextLink=NULL;
+            lastNode->nextLink=swapValue;//putting address of current node in the next of last node 
+            lastNode=swapValue;//assigning current node as last node
         }
     }
 int LinkedList::length()//counting of nodes
 {
-    int c=0;
-    Node *p;
-    p=first;
-    while(p)
+    int columnIndex=0;
+    Node *currentNode;
+    currentNode=firstNode;
+    while(currentNode)
     {
-        c++;
-        p=p->next;
+        columnIndex++;
+        currentNode=currentNode->nextLink;
     }
-    return c;
+    return columnIndex;
 }
 void LinkedList::display()
 {
-    Node *p;
-    p=first;
-    while(p!=NULL)
+    Node *currentNode;
+    currentNode=firstNode;
+    while(currentNode!=NULL)
     {
-        cout<<p->data<<endl;
-        p=p->next;
+        cout<<currentNode->nodeValue<<endl;
+        currentNode=currentNode->nextLink;
     }
 }
-void LinkedList::insert(int pos ,int value)
+void LinkedList::insert(int targetPosition ,int storedValue)
 {
-    if(pos<0 || pos>length())
+    if(targetPosition<0 || targetPosition>length())
     return ;
 
-    Node * p;
-    Node *t;
-    p=first;
-    t=new Node;
-    if(pos==0)
+    Node * currentNode;
+    Node *swapValue;
+    currentNode=firstNode;
+    swapValue=new Node;
+    if(targetPosition==0)
     {
-        t->data=value;
-        t->next=first;
-        first=t;
+        swapValue->nodeValue=storedValue;
+        swapValue->nextLink=firstNode;
+        firstNode=swapValue;
     }
-    else if(pos>0)
+    else if(targetPosition>0)
     {
-        for(int i=0;i<pos-1 && p;i++)//as it go to next node after one loop  and the node starts from 0
+        for(int scanIndex=0;scanIndex<targetPosition-1 && currentNode;scanIndex++)//as it go to next node after one loop  and the node starts from 0
                                     //where as position starts from 1
         {
-            p=p->next;
+            currentNode=currentNode->nextLink;
         }
-        t->data=value;
-        t->next=p->next;
-        p->next=t;
+        swapValue->nodeValue=storedValue;
+        swapValue->nextLink=currentNode->nextLink;
+        currentNode->nextLink=swapValue;
     }
 }
 int main()
 {
-    int A[]={1,6,8,12,56};
-    LinkedList l(A,5);
+    int firstItems[]={1,6,8,12,56};
+    LinkedList leftIndex(firstItems,5);
    
-    l.insert(2,67);
+    leftIndex.insert(2,67);
 
-     l.display();
+     leftIndex.display();
 
-    cout<<"lenght "<<l.length()<<endl;
+    cout<<"lenght "<<leftIndex.length()<<endl;
 
 
-    l.del(1);
+    leftIndex.del(1);
     cout<<"After deletion"<<endl;
-    l.display();
+    leftIndex.display();
     return  0;
 }

@@ -4,71 +4,71 @@
 using namespace std;
 struct Term
 {
-    int coeff;
-    int expo;
+    int sparseMatrixCoeff;
+    int sparseMatrixExpo;
 };
-struct polynomial
+struct sparseMatrixPolynomial
 {
-    int n;
-    struct Term *t;
+    int itemCount;
+    struct Term *swapValue;
 };
-void create(struct polynomial * p)
+void create(struct sparseMatrixPolynomial * currentNode)
 {
     cout<<"Enter number of elements ";
-    cin>>p->n;
+    cin>>currentNode->itemCount;
     cout<<endl;
-    p->t=new struct Term [p->n];
-    for(int i=0;i<p->n;i++)
+    currentNode->swapValue=new struct Term [currentNode->itemCount];
+    for(int scanIndex=0;scanIndex<currentNode->itemCount;scanIndex++)
     {
-        cout<<"Enter "<<i<<"th term coeff ";
-        cin>>p->t[i].coeff;
-        cout<<"Enter "<<i<<"th term expo ";
-        cin>>p->t[i].expo;
+        cout<<"Enter "<<scanIndex<<"th term coeff ";
+        cin>>currentNode->swapValue[scanIndex].sparseMatrixCoeff;
+        cout<<"Enter "<<scanIndex<<"th term expo ";
+        cin>>currentNode->swapValue[scanIndex].sparseMatrixExpo;
         cout<<endl;
     }
 }
-void display(struct polynomial *p)
+void display(struct sparseMatrixPolynomial *currentNode)
 {
-    for(int i=0;i<p->n;i++)
+    for(int scanIndex=0;scanIndex<currentNode->itemCount;scanIndex++)
     {
-        cout<<p->t[i].coeff<<"x"<<p->t[i].expo;
-        if(i!=(p->n)-1)
+        cout<<currentNode->swapValue[scanIndex].sparseMatrixCoeff<<"x"<<currentNode->swapValue[scanIndex].sparseMatrixExpo;
+        if(scanIndex!=(currentNode->itemCount)-1)
             cout<<" + ";
     }
     cout<<endl;
 }
-struct polynomial addition(struct polynomial *p1,struct polynomial *p2)
+struct sparseMatrixPolynomial addition(struct sparseMatrixPolynomial *sparseMatrixP1,struct sparseMatrixPolynomial *sparseMatrixP2)
 {
-    int i=0,j=0,k=0;
-    struct polynomial sum;
-    sum.t=new Term[p1->n + p2->n];
-    while(i<p1->n && j<p2->n)
+    int scanIndex=0,writeIndex=0,probeIndex=0;
+    struct sparseMatrixPolynomial sparseMatrixSum;
+    sparseMatrixSum.swapValue=new Term[sparseMatrixP1->itemCount + sparseMatrixP2->itemCount];
+    while(scanIndex<sparseMatrixP1->itemCount && writeIndex<sparseMatrixP2->itemCount)
     {
-        if(p1->t[i].expo>p2->t[j].expo)
-            sum.t[k++]=p1->t[i++];
-        else if(p2->t[j].expo>p1->t[i].expo)
-            sum.t[k++]=p2->t[j++];
+        if(sparseMatrixP1->swapValue[scanIndex].sparseMatrixExpo>sparseMatrixP2->swapValue[writeIndex].sparseMatrixExpo)
+            sparseMatrixSum.swapValue[probeIndex++]=sparseMatrixP1->swapValue[scanIndex++];
+        else if(sparseMatrixP2->swapValue[writeIndex].sparseMatrixExpo>sparseMatrixP1->swapValue[scanIndex].sparseMatrixExpo)
+            sparseMatrixSum.swapValue[probeIndex++]=sparseMatrixP2->swapValue[writeIndex++];
         else
         {
-            sum.t[k].expo=p1->t[i].expo;
-            sum.t[k++].coeff=p1->t[i++].coeff+p2->t[j++].coeff;
+            sparseMatrixSum.swapValue[probeIndex].sparseMatrixExpo=sparseMatrixP1->swapValue[scanIndex].sparseMatrixExpo;
+            sparseMatrixSum.swapValue[probeIndex++].sparseMatrixCoeff=sparseMatrixP1->swapValue[scanIndex++].sparseMatrixCoeff+sparseMatrixP2->swapValue[writeIndex++].sparseMatrixCoeff;
         }
     }
-    for(;i<p1->n;i++)
-        sum.t[k++]=p1->t[i];
-    for(;j<p2->n;j++)
-        sum.t[k++]=p2->t[j];
-    sum.n=k;
-    return sum;
+    for(;scanIndex<sparseMatrixP1->itemCount;scanIndex++)
+        sparseMatrixSum.swapValue[probeIndex++]=sparseMatrixP1->swapValue[scanIndex];
+    for(;writeIndex<sparseMatrixP2->itemCount;writeIndex++)
+        sparseMatrixSum.swapValue[probeIndex++]=sparseMatrixP2->swapValue[writeIndex];
+    sparseMatrixSum.itemCount=probeIndex;
+    return sparseMatrixSum;
 }
 int main()
 {
-    struct polynomial p1,p2,sum;
-    create(&p1);
-    display(&p1);
-    create(&p2);
-    display(&p2);
-    sum=addition(&p1,&p2);
-    display(&sum);
+    struct sparseMatrixPolynomial sparseMatrixP1,sparseMatrixP2,sparseMatrixSum;
+    create(&sparseMatrixP1);
+    display(&sparseMatrixP1);
+    create(&sparseMatrixP2);
+    display(&sparseMatrixP2);
+    sparseMatrixSum=addition(&sparseMatrixP1,&sparseMatrixP2);
+    display(&sparseMatrixSum);
     return 0;
 }

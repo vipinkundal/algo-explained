@@ -1,47 +1,47 @@
 class Queue
 {
     private:
-        int size;
-        int front=-1;
-        int rear=-1;
-        Node  **Q;
+        int itemCapacity;
+        int queueFront=-1;
+        int queueRear=-1;
+        Node  **queueStorage;
     public:
         Queue();
-        void enqueue(Node* x);
+        void enqueue(Node* inputValue);
         Node* dequeue();
         int isEmpty();
 };
 Queue::Queue()
 {
-    size=100;
-    Q=new Node*[size];
-    front=rear=-1;
+    itemCapacity=100;
+    queueStorage=new Node*[itemCapacity];
+    queueFront=queueRear=-1;
 }
 
-void Queue::enqueue(Node *x)
+void Queue::enqueue(Node *inputValue)
 {
-    if(rear==size-1)
+    if(queueRear==itemCapacity-1)
         cout<<"Queue is full\n";
     else {
-        ++rear;
-        Q[rear]=x;
+        ++queueRear;
+        queueStorage[queueRear]=inputValue;
 
     }
 }
 
 Node *Queue::dequeue()
 {
-    Node *x=NULL;
-    if(front==rear)
+    Node *inputValue=NULL;
+    if(queueFront==queueRear)
         cout<<"Queue is Empty\n";
     else{
-        ++front;
-        x=Q[front];
+        ++queueFront;
+        inputValue=queueStorage[queueFront];
     }
-    return x;
+    return inputValue;
 }
 
 int Queue::isEmpty()
 {
-    return front==rear;
+    return queueFront==queueRear;
 }

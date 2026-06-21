@@ -5,168 +5,168 @@
 using namespace std;
 
 struct Node {
-    Node* lchild;
-    int data;
-    Node* rchild;
-}*root=NULL;
+    Node* bstBasicsLchild;
+    int nodeValue;
+    Node* bstBasicsRchild;
+}*treeRoot=NULL;
 
-struct Node* Rinsert(struct Node *p,int key)
+struct Node* Rinsert(struct Node *currentNode,int searchKey)
 {
-    struct Node *t;
-    if(p==NULL)
+    struct Node *swapValue;
+    if(currentNode==NULL)
     {
-        t=new Node ;
-        t->data=key;
-        t->lchild=t->rchild=NULL;
-        return t;
+        swapValue=new Node ;
+        swapValue->nodeValue=searchKey;
+        swapValue->bstBasicsLchild=swapValue->bstBasicsRchild=NULL;
+        return swapValue;
     }
-    if(p->data>key)
-        p->lchild=Rinsert(p->lchild,key);
-    else if(p->data<key)
-        p->rchild=Rinsert(p->rchild,key);
-    return p;
+    if(currentNode->nodeValue>searchKey)
+        currentNode->bstBasicsLchild=Rinsert(currentNode->bstBasicsLchild,searchKey);
+    else if(currentNode->nodeValue<searchKey)
+        currentNode->bstBasicsRchild=Rinsert(currentNode->bstBasicsRchild,searchKey);
+    return currentNode;
 }
-void insert(int key)
+void insert(int searchKey)
 {
-    Node *p=root,*r;
-    if(p==NULL)
+    Node *currentNode=treeRoot,*rightIndex;
+    if(currentNode==NULL)
     {
-        p=new Node;
-        p->lchild=p->rchild=NULL;
-        p->data=key;
-        root=p;
+        currentNode=new Node;
+        currentNode->bstBasicsLchild=currentNode->bstBasicsRchild=NULL;
+        currentNode->nodeValue=searchKey;
+        treeRoot=currentNode;
         return;
     }
     else{
-        while(p!=NULL)
+        while(currentNode!=NULL)
         {
-            r=p;
-            if(p->data<key)
-                p=p->rchild;
-            else if(p->data>key)
-                p=p->lchild;
+            rightIndex=currentNode;
+            if(currentNode->nodeValue<searchKey)
+                currentNode=currentNode->bstBasicsRchild;
+            else if(currentNode->nodeValue>searchKey)
+                currentNode=currentNode->bstBasicsLchild;
             else 
                 return;
         }
-        p=new Node;
-        p->lchild=p->rchild=NULL;
-        p->data=key;
-        if(r->data<key)
-            r->rchild=p;
+        currentNode=new Node;
+        currentNode->bstBasicsLchild=currentNode->bstBasicsRchild=NULL;
+        currentNode->nodeValue=searchKey;
+        if(rightIndex->nodeValue<searchKey)
+            rightIndex->bstBasicsRchild=currentNode;
         else
-            r->lchild=p;
+            rightIndex->bstBasicsLchild=currentNode;
     }
 }
 
-void inorder(Node *p)
+void inorder(Node *currentNode)
 {
-    if(p)
+    if(currentNode)
     {
-        inorder(p->lchild);
-        cout<<p->data<<" "<<flush;
-        inorder(p->rchild);
+        inorder(currentNode->bstBasicsLchild);
+        cout<<currentNode->nodeValue<<" "<<flush;
+        inorder(currentNode->bstBasicsRchild);
     }
 }
 
-int Height(struct Node *t)
+int Height(struct Node *swapValue)
 {
-    if(t==NULL)
+    if(swapValue==NULL)
         return 0;
-    int lh=Height(t->lchild);
-    int rh=Height(t->rchild);
-    return lh<rh?rh+1:lh+1;
+    int bstBasicsLh=Height(swapValue->bstBasicsLchild);
+    int bstBasicsRh=Height(swapValue->bstBasicsRchild);
+    return bstBasicsLh<bstBasicsRh?bstBasicsRh+1:bstBasicsLh+1;
 }
-struct Node *Inprec(Node *p)
+struct Node *Inprec(Node *currentNode)
 {
-    while(p && p->rchild!=NULL)
-        p=p->rchild;
-    return p;
-}
-
-struct Node *Insucc(Node *p)
-{
-    while(p && p->lchild!=NULL)
-        p=p->lchild;
-    return p;
+    while(currentNode && currentNode->bstBasicsRchild!=NULL)
+        currentNode=currentNode->bstBasicsRchild;
+    return currentNode;
 }
 
-struct Node *Delete(Node *p,int key)
+struct Node *Insucc(Node *currentNode)
 {
-    struct Node *t=NULL;
-    if (p==NULL)
+    while(currentNode && currentNode->bstBasicsLchild!=NULL)
+        currentNode=currentNode->bstBasicsLchild;
+    return currentNode;
+}
+
+struct Node *Delete(Node *currentNode,int searchKey)
+{
+    struct Node *swapValue=NULL;
+    if (currentNode==NULL)
         return nullptr;
-    if(p->lchild==NULL && p->rchild==NULL)
+    if(currentNode->bstBasicsLchild==NULL && currentNode->bstBasicsRchild==NULL)
     {
-        if (p == root){
-            root = nullptr;
+        if (currentNode == treeRoot){
+            treeRoot = nullptr;
         }
-        delete p;
+        delete currentNode;
         return nullptr;
     }
-    if(p->data>key)
-        p->lchild=Delete(p->lchild,key);
-    else if(p->data<key)
-        p->rchild=Delete(p->rchild,key);
+    if(currentNode->nodeValue>searchKey)
+        currentNode->bstBasicsLchild=Delete(currentNode->bstBasicsLchild,searchKey);
+    else if(currentNode->nodeValue<searchKey)
+        currentNode->bstBasicsRchild=Delete(currentNode->bstBasicsRchild,searchKey);
     else
     {
-        if(Height(p->lchild)>Height(p->rchild))
+        if(Height(currentNode->bstBasicsLchild)>Height(currentNode->bstBasicsRchild))
         {
-            t=Inprec(p->lchild);
-            p->data=t->data;
-            p->lchild=Delete(p->lchild,t->data);
+            swapValue=Inprec(currentNode->bstBasicsLchild);
+            currentNode->nodeValue=swapValue->nodeValue;
+            currentNode->bstBasicsLchild=Delete(currentNode->bstBasicsLchild,swapValue->nodeValue);
         }
         else
         {
-            t=Insucc(p->rchild);
-            p->data=t->data;
-            p->rchild=Delete(p->rchild,t->data);
+            swapValue=Insucc(currentNode->bstBasicsRchild);
+            currentNode->nodeValue=swapValue->nodeValue;
+            currentNode->bstBasicsRchild=Delete(currentNode->bstBasicsRchild,swapValue->nodeValue);
         }
     }
-    return p;
+    return currentNode;
 }
 
 void CreatePre()
 {
-    int pre[]={30,20,10,15,25,40,50,45};
-    int n=8;
-    stack<Node *> st;
-    Node *p,*t;
-    root=new Node;
-    int i=0;
-    root->data=pre[i++];
-    root->lchild=root->rchild=NULL;
-    p=root;
-    while (i<n)
+    int bstBasicsPre[]={30,20,10,15,25,40,50,45};
+    int itemCount=8;
+    stack<Node *> bstBasicsSt;
+    Node *currentNode,*swapValue;
+    treeRoot=new Node;
+    int scanIndex=0;
+    treeRoot->nodeValue=bstBasicsPre[scanIndex++];
+    treeRoot->bstBasicsLchild=treeRoot->bstBasicsRchild=NULL;
+    currentNode=treeRoot;
+    while (scanIndex<itemCount)
     {
-       if(p->data>pre[i])
+       if(currentNode->nodeValue>bstBasicsPre[scanIndex])
        {
-        t=new Node;
-        t->data=pre[i++];
-        t->lchild=t->rchild=NULL;
-        p->lchild=t;
-        st.emplace(p);
-        p=t;
+        swapValue=new Node;
+        swapValue->nodeValue=bstBasicsPre[scanIndex++];
+        swapValue->bstBasicsLchild=swapValue->bstBasicsRchild=NULL;
+        currentNode->bstBasicsLchild=swapValue;
+        bstBasicsSt.emplace(currentNode);
+        currentNode=swapValue;
        }
-       else if(p->data<pre[i] && st.empty()?1:(st.top()->data>pre[i]?1:0))
+       else if(currentNode->nodeValue<bstBasicsPre[scanIndex] && bstBasicsSt.empty()?1:(bstBasicsSt.top()->nodeValue>bstBasicsPre[scanIndex]?1:0))
        {
-        t=new Node;
-        t->data=pre[i++];
-        t->lchild=t->rchild=NULL;
-        p->rchild=t;
-        p=t;
+        swapValue=new Node;
+        swapValue->nodeValue=bstBasicsPre[scanIndex++];
+        swapValue->bstBasicsLchild=swapValue->bstBasicsRchild=NULL;
+        currentNode->bstBasicsRchild=swapValue;
+        currentNode=swapValue;
        }
        else
         {
-            p=st.top();
-            st.pop();
+            currentNode=bstBasicsSt.top();
+            bstBasicsSt.pop();
         }
     }
     
 }
 int main()
 {
-    int A[]={30,20,10,15,25,40,50,45};
+    int firstItems[]={30,20,10,15,25,40,50,45};
     CreatePre();
-    inorder(root);
+    inorder(treeRoot);
     return 0;
 }

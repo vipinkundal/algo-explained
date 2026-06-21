@@ -2,16 +2,16 @@
 using namespace std;
 int main()
 {
-    char word[]="Hellohedppd";
-    int a=0;//assigning all bits as zero
-    for(int i=0;word[i]!='\0';i++)
+    char sourceText[]="Hellohedppd";
+    int primaryValue=0;//assigning all bits as zero
+    for(int scanIndex=0;sourceText[scanIndex]!='\0';scanIndex++)
     {
-        int b=1;//assigning 0 bit as 1 i.e turning is on
-        b=b<<word[i]-97;//turning on the bit for that particular char
-        if(a&b)
-            cout<<"Dublicated letter "<<word[i]<<endl;
+        int secondaryValue=1;//assigning 0 bit as 1 i.e turning is on
+        secondaryValue=secondaryValue<<sourceText[scanIndex]-97;//turning on the bit for that particular char
+        if(primaryValue&secondaryValue)
+            cout<<"Dublicated letter "<<sourceText[scanIndex]<<endl;
         else
-            a=a|b;
+            primaryValue=primaryValue|secondaryValue;
     }
     return 0;
 }

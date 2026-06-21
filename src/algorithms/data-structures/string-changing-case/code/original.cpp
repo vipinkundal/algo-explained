@@ -1,15 +1,15 @@
 #include<iostream>
 int main()
 {
-    char name[]="AnuRAG maURyA";
-    for(int i=0;name[i]!='\0';i++)
+    char stringChangingName[]="AnuRAG maURyA";
+    for(int scanIndex=0;stringChangingName[scanIndex]!='\0';scanIndex++)
     {
-        if(name[i]>=65 &&name[i]<=90)//if chararcter is uppercase
-            name[i]=name[i]+32;
-        else if(name[i]>=97 && name[i]<=122)//if chararcter is lowercase
-            name[i]=name[i]-32;
+        if(stringChangingName[scanIndex]>=65 &&stringChangingName[scanIndex]<=90)//if chararcter is uppercase
+            stringChangingName[scanIndex]=stringChangingName[scanIndex]+32;
+        else if(stringChangingName[scanIndex]>=97 && stringChangingName[scanIndex]<=122)//if chararcter is lowercase
+            stringChangingName[scanIndex]=stringChangingName[scanIndex]-32;
     }
-    std::cout<<name;
+    std::cout<<stringChangingName;
     
 
     return 0;

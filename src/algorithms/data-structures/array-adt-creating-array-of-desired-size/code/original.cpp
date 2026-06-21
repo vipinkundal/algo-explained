@@ -4,63 +4,63 @@ using namespace std;
 class Array{
  
 private:
-    int* A;
-    int size;
-    int length;
+    int* firstItems;
+    int itemCapacity;
+    int textLength;
  
 public:
-    Array(int size){
-        this->size = size;
-        A = new int [size];
+    Array(int itemCapacity){
+        this->itemCapacity = itemCapacity;
+        firstItems = new int [itemCapacity];
     }
  
     void create(){
         cout << "Enter number of elements: " << flush;
-        cin >> length;
+        cin >> textLength;
         cout << "Enter the array elements: " << endl;
-        for (int i = 0; i < length; i++){
-            cout << "Array element: " << i << " = " << flush;
-            cin >> A[i];
+        for (int scanIndex = 0; scanIndex < textLength; scanIndex++){
+            cout << "Array element: " << scanIndex << " = " << flush;
+            cin >> firstItems[scanIndex];
         }
     }
-    void append(int a)
+    void append(int primaryValue)
     {
-        if(length<size)
+        if(textLength<itemCapacity)
         {
-            A[length]=a;
-            length++;
+            firstItems[textLength]=primaryValue;
+            textLength++;
         }
     }
  
     void display(){
-        for (int i = 0; i < length; i++){
-            cout << A[i] << " ";
+        for (int scanIndex = 0; scanIndex < textLength; scanIndex++){
+            cout << firstItems[scanIndex] << " ";
         }
     }
-    void insert(int index,int value){
-        if(index>=0 && index<=size){
-        for(int i=length;i>index;i--)
+    void insert(int targetIndex,int storedValue){
+        if(targetIndex>=0 && targetIndex<=itemCapacity){
+        for(int scanIndex=textLength;scanIndex>targetIndex;scanIndex--)
         {
-            A[i]=A[i-1];
+            firstItems[scanIndex]=firstItems[scanIndex-1];
         }
-        A[index]=value;
-        length++;
+        firstItems[targetIndex]=storedValue;
+        textLength++;
         }
     }
  
     ~Array(){//destructor
-        delete[] A;
+        delete[] firstItems;
         cout << "Array destroyed" << endl;
     }
 };
 
 int main() {
  
-    Array arr(10);
-    arr.create();
-    arr.append(2);
-    arr.insert(3,78);
-    arr.display();
+    Array items(10);
+    items.create();
+    items.append(2);
+    items.insert(3,78);
+    items.display();
     
 
     return 0;

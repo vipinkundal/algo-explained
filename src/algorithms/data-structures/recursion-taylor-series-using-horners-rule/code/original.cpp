@@ -1,22 +1,22 @@
 #include<iostream>
 
-float e1(float x,int n)//using loop
+float e1(float inputValue,int itemCount)//using loop
 {
-    float s=1;
-    for(;n>0;n--)
+    float workingText=1;
+    for(;itemCount>0;itemCount--)
     {
-        s=1+x/n*s;
+        workingText=1+inputValue/itemCount*workingText;
     }
-    return s;
+    return workingText;
 }
 
-float e(float x,int n)//using recursion
+float e(float inputValue,int itemCount)//using recursion
 {
-    static float s=1;
-    if(n==0)
-        return s;
-    s=1+x/n*s;
-    return e(x,n-1);
+    static float workingText=1;
+    if(itemCount==0)
+        return workingText;
+    workingText=1+inputValue/itemCount*workingText;
+    return e(inputValue,itemCount-1);
 }
 int main()
 {

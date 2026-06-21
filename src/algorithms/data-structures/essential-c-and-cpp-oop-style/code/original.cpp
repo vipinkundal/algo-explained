@@ -5,31 +5,31 @@ using namespace std;
 class Rectangle//class rectangle
 {
     private:
-    int length;
-    int breath;
+    int textLength;
+    int essentialCBreath;
     public:
-    Rectangle (int l,int b)//constructor of rectangle class ,it gets initalize as soon as class rectangle is declared in main 
+    Rectangle (int leftIndex,int secondaryValue)//constructor of rectangle class ,it gets initalize as soon as class rectangle is declared in main 
     {
-        length=l;
-        breath=b;
+        textLength=leftIndex;
+        essentialCBreath=secondaryValue;
     }
     int area()
     {
-        return length*breath;
+        return textLength*essentialCBreath;
     }
     int peri()
     {
-        return 2*(length+breath);
+        return 2*(textLength+essentialCBreath);
     }      
 };
 int main()
 {
-    int l,b;
+    int leftIndex,secondaryValue;
     cout<<"Enter lenth and breath of rectangle ";
-    cin>>l>>b;
-    Rectangle r(l,b);
-    int a=r.area();
-    int p=r.peri();
-    printf("%d is area\n%d is perimeter",a,p);
+    cin>>leftIndex>>secondaryValue;
+    Rectangle rightIndex(leftIndex,secondaryValue);
+    int primaryValue=rightIndex.area();
+    int currentNode=rightIndex.peri();
+    printf("%d is area\n%d is perimeter",primaryValue,currentNode);
     return 0;
 }

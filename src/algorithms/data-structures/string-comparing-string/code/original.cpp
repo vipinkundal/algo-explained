@@ -2,21 +2,21 @@
 int main()
 {
     //comparing two strings
-    char A[]="Painter";
-    char B[]="painter";
-    int i,j;
-    for(i=0,j=0;A[i]!='\0',B[j]!='\0';j++,i++)//checking condition if string ends
+    char firstItems[]="Painter";
+    char secondItems[]="painter";
+    int scanIndex,writeIndex;
+    for(scanIndex=0,writeIndex=0;firstItems[scanIndex]!='\0',secondItems[writeIndex]!='\0';writeIndex++,scanIndex++)//checking condition if string ends
     {
-        if(A[i]>=65 && A[i]<=90)//checking if its uppercase then converting to lower case 
-            A[i]=A[i]+32;
-        else if(B[i]>=65 && B[i]<=90)//checking if its uppercase then converting to lower case 
-            B[i]=B[i]+32;
-        if(A[i]!=B[j])//checking if they are not equal
+        if(firstItems[scanIndex]>=65 && firstItems[scanIndex]<=90)//checking if its uppercase then converting to lower case 
+            firstItems[scanIndex]=firstItems[scanIndex]+32;
+        else if(secondItems[scanIndex]>=65 && secondItems[scanIndex]<=90)//checking if its uppercase then converting to lower case 
+            secondItems[scanIndex]=secondItems[scanIndex]+32;
+        if(firstItems[scanIndex]!=secondItems[writeIndex])//checking if they are not equal
             break;
     }
-    if(A[i]==B[j])
+    if(firstItems[scanIndex]==secondItems[writeIndex])
         std::cout<<"both are equal"<<std::endl;
-    else if(A[i]>B[j])
+    else if(firstItems[scanIndex]>secondItems[writeIndex])
         std::cout<<"A is greater"<<std::endl;
     else
         std::cout<<"B is greater"<<std::endl;
@@ -24,41 +24,41 @@ int main()
 
     //checking if Palindrone
 
-    char word[]="madami";
+    char sourceText[]="madami";
     //method 1
-    char helper[10];//helper string/array
-    for(i=0;word[i]!='\0';i++)//incrementing i value till it reacher the last index
+    char reverseBuffer[10];//helper string/array
+    for(scanIndex=0;sourceText[scanIndex]!='\0';scanIndex++)//incrementing i value till it reacher the last index
     {}
-    i--;
-    for(j=0;i>=0;j++,i--)//copying reverse of word in helper
+    scanIndex--;
+    for(writeIndex=0;scanIndex>=0;writeIndex++,scanIndex--)//copying reverse of word in helper
     {
-        helper[j]=word[i];
+        reverseBuffer[writeIndex]=sourceText[scanIndex];
     }
-    helper[j]='\0';//assigining last value with null term
-    for(i=0;helper[i]!='\0';i++)
+    reverseBuffer[writeIndex]='\0';//assigining last value with null term
+    for(scanIndex=0;reverseBuffer[scanIndex]!='\0';scanIndex++)
     {
-        if(word[i]!=helper[i])//if not equal break out of loop
+        if(sourceText[scanIndex]!=reverseBuffer[scanIndex])//if not equal break out of loop
             break;
     }
-    if(word[i]=='\0')//checking if it reached last till last null term
+    if(sourceText[scanIndex]=='\0')//checking if it reached last till last null term
         std::cout<<"String is pallindrone"<<std::endl;
     else
         std::cout<<"string is not palindrone"<<std::endl;
 
     //Method 2
-    char word2[]="MADoM";
-    for(j=0;word2[j]!='\0';j++)
+    char inPlaceText[]="MADoM";
+    for(writeIndex=0;inPlaceText[writeIndex]!='\0';writeIndex++)
     {}
-    j--;
-    i=0;
-    while(i<j)
+    writeIndex--;
+    scanIndex=0;
+    while(scanIndex<writeIndex)
     {
-        if(word2[i]!=word2[j])//if not equal break out of loop
+        if(inPlaceText[scanIndex]!=inPlaceText[writeIndex])//if not equal break out of loop
             break;
-        i++;
-        j--;
+        scanIndex++;
+        writeIndex--;
     }
-    if(word2[i]==word2[j])//checking if they are equal
+    if(inPlaceText[scanIndex]==inPlaceText[writeIndex])//checking if they are equal
         std::cout<<"String is pallindrone"<<std::endl;
     else
         std::cout<<"string is not palindrone"<<std::endl;

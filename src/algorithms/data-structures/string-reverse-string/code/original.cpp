@@ -1,40 +1,40 @@
 #include<iostream>
 int main()
 {
-    char word[]="Anurag";
+    char sourceText[]="Anurag";
     //method 1
-    char helper[10];
-    int i,j;
-    for(i=0;word[i]!='\0';i++)
+    char reverseBuffer[10];
+    int scanIndex,writeIndex;
+    for(scanIndex=0;sourceText[scanIndex]!='\0';scanIndex++)
     {}
-    i--;
-    for(j=0;i>=0;j++,i--)
+    scanIndex--;
+    for(writeIndex=0;scanIndex>=0;writeIndex++,scanIndex--)
     {
-        helper[j]=word[i];
+        reverseBuffer[writeIndex]=sourceText[scanIndex];
     }
-    helper[j]='\0';
-    for(i=0;helper[i]!='\0';i++)
+    reverseBuffer[writeIndex]='\0';
+    for(scanIndex=0;reverseBuffer[scanIndex]!='\0';scanIndex++)
     {
-        word[i]=helper[i];
+        sourceText[scanIndex]=reverseBuffer[scanIndex];
     }
-    std::cout<<word<<std::endl;
+    std::cout<<sourceText<<std::endl;
 
     //Method 2
-    char word2[]="Anurag";
-    for(j=0;word2[j]!='\0';j++)
+    char inPlaceText[]="Anurag";
+    for(writeIndex=0;inPlaceText[writeIndex]!='\0';writeIndex++)
     {}
-    j--;
-    i=0;
-    while(i<j)
+    writeIndex--;
+    scanIndex=0;
+    while(scanIndex<writeIndex)
     {
-        char t;
-        t=word2[i];
-        word2[i]=word2[j];
-        word2[j]=t;
-        i++;
-        j--;
+        char swapValue;
+        swapValue=inPlaceText[scanIndex];
+        inPlaceText[scanIndex]=inPlaceText[writeIndex];
+        inPlaceText[writeIndex]=swapValue;
+        scanIndex++;
+        writeIndex--;
     }
-    std::cout<<word2;
+    std::cout<<inPlaceText;
 
     return 0;
 }

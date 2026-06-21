@@ -3,62 +3,62 @@ using namespace std;
 int main()
 {
     //Anagram using method 1 i.e for loop
-    char word1[]="elbow";
-    char word2[]="below";
-    int i,j;
-    for(i=0;word1[i]!='\0';i++)
+    char stringAnagramWord1[]="elbow";
+    char inPlaceText[]="below";
+    int scanIndex,writeIndex;
+    for(scanIndex=0;stringAnagramWord1[scanIndex]!='\0';scanIndex++)
     {
-        for(j=0;word2[j]!='\0';j++)
+        for(writeIndex=0;inPlaceText[writeIndex]!='\0';writeIndex++)
         {
-            if(word1[i]==word2[j])
+            if(stringAnagramWord1[scanIndex]==inPlaceText[writeIndex])
                 break;
         }
-        if(word2[j]=='\0')
+        if(inPlaceText[writeIndex]=='\0')
             break;
     }
-    if(word1[i]=='\0')
+    if(stringAnagramWord1[scanIndex]=='\0')
     cout<<"Its an anagram "<<endl;
     else
     cout<<"Its not an angram"<<endl;
 
     //Anagram using method 2 using hasing
 
-    char word3[]="cat";
-    char word4[]="tac";
+    char stringAnagramWord3[]="cat";
+    char stringAnagramWord4[]="tac";
 
-    int h[25]={0};
-    for(i=0;word3[i]!='\0';i++)
-        h[word3[i]-97]++;
+    int stringAnagramH[25]={0};
+    for(scanIndex=0;stringAnagramWord3[scanIndex]!='\0';scanIndex++)
+        stringAnagramH[stringAnagramWord3[scanIndex]-97]++;
 
-    for(i=0;word4[i]!='\0';i++)
-    {    if((h[word4[i]-97]-1)<0)
+    for(scanIndex=0;stringAnagramWord4[scanIndex]!='\0';scanIndex++)
+    {    if((stringAnagramH[stringAnagramWord4[scanIndex]-97]-1)<0)
         {
             cout<<"Its not a anagram"<<endl;
             break;
         }
     }
-    if(word4[i]=='\0')
+    if(stringAnagramWord4[scanIndex]=='\0')
     cout<<"Its an anagram"<<endl;
 
     //method 3 using betwise operator 
 
-    char word5[]="tac";
-    char word6[]="cat";
-    int a=0;
-    for(i=0;word5[i]!='\0';i++)//assigning word6 character as per bit
+    char stringAnagramWord5[]="tac";
+    char stringAnagramWord6[]="cat";
+    int primaryValue=0;
+    for(scanIndex=0;stringAnagramWord5[scanIndex]!='\0';scanIndex++)//assigning word6 character as per bit
     {
-        int b=1;//assigning 0 bit as 1 i.e turning is on
-        b=b<<word5[i]-97;//turning on the bit for that particular char
-        if(a&b)
+        int secondaryValue=1;//assigning 0 bit as 1 i.e turning is on
+        secondaryValue=secondaryValue<<stringAnagramWord5[scanIndex]-97;//turning on the bit for that particular char
+        if(primaryValue&secondaryValue)
             continue;
         else
-            a=a|b;
+            primaryValue=primaryValue|secondaryValue;
     }
-    for(i=0;word6[i]!='\0';i++)
+    for(scanIndex=0;stringAnagramWord6[scanIndex]!='\0';scanIndex++)
     {
-        int b=1;//assigning 0 bit as 1 i.e turning is on
-        b=b<<word6[i]-97;//turning on the bit for that particular char
-        if(a&b)
+        int secondaryValue=1;//assigning 0 bit as 1 i.e turning is on
+        secondaryValue=secondaryValue<<stringAnagramWord6[scanIndex]-97;//turning on the bit for that particular char
+        if(primaryValue&secondaryValue)
             continue;
         else
         {
@@ -66,7 +66,7 @@ int main()
             break;
         }
     }
-    if(word6[i]=='\0')
+    if(stringAnagramWord6[scanIndex]=='\0')
     cout<<"Its an anagram";
     return 0;
 }

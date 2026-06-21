@@ -1,12 +1,12 @@
 #include<iostream>
 using namespace std;
-void fun(int n)
+void fun(int itemCount)
 {
-    if(n>0)
+    if(itemCount>0)
     {
-        cout<<n<<" ";
-        fun(n-1);
-        fun(n-1); 
+        cout<<itemCount<<" ";
+        fun(itemCount-1);
+        fun(itemCount-1); 
     }
       
 }

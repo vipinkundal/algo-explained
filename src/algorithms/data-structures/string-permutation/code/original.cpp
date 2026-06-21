@@ -1,32 +1,32 @@
 #include<iostream>
 #include<stdio.h>
 using namespace std;
-void perm(char s[],int k)
+void perm(char workingText[],int probeIndex)
 {
-    static int A[10]={0};
-    static char Res[10];
-    int i;
-    if(s[k]=='\0')
+    static int firstItems[10]={0};
+    static char resultText[10];
+    int scanIndex;
+    if(workingText[probeIndex]=='\0')
     {
-        Res[k]='\0';
-        cout<<Res<<endl;
+        resultText[probeIndex]='\0';
+        cout<<resultText<<endl;
     }
     else
     {
-        for(int i=0;s[i]!='\0';i++)
+        for(int scanIndex=0;workingText[scanIndex]!='\0';scanIndex++)
         {
-            if(A[i]==0)
+            if(firstItems[scanIndex]==0)
             {
-                Res[k]=s[i];
-                A[i]=1;
-                perm(s,k+1);
-                A[i]=0;
+                resultText[probeIndex]=workingText[scanIndex];
+                firstItems[scanIndex]=1;
+                perm(workingText,probeIndex+1);
+                firstItems[scanIndex]=0;
             }
         }
     }
 }
 int main()
 {
-    char s[]="ABC";
-    perm(s,0);
+    char workingText[]="ABC";
+    perm(workingText,0);
     return 0;}

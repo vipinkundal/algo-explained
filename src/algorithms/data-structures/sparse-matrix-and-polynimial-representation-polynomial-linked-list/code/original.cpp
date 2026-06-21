@@ -3,57 +3,57 @@
 #include<math.h>
 using namespace std;
 struct Node{
-    int coeff;
-    int exp;
-    struct Node *next;
-}*poly=NULL;
+    int sparseMatrixCoeff;
+    int sparseMatrixExp;
+    struct Node *nextLink;
+}*sparseMatrixPoly=NULL;
 
 void create()
 {
-    struct Node *t=NULL,*last=NULL;
-    int num;
+    struct Node *swapValue=NULL,*lastNode=NULL;
+    int sparseMatrixNum;
     cout<<"Enter the number of polynomials ";
-    cin>>num;
+    cin>>sparseMatrixNum;
     
     cout<<"Enter the coefficient and exponent of each polynomial ";
-    for(int i=0;i<num;i++)
+    for(int scanIndex=0;scanIndex<sparseMatrixNum;scanIndex++)
     {
-        t=new Node;
-        cin>>t->coeff>>t->exp;
-        if(poly==NULL)
+        swapValue=new Node;
+        cin>>swapValue->sparseMatrixCoeff>>swapValue->sparseMatrixExp;
+        if(sparseMatrixPoly==NULL)
         {
-            poly=last=t;
+            sparseMatrixPoly=lastNode=swapValue;
         }
         else{
-            last->next=t;
-            last=t;
+            lastNode->nextLink=swapValue;
+            lastNode=swapValue;
         }
-        last->next=NULL;
+        lastNode->nextLink=NULL;
     }
 }
 
-void display(struct Node *p)
+void display(struct Node *currentNode)
 {
-    while(p)
+    while(currentNode)
     {
-        cout<<p->coeff<<"x**"<<p->exp<<" + ";
-        p=p->next;
+        cout<<currentNode->sparseMatrixCoeff<<"x**"<<currentNode->sparseMatrixExp<<" + ";
+        currentNode=currentNode->nextLink;
     }
 }
 
-long eva(struct Node *p,int x)
+long eva(struct Node *currentNode,int inputValue)
 {
-    long val=0;
-    while(p)
+    long sparseMatrixVal=0;
+    while(currentNode)
     {
-        val+=p->coeff*pow(x,p->exp);
-        p=p->next;
+        sparseMatrixVal+=currentNode->sparseMatrixCoeff*pow(inputValue,currentNode->sparseMatrixExp);
+        currentNode=currentNode->nextLink;
     }
-    return val;
+    return sparseMatrixVal;
 }
 int main()
 {
     create();
-    display(poly);
-    cout<<"\nAnswer of Evaluation"<<eva(poly,1);
+    display(sparseMatrixPoly);
+    cout<<"\nAnswer of Evaluation"<<eva(sparseMatrixPoly,1);
 }

@@ -1,29 +1,29 @@
 #include<iostream>
 using namespace std;
-void swap(char *c1,char *c2)
+void swap(char *stringPermutationC1,char *stringPermutationC2)
 {
-    char t=*c1;
-    *c1=*c2;
-    *c2=t;
+    char swapValue=*stringPermutationC1;
+    *stringPermutationC1=*stringPermutationC2;
+    *stringPermutationC2=swapValue;
 }
-void perm(char s[],int l,int h)
+void perm(char workingText[],int leftIndex,int stringPermutationH)
 {
-    if(l==h)
+    if(leftIndex==stringPermutationH)
     {
-        cout<<s<<endl;
+        cout<<workingText<<endl;
     }
     else
     {
-        for(int i=l;i<=h;i++)
+        for(int scanIndex=leftIndex;scanIndex<=stringPermutationH;scanIndex++)
         {
-            swap(&s[i],&s[l]);
-            perm(s,l+1,h);
-            swap(&s[i],&s[l]);
+            swap(&workingText[scanIndex],&workingText[leftIndex]);
+            perm(workingText,leftIndex+1,stringPermutationH);
+            swap(&workingText[scanIndex],&workingText[leftIndex]);
         }
     }
 }
 int main()
 {
-    char s[]="ABC";
-    perm(s,0,2);
+    char workingText[]="ABC";
+    perm(workingText,0,2);
 }

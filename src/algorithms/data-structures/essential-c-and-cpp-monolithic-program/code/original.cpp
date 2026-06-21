@@ -4,12 +4,12 @@
 using namespace std;
 int main()
 {
-    int l,b;
+    int leftIndex,secondaryValue;
     cout<<"Enter lenth and breath of rectangle ";
-    cin>>l>>b;
-    int area=l*b;
-    int peri=2*(l+b);
-    printf("%d is area\n%d is perimeter",area,peri);
+    cin>>leftIndex>>secondaryValue;
+    int essentialCArea=leftIndex*secondaryValue;
+    int essentialCPeri=2*(leftIndex+secondaryValue);
+    printf("%d is area\n%d is perimeter",essentialCArea,essentialCPeri);
     return 0;
 }
 

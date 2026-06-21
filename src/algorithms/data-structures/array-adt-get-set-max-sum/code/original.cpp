@@ -2,81 +2,81 @@
 using namespace std;
 struct Array
 {
-    int A[10];
-    int size;
-    int length;
+    int firstItems[10];
+    int itemCapacity;
+    int textLength;
 };
-void Display(struct Array arr)
+void Display(struct Array items)
 {
-    for(int i=0;i<arr.length;i++)
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        std::cout<<arr.A[i]<<" ";
+        std::cout<<items.firstItems[scanIndex]<<" ";
     }
 }
-void swap(int *x,int *y)
+void swap(int *inputValue,int *compareValue)
 {
-    int t=*x;
-    *x=*y;
-    *y=t;
+    int swapValue=*inputValue;
+    *inputValue=*compareValue;
+    *compareValue=swapValue;
 }
-int Get(struct Array arr,int index)
+int Get(struct Array items,int targetIndex)
 {
-    if(index>=0 && index<=arr.length )
-        return arr.A[index];
+    if(targetIndex>=0 && targetIndex<=items.textLength )
+        return items.firstItems[targetIndex];
     return -1;
 }
-void Set(struct Array *arr,int index,int value)
+void Set(struct Array *items,int targetIndex,int storedValue)
 {
-    if(index>=0 && index<=arr->length )
-        arr->A[index]=value;
+    if(targetIndex>=0 && targetIndex<=items->textLength )
+        items->firstItems[targetIndex]=storedValue;
 }
-int Max(struct Array arr)
+int Max(struct Array items)
 {
-    int max=arr.A[0];
-    for(int i=1;i<arr.length;i++)
+    int arrayAdtMax=items.firstItems[0];
+    for(int scanIndex=1;scanIndex<items.textLength;scanIndex++)
     {
-        if(arr.A[i]>max)
-            max=arr.A[i];
+        if(items.firstItems[scanIndex]>arrayAdtMax)
+            arrayAdtMax=items.firstItems[scanIndex];
     }
-    return max;
+    return arrayAdtMax;
 }
-int Min(struct Array arr)
+int Min(struct Array items)
 {
-    int min=arr.A[0];
-    for(int i=1;i<arr.length;i++)
+    int arrayAdtMin=items.firstItems[0];
+    for(int scanIndex=1;scanIndex<items.textLength;scanIndex++)
     {
-        if(arr.A[i]<min)
-            min=arr.A[i];
+        if(items.firstItems[scanIndex]<arrayAdtMin)
+            arrayAdtMin=items.firstItems[scanIndex];
     }
-    return min;
+    return arrayAdtMin;
 }
-int Sum(struct Array arr)
+int Sum(struct Array items)
 {
-    int sum=0;
-    for(int i=0;i<arr.length;i++)
+    int arrayAdtSum=0;
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        sum=sum+arr.A[i];
+        arrayAdtSum=arrayAdtSum+items.firstItems[scanIndex];
     }
-    return sum;
+    return arrayAdtSum;
 }
-float Avg(struct Array arr)//u can call function sum in avg and type cast it as float-> (float)Sum(arr)/arr.length
+float Avg(struct Array items)//u can call function sum in avg and type cast it as float-> (float)Sum(arr)/arr.length
 {
-    float sum=0;
-    for(int i=0;i<arr.length;i++)
+    float arrayAdtSum=0;
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        sum=sum+arr.A[i];
+        arrayAdtSum=arrayAdtSum+items.firstItems[scanIndex];
     }
-    return sum/arr.length;
+    return arrayAdtSum/items.textLength;
 }
-int RSum(struct Array arr,int n)//by recursion
+int RSum(struct Array items,int itemCount)//by recursion
 {
-    if(n>=0)
-        return RSum(arr,n-1)+arr.A[n];
+    if(itemCount>=0)
+        return RSum(items,itemCount-1)+items.firstItems[itemCount];
     return 0;
 }
 int main()
 {
-    struct Array arr={{1,2,3,4,5,6,8},10,7};
-    cout<<Avg(arr);
+    struct Array items={{1,2,3,4,5,6,8},10,7};
+    cout<<Avg(items);
     return 0;
 }

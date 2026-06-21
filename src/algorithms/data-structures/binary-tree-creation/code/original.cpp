@@ -4,41 +4,41 @@
 #include"Queue.h"
 using namespace std;
 
-class createtree
+class binaryTreeCreatetree
 {
     public:
-    Node *p,*t;
-    int x;
-    Queue q;
+    Node *currentNode,*swapValue;
+    int inputValue;
+    Queue nextNode;
    
-    createtree()
+    binaryTreeCreatetree()
     {   
         cout<<"Enter the root Node data  ";
-        cin>>root->data;
-        root->lchild=root->rchild=NULL;
-        q.enqueue(root);
-        while(!q.isEmpty())
+        cin>>treeRoot->nodeValue;
+        treeRoot->binaryTreeLchild=treeRoot->binaryTreeRchild=NULL;
+        nextNode.enqueue(treeRoot);
+        while(!nextNode.isEmpty())
         {
-            p=q.dequeue();
-            cout<<"Enter the value of left child of "<<p->data<<" ";
-            cin>>x;
-            if(x!=-1)
+            currentNode=nextNode.dequeue();
+            cout<<"Enter the value of left child of "<<currentNode->nodeValue<<" ";
+            cin>>inputValue;
+            if(inputValue!=-1)
             {
-                t=new Node;
-                t->data=x;
-                t->lchild=t->rchild=nullptr;
-                p->lchild=t;
-                q.enqueue(t);
+                swapValue=new Node;
+                swapValue->nodeValue=inputValue;
+                swapValue->binaryTreeLchild=swapValue->binaryTreeRchild=nullptr;
+                currentNode->binaryTreeLchild=swapValue;
+                nextNode.enqueue(swapValue);
             }
-            cout<<"Enter the value of right child of  "<<p->data<<" ";
-            cin>>x;
-            if(x!=-1)
+            cout<<"Enter the value of right child of  "<<currentNode->nodeValue<<" ";
+            cin>>inputValue;
+            if(inputValue!=-1)
             {
-                t=new Node;
-                t->data=x;
-                t->lchild=t->rchild=nullptr;
-                p->rchild=t;
-                q.enqueue(t);
+                swapValue=new Node;
+                swapValue->nodeValue=inputValue;
+                swapValue->binaryTreeLchild=swapValue->binaryTreeRchild=nullptr;
+                currentNode->binaryTreeRchild=swapValue;
+                nextNode.enqueue(swapValue);
             }
 
         }
@@ -46,17 +46,17 @@ class createtree
 
     void display()
     {
-        Node *t;
-        Queue q;
-        q.enqueue(root);
-        while(!q.isEmpty())
+        Node *swapValue;
+        Queue nextNode;
+        nextNode.enqueue(treeRoot);
+        while(!nextNode.isEmpty())
         {
-            t=q.dequeue();
-            cout<<t->data<<" ";
-            if(t->lchild)
-                q.enqueue(t->lchild);
-            if(t->rchild)
-                q.enqueue(t->rchild);
+            swapValue=nextNode.dequeue();
+            cout<<swapValue->nodeValue<<" ";
+            if(swapValue->binaryTreeLchild)
+                nextNode.enqueue(swapValue->binaryTreeLchild);
+            if(swapValue->binaryTreeRchild)
+                nextNode.enqueue(swapValue->binaryTreeRchild);
         
         }
 
@@ -65,8 +65,8 @@ class createtree
 
 int main()
 {
-    createtree r;
-    r.display();
+    binaryTreeCreatetree rightIndex;
+    rightIndex.display();
     return 0;
 
 }

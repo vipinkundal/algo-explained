@@ -1,32 +1,32 @@
 #include<stdio.h>
-struct matrix
+struct matrixDiagonalMatrix
 {
-    int n;
-    int A[10];
+    int itemCount;
+    int firstItems[10];
 };
-void set(struct matrix *a,int i,int j,int x)
+void set(struct matrixDiagonalMatrix *primaryValue,int scanIndex,int writeIndex,int inputValue)
 {
-    if(i==j)
+    if(scanIndex==writeIndex)
     {
-        a->A[i-1]=x;
+        primaryValue->firstItems[scanIndex-1]=inputValue;
     }
 
 }
-int get(struct matrix *a,int i,int j)
+int get(struct matrixDiagonalMatrix *primaryValue,int scanIndex,int writeIndex)
 {
-    if(i==j)
-        a->A[i-1];
+    if(scanIndex==writeIndex)
+        primaryValue->firstItems[scanIndex-1];
     else
         return 0;
 }
-void Display(struct matrix *a)
+void Display(struct matrixDiagonalMatrix *primaryValue)
 {
-    for(int i=0;i<(a->n);i++)
+    for(int scanIndex=0;scanIndex<(primaryValue->itemCount);scanIndex++)
     {
-        for(int j=0;j<(a->n);j++)
+        for(int writeIndex=0;writeIndex<(primaryValue->itemCount);writeIndex++)
         {
-            if(i==j)
-            printf("%d ",a->A[i]);
+            if(scanIndex==writeIndex)
+            printf("%d ",primaryValue->firstItems[scanIndex]);
             else
             printf("%d ",0);
         }
@@ -35,13 +35,13 @@ void Display(struct matrix *a)
 }
 int main()
 {
-    struct matrix m;
-    m.n=4;
-    set(&m,1,1,7);
-    set(&m,2,2,5);
-    set(&m,3,3,6);
-    set(&m,4,4,3);
-    Display(&m);
+    struct matrixDiagonalMatrix columnCount;
+    columnCount.itemCount=4;
+    set(&columnCount,1,1,7);
+    set(&columnCount,2,2,5);
+    set(&columnCount,3,3,6);
+    set(&columnCount,4,4,3);
+    Display(&columnCount);
 
     return 0;
 }

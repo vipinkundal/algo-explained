@@ -4,76 +4,76 @@ using namespace std;
  
 class Node{
     public:
-        int data;
-        Node *next;
+        int nodeValue;
+        Node *nextLink;
 };
 
 class Stack{
     private:
-     Node *top;
+     Node *stackTop;
     public:
-        Stack(){top=NULL;}
-        void push(int x);
+        Stack(){stackTop=NULL;}
+        void push(int inputValue);
         int pop();
         void Display();
 };
 
-void Stack::push(int x)
+void Stack::push(int inputValue)
 {
-    Node *t=new Node;
-    if(t==NULL) 
+    Node *swapValue=new Node;
+    if(swapValue==NULL) 
         cout<<"Stack overflow\n";
     else{
-        t->data=x;
-        if(top)
+        swapValue->nodeValue=inputValue;
+        if(stackTop)
         {
-            t->next=top;
-            top=t;
+            swapValue->nextLink=stackTop;
+            stackTop=swapValue;
         }
         else{
-            top=t;
-            t->next=NULL;
+            stackTop=swapValue;
+            swapValue->nextLink=NULL;
         }
     }
 }
 
 int Stack::pop()
 {
-    int x=-1;
-    if(top==NULL)
+    int inputValue=-1;
+    if(stackTop==NULL)
         cout<<"Stack underflow\n";
     else{
-        Node *t=top;
-        top=top->next;
-        x=t->data;
-        delete t;
+        Node *swapValue=stackTop;
+        stackTop=stackTop->nextLink;
+        inputValue=swapValue->nodeValue;
+        delete swapValue;
     }
-    return x;
+    return inputValue;
 }
 
 void Stack::Display()
 {
     
-    if(top==NULL)
+    if(stackTop==NULL)
         cout<<"Stack is Empty\n";
     else{
-        Node *t=top;
-        while(t)
+        Node *swapValue=stackTop;
+        while(swapValue)
         {
-            cout<<t->data<<" ";
-            t=t->next;
+            cout<<swapValue->nodeValue<<" ";
+            swapValue=swapValue->nextLink;
         }
     }
 }
 
 int main()
 {
-    Stack st;
-    st.pop();
-    st.push(5);
-    st.push(3);
-    st.push(8);
-    cout<<"popped "<<st.pop()<<endl;
-    st.Display();
+    Stack stackStackSt;
+    stackStackSt.pop();
+    stackStackSt.push(5);
+    stackStackSt.push(3);
+    stackStackSt.push(8);
+    cout<<"popped "<<stackStackSt.pop()<<endl;
+    stackStackSt.Display();
     return 0;
 }

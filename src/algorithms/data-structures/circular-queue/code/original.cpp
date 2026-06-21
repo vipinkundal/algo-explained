@@ -5,66 +5,66 @@ using namespace std;
 class Queue
 {
     private:
-        int size;
-        int front;
-        int rear;
-        int *Q;
+        int itemCapacity;
+        int queueFront;
+        int queueRear;
+        int *queueStorage;
     public:
         Queue();
-        void enqueue(int x);
+        void enqueue(int inputValue);
         int dequeue();
         void display();
 };
 Queue::Queue()
 {
     cout<<"Enter the size of queue\n";
-    cin>>size;
-    size++;
-    Q=new int[size];
-    front=rear=0;
+    cin>>itemCapacity;
+    itemCapacity++;
+    queueStorage=new int[itemCapacity];
+    queueFront=queueRear=0;
 }
 
-void Queue::enqueue(int x)
+void Queue::enqueue(int inputValue)
 {
-    if((rear+1)%size==front)
+    if((queueRear+1)%itemCapacity==queueFront)
         cout<<"Queue is full\n";
     else{
-        rear=(rear+1)%size;
-        Q[rear]=x;
+        queueRear=(queueRear+1)%itemCapacity;
+        queueStorage[queueRear]=inputValue;
 
     }
 }
 
 int Queue::dequeue()
 {
-    int x=-1;
-    if(front==rear)
+    int inputValue=-1;
+    if(queueFront==queueRear)
         cout<<"Queue is full\n";
     else{
-        front=(front+1)%size;
-        x=Q[front];
+        queueFront=(queueFront+1)%itemCapacity;
+        inputValue=queueStorage[queueFront];
     }
-    return x;
+    return inputValue;
 }
 
 void  Queue::display()
 {
-    int i=front+1;
+    int scanIndex=queueFront+1;
     do{
-        cout<<Q[i]<<" ";
-        i=(i+1)%size;
-    }while(i!=(rear+1)%size);
+        cout<<queueStorage[scanIndex]<<" ";
+        scanIndex=(scanIndex+1)%itemCapacity;
+    }while(scanIndex!=(queueRear+1)%itemCapacity);
     cout<<"\n";
 }
 int main()
 {
-    Queue q;
-    q.enqueue(1);
-    q.enqueue(2);
-    q.enqueue(3);
-    q.enqueue(4);
-    q.enqueue(5);
-    cout<<"Deleted "<<q.dequeue()<<endl;
-    q.enqueue(67);
-    q.display();
+    Queue nextNode;
+    nextNode.enqueue(1);
+    nextNode.enqueue(2);
+    nextNode.enqueue(3);
+    nextNode.enqueue(4);
+    nextNode.enqueue(5);
+    cout<<"Deleted "<<nextNode.dequeue()<<endl;
+    nextNode.enqueue(67);
+    nextNode.display();
 }

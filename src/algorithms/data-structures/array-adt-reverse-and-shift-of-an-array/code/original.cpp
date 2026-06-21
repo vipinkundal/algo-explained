@@ -2,82 +2,82 @@
 using namespace std;
 struct Array
 {
-    int A[10];
-    int size;
-    int length;
+    int firstItems[10];
+    int itemCapacity;
+    int textLength;
 };
-void Display(struct Array arr)
+void Display(struct Array items)
 {
-    for(int i=0;i<arr.length;i++)
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        std::cout<<arr.A[i]<<" ";
+        std::cout<<items.firstItems[scanIndex]<<" ";
     }
 }
-void swap(int *x,int *y)
+void swap(int *inputValue,int *compareValue)
 {
-    int t=*x;
-    *x=*y;
-    *y=t;
+    int swapValue=*inputValue;
+    *inputValue=*compareValue;
+    *compareValue=swapValue;
 }
-void RUA(struct Array arr)//reversing array using auxilary array B
+void RUA(struct Array items)//reversing array using auxilary array B
 {
-    int arr2[(arr.length)];
-    for(int i=(arr.length-1),j=0;i>=0;i--,j++)
+    int arrayAdtArr2[(items.textLength)];
+    for(int scanIndex=(items.textLength-1),writeIndex=0;scanIndex>=0;scanIndex--,writeIndex++)
     {
-        arr2[j]=arr.A[i];
+        arrayAdtArr2[writeIndex]=items.firstItems[scanIndex];
     }
-    for(int i=0;i<(arr.length);i++)
+    for(int scanIndex=0;scanIndex<(items.textLength);scanIndex++)
     {
-        arr.A[i]=arr2[i];
+        items.firstItems[scanIndex]=arrayAdtArr2[scanIndex];
     }
-    Display(arr);
+    Display(items);
 }
 
-void INT(struct Array *arr)//reversing array using interchanging
+void INT(struct Array *items)//reversing array using interchanging
 {
-    for(int i=0,j=(arr->length-1);i<j;i++,j--)
-        swap(&arr->A[i],&arr->A[j]);
+    for(int scanIndex=0,writeIndex=(items->textLength-1);scanIndex<writeIndex;scanIndex++,writeIndex--)
+        swap(&items->firstItems[scanIndex],&items->firstItems[writeIndex]);
 }
-void r_shift(struct Array *arr)//right shift 
+void r_shift(struct Array *items)//right shift 
 {
-    for(int j=(arr->length-1);j>0;j--)
-        arr->A[j]=arr->A[j-1];
-    arr->A[0]=0;
+    for(int writeIndex=(items->textLength-1);writeIndex>0;writeIndex--)
+        items->firstItems[writeIndex]=items->firstItems[writeIndex-1];
+    items->firstItems[0]=0;
     
 }
 
-void r_shift_r(struct Array *arr)//right shift roatation
+void r_shift_r(struct Array *items)//right shift roatation
 {
-    for(int i=0;i<arr->length;i++)
+    for(int scanIndex=0;scanIndex<items->textLength;scanIndex++)
     {
-        int temp=arr->A[arr->length-1];
-        for(int j=(arr->length-1);j>0;j--)
-            arr->A[j]=arr->A[j-1];
-        arr->A[0]=temp;
+        int temporaryValue=items->firstItems[items->textLength-1];
+        for(int writeIndex=(items->textLength-1);writeIndex>0;writeIndex--)
+            items->firstItems[writeIndex]=items->firstItems[writeIndex-1];
+        items->firstItems[0]=temporaryValue;
     }
 }
-void l_shift(struct Array *arr)//left shift 
+void l_shift(struct Array *items)//left shift 
 {
-    for(int j=1;j<(arr->length);j++)
-        arr->A[j-1]=arr->A[j];
-    arr->A[arr->length-1]=0;
+    for(int writeIndex=1;writeIndex<(items->textLength);writeIndex++)
+        items->firstItems[writeIndex-1]=items->firstItems[writeIndex];
+    items->firstItems[items->textLength-1]=0;
     
 }
 
-void l_shift_r(struct Array *arr)//left shift roatation
+void l_shift_r(struct Array *items)//left shift roatation
 {
-    for(int i=1;i<=(arr->length);i++)
+    for(int scanIndex=1;scanIndex<=(items->textLength);scanIndex++)
     {
-        int temp=arr->A[0];
-        for(int j=1;j<(arr->length);j++)
-            arr->A[j-1]=arr->A[j];
-        arr->A[(arr->length)-1]=temp;
+        int temporaryValue=items->firstItems[0];
+        for(int writeIndex=1;writeIndex<(items->textLength);writeIndex++)
+            items->firstItems[writeIndex-1]=items->firstItems[writeIndex];
+        items->firstItems[(items->textLength)-1]=temporaryValue;
     }
 }
 int main()
 {
-    struct Array arr={{1,2,3,4,5,6,8},10,7};
-    r_shift_r(&arr);
-    Display(arr);
+    struct Array items={{1,2,3,4,5,6,8},10,7};
+    r_shift_r(&items);
+    Display(items);
     return 0;
 }

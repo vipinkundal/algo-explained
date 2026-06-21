@@ -3,78 +3,78 @@
 using namespace std;
 class Node{
 public:
-    int data;
-    Node *next;
+    int nodeValue;
+    Node *nextLink;
 };
 class Queue
 {
     private:
-        Node *front;
-        Node *rear;
+        Node *queueFront;
+        Node *queueRear;
     public:
-        Queue(){front=rear=NULL;}
-        void enqueue(int x);
+        Queue(){queueFront=queueRear=NULL;}
+        void enqueue(int inputValue);
         int dequeue();
         void display();
 };
 
-void Queue::enqueue(int x)
+void Queue::enqueue(int inputValue)
 {
-    Node *t;
-    t=new Node;
-    if(t==NULL)
+    Node *swapValue;
+    swapValue=new Node;
+    if(swapValue==NULL)
         cout<<"Queue is full\n";
     else{
-        t->data=x;
-        t->next=NULL;
-        if(front==NULL)
-            front=rear=t;
+        swapValue->nodeValue=inputValue;
+        swapValue->nextLink=NULL;
+        if(queueFront==NULL)
+            queueFront=queueRear=swapValue;
         else{
-            rear->next=t;
-            rear=t;
+            queueRear->nextLink=swapValue;
+            queueRear=swapValue;
         }
     }
 }
 
 int Queue::dequeue()
 {
-    int x=-1;
-    Node *t;
-    if(front==NULL)
+    int inputValue=-1;
+    Node *swapValue;
+    if(queueFront==NULL)
         cout<<"Queue is Empty\n";
     else{
-        t=front;
-        if(front->next)
-            front=front->next;
+        swapValue=queueFront;
+        if(queueFront->nextLink)
+            queueFront=queueFront->nextLink;
         else
-            front=NULL;
-        x=t->data;
-        delete t;
+            queueFront=NULL;
+        inputValue=swapValue->nodeValue;
+        delete swapValue;
     }
-    return x;
+    return inputValue;
 }
 
 void  Queue::display()
 {
-    Node *i=front;
-    while(i)
+    Node *scanIndex=queueFront;
+    while(scanIndex)
     {
-        cout<<i->data<<" ";
-        i=i->next;
+        cout<<scanIndex->nodeValue<<" ";
+        scanIndex=scanIndex->nextLink;
     }
     cout<<"\n";
 }
 int main()
 {
-    Queue q;
-    q.enqueue(1);
-    q.enqueue(2);
-    q.enqueue(3);
-    q.enqueue(4);
-    q.enqueue(5);
-    cout<<"Deleted "<<q.dequeue()<<endl;
-    q.enqueue(14);
-    q.enqueue(15);
+    Queue nextNode;
+    nextNode.enqueue(1);
+    nextNode.enqueue(2);
+    nextNode.enqueue(3);
+    nextNode.enqueue(4);
+    nextNode.enqueue(5);
+    cout<<"Deleted "<<nextNode.dequeue()<<endl;
+    nextNode.enqueue(14);
+    nextNode.enqueue(15);
 
-    q.display();
+    nextNode.display();
 }

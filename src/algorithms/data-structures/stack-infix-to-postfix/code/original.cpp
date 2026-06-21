@@ -3,123 +3,123 @@
 #include <cstring>
 using namespace std;
 struct Stack{
-    int size;
-    int top;
-    char *S;
+    int itemCapacity;
+    int stackTop;
+    char *stackStorage;
 };
 
 
-void create(Stack *st,char *s)
+void create(Stack *stackInfixSt,char *workingText)
 {
-    int x=strlen(s);
-    st->size=x;
-    st->top=-1;
-    st->S=new char[st->size];
+    int inputValue=strlen(workingText);
+    stackInfixSt->itemCapacity=inputValue;
+    stackInfixSt->stackTop=-1;
+    stackInfixSt->stackStorage=new char[stackInfixSt->itemCapacity];
 }
 
-void push(Stack *st,char x)
+void push(Stack *stackInfixSt,char inputValue)
 {
-    if(st->size-st->top==1)
+    if(stackInfixSt->itemCapacity-stackInfixSt->stackTop==1)
     {
         cout<<"stack is overflow\n";
     }
     else{
-        st->top++;
-        st->S[st->top]=x;
+        stackInfixSt->stackTop++;
+        stackInfixSt->stackStorage[stackInfixSt->stackTop]=inputValue;
     }
 }
 
-char TopValue(Stack st)
+char TopValue(Stack stackInfixSt)
 {
-    if(st.top==-1)
+    if(stackInfixSt.stackTop==-1)
         return -1;
     else
-        return st.S[st.top];
+        return stackInfixSt.stackStorage[stackInfixSt.stackTop];
 }
 
-char pop(Stack *st)
+char pop(Stack *stackInfixSt)
 {
-    char x=-1;
-    if(st->top==-1)
+    char inputValue=-1;
+    if(stackInfixSt->stackTop==-1)
     {
         cout<<"Stack is underflow\n";
     }
     else{
-        x=st->S[st->top];
-        st->top--;
+        inputValue=stackInfixSt->stackStorage[stackInfixSt->stackTop];
+        stackInfixSt->stackTop--;
     }
-    return x;
+    return inputValue;
 }
 
 
-int isEmpty(Stack st)
+int isEmpty(Stack stackInfixSt)
 {
-    if(st.top==-1)
+    if(stackInfixSt.stackTop==-1)
         return 1;
     else
         return 0;
 }
 
-int isFull(Stack st)
+int isFull(Stack stackInfixSt)
 {
-    if(st.size-st.top==1)
+    if(stackInfixSt.itemCapacity-stackInfixSt.stackTop==1)
         return 1;
     else
         return 0;
 }
 
-int isOperand(char s)
+int isOperand(char workingText)
 {
-    if(s=='*' || s=='/' || s=='+' || s=='-')
+    if(workingText=='*' || workingText=='/' || workingText=='+' || workingText=='-')
         return 0;
     else 
         return 1;
 }
 
-int pre(char s)
+int pre(char workingText)
 {
-    if(s=='*' || s=='/')
+    if(workingText=='*' || workingText=='/')
         return 2;
-    else if(s=='+' || s=='-')
+    else if(workingText=='+' || workingText=='-')
         return 1;
     return 0;
 }
 
-char* ToPost(char *s)
+char* ToPost(char *workingText)
 {
-    char *postfix;
-    int i=0,j=0;
-    postfix=new char[strlen(s+2)];
-    Stack st;
-    create(&st,s);
-    push(&st,'#');//because of comaprison of top vale with string 1st value # is pushed
+    char *stackInfixPostfix;
+    int scanIndex=0,writeIndex=0;
+    stackInfixPostfix=new char[strlen(workingText+2)];
+    Stack stackInfixSt;
+    create(&stackInfixSt,workingText);
+    push(&stackInfixSt,'#');//because of comaprison of top vale with string 1st value # is pushed
                     //so there wont be any error
-    while(s[i]!='\0')
+    while(workingText[scanIndex]!='\0')
     {
-        if(isOperand(s[i]))
-           postfix[j++]=s[i++];
+        if(isOperand(workingText[scanIndex]))
+           stackInfixPostfix[writeIndex++]=workingText[scanIndex++];
         else
         {
-            if(pre(s[i])>pre(TopValue(st)))//because of this comparison stack cant be expty so # is pushed
-                push(&st,s[i++]);
+            if(pre(workingText[scanIndex])>pre(TopValue(stackInfixSt)))//because of this comparison stack cant be expty so # is pushed
+                push(&stackInfixSt,workingText[scanIndex++]);
             else
             {
-                   postfix[j++]=pop(&st);
+                   stackInfixPostfix[writeIndex++]=pop(&stackInfixSt);
             }
         }
     }
-    while(!isEmpty(st))
+    while(!isEmpty(stackInfixSt))
     {
-        postfix[j++]=pop(&st);
+        stackInfixPostfix[writeIndex++]=pop(&stackInfixSt);
     }
-    postfix[j]='\0';
-    return postfix;
+    stackInfixPostfix[writeIndex]='\0';
+    return stackInfixPostfix;
 }
 
 int main()
 {
-    char s[]="a+b*c/d+e";
-    char *postfix=ToPost(s);
-    cout<<postfix;
+    char workingText[]="a+b*c/d+e";
+    char *stackInfixPostfix=ToPost(workingText);
+    cout<<stackInfixPostfix;
     return 0;
 }

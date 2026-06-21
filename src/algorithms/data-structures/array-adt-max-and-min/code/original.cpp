@@ -2,29 +2,29 @@
 using namespace std;
 struct Array
 {
-    int A[100];
-    int size;
-    int length;
+    int firstItems2[100];
+    int itemCapacity;
+    int textLength;
 };
-void Display(struct Array arr)
+void Display(struct Array items)
 {
-    for(int i=0;i<arr.length;i++)
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        std::cout<<arr.A[i]<<" ";
+        std::cout<<items.firstItems2[scanIndex]<<" ";
     }
 }
 int main()
 {
-    Array a1={{1,2,3,4,6,8,9,12,14,17},100,10};
-    int max=a1.A[0],min=a1.A[0];
+    Array firstItems={{1,2,3,4,6,8,9,12,14,17},100,10};
+    int arrayAdtMax=firstItems.firstItems2[0],arrayAdtMin=firstItems.firstItems2[0];
 
-    for(int i=1;i<a1.length;i++)
+    for(int scanIndex=1;scanIndex<firstItems.textLength;scanIndex++)
     {
-        if(a1.A[i]<min)
-            min=a1.A[i];
-        else if(a1.A[i]>max)
-            max=a1.A[i];
+        if(firstItems.firstItems2[scanIndex]<arrayAdtMin)
+            arrayAdtMin=firstItems.firstItems2[scanIndex];
+        else if(firstItems.firstItems2[scanIndex]>arrayAdtMax)
+            arrayAdtMax=firstItems.firstItems2[scanIndex];
     }
-    cout<<max<<" "<<min;
+    cout<<arrayAdtMax<<" "<<arrayAdtMin;
     return 0;
 }

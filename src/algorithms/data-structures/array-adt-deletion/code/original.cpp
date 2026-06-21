@@ -4,57 +4,57 @@ using namespace std;
 class Array{
  
 private:
-    int* A;
-    int size;
-    int length;
+    int* firstItems;
+    int itemCapacity;
+    int textLength;
  
 public:
-    Array(int size){
-        this->size = size;
-        A = new int [size];
+    Array(int itemCapacity){
+        this->itemCapacity = itemCapacity;
+        firstItems = new int [itemCapacity];
     }
  
     void create(){
         cout << "Enter number of elements: " << flush;
-        cin >> length;
+        cin >> textLength;
         cout << "Enter the array elements: " << endl;
-        for (int i = 0; i < length; i++){
-            cout << "Array element: " << i << " = " << flush;
-            cin >> A[i];
+        for (int scanIndex = 0; scanIndex < textLength; scanIndex++){
+            cout << "Array element: " << scanIndex << " = " << flush;
+            cin >> firstItems[scanIndex];
         }
     }
  
     void display(){
-        for (int i = 0; i < length; i++){
-            cout << A[i] << " ";
+        for (int scanIndex = 0; scanIndex < textLength; scanIndex++){
+            cout << firstItems[scanIndex] << " ";
         }
         std::cout<<std::endl;
     }
-    void del(int index)
+    void del(int targetIndex)
     {
-        if(index>=0 && index<=length)
+        if(targetIndex>=0 && targetIndex<=textLength)
         {
-            for(int i=index;i<length-1;i++)
+            for(int scanIndex=targetIndex;scanIndex<textLength-1;scanIndex++)
             {
-                A[i]=A[i+1];
+                firstItems[scanIndex]=firstItems[scanIndex+1];
             }
-            length--;
-            std::cout<<"deleted index "<<index<<" element in array"<<std::endl;
+            textLength--;
+            std::cout<<"deleted index "<<targetIndex<<" element in array"<<std::endl;
         }    
     }
     ~Array(){//destructor
-        delete[] A;
+        delete[] firstItems;
         cout << "Array destroyed" << endl;
     }
 };
 
 int main() {
  
-    Array arr(10);
-    arr.create();
-    arr.display();
-    arr.del(3);
-    arr.display();
+    Array items(10);
+    items.create();
+    items.display();
+    items.del(3);
+    items.display();
 
     
     

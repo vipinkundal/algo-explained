@@ -1,33 +1,33 @@
 #include<iostream>
 using namespace std;
-int expo(int m,int n)
+int expo(int columnCount,int itemCount)
 {
-    if(n<=0)
+    if(itemCount<=0)
         return 1;
-    return m*expo(m,n-1);
+    return columnCount*expo(columnCount,itemCount-1);
 }
-int expo1(int m,int n)
+int expo1(int columnCount,int itemCount)
 {
-    if(n==0)
+    if(itemCount==0)
         return 1;
-    if(n%2==0)
-        return expo1(m*m,n/2);
+    if(itemCount%2==0)
+        return expo1(columnCount*columnCount,itemCount/2);
     else 
-        return m*expo1(m*m,(n-1)/2);
+        return columnCount*expo1(columnCount*columnCount,(itemCount-1)/2);
 }
-int iexpo(int m,int n)
+int iexpo(int columnCount,int itemCount)
 {
-    int e=1,i;
-    for(i=1;i<=n;i++)
+    int recursionExponentE=1,scanIndex;
+    for(scanIndex=1;scanIndex<=itemCount;scanIndex++)
     {
-        e=e*m;
+        recursionExponentE=recursionExponentE*columnCount;
     }
-    return e;
+    return recursionExponentE;
 }
 
 int main()
 {
-    int e=expo1(2,3);
-    cout<<e;
+    int recursionExponentE=expo1(2,3);
+    cout<<recursionExponentE;
     return 0;
 }

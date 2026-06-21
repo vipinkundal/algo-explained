@@ -4,54 +4,54 @@ using namespace std;
 
 struct Node
 {
-    int data;
-    struct Node *next;
-}*first=NULL;
+    int nodeValue;
+    struct Node *nextLink;
+}*firstNode=NULL;
 
-void create(int A[],int n)
+void create(int firstItems[],int itemCount)
 {
-    int i;
-    struct Node *last, *t;
-    first=new Node;
-    first->data=A[0];
-    first->next=NULL;
-    last=first;//addreess is passed and now first is refferd as last
+    int scanIndex;
+    struct Node *lastNode, *swapValue;
+    firstNode=new Node;
+    firstNode->nodeValue=firstItems[0];
+    firstNode->nextLink=NULL;
+    lastNode=firstNode;//addreess is passed and now first is refferd as last
 
-    for(int i=1;i<n;i++)
+    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
     {
-        t=new Node;
-        t->data=A[i];
-        t->next=NULL;
-        last->next=t; //putting address of current node in the next of last node 
-        last=t; //assigning current node as last node
+        swapValue=new Node;
+        swapValue->nodeValue=firstItems[scanIndex];
+        swapValue->nextLink=NULL;
+        lastNode->nextLink=swapValue; //putting address of current node in the next of last node 
+        lastNode=swapValue; //assigning current node as last node
     }
 }
 
-int Max(struct Node * p)
+int Max(struct Node * currentNode)
 {
-    int max=INT32_MIN;
-    while (p!=NULL)
+    int linkedListMax=INT32_MIN;
+    while (currentNode!=NULL)
     {
-        if(max<p->data)
-            max=p->data;
-        p=p->next;
+        if(linkedListMax<currentNode->nodeValue)
+            linkedListMax=currentNode->nodeValue;
+        currentNode=currentNode->nextLink;
     }
-    return max;
+    return linkedListMax;
     
 }
 
-int RMax(struct Node * p)
+int RMax(struct Node * currentNode)
 {
-    int x=0;
-    if(p==0)
+    int inputValue=0;
+    if(currentNode==0)
         return INT32_MIN;
     else
     {
-        x=RMax(p->next);
-        if(x>p->data)
-            return x;
+        inputValue=RMax(currentNode->nextLink);
+        if(inputValue>currentNode->nodeValue)
+            return inputValue;
         else
-            return p->data;
+            return currentNode->nodeValue;
     }
     
     
@@ -59,9 +59,9 @@ int RMax(struct Node * p)
 
 int main()
 {
-    int A[]={4,5,78,8,94,7222};
-    create(A,6);
-    cout<<RMax(first);
+    int firstItems[]={4,5,78,8,94,7222};
+    create(firstItems,6);
+    cout<<RMax(firstNode);
 
     return 0;
 }

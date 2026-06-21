@@ -1,17 +1,17 @@
 #include<iostream>
 
 using namespace std;
-void funct1(int n)
+void funct1(int itemCount)
 {
-    if(n>0)
+    if(itemCount>0)
     {
-        cout<<n;
-        funct1(n-1);
+        cout<<itemCount;
+        funct1(itemCount-1);
     }
 }
 int main()
 {
-    int i=3;
-    funct1(i);
+    int scanIndex=3;
+    funct1(scanIndex);
     return 0;
 }

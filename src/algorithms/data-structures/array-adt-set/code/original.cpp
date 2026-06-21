@@ -2,185 +2,185 @@
 using namespace std;
 struct Array
 {
-    int A[100];
-    int size;
-    int length;
+    int firstItems[100];
+    int itemCapacity;
+    int textLength;
 };
-void Display(struct Array arr)
+void Display(struct Array items)
 {
-    for(int i=0;i<arr.length;i++)
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        std::cout<<arr.A[i]<<" ";
+        std::cout<<items.firstItems[scanIndex]<<" ";
      }
 }
-void swap(int *x,int *y)
+void swap(int *inputValue,int *compareValue)
 {
-    int t=*x;
-    *x=*y;
-    *y=t;
+    int swapValue=*inputValue;
+    *inputValue=*compareValue;
+    *compareValue=swapValue;
 }
-bool sort(struct Array arr)
+bool sort(struct Array items)
 {
-    int i=0;
-    while(i<arr.length-1)
+    int scanIndex=0;
+    while(scanIndex<items.textLength-1)
     {
-        if(arr.A[i]>arr.A[i+1])
+        if(items.firstItems[scanIndex]>items.firstItems[scanIndex+1])
             return false;
-        i++;
+        scanIndex++;
 
     }
     return true;
 }
-struct Array Union(struct Array arr1,struct Array arr2)
+struct Array Union(struct Array arrayAdtArr1,struct Array arrayAdtArr2)
 {
-    struct Array arr3;
-    if(sort(arr1) && sort(arr2))//if arr1 and arr2 are sorted
+    struct Array arrayAdtArr3;
+    if(sort(arrayAdtArr1) && sort(arrayAdtArr2))//if arr1 and arr2 are sorted
     {
-        int i=0,j=0,k=0;
-        while(i<arr1.length &&  j<arr2.length)
+        int scanIndex=0,writeIndex=0,probeIndex=0;
+        while(scanIndex<arrayAdtArr1.textLength &&  writeIndex<arrayAdtArr2.textLength)
         {
-            if(arr1.A[i]<arr2.A[j])
-                arr3.A[k++]=arr1.A[i++];
-            else if(arr1.A[i]==arr2.A[j])
+            if(arrayAdtArr1.firstItems[scanIndex]<arrayAdtArr2.firstItems[writeIndex])
+                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex++];
+            else if(arrayAdtArr1.firstItems[scanIndex]==arrayAdtArr2.firstItems[writeIndex])
             {
-                arr3.A[k++]=arr1.A[i++];
-                j++;
+                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex++];
+                writeIndex++;
             }
             else
-                arr3.A[k++]=arr2.A[j++];
+                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr2.firstItems[writeIndex++];
         }
-        for(;i<arr1.length;i++)
-            arr3.A[k++]=arr1.A[i];
-        for(;j<arr2.length;j++)
-            arr3.A[k++]=arr2.A[j];
-        arr3.length=k;
-        arr3.size=100;
-        return arr3;
+        for(;scanIndex<arrayAdtArr1.textLength;scanIndex++)
+            arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex];
+        for(;writeIndex<arrayAdtArr2.textLength;writeIndex++)
+            arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr2.firstItems[writeIndex];
+        arrayAdtArr3.textLength=probeIndex;
+        arrayAdtArr3.itemCapacity=100;
+        return arrayAdtArr3;
     }
     else
     {
-        int i=0,j=0,k=0,m=0;
-        for(i=0;i<arr1.length;i++,k++)
-            arr3.A[k]=arr1.A[i];
-        for(i=0;i<arr2.length;i++)
+        int scanIndex=0,writeIndex=0,probeIndex=0,columnCount=0;
+        for(scanIndex=0;scanIndex<arrayAdtArr1.textLength;scanIndex++,probeIndex++)
+            arrayAdtArr3.firstItems[probeIndex]=arrayAdtArr1.firstItems[scanIndex];
+        for(scanIndex=0;scanIndex<arrayAdtArr2.textLength;scanIndex++)
         {
-            int l=0,j=0;
-            while(j<arr1.length)
+            int leftIndex=0,writeIndex=0;
+            while(writeIndex<arrayAdtArr1.textLength)
             {
-                if(arr2.A[i]==arr3.A[j])//checking for every element of array 1 if it exist in array 2
+                if(arrayAdtArr2.firstItems[scanIndex]==arrayAdtArr3.firstItems[writeIndex])//checking for every element of array 1 if it exist in array 2
                 {
-                    l=1;
+                    leftIndex=1;
                     break;
                 }
-                j++;
+                writeIndex++;
 
             }
-            if(l==0)
-                arr3.A[k++]=arr2.A[i];
+            if(leftIndex==0)
+                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr2.firstItems[scanIndex];
         }
-        arr3.length=k;
-        arr3.size=100;
-        return arr3;
+        arrayAdtArr3.textLength=probeIndex;
+        arrayAdtArr3.itemCapacity=100;
+        return arrayAdtArr3;
     }
 }
 
-struct Array Intersection(struct Array arr1,struct Array arr2)
+struct Array Intersection(struct Array arrayAdtArr1,struct Array arrayAdtArr2)
 {
-    struct Array arr3;
-    if(sort(arr1) && sort(arr2))//if arr1 and arr2 are sorted
+    struct Array arrayAdtArr3;
+    if(sort(arrayAdtArr1) && sort(arrayAdtArr2))//if arr1 and arr2 are sorted
     {
-        int i=0,j=0,k=0;
-        while(i<arr1.length &&  j<arr2.length)
+        int scanIndex=0,writeIndex=0,probeIndex=0;
+        while(scanIndex<arrayAdtArr1.textLength &&  writeIndex<arrayAdtArr2.textLength)
         {
-            if(arr1.A[i]<arr2.A[j])
-                i++;
-            else if(arr1.A[i]==arr2.A[j])
+            if(arrayAdtArr1.firstItems[scanIndex]<arrayAdtArr2.firstItems[writeIndex])
+                scanIndex++;
+            else if(arrayAdtArr1.firstItems[scanIndex]==arrayAdtArr2.firstItems[writeIndex])
             {
-                arr3.A[k++]=arr1.A[i];
-                i++;
-                j++;
+                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex];
+                scanIndex++;
+                writeIndex++;
             }
             else
-                j++;
+                writeIndex++;
         }
-        arr3.length=k;
-        arr3.size=100;
-        return arr3;
+        arrayAdtArr3.textLength=probeIndex;
+        arrayAdtArr3.itemCapacity=100;
+        return arrayAdtArr3;
     }
     else
     {
-        int i=0,j=0,k=0;
-        for(i=0;i<arr1.length;i++)
+        int scanIndex=0,writeIndex=0,probeIndex=0;
+        for(scanIndex=0;scanIndex<arrayAdtArr1.textLength;scanIndex++)
         {
-            for(j=0;j<arr2.length;j++)
+            for(writeIndex=0;writeIndex<arrayAdtArr2.textLength;writeIndex++)
             {
-                if(arr1.A[i]==arr2.A[j])
+                if(arrayAdtArr1.firstItems[scanIndex]==arrayAdtArr2.firstItems[writeIndex])
                     {
-                        arr3.A[k++]=arr1.A[i];
+                        arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex];
                         break;
                     }
             }
         }
-        arr3.length=k;
-        arr3.size=100;
-        return arr3;
+        arrayAdtArr3.textLength=probeIndex;
+        arrayAdtArr3.itemCapacity=100;
+        return arrayAdtArr3;
     }
 }
 
-struct Array Difference(struct Array arr1,struct Array arr2)
+struct Array Difference(struct Array arrayAdtArr1,struct Array arrayAdtArr2)
 {
-    struct Array arr3;
-    if(sort(arr1) && sort(arr2))//if arr1 and arr2 are sorted
+    struct Array arrayAdtArr3;
+    if(sort(arrayAdtArr1) && sort(arrayAdtArr2))//if arr1 and arr2 are sorted
     {
-        int i=0,j=0,k=0;
-        while(i<arr1.length &&  j<arr2.length)
+        int scanIndex=0,writeIndex=0,probeIndex=0;
+        while(scanIndex<arrayAdtArr1.textLength &&  writeIndex<arrayAdtArr2.textLength)
         {
-            if(arr1.A[i]<arr2.A[j])
-                arr3.A[k++]=arr1.A[i++];
+            if(arrayAdtArr1.firstItems[scanIndex]<arrayAdtArr2.firstItems[writeIndex])
+                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex++];
 
-            else if(arr2.A[j]<arr1.A[i])
-                j++;
+            else if(arrayAdtArr2.firstItems[writeIndex]<arrayAdtArr1.firstItems[scanIndex])
+                writeIndex++;
                 
-            else if(arr1.A[i]==arr2.A[j])
+            else if(arrayAdtArr1.firstItems[scanIndex]==arrayAdtArr2.firstItems[writeIndex])
             {
-                i++;
-                j++;
+                scanIndex++;
+                writeIndex++;
             }
         }
-        for(;i<arr1.length;i++)
-            arr3.A[k++]=arr1.A[i];
-        arr3.length=k;
-        arr3.size=100;
-        return arr3;
+        for(;scanIndex<arrayAdtArr1.textLength;scanIndex++)
+            arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex];
+        arrayAdtArr3.textLength=probeIndex;
+        arrayAdtArr3.itemCapacity=100;
+        return arrayAdtArr3;
     }
     else
     {
-        int i=0,j=0,k=0,m=0;
-        for(i=0;i<arr1.length;i++)
+        int scanIndex=0,writeIndex=0,probeIndex=0,columnCount=0;
+        for(scanIndex=0;scanIndex<arrayAdtArr1.textLength;scanIndex++)
         {
-            m=0;
-            for(j=0;j<arr2.length;j++)
+            columnCount=0;
+            for(writeIndex=0;writeIndex<arrayAdtArr2.textLength;writeIndex++)
             {
-                if(arr1.A[i]==arr2.A[j])
+                if(arrayAdtArr1.firstItems[scanIndex]==arrayAdtArr2.firstItems[writeIndex])
                     {
-                        m=1;
+                        columnCount=1;
                         break;
                     }
             }
-            if(m==0)
-                arr3.A[k++]=arr1.A[i];
+            if(columnCount==0)
+                arrayAdtArr3.firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex];
         }
-        arr3.length=k;
-        arr3.size=100;
-        return arr3;
+        arrayAdtArr3.textLength=probeIndex;
+        arrayAdtArr3.itemCapacity=100;
+        return arrayAdtArr3;
     }
 }
 
 int main()
 {
-    struct Array arr1={{2,6,10,15,12,25},100,6};
-    struct Array arr2={{3,6,7,15,20},100,5};
-    struct Array d=Difference(arr1,arr2);
-    Display(d);
+    struct Array arrayAdtArr1={{2,6,10,15,12,25},100,6};
+    struct Array arrayAdtArr2={{3,6,7,15,20},100,5};
+    struct Array arrayAdtD=Difference(arrayAdtArr1,arrayAdtArr2);
+    Display(arrayAdtD);
     return 0;
 }

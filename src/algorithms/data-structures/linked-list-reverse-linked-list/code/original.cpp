@@ -4,99 +4,99 @@ using namespace std;
 
 struct Node
 {
-    int data;
-    struct Node *next;
-}*first=NULL;
+    int nodeValue;
+    struct Node *nextLink;
+}*firstNode=NULL;
 
-void create(int A[],int n)
+void create(int firstItems[],int itemCount)
 {
-    int i;
-    struct Node *last, *t;
-    first=new Node;
-    first->data=A[0];
-    first->next=NULL;
-    last=first;//addreess is passed and now first is refferd as last
+    int scanIndex;
+    struct Node *lastNode, *swapValue;
+    firstNode=new Node;
+    firstNode->nodeValue=firstItems[0];
+    firstNode->nextLink=NULL;
+    lastNode=firstNode;//addreess is passed and now first is refferd as last
 
-    for(int i=1;i<n;i++)
+    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
     {
-        t=new Node;
-        t->data=A[i];
-        t->next=NULL;
-        last->next=t;//putting address of current node in the next of last node 
-        last=t;//assigning current node as last node
+        swapValue=new Node;
+        swapValue->nodeValue=firstItems[scanIndex];
+        swapValue->nextLink=NULL;
+        lastNode->nextLink=swapValue;//putting address of current node in the next of last node 
+        lastNode=swapValue;//assigning current node as last node
     }
 }
 
 void Display()
 {
-    struct Node *p;
-    p=first;
-    while(p!=NULL)
+    struct Node *currentNode;
+    currentNode=firstNode;
+    while(currentNode!=NULL)
     {
-        cout<<p->data<<endl;
-        p=p->next;
+        cout<<currentNode->nodeValue<<endl;
+        currentNode=currentNode->nextLink;
     }
 }
 
-int count(struct Node *p)//counting of nodes
+int count(struct Node *currentNode)//counting of nodes
 {
-    int c=0;
+    int columnIndex=0;
     
-    p=first;
-    while(p)
+    currentNode=firstNode;
+    while(currentNode)
     {
-        c++;
-        p=p->next;
+        columnIndex++;
+        currentNode=currentNode->nextLink;
     }
-    return c;
+    return columnIndex;
 }
 
-void reverse1(struct Node *p)//Reverse using (Auxiliary)array
+void reverse1(struct Node *currentNode)//Reverse using (Auxiliary)array
 {
-    int *A,i=0;
-    struct Node *q;
-    A=new int[count(p)];
-    q=p;
-    while(q!=NULL)
+    int *firstItems,scanIndex=0;
+    struct Node *nextNode;
+    firstItems=new int[count(currentNode)];
+    nextNode=currentNode;
+    while(nextNode!=NULL)
     {
-        A[i]=q->data;
-        q=q->next;
-        i++;
+        firstItems[scanIndex]=nextNode->nodeValue;
+        nextNode=nextNode->nextLink;
+        scanIndex++;
     }
-    q=p;
-    i--;
-    while(q!=NULL)
+    nextNode=currentNode;
+    scanIndex--;
+    while(nextNode!=NULL)
     {
-        q->data=A[i];
-        q=q->next;
-        i--;
+        nextNode->nodeValue=firstItems[scanIndex];
+        nextNode=nextNode->nextLink;
+        scanIndex--;
     }
 
 }
 
-void reverse2(struct Node *p)//reversing by reversing the links
+void reverse2(struct Node *currentNode)//reversing by reversing the links
 {
-    struct Node *q=NULL,*r=NULL;
-    while(p!=NULL)
+    struct Node *nextNode=NULL,*rightIndex=NULL;
+    while(currentNode!=NULL)
     {
-        r=q;
-        q=p;
-        p=p->next;
-        q->next=r;
+        rightIndex=nextNode;
+        nextNode=currentNode;
+        currentNode=currentNode->nextLink;
+        nextNode->nextLink=rightIndex;
     }
-    first=q;//make first the q as links are reveresed at q is at the last node after loop
+    firstNode=nextNode;//make first the q as links are reveresed at q is at the last node after loop
 }
 
-void reverse3(struct Node *q,struct Node *p)
+void reverse3(struct Node *nextNode,struct Node *currentNode)
 {
-    if(p!=NULL)
+    if(currentNode!=NULL)
     {
-        reverse3(p,p->next);
-        p->next=q;
+        reverse3(currentNode,currentNode->nextLink);
+        currentNode->nextLink=nextNode;
     }
     else
     {
-        first=q;
+        firstNode=nextNode;
     }
 }
 
@@ -104,11 +104,11 @@ void reverse3(struct Node *q,struct Node *p)
 
 int main()
 {
-    int A[]={4,7,19,12,15,18};
-    create(A,6);
+    int firstItems[]={4,7,19,12,15,18};
+    create(firstItems,6);
     cout<<"Before"<<endl;
     Display();
-    reverse3(NULL,first);
+    reverse3(NULL,firstNode);
     cout<<"After"<<endl;
     Display();    
 

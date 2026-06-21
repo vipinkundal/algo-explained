@@ -4,116 +4,116 @@ using namespace std;
 
 struct Node
 {
-    int data;
-    struct Node *next;
-}*first=NULL,*second=NULL,*third=NULL;
+    int nodeValue;
+    struct Node *nextLink;
+}*firstNode=NULL,*linkedListSecond=NULL,*linkedListThird=NULL;
 
-void create1(int A[],int n)
+void create1(int firstItems[],int itemCount)
 {
-    int i;
-    struct Node *last, *t;
-    first=new Node;
-    first->data=A[0];
-    first->next=NULL;
-    last=first;//addreess is passed and now first is refferd as last
+    int scanIndex;
+    struct Node *lastNode, *swapValue;
+    firstNode=new Node;
+    firstNode->nodeValue=firstItems[0];
+    firstNode->nextLink=NULL;
+    lastNode=firstNode;//addreess is passed and now first is refferd as last
 
-    for(int i=1;i<n;i++)
+    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
     {
-        t=new Node;
-        t->data=A[i];
-        t->next=NULL;
-        last->next=t;//putting address of current node in the next of last node 
-        last=t;//assigning current node as last node
+        swapValue=new Node;
+        swapValue->nodeValue=firstItems[scanIndex];
+        swapValue->nextLink=NULL;
+        lastNode->nextLink=swapValue;//putting address of current node in the next of last node 
+        lastNode=swapValue;//assigning current node as last node
     }
 }
-void create2(int A[],int n)
+void create2(int firstItems[],int itemCount)
 {
-    int i;
-    struct Node *last, *t;
-    second=new Node;
-    second->data=A[0];
-    second->next=NULL;
-    last=second;//addreess is passed and now first is refferd as last
+    int scanIndex;
+    struct Node *lastNode, *swapValue;
+    linkedListSecond=new Node;
+    linkedListSecond->nodeValue=firstItems[0];
+    linkedListSecond->nextLink=NULL;
+    lastNode=linkedListSecond;//addreess is passed and now first is refferd as last
 
-    for(int i=1;i<n;i++)
+    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
     {
-        t=new Node;
-        t->data=A[i];
-        t->next=NULL;
-        last->next=t;//putting address of current node in the next of last node 
-        last=t;//assigning current node as last node
-    }
-}
-
-void Display(struct Node *p)
-{
-
-    while(p!=NULL)
-    {
-        cout<<p->data<<endl;
-        p=p->next;
+        swapValue=new Node;
+        swapValue->nodeValue=firstItems[scanIndex];
+        swapValue->nextLink=NULL;
+        lastNode->nextLink=swapValue;//putting address of current node in the next of last node 
+        lastNode=swapValue;//assigning current node as last node
     }
 }
 
-
-void Concatenate(struct Node *p,struct Node *q) 
+void Display(struct Node *currentNode)
 {
-    third=p;
-    while(p->next)
-        p=p->next;
-    p->next=q;
+
+    while(currentNode!=NULL)
+    {
+        cout<<currentNode->nodeValue<<endl;
+        currentNode=currentNode->nextLink;
+    }
 }
 
-void Merge(struct Node *p,struct Node *q)
+
+void Concatenate(struct Node *currentNode,struct Node *nextNode) 
 {
-    struct Node *last;
-    if(p->data< q->data)
+    linkedListThird=currentNode;
+    while(currentNode->nextLink)
+        currentNode=currentNode->nextLink;
+    currentNode->nextLink=nextNode;
+}
+
+void Merge(struct Node *currentNode,struct Node *nextNode)
+{
+    struct Node *lastNode;
+    if(currentNode->nodeValue< nextNode->nodeValue)
     {
-        third=last=p;
-        p=p->next;
-        third->next=NULL;
+        linkedListThird=lastNode=currentNode;
+        currentNode=currentNode->nextLink;
+        linkedListThird->nextLink=NULL;
     }
     else{
-        third=last=q;
-        q=q->next;
-        third->next=NULL;
+        linkedListThird=lastNode=nextNode;
+        nextNode=nextNode->nextLink;
+        linkedListThird->nextLink=NULL;
     }
-    while (p && q)
+    while (currentNode && nextNode)
     {
-        if(p->data < q->data)
+        if(currentNode->nodeValue < nextNode->nodeValue)
         {
-            last->next=p;
-            last=p;
-            p=p->next;
-            last->next=NULL;
+            lastNode->nextLink=currentNode;
+            lastNode=currentNode;
+            currentNode=currentNode->nextLink;
+            lastNode->nextLink=NULL;
         }
         else
         {
-            last->next=q;
-            last=q;
-            q=q->next;
-            last->next=NULL;
+            lastNode->nextLink=nextNode;
+            lastNode=nextNode;
+            nextNode=nextNode->nextLink;
+            lastNode->nextLink=NULL;
         }
     }
-    if(p)
-        last->next=p;
+    if(currentNode)
+        lastNode->nextLink=currentNode;
     else
-        last->next=q;
+        lastNode->nextLink=nextNode;
     
 }
 int main()
 {
-    int A[]={4,7,17,21,25,30};
-    int B[]={5,15,19,23,27,34,37};
-    create1(A,6);
+    int firstItems[]={4,7,17,21,25,30};
+    int secondItems[]={5,15,19,23,27,34,37};
+    create1(firstItems,6);
     cout<<"First"<<endl;
-    Display(first);
-    create2(B,7);
+    Display(firstNode);
+    create2(secondItems,7);
     cout<<"second "<<endl;
-    Display(second);    
+    Display(linkedListSecond);    
     cout<<"third"<<endl;
-    Merge(first,second);
-    Display(third);
+    Merge(firstNode,linkedListSecond);
+    Display(linkedListThird);
     
 
     return 0;

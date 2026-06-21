@@ -1,27 +1,27 @@
 #include<iostream>
 int main()
 {
-    char sample_word[11]={'T','a','j',' ',' ','m','a','h','a','l','\0'};
-    int v_count=0,c_count=0;
-    for(int i=0;sample_word[i]!='\0';i++)
+    char stringVowelsSampleWord[11]={'T','a','j',' ',' ','m','a','h','a','l','\0'};
+    int stringVowelsVCount=0,stringVowelsCCount=0;
+    for(int scanIndex=0;stringVowelsSampleWord[scanIndex]!='\0';scanIndex++)
     {
-        if(sample_word[i]=='a'||sample_word[i]=='e'|| sample_word[i]=='i'|| sample_word[i]=='o' || sample_word[i]=='u' || 
-        sample_word[i]=='A'|| sample_word[i]=='E' || sample_word[i]=='I'|| sample_word[i]=='O' || sample_word[i]=='U')
-        v_count++;//counting as vowel
+        if(stringVowelsSampleWord[scanIndex]=='a'||stringVowelsSampleWord[scanIndex]=='e'|| stringVowelsSampleWord[scanIndex]=='i'|| stringVowelsSampleWord[scanIndex]=='o' || stringVowelsSampleWord[scanIndex]=='u' || 
+        stringVowelsSampleWord[scanIndex]=='A'|| stringVowelsSampleWord[scanIndex]=='E' || stringVowelsSampleWord[scanIndex]=='I'|| stringVowelsSampleWord[scanIndex]=='O' || stringVowelsSampleWord[scanIndex]=='U')
+        stringVowelsVCount++;//counting as vowel
         
-        else if(sample_word[i]>=65 && sample_word[i]<=90||sample_word[i]>=97 && sample_word[i]<122)
-            c_count++;//counting consonent
+        else if(stringVowelsSampleWord[scanIndex]>=65 && stringVowelsSampleWord[scanIndex]<=90||stringVowelsSampleWord[scanIndex]>=97 && stringVowelsSampleWord[scanIndex]<122)
+            stringVowelsCCount++;//counting consonent
     }
-    std::cout<<"number of vowels = "<<v_count<<"\n"<<"number of consonent = "<<c_count<<std::endl;
+    std::cout<<"number of vowels = "<<stringVowelsVCount<<"\n"<<"number of consonent = "<<stringVowelsCCount<<std::endl;
 
     //count words
-    int space=0;
-    for(int i=0;sample_word[i]!='\0';i++)
+    int stringVowelsSpace=0;
+    for(int scanIndex=0;stringVowelsSampleWord[scanIndex]!='\0';scanIndex++)
     {
-        if(sample_word[i]==' '&& sample_word[i-1]!=' ')//checking if its a space and not white space
-            space++;//counting space
+        if(stringVowelsSampleWord[scanIndex]==' '&& stringVowelsSampleWord[scanIndex-1]!=' ')//checking if its a space and not white space
+            stringVowelsSpace++;//counting space
     }
-    std::cout<<"number of words = "<<space+1;;
+    std::cout<<"number of words = "<<stringVowelsSpace+1;;
     
     return 0;
 }

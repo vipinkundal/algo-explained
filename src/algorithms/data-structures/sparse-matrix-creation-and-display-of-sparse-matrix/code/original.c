@@ -1,39 +1,39 @@
 #include<stdio.h>
 #include<stdlib.h>
 struct Element{
-    int i;
-    int j;
-    int x;
+    int scanIndex;
+    int writeIndex;
+    int inputValue;
 };
-struct sparse
+struct sparseMatrixSparse
 {
-    int m;
-    int n;
-    int num;
-    struct Element *elm;
+    int columnCount;
+    int itemCount;
+    int sparseMatrixNum;
+    struct Element *sparseMatrixElm;
 };
-void create(struct sparse *s)
+void create(struct sparseMatrixSparse *workingText)
 {
     printf("Enter Dimension of sparse natrix ");
-    scanf("%d%d",&s->m,&s->n);
+    scanf("%d%d",&workingText->columnCount,&workingText->itemCount);
     printf("\nEnter number of non-zero element ");
-    scanf("%d",&s->num);
-    s->elm=(struct Element *)malloc(s->num*sizeof(struct Element));
-    for(int i=0;i<s->num;i++)
+    scanf("%d",&workingText->sparseMatrixNum);
+    workingText->sparseMatrixElm=(struct Element *)malloc(workingText->sparseMatrixNum*sizeof(struct Element));
+    for(int scanIndex=0;scanIndex<workingText->sparseMatrixNum;scanIndex++)
     {
-        printf("\nEnter %d non-zero elememt ",i+1);
-        scanf("%d%d%d",&s->elm[i].i,&s->elm[i].j,&s->elm[i].x);
+        printf("\nEnter %d non-zero elememt ",scanIndex+1);
+        scanf("%d%d%d",&workingText->sparseMatrixElm[scanIndex].scanIndex,&workingText->sparseMatrixElm[scanIndex].writeIndex,&workingText->sparseMatrixElm[scanIndex].inputValue);
     }
 }
-void display(struct sparse s)
+void display(struct sparseMatrixSparse workingText)
 {
-    int k=0;
-    for(int i=0;i<s.m;i++)
+    int probeIndex=0;
+    for(int scanIndex=0;scanIndex<workingText.columnCount;scanIndex++)
     {
-        for(int j=0;j<s.n;j++)
+        for(int writeIndex=0;writeIndex<workingText.itemCount;writeIndex++)
         {
-            if(i==s.elm[k].i && j==s.elm[k].j)
-            printf("%d ",s.elm[k++].x);
+            if(scanIndex==workingText.sparseMatrixElm[probeIndex].scanIndex && writeIndex==workingText.sparseMatrixElm[probeIndex].writeIndex)
+            printf("%d ",workingText.sparseMatrixElm[probeIndex++].inputValue);
             else
             printf("0 ");
         }
@@ -43,8 +43,8 @@ void display(struct sparse s)
 
 int main()
 {
-    struct sparse s;
-    create(&s);
-    display(s);
+    struct sparseMatrixSparse workingText;
+    create(&workingText);
+    display(workingText);
     return 0;
 }

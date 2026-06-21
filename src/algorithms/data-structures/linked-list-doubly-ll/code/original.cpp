@@ -3,149 +3,149 @@
 using namespace std;
 class Node {
     public:
-    Node *prev;
-    int data;
-    Node *next;
+    Node *previousLink;
+    int nodeValue;
+    Node *nextLink;
 };
 class DoublyLL
 {
 private:
-    Node *first=NULL;
+    Node *firstNode=NULL;
 public:
-    DoublyLL(int A[],int n);
+    DoublyLL(int firstItems[],int itemCount);
     void Display();
     int Length();
-    void Insert(int index,int x);
-    int Delete(int index);
+    void Insert(int targetIndex,int inputValue);
+    int Delete(int targetIndex);
     void Reverse();
     ~DoublyLL();
 
 };
 void DoublyLL::Reverse()
 {
-    Node *temp,*p=first;
-    while(p)
+    Node *temporaryValue,*currentNode=firstNode;
+    while(currentNode)
     {
-        temp=p->prev;
-        p->prev=p->next;
-        p->next=temp;
-        p=p->prev;
-        if(p && p->next==NULL)//
-            first=p;
+        temporaryValue=currentNode->previousLink;
+        currentNode->previousLink=currentNode->nextLink;
+        currentNode->nextLink=temporaryValue;
+        currentNode=currentNode->previousLink;
+        if(currentNode && currentNode->nextLink==NULL)//
+            firstNode=currentNode;
     }
 }
-int DoublyLL::Delete(int index)
+int DoublyLL::Delete(int targetIndex)
 {
-    if(index<0 || index>Length())
+    if(targetIndex<0 || targetIndex>Length())
         return -1;
 
-    Node *p=first;
-    int x;
+    Node *currentNode=firstNode;
+    int inputValue;
 
-    if(index==1)
+    if(targetIndex==1)
     {
-        first=first->next;
-        x=p->data;
-        delete p;
-        if(first)
-            first->prev=NULL;
-        return x;
+        firstNode=firstNode->nextLink;
+        inputValue=currentNode->nodeValue;
+        delete currentNode;
+        if(firstNode)
+            firstNode->previousLink=NULL;
+        return inputValue;
     }
     else{
-        for(int i=0;i<index-1;i++)
-            p=p->next;
-        p->prev->next=p->next;
-        if(p->next)
-            p->next->prev=p->prev;
-        x=p->data;
-        delete p;
-        return x;
+        for(int scanIndex=0;scanIndex<targetIndex-1;scanIndex++)
+            currentNode=currentNode->nextLink;
+        currentNode->previousLink->nextLink=currentNode->nextLink;
+        if(currentNode->nextLink)
+            currentNode->nextLink->previousLink=currentNode->previousLink;
+        inputValue=currentNode->nodeValue;
+        delete currentNode;
+        return inputValue;
     }
 }
-void DoublyLL::Insert(int index,int x)
+void DoublyLL::Insert(int targetIndex,int inputValue)
 {
-    if(index<0 || index>Length())
+    if(targetIndex<0 || targetIndex>Length())
         return;
-    Node *t,*p=first;
-    t=new Node;
-        t->data=x;
-    if(index==0)//before first node
+    Node *swapValue,*currentNode=firstNode;
+    swapValue=new Node;
+        swapValue->nodeValue=inputValue;
+    if(targetIndex==0)//before first node
     {
-        t->next=first;
-        t->prev=NULL;
-        first=t;
+        swapValue->nextLink=firstNode;
+        swapValue->previousLink=NULL;
+        firstNode=swapValue;
     }
     else{
-        for(int i=0;i<index-1;i++)
-            p=p->next;
-        t->next=p->next;
-        if(p->next) 
-            p->next->prev=t;
-        p->next=t;
-        t->prev=p;
+        for(int scanIndex=0;scanIndex<targetIndex-1;scanIndex++)
+            currentNode=currentNode->nextLink;
+        swapValue->nextLink=currentNode->nextLink;
+        if(currentNode->nextLink) 
+            currentNode->nextLink->previousLink=swapValue;
+        currentNode->nextLink=swapValue;
+        swapValue->previousLink=currentNode;
     }
 }
 int DoublyLL::Length()
 {
-    Node *p=first;
-    int x=0;
-    while(p)
+    Node *currentNode=firstNode;
+    int inputValue=0;
+    while(currentNode)
     {
-        ++x;
-        p=p->next;
+        ++inputValue;
+        currentNode=currentNode->nextLink;
     }
-    return x;
+    return inputValue;
 }
 void DoublyLL::Display()
 {
-    Node *p=first;
-    while(p)
+    Node *currentNode=firstNode;
+    while(currentNode)
     {
-        cout<<p->data<<"->";
-        p=p->next;
+        cout<<currentNode->nodeValue<<"->";
+        currentNode=currentNode->nextLink;
     }
     cout<<"\n";
 }
-DoublyLL::DoublyLL(int A[],int n)
+DoublyLL::DoublyLL(int firstItems[],int itemCount)
 {
-    Node *last,*t;
-    first=new Node;
-    first->data=A[0];
-    first->prev=first->next=NULL;
-    last=first;
-    for(int i=1;i<n;i++)
+    Node *lastNode,*swapValue;
+    firstNode=new Node;
+    firstNode->nodeValue=firstItems[0];
+    firstNode->previousLink=firstNode->nextLink=NULL;
+    lastNode=firstNode;
+    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
     {
-        t=new Node;
-        t->next=last->next;
-        t->data=A[i];
-        t->prev=last;
-        last->next=t;
-        last=t;
+        swapValue=new Node;
+        swapValue->nextLink=lastNode->nextLink;
+        swapValue->nodeValue=firstItems[scanIndex];
+        swapValue->previousLink=lastNode;
+        lastNode->nextLink=swapValue;
+        lastNode=swapValue;
     }
     
 }
 
 DoublyLL::~DoublyLL()
 {
-    Node *p=first,*q;
-    while(p)
+    Node *currentNode=firstNode,*nextNode;
+    while(currentNode)
     {
-        q=p;
-        p=p->next;
-        cout<<"\n"<<"Deleted :"<<q->data;
-        delete q;
+        nextNode=currentNode;
+        currentNode=currentNode->nextLink;
+        cout<<"\n"<<"Deleted :"<<nextNode->nodeValue;
+        delete nextNode;
     }
 }
 
 int main()
 {
-    int A[]={1,4,6,7,9};
-    DoublyLL a(A,5);
+    int firstItems[]={1,4,6,7,9};
+    DoublyLL primaryValue(firstItems,5);
     cout<<"Before "<<endl;
-    a.Display();
-    a.Reverse();
+    primaryValue.Display();
+    primaryValue.Reverse();
     cout<<"After "<<endl;
-    a.Display();
-    cout<<"\nLength : "<<a.Length();
+    primaryValue.Display();
+    cout<<"\nLength : "<<primaryValue.Length();
     return 0;
 }

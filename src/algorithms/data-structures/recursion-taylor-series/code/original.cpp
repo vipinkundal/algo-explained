@@ -1,17 +1,17 @@
 #include<iostream>
 #include<stdio.h>
 using namespace std;
-double tay(int x,int n)
+double tay(int inputValue,int itemCount)
 {
-    static float p=1,f=1;
-    if(n==0)
+    static float currentNode=1,recursionTaylorF=1;
+    if(itemCount==0)
         return 1;
     else 
     {
-        double r=tay(x,n-1);
-        p=p*x;
-        f=f*n;
-        return r+(p/f);
+        double rightIndex=tay(inputValue,itemCount-1);
+        currentNode=currentNode*inputValue;
+        recursionTaylorF=recursionTaylorF*itemCount;
+        return rightIndex+(currentNode/recursionTaylorF);
     }
            
 }

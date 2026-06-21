@@ -1,16 +1,16 @@
 #include<iostream>
 int main()
 {
-    int *p=new int[5];
-    for(int i=0;i<5;i++)
-        p[i]=i;
-    int *q=new int [10];
-    for(int i=0;i<5;i++)
-        q[i]=p[i];
-    q[6]=456;
-    p=q;//changing size of array
-    q=NULL;
-    for(int i=0;i<10;i++)
-        std::cout<<p[i]<<std::endl;
+    int *currentNode=new int[5];
+    for(int scanIndex=0;scanIndex<5;scanIndex++)
+        currentNode[scanIndex]=scanIndex;
+    int *nextNode=new int [10];
+    for(int scanIndex=0;scanIndex<5;scanIndex++)
+        nextNode[scanIndex]=currentNode[scanIndex];
+    nextNode[6]=456;
+    currentNode=nextNode;//changing size of array
+    nextNode=NULL;
+    for(int scanIndex=0;scanIndex<10;scanIndex++)
+        std::cout<<currentNode[scanIndex]<<std::endl;
     return 0;
 }

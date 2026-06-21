@@ -3,114 +3,114 @@
 #include <cstring>
 using namespace std;
 struct Stack{
-    int size;
-    int top;
-    int *S;
+    int itemCapacity;
+    int stackTop;
+    int *stackStorage;
 };
 
 
-void create(Stack *st,char *s)
+void create(Stack *stackPostfixSt,char *workingText)
 {
-    int x=strlen(s);
-    st->size=x;
-    st->top=-1;
-    st->S=new int[st->size];
+    int inputValue=strlen(workingText);
+    stackPostfixSt->itemCapacity=inputValue;
+    stackPostfixSt->stackTop=-1;
+    stackPostfixSt->stackStorage=new int[stackPostfixSt->itemCapacity];
 }
 
-void push(Stack *st,int x)
+void push(Stack *stackPostfixSt,int inputValue)
 {
-    if(st->size-st->top==1)
+    if(stackPostfixSt->itemCapacity-stackPostfixSt->stackTop==1)
     {
         cout<<"stack is overflow\n";
     }
     else{
-        st->top++;
-        st->S[st->top]=x;
+        stackPostfixSt->stackTop++;
+        stackPostfixSt->stackStorage[stackPostfixSt->stackTop]=inputValue;
     }
 }
 
 
 
-int pop(Stack *st)
+int pop(Stack *stackPostfixSt)
 {
-    int x=-1;
-    if(st->top==-1)
+    int inputValue=-1;
+    if(stackPostfixSt->stackTop==-1)
     {
         cout<<"Stack is underflow\n";
     }
     else{
-        x=st->S[st->top];
-        st->top--;
+        inputValue=stackPostfixSt->stackStorage[stackPostfixSt->stackTop];
+        stackPostfixSt->stackTop--;
     }
-    return x;
+    return inputValue;
 }
 
 
-int isEmpty(Stack st)
+int isEmpty(Stack stackPostfixSt)
 {
-    if(st.top==-1)
+    if(stackPostfixSt.stackTop==-1)
         return 1;
     else
         return 0;
 }
 
-int isFull(Stack st)
+int isFull(Stack stackPostfixSt)
 {
-    if(st.size-st.top==1)
+    if(stackPostfixSt.itemCapacity-stackPostfixSt.stackTop==1)
         return 1;
     else
         return 0;
 }
 
-int isOperand(char s)
+int isOperand(char workingText)
 {
-    if(s=='*' || s=='/' || s=='+' || s=='-' || s=='^' || s=='(' || s==')')
+    if(workingText=='*' || workingText=='/' || workingText=='+' || workingText=='-' || workingText=='^' || workingText=='(' || workingText==')')
         return 0;
     else 
         return 1;
 }
 
 
-int eval(char *postfix)
+int eval(char *stackPostfixPostfix)
 {
-    Stack st;
-    create(&st,postfix);
-    int i,x1,x2,r;
-    for(i=0;postfix[i]!='\0';i++)
+    Stack stackPostfixSt;
+    create(&stackPostfixSt,stackPostfixPostfix);
+    int scanIndex,stackPostfixX1,stackPostfixX2,rightIndex;
+    for(scanIndex=0;stackPostfixPostfix[scanIndex]!='\0';scanIndex++)
     {
-        if(isOperand(postfix[i]))
+        if(isOperand(stackPostfixPostfix[scanIndex]))
         {
-            push(&st,(postfix[i]-'0'));
+            push(&stackPostfixSt,(stackPostfixPostfix[scanIndex]-'0'));
         }
         else{
-            x2=pop(&st);
-            x1=pop(&st);
-            switch(postfix[i])
+            stackPostfixX2=pop(&stackPostfixSt);
+            stackPostfixX1=pop(&stackPostfixSt);
+            switch(stackPostfixPostfix[scanIndex])
             {
                 case '+':
-                   r=x1+x2;
+                   rightIndex=stackPostfixX1+stackPostfixX2;
                    break;
                 case '-':
-                   r=x1-x2;
+                   rightIndex=stackPostfixX1-stackPostfixX2;
                    break;
                 case '*':
-                   r=x1*x2;
+                   rightIndex=stackPostfixX1*stackPostfixX2;
                    break;
                 case '/':
-                   r=x1/x2;
+                   rightIndex=stackPostfixX1/stackPostfixX2;
                    break;
                 default:
                     break;
 
-            } push(&st,r);
+            } push(&stackPostfixSt,rightIndex);
         }
     }
-    return pop(&st);
+    return pop(&stackPostfixSt);
 }
 int main()
 {
-    char s[]="2362/*+";
-    int answer=eval(s);
-    cout<<answer;
+    char workingText[]="2362/*+";
+    int stackPostfixAnswer=eval(workingText);
+    cout<<stackPostfixAnswer;
     return 0;
 }

@@ -3,8 +3,8 @@
 using namespace std;
 class Node{
     public:
-        int data;
-        Node *next;
+        int nodeValue;
+        Node *nextLink;
 };
 
 class CircularLinkedList{
@@ -12,104 +12,104 @@ class CircularLinkedList{
         Node *Head;
     public:
     CircularLinkedList(){Head=NULL;}
-    CircularLinkedList(int A[],int n);
+    CircularLinkedList(int firstItems[],int itemCount);
     Node * getHead(){return Head;}
     void display();
-    void Rdisplay(Node *p);
+    void Rdisplay(Node *currentNode);
     int length();
-    void insert(int index,int value);
+    void insert(int targetIndex,int storedValue);
 };
-void CircularLinkedList::insert(int index,int value)
+void CircularLinkedList::insert(int targetIndex,int storedValue)
 {
-    if(index<0 || index>length())
+    if(targetIndex<0 || targetIndex>length())
         return ;
-    Node *p=Head,*t;
-    t=new Node;
-    t->data=value;
-    if(index==0)
+    Node *currentNode=Head,*swapValue;
+    swapValue=new Node;
+    swapValue->nodeValue=storedValue;
+    if(targetIndex==0)
     {
         
         if(Head==NULL)
         {
-            t->next=t;
-            Head=t;
+            swapValue->nextLink=swapValue;
+            Head=swapValue;
         }
         else
         {
-            while(p->next!=Head)
-                p=p->next;
-            t->next=p->next;
-            p->next=t;
+            while(currentNode->nextLink!=Head)
+                currentNode=currentNode->nextLink;
+            swapValue->nextLink=currentNode->nextLink;
+            currentNode->nextLink=swapValue;
 
         }
     }
     else{
-        for(int i=0;i<index-1;i++)
-            p=p->next;
-        t->next=p->next;
-            p->next=t;
+        for(int scanIndex=0;scanIndex<targetIndex-1;scanIndex++)
+            currentNode=currentNode->nextLink;
+        swapValue->nextLink=currentNode->nextLink;
+            currentNode->nextLink=swapValue;
     }
 }
 int CircularLinkedList::length()
 {
-    Node *p=Head;
-    int l=0;
+    Node *currentNode=Head;
+    int leftIndex=0;
     do
     {
-        l++;
-        p=p->next;
-    }while(p!=Head);
-    return l;
+        leftIndex++;
+        currentNode=currentNode->nextLink;
+    }while(currentNode!=Head);
+    return leftIndex;
 
 }
-void CircularLinkedList::Rdisplay(Node *p)
+void CircularLinkedList::Rdisplay(Node *currentNode)
 {
-    static int flag=0;
-    if(p!=Head || flag==0)
+    static int linkedListFlag=0;
+    if(currentNode!=Head || linkedListFlag==0)
     {
-        flag=1;
-        cout<<p->data<<"->";
-        Rdisplay(p->next);
+        linkedListFlag=1;
+        cout<<currentNode->nodeValue<<"->";
+        Rdisplay(currentNode->nextLink);
     }
-    flag=0;
+    linkedListFlag=0;
 }
 void CircularLinkedList::display()
 {
-    Node *p=Head;
+    Node *currentNode=Head;
     do{
-        cout<<p->data<<"->";
-        p=p->next;
+        cout<<currentNode->nodeValue<<"->";
+        currentNode=currentNode->nextLink;
 
-    }while(p!=Head);
+    }while(currentNode!=Head);
     cout<<endl;
 }
-CircularLinkedList::CircularLinkedList(int A[],int n)
+CircularLinkedList::CircularLinkedList(int firstItems[],int itemCount)
 {
-    Node *last,*t;
+    Node *lastNode,*swapValue;
     
     Head=new Node;
-    Head->data=A[0];
-    Head->next=Head;
-    last=Head;
-    for(int i=1;i<n;i++)
+    Head->nodeValue=firstItems[0];
+    Head->nextLink=Head;
+    lastNode=Head;
+    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
     {
-        t=new Node;
-        t->data=A[i];
-        t->next=last->next;
-        last->next=t;
-        last=t;
+        swapValue=new Node;
+        swapValue->nodeValue=firstItems[scanIndex];
+        swapValue->nextLink=lastNode->nextLink;
+        lastNode->nextLink=swapValue;
+        lastNode=swapValue;
     }
 }
 
 int main()
 {
     
-    int A[]={1,3,5,8,9};
-    CircularLinkedList l(A,5);
+    int firstItems[]={1,3,5,8,9};
+    CircularLinkedList leftIndex(firstItems,5);
     cout<<"Before :";
-    l.display();
-    l.insert(1,2);
+    leftIndex.display();
+    leftIndex.insert(1,2);
     cout<<"After : ";
-    l.display();
+    leftIndex.display();
     return 0;
 }

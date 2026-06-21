@@ -2,39 +2,39 @@
 using namespace std;
 struct Array
 {
-    int A[10];
-    int size;
-    int length;
+    int firstItems[10];
+    int itemCapacity;
+    int textLength;
 };
-void Display(struct Array arr)
+void Display(struct Array items)
 {
-    for(int i=0;i<arr.length;i++)
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        std::cout<<arr.A[i]<<" ";
+        std::cout<<items.firstItems[scanIndex]<<" ";
     }
 }
-void swap(int *x,int *y)
+void swap(int *inputValue,int *compareValue)
 {
-    int t=*x;
-    *x=*y;
-    *y=t;
+    int swapValue=*inputValue;
+    *inputValue=*compareValue;
+    *compareValue=swapValue;
 }
-void insert(struct Array *arr,int x)
+void insert(struct Array *items,int inputValue)
 {   
-    int i=arr->length-1;
-    while(i>=0 && arr->A[i]>x)
+    int scanIndex=items->textLength-1;
+    while(scanIndex>=0 && items->firstItems[scanIndex]>inputValue)
     {   
-        arr->A[i+1]=arr->A[i];
-        i--;
+        items->firstItems[scanIndex+1]=items->firstItems[scanIndex];
+        scanIndex--;
     }
-    arr->A[i+1]=x;
-    arr->length++;
+    items->firstItems[scanIndex+1]=inputValue;
+    items->textLength++;
 }
 
 int main()
 {
-    struct Array arr={{1,2,3,4,6,8,10},10,7};
-    insert(&arr,7);
-    Display(arr);
+    struct Array items={{1,2,3,4,6,8,10},10,7};
+    insert(&items,7);
+    Display(items);
     return 0;
 }

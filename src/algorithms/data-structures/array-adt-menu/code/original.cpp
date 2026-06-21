@@ -4,123 +4,123 @@ using namespace std;
 template<class T>
 class Array{
 private:
-    T * A;
-    int size;
-    int length;
+    T * firstItems;
+    int itemCapacity;
+    int textLength;
 public:
     Array()
     {
-        size=10;
-        length=0;
-        A=new T[size];
+        itemCapacity=10;
+        textLength=0;
+        firstItems=new T[itemCapacity];
 
     }
-    Array(int size)
+    Array(int itemCapacity)
     {
-        this->size=size;
-        length=0;
-        A=new T[size];
+        this->itemCapacity=itemCapacity;
+        textLength=0;
+        firstItems=new T[itemCapacity];
 
     }
-    void insert(int index,T value){
-        if(index>=0 && index<=size){
-        for(int i=length;i>index;i--)
+    void insert(int targetIndex,T storedValue){
+        if(targetIndex>=0 && targetIndex<=itemCapacity){
+        for(int scanIndex=textLength;scanIndex>targetIndex;scanIndex--)
         {
-            A[i]=A[i-1];
+            firstItems[scanIndex]=firstItems[scanIndex-1];
         }
-        A[index]=value;
-        length++;
+        firstItems[targetIndex]=storedValue;
+        textLength++;
         }
     }
-    void append(T x){
-        if(length<size)
+    void append(T inputValue){
+        if(textLength<itemCapacity)
         {
-            A[length]=x;
-            length++;
+            firstItems[textLength]=inputValue;
+            textLength++;
         }
     }
     
     void display(){
-        for (int i = 0; i < length; i++){
-            std::cout<<A[i] << " ";
+        for (int scanIndex = 0; scanIndex < textLength; scanIndex++){
+            std::cout<<firstItems[scanIndex] << " ";
         }
     }
-    int l_search(T value)
+    int l_search(T storedValue)
     {
-        for(int i=0;i<length;i++)
+        for(int scanIndex=0;scanIndex<textLength;scanIndex++)
         {
-            if(A[i]==value)
+            if(firstItems[scanIndex]==storedValue)
             {
-                return i;
+                return scanIndex;
             }
         }
         return -1;
     }
-    void deletion(int index)
+    void deletion(int targetIndex)
     {
-        if(index>=0 && index<=length)
+        if(targetIndex>=0 && targetIndex<=textLength)
         {
-            for(int i=index;i<length-1;i++)
+            for(int scanIndex=targetIndex;scanIndex<textLength-1;scanIndex++)
             {
-                A[i]=A[i+1];
+                firstItems[scanIndex]=firstItems[scanIndex+1];
             }
-            length--;
-            std::cout<<"deleted index "<<index<<" element in array"<<std::endl;
+            textLength--;
+            std::cout<<"deleted index "<<targetIndex<<" element in array"<<std::endl;
         }    
     }
     T Sum()
     {
-        T sum=0;
-        for(int i=0;i<length;i++)
-            sum=sum+A[i];
-        return sum;
+        T arrayAdtSum=0;
+        for(int scanIndex=0;scanIndex<textLength;scanIndex++)
+            arrayAdtSum=arrayAdtSum+firstItems[scanIndex];
+        return arrayAdtSum;
     }
 
     Array* Union(Array);
 
     ~Array()
     {
-        delete []A;
+        delete []firstItems;
     }
     
 };
 template<class T>
-Array<T>* Array<T>::Union(Array<T> arr2)
+Array<T>* Array<T>::Union(Array<T> arrayAdtArr2)
 {
-    Array* arr3=new Array[10];
-    int i=0,j=0,k=0,m=0;
-    for(i=0;i<length;i++,k++)
-        arr3->A[k]=A[i];
-    for(i=0;i<arr2.length;i++)
+    Array* arrayAdtArr3=new Array[10];
+    int scanIndex=0,writeIndex=0,probeIndex=0,columnCount=0;
+    for(scanIndex=0;scanIndex<textLength;scanIndex++,probeIndex++)
+        arrayAdtArr3->firstItems[probeIndex]=firstItems[scanIndex];
+    for(scanIndex=0;scanIndex<arrayAdtArr2.textLength;scanIndex++)
         {
-            int l=0,j=0;
-            while(j<length)
+            int leftIndex=0,writeIndex=0;
+            while(writeIndex<textLength)
             {
-                if(arr2.A[i]==A[j])
+                if(arrayAdtArr2.firstItems[scanIndex]==firstItems[writeIndex])
                 {
-                    l=1;
+                    leftIndex=1;
                     break;
                 }
-                j++;
+                writeIndex++;
 
             }
-            if(l==0)
-                arr3->A[k++]=arr2.A[i];
+            if(leftIndex==0)
+                arrayAdtArr3->firstItems[probeIndex++]=arrayAdtArr2.firstItems[scanIndex];
         }
-        arr3->length=k;
-        arr3->size=100;
-        return arr3;
+        arrayAdtArr3->textLength=probeIndex;
+        arrayAdtArr3->itemCapacity=100;
+        return arrayAdtArr3;
     }
 
 
 
 int main() {
-    int i,sz;
-    int x;
+    int scanIndex,arrayAdtSz;
+    int inputValue;
     cout<<"Enter size of array ";
-    cin>>sz;
-    Array<int> arr(sz);
-    int ch;
+    cin>>arrayAdtSz;
+    Array<int> items(arrayAdtSz);
+    int currentChar;
     do{
         cout<<"\nMenu\n";
         cout<<"1.Append\n";
@@ -131,56 +131,56 @@ int main() {
         cout<<"6.Delete\n";
         cout<<"7.Exit\n";
 
-        cin>>ch;
-        switch(ch)
+        cin>>currentChar;
+        switch(currentChar)
         {
             case 1:
                 cout<<"Enter element to appended\n";
-                cin>>x;
-                arr.append(x);
+                cin>>inputValue;
+                items.append(inputValue);
                 break;
 
             case 2:
                 cout<<"Enter element to be inserted\n";
-                cin>>x;
+                cin>>inputValue;
                 cout<<"Enter position of element\n";
-                cin>>i;
-                arr.insert(i,x);
+                cin>>scanIndex;
+                items.insert(scanIndex,inputValue);
                 break;
 
             case 3:
                 cout<<"Enter element to be searched\n";
-                cin>>x;
-                i=arr.l_search(x);
-                if(i==-1)
+                cin>>inputValue;
+                scanIndex=items.l_search(inputValue);
+                if(scanIndex==-1)
                     cout<<"Element not found\n";
                 else
-                    cout<<"Element found at "<<i<<" position ";
+                    cout<<"Element found at "<<scanIndex<<" position ";
                 break;
 
             case 4:
-                cout<<"Sum of array elements is "<<arr.Sum();
+                cout<<"Sum of array elements is "<<items.Sum();
                 break;
 
             case 5:
-                arr.display();
+                items.display();
                 break;
 
             case 6:
                 cout<<"Enter index at which elements will be deleted\n";
-                cin>>i;
-                arr.deletion(i);
+                cin>>scanIndex;
+                items.deletion(scanIndex);
                 break;
 
         }
-    }while(ch<7);
+    }while(currentChar<7);
 
-    Array<int> a2(10);
-    a2.append(4);
-    a2.append(5);
-    a2.append(6);
-    Array<int> *a3=arr.Union(a2);
-    a3->display();
+    Array<int> secondItems(10);
+    secondItems.append(4);
+    secondItems.append(5);
+    secondItems.append(6);
+    Array<int> *mergedItems=items.Union(secondItems);
+    mergedItems->display();
 
     return 0;
 }

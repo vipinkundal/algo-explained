@@ -5,62 +5,62 @@ using namespace std;
 class Queue
 {
     private:
-        int size;
-        int front;
-        int rear;
-        int *Q;
+        int itemCapacity;
+        int queueFront;
+        int queueRear;
+        int *queueStorage;
     public:
         Queue();
-        void enqueue(int x);
+        void enqueue(int inputValue);
         int dequeue();
         void display();
 };
 Queue::Queue()
 {
     cout<<"Enter the size of queue\n";
-    cin>>size;
-    Q=new int[size];
-    front=rear=-1;
+    cin>>itemCapacity;
+    queueStorage=new int[itemCapacity];
+    queueFront=queueRear=-1;
 }
 
-void Queue::enqueue(int x)
+void Queue::enqueue(int inputValue)
 {
-    if(rear==size-1)
+    if(queueRear==itemCapacity-1)
         cout<<"Queue is full\n";
     else{
-        ++rear;
-        Q[rear]=x;
+        ++queueRear;
+        queueStorage[queueRear]=inputValue;
 
     }
 }
 
 int Queue::dequeue()
 {
-    int x=-1;
-    if(front==rear)
+    int inputValue=-1;
+    if(queueFront==queueRear)
         cout<<"Queue is Empty\n";
     else{
-        ++front;
-        x=Q[front];
+        ++queueFront;
+        inputValue=queueStorage[queueFront];
     }
-    return x;
+    return inputValue;
 }
 
 void  Queue::display()
 {
-    int i=front+1;
-    for(;i<=rear;i++)
-        cout<<Q[i]<<" ";
+    int scanIndex=queueFront+1;
+    for(;scanIndex<=queueRear;scanIndex++)
+        cout<<queueStorage[scanIndex]<<" ";
     cout<<"\n";
 }
 int main()
 {
-    Queue q;
-    q.enqueue(1);
-    q.enqueue(2);
-    q.enqueue(3);
-    q.enqueue(4);
-    q.enqueue(5);
-    cout<<"Deleted "<<q.dequeue()<<endl;
-    q.display();
+    Queue nextNode;
+    nextNode.enqueue(1);
+    nextNode.enqueue(2);
+    nextNode.enqueue(3);
+    nextNode.enqueue(4);
+    nextNode.enqueue(5);
+    cout<<"Deleted "<<nextNode.dequeue()<<endl;
+    nextNode.display();
 }

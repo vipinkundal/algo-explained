@@ -3,80 +3,80 @@
 #include<string.h>
 using namespace std;
 struct Stack{
-    int size;
-    int top;
-    char *S;
+    int itemCapacity;
+    int stackTop;
+    char *stackStorage;
 };
 
 
-void create(Stack *st,char *s)
+void create(Stack *stackParenthesisSt,char *workingText)
 {
-    st->size=strlen(s);
-    st->top=-1;
-    st->S=new char[st->size];
+    stackParenthesisSt->itemCapacity=strlen(workingText);
+    stackParenthesisSt->stackTop=-1;
+    stackParenthesisSt->stackStorage=new char[stackParenthesisSt->itemCapacity];
 } 
 
-void push(Stack *st,char x)
+void push(Stack *stackParenthesisSt,char inputValue)
 {
-    if(st->size-st->top==1)
+    if(stackParenthesisSt->itemCapacity-stackParenthesisSt->stackTop==1)
     {
         cout<<"stack is overflow\n";
     }
     else{
-        st->top++;
-        st->S[st->top]=x;
+        stackParenthesisSt->stackTop++;
+        stackParenthesisSt->stackStorage[stackParenthesisSt->stackTop]=inputValue;
     }
 }
 
-char pop(Stack *st)
+char pop(Stack *stackParenthesisSt)
 {
-    char x=-1;
-    if(st->top==-1)
+    char inputValue=-1;
+    if(stackParenthesisSt->stackTop==-1)
     {
         cout<<"Stack is underflow\n";
     }
     else{
-        x=st->S[st->top];
-        st->top--;
+        inputValue=stackParenthesisSt->stackStorage[stackParenthesisSt->stackTop];
+        stackParenthesisSt->stackTop--;
     }
-    return x;
+    return inputValue;
 }
 
 
-int isEmpty(Stack st)
+int isEmpty(Stack stackParenthesisSt)
 {
-    if(st.top==-1)
+    if(stackParenthesisSt.stackTop==-1)
         return 1;
     else
         return 0;
 }
 
-int isFull(Stack st)
+int isFull(Stack stackParenthesisSt)
 {
-    if(st.size-st.top==1)
+    if(stackParenthesisSt.itemCapacity-stackParenthesisSt.stackTop==1)
         return 1;
     else
         return 0;
 }
 
-int isBalanced(char *s)
+int isBalanced(char *workingText)
 {
-    int i;
-    struct Stack st;
-    create(&st,s);
+    int scanIndex;
+    struct Stack stackParenthesisSt;
+    create(&stackParenthesisSt,workingText);
 
-    for(i=0;s[i]!='\0';i++)
+    for(scanIndex=0;workingText[scanIndex]!='\0';scanIndex++)
     {
-        if(s[i]=='(')
-            push(&st,'(');
-        else if(s[i]==')')
+        if(workingText[scanIndex]=='(')
+            push(&stackParenthesisSt,'(');
+        else if(workingText[scanIndex]==')')
         {
-            if(isEmpty(st))
+            if(isEmpty(stackParenthesisSt))
                 return 0;
-            pop(&st);
+            pop(&stackParenthesisSt);
         }
     }
-    if(isEmpty(st))
+    if(isEmpty(stackParenthesisSt))
         return 1;
     else
         return 0;
@@ -84,8 +84,8 @@ int isBalanced(char *s)
 }
 int main()
 {
-    char s[]="((Hello))+(World))";
-    cout<<isBalanced(s);
+    char workingText[]="((Hello))+(World))";
+    cout<<isBalanced(workingText);
 
     return 0;
 }

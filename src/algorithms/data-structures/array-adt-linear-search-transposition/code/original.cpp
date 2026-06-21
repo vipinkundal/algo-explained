@@ -4,61 +4,61 @@ using namespace std;
 class Array{
  
 private:
-    int* A;
-    int size;
-    int length;
+    int* firstItems;
+    int itemCapacity;
+    int textLength;
  
 public:
-    Array(int size){
-        this->size = size;
-        A = new int [size];
+    Array(int itemCapacity){
+        this->itemCapacity = itemCapacity;
+        firstItems = new int [itemCapacity];
     }
  
     void create(){
         cout << "Enter number of elements: " << flush;
-        cin >> length;
+        cin >> textLength;
         cout << "Enter the array elements: " << endl;
-        for (int i = 0; i < length; i++){
-            cout << "Array element: " << i << " = " << flush;
-            cin >> A[i];
+        for (int scanIndex = 0; scanIndex < textLength; scanIndex++){
+            cout << "Array element: " << scanIndex << " = " << flush;
+            cin >> firstItems[scanIndex];
         }
     }
  
     void display(){
-        for (int i = 0; i < length; i++){
-            cout << A[i] << " ";
+        for (int scanIndex = 0; scanIndex < textLength; scanIndex++){
+            cout << firstItems[scanIndex] << " ";
         }
         std::cout<<std::endl;
     }
-    int l_search(int value)
+    int l_search(int storedValue)
     {
-        for(int i=0;i<length;i++)
+        for(int scanIndex=0;scanIndex<textLength;scanIndex++)
         {
-            if(A[i]==value)
+            if(firstItems[scanIndex]==storedValue)
             {
-                if(i>0)
+                if(scanIndex>0)
                 {
-                    int t=A[i-1];//Transpose method to improve linear search
-                    A[i-1]=A[i];
-                    A[i]=t;
+                    int swapValue=firstItems[scanIndex-1];//Transpose method to improve linear search
+                    firstItems[scanIndex-1]=firstItems[scanIndex];
+                    firstItems[scanIndex]=swapValue;
                 }
-                return i;
+                return scanIndex;
             }    
         }
         return -1;
     }
     ~Array(){//destructor
-        delete[] A;
+        delete[] firstItems;
         cout << "Array destroyed" << endl;
     }
 };
 
 int main() {
  
-    Array arr(10);
-    arr.create();
-    arr.display();
-    cout<<"element found at index "<<arr.l_search(3)<<endl;
-    arr.display();
+    Array items(10);
+    items.create();
+    items.display();
+    cout<<"element found at index "<<items.l_search(3)<<endl;
+    items.display();
     return 0;
 }

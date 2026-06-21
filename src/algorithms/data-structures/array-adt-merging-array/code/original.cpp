@@ -2,46 +2,46 @@
 using namespace std;
 struct Array
 {
-    int A[100];
-    int size;
-    int length;
+    int firstItems[100];
+    int itemCapacity;
+    int textLength;
 };
-void Display(struct Array arr)
+void Display(struct Array items)
 {
-    for(int i=0;i<arr.length;i++)
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        std::cout<<arr.A[i]<<" ";
+        std::cout<<items.firstItems[scanIndex]<<" ";
     }
 }
-void swap(int *x,int *y)
+void swap(int *inputValue,int *compareValue)
 {
-    int t=*x;
-    *x=*y;
-    *y=t;
+    int swapValue=*inputValue;
+    *inputValue=*compareValue;
+    *compareValue=swapValue;
 }
-void Merge(struct Array arr1,struct Array arr2,struct Array *arr3)
+void Merge(struct Array arrayAdtArr1,struct Array arrayAdtArr2,struct Array *arrayAdtArr3)
 {
-    int i=0,j=0,k=0;
-    while(i<arr1.length && j<arr2.length)
+    int scanIndex=0,writeIndex=0,probeIndex=0;
+    while(scanIndex<arrayAdtArr1.textLength && writeIndex<arrayAdtArr2.textLength)
     {
-        if(arr1.A[i]<arr2.A[j])
-            arr3->A[k++]=arr1.A[i++];
+        if(arrayAdtArr1.firstItems[scanIndex]<arrayAdtArr2.firstItems[writeIndex])
+            arrayAdtArr3->firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex++];
         else
-            arr3->A[k++]=arr2.A[j++];
+            arrayAdtArr3->firstItems[probeIndex++]=arrayAdtArr2.firstItems[writeIndex++];
     }
-    for(;i<arr1.length;i++)
-        arr3->A[k++]=arr1.A[i++];
-    for(;j<arr2.length;j++)
-        arr3->A[k++]=arr2.A[j++];   
+    for(;scanIndex<arrayAdtArr1.textLength;scanIndex++)
+        arrayAdtArr3->firstItems[probeIndex++]=arrayAdtArr1.firstItems[scanIndex++];
+    for(;writeIndex<arrayAdtArr2.textLength;writeIndex++)
+        arrayAdtArr3->firstItems[probeIndex++]=arrayAdtArr2.firstItems[writeIndex++];   
 }
 
 int main()
 {
-    struct Array arr1={{1,4,7,13,17,20,36},100,7};
-    struct Array arr2={{6,8,9,10,11,24},100,6};
-    struct Array arr3={{},arr1.size+arr2.size,arr1.length+arr2.length};    
-    Merge(arr1,arr2,&arr3);
-    std::cout<<sizeof(arr3)<<endl;
-    Display(arr3);
+    struct Array arrayAdtArr1={{1,4,7,13,17,20,36},100,7};
+    struct Array arrayAdtArr2={{6,8,9,10,11,24},100,6};
+    struct Array arrayAdtArr3={{},arrayAdtArr1.itemCapacity+arrayAdtArr2.itemCapacity,arrayAdtArr1.textLength+arrayAdtArr2.textLength};    
+    Merge(arrayAdtArr1,arrayAdtArr2,&arrayAdtArr3);
+    std::cout<<sizeof(arrayAdtArr3)<<endl;
+    Display(arrayAdtArr3);
     return 0;
 }

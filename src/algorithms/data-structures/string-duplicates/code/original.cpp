@@ -3,22 +3,22 @@
 using namespace std;
 int main()
 {
-    char a4[10]="Hesllsos";//method 1 using for loop
-    for(int i=0;a4[i]!='\0';i++)
+    char stringDuplicatesA4[10]="Hesllsos";//method 1 using for loop
+    for(int scanIndex=0;stringDuplicatesA4[scanIndex]!='\0';scanIndex++)
     {
-    if(a4[i]!=-1)
+    if(stringDuplicatesA4[scanIndex]!=-1)
     {
-    int count=1;
-    for(int j=i+1;a4[j]!='\0';j++)
+    int stringDuplicatesCount=1;
+    for(int writeIndex=scanIndex+1;stringDuplicatesA4[writeIndex]!='\0';writeIndex++)
     {
-        if(a4[i]==a4[j])
+        if(stringDuplicatesA4[scanIndex]==stringDuplicatesA4[writeIndex])
         {
-            a4[j]=-1;
-            count++;
+            stringDuplicatesA4[writeIndex]=-1;
+            stringDuplicatesCount++;
         }
     }
-    if(count>1)
-    cout<<a4[i]<<" is duplicated "<<count-1<<" times"<<endl;
+    if(stringDuplicatesCount>1)
+    cout<<stringDuplicatesA4[scanIndex]<<" is duplicated "<<stringDuplicatesCount-1<<" times"<<endl;
     }
     }
     cout<<"\n\n\n\n";
@@ -26,17 +26,17 @@ int main()
 
 
     //method 2 using hash table i.e hashing
-    char word[]="helloehl";
-    int a[26]={0},i;
-    for(int i=0;word[i]!='\0';i++)
-        a[word[i]-97]++;//writing program for lowercase word only
+    char sourceText[]="helloehl";
+    int primaryValue[26]={0},scanIndex;
+    for(int scanIndex=0;sourceText[scanIndex]!='\0';scanIndex++)
+        primaryValue[sourceText[scanIndex]-97]++;//writing program for lowercase word only
 
-    for(int i=0;i<=25;i++)
+    for(int scanIndex=0;scanIndex<=25;scanIndex++)
     {
-        if(a[i]>1)
+        if(primaryValue[scanIndex]>1)
         {
-            char k=i+97;
-            cout<<k<<" is repeated "<<a[i]-1<<" times"<<endl;
+            char probeIndex=scanIndex+97;
+            cout<<probeIndex<<" is repeated "<<primaryValue[scanIndex]-1<<" times"<<endl;
         }
     }
 

@@ -2,31 +2,31 @@
 using namespace std;
 struct Array
 {
-    int A[10];
-    int size;
-    int length;
+    int firstItems[10];
+    int itemCapacity;
+    int textLength;
 };
-void Display(struct Array arr)
+void Display(struct Array items)
 {
-    for(int i=0;i<arr.length;i++)
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        std::cout<<arr.A[i]<<" ";
+        std::cout<<items.firstItems[scanIndex]<<" ";
     }
 }
-void swap(int *x,int *y)
+void swap(int *inputValue,int *compareValue)
 {
-    int t=*x;
-    *x=*y;
-    *y=t;
+    int swapValue=*inputValue;
+    *inputValue=*compareValue;
+    *compareValue=swapValue;
 }
-bool sort(struct Array arr)
+bool sort(struct Array items)
 {   
-    int i=0;
-    while(i<arr.length-1)
+    int scanIndex=0;
+    while(scanIndex<items.textLength-1)
     {   
-        if(arr.A[i]>arr.A[i+1])
+        if(items.firstItems[scanIndex]>items.firstItems[scanIndex+1])
             return false;
-        i++;
+        scanIndex++;
         
     }
     return true;
@@ -34,7 +34,7 @@ bool sort(struct Array arr)
 
 int main()
 {
-    struct Array arr={{1,2,3,4,5,8,10},10,7};
-    std::cout<<sort(arr);
+    struct Array items={{1,2,3,4,5,8,10},10,7};
+    std::cout<<sort(items);
     return 0;
 }

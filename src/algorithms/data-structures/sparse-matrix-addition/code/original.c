@@ -1,98 +1,98 @@
 #include<stdio.h>
 #include<stdlib.h>
 struct Element{
-    int i;
-    int j;
-    int x;
+    int scanIndex;
+    int writeIndex;
+    int inputValue;
 };
-struct sparse
+struct sparseMatrixSparse
 {
-    int m;
-    int n;
-    int num;
-    struct Element *elm;
+    int columnCount;
+    int itemCount;
+    int sparseMatrixNum;
+    struct Element *sparseMatrixElm;
 };
-void create(struct sparse *s)
+void create(struct sparseMatrixSparse *workingText)
 {
     printf("Enter Dimension of sparse matrix ");
-    scanf("%d%d",&s->m,&s->n);
+    scanf("%d%d",&workingText->columnCount,&workingText->itemCount);
     printf("\nEnter number of non-zero element ");
-    scanf("%d",&s->num);
-    s->elm=(struct Element *)malloc(s->num*sizeof(struct Element));
-    for(int i=0;i<s->num;i++)
+    scanf("%d",&workingText->sparseMatrixNum);
+    workingText->sparseMatrixElm=(struct Element *)malloc(workingText->sparseMatrixNum*sizeof(struct Element));
+    for(int scanIndex=0;scanIndex<workingText->sparseMatrixNum;scanIndex++)
     {
-        printf("\nEnter %d non-zero elememt ",i+1);
-        scanf("%d%d%d",&s->elm[i].i,&s->elm[i].j,&s->elm[i].x);
+        printf("\nEnter %d non-zero elememt ",scanIndex+1);
+        scanf("%d%d%d",&workingText->sparseMatrixElm[scanIndex].scanIndex,&workingText->sparseMatrixElm[scanIndex].writeIndex,&workingText->sparseMatrixElm[scanIndex].inputValue);
     }
 }
-void display(struct sparse s)
+void display(struct sparseMatrixSparse workingText)
 {
-    int k=0;
-    for(int i=0;i<s.m;i++)
+    int probeIndex=0;
+    for(int scanIndex=0;scanIndex<workingText.columnCount;scanIndex++)
     {
-        for(int j=0;j<s.n;j++)
+        for(int writeIndex=0;writeIndex<workingText.itemCount;writeIndex++)
         {
-            if(i==s.elm[k].i && j==s.elm[k].j)
-            printf("%d ",s.elm[k++].x);
+            if(scanIndex==workingText.sparseMatrixElm[probeIndex].scanIndex && writeIndex==workingText.sparseMatrixElm[probeIndex].writeIndex)
+            printf("%d ",workingText.sparseMatrixElm[probeIndex++].inputValue);
             else
             printf("0 ");
         }
         printf("\n");
     }
 }
-struct sparse *add(struct sparse *s1,struct sparse *s2)
+struct sparseMatrixSparse *add(struct sparseMatrixSparse *sparseMatrixS1,struct sparseMatrixSparse *sparseMatrixS2)
 {
-    int i=0,j=0,k=0;//i for referrring elements of array of struct Element pointed by elm  in sparse structure pointed by s1
+    int scanIndex=0,writeIndex=0,probeIndex=0;//i for referrring elements of array of struct Element pointed by elm  in sparse structure pointed by s1
                     // j for s2 and k for sum
-    if(s1->m!=s2->m || s1->n!=s2->n)
+    if(sparseMatrixS1->columnCount!=sparseMatrixS2->columnCount || sparseMatrixS1->itemCount!=sparseMatrixS2->itemCount)
         return 0;
-    struct sparse *sum=(struct sparse *)malloc(sizeof(struct sparse));
-    sum->m=s1->m;
-    sum->n=s1->n;
-    sum->elm=(struct Element *)malloc(sizeof(struct Element)*s1->num+s2->num);
-    while (i<s1->num && j<s2->num)
+    struct sparseMatrixSparse *sparseMatrixSum=(struct sparseMatrixSparse *)malloc(sizeof(struct sparseMatrixSparse));
+    sparseMatrixSum->columnCount=sparseMatrixS1->columnCount;
+    sparseMatrixSum->itemCount=sparseMatrixS1->itemCount;
+    sparseMatrixSum->sparseMatrixElm=(struct Element *)malloc(sizeof(struct Element)*sparseMatrixS1->sparseMatrixNum+sparseMatrixS2->sparseMatrixNum);
+    while (scanIndex<sparseMatrixS1->sparseMatrixNum && writeIndex<sparseMatrixS2->sparseMatrixNum)
     {
-        if(s1->elm[i].i<s2->elm[j].i)// row of s1 is less than s2
-            sum->elm[k++]=s1->elm[i++];
+        if(sparseMatrixS1->sparseMatrixElm[scanIndex].scanIndex<sparseMatrixS2->sparseMatrixElm[writeIndex].scanIndex)// row of s1 is less than s2
+            sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixS1->sparseMatrixElm[scanIndex++];
 
-        else if(s1->elm[i].i>s2->elm[j].i)//row of s2 is less than s1
-            sum->elm[k++]=s2->elm[j++];
+        else if(sparseMatrixS1->sparseMatrixElm[scanIndex].scanIndex>sparseMatrixS2->sparseMatrixElm[writeIndex].scanIndex)//row of s2 is less than s1
+            sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixS2->sparseMatrixElm[writeIndex++];
 
         else
-            if(s1->elm[i].j<s2->elm[j].j)//row of s1 and s2 is same but column of s1 is less than s2
-                sum->elm[k++]=s1->elm[i++];
+            if(sparseMatrixS1->sparseMatrixElm[scanIndex].writeIndex<sparseMatrixS2->sparseMatrixElm[writeIndex].writeIndex)//row of s1 and s2 is same but column of s1 is less than s2
+                sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixS1->sparseMatrixElm[scanIndex++];
 
-            else if(s1->elm[i].j>s2->elm[j].j)//row of s1 and s2 is same but column of s2 is less than s1
-            sum->elm[k++]=s2->elm[j++];
+            else if(sparseMatrixS1->sparseMatrixElm[scanIndex].writeIndex>sparseMatrixS2->sparseMatrixElm[writeIndex].writeIndex)//row of s1 and s2 is same but column of s2 is less than s1
+            sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixS2->sparseMatrixElm[writeIndex++];
             
             else//row and column both are same
             {
-                sum->elm[k]=s1->elm[i++];//copy comple s1 struct elm elements
-                sum->elm[k++].x=sum->elm[k].x+s2->elm[j++].x;//add s1 and s2 values
+                sparseMatrixSum->sparseMatrixElm[probeIndex]=sparseMatrixS1->sparseMatrixElm[scanIndex++];//copy comple s1 struct elm elements
+                sparseMatrixSum->sparseMatrixElm[probeIndex++].inputValue=sparseMatrixSum->sparseMatrixElm[probeIndex].inputValue+sparseMatrixS2->sparseMatrixElm[writeIndex++].inputValue;//add s1 and s2 values
             }
     }
     //remaining elements 
-    for(;i<s1->num;i++)
-        sum->elm[k++]=s1->elm[i];
+    for(;scanIndex<sparseMatrixS1->sparseMatrixNum;scanIndex++)
+        sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixS1->sparseMatrixElm[scanIndex];
 
-    for(;j<s2->num;j++)
-        sum->elm[k++]=s2->elm[j];
+    for(;writeIndex<sparseMatrixS2->sparseMatrixNum;writeIndex++)
+        sparseMatrixSum->sparseMatrixElm[probeIndex++]=sparseMatrixS2->sparseMatrixElm[writeIndex];
 
-    sum->num=k;
-    return sum;
+    sparseMatrixSum->sparseMatrixNum=probeIndex;
+    return sparseMatrixSum;
     
 }
 int main()
 {
-    struct sparse s1;
-    create(&s1);
-    display(s1);
-    struct sparse s2;
-    create(&s2);
-    display(s2);
-    struct sparse *sum=add(&s1,&s2);
+    struct sparseMatrixSparse sparseMatrixS1;
+    create(&sparseMatrixS1);
+    display(sparseMatrixS1);
+    struct sparseMatrixSparse sparseMatrixS2;
+    create(&sparseMatrixS2);
+    display(sparseMatrixS2);
+    struct sparseMatrixSparse *sparseMatrixSum=add(&sparseMatrixS1,&sparseMatrixS2);
     printf("\n\n");
-    display(*sum);
+    display(*sparseMatrixSum);
     
     return 0;
 }

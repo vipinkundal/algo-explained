@@ -3,124 +3,124 @@
 using namespace std;
 class Node{
     public:
-    int row;
-    int column;
-    int value;
-    Node *next;
+    int rowIndex;
+    int sparseMatrixColumn;
+    int storedValue;
+    Node *nextLink;
 };
 class Sparse_Matrix{
     private:
-    Node *first=NULL;
-    int m,n;
+    Node *firstNode=NULL;
+    int columnCount,itemCount;
     public:
     Sparse_Matrix();
     void Display();
     void Merge(Sparse_Matrix);
     Node *GetHead(){
-        return first;
+        return firstNode;
     }
 };
-void Sparse_Matrix::Merge(Sparse_Matrix b)
+void Sparse_Matrix::Merge(Sparse_Matrix secondaryValue)
 {
-    Node *first1=first,*first2=b.GetHead(),*first3=NULL,*p=NULL,*q=NULL;
-    while (first1 && first2)
+    Node *sparseMatrixFirst1=firstNode,*sparseMatrixFirst2=secondaryValue.GetHead(),*sparseMatrixFirst3=NULL,*currentNode=NULL,*nextNode=NULL;
+    while (sparseMatrixFirst1 && sparseMatrixFirst2)
     {
-        if(first1->row<first2->row)
+        if(sparseMatrixFirst1->rowIndex<sparseMatrixFirst2->rowIndex)
         {
-            p=first1;
-            if(q)
-                q->next=p;
+            currentNode=sparseMatrixFirst1;
+            if(nextNode)
+                nextNode->nextLink=currentNode;
             else
-                first3=p;
-            q=p;
-            first1=first1->next;
-            p->next=NULL;
+                sparseMatrixFirst3=currentNode;
+            nextNode=currentNode;
+            sparseMatrixFirst1=sparseMatrixFirst1->nextLink;
+            currentNode->nextLink=NULL;
         }
-        else if(first2->row<first1->row)
+        else if(sparseMatrixFirst2->rowIndex<sparseMatrixFirst1->rowIndex)
         {
-            p=first2;
-            if(q)
-                q->next=p;
+            currentNode=sparseMatrixFirst2;
+            if(nextNode)
+                nextNode->nextLink=currentNode;
             else
-                first3=p;
-            q=p;
-            first2=first2->next;
-            p->next=NULL;
+                sparseMatrixFirst3=currentNode;
+            nextNode=currentNode;
+            sparseMatrixFirst2=sparseMatrixFirst2->nextLink;
+            currentNode->nextLink=NULL;
         }
         else
         {   
-            if(first1->column<first2->column)
+            if(sparseMatrixFirst1->sparseMatrixColumn<sparseMatrixFirst2->sparseMatrixColumn)
             {
-                p=first1;
-                if(q)
-                    q->next=p;
+                currentNode=sparseMatrixFirst1;
+                if(nextNode)
+                    nextNode->nextLink=currentNode;
                 else
-                    first3=p;
-                q=p;
-                first1=first1->next;
-                p->next=NULL;
+                    sparseMatrixFirst3=currentNode;
+                nextNode=currentNode;
+                sparseMatrixFirst1=sparseMatrixFirst1->nextLink;
+                currentNode->nextLink=NULL;
             }
-            else if(first2->column<first1->column)
+            else if(sparseMatrixFirst2->sparseMatrixColumn<sparseMatrixFirst1->sparseMatrixColumn)
             {
-                p=first2;
-                if(q)
-                    q->next=p;
+                currentNode=sparseMatrixFirst2;
+                if(nextNode)
+                    nextNode->nextLink=currentNode;
                 else
-                    first3=p;
-                q=p;
-                first2=first2->next;
-                p->next=NULL;
+                    sparseMatrixFirst3=currentNode;
+                nextNode=currentNode;
+                sparseMatrixFirst2=sparseMatrixFirst2->nextLink;
+                currentNode->nextLink=NULL;
             }
             else{
-                p=first1;
-                if(q)
-                    q->next=p;
+                currentNode=sparseMatrixFirst1;
+                if(nextNode)
+                    nextNode->nextLink=currentNode;
                 else
-                    first3=p;
-                q=p;
-                p->value=first1->value+first2->value;
-                first1=first1->next;
-                Node *temp=first2;
-                first2=first2->next;
-                temp->next=NULL;
-                p->next=NULL;
+                    sparseMatrixFirst3=currentNode;
+                nextNode=currentNode;
+                currentNode->storedValue=sparseMatrixFirst1->storedValue+sparseMatrixFirst2->storedValue;
+                sparseMatrixFirst1=sparseMatrixFirst1->nextLink;
+                Node *temporaryValue=sparseMatrixFirst2;
+                sparseMatrixFirst2=sparseMatrixFirst2->nextLink;
+                temporaryValue->nextLink=NULL;
+                currentNode->nextLink=NULL;
             }
         }
     }
-    if(first1)
-        p->next=first1;
+    if(sparseMatrixFirst1)
+        currentNode->nextLink=sparseMatrixFirst1;
     else
-        p->next=first2;
-    first=first3;
+        currentNode->nextLink=sparseMatrixFirst2;
+    firstNode=sparseMatrixFirst3;
     
 }
 Sparse_Matrix::Sparse_Matrix()
     {
 
-        int i,j,data;
+        int scanIndex,writeIndex,nodeValue;
         cout<<"Enter the dimension of Matrix ";
-        cin>>m>>n;
-        Node *p=NULL,*q=NULL;
+        cin>>columnCount>>itemCount;
+        Node *currentNode=NULL,*nextNode=NULL;
         cout<<"Enter the Matrix: \n";
 
-        for(int i=0;i<m;i++)
+        for(int scanIndex=0;scanIndex<columnCount;scanIndex++)
         {
-            for(int j=0;j<n;j++)
+            for(int writeIndex=0;writeIndex<itemCount;writeIndex++)
             {
-                cin>>data;
-                if(data!=0)
+                cin>>nodeValue;
+                if(nodeValue!=0)
                 {
                    
-                    p=new Node;
-                    if(q!=NULL)
-                        q->next=p;
+                    currentNode=new Node;
+                    if(nextNode!=NULL)
+                        nextNode->nextLink=currentNode;
                     else
-                        first=p;
-                    p->value=data;
-                    p->row=i;
-                    p->column=j;
-                    p->next=NULL;
-                    q=p;
+                        firstNode=currentNode;
+                    currentNode->storedValue=nodeValue;
+                    currentNode->rowIndex=scanIndex;
+                    currentNode->sparseMatrixColumn=writeIndex;
+                    currentNode->nextLink=NULL;
+                    nextNode=currentNode;
 
                 }
             }
@@ -129,16 +129,16 @@ Sparse_Matrix::Sparse_Matrix()
     }
 void Sparse_Matrix::Display()
 {
-    Node *p=NULL;
-    p=first;
-    for(int i=0;i<m;i++)
+    Node *currentNode=NULL;
+    currentNode=firstNode;
+    for(int scanIndex=0;scanIndex<columnCount;scanIndex++)
     {
-        for(int j=0;j<n;j++)
+        for(int writeIndex=0;writeIndex<itemCount;writeIndex++)
         {   
-            if(p && p->row==i && p->column==j)
+            if(currentNode && currentNode->rowIndex==scanIndex && currentNode->sparseMatrixColumn==writeIndex)
             {
-                cout<<p->value<< " ";
-                p=p->next;
+                cout<<currentNode->storedValue<< " ";
+                currentNode=currentNode->nextLink;
             }
             else{
                 cout<<"0 ";
@@ -150,11 +150,11 @@ void Sparse_Matrix::Display()
 int main()
 {
 
-    Sparse_Matrix a;
-    Sparse_Matrix b;
+    Sparse_Matrix primaryValue;
+    Sparse_Matrix secondaryValue;
 
-    a.Merge(b);
+    primaryValue.Merge(secondaryValue);
 
-    a.Display();
+    primaryValue.Display();
     return 0;
 }

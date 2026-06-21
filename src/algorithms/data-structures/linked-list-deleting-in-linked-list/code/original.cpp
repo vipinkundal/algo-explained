@@ -4,83 +4,83 @@ using namespace std;
 
 struct Node
 {
-    int data;
-    struct Node *next;
-}*first=NULL;
+    int nodeValue;
+    struct Node *nextLink;
+}*firstNode=NULL;
 
-void create(int A[],int n)
+void create(int firstItems[],int itemCount)
 {
-    int i;
-    struct Node *last, *t;
-    first=new Node;
-    first->data=A[0];
-    first->next=NULL;
-    last=first;//addreess is passed and now first is refferd as last
+    int scanIndex;
+    struct Node *lastNode, *swapValue;
+    firstNode=new Node;
+    firstNode->nodeValue=firstItems[0];
+    firstNode->nextLink=NULL;
+    lastNode=firstNode;//addreess is passed and now first is refferd as last
 
-    for(int i=1;i<n;i++)
+    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
     {
-        t=new Node;
-        t->data=A[i];
-        t->next=NULL;
-        last->next=t;//putting address of current node in the next of last node 
-        last=t;//assigning current node as last node
+        swapValue=new Node;
+        swapValue->nodeValue=firstItems[scanIndex];
+        swapValue->nextLink=NULL;
+        lastNode->nextLink=swapValue;//putting address of current node in the next of last node 
+        lastNode=swapValue;//assigning current node as last node
     }
 }
 
-int count(struct Node *p)//counting of nodes
+int count(struct Node *currentNode)//counting of nodes
 {
-    int c=0;
+    int columnIndex=0;
     
-    p=first;
-    while(p)
+    currentNode=firstNode;
+    while(currentNode)
     {
-        c++;
-        p=p->next;
+        columnIndex++;
+        currentNode=currentNode->nextLink;
     }
-    return c;
+    return columnIndex;
 }
 
 void Display()
 {
-    struct Node *p;
-    p=first;
-    while(p!=NULL)
+    struct Node *currentNode;
+    currentNode=firstNode;
+    while(currentNode!=NULL)
     {
-        cout<<p->data<<endl;
-        p=p->next;
+        cout<<currentNode->nodeValue<<endl;
+        currentNode=currentNode->nextLink;
     }
 }
 
-int Delete(struct Node *p,int index)
+int Delete(struct Node *currentNode,int targetIndex)
 {
-    struct Node *q=NULL;
-    int x=-1;//to store data of deleted node
-    if(index<0 || index>count(p))
+    struct Node *nextNode=NULL;
+    int inputValue=-1;//to store data of deleted node
+    if(targetIndex<0 || targetIndex>count(currentNode))
         return -1;
-    if(index==1)
+    if(targetIndex==1)
     {
-        x=first->data;
-        first=first->next;
+        inputValue=firstNode->nodeValue;
+        firstNode=firstNode->nextLink;
     }
     else
     {
-        for(int i=0;i<index-1;i++)
+        for(int scanIndex=0;scanIndex<targetIndex-1;scanIndex++)
         {
-            q=p;
-            p=p->next;
+            nextNode=currentNode;
+            currentNode=currentNode->nextLink;
         }
-        x=p->data;
-        q->next=p->next;
+        inputValue=currentNode->nodeValue;
+        nextNode->nextLink=currentNode->nextLink;
     }
 
-    delete p;
-    return x;
+    delete currentNode;
+    return inputValue;
 }
 int main()
 {
-    int A[]={4,7,9,12,18};
-    create(A,5);
-    cout<<"Deleted : "<<Delete(first,3)<<endl;
+    int firstItems[]={4,7,9,12,18};
+    create(firstItems,5);
+    cout<<"Deleted : "<<Delete(firstNode,3)<<endl;
     Display();
 
     return 0;

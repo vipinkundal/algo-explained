@@ -2,15 +2,15 @@
 using namespace std;
 struct Array
 {
-    int A[100];
-    int size;
-    int length;
+    int firstItems[100];
+    int itemCapacity;
+    int textLength;
 };
-void Display(struct Array arr)
+void Display(struct Array items)
 {
-    for(int i=0;i<arr.length;i++)
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        std::cout<<arr.A[i]<<" ";
+        std::cout<<items.firstItems[scanIndex]<<" ";
     }
 }
 int main()
@@ -72,20 +72,20 @@ int main()
     //     }
     // }
 
-    Array a5={{5,4,8,4,6,7,5,4},100,8};//Method 5 for unsorted using hashing
+    Array arrayAdtA5={{5,4,8,4,6,7,5,4},100,8};//Method 5 for unsorted using hashing
 
     //here l is 4 and h is 8
-    int h=8;
-    int A1[h+1]={0};
+    int arrayAdtH=8;
+    int A1[arrayAdtH+1]={0};
 
-    for(int i=0;i<a5.length;i++)
+    for(int scanIndex=0;scanIndex<arrayAdtA5.textLength;scanIndex++)
     {
-        A1[a5.A[i]]++;
+        A1[arrayAdtA5.firstItems[scanIndex]]++;
     }
-    for(int i=1;i<=h;i++)
+    for(int scanIndex=1;scanIndex<=arrayAdtH;scanIndex++)
     {
-        if(A1[i]>1)
-            cout<<i<<" is repeated "<<A1[i]<<" times"<<endl;
+        if(A1[scanIndex]>1)
+            cout<<scanIndex<<" is repeated "<<A1[scanIndex]<<" times"<<endl;
     }
 
 

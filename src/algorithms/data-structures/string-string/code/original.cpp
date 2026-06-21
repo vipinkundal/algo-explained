@@ -2,12 +2,12 @@
 #include<stdio.h>
 int main()
 {
-    char name1[]="Anurag Maurya";
-    char name2[20];
+    char stringStringName1[]="Anurag Maurya";
+    char stringStringName2[20];
     std::cout<<"Enter your name ";
-    gets(name2);
-    printf("ok %s\n",name2);
-    std::cout<<name1<<" and "<<name2<<" are friends";
+    gets(stringStringName2);
+    printf("ok %s\n",stringStringName2);
+    std::cout<<stringStringName1<<" and "<<stringStringName2<<" are friends";
 
 
 }

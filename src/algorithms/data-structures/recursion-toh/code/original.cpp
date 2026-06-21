@@ -1,20 +1,20 @@
 #include<iostream>
-void TOH(int n,int A,int B,int C)
+void TOH(int itemCount,int firstItems,int secondItems,int thirdItems)
 {
-    if(n>0)
+    if(itemCount>0)
     {
-    TOH(n-1,A,C,B);
-    std::cout<<"Moving from "<<A<<" to "<<C<<std::endl<<std::endl;
-    TOH(n-1,B,A,C);
+    TOH(itemCount-1,firstItems,thirdItems,secondItems);
+    std::cout<<"Moving from "<<firstItems<<" to "<<thirdItems<<std::endl<<std::endl;
+    TOH(itemCount-1,secondItems,firstItems,thirdItems);
     }
 }
-void TOH1(int n,int A,int B,int C,int D)//for four towes
+void TOH1(int itemCount,int firstItems,int secondItems,int thirdItems,int spareItems)//for four towes
 {
-    if(n>0)
+    if(itemCount>0)
     {
-    TOH1(n-1,A,B,D,C);
-    std::cout<<"("<<A<<","<<D<<")"<<std::endl;
-    TOH1(n-1,C,A,B,D); 
+    TOH1(itemCount-1,firstItems,secondItems,spareItems,thirdItems);
+    std::cout<<"("<<firstItems<<","<<spareItems<<")"<<std::endl;
+    TOH1(itemCount-1,thirdItems,firstItems,secondItems,spareItems); 
     }
 }
 

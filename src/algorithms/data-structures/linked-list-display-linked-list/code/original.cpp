@@ -4,44 +4,44 @@ using namespace std;
 
 struct Node
 {
-    int data;
-    struct Node *next;
-}*first=NULL;
+    int nodeValue;
+    struct Node *nextLink;
+}*firstNode=NULL;
 
-void create(int A[],int n)
+void create(int firstItems[],int itemCount)
 {
-    int i;
-    struct Node *last, *t;
-    first=new Node;
-    first->data=A[0];
-    first->next=NULL;
-    last=first;//addreess is passed and now first is refferd as last
+    int scanIndex;
+    struct Node *lastNode, *swapValue;
+    firstNode=new Node;
+    firstNode->nodeValue=firstItems[0];
+    firstNode->nextLink=NULL;
+    lastNode=firstNode;//addreess is passed and now first is refferd as last
 
-    for(int i=1;i<n;i++)
+    for(int scanIndex=1;scanIndex<itemCount;scanIndex++)
     {
-        t=new Node;
-        t->data=A[i];
-        t->next=NULL;
-        last->next=t;//putting address of current node in the next of last node 
-        last=t;//assigning current node as last node
+        swapValue=new Node;
+        swapValue->nodeValue=firstItems[scanIndex];
+        swapValue->nextLink=NULL;
+        lastNode->nextLink=swapValue;//putting address of current node in the next of last node 
+        lastNode=swapValue;//assigning current node as last node
     }
 }
 
 void Display()
 {
-    struct Node *p;
-    p=first;
-    while(p!=NULL)
+    struct Node *currentNode;
+    currentNode=firstNode;
+    while(currentNode!=NULL)
     {
-        cout<<p->data<<endl;
-        p=p->next;
+        cout<<currentNode->nodeValue<<endl;
+        currentNode=currentNode->nextLink;
     }
 }
 
 int main()
 {
-    int A[]={4,5,8,9,7};
-    create(A,5);
+    int firstItems[]={4,5,8,9,7};
+    create(firstItems,5);
     Display();
 
     return 0;

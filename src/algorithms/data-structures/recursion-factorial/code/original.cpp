@@ -1,24 +1,24 @@
 #include<iostream>
 using namespace std;
-int fac(int n)
+int fac(int itemCount)
 {
-    if(n<=0)
+    if(itemCount<=0)
         return 1;
     else 
-       return n*fac(n-1);
+       return itemCount*fac(itemCount-1);
 }
-int Ifac(int n)
+int Ifac(int itemCount)
 {
-    int i,factorial=1;
-    for(i=1;i<=n;i++)
-        factorial=factorial*i;
-    return factorial;
+    int scanIndex,recursionFactorialFactorial=1;
+    for(scanIndex=1;scanIndex<=itemCount;scanIndex++)
+        recursionFactorialFactorial=recursionFactorialFactorial*scanIndex;
+    return recursionFactorialFactorial;
 
 }
 
 int main()
 {
-    int factorial=Ifac(5);
-    cout<<factorial;
+    int recursionFactorialFactorial=Ifac(5);
+    cout<<recursionFactorialFactorial;
     return 0;
 }

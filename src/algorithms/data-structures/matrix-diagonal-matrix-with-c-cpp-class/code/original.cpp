@@ -3,50 +3,50 @@ using namespace std;
 class Matrix
 {
     private:
-    int n;
-    int *A;
+    int itemCount;
+    int *firstItems;
     public:
-    Matrix(int n)//constructor of matrix
+    Matrix(int itemCount)//constructor of matrix
     {
-        this->n=n;
-        A=new int[n];   
+        this->itemCount=itemCount;
+        firstItems=new int[itemCount];   
     }
 
-    void set(int i,int j,int x);
+    void set(int scanIndex,int writeIndex,int inputValue);
 
-    int get(int i,int j);
+    int get(int scanIndex,int writeIndex);
 
     void Display();
 
     ~ Matrix(){//destructor destructs/clear heap memory allocated
-        delete []A;
+        delete []firstItems;
 
     }
 
 };
-void Matrix::set(int i,int j,int x)// :: scope resolution operator to indicate function belong to class matrix
+void Matrix::set(int scanIndex,int writeIndex,int inputValue)// :: scope resolution operator to indicate function belong to class matrix
 {
-    if(i==j)
+    if(scanIndex==writeIndex)
     {
-        A[i-1]=x;
+        firstItems[scanIndex-1]=inputValue;
     }
 
 }
-int Matrix::get(int i,int j)
+int Matrix::get(int scanIndex,int writeIndex)
 {
-    if(i==j)
-        return A[i-1];
+    if(scanIndex==writeIndex)
+        return firstItems[scanIndex-1];
     else
         return 0;
 }
 void Matrix::Display()
 {
-    for(int i=0;i<(n);i++)
+    for(int scanIndex=0;scanIndex<(itemCount);scanIndex++)
     {
-        for(int j=0;j<(n);j++)
+        for(int writeIndex=0;writeIndex<(itemCount);writeIndex++)
         {
-            if(i==j)
-            cout<<A[i]<<" ";
+            if(scanIndex==writeIndex)
+            cout<<firstItems[scanIndex]<<" ";
             else
             cout<<"0 ";
         }
@@ -55,12 +55,12 @@ void Matrix::Display()
 }
 int main()
 {
-    Matrix m(3);
-    m.set(1,1,4);
-    m.set(2,2,5);
-    m.set(3,3,6);
-    m.Display();
-    cout<<m.get(3,3);
+    Matrix columnCount(3);
+    columnCount.set(1,1,4);
+    columnCount.set(2,2,5);
+    columnCount.set(3,3,6);
+    columnCount.Display();
+    cout<<columnCount.get(3,3);
 
     return 0;
 }

@@ -1,23 +1,23 @@
 #include<iostream>
-int fact(int n)
+int fact(int itemCount)
 {
-    if(n<=1)
+    if(itemCount<=1)
         return 1;
     else 
-        return fact(n-1)*n;
+        return fact(itemCount-1)*itemCount;
 }
-int ncr(int n,int r)//ncr combination using factorial function
+int ncr(int itemCount,int rightIndex)//ncr combination using factorial function
 {
-    int num=fact(n);
-    int den=fact(r)*fact(n-r);
-    return num/den;
+    int recursionNcrNum=fact(itemCount);
+    int recursionNcrDen=fact(rightIndex)*fact(itemCount-rightIndex);
+    return recursionNcrNum/recursionNcrDen;
 }
 
-int pncr(int n,int r)//using pascal triangle
+int pncr(int itemCount,int rightIndex)//using pascal triangle
 {
-    if((n==1) || (n==r))
+    if((itemCount==1) || (itemCount==rightIndex))
         return 1;
-    return pncr(n-1,r-1)+pncr(n-1,r);
+    return pncr(itemCount-1,rightIndex-1)+pncr(itemCount-1,rightIndex);
 }
 int main()
 {

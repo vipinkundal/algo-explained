@@ -4,68 +4,68 @@ using namespace std;
 #include<queue>
 #include "Node.h"
 
-class createtree
+class binaryTreeCreatetree
 {
     public:
-    Node *p,*t;
-    int x;
-    queue<Node*> q;
-    createtree();
+    Node *currentNode,*swapValue;
+    int inputValue;
+    queue<Node*> nextNode;
+    binaryTreeCreatetree();
     void Levelorder();
     
 };
-void createtree::Levelorder()
+void binaryTreeCreatetree::Levelorder()
 {
-    queue<Node*> q;
-    Node *t=root;
-    q.emplace(t);
-    while(!q.empty())
+    queue<Node*> nextNode;
+    Node *swapValue=treeRoot;
+    nextNode.emplace(swapValue);
+    while(!nextNode.empty())
     {
-        t=q.front();
-        q.pop();
-        std::cout<<t->data<<" ";
-        if(t->lchild)
+        swapValue=nextNode.front();
+        nextNode.pop();
+        std::cout<<swapValue->nodeValue<<" ";
+        if(swapValue->binaryTreeLchild)
         {
-            q.emplace(t->lchild);
+            nextNode.emplace(swapValue->binaryTreeLchild);
         }
-        if(t->rchild)
+        if(swapValue->binaryTreeRchild)
         {
-            q.emplace(t->rchild);
+            nextNode.emplace(swapValue->binaryTreeRchild);
         }
         
     }
 
     
 }
-createtree::createtree()
+binaryTreeCreatetree::binaryTreeCreatetree()
 {   
         cout<<"Enter the root Node data  ";
-        cin>>root->data;
-        root->lchild=root->rchild=NULL;
-        q.emplace(root);
-        while(!q.empty())
+        cin>>treeRoot->nodeValue;
+        treeRoot->binaryTreeLchild=treeRoot->binaryTreeRchild=NULL;
+        nextNode.emplace(treeRoot);
+        while(!nextNode.empty())
         {
-            p=q.front();
-            q.pop();
-            cout<<"Enter the value of left child of "<<p->data<<" ";
-            cin>>x;
-            if(x!=-1)
+            currentNode=nextNode.front();
+            nextNode.pop();
+            cout<<"Enter the value of left child of "<<currentNode->nodeValue<<" ";
+            cin>>inputValue;
+            if(inputValue!=-1)
             {
-                t=new Node;
-                t->data=x;
-                t->lchild=t->rchild=nullptr;
-                p->lchild=t;
-                q.emplace(t);
+                swapValue=new Node;
+                swapValue->nodeValue=inputValue;
+                swapValue->binaryTreeLchild=swapValue->binaryTreeRchild=nullptr;
+                currentNode->binaryTreeLchild=swapValue;
+                nextNode.emplace(swapValue);
             }
-            cout<<"Enter the value of right child of  "<<p->data<<" ";
-            cin>>x;
-            if(x!=-1)
+            cout<<"Enter the value of right child of  "<<currentNode->nodeValue<<" ";
+            cin>>inputValue;
+            if(inputValue!=-1)
             {
-                t=new Node;
-                t->data=x;
-                t->lchild=t->rchild=nullptr;
-                p->rchild=t;
-                q.emplace(t);
+                swapValue=new Node;
+                swapValue->nodeValue=inputValue;
+                swapValue->binaryTreeLchild=swapValue->binaryTreeRchild=nullptr;
+                currentNode->binaryTreeRchild=swapValue;
+                nextNode.emplace(swapValue);
             }
 
         }
@@ -73,7 +73,7 @@ createtree::createtree()
 
 int main()
 {
-    createtree t;
-    t.Levelorder();
+    binaryTreeCreatetree swapValue;
+    swapValue.Levelorder();
     return 0;
 }

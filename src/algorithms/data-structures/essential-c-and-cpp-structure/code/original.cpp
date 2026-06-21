@@ -1,30 +1,30 @@
 #include<iostream>
 using namespace std;
-struct reportcard
+struct essentialCReportcard
 {
-    char name[20];
-    int roll;
-    int tot_marks;
+    char essentialCName[20];
+    int essentialCRoll;
+    int essentialCTotMarks;
 
 };
 
 int main()
 {
-    int i;
-    struct reportcard r[3];//declartion
-    for(i=0;i<3;i++)//initialization
+    int scanIndex;
+    struct essentialCReportcard rightIndex[3];//declartion
+    for(scanIndex=0;scanIndex<3;scanIndex++)//initialization
     {
         cout<<"Name ";
-        cin>>r[i].name;
+        cin>>rightIndex[scanIndex].essentialCName;
         cout<<"roll no ";
-        cin>>r[i].roll;
+        cin>>rightIndex[scanIndex].essentialCRoll;
         cout<<"Total Marks ";
-        cin>>r[i].tot_marks;
+        cin>>rightIndex[scanIndex].essentialCTotMarks;
         cout<<endl;
     }
-    for(i=0;i<3;i++)
+    for(scanIndex=0;scanIndex<3;scanIndex++)
     {
-        cout<<r[i].name<<" "<< r[i].roll << " "<< r[i].tot_marks << endl;
+        cout<<rightIndex[scanIndex].essentialCName<<" "<< rightIndex[scanIndex].essentialCRoll << " "<< rightIndex[scanIndex].essentialCTotMarks << endl;
     }
 
     return 0;

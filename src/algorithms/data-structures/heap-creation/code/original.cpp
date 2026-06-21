@@ -3,62 +3,62 @@
 #include<stdlib.h>
 using namespace std;
 
-void create_heap(int A[],int n)
+void create_heap(int firstItems[],int itemCount)
 {
-    int i,temp=A[n];
-    i=n;
-    while(i>1 && temp>A[i/2])
+    int scanIndex,temporaryValue=firstItems[itemCount];
+    scanIndex=itemCount;
+    while(scanIndex>1 && temporaryValue>firstItems[scanIndex/2])
     {
-        A[i]=A[i/2];
-        i=i/2;
+        firstItems[scanIndex]=firstItems[scanIndex/2];
+        scanIndex=scanIndex/2;
     }
-    A[i]=temp;
+    firstItems[scanIndex]=temporaryValue;
 }
 
-int delete_heap(int A[],int n)
+int delete_heap(int firstItems[],int itemCount)
 {
-    int i,temp,j;
-    int val=A[1];
-    A[1]=A[n];
-    i=1;
-    j=i*2;
-    while(j<=n-1)
+    int scanIndex,temporaryValue,writeIndex;
+    int heapCreationVal=firstItems[1];
+    firstItems[1]=firstItems[itemCount];
+    scanIndex=1;
+    writeIndex=scanIndex*2;
+    while(writeIndex<=itemCount-1)
     {
-        if(A[j+1]>A[j] && j+1<=n-1)//as it is possible that j=n i.e last element so it may cause 
-            j=j+1;                 //error so j+1 need to be less than or equal to last element
-        if(A[i]<A[j])
+        if(firstItems[writeIndex+1]>firstItems[writeIndex] && writeIndex+1<=itemCount-1)//as it is possible that j=n i.e last element so it may cause 
+            writeIndex=writeIndex+1;                 //error so j+1 need to be less than or equal to last element
+        if(firstItems[scanIndex]<firstItems[writeIndex])
         {
-            temp=A[i];
-            A[i]=A[j];
-            A[j]=temp;
-            i=j;
-            j=i*2;
+            temporaryValue=firstItems[scanIndex];
+            firstItems[scanIndex]=firstItems[writeIndex];
+            firstItems[writeIndex]=temporaryValue;
+            scanIndex=writeIndex;
+            writeIndex=scanIndex*2;
         }
         else break;
     }
-    A[n]=val;
-    return val;
+    firstItems[itemCount]=heapCreationVal;
+    return heapCreationVal;
 
 
 }
 int main()
 {
-    int A[]={0,10,20,30,25,5,40,35};
-    create_heap(A,1);
-    create_heap(A,2);
-    create_heap(A,3);
-    create_heap(A,4);
-    create_heap(A,5);
-    create_heap(A,6);
-    create_heap(A,7);
-    delete_heap(A,6);
-    delete_heap(A,5);
-    delete_heap(A,4);
-    delete_heap(A,3);
-    delete_heap(A,2);
-    delete_heap(A,1);
-    for(int num:A)
-        cout<<num<<" ";
+    int firstItems[]={0,10,20,30,25,5,40,35};
+    create_heap(firstItems,1);
+    create_heap(firstItems,2);
+    create_heap(firstItems,3);
+    create_heap(firstItems,4);
+    create_heap(firstItems,5);
+    create_heap(firstItems,6);
+    create_heap(firstItems,7);
+    delete_heap(firstItems,6);
+    delete_heap(firstItems,5);
+    delete_heap(firstItems,4);
+    delete_heap(firstItems,3);
+    delete_heap(firstItems,2);
+    delete_heap(firstItems,1);
+    for(int heapCreationNum:firstItems)
+        cout<<heapCreationNum<<" ";
     return 0;
 }
 

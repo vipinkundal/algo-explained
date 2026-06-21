@@ -1,21 +1,21 @@
 #include<iostream>
 using namespace std;
 void fun2(int);
-void fun1(int n)
+void fun1(int itemCount)
 {
-    if(n>0)
+    if(itemCount>0)
     {
-        cout<<n<<" ";
-        fun2(n-1);
+        cout<<itemCount<<" ";
+        fun2(itemCount-1);
     }
     
 }
-void fun2(int n)
+void fun2(int itemCount)
 {
-    if(n>0)
+    if(itemCount>0)
     {
-        cout<<n<<" ";
-        fun1(n/2);
+        cout<<itemCount<<" ";
+        fun1(itemCount/2);
     }
 }
 int main()

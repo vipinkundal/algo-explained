@@ -1,17 +1,17 @@
 #include<iostream>
 using namespace std;
-int fun(int n)
+int fun(int itemCount)
 {
-    if(n>100)
-        return n-10;
+    if(itemCount>100)
+        return itemCount-10;
     else 
-        return fun(fun(n+11));
+        return fun(fun(itemCount+11));
 }
 
 int main()
 {
 
-    int i=fun(97);
-    cout<<i;
+    int scanIndex=fun(97);
+    cout<<scanIndex;
     return 0;
 }

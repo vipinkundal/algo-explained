@@ -2,15 +2,15 @@
 using namespace std;
 struct Array
 {
-    int A[100];
-    int size;
-    int length;
+    int firstItems2[100];
+    int itemCapacity;
+    int textLength;
 };
-void Display(struct Array arr)
+void Display(struct Array items)
 {
-    for(int i=0;i<arr.length;i++)
+    for(int scanIndex=0;scanIndex<items.textLength;scanIndex++)
     {
-        std::cout<<arr.A[i]<<" ";
+        std::cout<<items.firstItems2[scanIndex]<<" ";
     }
 }
 int main()
@@ -40,21 +40,21 @@ int main()
     // }
 
     //for sorted array
-    Array a1={{1,2,3,4,6,8,9,12,14,17},100,10};
-    int k=10;
-    int i=0,j=a1.length-1;
-    while(i<j)
+    Array firstItems={{1,2,3,4,6,8,9,12,14,17},100,10};
+    int probeIndex=10;
+    int scanIndex=0,writeIndex=firstItems.textLength-1;
+    while(scanIndex<writeIndex)
     {
-        if(a1.A[i]+a1.A[j]==k)
+        if(firstItems.firstItems2[scanIndex]+firstItems.firstItems2[writeIndex]==probeIndex)
         {
-            cout<<a1.A[i]<<" and "<<a1.A[j]<<" is "<<k<<endl;
-            i++;
-            j++;
+            cout<<firstItems.firstItems2[scanIndex]<<" and "<<firstItems.firstItems2[writeIndex]<<" is "<<probeIndex<<endl;
+            scanIndex++;
+            writeIndex++;
         }
-        else if(a1.A[i]+a1.A[j]<k)
-            i++;
+        else if(firstItems.firstItems2[scanIndex]+firstItems.firstItems2[writeIndex]<probeIndex)
+            scanIndex++;
         else
-            j--;
+            writeIndex--;
     }
 
 

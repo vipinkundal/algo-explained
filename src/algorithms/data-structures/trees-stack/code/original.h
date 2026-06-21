@@ -1,68 +1,68 @@
 
 struct Stack{
-    int size;
-    int top;
-    long int *S;
+    int itemCapacity;
+    int stackTop;
+    long int *stackStorage;
 };
 
-void create(Stack *st)
+void create(Stack *treesStackSt)
 {
     cout<<"Enter the size of stack : ";
-    cin>>st->size;
-    st->top=-1;
-    st->S=new long int[st->size];
+    cin>>treesStackSt->itemCapacity;
+    treesStackSt->stackTop=-1;
+    treesStackSt->stackStorage=new long int[treesStackSt->itemCapacity];
 }
 
 
 
-void push(Stack *st,long int x)
+void push(Stack *treesStackSt,long int inputValue)
 {
-    if(st->size-st->top==1)
+    if(treesStackSt->itemCapacity-treesStackSt->stackTop==1)
     {
         cout<<"stack is overflow\n";
     }
     else{
-        st->top++;
-        st->S[st->top]=x;
+        treesStackSt->stackTop++;
+        treesStackSt->stackStorage[treesStackSt->stackTop]=inputValue;
     }
 }
 
-long int pop(Stack *st)
+long int pop(Stack *treesStackSt)
 {
-    long int x=-1;
-    if(st->top==-1)
+    long int inputValue=-1;
+    if(treesStackSt->stackTop==-1)
     {
         cout<<"Stack is underflow\n";
     }
     else{
-        x=st->S[st->top];
-        st->top--;
+        inputValue=treesStackSt->stackStorage[treesStackSt->stackTop];
+        treesStackSt->stackTop--;
     }
-    return x;
+    return inputValue;
 }
 
 
 
-long int StackTop(Stack st)
+long int StackTop(Stack treesStackSt)
 {
-    long int x=-1;
-    if(st.top!=-1){
-        x=st.S[st.top];
+    long int inputValue=-1;
+    if(treesStackSt.stackTop!=-1){
+        inputValue=treesStackSt.stackStorage[treesStackSt.stackTop];
     }
-    return x;
+    return inputValue;
 }
 
-int isEmpty(Stack st)
+int isEmpty(Stack treesStackSt)
 {
-    if(st.top==-1)
+    if(treesStackSt.stackTop==-1)
         return 1;
     else
         return 0;
 }
 
-int isFull(Stack st)
+int isFull(Stack treesStackSt)
 {
-    if(st.size-st.top==1)
+    if(treesStackSt.itemCapacity-treesStackSt.stackTop==1)
         return 1;
     else
         return 0;
