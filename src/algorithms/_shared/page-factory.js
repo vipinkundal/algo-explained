@@ -1,4 +1,6 @@
-﻿const CODE_RUN_TIMEOUT_MS = 2000;
+import { createDynamicVisualization, formatVisualizerInput } from "./dynamic-animation-engine.js";
+
+const CODE_RUN_TIMEOUT_MS = 2000;
 
 const RUNNER_WORKER_SOURCE = `
 function formatValue(value) {
@@ -212,6 +214,10 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     codeOutputKind: "idle",
     selectedAnswer: "",
     step: 0,
+    visualizerInputDraft: formatVisualizerInput(algorithmPage.runnerInput || []),
+    visualizerInputText: formatVisualizerInput(algorithmPage.runnerInput || []),
+    dynamicVisualization: null,
+    dynamicVisualizationKey: "",
   };
 
   function render(view) {
@@ -246,6 +252,14 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       codeEditor.addEventListener("input", () => {
         state.codeSource = codeEditor.value;
         state.codeDirty = true;
+        state.dynamicVisualizationKey = "";
+      });
+    }
+
+    const visualizerInput = root.querySelector("[data-visualizer-input]");
+    if (visualizerInput) {
+      visualizerInput.addEventListener("input", () => {
+        state.visualizerInputDraft = visualizerInput.value;
       });
     }
   }
@@ -320,6 +334,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             <p>${escapeHtml(algorithmPage.transitionSummary || getTransitionSummary(current))}</p>
           </article>
         </div>
+        ${renderVisualizerInputPanel()}
         ${renderDryRunStage(current)}
         <div class="control-deck" aria-label="${escapeHtml(t("algorithmPage.visualizerControls"))}">
           <button data-action="prev" aria-label="${escapeHtml(t("algorithmPage.previousStep"))}">${icon("skip_previous")}</button>
@@ -341,15 +356,16 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
 
   function getStepCount() {
     const dryRunCount = Array.isArray(algorithmPage.dryRun) ? algorithmPage.dryRun.length : 0;
-    const animationStepCount = Array.isArray(algorithmPage.animation?.steps) ? algorithmPage.animation.steps.length : 0;
-    const stackItemCount = algorithmPage.animation?.type === "stack-queue-flow" && Array.isArray(algorithmPage.animation.items)
-      ? algorithmPage.animation.items.length
+    const animation = getEffectiveAnimation();
+    const animationStepCount = Array.isArray(animation.steps) ? animation.steps.length : 0;
+    const stackItemCount = animation.type === "stack-queue-flow" && Array.isArray(animation.items)
+      ? animation.items.length
       : 0;
     return Math.max(dryRunCount, animationStepCount, stackItemCount, 1);
   }
 
   function getAnimationStep(stepIndex = state.step) {
-    const animation = algorithmPage.animation || {};
+    const animation = getEffectiveAnimation();
     const existingStep = animation.steps?.[stepIndex];
     if (existingStep) return existingStep;
     if (animation.type === "stack-queue-flow" && Array.isArray(animation.items) && stepIndex < animation.items.length) {
@@ -368,9 +384,19 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   }
 
   function getCurrentStep() {
-    const dryRunStep = algorithmPage.dryRun[state.step];
-    if (dryRunStep) return dryRunStep;
     const animationStep = getAnimationStep(state.step);
+    const dryRunSteps = Array.isArray(algorithmPage.dryRun) ? algorithmPage.dryRun : [];
+    const dryRunStep = dryRunSteps[state.step] || dryRunSteps[state.step % Math.max(dryRunSteps.length, 1)];
+    if (dryRunStep || animationStep.title || animationStep.phase) {
+      return {
+        ...(dryRunStep || {}),
+        label: animationStep.phase || dryRunStep?.label || `Step ${state.step + 1}`,
+        title: animationStep.title || dryRunStep?.title || `Step ${state.step + 1}`,
+        note: animationStep.note || dryRunStep?.note || animationStep.rule || algorithmPage.transitionSummary || "",
+        activeLine: dryRunStep?.activeLine || algorithmPage.dryRun?.at(-1)?.activeLine || 1,
+        codeInsight: animationStep.rule || dryRunStep?.codeInsight || algorithmPage.codeInsight,
+      };
+    }
     return {
       label: animationStep.phase || `Step ${state.step + 1}`,
       title: animationStep.title || `Step ${state.step + 1}`,
@@ -399,14 +425,70 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     `;
   }
 
+  function renderVisualizerInputPanel() {
+    const dynamic = getDynamicVisualization();
+    const status = dynamic?.message || "Using the page sample input.";
+    const preview = JSON.stringify(getEffectiveRunInput(), null, 2);
+
+    return `
+      <section class="visualizer-input-panel" aria-label="Dynamic visualizer input">
+        <div>
+          <label for="visualizer-input-${escapeHtml(algorithmPage.id)}">Input text</label>
+          <textarea id="visualizer-input-${escapeHtml(algorithmPage.id)}" data-visualizer-input rows="4" spellcheck="false">${escapeHtml(state.visualizerInputDraft)}</textarea>
+        </div>
+        <aside>
+          <strong>Dynamic trace</strong>
+          <p>${escapeHtml(status)}</p>
+          <pre>${escapeHtml(preview)}</pre>
+          <div>
+            <button type="button" data-action="apply-input">${icon("auto_fix_high")} Apply input</button>
+            <button type="button" data-action="reset-input">${icon("restart_alt")} Sample</button>
+          </div>
+        </aside>
+      </section>
+    `;
+  }
+
+  function getDynamicVisualization() {
+    const key = JSON.stringify({
+      id: algorithmPage.id,
+      input: state.visualizerInputText,
+      code: state.codeSource,
+      sample: algorithmPage.runnerInput || [],
+    });
+    if (state.dynamicVisualization && state.dynamicVisualizationKey === key) return state.dynamicVisualization;
+
+    state.dynamicVisualization = createDynamicVisualization(algorithmPage, getCodeSource(), state.visualizerInputText);
+    state.dynamicVisualizationKey = key;
+    const stepCount = getStepCountFromAnimation(state.dynamicVisualization.animation);
+    if (state.step >= stepCount) state.step = 0;
+    return state.dynamicVisualization;
+  }
+
+  function getEffectiveAnimation() {
+    return getDynamicVisualization()?.animation || algorithmPage.animation || {};
+  }
+
+  function getEffectiveRunInput() {
+    return getDynamicVisualization()?.runInput || algorithmPage.runnerInput || [];
+  }
+
+  function getStepCountFromAnimation(animation = {}) {
+    const dryRunCount = Array.isArray(algorithmPage.dryRun) ? algorithmPage.dryRun.length : 0;
+    const animationStepCount = Array.isArray(animation.steps) ? animation.steps.length : 0;
+    const stackItemCount = animation.type === "stack-queue-flow" && Array.isArray(animation.items) ? animation.items.length : 0;
+    return Math.max(dryRunCount, animationStepCount, stackItemCount, 1);
+  }
+
   function renderDryRunStage(current) {
-    if (algorithmPage.animation?.type === "edge-relaxation") {
+    const animation = getEffectiveAnimation();
+    if (animation.type === "edge-relaxation") {
       return renderEdgeRelaxationStage(current);
     }
-    if (algorithmPage.animation?.type === "tree-operation") {
+    if (animation.type === "tree-operation") {
       return renderTreeOperationStage(current);
     }
-    if (algorithmPage.animation?.type) {
+    if (animation.type) {
       return renderStructuredAnimationStage(current);
     }
 
@@ -414,7 +496,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   }
 
   function renderEdgeRelaxationStage(current) {
-    const animation = algorithmPage.animation || {};
+    const animation = getEffectiveAnimation();
     const animationStep = getAnimationStep(state.step);
     const nodes = Array.isArray(animation.nodes) ? animation.nodes : [];
     const edges = Array.isArray(animation.edges) ? animation.edges : [];
@@ -489,7 +571,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   }
 
   function renderTreeOperationStage(current) {
-    const animation = algorithmPage.animation || {};
+    const animation = getEffectiveAnimation();
     const animationStep = getAnimationStep(state.step);
     const nodes = Array.isArray(animation.nodes) ? animation.nodes : [];
     const edges = Array.isArray(animation.edges) ? animation.edges : [];
@@ -607,7 +689,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   }
 
   function renderStructuredAnimationStage(current) {
-    const animation = algorithmPage.animation || {};
+    const animation = getEffectiveAnimation();
     const animationStep = getAnimationStep(state.step);
     const activeLine = getActiveLine(current);
 
@@ -1130,6 +1212,22 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       await runCode();
       return;
     }
+    if (action === "apply-input") {
+      state.visualizerInputText = state.visualizerInputDraft;
+      state.dynamicVisualizationKey = "";
+      state.step = 0;
+      requestRender();
+      return;
+    }
+    if (action === "reset-input") {
+      const sampleInput = formatVisualizerInput(algorithmPage.runnerInput || []);
+      state.visualizerInputDraft = sampleInput;
+      state.visualizerInputText = sampleInput;
+      state.dynamicVisualizationKey = "";
+      state.step = 0;
+      requestRender();
+      return;
+    }
     const stepCount = getStepCount();
     if (action === "prev") state.step = (state.step - 1 + stepCount) % stepCount;
     if (action === "next") state.step = (state.step + 1) % stepCount;
@@ -1183,7 +1281,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       });
       worker.postMessage({
         source,
-        runInput: algorithmPage.runnerInput || [],
+        runInput: getEffectiveRunInput(),
       });
     });
   }
