@@ -1,20 +1,29 @@
-// REFERENCE ALGORITHM SOLUTION
 // Manacher’s Algorithm
 // Route: /algorithms/strings/manachers-algorithm
 
 export function manachersAlgorithm(text) {
-  let best = "";
-  function expand(left, right) {
-    while (left >= 0 && right < text.length && text[left] === text[right]) {
-      left -= 1;
-      right += 1;
+  if (text.length === 0) return "";
+  const transformed = "^#" + text.split("").join("#") + "#$";
+  const radius = Array(transformed.length).fill(0);
+  let center = 0;
+  let right = 0;
+  let bestCenter = 0;
+  let bestRadius = 0;
+
+  for (let index = 1; index < transformed.length - 1; index += 1) {
+    const mirror = 2 * center - index;
+    if (index < right) radius[index] = Math.min(right - index, radius[mirror]);
+    while (transformed[index + radius[index] + 1] === transformed[index - radius[index] - 1]) radius[index] += 1;
+    if (index + radius[index] > right) {
+      center = index;
+      right = index + radius[index];
     }
-    const current = text.slice(left + 1, right);
-    if (current.length > best.length) best = current;
+    if (radius[index] > bestRadius) {
+      bestRadius = radius[index];
+      bestCenter = index;
+    }
   }
-  for (let index = 0; index < text.length; index += 1) {
-    expand(index, index);
-    expand(index, index + 1);
-  }
-  return best;
+
+  const start = Math.floor((bestCenter - bestRadius) / 2);
+  return text.slice(start, start + bestRadius);
 }

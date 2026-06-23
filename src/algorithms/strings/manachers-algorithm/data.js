@@ -12,107 +12,107 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/manachers-algorithm/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Manacher’s Algorithm is a Strings technique focused on matches or string result.",
-  "problem": "Manacher’s Algorithm turns character comparisons into reusable state so the string is not rechecked from scratch.",
-  "concept": "String algorithms are useful when character order, frequency, prefix, hash, or palindrome structure can be reused. Use this when scanning every substring directly would repeat character work.",
-  "logicSummary": "Prepare helper state, scan characters, update the pattern state, and record matches or the best string result.",
-  "transitionSummary": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-  "codeInsight": "String algorithms are safest when index movement is explicit and every mismatch has a defined fallback.",
-  "realLifeExample": "Manacher’s Algorithm appears when the input is text and pattern and the required result is matches or string result.",
-  "whenToUse": "Use Manacher’s Algorithm when a problem matches the Strings pattern and the expected state changes match a palindrome radius dry run.",
-  "memoryTrick": "Manacher’s Algorithm: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Manacher’s Algorithm is shown as character-state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Manacher’s Algorithm is taught with its own string state, transition, code trace, and stopping rule.",
+  "problem": "Find the longest palindromic substring in linear time by reusing palindrome radii.",
+  "concept": "Manacher transforms the text with separators, tracks the current rightmost palindrome, and mirrors radius information around its center.",
+  "logicSummary": "Transform text, keep center/right boundaries, initialize each radius from its mirror when possible, expand, and update the best radius.",
+  "transitionSummary": "If an index is inside the current palindrome, start with the mirrored bounded radius; then expand and update center/right if the palindrome grows farther.",
+  "codeInsight": "The transformed string makes odd and even palindromes use the same radius rule.",
+  "realLifeExample": "Use it when longest-palindrome queries must be linear rather than center-expansion O(n^2).",
+  "whenToUse": "Use Manacher’s Algorithm for longest palindromic substring when input size makes O(n^2) too slow.",
+  "memoryTrick": "Mirror the radius, then expand only beyond known territory.",
+  "visualizerCaption": "The trace shows transformed-string centers, mirrored radius reuse, expansion, and best extraction.",
   "logicSteps": [
     {
-      "title": "Read text",
-      "text": "Identify text, pattern, or character rule."
+      "title": "Transform text",
+      "text": "Insert separators so every palindrome has one center."
     },
     {
-      "title": "Prepare state",
-      "text": "Build frequency, prefix, hash, trie, or radius state."
+      "title": "Reuse mirror",
+      "text": "Inside the right boundary, copy the bounded mirror radius."
     },
     {
-      "title": "Scan character",
-      "text": "Consume the next character and update state."
+      "title": "Expand center",
+      "text": "Compare characters outside the known radius."
     },
     {
-      "title": "Return match",
-      "text": "Return matches, validity, or the best substring result."
+      "title": "Extract best",
+      "text": "Convert transformed center/radius back to original substring."
     }
   ],
   "variables": [
     {
-      "name": "text, pattern",
-      "purpose": "text: The string data used for character comparisons, matching, or dynamic programming states. pattern: The string data used for character comparisons, matching, or dynamic programming states."
+      "name": "transformed",
+      "purpose": "Separator-based string such as ^#b#a#b#a#d#$."
     },
     {
-      "name": "indices and match state",
-      "purpose": "Pointers, prefix/hash values, or windows that decide how characters match. This page visualizes it as palindrome radius."
+      "name": "radius",
+      "purpose": "Palindrome radius at each transformed index."
     },
     {
-      "name": "match result",
-      "purpose": "The value produced by manachersAlgorithm after the maintained state reaches the stop rule."
+      "name": "center, right",
+      "purpose": "Rightmost known palindrome boundary."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state. Stop when no valid work remains or the answer is known."
+      "name": "bestCenter, bestRadius",
+      "purpose": "Largest palindrome seen."
     }
   ],
   "dryRun": [
     {
-      "label": "Text",
-      "title": "Read string input",
-      "note": "The code receives text, pattern, or character data.",
-      "activeLine": 5,
-      "codeInsight": "Defines manachersAlgorithm and names the input text; edits to those inputs change the visual state and output."
+      "label": "Transform",
+      "title": "Build #b#a#b#a#d#",
+      "note": "Separators make odd and even palindromes uniform.",
+      "activeLine": 2,
+      "codeInsight": "The sentinels avoid boundary checks during expansion."
     },
     {
-      "label": "Helper",
-      "title": "Prepare string state",
-      "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-      "activeLine": 12,
-      "codeInsight": "Stores current so the algorithm can reuse this value without recomputing it."
-    },
-    {
-      "label": "Character",
-      "title": "Update on current char",
-      "note": "One character changes the active string state.",
+      "label": "Mirror",
+      "title": "Use mirrored radius",
+      "note": "An index inside right can start from its mirror's known radius.",
       "activeLine": 8,
-      "codeInsight": "Repeats while left >= 0 && right < text.length && text[left] === text[right] is true, so the algorithm keeps resolving current work before moving on."
+      "codeInsight": "Mirror reuse is the linear-time shortcut."
     },
     {
-      "label": "Result",
-      "title": "Return string answer",
-      "note": "Matches or best values are returned after the scan.",
+      "label": "Expand",
+      "title": "Grow around center a",
+      "note": "The radius expands while transformed characters match.",
+      "activeLine": 9,
+      "codeInsight": "Only comparisons beyond the known radius are new work."
+    },
+    {
+      "label": "Best",
+      "title": "Extract bab",
+      "note": "The best transformed radius maps back to substring bab.",
       "activeLine": 19,
-      "codeInsight": "Returns best, the final value maintained by Manacher’s Algorithm's code path."
+      "codeInsight": "The final start index converts transformed coordinates to original text."
     }
   ],
   "complexity": {
-    "time": "O(n + m) for the usual text/pattern model.",
-    "space": "O(n + m) for preprocessing or result state."
+    "time": "O(n).",
+    "space": "O(n) for transformed string and radius array."
   },
   "quiz": {
-    "question": "Which state choice keeps Manacher’s Algorithm correct?",
+    "question": "Which state keeps Manacher’s Algorithm correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and prefix/hash state and update it only through Manacher’s Algorithm's transition.",
+        "text": "Track transformed indices, mirror radius, center/right boundary, and best radius.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another string algorithm's state names without matching its invariant.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Manacher’s Algorithm stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Manacher’s Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Manacher’s Algorithm works because the page state follows that exact string invariant.",
+    "incorrectText": "Not quite. Manacher’s Algorithm needs its own string state and stop condition."
   },
   "categorySlug": "strings",
   "algorithmSlug": "manachers-algorithm",
@@ -121,61 +121,65 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "string-flow",
-    "title": "Manacher’s Algorithm character scan",
+    "static": true,
+    "title": "Manacher’s Algorithm trace",
     "ruleLabel": "String invariant",
-    "rule": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-    "text": "babad",
-    "pattern": "bab",
+    "rule": "If an index is inside the current palindrome, start with the mirrored bounded radius; then expand and update center/right if the palindrome grows farther.",
+    "text": "#b#a#b#a#d#",
+    "pattern": "radius",
     "steps": [
       {
-        "phase": "Text",
-        "title": "Read string input",
-        "note": "The code receives text, pattern, or character data.",
-        "ruleLabel": "Manacher’s Algorithm invariant",
-        "rule": "Defines manachersAlgorithm and names the input text; edits to those inputs change the visual state and output.",
+        "phase": "transform",
+        "title": "Insert separators",
+        "note": "Every palindrome becomes centered on one index.",
+        "ruleLabel": "String invariant",
+        "rule": "If an index is inside the current palindrome, start with the mirrored bounded radius; then expand and update center/right if the palindrome grows farther.",
         "activeRange": [
           0,
-          2
+          10
         ],
         "matchedRange": []
       },
       {
-        "phase": "Helper",
-        "title": "Prepare string state",
-        "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-        "ruleLabel": "Manacher’s Algorithm invariant",
-        "rule": "Stores current so the algorithm can reuse this value without recomputing it.",
-        "activeRange": [
-          1,
-          3
-        ],
-        "matchedRange": []
-      },
-      {
-        "phase": "Character",
-        "title": "Update on current char",
-        "note": "One character changes the active string state.",
-        "ruleLabel": "Manacher’s Algorithm invariant",
-        "rule": "Repeats while left >= 0 && right < text.length && text[left] === text[right] is true, so the algorithm keeps resolving current work before moving on.",
+        "phase": "mirror",
+        "title": "Reuse mirror radius",
+        "note": "Inside the right boundary, start from a mirrored value.",
+        "ruleLabel": "String invariant",
+        "rule": "If an index is inside the current palindrome, start with the mirrored bounded radius; then expand and update center/right if the palindrome grows farther.",
         "activeRange": [
           2,
-          4
+          6
         ],
         "matchedRange": []
       },
       {
-        "phase": "Result",
-        "title": "Return string answer",
-        "note": "Matches or best values are returned after the scan.",
-        "ruleLabel": "Manacher’s Algorithm invariant",
-        "rule": "Returns best, the final value maintained by Manacher’s Algorithm's code path.",
+        "phase": "expand",
+        "title": "Expand around center",
+        "note": "The radius covers #b#a#b#.",
+        "ruleLabel": "String invariant",
+        "rule": "If an index is inside the current palindrome, start with the mirrored bounded radius; then expand and update center/right if the palindrome grows farther.",
         "activeRange": [
-          3,
-          4
+          0,
+          6
         ],
         "matchedRange": [
-          0,
-          2
+          1,
+          5
+        ]
+      },
+      {
+        "phase": "best bab",
+        "title": "Return longest original substring",
+        "note": "The best radius maps to bab.",
+        "ruleLabel": "String invariant",
+        "rule": "If an index is inside the current palindrome, start with the mirrored bounded radius; then expand and update center/right if the palindrome grows farther.",
+        "activeRange": [
+          1,
+          5
+        ],
+        "matchedRange": [
+          1,
+          5
         ]
       }
     ]

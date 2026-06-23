@@ -12,171 +12,172 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/kmp/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "KMP Algorithm is a Strings technique focused on matches or string result.",
-  "problem": "KMP Algorithm turns character comparisons into reusable state so the string is not rechecked from scratch.",
-  "concept": "String algorithms are useful when character order, frequency, prefix, hash, or palindrome structure can be reused. Use this when scanning every substring directly would repeat character work.",
-  "logicSummary": "Prepare helper state, scan characters, update the pattern state, and record matches or the best string result.",
-  "transitionSummary": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-  "codeInsight": "String algorithms are safest when index movement is explicit and every mismatch has a defined fallback.",
-  "realLifeExample": "KMP Algorithm appears when the input is text and pattern and the required result is matches or string result.",
-  "whenToUse": "Use KMP Algorithm when a problem matches the Strings pattern and the expected state changes match a prefix table dry run.",
-  "memoryTrick": "KMP Algorithm: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "KMP Algorithm is shown as character-state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "KMP Algorithm is taught with its own string state, transition, code trace, and stopping rule.",
+  "problem": "Find every occurrence of a pattern in text without rechecking characters that the prefix table already explains.",
+  "concept": "KMP preprocesses the pattern into an LPS table. On mismatch, the pattern index falls back to the longest proper prefix that is also a suffix.",
+  "logicSummary": "Build the LPS table for the pattern, scan text with indices i and j, and use LPS fallback instead of moving i backward.",
+  "transitionSummary": "A character match advances i and j; a mismatch with j > 0 sets j = lps[j - 1]; a mismatch at j = 0 advances i.",
+  "codeInsight": "The text index never moves backward. All reused work is encoded in the pattern's LPS fallback table.",
+  "realLifeExample": "Use KMP for search boxes, command matching, DNA motif search, or any exact substring search that must avoid repeated scans.",
+  "whenToUse": "Use KMP when many repeated prefixes in the pattern make naive backtracking expensive.",
+  "memoryTrick": "KMP keeps text moving and lets the pattern jump.",
+  "visualizerCaption": "The trace shows LPS construction and the text scan using fallback jumps.",
   "logicSteps": [
     {
-      "title": "Read text",
-      "text": "Identify text, pattern, or character rule."
+      "title": "Build LPS table",
+      "text": "For each pattern index, store the longest reusable prefix length."
     },
     {
-      "title": "Prepare state",
-      "text": "Build frequency, prefix, hash, trie, or radius state."
+      "title": "Compare text and pattern",
+      "text": "Move i and j while characters match."
     },
     {
-      "title": "Scan character",
-      "text": "Consume the next character and update state."
+      "title": "Fallback on mismatch",
+      "text": "Use lps[j - 1] so the text index does not rewind."
     },
     {
-      "title": "Return match",
-      "text": "Return matches, validity, or the best substring result."
+      "title": "Record match",
+      "text": "When j reaches pattern length, save i - j and fallback again for overlaps."
     }
   ],
   "variables": [
     {
       "name": "text, pattern",
-      "purpose": "text: The string data used for character comparisons, matching, or dynamic programming states. pattern: The string data used for character comparisons, matching, or dynamic programming states."
+      "purpose": "The search text and exact pattern to locate."
     },
     {
-      "name": "indices and match state",
-      "purpose": "Pointers, prefix/hash values, or windows that decide how characters match. This page visualizes it as prefix table."
+      "name": "lps",
+      "purpose": "Pattern fallback table for matched prefix lengths."
     },
     {
-      "name": "match result",
-      "purpose": "The value produced by kmp after the maintained state reaches the stop rule."
+      "name": "i, j",
+      "purpose": "Text index and pattern index during scan."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state. Stop when no valid work remains or the answer is known."
+      "name": "matches",
+      "purpose": "Starting indices where the full pattern is found."
     }
   ],
   "dryRun": [
     {
-      "label": "Text",
-      "title": "Read string input",
-      "note": "The code receives text, pattern, or character data.",
-      "activeLine": 5,
-      "codeInsight": "Defines kmp and names the input text, pattern; edits to those inputs change the visual state and output."
+      "label": "LPS",
+      "title": "Build fallback table for ababc",
+      "note": "The prefix ab reappears before the final c, so lps ends as [0,0,1,2,0].",
+      "activeLine": 2,
+      "codeInsight": "The preprocessing loop updates only pattern state."
     },
     {
-      "label": "Helper",
-      "title": "Prepare string state",
-      "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-      "activeLine": 6,
-      "codeInsight": "Stores lps from the current length, making the loop boundary explicit for the visual trace."
+      "label": "Scan",
+      "title": "Match abab in text",
+      "note": "i and j advance together while text characters match the pattern prefix.",
+      "activeLine": 12,
+      "codeInsight": "Text progress is never undone."
     },
     {
-      "label": "Character",
-      "title": "Update on current char",
-      "note": "One character changes the active string state.",
-      "activeLine": 7,
-      "codeInsight": "Runs the counted loop (let index = 1, length = 0; index < pattern.length;) so each visual step follows one code-controlled iteration."
+      "label": "Fallback",
+      "title": "Mismatch at c",
+      "note": "j falls from 4 to lps[3] = 2 instead of restarting from zero.",
+      "activeLine": 19,
+      "codeInsight": "The fallback reuses the already-matched suffix."
     },
     {
-      "label": "Result",
-      "title": "Return string answer",
-      "note": "Matches or best values are returned after the scan.",
-      "activeLine": 24,
-      "codeInsight": "Returns matches, the final value maintained by KMP Algorithm's code path."
+      "label": "Match",
+      "title": "Record index 0",
+      "note": "When j reaches pattern length, i - j is the full match start.",
+      "activeLine": 16,
+      "codeInsight": "After recording, KMP falls back again so the scan can find the later match at index 5."
     }
   ],
   "complexity": {
-    "time": "O(n + m) for the usual text/pattern model.",
-    "space": "O(n + m) for preprocessing or result state."
+    "time": "O(n + m), where n is text length and m is pattern length.",
+    "space": "O(m) for the LPS table."
   },
   "quiz": {
-    "question": "Which state choice keeps KMP Algorithm correct?",
+    "question": "Which state keeps KMP Algorithm correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and prefix/hash state and update it only through KMP Algorithm's transition.",
+        "text": "Track the LPS table plus text/pattern indices, and use LPS for every mismatch fallback.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another string algorithm's state names without matching its invariant.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
         "correct": false
       }
     ],
-    "correctText": "Correct. KMP Algorithm stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. KMP Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. KMP Algorithm works because the page state follows that exact string invariant.",
+    "incorrectText": "Not quite. KMP Algorithm needs its own string state and stop condition."
   },
   "categorySlug": "strings",
   "algorithmSlug": "kmp",
   "runnerInput": [
-    "abracadabra",
-    "abra"
+    "ababcababc",
+    "ababc"
   ],
   "animation": {
     "type": "string-flow",
-    "title": "KMP Algorithm character scan",
+    "static": true,
+    "title": "KMP Algorithm trace",
     "ruleLabel": "String invariant",
-    "rule": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-    "text": "abracadabra",
-    "pattern": "abra",
+    "rule": "A character match advances i and j; a mismatch with j > 0 sets j = lps[j - 1]; a mismatch at j = 0 advances i.",
+    "text": "ababcababc",
+    "pattern": "ababc",
     "steps": [
       {
-        "phase": "Text",
-        "title": "Read string input",
-        "note": "The code receives text, pattern, or character data.",
-        "ruleLabel": "KMP Algorithm invariant",
-        "rule": "Defines kmp and names the input text, pattern; edits to those inputs change the visual state and output.",
+        "phase": "LPS build",
+        "title": "Create [0,0,1,2,0]",
+        "note": "The pattern remembers reusable prefix lengths.",
+        "ruleLabel": "String invariant",
+        "rule": "lps[index] stores how much of the pattern can survive a mismatch.",
         "activeRange": [
           0,
-          3
-        ],
-        "matchedRange": []
-      },
-      {
-        "phase": "Helper",
-        "title": "Prepare string state",
-        "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-        "ruleLabel": "KMP Algorithm invariant",
-        "rule": "Stores lps from the current length, making the loop boundary explicit for the visual trace.",
-        "activeRange": [
-          1,
           4
         ],
         "matchedRange": []
       },
       {
-        "phase": "Character",
-        "title": "Update on current char",
-        "note": "One character changes the active string state.",
-        "ruleLabel": "KMP Algorithm invariant",
-        "rule": "Runs the counted loop (let index = 1, length = 0; index < pattern.length;) so each visual step follows one code-controlled iteration.",
+        "phase": "scan i=0..3",
+        "title": "Match abab",
+        "note": "Text and pattern move together during successful comparisons.",
+        "ruleLabel": "String invariant",
+        "rule": "A character match advances i and j; a mismatch with j > 0 sets j = lps[j - 1]; a mismatch at j = 0 advances i.",
         "activeRange": [
-          2,
-          5
+          0,
+          3
         ],
         "matchedRange": []
       },
       {
-        "phase": "Result",
-        "title": "Return string answer",
-        "note": "Matches or best values are returned after the scan.",
-        "ruleLabel": "KMP Algorithm invariant",
-        "rule": "Returns matches, the final value maintained by KMP Algorithm's code path.",
+        "phase": "fallback",
+        "title": "Mismatch uses lps[3]",
+        "note": "The pattern index jumps to 2; the text index stays in place.",
+        "ruleLabel": "String invariant",
+        "rule": "A character match advances i and j; a mismatch with j > 0 sets j = lps[j - 1]; a mismatch at j = 0 advances i.",
         "activeRange": [
-          3,
-          6
+          2,
+          4
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "match at 0",
+        "title": "Full pattern found",
+        "note": "The window from 0 through 4 equals ababc.",
+        "ruleLabel": "String invariant",
+        "rule": "A character match advances i and j; a mismatch with j > 0 sets j = lps[j - 1]; a mismatch at j = 0 advances i.",
+        "activeRange": [
+          0,
+          4
         ],
         "matchedRange": [
           0,
-          3
+          4
         ]
       }
     ]
