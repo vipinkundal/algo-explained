@@ -12,213 +12,232 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/counting-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Counting Sort is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Count occurrences of each integer key, then write values back in key order.",
-  "concept": "Counting Sort is useful when small integer ranges can be counted instead of compared pair by pair. Use this when keys are bounded integers and frequency memory is acceptable.",
-  "logicSummary": "Count each value, compute output positions or repeated values, then rebuild the array in key order.",
-  "transitionSummary": "Each value increments a count, and each count later emits ordered copies.",
-  "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
-  "realLifeExample": "Counting Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
-  "whenToUse": "Use Counting Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Counting Sort: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Counting Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Counting Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Sort integer values by counting how many times each key appears.",
+  "concept": "Counting Sort replaces comparisons with frequency counts over a bounded integer range.",
+  "logicSummary": "Find min/max, count each value by offset, then emit every value in increasing key order.",
+  "transitionSummary": "Each input value increments exactly one count; output repeats each offset by its count.",
+  "codeInsight": "The range width controls memory use, so counting sort is good only when the key range is reasonable.",
+  "realLifeExample": "Use it for grades, ages, bytes, or other bounded integer keys.",
+  "whenToUse": "Use Counting Sort when values are integers in a small known range.",
+  "memoryTrick": "Count keys first, write values later.",
+  "visualizerCaption": "Counting Sort is shown with the actual sorted/unsorted state that its code maintains.",
   "logicSteps": [
     {
-      "title": "Read range",
-      "text": "Identify the integer key bounds."
+      "title": "Find min and max",
+      "text": "The count array covers every key from min to max."
     },
     {
-      "title": "Count values",
-      "text": "Increment the frequency bucket."
+      "title": "Increment frequencies",
+      "text": "Every value updates one count slot."
     },
     {
-      "title": "Emit by count",
-      "text": "Write values in key order."
+      "title": "Write repeated keys",
+      "text": "The output walks counts from low key to high key."
     },
     {
-      "title": "Return sorted array",
-      "text": "Return the rebuilt ordered list."
+      "title": "Sorted by key order",
+      "text": "No pairwise comparisons were needed."
     }
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The values to sort."
+      "name": "min, max",
+      "purpose": "Bounds of integer key range."
     },
     {
-      "name": "working array",
-      "purpose": "A copy that is rearranged during sorting."
+      "name": "counts",
+      "purpose": "Frequency for each value offset."
     },
     {
-      "name": "sorted array",
-      "purpose": "The final ordered result."
+      "name": "offset",
+      "purpose": "Index mapped back to actual value."
     },
     {
-      "name": "unsorted work remains",
-      "purpose": "Continue until every value is in final order."
+      "name": "result",
+      "purpose": "Sorted output array."
     }
   ],
   "dryRun": [
     {
-      "label": "Range",
-      "title": "Read key bounds",
-      "note": "Counting needs a finite integer range.",
-      "activeLine": 7,
-      "codeInsight": "Computes min from the current values before the algorithm decides the next move."
+      "label": "Bounds",
+      "title": "Find min and max",
+      "note": "The count array covers every key from min to max.",
+      "activeLine": 3,
+      "codeInsight": "Offsets let the code support negative values too."
     },
     {
-      "label": "Counts",
-      "title": "Increment frequency",
-      "note": "Each input value updates one bucket.",
-      "activeLine": 5,
-      "codeInsight": "Defines countingSort and names the input array; edits to those inputs change the visual state and output."
+      "label": "Count",
+      "title": "Increment frequencies",
+      "note": "Every value updates one count slot.",
+      "activeLine": 6,
+      "codeInsight": "Counting is the main transition."
     },
     {
       "label": "Emit",
       "title": "Write repeated keys",
-      "note": "Counts turn into ordered output values.",
-      "activeLine": 8,
-      "codeInsight": "Computes max from the current values before the algorithm decides the next move."
+      "note": "The output walks counts from low key to high key.",
+      "activeLine": 9,
+      "codeInsight": "Nested output loops reconstruct sorted order."
     },
     {
-      "label": "Sorted",
-      "title": "Return output",
-      "note": "The rebuilt list is sorted by key.",
-      "activeLine": 15,
-      "codeInsight": "Returns result, the final value maintained by Counting Sort's code path."
+      "label": "Return",
+      "title": "Sorted by key order",
+      "note": "No pairwise comparisons were needed.",
+      "activeLine": 11,
+      "codeInsight": "The result is sorted because offsets are visited in order."
     }
   ],
   "complexity": {
-    "time": "O(n + k), where k is the key range.",
+    "time": "O(n + k), where k is max - min + 1.",
     "space": "O(k)."
   },
   "quiz": {
-    "question": "Which state choice keeps Counting Sort correct?",
+    "question": "Which state keeps Counting Sort correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and working array and update it only through Counting Sort's transition.",
+        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Use one generic sorted-array story for every sorting algorithm.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Move values without preserving the algorithm's stated invariant.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Counting Sort stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Counting Sort needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Counting Sort works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Counting Sort needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "counting-sort",
   "runnerInput": [
     [
       4,
-      1,
+      2,
+      2,
+      8,
       3,
-      2
+      3,
+      1
     ]
   ],
   "animation": {
-    "type": "bucket-flow",
-    "title": "Counting Sort bucket movement",
-    "ruleLabel": "Bucket rule",
-    "rule": "Each value increments a count, and each count later emits ordered copies.",
+    "type": "array-flow",
+    "static": true,
+    "title": "Counting Sort trace",
+    "ruleLabel": "Sorting invariant",
+    "rule": "Each input value increments exactly one count; output repeats each offset by its count.",
     "values": [
       4,
-      1,
+      2,
+      2,
+      8,
       3,
-      2
-    ],
-    "buckets": [
-      {
-        "label": "low range"
-      },
-      {
-        "label": "middle range"
-      },
-      {
-        "label": "high range"
-      }
+      3,
+      1
     ],
     "steps": [
       {
-        "phase": "Range",
-        "title": "Read key bounds",
-        "note": "Counting needs a finite integer range.",
-        "ruleLabel": "Counting Sort invariant",
-        "rule": "Computes min from the current values before the algorithm decides the next move.",
-        "activeValue": 4,
-        "bucketIndex": 1,
-        "bucketValues": [
-          [],
-          [
-            4
-          ],
-          []
-        ]
+        "phase": "range",
+        "title": "Find key range",
+        "note": "min = 1, max = 8.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each input value increments exactly one count; output repeats each offset by its count.",
+        "activeIndices": [
+          0,
+          6
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          6
+        ],
+        "primaryLabel": "range",
+        "secondaryLabel": "Each input value increments exactly one count; output repeats each offset by its count."
       },
       {
-        "phase": "Counts",
-        "title": "Increment frequency",
-        "note": "Each input value updates one bucket.",
-        "ruleLabel": "Counting Sort invariant",
-        "rule": "Defines countingSort and names the input array; edits to those inputs change the visual state and output.",
-        "activeValue": 1,
-        "bucketIndex": 1,
-        "bucketValues": [
-          [],
-          [
-            4,
-            1
-          ],
-          []
-        ]
+        "phase": "count",
+        "title": "Count frequencies",
+        "note": "2 and 3 each appear twice.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each input value increments exactly one count; output repeats each offset by its count.",
+        "activeIndices": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          6
+        ],
+        "primaryLabel": "count",
+        "secondaryLabel": "Each input value increments exactly one count; output repeats each offset by its count."
       },
       {
-        "phase": "Emit",
-        "title": "Write repeated keys",
-        "note": "Counts turn into ordered output values.",
-        "ruleLabel": "Counting Sort invariant",
-        "rule": "Computes max from the current values before the algorithm decides the next move.",
-        "activeValue": 3,
-        "bucketIndex": 0,
-        "bucketValues": [
-          [
-            3
-          ],
-          [
-            4,
-            1
-          ],
-          []
-        ]
+        "phase": "emit",
+        "title": "Write low to high",
+        "note": "Output starts with 1, 2, 2, 3, 3.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each input value increments exactly one count; output repeats each offset by its count.",
+        "activeIndices": [
+          6,
+          1,
+          2
+        ],
+        "sortedIndices": [
+          6,
+          1,
+          2
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          6
+        ],
+        "primaryLabel": "emit",
+        "secondaryLabel": "Each input value increments exactly one count; output repeats each offset by its count."
       },
       {
-        "phase": "Sorted",
-        "title": "Return output",
-        "note": "The rebuilt list is sorted by key.",
-        "ruleLabel": "Counting Sort invariant",
-        "rule": "Returns result, the final value maintained by Counting Sort's code path.",
-        "activeValue": 2,
-        "bucketIndex": 2,
-        "bucketValues": [
-          [
-            3
-          ],
-          [
-            4,
-            1
-          ],
-          [
-            2
-          ]
-        ]
+        "phase": "sorted",
+        "title": "All counts emitted",
+        "note": "The sorted output is complete.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each input value increments exactly one count; output repeats each offset by its count.",
+        "activeIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          6
+        ],
+        "primaryLabel": "sorted",
+        "secondaryLabel": "Each input value increments exactly one count; output repeats each offset by its count."
       }
     ]
   }

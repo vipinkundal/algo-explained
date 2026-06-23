@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/selection-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Selection Sort is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Select the smallest item from the unsorted suffix and swap it into the next output slot.",
-  "concept": "Selection Sort is useful when you can choose the next smallest value and lock one final position at a time. Use this when clear minimum-selection behavior matters more than minimizing swaps.",
-  "logicSummary": "Scan the unsorted suffix for the minimum value, swap it into the next fixed slot, and advance the boundary.",
-  "transitionSummary": "Each pass selects one minimum and grows the sorted prefix by one position.",
-  "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
-  "realLifeExample": "Selection Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
-  "whenToUse": "Use Selection Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Selection Sort: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Selection Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Selection Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Sort an array by repeatedly selecting the smallest value from the unsorted suffix.",
+  "concept": "Selection Sort grows a sorted prefix; each pass chooses the smallest remaining item and swaps it into the next prefix slot.",
+  "logicSummary": "For each start index, scan the suffix for the minimum value, then swap it into start.",
+  "transitionSummary": "The minimum candidate changes during the suffix scan; after the scan one swap extends the sorted prefix.",
+  "codeInsight": "Unlike bubble sort, selection sort performs at most one swap per outer pass.",
+  "realLifeExample": "Use it when swaps are expensive but comparisons are acceptable, or when teaching prefix invariants.",
+  "whenToUse": "Use Selection Sort for small arrays or educational traces of minimum selection.",
+  "memoryTrick": "Pick the smallest remaining card and place it next.",
+  "visualizerCaption": "Selection Sort is shown with the actual sorted/unsorted state that its code maintains.",
   "logicSteps": [
     {
-      "title": "Set boundary",
-      "text": "Mark the first unsorted slot."
+      "title": "Scan suffix",
+      "text": "Find the smallest value among all positions."
     },
     {
-      "title": "Find minimum",
-      "text": "Scan the remaining values."
+      "title": "Swap into prefix",
+      "text": "Move 1 into index 0."
     },
     {
-      "title": "Place minimum",
-      "text": "Swap the minimum into the boundary slot."
+      "title": "Find next minimum",
+      "text": "The sorted prefix is protected while the suffix is scanned."
     },
     {
-      "title": "Return sorted array",
-      "text": "Finish after every slot is fixed."
+      "title": "Prefix covers array",
+      "text": "Every position has received the smallest remaining value."
     }
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The values to sort."
+      "name": "start",
+      "purpose": "Next sorted-prefix position."
     },
     {
-      "name": "working array",
-      "purpose": "A copy that is rearranged during sorting."
+      "name": "minIndex",
+      "purpose": "Smallest value seen in the suffix scan."
     },
     {
-      "name": "sorted array",
-      "purpose": "The final ordered result."
+      "name": "index",
+      "purpose": "Current suffix scanner."
     },
     {
-      "name": "unsorted work remains",
-      "purpose": "Continue until every value is in final order."
+      "name": "values",
+      "purpose": "Working array."
     }
   ],
   "dryRun": [
     {
-      "label": "Boundary",
-      "title": "Choose next fixed slot",
-      "note": "The left side is already sorted.",
-      "activeLine": 6,
-      "codeInsight": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes."
+      "label": "start = 0",
+      "title": "Scan suffix",
+      "note": "Find the smallest value among all positions.",
+      "activeLine": 4,
+      "codeInsight": "minIndex stores the best candidate, not the final answer yet."
     },
     {
-      "label": "Minimum",
-      "title": "Scan unsorted suffix",
-      "note": "The code tracks the smallest remaining value.",
-      "activeLine": 9,
-      "codeInsight": "Runs the counted loop (let index = start + 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration."
+      "label": "min = 1",
+      "title": "Swap into prefix",
+      "note": "Move 1 into index 0.",
+      "activeLine": 8,
+      "codeInsight": "Only one swap happens after the full scan."
     },
     {
-      "label": "Swap",
-      "title": "Place selected value",
-      "note": "The minimum moves into its final position.",
-      "activeLine": 7,
-      "codeInsight": "Runs the counted loop (let start = 0; start < values.length; start += 1) so each visual step follows one code-controlled iteration."
+      "label": "start = 1",
+      "title": "Find next minimum",
+      "note": "The sorted prefix is protected while the suffix is scanned.",
+      "activeLine": 4,
+      "codeInsight": "start separates sorted and unsorted regions."
     },
     {
-      "label": "Sorted",
-      "title": "Return final order",
-      "note": "All positions are fixed after the last pass.",
-      "activeLine": 14,
-      "codeInsight": "Returns values, the final value maintained by Selection Sort's code path."
+      "label": "Done",
+      "title": "Prefix covers array",
+      "note": "Every position has received the smallest remaining value.",
+      "activeLine": 10,
+      "codeInsight": "The invariant is sorted prefix plus unsorted suffix."
     }
   ],
   "complexity": {
@@ -93,135 +93,136 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Selection Sort correct?",
+    "question": "Which state keeps Selection Sort correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and working array and update it only through Selection Sort's transition.",
+        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Use one generic sorted-array story for every sorting algorithm.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Move values without preserving the algorithm's stated invariant.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Selection Sort stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Selection Sort needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Selection Sort works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Selection Sort needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "selection-sort",
   "runnerInput": [
     [
-      4,
+      5,
       1,
-      3,
-      2
+      4,
+      2,
+      8
     ]
   ],
   "animation": {
     "type": "array-flow",
-    "title": "Selection Sort array state",
-    "ruleLabel": "Array invariant",
-    "rule": "Each pass selects one minimum and grows the sorted prefix by one position.",
+    "static": true,
+    "title": "Selection Sort trace",
+    "ruleLabel": "Sorting invariant",
+    "rule": "The minimum candidate changes during the suffix scan; after the scan one swap extends the sorted prefix.",
     "values": [
-      4,
+      5,
       1,
-      3,
-      2
+      4,
+      2,
+      8
     ],
     "steps": [
       {
-        "phase": "Boundary",
-        "title": "Choose next fixed slot",
-        "note": "The left side is already sorted.",
-        "ruleLabel": "Selection Sort invariant",
-        "rule": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes.",
+        "phase": "start 0",
+        "title": "Scan for minimum",
+        "note": "1 is the minimum candidate.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "The minimum candidate changes during the suffix scan; after the scan one swap extends the sorted prefix.",
         "activeIndices": [
-          0
-        ],
-        "sortedIndices": [
-          0
-        ],
-        "mutedIndices": [],
-        "window": [
           0,
           1
         ],
-        "primaryLabel": "Boundary",
-        "secondaryLabel": "Each pass selects one minimum and grows the sorted prefix by one position."
-      },
-      {
-        "phase": "Minimum",
-        "title": "Scan unsorted suffix",
-        "note": "The code tracks the smallest remaining value.",
-        "ruleLabel": "Selection Sort invariant",
-        "rule": "Runs the counted loop (let index = start + 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration.",
-        "activeIndices": [
-          1,
-          2
-        ],
-        "sortedIndices": [
-          0
-        ],
+        "sortedIndices": [],
         "mutedIndices": [],
         "window": [
           0,
-          2
+          4
         ],
-        "primaryLabel": "Minimum",
-        "secondaryLabel": "Each pass selects one minimum and grows the sorted prefix by one position."
+        "primaryLabel": "start 0",
+        "secondaryLabel": "The minimum candidate changes during the suffix scan; after the scan one swap extends the sorted prefix."
       },
       {
-        "phase": "Swap",
-        "title": "Place selected value",
-        "note": "The minimum moves into its final position.",
-        "ruleLabel": "Selection Sort invariant",
-        "rule": "Runs the counted loop (let start = 0; start < values.length; start += 1) so each visual step follows one code-controlled iteration.",
+        "phase": "swap",
+        "title": "Place 1 first",
+        "note": "The sorted prefix now has one value.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "The minimum candidate changes during the suffix scan; after the scan one swap extends the sorted prefix.",
         "activeIndices": [
-          2
-        ],
-        "sortedIndices": [
           0,
           1
         ],
+        "sortedIndices": [
+          0
+        ],
         "mutedIndices": [],
         "window": [
           1,
-          3
+          4
         ],
-        "primaryLabel": "Swap",
-        "secondaryLabel": "Each pass selects one minimum and grows the sorted prefix by one position."
+        "primaryLabel": "swap",
+        "secondaryLabel": "The minimum candidate changes during the suffix scan; after the scan one swap extends the sorted prefix."
       },
       {
-        "phase": "Sorted",
-        "title": "Return final order",
-        "note": "All positions are fixed after the last pass.",
-        "ruleLabel": "Selection Sort invariant",
-        "rule": "Returns values, the final value maintained by Selection Sort's code path.",
+        "phase": "start 1",
+        "title": "Find 2",
+        "note": "Scan the remaining suffix.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "The minimum candidate changes during the suffix scan; after the scan one swap extends the sorted prefix.",
         "activeIndices": [
-          3,
+          1,
           3
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          1,
+          4
+        ],
+        "primaryLabel": "start 1",
+        "secondaryLabel": "The minimum candidate changes during the suffix scan; after the scan one swap extends the sorted prefix."
+      },
+      {
+        "phase": "sorted",
+        "title": "Prefix complete",
+        "note": "Each pass fixes exactly one position.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "The minimum candidate changes during the suffix scan; after the scan one swap extends the sorted prefix.",
+        "activeIndices": [
+          4
         ],
         "sortedIndices": [
           0,
           1,
-          2
-        ],
-        "mutedIndices": [
-          0
-        ],
-        "window": [
           2,
-          3
+          3,
+          4
         ],
-        "primaryLabel": "Sorted",
-        "secondaryLabel": "Each pass selects one minimum and grows the sorted prefix by one position."
+        "mutedIndices": [],
+        "window": [
+          0,
+          4
+        ],
+        "primaryLabel": "sorted",
+        "secondaryLabel": "The minimum candidate changes during the suffix scan; after the scan one swap extends the sorted prefix."
       }
     ]
   }

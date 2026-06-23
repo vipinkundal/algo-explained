@@ -13,79 +13,86 @@ export const algorithmPage = {
   "codePath": "./src/algorithms/graphs/cycle-detection-directed/code/solution.js",
   "codeFilename": "solution.js",
   "meaning": "Cycle Detection in Directed Graph is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Directed cycle detection uses a recursion stack to detect edges back into the active DFS path.",
-  "concept": "Cycle Detection in Directed Graph is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
-  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
-  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
-  "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
-  "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
-  "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Cycle Detection in Directed Graph: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Cycle Detection in Directed Graph is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "problem": "Directed cycle detection finds a back edge into the active DFS recursion stack.",
+  "concept": "A directed graph has a cycle when DFS reaches a vertex that is already on the current recursion path.",
+  "logicSummary": "Keep two sets: visited for fully discovered vertices and active for the current DFS path.",
+  "transitionSummary": "Entering a node adds it to active; leaving removes it; seeing an active neighbor proves a cycle.",
+  "codeInsight": "The active set is separate from visited because a previously finished vertex is safe, but an active vertex is a back edge.",
+  "realLifeExample": "Use directed cycle detection for dependency graphs, course prerequisites, build pipelines, and import graphs.",
+  "whenToUse": "Use it when edges have direction and you need to know whether any dependency chain loops back on itself.",
+  "memoryTrick": "Directed cycle: visited means seen before; active means still on the current path.",
+  "visualizerCaption": "Watch the recursion stack highlight the back edge that proves a directed cycle.",
   "logicSteps": [
     {
-      "title": "Read stack",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Start DFS",
+      "text": "Pick any unvisited vertex and begin a DFS path."
     },
     {
-      "title": "Inspect stack top",
-      "text": "Look at the active stack fields."
+      "title": "Mark active",
+      "text": "A vertex is active while its outgoing edges are still being explored."
     },
     {
-      "title": "Push / pop",
-      "text": "push, pop, peek, or resolve stack entries."
+      "title": "Check outgoing edges",
+      "text": "A neighbor already in active is a back edge."
     },
     {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Unwind or return true",
+      "text": "Remove safe vertices from active, or stop immediately when a back edge is found."
     }
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "graph",
+      "purpose": "Directed adjacency list."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "visited",
+      "purpose": "Vertices that have been entered at least once."
     },
     {
-      "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "name": "active",
+      "purpose": "Vertices currently on the recursion path."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "cycle found",
+      "purpose": "Boolean returned as soon as a back edge is detected."
     }
   ],
   "dryRun": [
     {
-      "label": "Stack",
-      "title": "Read stack action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 5,
-      "codeInsight": "Defines cycleDetectionDirected and names the input graph; edits to those inputs change the visual state and output."
+      "label": "Enter A",
+      "title": "A starts the DFS path",
+      "note": "A is visited and active while its edge to B is explored.",
+      "activeLine": 10,
+      "codeInsight": "visited and active are both updated on entry."
     },
     {
-      "label": "Stack top",
-      "title": "Inspect stack",
-      "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "label": "Enter B",
+      "title": "B joins the active path",
+      "note": "The path is now A -> B.",
+      "activeLine": 14,
+      "codeInsight": "The recursive call keeps A active while B runs."
     },
     {
-      "label": "Push / pop",
-      "title": "Push, pop, peek, or resolve stack entries",
-      "note": "Only the necessary stack fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "label": "Enter C",
+      "title": "C joins the active path",
+      "note": "The path is now A -> B -> C.",
+      "activeLine": 14,
+      "codeInsight": "A finished vertex would be ignored, but active vertices are still dangerous."
     },
     {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
-      "activeLine": 15,
-      "codeInsight": "Returns false, the boolean result reached by the highlighted checks."
+      "label": "Back edge",
+      "title": "D points back to B",
+      "note": "B is active, so D -> B closes a directed cycle.",
+      "activeLine": 8,
+      "codeInsight": "active.has(node) returning true is the exact cycle proof."
+    },
+    {
+      "label": "Return true",
+      "title": "Propagate the cycle result",
+      "note": "Every recursive caller returns true immediately.",
+      "activeLine": 18,
+      "codeInsight": "some(...) stops once any DFS root reports a cycle."
     }
   ],
   "complexity": {
@@ -93,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state choice keeps Cycle Detection in Directed Graph correct?",
+    "question": "Which state keeps Cycle Detection in Directed Graph correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track visited and frontier and update it only through Cycle Detection in Directed Graph's transition.",
+        "text": "visited follows the page's own transition rule.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Skip the stop condition once one edge has been inspected.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Cycle Detection in Directed Graph stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Cycle Detection in Directed Graph needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
+    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "cycle-detection-directed",
@@ -125,69 +132,108 @@ export const algorithmPage = {
         "C"
       ],
       "C": [
-        "A"
-      ]
+        "D",
+        "E"
+      ],
+      "D": [
+        "B"
+      ],
+      "E": []
     }
   ],
   "animation": {
     "type": "graph-flow",
-    "title": "Cycle Detection in Directed Graph graph state",
-    "ruleLabel": "Graph invariant",
-    "rule": "Each step changes only the part of the stack required to preserve the invariant.",
+    "title": "Directed cycle recursion stack",
+    "ruleLabel": "Back-edge rule",
+    "rule": "An edge into active recursion state proves a directed cycle.",
     "nodes": [
       {
         "id": "A",
         "label": "A",
-        "x": 110,
+        "x": 90,
         "y": 150
       },
       {
         "id": "B",
         "label": "B",
-        "x": 300,
-        "y": 75
+        "x": 220,
+        "y": 70
       },
       {
         "id": "C",
         "label": "C",
-        "x": 500,
+        "x": 360,
         "y": 150
       },
       {
         "id": "D",
         "label": "D",
-        "x": 300,
-        "y": 235
+        "x": 500,
+        "y": 70
+      },
+      {
+        "id": "E",
+        "label": "E",
+        "x": 500,
+        "y": 230
       }
     ],
     "edges": [
       {
         "from": "A",
-        "to": "B"
-      },
-      {
-        "from": "A",
-        "to": "D"
+        "to": "B",
+        "directed": true
       },
       {
         "from": "B",
-        "to": "C"
+        "to": "C",
+        "directed": true
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "directed": true
       },
       {
         "from": "D",
-        "to": "C"
+        "to": "B",
+        "directed": true,
+        "label": "back"
+      },
+      {
+        "from": "C",
+        "to": "E",
+        "directed": true
       }
     ],
     "steps": [
       {
-        "phase": "Stack",
-        "title": "Read stack action",
-        "note": "The code receives the next value or command.",
-        "ruleLabel": "Cycle Detection in Directed Graph invariant",
-        "rule": "Defines cycleDetectionDirected and names the input graph; edits to those inputs change the visual state and output.",
+        "phase": "Active: A",
+        "title": "A enters recursion",
+        "note": "A is visited and active.",
+        "ruleLabel": "Active set",
+        "rule": "{A}",
         "activeNode": "A",
-        "visitedNodes": [],
+        "visitedNodes": [
+          "A"
+        ],
         "frontierNodes": [
+          "A"
+        ]
+      },
+      {
+        "phase": "Active: A, B",
+        "title": "B enters recursion",
+        "note": "B is now on the active path.",
+        "ruleLabel": "Active set",
+        "rule": "{A, B}",
+        "activeNode": "B",
+        "visitedNodes": [
+          "A",
+          "B"
+        ],
+        "frontierNodes": [
+          "A",
           "B"
         ],
         "activeEdge": {
@@ -196,16 +242,20 @@ export const algorithmPage = {
         }
       },
       {
-        "phase": "Stack top",
-        "title": "Inspect stack",
-        "note": "The active state must still satisfy last-in, first-out state.",
-        "ruleLabel": "Cycle Detection in Directed Graph invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
-        "activeNode": "B",
+        "phase": "Active: A, B, C",
+        "title": "C enters recursion",
+        "note": "The search is still inside A -> B -> C.",
+        "ruleLabel": "Active set",
+        "rule": "{A, B, C}",
+        "activeNode": "C",
         "visitedNodes": [
-          "A"
+          "A",
+          "B",
+          "C"
         ],
         "frontierNodes": [
+          "A",
+          "B",
           "C"
         ],
         "activeEdge": {
@@ -214,44 +264,53 @@ export const algorithmPage = {
         }
       },
       {
-        "phase": "Push / pop",
-        "title": "Push, pop, peek, or resolve stack entries",
-        "note": "Only the necessary stack fields are changed.",
-        "ruleLabel": "Cycle Detection in Directed Graph invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
-        "activeNode": "C",
-        "visitedNodes": [
-          "A",
-          "B"
-        ],
-        "frontierNodes": [
-          "D"
-        ],
-        "activeEdge": {
-          "from": "C",
-          "to": "D"
-        }
-      },
-      {
-        "phase": "Result",
-        "title": "Return visible result",
-        "note": "The return value or printed state confirms the operation.",
-        "ruleLabel": "Cycle Detection in Directed Graph invariant",
-        "rule": "Returns false, the boolean result reached by the highlighted checks.",
+        "phase": "Back edge D -> B",
+        "title": "D sees active B",
+        "note": "B has not been removed from active, so this edge proves a cycle.",
+        "ruleLabel": "Cycle proof",
+        "rule": "D -> B where B is active",
         "activeNode": "D",
         "visitedNodes": [
           "A",
           "B",
-          "C"
+          "C",
+          "D"
         ],
         "frontierNodes": [
-          "A"
+          "A",
+          "B",
+          "C",
+          "D"
         ],
         "activeEdge": {
           "from": "D",
-          "to": "A"
+          "to": "B"
+        }
+      },
+      {
+        "phase": "Cycle: true",
+        "title": "Return true",
+        "note": "The recursive result propagates to the top-level call.",
+        "ruleLabel": "Answer",
+        "rule": "cycle found",
+        "activeNode": "B",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "frontierNodes": [
+          "B",
+          "C",
+          "D"
+        ],
+        "activeEdge": {
+          "from": "D",
+          "to": "B"
         }
       }
-    ]
+    ],
+    "static": true
   }
 };

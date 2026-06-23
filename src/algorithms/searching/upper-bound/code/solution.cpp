@@ -1,11 +1,16 @@
 // Upper Bound
 // Route: /algorithms/searching/upper-bound
-// Visualizer: array-boundaries
 
-#include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 
-// TODO: Implement Upper Bound.
-int main() {
-    return 0;
+int upperBound(const vector<int>& values, int target) {
+    int low = 0;
+    int high = static_cast<int>(values.size());
+    while (low < high) {
+        int mid = low + (high - low) / 2;
+        if (values[mid] <= target) low = mid + 1;
+        else high = mid;
+    }
+    return low;
 }

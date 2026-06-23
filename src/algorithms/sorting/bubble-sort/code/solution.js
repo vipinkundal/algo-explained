@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Bubble Sort
 // Route: /algorithms/sorting/bubble-sort
 

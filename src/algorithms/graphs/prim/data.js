@@ -13,106 +13,113 @@ export const algorithmPage = {
   "codePath": "./src/algorithms/graphs/prim/code/solution.js",
   "codeFilename": "solution.js",
   "meaning": "Prim’s Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Prim’s Algorithm grows a minimum spanning tree by repeatedly adding the cheapest edge leaving the current tree.",
-  "concept": "Prim’s Algorithm is useful when graph structure can be solved by maintaining chosen edge set. Use this when the required result is minimum-spanning-tree growth.",
-  "logicSummary": "Initialize graph input and chosen edge set, choose the next work item, then add the cheapest safe edge.",
-  "transitionSummary": "Each step consumes one vertex or edge and updates chosen edge set without losing the graph invariant.",
-  "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
-  "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
-  "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Prim’s Algorithm: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Prim’s Algorithm is shown as graph frontier/state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "problem": "Prim's Algorithm grows a minimum spanning tree from one start vertex.",
+  "concept": "Prim keeps a visited tree and repeatedly adds the cheapest edge crossing from visited to unvisited.",
+  "logicSummary": "Start with one vertex, scan all outgoing frontier edges, choose the cheapest safe edge, and add its far endpoint.",
+  "transitionSummary": "One transition adds the minimum crossing edge and moves exactly one new vertex into the tree.",
+  "codeInsight": "Prim is vertex-frontier MST growth; unlike Kruskal, it never considers edges wholly outside the current tree.",
+  "realLifeExample": "Use Prim when growing a minimum-cost network outward from a chosen starting site.",
+  "whenToUse": "Use it for connected undirected weighted graphs when MST growth from a start vertex is natural.",
+  "memoryTrick": "Prim grows one island by buying the cheapest bridge leaving it.",
+  "visualizerCaption": "Watch the tree expand through the cheapest edge that crosses the visited boundary.",
   "logicSteps": [
     {
-      "title": "Read graph",
-      "text": "Identify vertices, edges, weights, and start state."
+      "title": "Choose a start",
+      "text": "The MST begins from one visited vertex."
     },
     {
-      "title": "Build graph state",
-      "text": "Create the chosen edge set."
+      "title": "Scan crossing edges",
+      "text": "Only edges from visited to unvisited vertices are candidates."
     },
     {
-      "title": "Process work item",
-      "text": "Add the cheapest safe edge."
+      "title": "Add cheapest edge",
+      "text": "The best candidate joins the MST and visits one new vertex."
     },
     {
-      "title": "Return graph result",
-      "text": "Return the minimum-spanning-tree growth."
+      "title": "Return MST",
+      "text": "Stop when every vertex is included or no crossing edge remains."
     }
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "graph, start",
+      "purpose": "Weighted undirected adjacency list and starting vertex."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "visited",
+      "purpose": "Vertices already inside the growing MST."
     },
     {
-      "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "name": "best",
+      "purpose": "Cheapest crossing edge found during the current scan."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "mst",
+      "purpose": "Edges accepted into the minimum spanning tree."
     }
   ],
   "dryRun": [
     {
-      "label": "Graph",
-      "title": "Read graph input",
-      "note": "The code receives vertices, edges, weights, or adjacency lists.",
+      "label": "Start",
+      "title": "Visit A",
+      "note": "The tree begins at A.",
       "activeLine": 5,
-      "codeInsight": "Defines prim and names the input graph, start; edits to those inputs change the visual state and output."
+      "codeInsight": "visited starts with the chosen root."
     },
     {
-      "label": "Chosen Edge Set",
-      "title": "Initialize chosen edge set",
-      "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "label": "Add A-B",
+      "title": "Pick cheapest edge from A",
+      "note": "A-B is cheaper than A-C.",
+      "activeLine": 12,
+      "codeInsight": "best stores the cheapest crossing edge found so far."
     },
     {
-      "label": "Work item",
-      "title": "Process next vertex or edge",
-      "note": "Add the cheapest safe edge.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "label": "Add B-C",
+      "title": "C joins through B",
+      "note": "The frontier now includes edges from A and B.",
+      "activeLine": 12,
+      "codeInsight": "Only edges to unvisited vertices are candidates."
     },
     {
-      "label": "Minimum Spanning Tree Growth",
-      "title": "Return minimum-spanning-tree growth",
-      "note": "The final graph state becomes the answer.",
+      "label": "Add C-D",
+      "title": "D joins next",
+      "note": "C-D is the cheapest crossing edge.",
+      "activeLine": 16,
+      "codeInsight": "Adding best[1] expands visited by one vertex."
+    },
+    {
+      "label": "Finish",
+      "title": "Add D-E and return MST",
+      "note": "All vertices are now included.",
       "activeLine": 19,
-      "codeInsight": "Returns mst, the final value maintained by Prim’s Algorithm's code path."
+      "codeInsight": "mst records the accepted edge list."
     }
   ],
   "complexity": {
-    "time": "O(VE) in this simple edge-scanning version.",
+    "time": "O(VE) in this simple edge-scanning implementation.",
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state choice keeps Prim’s Algorithm correct?",
+    "question": "Which state keeps Prim’s Algorithm correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track visited and frontier and update it only through Prim’s Algorithm's transition.",
+        "text": "visited follows the page's own transition rule.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Skip the stop condition once one edge has been inspected.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Prim’s Algorithm stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Prim’s Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
+    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "prim",
@@ -121,30 +128,58 @@ export const algorithmPage = {
       "A": [
         [
           "B",
-          1
+          2
         ],
         [
           "C",
-          4
+          3
         ]
       ],
       "B": [
         [
           "A",
-          1
+          2
         ],
         [
           "C",
-          2
+          1
+        ],
+        [
+          "D",
+          4
         ]
       ],
       "C": [
         [
           "A",
-          4
+          3
         ],
         [
           "B",
+          1
+        ],
+        [
+          "D",
+          5
+        ]
+      ],
+      "D": [
+        [
+          "B",
+          4
+        ],
+        [
+          "C",
+          5
+        ],
+        [
+          "E",
+          2
+        ]
+      ],
+      "E": [
+        [
+          "D",
           2
         ]
       ]
@@ -152,65 +187,105 @@ export const algorithmPage = {
     "A"
   ],
   "animation": {
+    "static": true,
     "type": "graph-flow",
-    "title": "Prim’s Algorithm graph state",
-    "ruleLabel": "Graph invariant",
-    "rule": "Each step consumes one vertex or edge and updates chosen edge set without losing the graph invariant.",
+    "title": "Prim MST frontier growth",
+    "ruleLabel": "Crossing-edge invariant",
+    "rule": "The next edge must be the cheapest edge from visited to unvisited.",
     "nodes": [
       {
         "id": "A",
         "label": "A",
-        "x": 110,
+        "x": 100,
         "y": 150
       },
       {
         "id": "B",
         "label": "B",
-        "x": 300,
-        "y": 75
+        "x": 240,
+        "y": 80
       },
       {
         "id": "C",
         "label": "C",
-        "x": 500,
-        "y": 150
+        "x": 260,
+        "y": 230
       },
       {
         "id": "D",
         "label": "D",
-        "x": 300,
-        "y": 235
+        "x": 430,
+        "y": 150
+      },
+      {
+        "id": "E",
+        "label": "E",
+        "x": 560,
+        "y": 220
       }
     ],
     "edges": [
       {
         "from": "A",
-        "to": "B"
+        "to": "B",
+        "weight": 2
       },
       {
         "from": "A",
-        "to": "D"
+        "to": "C",
+        "weight": 3
       },
       {
         "from": "B",
-        "to": "C"
+        "to": "C",
+        "weight": 1
+      },
+      {
+        "from": "B",
+        "to": "D",
+        "weight": 4
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "weight": 5
       },
       {
         "from": "D",
-        "to": "C"
+        "to": "E",
+        "weight": 2
       }
     ],
     "steps": [
       {
-        "phase": "Graph",
-        "title": "Read graph input",
-        "note": "The code receives vertices, edges, weights, or adjacency lists.",
-        "ruleLabel": "Prim’s Algorithm invariant",
-        "rule": "Defines prim and names the input graph, start; edits to those inputs change the visual state and output.",
+        "phase": "Visited: A",
+        "title": "Start at A",
+        "note": "Only edges leaving A are candidates.",
+        "ruleLabel": "Candidates",
+        "rule": "A-B 2, A-C 3",
         "activeNode": "A",
-        "visitedNodes": [],
+        "visitedNodes": [
+          "A"
+        ],
         "frontierNodes": [
+          "B",
+          "C"
+        ]
+      },
+      {
+        "phase": "Add A-B",
+        "title": "B joins the tree",
+        "note": "A-B is the cheapest crossing edge.",
+        "ruleLabel": "MST",
+        "rule": "(A-B)",
+        "activeNode": "B",
+        "visitedNodes": [
+          "A",
           "B"
+        ],
+        "frontierNodes": [
+          "C",
+          "D"
         ],
         "activeEdge": {
           "from": "A",
@@ -218,17 +293,19 @@ export const algorithmPage = {
         }
       },
       {
-        "phase": "Chosen Edge Set",
-        "title": "Initialize chosen edge set",
-        "note": "Only the graph state owned by this algorithm is created.",
-        "ruleLabel": "Prim’s Algorithm invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
-        "activeNode": "B",
+        "phase": "Add B-C",
+        "title": "C joins with weight 1",
+        "note": "B-C is cheaper than A-C and B-D.",
+        "ruleLabel": "MST",
+        "rule": "(A-B), (B-C)",
+        "activeNode": "C",
         "visitedNodes": [
-          "A"
+          "A",
+          "B",
+          "C"
         ],
         "frontierNodes": [
-          "C"
+          "D"
         ],
         "activeEdge": {
           "from": "B",
@@ -236,42 +313,44 @@ export const algorithmPage = {
         }
       },
       {
-        "phase": "Work item",
-        "title": "Process next vertex or edge",
-        "note": "Add the cheapest safe edge.",
-        "ruleLabel": "Prim’s Algorithm invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
-        "activeNode": "C",
-        "visitedNodes": [
-          "A",
-          "B"
-        ],
-        "frontierNodes": [
-          "D"
-        ],
-        "activeEdge": {
-          "from": "C",
-          "to": "D"
-        }
-      },
-      {
-        "phase": "Minimum Spanning Tree Growth",
-        "title": "Return minimum-spanning-tree growth",
-        "note": "The final graph state becomes the answer.",
-        "ruleLabel": "Prim’s Algorithm invariant",
-        "rule": "Returns mst, the final value maintained by Prim’s Algorithm's code path.",
+        "phase": "Add B-D",
+        "title": "D joins with weight 4",
+        "note": "B-D beats C-D.",
+        "ruleLabel": "MST",
+        "rule": "(A-B), (B-C), (B-D)",
         "activeNode": "D",
         "visitedNodes": [
           "A",
           "B",
-          "C"
+          "C",
+          "D"
         ],
         "frontierNodes": [
-          "A"
+          "E"
         ],
         "activeEdge": {
+          "from": "B",
+          "to": "D"
+        }
+      },
+      {
+        "phase": "Add D-E",
+        "title": "E completes the tree",
+        "note": "Every vertex is now inside the MST.",
+        "ruleLabel": "Answer",
+        "rule": "total weight 9",
+        "activeNode": "E",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "frontierNodes": [],
+        "activeEdge": {
           "from": "D",
-          "to": "A"
+          "to": "E"
         }
       }
     ]

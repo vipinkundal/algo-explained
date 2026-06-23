@@ -13,79 +13,86 @@ export const algorithmPage = {
   "codePath": "./src/algorithms/graphs/cycle-detection-undirected/code/solution.js",
   "codeFilename": "solution.js",
   "meaning": "Cycle Detection in Undirected Graph is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Undirected cycle detection tracks each vertex's parent so the edge back to the parent is not mistaken for a cycle.",
-  "concept": "Cycle Detection in Undirected Graph is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
-  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
-  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-  "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
-  "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
-  "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Cycle Detection in Undirected Graph: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Cycle Detection in Undirected Graph is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "problem": "Undirected cycle detection uses the parent edge to distinguish normal backtracking from a real cycle.",
+  "concept": "In an undirected graph, seeing a visited neighbor is a cycle only when that neighbor is not the vertex you came from.",
+  "logicSummary": "DFS each component, pass the parent into the recursive call, and reject visited neighbors that are not the parent.",
+  "transitionSummary": "One transition visits an unseen neighbor with current as parent; another detects a visited non-parent neighbor.",
+  "codeInsight": "The parent parameter is what keeps A-B from being counted twice as a false cycle.",
+  "realLifeExample": "Use it for detecting loops in undirected networks, roads, cable layouts, and component validation.",
+  "whenToUse": "Use it when graph edges are bidirectional and you need to know whether any component contains a loop.",
+  "memoryTrick": "Undirected cycle: visited is okay only if it is your parent.",
+  "visualizerCaption": "Watch the DFS parent check separate the return edge from the edge that proves a cycle.",
   "logicSteps": [
     {
-      "title": "Read algorithm state",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Start a component",
+      "text": "Run DFS from any vertex that is not yet visited."
     },
     {
-      "title": "Inspect invariant",
-      "text": "Look at the active algorithm state fields."
+      "title": "Carry parent",
+      "text": "Pass the previous vertex into the recursive call."
     },
     {
-      "title": "State change",
-      "text": "update the state described by this algorithm."
+      "title": "Check neighbors",
+      "text": "Recurse into unseen neighbors; visited non-parent neighbors prove a cycle."
     },
     {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Return result",
+      "text": "Stop when any component reports a cycle."
     }
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "graph",
+      "purpose": "Undirected adjacency list where each edge appears both ways."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "visited",
+      "purpose": "Vertices already reached in the current or earlier component."
     },
     {
-      "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "name": "parent",
+      "purpose": "The vertex that led into the current vertex."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "cycle found",
+      "purpose": "Boolean answer returned after the first non-parent revisit."
     }
   ],
   "dryRun": [
     {
-      "label": "Algorithm State",
-      "title": "Read algorithm state action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "label": "Visit A",
+      "title": "Start from A",
+      "note": "A has no parent because it is the component root.",
+      "activeLine": 8,
+      "codeInsight": "visited.add(node) marks A before checking neighbors."
     },
     {
-      "label": "Invariant",
-      "title": "Inspect algorithm state",
-      "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "label": "Visit B",
+      "title": "Move from A to B",
+      "note": "A becomes B's parent.",
+      "activeLine": 11,
+      "codeInsight": "The recursive call remembers where B came from."
     },
     {
-      "label": "State change",
-      "title": "Update the state described by this algorithm",
-      "note": "Only the necessary algorithm state fields are changed.",
-      "activeLine": 10,
-      "codeInsight": "Checks !visited.has(next) && visit(next, node); only the branch that preserves Cycle Detection in Undirected Graph's invariant is allowed to change state."
+      "label": "Visit C",
+      "title": "Move from B to C",
+      "note": "B becomes C's parent.",
+      "activeLine": 11,
+      "codeInsight": "Unseen neighbors are explored normally."
     },
     {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
-      "activeLine": 13,
-      "codeInsight": "Returns false, the boolean result reached by the highlighted checks."
+      "label": "Find A",
+      "title": "C sees visited A",
+      "note": "A is visited and A is not C's parent, so the triangle is a cycle.",
+      "activeLine": 12,
+      "codeInsight": "next !== parent is the exact undirected cycle check."
+    },
+    {
+      "label": "Return true",
+      "title": "Cycle found",
+      "note": "The true result bubbles out of the DFS.",
+      "activeLine": 16,
+      "codeInsight": "The outer some(...) only needs one component to report true."
     }
   ],
   "complexity": {
@@ -93,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state choice keeps Cycle Detection in Undirected Graph correct?",
+    "question": "Which state keeps Cycle Detection in Undirected Graph correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track visited and frontier and update it only through Cycle Detection in Undirected Graph's transition.",
+        "text": "visited follows the page's own transition rule.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Skip the stop condition once one edge has been inspected.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Cycle Detection in Undirected Graph stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Cycle Detection in Undirected Graph needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
+    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "cycle-detection-undirected",
@@ -128,39 +135,43 @@ export const algorithmPage = {
       ],
       "C": [
         "A",
-        "B"
+        "B",
+        "D"
+      ],
+      "D": [
+        "C"
       ]
     }
   ],
   "animation": {
     "type": "graph-flow",
-    "title": "Cycle Detection in Undirected Graph graph state",
-    "ruleLabel": "Graph invariant",
-    "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
+    "title": "Undirected cycle parent check",
+    "ruleLabel": "Parent rule",
+    "rule": "A visited neighbor is safe only when it is the parent edge.",
     "nodes": [
       {
         "id": "A",
         "label": "A",
-        "x": 110,
-        "y": 150
+        "x": 140,
+        "y": 90
       },
       {
         "id": "B",
         "label": "B",
-        "x": 300,
-        "y": 75
+        "x": 340,
+        "y": 90
       },
       {
         "id": "C",
         "label": "C",
-        "x": 500,
-        "y": 150
+        "x": 240,
+        "y": 230
       },
       {
         "id": "D",
         "label": "D",
-        "x": 300,
-        "y": 235
+        "x": 500,
+        "y": 230
       }
     ],
     "edges": [
@@ -169,28 +180,46 @@ export const algorithmPage = {
         "to": "B"
       },
       {
-        "from": "A",
-        "to": "D"
-      },
-      {
         "from": "B",
         "to": "C"
       },
       {
-        "from": "D",
-        "to": "C"
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "from": "C",
+        "to": "D"
       }
     ],
     "steps": [
       {
-        "phase": "Algorithm State",
-        "title": "Read algorithm state action",
-        "note": "The code receives the next value or command.",
-        "ruleLabel": "Cycle Detection in Undirected Graph invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
+        "phase": "A parent: null",
+        "title": "Start DFS at A",
+        "note": "A is the root of this component.",
+        "ruleLabel": "Parent",
+        "rule": "A <- null",
         "activeNode": "A",
-        "visitedNodes": [],
+        "visitedNodes": [
+          "A"
+        ],
         "frontierNodes": [
+          "A"
+        ]
+      },
+      {
+        "phase": "B parent: A",
+        "title": "Traverse A-B",
+        "note": "B's parent is A, so the B-A edge is expected.",
+        "ruleLabel": "Parent",
+        "rule": "B <- A",
+        "activeNode": "B",
+        "visitedNodes": [
+          "A",
+          "B"
+        ],
+        "frontierNodes": [
+          "A",
           "B"
         ],
         "activeEdge": {
@@ -199,16 +228,20 @@ export const algorithmPage = {
         }
       },
       {
-        "phase": "Invariant",
-        "title": "Inspect algorithm state",
-        "note": "The active state must still satisfy page-specific invariant.",
-        "ruleLabel": "Cycle Detection in Undirected Graph invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
-        "activeNode": "B",
+        "phase": "C parent: B",
+        "title": "Traverse B-C",
+        "note": "C's parent is B.",
+        "ruleLabel": "Parent",
+        "rule": "C <- B",
+        "activeNode": "C",
         "visitedNodes": [
-          "A"
+          "A",
+          "B",
+          "C"
         ],
         "frontierNodes": [
+          "A",
+          "B",
           "C"
         ],
         "activeEdge": {
@@ -217,31 +250,12 @@ export const algorithmPage = {
         }
       },
       {
-        "phase": "State change",
-        "title": "Update the state described by this algorithm",
-        "note": "Only the necessary algorithm state fields are changed.",
-        "ruleLabel": "Cycle Detection in Undirected Graph invariant",
-        "rule": "Checks !visited.has(next) && visit(next, node); only the branch that preserves Cycle Detection in Undirected Graph's invariant is allowed to change state.",
+        "phase": "C sees A",
+        "title": "Visited non-parent neighbor",
+        "note": "A is visited and is not C's parent, so A-B-C-A is a cycle.",
+        "ruleLabel": "Cycle proof",
+        "rule": "A visited and A != parent(C)",
         "activeNode": "C",
-        "visitedNodes": [
-          "A",
-          "B"
-        ],
-        "frontierNodes": [
-          "D"
-        ],
-        "activeEdge": {
-          "from": "C",
-          "to": "D"
-        }
-      },
-      {
-        "phase": "Result",
-        "title": "Return visible result",
-        "note": "The return value or printed state confirms the operation.",
-        "ruleLabel": "Cycle Detection in Undirected Graph invariant",
-        "rule": "Returns false, the boolean result reached by the highlighted checks.",
-        "activeNode": "D",
         "visitedNodes": [
           "A",
           "B",
@@ -251,10 +265,32 @@ export const algorithmPage = {
           "A"
         ],
         "activeEdge": {
-          "from": "D",
+          "from": "C",
+          "to": "A"
+        }
+      },
+      {
+        "phase": "Cycle: true",
+        "title": "Return true",
+        "note": "The component contains a cycle.",
+        "ruleLabel": "Answer",
+        "rule": "cycle found",
+        "activeNode": "A",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "frontierNodes": [
+          "A",
+          "C"
+        ],
+        "activeEdge": {
+          "from": "C",
           "to": "A"
         }
       }
-    ]
+    ],
+    "static": true
   }
 };

@@ -12,213 +12,228 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/bucket-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Bucket Sort is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Distribute values into buckets, sort each bucket, and concatenate the buckets.",
-  "concept": "Bucket Sort is useful when values distribute naturally into ranges that can be sorted independently. Use this when inputs are spread across buckets and per-bucket sorting is cheaper.",
-  "logicSummary": "Create buckets, place each value by range, sort each bucket, and concatenate the buckets.",
-  "transitionSummary": "Each value moves into its bucket, then each bucket is locally sorted before concatenation.",
-  "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
-  "realLifeExample": "Bucket Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
-  "whenToUse": "Use Bucket Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Bucket Sort: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Bucket Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Bucket Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Sort values by distributing them into value-range buckets, sorting each bucket, and concatenating buckets.",
+  "concept": "Bucket Sort uses distribution: values with similar ranges go into the same bucket, and bucket order determines global order.",
+  "logicSummary": "Find min/max, compute bucket width, place each value into a bucket, sort buckets, and flatten them.",
+  "transitionSummary": "Each value maps to exactly one bucket based on its numeric range.",
+  "codeInsight": "Bucket width controls the distribution; bad distribution can make one bucket do most of the work.",
+  "realLifeExample": "Use it for roughly uniform numeric values such as scores or normalized measurements.",
+  "whenToUse": "Use Bucket Sort when values are numeric and spread reasonably across known ranges.",
+  "memoryTrick": "Put values in range bins, sort inside bins, read bins left to right.",
+  "visualizerCaption": "Bucket Sort is shown with the actual sorted/unsorted state that its code maintains.",
   "logicSteps": [
     {
-      "title": "Create buckets",
-      "text": "Divide the value range into buckets."
+      "title": "Find min and max",
+      "text": "The range determines bucket width."
     },
     {
-      "title": "Place values",
-      "text": "Map each value to its bucket."
+      "title": "Map values to buckets",
+      "text": "Each value enters the bucket for its range."
     },
     {
-      "title": "Sort buckets",
-      "text": "Order values inside each bucket."
+      "title": "Order inside each bucket",
+      "text": "Small buckets are sorted individually."
     },
     {
-      "title": "Concatenate",
-      "text": "Join buckets from low to high."
+      "title": "Concatenate bucket order",
+      "text": "Lower-range buckets come before higher-range buckets."
     }
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The values to sort."
+      "name": "bucketCount",
+      "purpose": "Number of buckets to distribute into."
     },
     {
-      "name": "working array",
-      "purpose": "A copy that is rearranged during sorting."
+      "name": "min, max, width",
+      "purpose": "Range mapping details."
     },
     {
-      "name": "sorted array",
-      "purpose": "The final ordered result."
+      "name": "buckets",
+      "purpose": "Grouped values by range."
     },
     {
-      "name": "unsorted work remains",
-      "purpose": "Continue until every value is in final order."
+      "name": "bucketIndex",
+      "purpose": "Destination bucket for the current value."
     }
   ],
   "dryRun": [
     {
-      "label": "Buckets",
-      "title": "Create bucket ranges",
-      "note": "The code creates containers for value ranges.",
-      "activeLine": 10,
-      "codeInsight": "Creates buckets as empty working state; later lines add and remove values from it."
+      "label": "Range",
+      "title": "Find min and max",
+      "note": "The range determines bucket width.",
+      "activeLine": 3,
+      "codeInsight": "A value range is required before assigning buckets."
     },
     {
-      "label": "Value",
-      "title": "Assign to bucket",
-      "note": "Each input value lands in one bucket.",
-      "activeLine": 10,
-      "codeInsight": "Creates buckets as empty working state; later lines add and remove values from it."
+      "label": "Distribute",
+      "title": "Map values to buckets",
+      "note": "Each value enters the bucket for its range.",
+      "activeLine": 8,
+      "codeInsight": "Math.min protects the max value from overflowing the final bucket."
     },
     {
-      "label": "Inside bucket",
-      "title": "Sort local values",
-      "note": "Small bucket lists are ordered independently.",
-      "activeLine": 10,
-      "codeInsight": "Creates buckets as empty working state; later lines add and remove values from it."
+      "label": "Sort buckets",
+      "title": "Order inside each bucket",
+      "note": "Small buckets are sorted individually.",
+      "activeLine": 11,
+      "codeInsight": "The educational implementation uses built-in sort inside buckets."
     },
     {
-      "label": "Concatenate",
-      "title": "Concatenate buckets",
-      "note": "Buckets are joined in range order.",
-      "activeLine": 12,
-      "codeInsight": "Computes bucketIndex from the current values before the algorithm decides the next move."
+      "label": "Flatten",
+      "title": "Concatenate bucket order",
+      "note": "Lower-range buckets come before higher-range buckets.",
+      "activeLine": 11,
+      "codeInsight": "Bucket order creates global ordering."
     }
   ],
   "complexity": {
-    "time": "Average O(n + k), plus bucket sorting cost.",
+    "time": "Average O(n + k), plus cost to sort bucket contents.",
     "space": "O(n + k)."
   },
   "quiz": {
-    "question": "Which state choice keeps Bucket Sort correct?",
+    "question": "Which state keeps Bucket Sort correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and working array and update it only through Bucket Sort's transition.",
+        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Use one generic sorted-array story for every sorting algorithm.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Move values without preserving the algorithm's stated invariant.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Bucket Sort stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Bucket Sort needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Bucket Sort works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Bucket Sort needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "bucket-sort",
   "runnerInput": [
     [
-      4,
-      1,
+      29,
+      25,
       3,
-      2
-    ]
+      49,
+      9,
+      37,
+      21,
+      43
+    ],
+    4
   ],
   "animation": {
-    "type": "bucket-flow",
-    "title": "Bucket Sort bucket movement",
-    "ruleLabel": "Bucket rule",
-    "rule": "Each value moves into its bucket, then each bucket is locally sorted before concatenation.",
+    "type": "array-flow",
+    "static": true,
+    "title": "Bucket Sort trace",
+    "ruleLabel": "Sorting invariant",
+    "rule": "Each value maps to exactly one bucket based on its numeric range.",
     "values": [
-      4,
-      1,
+      29,
+      25,
       3,
-      2
-    ],
-    "buckets": [
-      {
-        "label": "low range"
-      },
-      {
-        "label": "middle range"
-      },
-      {
-        "label": "high range"
-      }
+      49,
+      9,
+      37,
+      21,
+      43
     ],
     "steps": [
       {
-        "phase": "Buckets",
-        "title": "Create bucket ranges",
-        "note": "The code creates containers for value ranges.",
-        "ruleLabel": "Bucket Sort invariant",
-        "rule": "Creates buckets as empty working state; later lines add and remove values from it.",
-        "activeValue": 4,
-        "bucketIndex": 1,
-        "bucketValues": [
-          [],
-          [
-            4
-          ],
-          []
-        ]
+        "phase": "range",
+        "title": "Compute buckets",
+        "note": "min = 3, max = 49.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each value maps to exactly one bucket based on its numeric range.",
+        "activeIndices": [
+          2,
+          3
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          7
+        ],
+        "primaryLabel": "range",
+        "secondaryLabel": "Each value maps to exactly one bucket based on its numeric range."
       },
       {
-        "phase": "Value",
-        "title": "Assign to bucket",
-        "note": "Each input value lands in one bucket.",
-        "ruleLabel": "Bucket Sort invariant",
-        "rule": "Creates buckets as empty working state; later lines add and remove values from it.",
-        "activeValue": 1,
-        "bucketIndex": 1,
-        "bucketValues": [
-          [],
-          [
-            4,
-            1
-          ],
-          []
-        ]
+        "phase": "bucket",
+        "title": "Place 29",
+        "note": "29 maps to a middle bucket.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each value maps to exactly one bucket based on its numeric range.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          7
+        ],
+        "primaryLabel": "bucket",
+        "secondaryLabel": "Each value maps to exactly one bucket based on its numeric range."
       },
       {
-        "phase": "Inside bucket",
-        "title": "Sort local values",
-        "note": "Small bucket lists are ordered independently.",
-        "ruleLabel": "Bucket Sort invariant",
-        "rule": "Creates buckets as empty working state; later lines add and remove values from it.",
-        "activeValue": 3,
-        "bucketIndex": 0,
-        "bucketValues": [
-          [
-            3
-          ],
-          [
-            4,
-            1
-          ],
-          []
-        ]
+        "phase": "sort buckets",
+        "title": "Sort inside groups",
+        "note": "Each bucket is ordered locally.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each value maps to exactly one bucket based on its numeric range.",
+        "activeIndices": [
+          1,
+          6
+        ],
+        "sortedIndices": [
+          2,
+          4
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          7
+        ],
+        "primaryLabel": "sort buckets",
+        "secondaryLabel": "Each value maps to exactly one bucket based on its numeric range."
       },
       {
-        "phase": "Concatenate",
-        "title": "Concatenate buckets",
-        "note": "Buckets are joined in range order.",
-        "ruleLabel": "Bucket Sort invariant",
-        "rule": "Computes bucketIndex from the current values before the algorithm decides the next move.",
-        "activeValue": 2,
-        "bucketIndex": 2,
-        "bucketValues": [
-          [
-            3
-          ],
-          [
-            4,
-            1
-          ],
-          [
-            2
-          ]
-        ]
+        "phase": "flatten",
+        "title": "Read buckets in order",
+        "note": "Concatenation gives sorted output.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each value maps to exactly one bucket based on its numeric range.",
+        "activeIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          7
+        ],
+        "primaryLabel": "flatten",
+        "secondaryLabel": "Each value maps to exactly one bucket based on its numeric range."
       }
     ]
   }

@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Merge Sort
 // Route: /algorithms/sorting/merge-sort
 

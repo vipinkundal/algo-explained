@@ -1,11 +1,12 @@
 // Linear Search
 // Route: /algorithms/searching/linear-search
-// Visualizer: array-scan
 
-#include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 
-// TODO: Implement Linear Search.
-int main() {
-    return 0;
+int linearSearch(const vector<int>& values, int target) {
+    for (int index = 0; index < static_cast<int>(values.size()); index += 1) {
+        if (values[index] == target) return index;
+    }
+    return -1;
 }

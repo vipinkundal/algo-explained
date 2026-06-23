@@ -1,11 +1,17 @@
 // Selection Sort
 // Route: /algorithms/sorting/selection-sort
-// Visualizer: min-selection
 
-#include <bits/stdc++.h>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
-// TODO: Implement Selection Sort.
-int main() {
-    return 0;
+vector<int> selectionSort(vector<int> values) {
+    for (int start = 0; start < static_cast<int>(values.size()); start += 1) {
+        int minIndex = start;
+        for (int index = start + 1; index < static_cast<int>(values.size()); index += 1) {
+            if (values[index] < values[minIndex]) minIndex = index;
+        }
+        swap(values[start], values[minIndex]);
+    }
+    return values;
 }

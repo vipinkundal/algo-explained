@@ -1,5 +1,4 @@
-// SPECIFIC ALGORITHM SOLUTION
-// Tarjan’s Algorithm
+// Tarjan's Algorithm
 // Route: /algorithms/graphs/tarjan
 
 export function tarjan(graph) {
@@ -9,16 +8,22 @@ export function tarjan(graph) {
   const indices = {};
   const low = {};
   const components = [];
+
   function strongConnect(node) {
-    indices[node] = low[node] = index++;
+    indices[node] = low[node] = index;
+    index += 1;
     stack.push(node);
     onStack.add(node);
+
     for (const next of graph[node] || []) {
       if (indices[next] === undefined) {
         strongConnect(next);
         low[node] = Math.min(low[node], low[next]);
-      } else if (onStack.has(next)) low[node] = Math.min(low[node], indices[next]);
+      } else if (onStack.has(next)) {
+        low[node] = Math.min(low[node], indices[next]);
+      }
     }
+
     if (low[node] === indices[node]) {
       const component = [];
       let current;
@@ -30,6 +35,10 @@ export function tarjan(graph) {
       components.push(component);
     }
   }
-  Object.keys(graph).forEach((node) => { if (indices[node] === undefined) strongConnect(node); });
+
+  for (const node of Object.keys(graph)) {
+    if (indices[node] === undefined) strongConnect(node);
+  }
+
   return components;
 }

@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Quick Sort
 // Route: /algorithms/sorting/quick-sort
 

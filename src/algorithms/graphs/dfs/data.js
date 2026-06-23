@@ -13,106 +13,113 @@ export const algorithmPage = {
   "codePath": "./src/algorithms/graphs/dfs/code/solution.js",
   "codeFilename": "solution.js",
   "meaning": "Depth-First Search is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Depth-First Search follows one branch completely before backtracking.",
-  "concept": "Depth-First Search is useful when graph structure can be solved by maintaining stack or recursion frontier. Use this when the required result is deep traversal.",
-  "logicSummary": "Initialize graph input and stack or recursion frontier, choose the next work item, then visit one unvisited neighbor before backtracking.",
-  "transitionSummary": "Each step consumes one vertex or edge and updates stack or recursion frontier without losing the graph invariant.",
-  "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
-  "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
-  "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Depth-First Search: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Depth-First Search is shown as graph frontier/state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "problem": "Depth-First Search follows one graph branch until it cannot continue, then backtracks.",
+  "concept": "DFS uses recursion or an explicit stack to keep the current path active while deeper vertices are explored first.",
+  "logicSummary": "Visit a node, mark it, recursively visit each unseen neighbor, then backtrack to the previous call.",
+  "transitionSummary": "One transition pushes the next unseen neighbor onto the active path; a later transition returns from that path.",
+  "codeInsight": "The recursive call stack is the frontier, so the visualizer highlights the active path instead of a queue.",
+  "realLifeExample": "Use DFS for connected components, cycle checks, topological ordering, maze exploration, and tree-style graph problems.",
+  "whenToUse": "Use DFS when the answer depends on reachability, exhaustive branch exploration, or entry/exit timing.",
+  "memoryTrick": "DFS dives first, then comes back for siblings.",
+  "visualizerCaption": "Watch the recursion path grow and shrink as DFS explores one branch before its siblings.",
   "logicSteps": [
     {
-      "title": "Read graph",
-      "text": "Identify vertices, edges, weights, and start state."
+      "title": "Enter a vertex",
+      "text": "If it was already visited, return immediately."
     },
     {
-      "title": "Build graph state",
-      "text": "Create the stack or recursion frontier."
+      "title": "Mark and record",
+      "text": "Mark the vertex visited and append it to traversal order."
     },
     {
-      "title": "Process work item",
-      "text": "Visit one unvisited neighbor before backtracking."
+      "title": "Recurse into neighbors",
+      "text": "The first unseen neighbor becomes the next active call."
     },
     {
-      "title": "Return graph result",
-      "text": "Return the deep traversal."
+      "title": "Backtrack",
+      "text": "When a node has no unseen neighbors, control returns to its parent call."
     }
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "graph, start",
+      "purpose": "Adjacency list and starting vertex."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "visited",
+      "purpose": "Set of vertices already entered by DFS."
     },
     {
-      "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "name": "call stack",
+      "purpose": "Implicit recursion frontier that stores the current path."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "order",
+      "purpose": "Vertices in first-entry order."
     }
   ],
   "dryRun": [
     {
-      "label": "Graph",
-      "title": "Read graph input",
-      "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 5,
-      "codeInsight": "Defines dfs and names the input graph, start; edits to those inputs change the visual state and output."
+      "label": "Enter A",
+      "title": "Start recursion at A",
+      "note": "A becomes the root of the current DFS path.",
+      "activeLine": 8,
+      "codeInsight": "The visited guard prevents repeated recursion into the same vertex."
     },
     {
-      "label": "Stack Or Recursion Frontier",
-      "title": "Initialize stack or recursion frontier",
-      "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 5,
-      "codeInsight": "Defines dfs and names the input graph, start; edits to those inputs change the visual state and output."
+      "label": "Dive to B",
+      "title": "A calls B",
+      "note": "DFS chooses one neighbor and follows it before checking C.",
+      "activeLine": 12,
+      "codeInsight": "The for loop calls visit(next), so the next vertex is stacked above the current one."
     },
     {
-      "label": "Work item",
-      "title": "Process next vertex or edge",
-      "note": "Visit one unvisited neighbor before backtracking.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "label": "Dive to D",
+      "title": "B calls D",
+      "note": "D has no children, so it returns after being recorded.",
+      "activeLine": 10,
+      "codeInsight": "order.push(node) records first entry, not exit time."
     },
     {
-      "label": "Deep Traversal",
-      "title": "Return deep traversal",
-      "note": "The final graph state becomes the answer.",
-      "activeLine": 15,
-      "codeInsight": "Returns order, the final value maintained by Depth-First Search's code path."
+      "label": "Visit E",
+      "title": "Back at B, visit E",
+      "note": "After D returns, B continues scanning its remaining neighbors.",
+      "activeLine": 12,
+      "codeInsight": "Backtracking is just the recursive call returning to its caller."
+    },
+    {
+      "label": "Finish C/F",
+      "title": "Return to A, then visit C and F",
+      "note": "DFS finishes the B branch before A's C branch.",
+      "activeLine": 16,
+      "codeInsight": "The final order is driven by adjacency order and recursion depth."
     }
   ],
   "complexity": {
     "time": "O(V + E).",
-    "space": "O(V)."
+    "space": "O(V) for visited plus recursion stack."
   },
   "quiz": {
-    "question": "Which state choice keeps Depth-First Search correct?",
+    "question": "Which state keeps Depth-First Search correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track stack or recursion and update it only through Depth-First Search's transition.",
+        "text": "visited follows the page's own transition rule.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Skip the stop condition once one edge has been inspected.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Depth-First Search stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Depth-First Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
+    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "dfs",
@@ -123,74 +130,116 @@ export const algorithmPage = {
         "C"
       ],
       "B": [
-        "D"
+        "D",
+        "E"
       ],
       "C": [
-        "D"
+        "F"
       ],
-      "D": []
+      "D": [],
+      "E": [],
+      "F": []
     },
     "A"
   ],
   "animation": {
     "type": "graph-flow",
-    "title": "Depth-First Search graph state",
-    "ruleLabel": "Graph invariant",
-    "rule": "Each step consumes one vertex or edge and updates stack or recursion frontier without losing the graph invariant.",
+    "title": "DFS recursion path",
+    "ruleLabel": "Recursion invariant",
+    "rule": "The active path contains the current chain of unfinished calls.",
     "nodes": [
       {
         "id": "A",
         "label": "A",
-        "x": 110,
+        "x": 90,
         "y": 150
       },
       {
         "id": "B",
         "label": "B",
-        "x": 300,
-        "y": 75
+        "x": 230,
+        "y": 70
       },
       {
         "id": "C",
         "label": "C",
-        "x": 500,
-        "y": 150
+        "x": 230,
+        "y": 230
       },
       {
         "id": "D",
         "label": "D",
-        "x": 300,
-        "y": 235
+        "x": 390,
+        "y": 55
+      },
+      {
+        "id": "E",
+        "label": "E",
+        "x": 390,
+        "y": 150
+      },
+      {
+        "id": "F",
+        "label": "F",
+        "x": 540,
+        "y": 230
       }
     ],
     "edges": [
       {
         "from": "A",
-        "to": "B"
+        "to": "B",
+        "directed": true
       },
       {
         "from": "A",
-        "to": "D"
+        "to": "C",
+        "directed": true
       },
       {
         "from": "B",
-        "to": "C"
+        "to": "D",
+        "directed": true
       },
       {
-        "from": "D",
-        "to": "C"
+        "from": "B",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "from": "C",
+        "to": "F",
+        "directed": true
       }
     ],
     "steps": [
       {
-        "phase": "Graph",
-        "title": "Read graph input",
-        "note": "The code receives vertices, edges, weights, or adjacency lists.",
-        "ruleLabel": "Depth-First Search invariant",
-        "rule": "Defines dfs and names the input graph, start; edits to those inputs change the visual state and output.",
+        "phase": "Path: A",
+        "title": "Enter A",
+        "note": "A is marked and placed on the active path.",
+        "ruleLabel": "Call stack",
+        "rule": "A",
         "activeNode": "A",
-        "visitedNodes": [],
+        "visitedNodes": [
+          "A"
+        ],
         "frontierNodes": [
+          "A"
+        ]
+      },
+      {
+        "phase": "Path: A -> B",
+        "title": "Dive into B",
+        "note": "DFS follows B before C.",
+        "ruleLabel": "Call stack",
+        "rule": "A -> B",
+        "activeNode": "B",
+        "visitedNodes": [
+          "A",
+          "B"
+        ],
+        "frontierNodes": [
+          "A",
           "B"
         ],
         "activeEdge": {
@@ -199,62 +248,76 @@ export const algorithmPage = {
         }
       },
       {
-        "phase": "Stack Or Recursion Frontier",
-        "title": "Initialize stack or recursion frontier",
-        "note": "Only the graph state owned by this algorithm is created.",
-        "ruleLabel": "Depth-First Search invariant",
-        "rule": "Defines dfs and names the input graph, start; edits to those inputs change the visual state and output.",
-        "activeNode": "B",
-        "visitedNodes": [
-          "A"
-        ],
-        "frontierNodes": [
-          "C"
-        ],
-        "activeEdge": {
-          "from": "B",
-          "to": "C"
-        }
-      },
-      {
-        "phase": "Work item",
-        "title": "Process next vertex or edge",
-        "note": "Visit one unvisited neighbor before backtracking.",
-        "ruleLabel": "Depth-First Search invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
-        "activeNode": "C",
-        "visitedNodes": [
-          "A",
-          "B"
-        ],
-        "frontierNodes": [
-          "D"
-        ],
-        "activeEdge": {
-          "from": "C",
-          "to": "D"
-        }
-      },
-      {
-        "phase": "Deep Traversal",
-        "title": "Return deep traversal",
-        "note": "The final graph state becomes the answer.",
-        "ruleLabel": "Depth-First Search invariant",
-        "rule": "Returns order, the final value maintained by Depth-First Search's code path.",
+        "phase": "Path: A -> B -> D",
+        "title": "Dive into D",
+        "note": "D is the deepest active call on this branch.",
+        "ruleLabel": "Call stack",
+        "rule": "A -> B -> D",
         "activeNode": "D",
         "visitedNodes": [
           "A",
           "B",
-          "C"
+          "D"
         ],
         "frontierNodes": [
-          "A"
+          "A",
+          "B",
+          "D"
         ],
         "activeEdge": {
-          "from": "D",
-          "to": "A"
+          "from": "B",
+          "to": "D"
+        }
+      },
+      {
+        "phase": "Path: A -> B -> E",
+        "title": "Backtrack and visit E",
+        "note": "D returns, then B's next neighbor E becomes active.",
+        "ruleLabel": "Call stack",
+        "rule": "A -> B -> E",
+        "activeNode": "E",
+        "visitedNodes": [
+          "A",
+          "B",
+          "D",
+          "E"
+        ],
+        "frontierNodes": [
+          "A",
+          "B",
+          "E"
+        ],
+        "activeEdge": {
+          "from": "B",
+          "to": "E"
+        }
+      },
+      {
+        "phase": "Path: A -> C -> F",
+        "title": "Finish the C branch",
+        "note": "Only after B finishes does A recurse into C and then F.",
+        "ruleLabel": "Order",
+        "rule": "A, B, D, E, C, F",
+        "activeNode": "F",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "frontierNodes": [
+          "A",
+          "C",
+          "F"
+        ],
+        "activeEdge": {
+          "from": "C",
+          "to": "F"
         }
       }
-    ]
+    ],
+    "static": true
   }
 };

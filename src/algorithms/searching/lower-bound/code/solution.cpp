@@ -1,11 +1,16 @@
 // Lower Bound
 // Route: /algorithms/searching/lower-bound
-// Visualizer: array-boundaries
 
-#include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 
-// TODO: Implement Lower Bound.
-int main() {
-    return 0;
+int lowerBound(const vector<int>& values, int target) {
+    int low = 0;
+    int high = static_cast<int>(values.size());
+    while (low < high) {
+        int mid = low + (high - low) / 2;
+        if (values[mid] < target) low = mid + 1;
+        else high = mid;
+    }
+    return low;
 }

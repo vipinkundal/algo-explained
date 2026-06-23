@@ -12,138 +12,141 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/insertion-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Insertion Sort is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Grow a sorted prefix by inserting each next value into its correct position.",
-  "concept": "Insertion Sort is useful when a sorted prefix can absorb one new value at a time. Use this when the input is small, nearly sorted, or you want stable insertion behavior.",
-  "logicSummary": "Take the next unsorted value, shift larger prefix values right, and insert the value into its sorted position.",
-  "transitionSummary": "Each step expands the sorted prefix by inserting one value without disturbing earlier order.",
-  "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
-  "realLifeExample": "Insertion Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
-  "whenToUse": "Use Insertion Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Insertion Sort: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Insertion Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Insertion Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Sort an array by inserting each new value into an already sorted prefix.",
+  "concept": "Insertion Sort keeps everything left of the current index sorted, shifts larger values right, and inserts the current value into the gap.",
+  "logicSummary": "Take the current value, scan left through the sorted prefix, shift larger values right, and place current after the last smaller value.",
+  "transitionSummary": "Each shift opens one slot to the left until the correct insertion position is found.",
+  "codeInsight": "The current value is stored before shifting so it is not overwritten while values move right.",
+  "realLifeExample": "Use it for nearly sorted data, tiny arrays, and the base case inside hybrid sorting algorithms.",
+  "whenToUse": "Use Insertion Sort when data is small or almost sorted.",
+  "memoryTrick": "Insert the next card into the sorted hand.",
+  "visualizerCaption": "Insertion Sort is shown with the actual sorted/unsorted state that its code maintains.",
   "logicSteps": [
     {
-      "title": "Start prefix",
-      "text": "Treat the first value as sorted."
+      "title": "Pick current value",
+      "text": "1 must be inserted into prefix [5]."
     },
     {
-      "title": "Pick key",
-      "text": "Take the next unsorted value."
+      "title": "Move 5 right",
+      "text": "5 is larger than 1, so shift it one slot right."
     },
     {
-      "title": "Shift larger values",
-      "text": "Move larger prefix values right."
+      "title": "Place 1",
+      "text": "The gap after scan receives current."
     },
     {
-      "title": "Insert key",
-      "text": "Place the key in the open slot."
+      "title": "Repeat for next index",
+      "text": "The sorted prefix grows one value at a time."
     }
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The values to sort."
+      "name": "index",
+      "purpose": "First item outside the sorted prefix."
     },
     {
-      "name": "working array",
-      "purpose": "A copy that is rearranged during sorting."
+      "name": "current",
+      "purpose": "Value being inserted."
     },
     {
-      "name": "sorted array",
-      "purpose": "The final ordered result."
+      "name": "scan",
+      "purpose": "Pointer moving left through larger prefix values."
     },
     {
-      "name": "unsorted work remains",
-      "purpose": "Continue until every value is in final order."
+      "name": "values",
+      "purpose": "Working array."
     }
   ],
   "dryRun": [
     {
-      "label": "Prefix",
-      "title": "Start sorted area",
-      "note": "The left side is maintained in order.",
-      "activeLine": 5,
-      "codeInsight": "Defines insertionSort and names the input array; edits to those inputs change the visual state and output."
+      "label": "index = 1",
+      "title": "Pick current value",
+      "note": "1 must be inserted into prefix [5].",
+      "activeLine": 4,
+      "codeInsight": "current protects the value while the prefix shifts."
     },
     {
-      "label": "Key",
-      "title": "Read next value",
-      "note": "One value is removed from the unsorted side.",
+      "label": "shift",
+      "title": "Move 5 right",
+      "note": "5 is larger than 1, so shift it one slot right.",
       "activeLine": 7,
-      "codeInsight": "Runs the counted loop (let index = 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration."
+      "codeInsight": "The while condition controls all prefix shifts."
     },
     {
-      "label": "Shift",
-      "title": "Move larger values",
-      "note": "Larger prefix values slide right to create room.",
-      "activeLine": 6,
-      "codeInsight": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes."
+      "label": "insert",
+      "title": "Place 1",
+      "note": "The gap after scan receives current.",
+      "activeLine": 10,
+      "codeInsight": "scan + 1 is the insertion point."
     },
     {
-      "label": "Insert",
-      "title": "Place key",
-      "note": "The sorted prefix grows by one.",
-      "activeLine": 7,
-      "codeInsight": "Runs the counted loop (let index = 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration."
+      "label": "grow prefix",
+      "title": "Repeat for next index",
+      "note": "The sorted prefix grows one value at a time.",
+      "activeLine": 3,
+      "codeInsight": "The outer loop advances the prefix boundary."
     }
   ],
   "complexity": {
-    "time": "O(n^2) worst case, O(n) nearly sorted.",
+    "time": "O(n^2) worst case, O(n) when nearly sorted.",
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Insertion Sort correct?",
+    "question": "Which state keeps Insertion Sort correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and working array and update it only through Insertion Sort's transition.",
+        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Use one generic sorted-array story for every sorting algorithm.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Move values without preserving the algorithm's stated invariant.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Insertion Sort stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Insertion Sort needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Insertion Sort works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Insertion Sort needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "insertion-sort",
   "runnerInput": [
     [
-      4,
+      5,
       1,
-      3,
-      2
+      4,
+      2,
+      8
     ]
   ],
   "animation": {
     "type": "array-flow",
-    "title": "Insertion Sort array state",
-    "ruleLabel": "Array invariant",
-    "rule": "Each step expands the sorted prefix by inserting one value without disturbing earlier order.",
+    "static": true,
+    "title": "Insertion Sort trace",
+    "ruleLabel": "Sorting invariant",
+    "rule": "Each shift opens one slot to the left until the correct insertion position is found.",
     "values": [
-      4,
+      5,
       1,
-      3,
-      2
+      4,
+      2,
+      8
     ],
     "steps": [
       {
-        "phase": "Prefix",
-        "title": "Start sorted area",
-        "note": "The left side is maintained in order.",
-        "ruleLabel": "Insertion Sort invariant",
-        "rule": "Defines insertionSort and names the input array; edits to those inputs change the visual state and output.",
+        "phase": "current = 1",
+        "title": "Pick insertion value",
+        "note": "Insert 1 into [5].",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each shift opens one slot to the left until the correct insertion position is found.",
         "activeIndices": [
-          0
+          1
         ],
         "sortedIndices": [
           0
@@ -153,38 +156,36 @@ export const algorithmPage = {
           0,
           1
         ],
-        "primaryLabel": "Prefix",
-        "secondaryLabel": "Each step expands the sorted prefix by inserting one value without disturbing earlier order."
+        "primaryLabel": "current = 1",
+        "secondaryLabel": "Each shift opens one slot to the left until the correct insertion position is found."
       },
       {
-        "phase": "Key",
-        "title": "Read next value",
-        "note": "One value is removed from the unsorted side.",
-        "ruleLabel": "Insertion Sort invariant",
-        "rule": "Runs the counted loop (let index = 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration.",
+        "phase": "shift 5",
+        "title": "Open a gap",
+        "note": "5 moves right.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each shift opens one slot to the left until the correct insertion position is found.",
         "activeIndices": [
-          1,
-          2
+          0,
+          1
         ],
-        "sortedIndices": [
-          0
-        ],
+        "sortedIndices": [],
         "mutedIndices": [],
         "window": [
           0,
-          2
+          1
         ],
-        "primaryLabel": "Key",
-        "secondaryLabel": "Each step expands the sorted prefix by inserting one value without disturbing earlier order."
+        "primaryLabel": "shift 5",
+        "secondaryLabel": "Each shift opens one slot to the left until the correct insertion position is found."
       },
       {
-        "phase": "Shift",
-        "title": "Move larger values",
-        "note": "Larger prefix values slide right to create room.",
-        "ruleLabel": "Insertion Sort invariant",
-        "rule": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes.",
+        "phase": "place 1",
+        "title": "Prefix sorted",
+        "note": "[1, 5] is sorted.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each shift opens one slot to the left until the correct insertion position is found.",
         "activeIndices": [
-          2
+          0
         ],
         "sortedIndices": [
           0,
@@ -192,36 +193,35 @@ export const algorithmPage = {
         ],
         "mutedIndices": [],
         "window": [
-          1,
-          3
+          0,
+          1
         ],
-        "primaryLabel": "Shift",
-        "secondaryLabel": "Each step expands the sorted prefix by inserting one value without disturbing earlier order."
+        "primaryLabel": "place 1",
+        "secondaryLabel": "Each shift opens one slot to the left until the correct insertion position is found."
       },
       {
-        "phase": "Insert",
-        "title": "Place key",
-        "note": "The sorted prefix grows by one.",
-        "ruleLabel": "Insertion Sort invariant",
-        "rule": "Runs the counted loop (let index = 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration.",
+        "phase": "finish",
+        "title": "All insertions complete",
+        "note": "Every item has entered the prefix.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each shift opens one slot to the left until the correct insertion position is found.",
         "activeIndices": [
-          3,
-          3
+          4
         ],
         "sortedIndices": [
           0,
           1,
-          2
-        ],
-        "mutedIndices": [
-          0
-        ],
-        "window": [
           2,
-          3
+          3,
+          4
         ],
-        "primaryLabel": "Insert",
-        "secondaryLabel": "Each step expands the sorted prefix by inserting one value without disturbing earlier order."
+        "mutedIndices": [],
+        "window": [
+          0,
+          4
+        ],
+        "primaryLabel": "finish",
+        "secondaryLabel": "Each shift opens one slot to the left until the correct insertion position is found."
       }
     ]
   }

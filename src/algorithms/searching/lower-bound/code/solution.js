@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Lower Bound
 // Route: /algorithms/searching/lower-bound
 

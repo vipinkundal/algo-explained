@@ -1324,10 +1324,16 @@
   overflow: visible;
 }
 
+.structured-graph-svg marker path {
+  fill: #9aa4b2;
+  transition: fill 180ms ease;
+}
+
 .structured-graph-edge {
   stroke: #9aa4b2;
   stroke-width: 4;
   stroke-linecap: round;
+  transition: stroke 180ms ease, stroke-width 180ms ease;
 }
 
 .structured-graph-edge.active {
@@ -1335,10 +1341,29 @@
   stroke-width: 6;
 }
 
+.structured-graph-edge-group.active marker path {
+  fill: var(--primary);
+}
+
+.structured-graph-edge-label {
+  paint-order: stroke;
+  stroke: var(--surface-container-lowest);
+  stroke-width: 5px;
+  fill: var(--on-surface-variant);
+  font-size: 13px;
+  font-weight: 900;
+  text-anchor: middle;
+}
+
+.structured-graph-edge-label.active {
+  fill: var(--primary);
+}
+
 .structured-graph-node circle {
   fill: var(--surface-lowest);
   stroke: var(--outline-variant);
   stroke-width: 3;
+  transition: fill 180ms ease, stroke 180ms ease, stroke-width 180ms ease, transform 180ms ease;
 }
 
 .structured-graph-node text {
@@ -1363,6 +1388,7 @@
   fill: var(--secondary-fixed);
   stroke: var(--secondary);
   stroke-width: 5;
+  transform: scale(1.08);
 }
 
 .stack-queue-board {

@@ -12,216 +12,217 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/bubble-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Bubble Sort is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Repeatedly swap adjacent out-of-order pairs so the largest remaining value bubbles to the end.",
-  "concept": "Bubble Sort is useful when local adjacent swaps can repeatedly move large values toward the end. Use this when you want the simplest comparison-sort trace for learning adjacent swaps.",
-  "logicSummary": "Sweep across adjacent pairs, swap out-of-order neighbors, and repeat until no unsorted pair remains.",
-  "transitionSummary": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array.",
-  "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
-  "realLifeExample": "Bubble Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
-  "whenToUse": "Use Bubble Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Bubble Sort: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Bubble Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Bubble Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Sort an array by repeatedly swapping adjacent out-of-order values.",
+  "concept": "Bubble Sort pushes the largest unsorted value to the end of the unsorted range on every pass.",
+  "logicSummary": "Scan adjacent pairs, swap when left is greater than right, then shrink the unsorted suffix boundary.",
+  "transitionSummary": "Each adjacent comparison either swaps a local inversion or leaves the pair as-is; the pass ends with one more final value.",
+  "codeInsight": "The swapped flag is an early-stop check: a full pass with no swaps proves the array is sorted.",
+  "realLifeExample": "Use it for teaching adjacent swaps and inversion removal, not for large production sorting.",
+  "whenToUse": "Use Bubble Sort only for small or educational cases where adjacent-swap behavior matters.",
+  "memoryTrick": "Big values bubble right one pass at a time.",
+  "visualizerCaption": "Bubble Sort is shown with the actual sorted/unsorted state that its code maintains.",
   "logicSteps": [
     {
-      "title": "Copy values",
-      "text": "Work on a mutable array."
+      "title": "Compare 5 and 1",
+      "text": "5 > 1, so swap the adjacent pair."
     },
     {
-      "title": "Compare neighbors",
-      "text": "Inspect the current adjacent pair."
+      "title": "Bubble 5 right",
+      "text": "5 continues moving until it reaches the end of the pass."
     },
     {
-      "title": "Swap if needed",
-      "text": "Move the larger value one position right."
+      "title": "Lock final value",
+      "text": "The last slot is sorted and excluded from the next pass."
     },
     {
-      "title": "Return sorted array",
-      "text": "Stop when a pass leaves the order stable."
+      "title": "Stop early",
+      "text": "A pass without swaps means every adjacent pair is ordered."
     }
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The values to sort."
+      "name": "values",
+      "purpose": "Working copy being sorted."
     },
     {
-      "name": "working array",
-      "purpose": "A copy that is rearranged during sorting."
+      "name": "end",
+      "purpose": "Last unsorted index in the current pass."
     },
     {
-      "name": "sorted array",
-      "purpose": "The final ordered result."
+      "name": "index",
+      "purpose": "Left index of the adjacent pair."
     },
     {
-      "name": "unsorted work remains",
-      "purpose": "Continue until every value is in final order."
+      "name": "swapped",
+      "purpose": "Whether the current pass changed the array."
     }
   ],
   "dryRun": [
     {
-      "label": "Array",
-      "title": "Copy values",
-      "note": "The code starts with the list to reorder.",
+      "label": "Pass 1",
+      "title": "Compare 5 and 1",
+      "note": "5 > 1, so swap the adjacent pair.",
       "activeLine": 6,
-      "codeInsight": "Copies the input into values, so Bubble Sort mutates only its working array."
+      "codeInsight": "Only adjacent inversions are swapped."
     },
     {
-      "label": "Pair",
-      "title": "Compare neighbors",
-      "note": "Only adjacent values are inspected.",
+      "label": "Pass 1",
+      "title": "Bubble 5 right",
+      "note": "5 continues moving until it reaches the end of the pass.",
+      "activeLine": 7,
+      "codeInsight": "The largest remaining value lands at index end."
+    },
+    {
+      "label": "Shrink end",
+      "title": "Lock final value",
+      "note": "The last slot is sorted and excluded from the next pass.",
+      "activeLine": 3,
+      "codeInsight": "end moves left after each outer pass."
+    },
+    {
+      "label": "No swaps",
+      "title": "Stop early",
+      "note": "A pass without swaps means every adjacent pair is ordered.",
       "activeLine": 10,
-      "codeInsight": "Checks values[index] > values[index + 1]; only the branch that preserves Bubble Sort's invariant is allowed to change state."
-    },
-    {
-      "label": "Swap",
-      "title": "Move larger right",
-      "note": "Out-of-order neighbors exchange positions.",
-      "activeLine": 11,
-      "codeInsight": "Swaps values[index], values[index + 1] with values[index + 1], values[index], moving the larger adjacent value right."
-    },
-    {
-      "label": "Sorted",
-      "title": "Return final order",
-      "note": "The last pass confirms every pair is ordered.",
-      "activeLine": 17,
-      "codeInsight": "Returns values, the final value maintained by Bubble Sort's code path."
+      "codeInsight": "swapped prevents unnecessary extra passes."
     }
   ],
   "complexity": {
-    "time": "O(n^2) worst case, O(n) best case when already sorted.",
+    "time": "O(n^2) worst case, O(n) if already sorted.",
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Bubble Sort correct?",
+    "question": "Which state keeps Bubble Sort correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and working array and update it only through Bubble Sort's transition.",
+        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Use one generic sorted-array story for every sorting algorithm.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Move values without preserving the algorithm's stated invariant.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Bubble Sort stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Bubble Sort needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Bubble Sort works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Bubble Sort needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "bubble-sort",
   "runnerInput": [
     [
-      4,
+      5,
       1,
-      3,
-      2
+      4,
+      2,
+      8
     ]
   ],
   "animation": {
     "type": "array-flow",
-    "title": "Bubble Sort array state",
-    "ruleLabel": "Array invariant",
-    "rule": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array.",
+    "static": true,
+    "title": "Bubble Sort trace",
+    "ruleLabel": "Sorting invariant",
+    "rule": "Each adjacent comparison either swaps a local inversion or leaves the pair as-is; the pass ends with one more final value.",
     "values": [
-      4,
+      5,
       1,
-      3,
-      2
+      4,
+      2,
+      8
     ],
     "steps": [
       {
-        "phase": "Array",
-        "title": "Copy values",
-        "note": "The code starts with the list to reorder.",
-        "ruleLabel": "Bubble Sort invariant",
-        "rule": "Copies the input into values, so Bubble Sort mutates only its working array.",
+        "phase": "compare",
+        "title": "5 and 1 are inverted",
+        "note": "Swap the adjacent pair.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each adjacent comparison either swaps a local inversion or leaves the pair as-is; the pass ends with one more final value.",
         "activeIndices": [
-          0
-        ],
-        "sortedIndices": [
-          0
-        ],
-        "mutedIndices": [],
-        "window": [
           0,
           1
         ],
-        "primaryLabel": "Array",
-        "secondaryLabel": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array."
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          4
+        ],
+        "primaryLabel": "compare",
+        "secondaryLabel": "Each adjacent comparison either swaps a local inversion or leaves the pair as-is; the pass ends with one more final value."
       },
       {
-        "phase": "Pair",
-        "title": "Compare neighbors",
-        "note": "Only adjacent values are inspected.",
-        "ruleLabel": "Bubble Sort invariant",
-        "rule": "Checks values[index] > values[index + 1]; only the branch that preserves Bubble Sort's invariant is allowed to change state.",
+        "phase": "bubble",
+        "title": "5 moves right",
+        "note": "Continue adjacent comparisons.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each adjacent comparison either swaps a local inversion or leaves the pair as-is; the pass ends with one more final value.",
         "activeIndices": [
           1,
           2
         ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          4
+        ],
+        "primaryLabel": "bubble",
+        "secondaryLabel": "Each adjacent comparison either swaps a local inversion or leaves the pair as-is; the pass ends with one more final value."
+      },
+      {
+        "phase": "lock end",
+        "title": "8 is final",
+        "note": "The largest value in the pass is fixed.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each adjacent comparison either swaps a local inversion or leaves the pair as-is; the pass ends with one more final value.",
+        "activeIndices": [
+          4
+        ],
         "sortedIndices": [
-          0
+          4
         ],
         "mutedIndices": [],
         "window": [
           0,
-          2
-        ],
-        "primaryLabel": "Pair",
-        "secondaryLabel": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array."
-      },
-      {
-        "phase": "Swap",
-        "title": "Move larger right",
-        "note": "Out-of-order neighbors exchange positions.",
-        "ruleLabel": "Bubble Sort invariant",
-        "rule": "Swaps values[index], values[index + 1] with values[index + 1], values[index], moving the larger adjacent value right.",
-        "activeIndices": [
-          2
-        ],
-        "sortedIndices": [
-          0,
-          1
-        ],
-        "mutedIndices": [],
-        "window": [
-          1,
           3
         ],
-        "primaryLabel": "Swap",
-        "secondaryLabel": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array."
+        "primaryLabel": "lock end",
+        "secondaryLabel": "Each adjacent comparison either swaps a local inversion or leaves the pair as-is; the pass ends with one more final value."
       },
       {
-        "phase": "Sorted",
-        "title": "Return final order",
-        "note": "The last pass confirms every pair is ordered.",
-        "ruleLabel": "Bubble Sort invariant",
-        "rule": "Returns values, the final value maintained by Bubble Sort's code path.",
+        "phase": "finish",
+        "title": "No inversions remain",
+        "note": "The sorted suffix grows until all values are ordered.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each adjacent comparison either swaps a local inversion or leaves the pair as-is; the pass ends with one more final value.",
         "activeIndices": [
-          3,
-          3
-        ],
-        "sortedIndices": [
           0,
           1,
-          2
-        ],
-        "mutedIndices": [
-          0
-        ],
-        "window": [
           2,
           3
         ],
-        "primaryLabel": "Sorted",
-        "secondaryLabel": "Each comparison either keeps a pair or swaps it, shrinking disorder near the end of the array."
+        "sortedIndices": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          4
+        ],
+        "primaryLabel": "finish",
+        "secondaryLabel": "Each adjacent comparison either swaps a local inversion or leaves the pair as-is; the pass ends with one more final value."
       }
     ]
   }

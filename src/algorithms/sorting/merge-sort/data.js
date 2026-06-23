@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/merge-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Merge Sort is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Divide the array into halves, sort each half, then merge two sorted halves.",
-  "concept": "Merge Sort is useful when splitting into sorted halves makes merging predictable. Use this when stable n log n sorting is preferred and extra merge space is acceptable.",
-  "logicSummary": "Divide the array into halves, sort each half recursively, then merge the two sorted halves.",
-  "transitionSummary": "Each merge step chooses the smaller front value from two already-sorted halves.",
-  "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
-  "realLifeExample": "Merge Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
-  "whenToUse": "Use Merge Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Merge Sort: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Merge Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Merge Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Sort an array by recursively sorting halves and merging two sorted lists.",
+  "concept": "Merge Sort divides until single-item arrays, then merges sorted halves by repeatedly taking the smaller front value.",
+  "logicSummary": "Split the array around mid, recursively sort both halves, then merge the two sorted results.",
+  "transitionSummary": "During merge, compare the left and right front values and append the smaller one to output.",
+  "codeInsight": "The merge function is where ordering happens; recursion only creates sorted halves for merge to combine.",
+  "realLifeExample": "Use it for stable sorting and linked-list sorting where predictable O(n log n) matters.",
+  "whenToUse": "Use Merge Sort when stable O(n log n) sorting is preferred and O(n) extra space is acceptable.",
+  "memoryTrick": "Split down, merge up.",
+  "visualizerCaption": "Merge Sort is shown with the actual sorted/unsorted state that its code maintains.",
   "logicSteps": [
     {
-      "title": "Split range",
-      "text": "Divide the current array section."
+      "title": "Divide at mid",
+      "text": "Break [5,1,4,2] into [5,1] and [4,2]."
     },
     {
-      "title": "Sort halves",
-      "text": "Recursively sort left and right sections."
+      "title": "Single items are sorted",
+      "text": "Arrays of length 1 return immediately."
     },
     {
-      "title": "Merge fronts",
-      "text": "Choose the smaller front value."
+      "title": "Compare fronts",
+      "text": "Take the smaller front from left or right."
     },
     {
-      "title": "Return merged array",
-      "text": "Produce one sorted section."
+      "title": "Merged result",
+      "text": "Concatenate leftovers after one half is empty."
     }
   ],
   "variables": [
     {
       "name": "array",
-      "purpose": "The values to sort."
+      "purpose": "Current range being sorted."
     },
     {
-      "name": "working array",
-      "purpose": "A copy that is rearranged during sorting."
+      "name": "mid",
+      "purpose": "Split point between halves."
     },
     {
-      "name": "sorted array",
-      "purpose": "The final ordered result."
+      "name": "left, right",
+      "purpose": "Sorted halves waiting to merge."
     },
     {
-      "name": "unsorted work remains",
-      "purpose": "Continue until every value is in final order."
+      "name": "result",
+      "purpose": "Merged sorted output."
     }
   ],
   "dryRun": [
     {
-      "label": "Range",
-      "title": "Split array",
-      "note": "The code divides work into smaller ranges.",
-      "activeLine": 5,
-      "codeInsight": "Defines mergeSort and names the input array; edits to those inputs change the visual state and output."
+      "label": "Split",
+      "title": "Divide at mid",
+      "note": "Break [5,1,4,2] into [5,1] and [4,2].",
+      "activeLine": 3,
+      "codeInsight": "mid defines the two recursive subproblems."
     },
     {
-      "label": "Halves",
-      "title": "Sort recursively",
-      "note": "Each half is solved before merge.",
-      "activeLine": 5,
-      "codeInsight": "Defines mergeSort and names the input array; edits to those inputs change the visual state and output."
+      "label": "Base",
+      "title": "Single items are sorted",
+      "note": "Arrays of length 1 return immediately.",
+      "activeLine": 2,
+      "codeInsight": "The base case stops recursion."
     },
     {
       "label": "Merge",
-      "title": "Choose smaller front",
-      "note": "The next output value comes from one sorted half.",
-      "activeLine": 6,
-      "codeInsight": "Checks array.length <= 1; only the branch that preserves Merge Sort's invariant is allowed to change state."
+      "title": "Compare fronts",
+      "note": "Take the smaller front from left or right.",
+      "activeLine": 11,
+      "codeInsight": "Only sorted halves make the front comparison valid."
     },
     {
-      "label": "Sorted",
-      "title": "Return merged result",
-      "note": "The merged section is fully ordered.",
-      "activeLine": 8,
-      "codeInsight": "Returns merge(mergeSort(array.slice(0, mid)), mergeSort(array.slice(mid))), the final value maintained by Merge Sort's code path."
+      "label": "Return",
+      "title": "Merged result",
+      "note": "Concatenate leftovers after one half is empty.",
+      "activeLine": 13,
+      "codeInsight": "Remaining values are already ordered inside their half."
     }
   ],
   "complexity": {
@@ -93,135 +93,137 @@ export const algorithmPage = {
     "space": "O(n)."
   },
   "quiz": {
-    "question": "Which state choice keeps Merge Sort correct?",
+    "question": "Which state keeps Merge Sort correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and working array and update it only through Merge Sort's transition.",
+        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Use one generic sorted-array story for every sorting algorithm.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Move values without preserving the algorithm's stated invariant.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Merge Sort stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Merge Sort needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Merge Sort works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Merge Sort needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "merge-sort",
   "runnerInput": [
     [
-      4,
+      5,
       1,
-      3,
+      4,
       2
     ]
   ],
   "animation": {
     "type": "array-flow",
-    "title": "Merge Sort array state",
-    "ruleLabel": "Array invariant",
-    "rule": "Each merge step chooses the smaller front value from two already-sorted halves.",
+    "static": true,
+    "title": "Merge Sort trace",
+    "ruleLabel": "Sorting invariant",
+    "rule": "During merge, compare the left and right front values and append the smaller one to output.",
     "values": [
-      4,
+      5,
       1,
-      3,
+      4,
       2
     ],
     "steps": [
       {
-        "phase": "Range",
-        "title": "Split array",
-        "note": "The code divides work into smaller ranges.",
-        "ruleLabel": "Merge Sort invariant",
-        "rule": "Defines mergeSort and names the input array; edits to those inputs change the visual state and output.",
-        "activeIndices": [
-          0
-        ],
-        "sortedIndices": [
-          0
-        ],
-        "mutedIndices": [],
-        "window": [
-          0,
-          1
-        ],
-        "primaryLabel": "Range",
-        "secondaryLabel": "Each merge step chooses the smaller front value from two already-sorted halves."
-      },
-      {
-        "phase": "Halves",
-        "title": "Sort recursively",
-        "note": "Each half is solved before merge.",
-        "ruleLabel": "Merge Sort invariant",
-        "rule": "Defines mergeSort and names the input array; edits to those inputs change the visual state and output.",
+        "phase": "split",
+        "title": "Divide into halves",
+        "note": "[5,1] and [4,2].",
+        "ruleLabel": "Sorting invariant",
+        "rule": "During merge, compare the left and right front values and append the smaller one to output.",
         "activeIndices": [
           1,
           2
         ],
-        "sortedIndices": [
-          0
-        ],
+        "sortedIndices": [],
         "mutedIndices": [],
         "window": [
           0,
-          2
-        ],
-        "primaryLabel": "Halves",
-        "secondaryLabel": "Each merge step chooses the smaller front value from two already-sorted halves."
-      },
-      {
-        "phase": "Merge",
-        "title": "Choose smaller front",
-        "note": "The next output value comes from one sorted half.",
-        "ruleLabel": "Merge Sort invariant",
-        "rule": "Checks array.length <= 1; only the branch that preserves Merge Sort's invariant is allowed to change state.",
-        "activeIndices": [
-          2
-        ],
-        "sortedIndices": [
-          0,
-          1
-        ],
-        "mutedIndices": [],
-        "window": [
-          1,
           3
         ],
-        "primaryLabel": "Merge",
-        "secondaryLabel": "Each merge step chooses the smaller front value from two already-sorted halves."
+        "primaryLabel": "split",
+        "secondaryLabel": "During merge, compare the left and right front values and append the smaller one to output."
       },
       {
-        "phase": "Sorted",
-        "title": "Return merged result",
-        "note": "The merged section is fully ordered.",
-        "ruleLabel": "Merge Sort invariant",
-        "rule": "Returns merge(mergeSort(array.slice(0, mid)), mergeSort(array.slice(mid))), the final value maintained by Merge Sort's code path.",
+        "phase": "base",
+        "title": "Sort tiny halves",
+        "note": "Single values are sorted by definition.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "During merge, compare the left and right front values and append the smaller one to output.",
         "activeIndices": [
-          3,
-          3
-        ],
-        "sortedIndices": [
           0,
           1,
-          2
-        ],
-        "mutedIndices": [
-          0
-        ],
-        "window": [
           2,
           3
         ],
-        "primaryLabel": "Sorted",
-        "secondaryLabel": "Each merge step chooses the smaller front value from two already-sorted halves."
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "base",
+        "secondaryLabel": "During merge, compare the left and right front values and append the smaller one to output."
+      },
+      {
+        "phase": "merge",
+        "title": "Compare front values",
+        "note": "Choose the smaller front for output.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "During merge, compare the left and right front values and append the smaller one to output.",
+        "activeIndices": [
+          0,
+          2
+        ],
+        "sortedIndices": [
+          1,
+          3
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "merge",
+        "secondaryLabel": "During merge, compare the left and right front values and append the smaller one to output."
+      },
+      {
+        "phase": "return",
+        "title": "Merged order",
+        "note": "The final array is [1,2,4,5].",
+        "ruleLabel": "Sorting invariant",
+        "rule": "During merge, compare the left and right front values and append the smaller one to output.",
+        "activeIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "return",
+        "secondaryLabel": "During merge, compare the left and right front values and append the smaller one to output."
       }
     ]
   }

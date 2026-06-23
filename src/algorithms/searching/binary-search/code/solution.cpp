@@ -1,11 +1,17 @@
 // Binary Search
 // Route: /algorithms/searching/binary-search
-// Visualizer: array-boundaries
 
-#include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 
-// TODO: Implement Binary Search.
-int main() {
-    return 0;
+int binarySearch(const vector<int>& values, int target) {
+    int low = 0;
+    int high = static_cast<int>(values.size()) - 1;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (values[mid] == target) return mid;
+        if (values[mid] < target) low = mid + 1;
+        else high = mid - 1;
+    }
+    return -1;
 }

@@ -1,11 +1,18 @@
 // Insertion Sort
 // Route: /algorithms/sorting/insertion-sort
-// Visualizer: card-insertion
 
-#include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 
-// TODO: Implement Insertion Sort.
-int main() {
-    return 0;
+vector<int> insertionSort(vector<int> values) {
+    for (int index = 1; index < static_cast<int>(values.size()); index += 1) {
+        int current = values[index];
+        int scan = index - 1;
+        while (scan >= 0 && values[scan] > current) {
+            values[scan + 1] = values[scan];
+            scan -= 1;
+        }
+        values[scan + 1] = current;
+    }
+    return values;
 }

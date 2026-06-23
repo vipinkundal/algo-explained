@@ -13,106 +13,113 @@ export const algorithmPage = {
   "codePath": "./src/algorithms/graphs/dijkstra/code/solution.js",
   "codeFilename": "solution.js",
   "meaning": "Dijkstra’s Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Dijkstra’s Algorithm repeatedly finalizes the unvisited vertex with the smallest known distance.",
-  "concept": "Dijkstra’s Algorithm is useful when graph structure can be solved by maintaining distance table. Use this when the required result is shortest-path relaxation.",
-  "logicSummary": "Initialize graph input and distance table, choose the next work item, then relax outgoing edges when a better distance is found.",
-  "transitionSummary": "Each step consumes one vertex or edge and updates distance table without losing the graph invariant.",
-  "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
-  "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
-  "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Dijkstra’s Algorithm: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Dijkstra’s Algorithm is shown as graph frontier/state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "problem": "Dijkstra's Algorithm computes shortest path distances from one start vertex when all edge weights are non-negative.",
+  "concept": "Dijkstra repeatedly finalizes the unvisited vertex with the smallest known distance, then relaxes its outgoing weighted edges.",
+  "logicSummary": "Initialize all distances to infinity except the start, choose the smallest unvisited distance, and improve neighbors through relaxation.",
+  "transitionSummary": "One transition finalizes a vertex and replaces a neighbor distance only when current distance plus edge weight is smaller.",
+  "codeInsight": "The distance table is the answer in progress; visited means a vertex's shortest distance is finalized.",
+  "realLifeExample": "Use Dijkstra for route planning, network latency, game maps, and any non-negative shortest-path problem.",
+  "whenToUse": "Use it for single-source shortest paths on weighted graphs with no negative edge weights.",
+  "memoryTrick": "Dijkstra locks the nearest unlocked vertex, then offers better prices to its neighbors.",
+  "visualizerCaption": "Watch each edge relaxation update the distance table until all reachable shortest paths are finalized.",
   "logicSteps": [
     {
-      "title": "Read graph",
-      "text": "Identify vertices, edges, weights, and start state."
+      "title": "Initialize distances",
+      "text": "Set start to 0 and every other vertex to infinity."
     },
     {
-      "title": "Build graph state",
-      "text": "Create the distance table."
+      "title": "Pick closest unvisited",
+      "text": "Choose the unvisited vertex with the smallest known distance."
     },
     {
-      "title": "Process work item",
-      "text": "Relax outgoing edges when a better distance is found."
+      "title": "Relax outgoing edges",
+      "text": "If going through current is cheaper, update the neighbor distance and predecessor."
     },
     {
-      "title": "Return graph result",
-      "text": "Return the shortest-path relaxation."
+      "title": "Return shortest paths",
+      "text": "Final distances and previous pointers describe the shortest-path tree."
     }
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "graph, start",
+      "purpose": "Weighted adjacency list and source vertex."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "distances",
+      "purpose": "Best known distance from start to each vertex."
     },
     {
-      "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "name": "previous",
+      "purpose": "Predecessor pointer for reconstructing shortest paths."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "visited",
+      "purpose": "Vertices whose shortest distance is finalized."
     }
   ],
   "dryRun": [
     {
-      "label": "Graph",
-      "title": "Read graph input",
-      "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 5,
-      "codeInsight": "Defines dijkstra and names the input graph, start; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Distance Table",
-      "title": "Initialize distance table",
-      "note": "Only the graph state owned by this algorithm is created.",
+      "label": "Initialize",
+      "title": "Set A = 0 and others infinity",
+      "note": "Only the start vertex has a known distance.",
       "activeLine": 6,
-      "codeInsight": "Builds distances as a lookup table so each key has an explicit starting state."
+      "codeInsight": "distances starts as a table so every vertex has an explicit best-known value."
     },
     {
-      "label": "Work item",
-      "title": "Process next vertex or edge",
-      "note": "Relax outgoing edges when a better distance is found.",
-      "activeLine": 6,
-      "codeInsight": "Builds distances as a lookup table so each key has an explicit starting state."
-    },
-    {
-      "label": "Shortest Path Relaxation",
-      "title": "Return shortest-path relaxation",
-      "note": "The final graph state becomes the answer.",
+      "label": "Relax A",
+      "title": "Finalize A and relax A-B, A-C",
+      "note": "B becomes 4 and C becomes 2.",
       "activeLine": 17,
-      "codeInsight": "Returns distances, the final value maintained by Dijkstra’s Algorithm's code path."
+      "codeInsight": "candidate is the path cost through the current finalized vertex."
+    },
+    {
+      "label": "Relax C",
+      "title": "Finalize C and improve B",
+      "note": "C at distance 2 makes B cheaper: 2 + 1 = 3.",
+      "activeLine": 19,
+      "codeInsight": "A smaller candidate replaces both distances[next] and previous[next]."
+    },
+    {
+      "label": "Relax B",
+      "title": "Finalize B and improve D",
+      "note": "B at distance 3 improves D to 8.",
+      "activeLine": 19,
+      "codeInsight": "Visited vertices are not chosen again, which locks their shortest distance."
+    },
+    {
+      "label": "Finish",
+      "title": "Finalize remaining reachable vertices",
+      "note": "D, E, and F settle with distances 8, 10, and 13.",
+      "activeLine": 25,
+      "codeInsight": "The function returns both distances and previous so the page can explain paths, not just numbers."
     }
   ],
   "complexity": {
-    "time": "O(V^2 + E) in this simple implementation.",
+    "time": "O(V^2 + E) for this simple array-scan implementation; O((V + E) log V) with a priority queue.",
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state choice keeps Dijkstra’s Algorithm correct?",
+    "question": "Which state keeps Dijkstra’s Algorithm correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track visited and frontier and update it only through Dijkstra’s Algorithm's transition.",
+        "text": "distances follows the page's own transition rule.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Skip the stop condition once one edge has been inspected.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Dijkstra’s Algorithm stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Dijkstra’s Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
+    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "dijkstra",
@@ -121,146 +128,219 @@ export const algorithmPage = {
       "A": [
         [
           "B",
-          1
-        ],
-        [
-          "C",
           4
-        ]
-      ],
-      "B": [
+        ],
         [
           "C",
           2
         ]
       ],
-      "C": []
+      "B": [
+        [
+          "D",
+          5
+        ]
+      ],
+      "C": [
+        [
+          "B",
+          1
+        ],
+        [
+          "D",
+          8
+        ],
+        [
+          "E",
+          10
+        ]
+      ],
+      "D": [
+        [
+          "E",
+          2
+        ],
+        [
+          "F",
+          6
+        ]
+      ],
+      "E": [
+        [
+          "F",
+          3
+        ]
+      ],
+      "F": []
     },
     "A"
   ],
   "animation": {
-    "type": "graph-flow",
-    "title": "Dijkstra’s Algorithm graph state",
-    "ruleLabel": "Graph invariant",
-    "rule": "Each step consumes one vertex or edge and updates distance table without losing the graph invariant.",
+    "type": "edge-relaxation",
+    "title": "Dijkstra weighted relaxation",
     "nodes": [
       {
         "id": "A",
         "label": "A",
-        "x": 110,
+        "x": 70,
         "y": 150
       },
       {
         "id": "B",
         "label": "B",
-        "x": 300,
+        "x": 220,
         "y": 75
       },
       {
         "id": "C",
         "label": "C",
-        "x": 500,
-        "y": 150
+        "x": 220,
+        "y": 225
       },
       {
         "id": "D",
         "label": "D",
-        "x": 300,
-        "y": 235
+        "x": 390,
+        "y": 90
+      },
+      {
+        "id": "E",
+        "label": "E",
+        "x": 390,
+        "y": 220
+      },
+      {
+        "id": "F",
+        "label": "F",
+        "x": 560,
+        "y": 150
       }
     ],
     "edges": [
       {
         "from": "A",
-        "to": "B"
+        "to": "B",
+        "weight": 4
       },
       {
         "from": "A",
-        "to": "D"
+        "to": "C",
+        "weight": 2
+      },
+      {
+        "from": "C",
+        "to": "B",
+        "weight": 1
       },
       {
         "from": "B",
-        "to": "C"
+        "to": "D",
+        "weight": 5
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "weight": 8
+      },
+      {
+        "from": "C",
+        "to": "E",
+        "weight": 10
       },
       {
         "from": "D",
-        "to": "C"
+        "to": "E",
+        "weight": 2
+      },
+      {
+        "from": "D",
+        "to": "F",
+        "weight": 6
+      },
+      {
+        "from": "E",
+        "to": "F",
+        "weight": 3
       }
     ],
     "steps": [
       {
-        "phase": "Graph",
-        "title": "Read graph input",
-        "note": "The code receives vertices, edges, weights, or adjacency lists.",
-        "ruleLabel": "Dijkstra’s Algorithm invariant",
-        "rule": "Defines dijkstra and names the input graph, start; edits to those inputs change the visual state and output.",
-        "activeNode": "A",
-        "visitedNodes": [],
-        "frontierNodes": [
-          "B"
-        ],
+        "pass": "Initialize",
+        "title": "Only A is known",
+        "note": "All distances start at infinity except A = 0.",
+        "distances": {
+          "A": 0
+        },
+        "relaxedNode": "A"
+      },
+      {
+        "pass": "Finalize A",
+        "title": "Relax A's outgoing edges",
+        "note": "A -> B sets B = 4; A -> C sets C = 2.",
+        "distances": {
+          "A": 0,
+          "B": 4,
+          "C": 2
+        },
         "activeEdge": {
           "from": "A",
-          "to": "B"
-        }
-      },
-      {
-        "phase": "Distance Table",
-        "title": "Initialize distance table",
-        "note": "Only the graph state owned by this algorithm is created.",
-        "ruleLabel": "Dijkstra’s Algorithm invariant",
-        "rule": "Builds distances as a lookup table so each key has an explicit starting state.",
-        "activeNode": "B",
-        "visitedNodes": [
-          "A"
-        ],
-        "frontierNodes": [
-          "C"
-        ],
-        "activeEdge": {
-          "from": "B",
           "to": "C"
-        }
+        },
+        "relaxedNode": "C"
       },
       {
-        "phase": "Work item",
-        "title": "Process next vertex or edge",
-        "note": "Relax outgoing edges when a better distance is found.",
-        "ruleLabel": "Dijkstra’s Algorithm invariant",
-        "rule": "Builds distances as a lookup table so each key has an explicit starting state.",
-        "activeNode": "C",
-        "visitedNodes": [
-          "A",
-          "B"
-        ],
-        "frontierNodes": [
-          "D"
-        ],
+        "pass": "Finalize C",
+        "title": "C improves B",
+        "note": "C -> B offers 2 + 1 = 3, better than 4.",
+        "distances": {
+          "A": 0,
+          "B": 3,
+          "C": 2,
+          "D": 10,
+          "E": 12
+        },
         "activeEdge": {
           "from": "C",
-          "to": "D"
-        }
+          "to": "B"
+        },
+        "relaxedNode": "B"
       },
       {
-        "phase": "Shortest Path Relaxation",
-        "title": "Return shortest-path relaxation",
-        "note": "The final graph state becomes the answer.",
-        "ruleLabel": "Dijkstra’s Algorithm invariant",
-        "rule": "Returns distances, the final value maintained by Dijkstra’s Algorithm's code path.",
-        "activeNode": "D",
-        "visitedNodes": [
-          "A",
-          "B",
-          "C"
-        ],
-        "frontierNodes": [
-          "A"
-        ],
+        "pass": "Finalize B",
+        "title": "B improves D",
+        "note": "B -> D offers 3 + 5 = 8, better than 10.",
+        "distances": {
+          "A": 0,
+          "B": 3,
+          "C": 2,
+          "D": 8,
+          "E": 12
+        },
         "activeEdge": {
-          "from": "D",
-          "to": "A"
-        }
+          "from": "B",
+          "to": "D"
+        },
+        "relaxedNode": "D"
+      },
+      {
+        "pass": "Finalize D/E",
+        "title": "Finish shortest paths",
+        "note": "D improves E to 10, then E improves F to 13.",
+        "distances": {
+          "A": 0,
+          "B": 3,
+          "C": 2,
+          "D": 8,
+          "E": 10,
+          "F": 13
+        },
+        "activeEdge": {
+          "from": "E",
+          "to": "F"
+        },
+        "relaxedNode": "F"
       }
-    ]
+    ],
+    "static": true
   }
 };

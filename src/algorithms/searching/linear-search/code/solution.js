@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Linear Search
 // Route: /algorithms/searching/linear-search
 

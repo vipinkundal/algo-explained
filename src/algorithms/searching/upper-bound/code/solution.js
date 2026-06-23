@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Upper Bound
 // Route: /algorithms/searching/upper-bound
 
