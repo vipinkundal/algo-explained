@@ -12,32 +12,32 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/bst-delete/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "BST Delete is a Trees technique focused on tree result.",
-  "problem": "BST Delete relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "BST Delete is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on ordered branch.",
+  "meaning": "BST Delete removes a value while preserving the binary-search-tree ordering rule.",
+  "problem": "Deleting node 2 from the sample BST requires the two-child case: replace it with its inorder successor 3.",
+  "concept": "Search by comparing the target with each node; when the target has two children, copy the minimum value from its right subtree and delete the duplicate.",
   "logicSummary": "Start at the root, maintain ordered branch, compare with the current node and move left or right, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses ordered branch to decide the next child, rotation, or returned value.",
-  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
-  "realLifeExample": "BST Delete appears when the input is root and the required result is tree result.",
-  "whenToUse": "Use BST Delete when a problem matches the Trees pattern and the expected state changes match a bst restructure dry run.",
-  "memoryTrick": "BST Delete: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "BST Delete is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "transitionSummary": "Each step follows the search path to node 2, chooses successor 3, and reconnects the repaired subtree.",
+  "codeInsight": "Every recursive delete call returns the updated subtree so the parent can reconnect the correct child pointer.",
+  "realLifeExample": "Deleting a key from an ordered index uses the same idea: replace a removed internal key with its next sorted value.",
+  "whenToUse": "Use BST Delete when a value must be removed without losing sorted-search behavior.",
+  "memoryTrick": "BST Delete: leaf, one child, or two children with successor.",
+  "visualizerCaption": "The animation deletes 2 by replacing it with successor 3 and removing the old 3 leaf.",
   "logicSteps": [
     {
       "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "text": "Search for the delete target using BST comparisons."
     },
     {
       "title": "Read node state",
-      "text": "Inspect ordered branch."
+      "text": "When the target is found, choose the delete case."
     },
     {
       "title": "Move/combine",
-      "text": "compare with the current node and move left or right."
+      "text": "For two children, copy the inorder successor."
     },
     {
       "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "text": "Delete the duplicate successor and reconnect the subtree."
     }
   ],
   "variables": [
@@ -63,55 +63,69 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Start at root 4",
       "note": "The delete value is 2, so begin by comparing 2 with the root value 4.",
-      "activeLine": 5,
-      "codeInsight": "Defines bstDelete and names the input root, value; edits to those inputs change the visual state and output."
+      "activeLine": 27,
+      "codeInsight": "Calls remove on a cloned tree, so deletion can reconnect the updated subtree without mutating the caller's tree."
     },
     {
       "label": "Go left",
       "title": "2 is smaller than 4",
       "note": "Because 2 < 4, the target can only be in the left subtree.",
-      "activeLine": 15,
-      "codeInsight": "Defines helper remove with node, target, separating the repeated recursive or structural work from the public entry point."
+      "activeLine": 17,
+      "codeInsight": "Updates node.left with remove(node.left, target) because 2 is smaller than 4."
     },
     {
       "label": "Found 2",
       "title": "Target node found",
       "note": "The current node value equals the delete value, so restructuring starts here.",
-      "activeLine": 17,
-      "codeInsight": "Checks target < node.value) node.left = remove(node.left, target; only the branch that preserves BST Delete's invariant is allowed to change state."
+      "activeLine": 19,
+      "codeInsight": "Falls into the delete case because target equals node.value at node 2."
     },
     {
       "label": "Two children",
       "title": "Node 2 has two children",
       "note": "Node 2 has both left child 1 and right child 3, so we cannot just drop it.",
       "activeLine": 20,
-      "codeInsight": "Checks !node.left; only the branch that preserves BST Delete's invariant is allowed to change state."
+      "codeInsight": "The !node.left shortcut is false because node 2 has left child 1."
     },
     {
       "label": "Successor",
       "title": "Choose successor 3",
       "note": "The smallest value in the right subtree is 3, so it can replace 2 without breaking order.",
-      "activeLine": 21,
-      "codeInsight": "Checks !node.right; only the branch that preserves BST Delete's invariant is allowed to change state."
+      "activeLine": 22,
+      "codeInsight": "Sets node.value to minValue(node.right), which is successor 3."
     },
     {
       "label": "Remove old 3",
       "title": "Delete duplicate successor",
       "note": "After copying 3 into node 2's position, remove the old 3 from the right subtree.",
-      "activeLine": 22,
-      "codeInsight": "Updates node.value with minValue(node.right); this is the state change the animation should reflect."
+      "activeLine": 23,
+      "codeInsight": "Deletes the old successor from node.right so value 3 appears only once."
     },
     {
       "label": "Reconnect",
       "title": "Return updated subtree",
       "note": "The updated subtree reconnects to root 4 as its left child.",
-      "activeLine": 11,
-      "codeInsight": "Returns node, the final value maintained by BST Delete's code path."
+      "activeLine": 25,
+      "codeInsight": "Returns the repaired subtree to reconnect it to its parent."
     }
   ],
   "animation": {
     "type": "tree-operation",
     "title": "BST delete restructuring",
+    "legend": [
+      {
+        "className": "current",
+        "label": "Current node"
+      },
+      {
+        "className": "target",
+        "label": "Delete target"
+      },
+      {
+        "className": "replacement",
+        "label": "Successor"
+      }
+    ],
     "nodes": [
       {
         "id": "4",
@@ -195,7 +209,7 @@ export const algorithmPage = {
           "7"
         ],
         "ruleLabel": "BST direction",
-        "rule": "Defines bstDelete and names the input root, value; edits to those inputs change the visual state and output."
+        "rule": "2 < 4, so the delete target must be in the left subtree."
       },
       {
         "phase": "Search",
@@ -209,7 +223,7 @@ export const algorithmPage = {
           "7"
         ],
         "ruleLabel": "Recursive contract",
-        "rule": "Defines helper remove with node, target, separating the repeated recursive or structural work from the public entry point."
+        "rule": "remove(node.left, 2) searches the subtree rooted at 2."
       },
       {
         "phase": "Match",
@@ -218,7 +232,7 @@ export const algorithmPage = {
         "activeNode": "2",
         "targetNode": "2",
         "ruleLabel": "Target found",
-        "rule": "Checks target < node.value) node.left = remove(node.left, target; only the branch that preserves BST Delete's invariant is allowed to change state."
+        "rule": "target is neither smaller nor larger than node.value, so the else delete case runs."
       },
       {
         "phase": "Case check",
@@ -227,7 +241,7 @@ export const algorithmPage = {
         "activeNode": "2",
         "targetNode": "2",
         "ruleLabel": "Why not remove directly?",
-        "rule": "Checks !node.left; only the branch that preserves BST Delete's invariant is allowed to change state."
+        "rule": "Node 2 has both left child 1 and right child 3, so it needs the two-child successor case."
       },
       {
         "phase": "Replace",
@@ -237,7 +251,7 @@ export const algorithmPage = {
         "targetNode": "2",
         "replacementNode": "3",
         "ruleLabel": "Inorder successor",
-        "rule": "Checks !node.right; only the branch that preserves BST Delete's invariant is allowed to change state."
+        "rule": "minValue(node.right) returns 3, the next sorted value after 2."
       },
       {
         "phase": "Cleanup",
@@ -252,7 +266,7 @@ export const algorithmPage = {
           "3"
         ],
         "ruleLabel": "Avoid duplicate values",
-        "rule": "Updates node.value with minValue(node.right); this is the state change the animation should reflect."
+        "rule": "After node.value becomes 3, remove(node.right, 3) deletes the old successor node."
       },
       {
         "phase": "Return",
@@ -267,7 +281,7 @@ export const algorithmPage = {
           "3"
         ],
         "ruleLabel": "Final order",
-        "rule": "Returns node, the final value maintained by BST Delete's code path."
+        "rule": "The repaired left subtree now has root 3 with child 1, and it reconnects under root 4."
       }
     ]
   },

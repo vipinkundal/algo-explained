@@ -12,32 +12,32 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/avl-tree-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "AVL Tree Basics is a Trees technique focused on tree result.",
-  "problem": "AVL Tree Basics relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "AVL Tree Basics is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on balance invariant.",
-  "logicSummary": "Start at the root, maintain balance invariant, rotate or recolor when height/color rules are violated, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses balance invariant to decide the next child, rotation, or returned value.",
-  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
-  "realLifeExample": "AVL Tree Basics appears when the input is root and the required result is tree result.",
-  "whenToUse": "Use AVL Tree Basics when a problem matches the Trees pattern and the expected state changes match a rotations dry run.",
-  "memoryTrick": "AVL Tree Basics: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "AVL Tree Basics is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "An AVL tree keeps every node height-balanced: the left and right subtree heights differ by at most 1.",
+  "problem": "This page checks whether the sample tree satisfies the AVL balance invariant and reports its height.",
+  "concept": "The helper computes height, then balanced(node) verifies the height difference at every node and recurses into both children.",
+  "logicSummary": "Compute subtree heights, compare the height difference at each node, recurse through the tree, and return { height, balanced }.",
+  "transitionSummary": "Each step shows a height or balance check that proves the sample tree is balanced.",
+  "codeInsight": "The key AVL condition is Math.abs(height(node.left) - height(node.right)) <= 1.",
+  "realLifeExample": "AVL balancing keeps lookup paths short in a sorted in-memory index.",
+  "whenToUse": "Use AVL trees when search, insert, and delete should stay logarithmic through strict height balance.",
+  "memoryTrick": "AVL: every node's balance factor is -1, 0, or 1.",
+  "visualizerCaption": "The animation checks subtree heights and confirms the sample tree has height 3 and balanced: true.",
   "logicSteps": [
     {
       "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "text": "Compute subtree heights."
     },
     {
       "title": "Read node state",
-      "text": "Inspect balance invariant."
+      "text": "Compare left and right heights at each node."
     },
     {
       "title": "Move/combine",
-      "text": "rotate or recolor when height/color rules are violated."
+      "text": "Recurse into both child subtrees."
     },
     {
       "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "text": "Return the tree height and boolean balance result."
     }
   ],
   "variables": [
@@ -46,46 +46,46 @@ export const algorithmPage = {
       "purpose": "The tree node where recursion or traversal begins."
     },
     {
-      "name": "current node and recursion state",
-      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as rotations."
+      "name": "height(node)",
+      "purpose": "Computes the height returned by each subtree."
     },
     {
-      "name": "tree result",
-      "purpose": "The value produced by avlTreeBasics after the maintained state reaches the stop rule."
+      "name": "balanced(node)",
+      "purpose": "Checks the AVL height difference at the current node and both child subtrees."
     },
     {
       "name": "transition / stop rule",
-      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
+      "purpose": "A null subtree is balanced with height 0; a real node must have child-height difference at most 1."
     }
   ],
   "dryRun": [
     {
       "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 5,
-      "codeInsight": "Defines avlTreeBasics and names the input root; edits to those inputs change the visual state and output."
+      "title": "Measure tree height",
+      "note": "The complete sample tree has three node levels, so height(root) returns 3.",
+      "activeLine": 14,
+      "codeInsight": "Calls height(root) for the height field in the returned object."
     },
     {
       "label": "Node state",
       "title": "Read balance invariant",
-      "note": "The current node controls the next step.",
-      "activeLine": 5,
-      "codeInsight": "Defines avlTreeBasics and names the input root; edits to those inputs change the visual state and output."
+      "note": "At root 4, left height and right height are both 2, so the balance factor is 0.",
+      "activeLine": 12,
+      "codeInsight": "Checks Math.abs(height(node.left) - height(node.right)) <= 1."
     },
     {
       "label": "Child step",
-      "title": "Rotate or recolor when height/color rules are violated",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 7,
-      "codeInsight": "Checks !node; only the branch that preserves AVL Tree Basics's invariant is allowed to change state."
+      "title": "Check child subtrees",
+      "note": "Nodes 2 and 6 each have two leaf children, so both subtrees are balanced.",
+      "activeLine": 12,
+      "codeInsight": "Requires balanced(node.left) && balanced(node.right), so every subtree must pass."
     },
     {
       "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 8,
-      "codeInsight": "Returns 1 + Math.max(height(node.left), height(node.right)), the final value maintained by AVL Tree Basics's code path."
+      "title": "Return AVL summary",
+      "note": "The function returns { height: 3, balanced: true }.",
+      "activeLine": 14,
+      "codeInsight": "Returns both height(root) and balanced(root)."
     }
   ],
   "complexity": {
@@ -97,7 +97,7 @@ export const algorithmPage = {
     "options": [
       {
         "key": "A",
-        "text": "Track current node and traversal state and update it only through AVL Tree Basics' transition.",
+        "text": "Check that every node has left and right subtree heights differing by at most 1.",
         "correct": true
       },
       {
@@ -111,8 +111,8 @@ export const algorithmPage = {
         "correct": false
       }
     ],
-    "correctText": "Correct. AVL Tree Basics stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. AVL Tree Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. AVL balance is a height-difference invariant checked at every node.",
+    "incorrectText": "Not quite. AVL balance is not just a root check; every subtree must also be balanced."
   },
   "categorySlug": "trees",
   "algorithmSlug": "avl-tree-basics",
@@ -149,59 +149,65 @@ export const algorithmPage = {
   "animation": {
     "type": "tree-operation",
     "title": "AVL Tree Basics tree state",
+    "legend": [
+      {
+        "className": "current",
+        "label": "Checked node"
+      },
+      {
+        "className": "target",
+        "label": "Left height"
+      },
+      {
+        "className": "replacement",
+        "label": "Right height"
+      }
+    ],
     "nodes": [
       {
-        "id": "8",
-        "label": "8",
+        "id": "4",
+        "label": "4",
         "x": 340,
         "y": 58
       },
       {
-        "id": "4",
-        "label": "4",
+        "id": "2",
+        "label": "2",
         "x": 190,
         "y": 150
       },
       {
-        "id": "12",
-        "label": "12",
+        "id": "6",
+        "label": "6",
         "x": 490,
         "y": 150
       },
       {
-        "id": "2",
-        "label": "2",
+        "id": "1",
+        "label": "1",
         "x": 110,
         "y": 255
       },
       {
-        "id": "6",
-        "label": "6",
+        "id": "3",
+        "label": "3",
         "x": 270,
         "y": 255
       },
       {
-        "id": "10",
-        "label": "10",
+        "id": "5",
+        "label": "5",
         "x": 420,
         "y": 255
       },
       {
-        "id": "14",
-        "label": "14",
+        "id": "7",
+        "label": "7",
         "x": 570,
         "y": 255
       }
     ],
     "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
       {
         "from": "4",
         "to": "2"
@@ -211,66 +217,94 @@ export const algorithmPage = {
         "to": "6"
       },
       {
-        "from": "12",
-        "to": "10"
+        "from": "2",
+        "to": "1"
       },
       {
-        "from": "12",
-        "to": "14"
+        "from": "2",
+        "to": "3"
+      },
+      {
+        "from": "6",
+        "to": "5"
+      },
+      {
+        "from": "6",
+        "to": "7"
       }
     ],
     "steps": [
       {
         "phase": "Root",
-        "title": "Check current node",
-        "note": "The code starts by handling missing nodes or the current root.",
+        "title": "Measure tree height",
+        "note": "Leaves return height 1, nodes 2 and 6 return height 2, and root 4 returns height 3.",
         "ruleLabel": "AVL Tree Basics invariant",
-        "rule": "Defines avlTreeBasics and names the input root; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
+        "rule": "height(root) is 1 + Math.max(2, 2) = 3.",
+        "activeNode": "4",
+        "targetNode": "2",
+        "replacementNode": "6",
+        "mutedNodes": [],
+        "nodeLabels": {
+          "4": "4 h=3",
+          "2": "2 h=2",
+          "6": "6 h=2",
+          "1": "1 h=1",
+          "3": "3 h=1",
+          "5": "5 h=1",
+          "7": "7 h=1"
+        }
       },
       {
         "phase": "Node state",
         "title": "Read balance invariant",
-        "note": "The current node controls the next step.",
+        "note": "At root 4, left height 2 and right height 2 give balance factor 0.",
         "ruleLabel": "AVL Tree Basics invariant",
-        "rule": "Defines avlTreeBasics and names the input root; edits to those inputs change the visual state and output.",
+        "rule": "Math.abs(2 - 2) <= 1, so root 4 satisfies the AVL condition.",
         "activeNode": "4",
-        "targetNode": "12",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
+        "targetNode": "2",
+        "replacementNode": "6",
+        "mutedNodes": [],
+        "nodeLabels": {
+          "4": "4 bf=0",
+          "2": "L h=2",
+          "6": "R h=2"
+        }
       },
       {
         "phase": "Child step",
-        "title": "Rotate or recolor when height/color rules are violated",
-        "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "title": "Check child subtrees",
+        "note": "Nodes 2 and 6 also have balance factor 0, so no rotation is needed.",
         "ruleLabel": "AVL Tree Basics invariant",
-        "rule": "Checks !node; only the branch that preserves AVL Tree Basics's invariant is allowed to change state.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "rule": "balanced(node.left) && balanced(node.right) keeps the invariant true through every subtree.",
+        "activeNode": "2",
+        "targetNode": "1",
+        "replacementNode": "3",
+        "mutedNodes": [
+          "5",
+          "7"
+        ],
+        "nodeLabels": {
+          "2": "2 bf=0",
+          "6": "6 bf=0",
+          "1": "1 h=1",
+          "3": "3 h=1"
+        }
       },
       {
         "phase": "Tree result",
-        "title": "Return result",
-        "note": "The final traversal, path, measurement, or tree state is returned.",
+        "title": "Return AVL summary",
+        "note": "The sample tree is height 3 and balanced at every node.",
         "ruleLabel": "AVL Tree Basics invariant",
-        "rule": "Returns 1 + Math.max(height(node.left), height(node.right)), the final value maintained by AVL Tree Basics's code path.",
-        "activeNode": "2",
-        "targetNode": "6",
+        "rule": "The function returns { height: 3, balanced: true }.",
+        "activeNode": "4",
+        "targetNode": "2",
         "replacementNode": "6",
-        "mutedNodes": []
+        "mutedNodes": [],
+        "nodeLabels": {
+          "4": "height 3",
+          "2": "ok",
+          "6": "ok"
+        }
       }
     ]
   }

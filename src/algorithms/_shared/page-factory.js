@@ -581,6 +581,13 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     const removedNodes = Array.isArray(animationStep.removedNodes) ? animationStep.removedNodes : [];
     const mutedNodes = Array.isArray(animationStep.mutedNodes) ? animationStep.mutedNodes : [];
     const nodeLabels = animationStep.nodeLabels || {};
+    const legendItems = Array.isArray(animationStep.legend)
+      ? animationStep.legend
+      : (Array.isArray(animation.legend) ? animation.legend : [
+        { className: "current", label: "Current" },
+        { className: "target", label: "Target" },
+        { className: "replacement", label: "Replacement" },
+      ]);
 
     return `
       <div class="dry-run-stage tree-operation-stage" aria-label="${escapeHtml(`${algorithmPage.title} ${t("algorithmPage.dryRun")}`)}">
@@ -606,9 +613,9 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             <strong>${escapeHtml(animationStep.rule || "Left subtree values stay smaller; right subtree values stay larger.")}</strong>
           </div>
           <div class="tree-operation-legend" aria-label="Tree operation legend">
-            <span><i class="current"></i> Current</span>
-            <span><i class="target"></i> Target</span>
-            <span><i class="replacement"></i> Replacement</span>
+            ${legendItems.map((item) => `
+              <span><i class="${escapeHtml(item.className || "")}"></i> ${escapeHtml(item.label || "")}</span>
+            `).join("")}
           </div>
         </div>
       </div>
@@ -988,7 +995,9 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   function getActiveLine(current) {
     if (state.activeCodeTab === "original") return algorithmPage.originalActiveLine || current.activeLine || 1;
     const codeLines = getCodeSource().split(/\r?\n/);
-    const resolvedLine = resolveCodeLineForStep(current, codeLines) || current.activeLine || 1;
+    const animation = getEffectiveAnimation();
+    const explicitLine = animation.type === "tree-operation" ? current.activeLine : null;
+    const resolvedLine = explicitLine || resolveCodeLineForStep(current, codeLines) || current.activeLine || 1;
     const activeLine = Math.min(Math.max(resolvedLine, 1), Math.max(codeLines.length, 1));
     return findExecutableLine(codeLines, activeLine);
   }

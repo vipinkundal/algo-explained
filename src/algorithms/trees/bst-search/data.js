@@ -12,92 +12,92 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/bst-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "BST Search is a Trees technique focused on index or insertion point.",
-  "problem": "BST Search narrows where a target can be by scanning or shrinking a candidate interval.",
-  "concept": "BST Search is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on ordered branch.",
-  "logicSummary": "Start at the root, maintain ordered branch, compare with the current node and move left or right, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses ordered branch to decide the next child, rotation, or returned value.",
-  "codeInsight": "The boundary variables are the important state; every branch must make the remaining search interval smaller.",
-  "realLifeExample": "BST Search appears when the input is array, target and the required result is index or insertion point.",
-  "whenToUse": "Use BST Search when a problem matches the Trees pattern and the expected state changes match a bst path dry run.",
-  "memoryTrick": "BST Search: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "BST Search is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "BST Search uses the binary-search-tree ordering rule to find a target by following one root-to-leaf path.",
+  "problem": "BST Search decides whether a target exists in a tree where every left subtree value is smaller and every right subtree value is larger.",
+  "concept": "At each node, compare target with node.value. Equal means found, a smaller target moves left, and a larger target moves right.",
+  "logicSummary": "Start at the root, compare the target with the current node, move to the only child that can still contain the target, and return whether the target is found.",
+  "transitionSummary": "Each step visits one node and discards the opposite subtree using the BST ordering invariant.",
+  "codeInsight": "The current node is the important state; every comparison either returns true or moves to exactly one child.",
+  "realLifeExample": "BST Search is like looking up a word in a sorted decision tree: each comparison tells you which half of the remaining choices can still contain the answer.",
+  "whenToUse": "Use BST Search when values are organized in a binary search tree and you only need to follow the ordered path to a target.",
+  "memoryTrick": "BST Search: equal returns, smaller goes left, larger goes right.",
+  "visualizerCaption": "BST Search is shown as a root-to-target path. The numbered steps follow the exact comparisons used by the code.",
   "logicSteps": [
     {
       "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "text": "Start with node pointing at the root."
     },
     {
       "title": "Read node state",
-      "text": "Inspect ordered branch."
+      "text": "Compare target with the current node value."
     },
     {
       "title": "Move/combine",
-      "text": "compare with the current node and move left or right."
+      "text": "Move left or right based on the BST ordering rule."
     },
     {
       "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "text": "Return true when the target node is reached, or false if the path ends."
     }
   ],
   "variables": [
     {
-      "name": "array, target",
-      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
+      "name": "root, target",
+      "purpose": "root is the tree entry point, and target is the value the search is trying to find."
     },
     {
-      "name": "current node and recursion state",
-      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as bst path."
+      "name": "node",
+      "purpose": "The current BST node being compared with target."
     },
     {
-      "name": "tree result",
-      "purpose": "The value produced by bstSearch after the maintained state reaches the stop rule."
+      "name": "node.value",
+      "purpose": "The ordered value that decides whether the search stops, moves left, or moves right."
     },
     {
       "name": "transition / stop rule",
-      "purpose": "Each transition either advances one position or moves a boundary inward. Stop when no valid work remains or the answer is known."
+      "purpose": "Return true on an equal value; otherwise follow left for smaller targets or right for larger targets."
     }
   ],
   "dryRun": [
     {
       "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 5,
-      "codeInsight": "Defines bstSearch and names the input root, target; edits to those inputs change the visual state and output."
+      "title": "Start at root 4",
+      "note": "The tree search begins by assigning node to the root.",
+      "activeLine": 17,
+      "codeInsight": "Initializes node to root, so the search starts at value 4."
     },
     {
       "label": "Node state",
-      "title": "Read ordered branch",
-      "note": "The current node controls the next step.",
-      "activeLine": 10,
-      "codeInsight": "Computes mid from the current values before the algorithm decides the next move."
+      "title": "Compare target 5 with node 4",
+      "note": "Target 5 is larger than 4, so the left subtree cannot contain it.",
+      "activeLine": 20,
+      "codeInsight": "Updates node to node.right because target 5 is greater than the current value 4."
     },
     {
       "label": "Child step",
-      "title": "Compare with the current node and move left or right",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "Checks Array.isArray(root); only the branch that preserves BST Search's invariant is allowed to change state."
+      "title": "Compare target 5 with node 6",
+      "note": "Target 5 is smaller than 6, so the right subtree cannot contain it.",
+      "activeLine": 20,
+      "codeInsight": "Updates node to node.left because target 5 is less than the current value 6."
     },
     {
       "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 15,
-      "codeInsight": "Returns -1, the final value maintained by BST Search's code path."
+      "title": "Found target 5",
+      "note": "The current node matches the target, so the search succeeds.",
+      "activeLine": 19,
+      "codeInsight": "Returns true because node.value equals target at value 5."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "O(h), where h is the tree height; O(log n) for a balanced BST and O(n) for a skewed BST.",
+    "space": "O(1) for the iterative tree search."
   },
   "quiz": {
     "question": "Which state choice keeps BST Search correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track search window and update it only through BST Search's transition.",
+        "text": "Track the current node and move only to the child allowed by the BST ordering rule.",
         "correct": true
       },
       {
@@ -111,8 +111,8 @@ export const algorithmPage = {
         "correct": false
       }
     ],
-    "correctText": "Correct. BST Search stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. BST Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. BST Search stays efficient because each comparison discards one entire subtree.",
+    "incorrectText": "Not quite. BST Search must use the node value and the left-smaller/right-larger invariant."
   },
   "categorySlug": "trees",
   "algorithmSlug": "bst-search",
@@ -152,57 +152,49 @@ export const algorithmPage = {
     "title": "BST Search tree state",
     "nodes": [
       {
-        "id": "8",
-        "label": "8",
+        "id": "4",
+        "label": "4",
         "x": 340,
         "y": 58
       },
       {
-        "id": "4",
-        "label": "4",
+        "id": "2",
+        "label": "2",
         "x": 190,
         "y": 150
       },
       {
-        "id": "12",
-        "label": "12",
+        "id": "6",
+        "label": "6",
         "x": 490,
         "y": 150
       },
       {
-        "id": "2",
-        "label": "2",
+        "id": "1",
+        "label": "1",
         "x": 110,
         "y": 255
       },
       {
-        "id": "6",
-        "label": "6",
+        "id": "3",
+        "label": "3",
         "x": 270,
         "y": 255
       },
       {
-        "id": "10",
-        "label": "10",
+        "id": "5",
+        "label": "5",
         "x": 420,
         "y": 255
       },
       {
-        "id": "14",
-        "label": "14",
+        "id": "7",
+        "label": "7",
         "x": 570,
         "y": 255
       }
     ],
     "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
       {
         "from": "4",
         "to": "2"
@@ -212,66 +204,86 @@ export const algorithmPage = {
         "to": "6"
       },
       {
-        "from": "12",
-        "to": "10"
+        "from": "2",
+        "to": "1"
       },
       {
-        "from": "12",
-        "to": "14"
+        "from": "2",
+        "to": "3"
+      },
+      {
+        "from": "6",
+        "to": "5"
+      },
+      {
+        "from": "6",
+        "to": "7"
       }
     ],
     "steps": [
       {
         "phase": "Root",
-        "title": "Check current node",
-        "note": "The code starts by handling missing nodes or the current root.",
+        "title": "Start at root 4",
+        "note": "Set node to the root before the loop begins.",
         "ruleLabel": "BST Search invariant",
-        "rule": "Defines bstSearch and names the input root, target; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
-      },
-      {
-        "phase": "Node state",
-        "title": "Read ordered branch",
-        "note": "The current node controls the next step.",
-        "ruleLabel": "BST Search invariant",
-        "rule": "Computes mid from the current values before the algorithm decides the next move.",
+        "rule": "The target is 5; the only possible path begins at root value 4.",
         "activeNode": "4",
-        "targetNode": "12",
+        "targetNode": "5",
         "replacementNode": "",
         "mutedNodes": [
-          "6",
-          "10",
-          "14"
+          "1",
+          "2",
+          "3",
+          "7"
         ]
       },
       {
-        "phase": "Child step",
-        "title": "Compare with the current node and move left or right",
-        "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "phase": "Compare",
+        "title": "5 is greater than 4",
+        "note": "Because target 5 is greater than node 4, BST Search moves right to node 6.",
         "ruleLabel": "BST Search invariant",
-        "rule": "Checks Array.isArray(root); only the branch that preserves BST Search's invariant is allowed to change state.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "rule": "All values in the left subtree of 4 are smaller than 4, so they cannot be 5.",
+        "activeNode": "4",
+        "targetNode": "5",
+        "replacementNode": "6",
+        "mutedNodes": [
+          "1",
+          "2",
+          "3",
+          "7"
+        ]
       },
       {
-        "phase": "Tree result",
-        "title": "Return result",
-        "note": "The final traversal, path, measurement, or tree state is returned.",
+        "phase": "Compare",
+        "title": "5 is less than 6",
+        "note": "Because target 5 is less than node 6, BST Search moves left to node 5.",
         "ruleLabel": "BST Search invariant",
-        "rule": "Returns -1, the final value maintained by BST Search's code path.",
-        "activeNode": "2",
-        "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
+        "rule": "All values in the right subtree of 6 are larger than 6, so they cannot be 5.",
+        "activeNode": "6",
+        "targetNode": "5",
+        "replacementNode": "5",
+        "mutedNodes": [
+          "1",
+          "2",
+          "3",
+          "7"
+        ]
+      },
+      {
+        "phase": "Found",
+        "title": "Node value equals target",
+        "note": "The current node is 5, so node.value === target and the function returns true.",
+        "ruleLabel": "BST Search invariant",
+        "rule": "A matching node ends the search immediately; no other subtree needs to be visited.",
+        "activeNode": "5",
+        "targetNode": "5",
+        "replacementNode": "",
+        "mutedNodes": [
+          "1",
+          "2",
+          "3",
+          "7"
+        ]
       }
     ]
   }

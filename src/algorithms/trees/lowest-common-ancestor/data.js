@@ -12,32 +12,32 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/lowest-common-ancestor/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Lowest Common Ancestor is a Trees technique focused on tree result.",
-  "problem": "Lowest Common Ancestor relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "Lowest Common Ancestor is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
-  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
-  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
-  "realLifeExample": "Lowest Common Ancestor appears when the input is root and the required result is tree result.",
-  "whenToUse": "Use Lowest Common Ancestor when a problem matches the Trees pattern and the expected state changes match a tree paths dry run.",
-  "memoryTrick": "Lowest Common Ancestor: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Lowest Common Ancestor is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Lowest Common Ancestor finds the deepest node that has both requested values in its subtree.",
+  "problem": "Given a tree and two target values, return the lowest node where the two search paths meet.",
+  "concept": "Each recursive call returns null, one found target, or the ancestor value when both sides find a target.",
+  "logicSummary": "Search left and right subtrees; if both return non-null at a node, that node is the LCA.",
+  "transitionSummary": "Each step shows one target bubbling up from a child subtree until node 2 receives both 1 and 3.",
+  "codeInsight": "The key state is left and right: when both are non-null, the current root is the lowest common ancestor.",
+  "realLifeExample": "In an org chart, LCA is the closest manager shared by two employees.",
+  "whenToUse": "Use Lowest Common Ancestor when you need the deepest shared ancestor of two nodes in a tree.",
+  "memoryTrick": "LCA: one target on the left and one on the right means return the current node.",
+  "visualizerCaption": "The animation searches for 1 and 3, then returns 2 as their lowest common ancestor.",
   "logicSteps": [
     {
-      "title": "Read algorithm state",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Check current node",
+      "text": "Return immediately if the current node is null or matches either target."
     },
     {
-      "title": "Inspect invariant",
-      "text": "Look at the active algorithm state fields."
+      "title": "Search left subtree",
+      "text": "Ask the left child whether it contains either target."
     },
     {
-      "title": "State change",
-      "text": "update the state described by this algorithm."
+      "title": "Search right subtree",
+      "text": "Ask the right child whether it contains either target."
     },
     {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Return ancestor",
+      "text": "If both sides return values, return the current node value."
     }
   ],
   "variables": [
@@ -46,46 +46,46 @@ export const algorithmPage = {
       "purpose": "The tree node where recursion or traversal begins."
     },
     {
-      "name": "current node and recursion state",
-      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as tree paths."
+      "name": "left",
+      "purpose": "The value returned by the left recursive search, or null when no target is found."
     },
     {
-      "name": "tree result",
-      "purpose": "The value produced by lowestCommonAncestor after the maintained state reaches the stop rule."
+      "name": "right",
+      "purpose": "The value returned by the right recursive search, or null when no target is found."
     },
     {
       "name": "transition / stop rule",
-      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
+      "purpose": "Return root.value when both left and right are non-null; otherwise bubble up the non-null side."
     }
   ],
   "dryRun": [
     {
-      "label": "Algorithm State",
-      "title": "Read algorithm state action",
-      "note": "The code receives the next value or command.",
+      "label": "Root",
+      "title": "Search from root 4",
+      "note": "The current root 4 is not 1 or 3, so the function searches both subtrees.",
       "activeLine": 7,
-      "codeInsight": "Stores left so the algorithm can reuse this value without recomputing it."
+      "codeInsight": "Computes left = lowestCommonAncestor(root.left, first, second), so the search enters node 2."
     },
     {
-      "label": "Invariant",
-      "title": "Inspect algorithm state",
-      "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 7,
-      "codeInsight": "Stores left so the algorithm can reuse this value without recomputing it."
-    },
-    {
-      "label": "State change",
-      "title": "Update the state described by this algorithm",
-      "note": "Only the necessary algorithm state fields are changed.",
+      "label": "First target",
+      "title": "Find target 1",
+      "note": "Node 1 matches first, so that recursive branch returns 1.",
       "activeLine": 6,
-      "codeInsight": "Checks !root || root.value === first || root.value === second; only the branch that preserves Lowest Common Ancestor's invariant is allowed to change state."
+      "codeInsight": "Returns root.value when root.value equals first."
+    },
+    {
+      "label": "Second target",
+      "title": "Find target 3",
+      "note": "Node 3 matches second, so the other branch under node 2 returns 3.",
+      "activeLine": 6,
+      "codeInsight": "Returns root.value when root.value equals second."
     },
     {
       "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
-      "activeLine": 10,
-      "codeInsight": "Returns left !== null ? left : right, the final value maintained by Lowest Common Ancestor's code path."
+      "title": "Return LCA 2",
+      "note": "At node 2, left is 1 and right is 3, so node 2 is the lowest common ancestor.",
+      "activeLine": 9,
+      "codeInsight": "Returns root.value because left and right are both non-null."
     }
   ],
   "complexity": {
@@ -97,7 +97,7 @@ export const algorithmPage = {
     "options": [
       {
         "key": "A",
-        "text": "Track current node and traversal state and update it only through Lowest Common Ancestor's transition.",
+        "text": "Return the current node when one target is found in each child subtree.",
         "correct": true
       },
       {
@@ -111,8 +111,8 @@ export const algorithmPage = {
         "correct": false
       }
     ],
-    "correctText": "Correct. Lowest Common Ancestor stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Lowest Common Ancestor needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The LCA is the first node where both target paths meet.",
+    "incorrectText": "Not quite. LCA depends on the two recursive return values from the left and right subtrees."
   },
   "categorySlug": "trees",
   "algorithmSlug": "lowest-common-ancestor",
@@ -144,59 +144,65 @@ export const algorithmPage = {
   "animation": {
     "type": "tree-operation",
     "title": "Lowest Common Ancestor tree state",
+    "legend": [
+      {
+        "className": "current",
+        "label": "Current root"
+      },
+      {
+        "className": "target",
+        "label": "Target found"
+      },
+      {
+        "className": "replacement",
+        "label": "Ancestor"
+      }
+    ],
     "nodes": [
       {
-        "id": "8",
-        "label": "8",
+        "id": "4",
+        "label": "4",
         "x": 340,
         "y": 58
       },
       {
-        "id": "4",
-        "label": "4",
+        "id": "2",
+        "label": "2",
         "x": 190,
         "y": 150
       },
       {
-        "id": "12",
-        "label": "12",
+        "id": "6",
+        "label": "6",
         "x": 490,
         "y": 150
       },
       {
-        "id": "2",
-        "label": "2",
+        "id": "1",
+        "label": "1",
         "x": 110,
         "y": 255
       },
       {
-        "id": "6",
-        "label": "6",
+        "id": "3",
+        "label": "3",
         "x": 270,
         "y": 255
       },
       {
-        "id": "10",
-        "label": "10",
+        "id": "5",
+        "label": "5",
         "x": 420,
         "y": 255
       },
       {
-        "id": "14",
-        "label": "14",
+        "id": "7",
+        "label": "7",
         "x": 570,
         "y": 255
       }
     ],
     "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
       {
         "from": "4",
         "to": "2"
@@ -206,66 +212,101 @@ export const algorithmPage = {
         "to": "6"
       },
       {
-        "from": "12",
-        "to": "10"
+        "from": "2",
+        "to": "1"
       },
       {
-        "from": "12",
-        "to": "14"
+        "from": "2",
+        "to": "3"
+      },
+      {
+        "from": "6",
+        "to": "5"
+      },
+      {
+        "from": "6",
+        "to": "7"
       }
     ],
     "steps": [
       {
-        "phase": "Algorithm State",
-        "title": "Read algorithm state action",
-        "note": "The code receives the next value or command.",
+        "phase": "Root",
+        "title": "Search from root 4",
+        "note": "Root 4 is not target 1 or 3, so the algorithm searches left and right.",
         "ruleLabel": "Lowest Common Ancestor invariant",
-        "rule": "Stores left so the algorithm can reuse this value without recomputing it.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
-      },
-      {
-        "phase": "Invariant",
-        "title": "Inspect algorithm state",
-        "note": "The active state must still satisfy page-specific invariant.",
-        "ruleLabel": "Lowest Common Ancestor invariant",
-        "rule": "Stores left so the algorithm can reuse this value without recomputing it.",
+        "rule": "The target pair is 1 and 3; both can only meet below root 4 if they are in the same subtree.",
         "activeNode": "4",
-        "targetNode": "12",
+        "targetNode": "2",
         "replacementNode": "",
         "mutedNodes": [
           "6",
-          "10",
-          "14"
-        ]
+          "5",
+          "7"
+        ],
+        "nodeLabels": {
+          "4": "4 search",
+          "2": "2 left"
+        }
       },
       {
-        "phase": "State change",
-        "title": "Update the state described by this algorithm",
-        "note": "Only the necessary algorithm state fields are changed.",
+        "phase": "First target",
+        "title": "Left branch returns 1",
+        "note": "Node 1 matches first, so that recursive call returns 1 to node 2.",
         "ruleLabel": "Lowest Common Ancestor invariant",
-        "rule": "Checks !root || root.value === first || root.value === second; only the branch that preserves Lowest Common Ancestor's invariant is allowed to change state.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "rule": "The base condition returns the current value when root.value equals first.",
+        "activeNode": "1",
+        "targetNode": "1",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "5",
+          "7"
+        ],
+        "nodeLabels": {
+          "1": "1 found",
+          "2": "2 waits",
+          "3": "3 target"
+        }
+      },
+      {
+        "phase": "Second target",
+        "title": "Right branch returns 3",
+        "note": "Node 3 matches second, so node 2 receives one target from each side.",
+        "ruleLabel": "Lowest Common Ancestor invariant",
+        "rule": "The base condition returns the current value when root.value equals second.",
+        "activeNode": "3",
+        "targetNode": "3",
+        "replacementNode": "1",
+        "mutedNodes": [
+          "6",
+          "5",
+          "7"
+        ],
+        "nodeLabels": {
+          "1": "1 left",
+          "2": "2 waits",
+          "3": "3 right"
+        }
       },
       {
         "phase": "Result",
-        "title": "Return visible result",
-        "note": "The return value or printed state confirms the operation.",
+        "title": "Return LCA 2",
+        "note": "At node 2, left is 1 and right is 3, so the current node is the lowest common ancestor.",
         "ruleLabel": "Lowest Common Ancestor invariant",
-        "rule": "Returns left !== null ? left : right, the final value maintained by Lowest Common Ancestor's code path.",
+        "rule": "left !== null && right !== null, so return root.value, which is 2.",
         "activeNode": "2",
-        "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
+        "targetNode": "1",
+        "replacementNode": "2",
+        "mutedNodes": [
+          "6",
+          "5",
+          "7"
+        ],
+        "nodeLabels": {
+          "1": "1 found",
+          "2": "2 LCA",
+          "3": "3 found"
+        }
       }
     ]
   }

@@ -12,32 +12,32 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/height-depth-of-tree/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Height / Depth of Tree is a Trees technique focused on tree result.",
-  "problem": "Height / Depth of Tree relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "Height / Depth of Tree is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on child height/result.",
-  "logicSummary": "Start at the root, maintain child height/result, combine child measurements into the parent answer, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses child height/result to decide the next child, rotation, or returned value.",
-  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
-  "realLifeExample": "Height / Depth of Tree appears when the input is root and the required result is tree result.",
-  "whenToUse": "Use Height / Depth of Tree when a problem matches the Trees pattern and the expected state changes match a tree height dry run.",
-  "memoryTrick": "Height / Depth of Tree: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Height / Depth of Tree is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Tree height is the number of nodes on the longest path from the current node down to a leaf. Depth is the distance from the root down to a node.",
+  "problem": "Height / Depth of Tree computes how tall a tree is by asking each child for its height and returning one plus the taller child.",
+  "concept": "A null child has height 0. A real node returns 1 + Math.max(left height, right height), so each parent only needs the two child results.",
+  "logicSummary": "Start at the root, recursively measure the left and right subtrees, then return one plus the larger child height.",
+  "transitionSummary": "Each visual step shows which subtree height is being returned to the parent.",
+  "codeInsight": "The recursive return value is the important state; every call returns the height that its parent combines.",
+  "realLifeExample": "Height is like measuring an org chart by asking each manager for the longest reporting chain below them, then adding the manager.",
+  "whenToUse": "Use this pattern when a tree answer can be computed from left-subtree and right-subtree results.",
+  "memoryTrick": "Tree height: null is 0, node is 1 plus the taller child.",
+  "visualizerCaption": "The animation shows child heights rolling up from subtrees to the root.",
   "logicSteps": [
     {
       "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "text": "Treat null children as height 0."
     },
     {
       "title": "Read node state",
-      "text": "Inspect child height/result."
+      "text": "Recursively measure the left subtree."
     },
     {
       "title": "Move/combine",
-      "text": "combine child measurements into the parent answer."
+      "text": "Recursively measure the right subtree."
     },
     {
       "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "text": "Return 1 plus the taller child height."
     }
   ],
   "variables": [
@@ -46,39 +46,39 @@ export const algorithmPage = {
       "purpose": "The tree node where recursion or traversal begins."
     },
     {
-      "name": "current node and recursion state",
-      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as tree height."
+      "name": "left height",
+      "purpose": "The height returned by heightDepthOfTree(root.left)."
     },
     {
-      "name": "tree result",
-      "purpose": "The value produced by heightDepthOfTree after the maintained state reaches the stop rule."
+      "name": "right height",
+      "purpose": "The height returned by heightDepthOfTree(root.right)."
     },
     {
       "name": "transition / stop rule",
-      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
+      "purpose": "Return 0 for null; otherwise return 1 + Math.max(left height, right height)."
     }
   ],
   "dryRun": [
     {
-      "label": "Base case",
-      "title": "Check for an empty subtree",
-      "note": "Null children return height 0 before the parent combines subtree heights.",
-      "activeLine": 6,
-      "codeInsight": "Checks !root; a missing child contributes height 0 to its parent."
+      "label": "Root",
+      "title": "Root needs both child heights",
+      "note": "Node 4 cannot return until the left and right subtree heights are known.",
+      "activeLine": 7,
+      "codeInsight": "Returns 1 + Math.max(left height, right height), so the root waits for both recursive calls."
     },
     {
       "label": "Left height",
       "title": "Measure the left subtree",
-      "note": "The recursive call on root.left returns the height of the left child subtree.",
+      "note": "Node 2 has leaf children 1 and 3, so its subtree height is 2.",
       "activeLine": 7,
-      "codeInsight": "Evaluates heightDepthOfTree(root.left), so the visual focus moves to the left child before the parent can return."
+      "codeInsight": "heightDepthOfTree(root.left) returns 2 for the subtree rooted at node 2."
     },
     {
       "label": "Right height",
       "title": "Measure the right subtree",
-      "note": "The recursive call on root.right returns the height of the right child subtree.",
+      "note": "Node 6 has leaf children 5 and 7, so its subtree height is 2.",
       "activeLine": 7,
-      "codeInsight": "Evaluates heightDepthOfTree(root.right), giving Math.max the second child height to compare."
+      "codeInsight": "heightDepthOfTree(root.right) returns 2 for the subtree rooted at node 6."
     },
     {
       "label": "Return height",
@@ -97,7 +97,7 @@ export const algorithmPage = {
     "options": [
       {
         "key": "A",
-        "text": "Track current node and traversal state and update it only through Height / Depth of Tree's transition.",
+        "text": "Return 0 for null children, then return 1 plus the larger child height for each real node.",
         "correct": true
       },
       {
@@ -111,8 +111,8 @@ export const algorithmPage = {
         "correct": false
       }
     ],
-    "correctText": "Correct. Height / Depth of Tree stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Height / Depth of Tree needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Each parent can compute its height from only the two child heights.",
+    "incorrectText": "Not quite. Height needs the null base case and the max of the left and right subtree heights."
   },
   "categorySlug": "trees",
   "algorithmSlug": "height-depth-of-tree",
@@ -149,6 +149,20 @@ export const algorithmPage = {
   "animation": {
     "type": "tree-operation",
     "title": "Height / Depth of Tree tree state",
+    "legend": [
+      {
+        "className": "current",
+        "label": "Combining node"
+      },
+      {
+        "className": "target",
+        "label": "Left height"
+      },
+      {
+        "className": "replacement",
+        "label": "Right height"
+      }
+    ],
     "nodes": [
       {
         "id": "4",
@@ -221,25 +235,32 @@ export const algorithmPage = {
     ],
     "steps": [
       {
-        "phase": "Base case",
-        "title": "Check for an empty subtree",
-        "note": "Null children return height 0 before the parent combines subtree heights.",
+        "phase": "Root",
+        "title": "Root waits for child heights",
+        "note": "Node 4 must combine the heights returned by its left child 2 and right child 6.",
         "ruleLabel": "Height / Depth of Tree invariant",
-        "rule": "Checks !root; a missing child contributes height 0 to its parent.",
+        "rule": "A real node returns 1 + Math.max(left height, right height); null children return 0 inside the recursive calls.",
         "activeNode": "4",
         "targetNode": "2",
-        "replacementNode": "",
+        "replacementNode": "6",
         "mutedNodes": [
+          "1",
+          "3",
           "5",
           "7"
-        ]
+        ],
+        "nodeLabels": {
+          "4": "4 ?",
+          "2": "2 ?",
+          "6": "6 ?"
+        }
       },
       {
         "phase": "Left height",
         "title": "Measure the left subtree",
-        "note": "The recursive call on root.left returns the height of the left child subtree.",
+        "note": "Leaves 1 and 3 each return height 1, so node 2 returns 1 + Math.max(1, 1) = 2.",
         "ruleLabel": "Height / Depth of Tree invariant",
-        "rule": "Evaluates heightDepthOfTree(root.left), so the visual focus moves to node 2 and its children.",
+        "rule": "heightDepthOfTree(root.left) gives the root a left subtree height of 2.",
         "activeNode": "2",
         "targetNode": "1",
         "replacementNode": "3",
@@ -247,14 +268,19 @@ export const algorithmPage = {
           "6",
           "5",
           "7"
-        ]
+        ],
+        "nodeLabels": {
+          "2": "2 h=2",
+          "1": "1 h=1",
+          "3": "3 h=1"
+        }
       },
       {
         "phase": "Right height",
         "title": "Measure the right subtree",
-        "note": "The recursive call on root.right returns the height of the right child subtree.",
+        "note": "Leaves 5 and 7 each return height 1, so node 6 returns 1 + Math.max(1, 1) = 2.",
         "ruleLabel": "Height / Depth of Tree invariant",
-        "rule": "Evaluates heightDepthOfTree(root.right), so the visual focus moves to node 6 and its children.",
+        "rule": "heightDepthOfTree(root.right) gives the root a right subtree height of 2.",
         "activeNode": "6",
         "targetNode": "5",
         "replacementNode": "7",
@@ -262,7 +288,12 @@ export const algorithmPage = {
           "2",
           "1",
           "3"
-        ]
+        ],
+        "nodeLabels": {
+          "6": "6 h=2",
+          "5": "5 h=1",
+          "7": "7 h=1"
+        }
       },
       {
         "phase": "Return height",
@@ -273,7 +304,12 @@ export const algorithmPage = {
         "activeNode": "4",
         "targetNode": "2",
         "replacementNode": "6",
-        "mutedNodes": []
+        "mutedNodes": [],
+        "nodeLabels": {
+          "4": "4 h=3",
+          "2": "2 h=2",
+          "6": "6 h=2"
+        }
       }
     ]
   }

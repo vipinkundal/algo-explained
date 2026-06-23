@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/bst-insert/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "BST Insert is a Trees technique focused on tree result.",
-  "problem": "BST Insert relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "BST Insert is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on ordered branch.",
-  "logicSummary": "Start at the root, maintain ordered branch, compare with the current node and move left or right, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses ordered branch to decide the next child, rotation, or returned value.",
-  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
-  "realLifeExample": "BST Insert appears when the input is root and the required result is tree result.",
-  "whenToUse": "Use BST Insert when a problem matches the Trees pattern and the expected state changes match a bst path dry run.",
-  "memoryTrick": "BST Insert: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "BST Insert is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "BST Insert adds a value by following the binary-search-tree ordering rule until it reaches an empty child slot.",
+  "problem": "Insert value 8 into the sample BST without breaking the left-smaller/right-larger invariant.",
+  "concept": "Compare the value with each current node: smaller moves left, larger moves right, and a null child becomes the new node.",
+  "logicSummary": "Start at root 4, move right to 6, move right to 7, then create 8 as the right child of 7.",
+  "transitionSummary": "Each step narrows the only valid insertion path for value 8.",
+  "codeInsight": "The recursive insert returns a copied node with one child replaced by the updated subtree.",
+  "realLifeExample": "BST Insert is like placing a number into a sorted decision tree by following comparison signs until an empty slot appears.",
+  "whenToUse": "Use BST Insert when values must remain searchable by the BST ordering rule.",
+  "memoryTrick": "BST Insert: compare, descend, create at null.",
+  "visualizerCaption": "The animation inserts 8 along path 4 -> 6 -> 7 -> right child.",
   "logicSteps": [
     {
       "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "text": "Start insertion from the current tree root."
     },
     {
       "title": "Read node state",
-      "text": "Inspect ordered branch."
+      "text": "Compare the inserted value with the current node."
     },
     {
       "title": "Move/combine",
-      "text": "compare with the current node and move left or right."
+      "text": "Move to the child that can contain the new value."
     },
     {
       "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "text": "Create the new node when the recursive call reaches null."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "root, value",
+      "purpose": "root is the current BST, and value is the new value to insert."
     },
     {
-      "name": "current node and recursion state",
-      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as bst path."
+      "name": "copy",
+      "purpose": "A shallow copy of the current node whose left or right child can be replaced."
     },
     {
-      "name": "tree result",
-      "purpose": "The value produced by bstInsert after the maintained state reaches the stop rule."
+      "name": "inserted node",
+      "purpose": "The new { value: 8, left: null, right: null } node created at the empty slot."
     },
     {
       "name": "transition / stop rule",
-      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
+      "purpose": "Move left for smaller values, right for larger values, and return a new node for null."
     }
   ],
   "dryRun": [
     {
       "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 5,
-      "codeInsight": "Defines bstInsert and names the input root, value; edits to those inputs change the visual state and output."
+      "title": "Start at root 4",
+      "note": "Value 8 is larger than root 4, so insertion must move right.",
+      "activeLine": 14,
+      "codeInsight": "Calls insert(tree, value), starting the recursive insert for value 8."
     },
     {
       "label": "Node state",
-      "title": "Read ordered branch",
-      "note": "The current node controls the next step.",
-      "activeLine": 13,
-      "codeInsight": "Computes tree by reducing the current values, matching the aggregate shown in the result state."
+      "title": "Move right from 4 and 6",
+      "note": "8 is greater than 4 and greater than 6, so both comparisons take the right branch.",
+      "activeLine": 10,
+      "codeInsight": "Updates copy.right because nextValue is greater than the current copy.value."
     },
     {
       "label": "Child step",
-      "title": "Compare with the current node and move left or right",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "title": "Move right from 7",
+      "note": "8 is greater than 7, and 7 has no right child yet.",
       "activeLine": 7,
-      "codeInsight": "Checks !node; only the branch that preserves BST Insert's invariant is allowed to change state."
+      "codeInsight": "When insert receives null, it returns a new node for value 8."
     },
     {
       "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
+      "title": "Return updated BST",
+      "note": "The new node 8 is connected as the right child of 7.",
       "activeLine": 11,
-      "codeInsight": "Returns copy, the final value maintained by BST Insert's code path."
+      "codeInsight": "Returns copy so the updated child link reconnects back up the recursive path."
     }
   ],
   "complexity": {
@@ -97,7 +97,7 @@ export const algorithmPage = {
     "options": [
       {
         "key": "A",
-        "text": "Track current node and traversal state and update it only through BST Insert's transition.",
+        "text": "Follow the ordered path and create the new value only at the null child slot.",
         "correct": true
       },
       {
@@ -111,8 +111,8 @@ export const algorithmPage = {
         "correct": false
       }
     ],
-    "correctText": "Correct. BST Insert stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. BST Insert needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The BST order is preserved because every comparison chooses the only valid child.",
+    "incorrectText": "Not quite. Inserting at the wrong child would break the left-smaller/right-larger invariant."
   },
   "categorySlug": "trees",
   "algorithmSlug": "bst-insert",
@@ -150,59 +150,71 @@ export const algorithmPage = {
   "animation": {
     "type": "tree-operation",
     "title": "BST Insert tree state",
+    "legend": [
+      {
+        "className": "current",
+        "label": "Current node"
+      },
+      {
+        "className": "target",
+        "label": "Insert value"
+      },
+      {
+        "className": "replacement",
+        "label": "New link"
+      }
+    ],
     "nodes": [
       {
-        "id": "8",
-        "label": "8",
+        "id": "4",
+        "label": "4",
         "x": 340,
         "y": 58
       },
       {
-        "id": "4",
-        "label": "4",
+        "id": "2",
+        "label": "2",
         "x": 190,
         "y": 150
       },
       {
-        "id": "12",
-        "label": "12",
+        "id": "6",
+        "label": "6",
         "x": 490,
         "y": 150
       },
       {
-        "id": "2",
-        "label": "2",
+        "id": "1",
+        "label": "1",
         "x": 110,
         "y": 255
       },
       {
-        "id": "6",
-        "label": "6",
+        "id": "3",
+        "label": "3",
         "x": 270,
         "y": 255
       },
       {
-        "id": "10",
-        "label": "10",
+        "id": "5",
+        "label": "5",
         "x": 420,
         "y": 255
       },
       {
-        "id": "14",
-        "label": "14",
+        "id": "7",
+        "label": "7",
         "x": 570,
         "y": 255
+      },
+      {
+        "id": "8",
+        "label": "8",
+        "x": 625,
+        "y": 335
       }
     ],
     "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
       {
         "from": "4",
         "to": "2"
@@ -212,66 +224,105 @@ export const algorithmPage = {
         "to": "6"
       },
       {
-        "from": "12",
-        "to": "10"
+        "from": "2",
+        "to": "1"
       },
       {
-        "from": "12",
-        "to": "14"
+        "from": "2",
+        "to": "3"
+      },
+      {
+        "from": "6",
+        "to": "5"
+      },
+      {
+        "from": "6",
+        "to": "7"
+      },
+      {
+        "from": "7",
+        "to": "8"
       }
     ],
     "steps": [
       {
         "phase": "Root",
-        "title": "Check current node",
-        "note": "The code starts by handling missing nodes or the current root.",
+        "title": "Start at root 4",
+        "note": "Value 8 is greater than 4, so the insert path goes right.",
         "ruleLabel": "BST Insert invariant",
-        "rule": "Defines bstInsert and names the input root, value; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
-      },
-      {
-        "phase": "Node state",
-        "title": "Read ordered branch",
-        "note": "The current node controls the next step.",
-        "ruleLabel": "BST Insert invariant",
-        "rule": "Computes tree by reducing the current values, matching the aggregate shown in the result state.",
+        "rule": "The new value must stay in the right subtree of every smaller node on the path.",
         "activeNode": "4",
-        "targetNode": "12",
+        "targetNode": "8",
         "replacementNode": "",
         "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
+          "1",
+          "2",
+          "3",
+          "5",
+          "7"
+        ],
+        "nodeLabels": {
+          "4": "4 < 8",
+          "8": "8 new"
+        }
       },
       {
-        "phase": "Child step",
-        "title": "Compare with the current node and move left or right",
-        "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "phase": "Descend",
+        "title": "Move right through 6",
+        "note": "8 is greater than 6, so insertion continues to 6.right.",
         "ruleLabel": "BST Insert invariant",
-        "rule": "Checks !node; only the branch that preserves BST Insert's invariant is allowed to change state.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "rule": "nextValue > copy.value updates copy.right with the recursive insert result.",
+        "activeNode": "6",
+        "targetNode": "8",
+        "replacementNode": "",
+        "mutedNodes": [
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "nodeLabels": {
+          "4": "4 path",
+          "6": "6 < 8",
+          "8": "8 new"
+        }
       },
       {
-        "phase": "Tree result",
-        "title": "Return result",
-        "note": "The final traversal, path, measurement, or tree state is returned.",
+        "phase": "Create",
+        "title": "Create 8 after node 7",
+        "note": "8 is greater than 7, and the right child is null, so the base case creates node 8.",
         "ruleLabel": "BST Insert invariant",
-        "rule": "Returns copy, the final value maintained by BST Insert's code path.",
-        "activeNode": "2",
-        "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
+        "rule": "if (!node) returns { value: 8, left: null, right: null }.",
+        "activeNode": "7",
+        "targetNode": "8",
+        "replacementNode": "8",
+        "mutedNodes": [
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "nodeLabels": {
+          "7": "7 < 8",
+          "8": "8 inserted"
+        }
+      },
+      {
+        "phase": "Return",
+        "title": "Return updated BST",
+        "note": "The recursive copies reconnect so 8 becomes the right child of 7.",
+        "ruleLabel": "BST Insert invariant",
+        "rule": "Returning copy preserves the original order while carrying the new right-child link upward.",
+        "activeNode": "4",
+        "targetNode": "8",
+        "replacementNode": "8",
+        "mutedNodes": [],
+        "nodeLabels": {
+          "4": "4",
+          "6": "6",
+          "7": "7",
+          "8": "8 new"
+        }
       }
     ]
   }

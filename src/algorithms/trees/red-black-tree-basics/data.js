@@ -12,32 +12,32 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/red-black-tree-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Red-Black Tree Basics is a Trees technique focused on tree result.",
-  "problem": "Red-Black Tree Basics relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "Red-Black Tree Basics is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on balance invariant.",
-  "logicSummary": "Start at the root, maintain balance invariant, rotate or recolor when height/color rules are violated, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses balance invariant to decide the next child, rotation, or returned value.",
-  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
-  "realLifeExample": "Red-Black Tree Basics appears when the input is root and the required result is tree result.",
-  "whenToUse": "Use Red-Black Tree Basics when a problem matches the Trees pattern and the expected state changes match a balanced tree dry run.",
-  "memoryTrick": "Red-Black Tree Basics: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Red-Black Tree Basics is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "A red-black tree is a balanced binary search tree that uses node colors to keep paths short.",
+  "problem": "This reference page summarizes the sample tree by computing height, reading the root color, and confirming that a root exists for color-rule checks.",
+  "concept": "The included code is a basics summary: height(root), root?.color || \"black\", and Boolean(root).",
+  "logicSummary": "Compute the sample tree height, read the root color as black, and return the red-black summary object.",
+  "transitionSummary": "Each step checks one field returned by redBlackTreeBasics rather than performing rotations.",
+  "codeInsight": "The reference implementation reports rootColor and a basic non-empty balancedByColorRules flag; it does not implement insertion repair.",
+  "realLifeExample": "Red-black trees are used in ordered maps and sets where operations should stay logarithmic.",
+  "whenToUse": "Use red-black trees when you need a balanced ordered structure with less strict balancing than AVL.",
+  "memoryTrick": "Red-black basics: root is black, colors constrain paths, rotations repair updates.",
+  "visualizerCaption": "The animation summarizes the sample root color, height 3, and non-empty color-rule status.",
   "logicSteps": [
     {
       "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "text": "Compute the tree height."
     },
     {
       "title": "Read node state",
-      "text": "Inspect balance invariant."
+      "text": "Read the root color."
     },
     {
       "title": "Move/combine",
-      "text": "rotate or recolor when height/color rules are violated."
+      "text": "Confirm a root exists for color-rule checks."
     },
     {
       "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "text": "Return the summary object."
     }
   ],
   "variables": [
@@ -46,46 +46,46 @@ export const algorithmPage = {
       "purpose": "The tree node where recursion or traversal begins."
     },
     {
-      "name": "current node and recursion state",
-      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as balanced tree."
+      "name": "height(root)",
+      "purpose": "Computes the number of node levels in the sample tree."
     },
     {
-      "name": "tree result",
-      "purpose": "The value produced by redBlackTreeBasics after the maintained state reaches the stop rule."
+      "name": "rootColor",
+      "purpose": "Reads root.color and falls back to black when no color is set."
     },
     {
       "name": "transition / stop rule",
-      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
+      "purpose": "Return height, rootColor, and whether a non-empty root can satisfy basic color-rule checks."
     }
   ],
   "dryRun": [
     {
       "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 5,
-      "codeInsight": "Defines redBlackTreeBasics and names the input root; edits to those inputs change the visual state and output."
+      "title": "Measure tree height",
+      "note": "The sample tree has three node levels.",
+      "activeLine": 10,
+      "codeInsight": "Calls height(root) for the height field in the returned object."
     },
     {
       "label": "Node state",
-      "title": "Read balance invariant",
-      "note": "The current node controls the next step.",
-      "activeLine": 5,
-      "codeInsight": "Defines redBlackTreeBasics and names the input root; edits to those inputs change the visual state and output."
+      "title": "Read root color",
+      "note": "The sample root carries color black.",
+      "activeLine": 10,
+      "codeInsight": "Reads root?.color || \"black\", producing rootColor: \"black\"."
     },
     {
       "label": "Child step",
-      "title": "Rotate or recolor when height/color rules are violated",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 7,
-      "codeInsight": "Checks !node; only the branch that preserves Red-Black Tree Basics's invariant is allowed to change state."
+      "title": "Confirm non-empty tree",
+      "note": "Because root exists, the simple color-rule flag is true.",
+      "activeLine": 10,
+      "codeInsight": "Uses Boolean(root), so balancedByColorRules is true for the non-empty sample."
     },
     {
       "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 8,
-      "codeInsight": "Returns 1 + Math.max(height(node.left), height(node.right)), the final value maintained by Red-Black Tree Basics's code path."
+      "title": "Return red-black summary",
+      "note": "The function returns { height: 3, rootColor: \"black\", balancedByColorRules: true }.",
+      "activeLine": 10,
+      "codeInsight": "Returns the summary object built from height(root), root color, and Boolean(root)."
     }
   ],
   "complexity": {
@@ -97,7 +97,7 @@ export const algorithmPage = {
     "options": [
       {
         "key": "A",
-        "text": "Track current node and traversal state and update it only through Red-Black Tree Basics' transition.",
+        "text": "Read the root color and preserve black-root color-rule reasoning.",
         "correct": true
       },
       {
@@ -111,8 +111,8 @@ export const algorithmPage = {
         "correct": false
       }
     ],
-    "correctText": "Correct. Red-Black Tree Basics stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Red-Black Tree Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Red-black basics start with color rules such as a black root.",
+    "incorrectText": "Not quite. This basics page reports color-rule fields; it does not simulate an unrelated traversal."
   },
   "categorySlug": "trees",
   "algorithmSlug": "red-black-tree-basics",
@@ -143,59 +143,65 @@ export const algorithmPage = {
   "animation": {
     "type": "tree-operation",
     "title": "Red-Black Tree Basics tree state",
+    "legend": [
+      {
+        "className": "current",
+        "label": "Root / checked"
+      },
+      {
+        "className": "target",
+        "label": "Height input"
+      },
+      {
+        "className": "replacement",
+        "label": "Color summary"
+      }
+    ],
     "nodes": [
       {
-        "id": "8",
-        "label": "8",
+        "id": "4",
+        "label": "4",
         "x": 340,
         "y": 58
       },
       {
-        "id": "4",
-        "label": "4",
+        "id": "2",
+        "label": "2",
         "x": 190,
         "y": 150
       },
       {
-        "id": "12",
-        "label": "12",
+        "id": "6",
+        "label": "6",
         "x": 490,
         "y": 150
       },
       {
-        "id": "2",
-        "label": "2",
+        "id": "1",
+        "label": "1",
         "x": 110,
         "y": 255
       },
       {
-        "id": "6",
-        "label": "6",
+        "id": "3",
+        "label": "3",
         "x": 270,
         "y": 255
       },
       {
-        "id": "10",
-        "label": "10",
+        "id": "5",
+        "label": "5",
         "x": 420,
         "y": 255
       },
       {
-        "id": "14",
-        "label": "14",
+        "id": "7",
+        "label": "7",
         "x": 570,
         "y": 255
       }
     ],
     "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
       {
         "from": "4",
         "to": "2"
@@ -205,66 +211,91 @@ export const algorithmPage = {
         "to": "6"
       },
       {
-        "from": "12",
-        "to": "10"
+        "from": "2",
+        "to": "1"
       },
       {
-        "from": "12",
-        "to": "14"
+        "from": "2",
+        "to": "3"
+      },
+      {
+        "from": "6",
+        "to": "5"
+      },
+      {
+        "from": "6",
+        "to": "7"
       }
     ],
     "steps": [
       {
         "phase": "Root",
-        "title": "Check current node",
-        "note": "The code starts by handling missing nodes or the current root.",
+        "title": "Measure tree height",
+        "note": "The sample tree has three levels, so height(root) returns 3.",
         "ruleLabel": "Red-Black Tree Basics invariant",
-        "rule": "Defines redBlackTreeBasics and names the input root; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
+        "rule": "height(root) is computed before the summary object is returned.",
+        "activeNode": "4",
+        "targetNode": "2",
+        "replacementNode": "6",
+        "mutedNodes": [],
+        "nodeLabels": {
+          "4": "4 h=3",
+          "2": "h=2",
+          "6": "h=2"
+        }
       },
       {
         "phase": "Node state",
-        "title": "Read balance invariant",
-        "note": "The current node controls the next step.",
+        "title": "Read black root",
+        "note": "The runner input marks root 4 as black.",
         "ruleLabel": "Red-Black Tree Basics invariant",
-        "rule": "Defines redBlackTreeBasics and names the input root; edits to those inputs change the visual state and output.",
+        "rule": "root?.color || \"black\" returns \"black\" for this sample.",
         "activeNode": "4",
-        "targetNode": "12",
-        "replacementNode": "",
+        "targetNode": "",
+        "replacementNode": "4",
         "mutedNodes": [
+          "1",
+          "2",
+          "3",
+          "5",
           "6",
-          "10",
-          "14"
-        ]
+          "7"
+        ],
+        "nodeLabels": {
+          "4": "4 black"
+        }
       },
       {
         "phase": "Child step",
-        "title": "Rotate or recolor when height/color rules are violated",
-        "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "title": "Confirm non-empty root",
+        "note": "Because root exists, Boolean(root) is true for balancedByColorRules.",
         "ruleLabel": "Red-Black Tree Basics invariant",
-        "rule": "Checks !node; only the branch that preserves Red-Black Tree Basics's invariant is allowed to change state.",
-        "activeNode": "12",
+        "rule": "This reference page reports the basics summary; it does not simulate rotations.",
+        "activeNode": "4",
         "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "replacementNode": "4",
+        "mutedNodes": [],
+        "nodeLabels": {
+          "4": "root ok",
+          "2": "child",
+          "6": "child"
+        }
       },
       {
         "phase": "Tree result",
-        "title": "Return result",
-        "note": "The final traversal, path, measurement, or tree state is returned.",
+        "title": "Return red-black summary",
+        "note": "The function returns { height: 3, rootColor: \"black\", balancedByColorRules: true }.",
         "ruleLabel": "Red-Black Tree Basics invariant",
-        "rule": "Returns 1 + Math.max(height(node.left), height(node.right)), the final value maintained by Red-Black Tree Basics's code path.",
-        "activeNode": "2",
-        "targetNode": "6",
+        "rule": "The returned object matches the fields in the solution code.",
+        "activeNode": "4",
+        "targetNode": "2",
         "replacementNode": "6",
-        "mutedNodes": []
+        "mutedNodes": [],
+        "nodeLabels": {
+          "4": "black",
+          "2": "height",
+          "6": "height"
+        }
       }
     ]
   }

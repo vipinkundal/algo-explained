@@ -12,32 +12,32 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/diameter-of-tree/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Diameter of Tree is a Trees technique focused on tree result.",
-  "problem": "Diameter of Tree relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "Diameter of Tree is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on child height/result.",
-  "logicSummary": "Start at the root, maintain child height/result, combine child measurements into the parent answer, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses child height/result to decide the next child, rotation, or returned value.",
-  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
-  "realLifeExample": "Diameter of Tree appears when the input is root and the required result is tree result.",
-  "whenToUse": "Use Diameter of Tree when a problem matches the Trees pattern and the expected state changes match a tree height dry run.",
-  "memoryTrick": "Diameter of Tree: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Diameter of Tree is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Tree diameter is the longest path between any two nodes, measured here as the number of edges on that path.",
+  "problem": "Compute the longest path in the sample tree while each recursive call also returns subtree height to its parent.",
+  "concept": "At each node, left + right is the best diameter passing through that node, and 1 + Math.max(left, right) is the height returned upward.",
+  "logicSummary": "Compute left height, compute right height, update diameter with left + right, and return the node height.",
+  "transitionSummary": "Each step shows subtree heights rolling up until root 4 updates diameter to 4.",
+  "codeInsight": "The shared diameter variable records the best left-height plus right-height seen anywhere in the tree.",
+  "realLifeExample": "Diameter is like finding the longest route between two endpoints in a branching road map.",
+  "whenToUse": "Use this pattern when each node must return height while also updating a global best path.",
+  "memoryTrick": "Diameter at a node is left height plus right height; height returned is one plus the taller side.",
+  "visualizerCaption": "The animation shows diameter becoming 4 for path 1 -> 2 -> 4 -> 6 -> 7.",
   "logicSteps": [
     {
       "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "text": "Return height 0 for null children."
     },
     {
       "title": "Read node state",
-      "text": "Inspect child height/result."
+      "text": "Compute left and right subtree heights."
     },
     {
       "title": "Move/combine",
-      "text": "combine child measurements into the parent answer."
+      "text": "Update diameter with left + right."
     },
     {
       "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "text": "Return 1 plus the taller child height."
     }
   ],
   "variables": [
@@ -46,46 +46,46 @@ export const algorithmPage = {
       "purpose": "The tree node where recursion or traversal begins."
     },
     {
-      "name": "current node and recursion state",
-      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as tree height."
+      "name": "left, right",
+      "purpose": "The subtree heights returned by the recursive calls."
     },
     {
-      "name": "tree result",
-      "purpose": "The value produced by diameterOfTree after the maintained state reaches the stop rule."
+      "name": "diameter",
+      "purpose": "The best left + right path length seen so far."
     },
     {
       "name": "transition / stop rule",
-      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
+      "purpose": "Update diameter at each node, then return that node's height to its parent."
     }
   ],
   "dryRun": [
     {
       "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 5,
-      "codeInsight": "Defines diameterOfTree and names the input root; edits to those inputs change the visual state and output."
+      "title": "Initialize best diameter",
+      "note": "diameter starts at 0 before the height helper scans the tree.",
+      "activeLine": 6,
+      "codeInsight": "Initializes diameter, the best path length found so far."
     },
     {
       "label": "Node state",
-      "title": "Read child height/result",
-      "note": "The current node controls the next step.",
-      "activeLine": 12,
-      "codeInsight": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path."
+      "title": "Compute child heights",
+      "note": "Subtrees rooted at 2 and 6 each return height 2.",
+      "activeLine": 9,
+      "codeInsight": "Computes left = height(node.left), then right = height(node.right) on the next line."
     },
     {
       "label": "Child step",
       "title": "Combine child measurements into the parent answer",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 12,
-      "codeInsight": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path."
+      "note": "At root 4, left + right is 2 + 2 = 4, which is the longest path.",
+      "activeLine": 11,
+      "codeInsight": "Updates diameter with Math.max(diameter, left + right)."
     },
     {
       "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 12,
-      "codeInsight": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path."
+      "title": "Return diameter 4",
+      "note": "After height(root) finishes, return diameter gives the longest path length 4.",
+      "activeLine": 15,
+      "codeInsight": "Returns diameter after every node has updated the best path."
     }
   ],
   "complexity": {
@@ -97,7 +97,7 @@ export const algorithmPage = {
     "options": [
       {
         "key": "A",
-        "text": "Track current node and traversal state and update it only through Diameter of Tree's transition.",
+        "text": "Update diameter with left + right at every node while returning height upward.",
         "correct": true
       },
       {
@@ -111,8 +111,8 @@ export const algorithmPage = {
         "correct": false
       }
     ],
-    "correctText": "Correct. Diameter of Tree stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Diameter of Tree needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The longest path through a node uses the heights of both child subtrees.",
+    "incorrectText": "Not quite. Returning height and updating diameter are related but different values."
   },
   "categorySlug": "trees",
   "algorithmSlug": "diameter-of-tree",
@@ -142,59 +142,65 @@ export const algorithmPage = {
   "animation": {
     "type": "tree-operation",
     "title": "Diameter of Tree tree state",
+    "legend": [
+      {
+        "className": "current",
+        "label": "Combining node"
+      },
+      {
+        "className": "target",
+        "label": "Path endpoint"
+      },
+      {
+        "className": "replacement",
+        "label": "Best path"
+      }
+    ],
     "nodes": [
       {
-        "id": "8",
-        "label": "8",
+        "id": "4",
+        "label": "4",
         "x": 340,
         "y": 58
       },
       {
-        "id": "4",
-        "label": "4",
+        "id": "2",
+        "label": "2",
         "x": 190,
         "y": 150
       },
       {
-        "id": "12",
-        "label": "12",
+        "id": "6",
+        "label": "6",
         "x": 490,
         "y": 150
       },
       {
-        "id": "2",
-        "label": "2",
+        "id": "1",
+        "label": "1",
         "x": 110,
         "y": 255
       },
       {
-        "id": "6",
-        "label": "6",
+        "id": "3",
+        "label": "3",
         "x": 270,
         "y": 255
       },
       {
-        "id": "10",
-        "label": "10",
+        "id": "5",
+        "label": "5",
         "x": 420,
         "y": 255
       },
       {
-        "id": "14",
-        "label": "14",
+        "id": "7",
+        "label": "7",
         "x": 570,
         "y": 255
       }
     ],
     "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
       {
         "from": "4",
         "to": "2"
@@ -204,66 +210,104 @@ export const algorithmPage = {
         "to": "6"
       },
       {
-        "from": "12",
-        "to": "10"
+        "from": "2",
+        "to": "1"
       },
       {
-        "from": "12",
-        "to": "14"
+        "from": "2",
+        "to": "3"
+      },
+      {
+        "from": "6",
+        "to": "5"
+      },
+      {
+        "from": "6",
+        "to": "7"
       }
     ],
     "steps": [
       {
         "phase": "Root",
-        "title": "Check current node",
-        "note": "The code starts by handling missing nodes or the current root.",
+        "title": "Initialize best diameter",
+        "note": "Before recursion, the best known path length is 0.",
         "ruleLabel": "Diameter of Tree invariant",
-        "rule": "Defines diameterOfTree and names the input root; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
+        "rule": "height(root) will update diameter as subtree heights return.",
+        "activeNode": "4",
+        "targetNode": "",
         "replacementNode": "",
         "mutedNodes": [
+          "1",
+          "2",
+          "3",
           "6",
-          "10",
-          "14"
-        ]
+          "5",
+          "7"
+        ],
+        "nodeLabels": {
+          "4": "4 start"
+        }
       },
       {
         "phase": "Node state",
-        "title": "Read child height/result",
-        "note": "The current node controls the next step.",
+        "title": "Subtrees each return height 2",
+        "note": "Node 2 returns height 2 from leaves 1 and 3; node 6 returns height 2 from leaves 5 and 7.",
         "ruleLabel": "Diameter of Tree invariant",
-        "rule": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path.",
+        "rule": "The parent root receives left = 2 and right = 2.",
         "activeNode": "4",
-        "targetNode": "12",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
+        "targetNode": "2",
+        "replacementNode": "6",
+        "mutedNodes": [],
+        "nodeLabels": {
+          "2": "2 h=2",
+          "6": "6 h=2",
+          "1": "1 h=1",
+          "3": "3 h=1",
+          "5": "5 h=1",
+          "7": "7 h=1"
+        }
       },
       {
         "phase": "Child step",
         "title": "Combine child measurements into the parent answer",
-        "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "note": "At root 4, left + right is 4, forming path 1 -> 2 -> 4 -> 6 -> 7.",
         "ruleLabel": "Diameter of Tree invariant",
-        "rule": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "rule": "diameter = Math.max(diameter, 2 + 2) updates the best path length to 4.",
+        "activeNode": "4",
+        "targetNode": "1",
+        "replacementNode": "7",
+        "mutedNodes": [
+          "3",
+          "5"
+        ],
+        "nodeLabels": {
+          "1": "1 end",
+          "2": "2",
+          "4": "4 join",
+          "6": "6",
+          "7": "7 end"
+        }
       },
       {
         "phase": "Tree result",
-        "title": "Return result",
-        "note": "The final traversal, path, measurement, or tree state is returned.",
+        "title": "Return diameter 4",
+        "note": "The longest path has 4 edges, so the function returns 4.",
         "ruleLabel": "Diameter of Tree invariant",
-        "rule": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path.",
-        "activeNode": "2",
-        "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
+        "rule": "return diameter exposes the best left + right value seen during height(root).",
+        "activeNode": "4",
+        "targetNode": "1",
+        "replacementNode": "7",
+        "mutedNodes": [
+          "3",
+          "5"
+        ],
+        "nodeLabels": {
+          "1": "1",
+          "2": "2",
+          "4": "4 d=4",
+          "6": "6",
+          "7": "7"
+        }
       }
     ]
   }

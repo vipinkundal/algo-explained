@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Check for empty tree",
       "note": "If root is missing, there are no levels to visit.",
-      "activeLine": 5,
-      "codeInsight": "Defines levelOrderTraversal and names the input root; edits to those inputs change the visual state and output."
+      "activeLine": 6,
+      "codeInsight": "Checks !root; an empty tree returns [] before the queue is created."
     },
     {
       "label": "Queue",
       "title": "Seed traversal queue",
       "note": "The root becomes the first discovered node.",
       "activeLine": 8,
-      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
+      "codeInsight": "Creates queue = [root], so node 4 is the first node waiting to be visited."
     },
     {
       "label": "Visit",
       "title": "Process queue front",
       "note": "The front node is appended to output.",
-      "activeLine": 6,
-      "codeInsight": "Checks !root; only the branch that preserves Level Order Traversal's invariant is allowed to change state."
+      "activeLine": 11,
+      "codeInsight": "Pushes node.value into order; visiting root 4 starts the breadth-first output."
     },
     {
       "label": "Children",
       "title": "Discover next level",
       "note": "Children are pushed to the queue for later visits.",
-      "activeLine": 8,
-      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
+      "activeLine": 12,
+      "codeInsight": "Enqueues node.left and then node.right, so children 2 and 6 wait behind the visited root."
     }
   ],
   "complexity": {
@@ -164,59 +164,65 @@ export const algorithmPage = {
   "animation": {
     "type": "tree-operation",
     "title": "Level Order Traversal tree state",
+    "legend": [
+      {
+        "className": "current",
+        "label": "Visiting"
+      },
+      {
+        "className": "target",
+        "label": "Queued next"
+      },
+      {
+        "className": "replacement",
+        "label": "Output so far"
+      }
+    ],
     "nodes": [
       {
-        "id": "8",
-        "label": "8",
+        "id": "4",
+        "label": "4",
         "x": 340,
         "y": 58
       },
       {
-        "id": "4",
-        "label": "4",
+        "id": "2",
+        "label": "2",
         "x": 190,
         "y": 150
       },
       {
-        "id": "12",
-        "label": "12",
+        "id": "6",
+        "label": "6",
         "x": 490,
         "y": 150
       },
       {
-        "id": "2",
-        "label": "2",
+        "id": "1",
+        "label": "1",
         "x": 110,
         "y": 255
       },
       {
-        "id": "6",
-        "label": "6",
+        "id": "3",
+        "label": "3",
         "x": 270,
         "y": 255
       },
       {
-        "id": "10",
-        "label": "10",
+        "id": "5",
+        "label": "5",
         "x": 420,
         "y": 255
       },
       {
-        "id": "14",
-        "label": "14",
+        "id": "7",
+        "label": "7",
         "x": 570,
         "y": 255
       }
     ],
     "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
       {
         "from": "4",
         "to": "2"
@@ -226,12 +232,20 @@ export const algorithmPage = {
         "to": "6"
       },
       {
-        "from": "12",
-        "to": "10"
+        "from": "2",
+        "to": "1"
       },
       {
-        "from": "12",
-        "to": "14"
+        "from": "2",
+        "to": "3"
+      },
+      {
+        "from": "6",
+        "to": "5"
+      },
+      {
+        "from": "6",
+        "to": "7"
       }
     ],
     "steps": [
@@ -240,52 +254,83 @@ export const algorithmPage = {
         "title": "Check for empty tree",
         "note": "If root is missing, there are no levels to visit.",
         "ruleLabel": "Level Order Traversal invariant",
-        "rule": "Defines levelOrderTraversal and names the input root; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
+        "rule": "The sample root is 4, so traversal continues instead of returning [].",
+        "activeNode": "4",
+        "targetNode": "",
         "replacementNode": "",
         "mutedNodes": [
+          "1",
+          "2",
+          "3",
+          "5",
           "6",
-          "10",
-          "14"
-        ]
+          "7"
+        ],
+        "nodeLabels": {
+          "4": "4 root"
+        }
       },
       {
         "phase": "Queue",
         "title": "Seed traversal queue",
         "note": "The root becomes the first discovered node.",
         "ruleLabel": "Level Order Traversal invariant",
-        "rule": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
+        "rule": "queue = [4], so the root is first in line for breadth-first processing.",
         "activeNode": "4",
-        "targetNode": "12",
+        "targetNode": "4",
         "replacementNode": "",
         "mutedNodes": [
+          "1",
+          "2",
+          "3",
+          "5",
           "6",
-          "10",
-          "14"
-        ]
+          "7"
+        ],
+        "nodeLabels": {
+          "4": "4 q1"
+        }
       },
       {
         "phase": "Visit",
         "title": "Process queue front",
         "note": "The front node is appended to output.",
         "ruleLabel": "Level Order Traversal invariant",
-        "rule": "Checks !root; only the branch that preserves Level Order Traversal's invariant is allowed to change state.",
-        "activeNode": "12",
+        "rule": "order.push(node.value) appends 4 before any child values are visited.",
+        "activeNode": "4",
         "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "replacementNode": "4",
+        "mutedNodes": [
+          "1",
+          "3",
+          "5",
+          "7"
+        ],
+        "nodeLabels": {
+          "4": "4 #1",
+          "2": "2 next",
+          "6": "6 next"
+        }
       },
       {
         "phase": "Children",
         "title": "Discover next level",
         "note": "Children are pushed to the queue for later visits.",
         "ruleLabel": "Level Order Traversal invariant",
-        "rule": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
+        "rule": "After processing all queued nodes level by level, order is [4, 2, 6, 1, 3, 5, 7].",
         "activeNode": "2",
         "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
+        "replacementNode": "4",
+        "mutedNodes": [],
+        "nodeLabels": {
+          "4": "4 #1",
+          "2": "2 #2",
+          "6": "6 #3",
+          "1": "1 #4",
+          "3": "3 #5",
+          "5": "5 #6",
+          "7": "7 #7"
+        }
       }
     ]
   }

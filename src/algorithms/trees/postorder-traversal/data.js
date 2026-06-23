@@ -12,32 +12,32 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/postorder-traversal/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Postorder Traversal is a Trees technique focused on tree result.",
-  "problem": "Postorder Traversal relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "Postorder Traversal is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on visit order.",
-  "logicSummary": "Start at the root, maintain visit order, visit the current node in preorder, inorder, or postorder position, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses visit order to decide the next child, rotation, or returned value.",
-  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
-  "realLifeExample": "Postorder Traversal appears when the input is root and the required result is tree result.",
-  "whenToUse": "Use Postorder Traversal when a problem matches the Trees pattern and the expected state changes match a tree traversal dry run.",
-  "memoryTrick": "Postorder Traversal: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Postorder Traversal is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Postorder Traversal visits a binary tree in left subtree, right subtree, then current node order.",
+  "problem": "Postorder Traversal collects children before parents, which is useful when parent work depends on completed subtrees.",
+  "concept": "The recursive helper first walks node.left, then node.right, then pushes node.value.",
+  "logicSummary": "Start at root, finish the left subtree, finish the right subtree, then visit the current node and return the collected result.",
+  "transitionSummary": "Each step shows values entering result only after both child subtrees of that node are complete.",
+  "codeInsight": "The output order is controlled by result.push(node.value) coming after both recursive calls.",
+  "realLifeExample": "Postorder is useful for deleting a folder tree because files and child folders are handled before the parent folder.",
+  "whenToUse": "Use Postorder Traversal when a parent should be processed after all descendants.",
+  "memoryTrick": "Postorder means LRN: Left, Right, Node.",
+  "visualizerCaption": "The animation shows values entering result in postorder sequence: 1, 3, 2, 5, 7, 6, 4.",
   "logicSteps": [
     {
       "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "text": "Call walk(root) to begin the recursive traversal."
     },
     {
       "title": "Read node state",
-      "text": "Inspect visit order."
+      "text": "Recurse into the left subtree first."
     },
     {
       "title": "Move/combine",
-      "text": "visit the current node in preorder, inorder, or postorder position."
+      "text": "Recurse into the right subtree before visiting the node."
     },
     {
       "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "text": "Push the current node after both children are done."
     }
   ],
   "variables": [
@@ -46,46 +46,46 @@ export const algorithmPage = {
       "purpose": "The tree node where recursion or traversal begins."
     },
     {
-      "name": "current node and recursion state",
-      "purpose": "The traversal, search, or balancing state attached to the current tree node. This page visualizes it as tree traversal."
+      "name": "walk(node)",
+      "purpose": "The recursive helper that applies left-right-node order."
     },
     {
-      "name": "tree result",
-      "purpose": "The value produced by postorderTraversal after the maintained state reaches the stop rule."
+      "name": "result",
+      "purpose": "The output array that receives node values after both child subtrees finish."
     },
     {
       "name": "transition / stop rule",
-      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
+      "purpose": "Stop on null nodes; otherwise walk left, walk right, then push current value."
     }
   ],
   "dryRun": [
     {
       "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 5,
-      "codeInsight": "Defines postorderTraversal and names the input root; edits to those inputs change the visual state and output."
+      "title": "Start traversal at root 4",
+      "note": "The helper walk(root) starts at node 4, but 4 is output last.",
+      "activeLine": 13,
+      "codeInsight": "Calls walk(root), which starts the left-right-node traversal at value 4."
     },
     {
       "label": "Node state",
-      "title": "Read visit order",
-      "note": "The current node controls the next step.",
-      "activeLine": 8,
-      "codeInsight": "Checks !node; only the branch that preserves Postorder Traversal's invariant is allowed to change state."
+      "title": "Finish the left subtree",
+      "note": "The traversal visits 1, then 3, then parent 2.",
+      "activeLine": 9,
+      "codeInsight": "Runs walk(node.left), so the left subtree finishes before the current node can be pushed."
     },
     {
       "label": "Child step",
-      "title": "Visit the current node in preorder, inorder, or postorder position",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 8,
-      "codeInsight": "Checks !node; only the branch that preserves Postorder Traversal's invariant is allowed to change state."
+      "title": "Finish the right subtree",
+      "note": "The traversal visits 5, then 7, then parent 6 before returning to root 4.",
+      "activeLine": 10,
+      "codeInsight": "Runs walk(node.right), so the right subtree finishes before result.push(node.value)."
     },
     {
       "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 14,
-      "codeInsight": "Returns result, the final value maintained by Postorder Traversal's code path."
+      "title": "Push root last and return",
+      "note": "After both subtrees finish, result.push adds 4 and the function returns [1, 3, 2, 5, 7, 6, 4].",
+      "activeLine": 11,
+      "codeInsight": "Pushes node.value after both child traversals, which makes root 4 the last output."
     }
   ],
   "complexity": {
@@ -97,7 +97,7 @@ export const algorithmPage = {
     "options": [
       {
         "key": "A",
-        "text": "Track current node and traversal state and update it only through Postorder Traversal's transition.",
+        "text": "Visit left subtree, then right subtree, then the current node.",
         "correct": true
       },
       {
@@ -111,8 +111,8 @@ export const algorithmPage = {
         "correct": false
       }
     ],
-    "correctText": "Correct. Postorder Traversal stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Postorder Traversal needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Postorder Traversal is exactly left, right, node.",
+    "incorrectText": "Not quite. Moving result.push before either recursive call changes the traversal order."
   },
   "categorySlug": "trees",
   "algorithmSlug": "postorder-traversal",
@@ -154,59 +154,65 @@ export const algorithmPage = {
   "animation": {
     "type": "tree-operation",
     "title": "Postorder Traversal tree state",
+    "legend": [
+      {
+        "className": "current",
+        "label": "Current call"
+      },
+      {
+        "className": "target",
+        "label": "Next subtree"
+      },
+      {
+        "className": "replacement",
+        "label": "Output so far"
+      }
+    ],
     "nodes": [
       {
-        "id": "8",
-        "label": "8",
+        "id": "4",
+        "label": "4",
         "x": 340,
         "y": 58
       },
       {
-        "id": "4",
-        "label": "4",
+        "id": "2",
+        "label": "2",
         "x": 190,
         "y": 150
       },
       {
-        "id": "12",
-        "label": "12",
+        "id": "6",
+        "label": "6",
         "x": 490,
         "y": 150
       },
       {
-        "id": "2",
-        "label": "2",
+        "id": "1",
+        "label": "1",
         "x": 110,
         "y": 255
       },
       {
-        "id": "6",
-        "label": "6",
+        "id": "3",
+        "label": "3",
         "x": 270,
         "y": 255
       },
       {
-        "id": "10",
-        "label": "10",
+        "id": "5",
+        "label": "5",
         "x": 420,
         "y": 255
       },
       {
-        "id": "14",
-        "label": "14",
+        "id": "7",
+        "label": "7",
         "x": 570,
         "y": 255
       }
     ],
     "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
       {
         "from": "4",
         "to": "2"
@@ -216,66 +222,102 @@ export const algorithmPage = {
         "to": "6"
       },
       {
-        "from": "12",
-        "to": "10"
+        "from": "2",
+        "to": "1"
       },
       {
-        "from": "12",
-        "to": "14"
+        "from": "2",
+        "to": "3"
+      },
+      {
+        "from": "6",
+        "to": "5"
+      },
+      {
+        "from": "6",
+        "to": "7"
       }
     ],
     "steps": [
       {
         "phase": "Root",
-        "title": "Check current node",
-        "note": "The code starts by handling missing nodes or the current root.",
+        "title": "Start traversal at root 4",
+        "note": "walk(root) starts at node 4, but postorder outputs 4 only after both subtrees.",
         "ruleLabel": "Postorder Traversal invariant",
-        "rule": "Defines postorderTraversal and names the input root; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
-      },
-      {
-        "phase": "Node state",
-        "title": "Read visit order",
-        "note": "The current node controls the next step.",
-        "ruleLabel": "Postorder Traversal invariant",
-        "rule": "Checks !node; only the branch that preserves Postorder Traversal's invariant is allowed to change state.",
+        "rule": "Postorder order is left, right, node; root 4 waits until every descendant is output.",
         "activeNode": "4",
-        "targetNode": "12",
+        "targetNode": "2",
         "replacementNode": "",
         "mutedNodes": [
           "6",
-          "10",
-          "14"
-        ]
+          "5",
+          "7"
+        ],
+        "nodeLabels": {
+          "4": "4 wait",
+          "2": "2 left"
+        }
       },
       {
-        "phase": "Child step",
-        "title": "Visit the current node in preorder, inorder, or postorder position",
-        "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "phase": "Left subtree",
+        "title": "Output 1, 3, 2 from the left side",
+        "note": "Node 2 is pushed after both children 1 and 3.",
         "ruleLabel": "Postorder Traversal invariant",
-        "rule": "Checks !node; only the branch that preserves Postorder Traversal's invariant is allowed to change state.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
-      },
-      {
-        "phase": "Tree result",
-        "title": "Return result",
-        "note": "The final traversal, path, measurement, or tree state is returned.",
-        "ruleLabel": "Postorder Traversal invariant",
-        "rule": "Returns result, the final value maintained by Postorder Traversal's code path.",
+        "rule": "Node 2 follows the same left-right-node rule: visit 1, then 3, then 2.",
         "activeNode": "2",
-        "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
+        "targetNode": "1",
+        "replacementNode": "3",
+        "mutedNodes": [
+          "6",
+          "5",
+          "7"
+        ],
+        "nodeLabels": {
+          "1": "1 #1",
+          "3": "3 #2",
+          "2": "2 #3",
+          "4": "4 wait"
+        }
+      },
+      {
+        "phase": "Right subtree",
+        "title": "Output 5, 7, 6 from the right side",
+        "note": "Node 6 is pushed after both children 5 and 7.",
+        "ruleLabel": "Postorder Traversal invariant",
+        "rule": "walk(node.right) finishes the right subtree before root 4 can be pushed.",
+        "activeNode": "6",
+        "targetNode": "5",
+        "replacementNode": "7",
+        "mutedNodes": [],
+        "nodeLabels": {
+          "1": "1 #1",
+          "3": "3 #2",
+          "2": "2 #3",
+          "5": "5 #4",
+          "7": "7 #5",
+          "6": "6 #6",
+          "4": "4 wait"
+        }
+      },
+      {
+        "phase": "Return result",
+        "title": "Push root 4 last",
+        "note": "After both subtrees finish, result.push adds 4 and returns [1, 3, 2, 5, 7, 6, 4].",
+        "ruleLabel": "Postorder Traversal invariant",
+        "rule": "The push line comes after both recursive calls, so the root is the final output value.",
+        "activeNode": "4",
+        "targetNode": "",
+        "replacementNode": "4",
+        "mutedNodes": [],
+        "nodeLabels": {
+          "1": "1 #1",
+          "3": "3 #2",
+          "2": "2 #3",
+          "5": "5 #4",
+          "7": "7 #5",
+          "6": "6 #6",
+          "4": "4 #7"
+        }
       }
     ]
   }

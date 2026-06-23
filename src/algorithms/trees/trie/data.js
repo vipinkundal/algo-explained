@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/trie/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Trie Operations is a Trees technique focused on tree result.",
-  "problem": "Trie Operations relies on the recursive structure of a tree: solve the current node and combine child results.",
-  "concept": "Trie Operations is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on character path.",
-  "logicSummary": "Start at the root, maintain character path, follow or create the child link for the current character, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses character path to decide the next child, rotation, or returned value.",
-  "codeInsight": "Tree code stays clean when every recursive call returns exactly the information the parent needs.",
-  "realLifeExample": "Trie Operations appears when the input is root and the required result is tree result.",
-  "whenToUse": "Use Trie Operations when a problem matches the Trees pattern and the expected state changes match a prefix tree dry run.",
-  "memoryTrick": "Trie Operations: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Trie Operations is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "A trie stores words by sharing common prefixes across character links.",
+  "problem": "Trie insertion builds a prefix tree so words like cat and car share the c -> a prefix and split only at the final character.",
+  "concept": "For each word, start at root and create or follow one child link per character, then mark the final node as a word ending.",
+  "logicSummary": "Create the root object, walk every word character by character, create missing child nodes, mark $ at the end of each word, and return root.",
+  "transitionSummary": "Each visual step shows how cat and car reuse the shared prefix before branching to t and r.",
+  "codeInsight": "The current trie node is the state; node = node[char] ||= {} moves that state to the child for the current character.",
+  "realLifeExample": "Autocomplete dictionaries use tries so all words beginning with ca can share the same prefix path.",
+  "whenToUse": "Use a trie when many strings share prefixes and you need fast prefix or whole-word lookup.",
+  "memoryTrick": "Trie insertion: root, one character edge at a time, terminal marker at the word end.",
+  "visualizerCaption": "The animation inserts cat and car, showing the shared ca prefix and two terminal endings.",
   "logicSteps": [
     {
       "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "text": "Create the root object."
     },
     {
       "title": "Read node state",
-      "text": "Inspect character path."
+      "text": "Start each word from root."
     },
     {
       "title": "Move/combine",
-      "text": "follow or create the child link for the current character."
+      "text": "Follow or create the child link for each character."
     },
     {
       "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "text": "Mark word endings and return the trie root."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "words",
+      "purpose": "The list of strings inserted into the trie."
     },
     {
       "name": "trie node and child links",
       "purpose": "The current prefix node and the links followed or created for each character."
     },
     {
-      "name": "tree result",
-      "purpose": "The value produced by trie after the maintained state reaches the stop rule."
+      "name": "root",
+      "purpose": "The object returned after all character paths and terminal markers are inserted."
     },
     {
       "name": "transition / stop rule",
-      "purpose": "Move from a node to its child or back from a child to its parent with updated state. Stop when no valid work remains or the answer is known."
+      "purpose": "For each character, reuse an existing child object or create a new one, then set $ at the end of the word."
     }
   ],
   "dryRun": [
     {
       "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 5,
-      "codeInsight": "Defines trie and names the input words; edits to those inputs change the visual state and output."
+      "title": "Create empty root",
+      "note": "The trie begins as an empty object before any word is inserted.",
+      "activeLine": 6,
+      "codeInsight": "Creates root = {}, the shared entry point for every word."
     },
     {
       "label": "Node state",
-      "title": "Read character path",
-      "note": "The current node controls the next step.",
-      "activeLine": 6,
-      "codeInsight": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly."
+      "title": "Insert cat",
+      "note": "The first word creates the c -> a -> t path.",
+      "activeLine": 9,
+      "codeInsight": "Uses node = node[char] ||= {} to create or follow each character node."
     },
     {
       "label": "Child step",
-      "title": "Follow or create the child link for the current character",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly."
+      "title": "Insert car",
+      "note": "The second word reuses c -> a, then creates the r branch.",
+      "activeLine": 9,
+      "codeInsight": "Reuses existing child objects for c and a, then creates the missing r node."
     },
     {
       "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 12,
-      "codeInsight": "Returns root, the final value maintained by Trie Operations's code path."
+      "title": "Mark word endings",
+      "note": "Both t and r terminal nodes receive $, so cat and car are complete words.",
+      "activeLine": 10,
+      "codeInsight": "Sets node.$ = true at each word's final character node."
     }
   ],
   "complexity": {
@@ -97,7 +97,7 @@ export const algorithmPage = {
     "options": [
       {
         "key": "A",
-        "text": "Track current node and traversal state and update it only through Trie Operations' transition.",
+        "text": "Share common prefix nodes and mark terminal nodes for complete words.",
         "correct": true
       },
       {
@@ -111,8 +111,8 @@ export const algorithmPage = {
         "correct": false
       }
     ],
-    "correctText": "Correct. Trie Operations stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Trie Operations needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Trie insertion reuses prefix nodes and only branches when characters differ.",
+    "incorrectText": "Not quite. A trie must preserve the character path and terminal markers for each word."
   },
   "categorySlug": "trees",
   "algorithmSlug": "trie",
@@ -124,129 +124,142 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "tree-operation",
-    "title": "Trie Operations tree state",
+    "title": "Trie insertion for cat and car",
+    "legend": [
+      {
+        "className": "current",
+        "label": "Current node"
+      },
+      {
+        "className": "target",
+        "label": "Character link"
+      },
+      {
+        "className": "replacement",
+        "label": "Word end"
+      }
+    ],
     "nodes": [
       {
-        "id": "8",
-        "label": "8",
+        "id": "root",
+        "label": "root",
         "x": 340,
         "y": 58
       },
       {
-        "id": "4",
-        "label": "4",
-        "x": 190,
-        "y": 150
+        "id": "c",
+        "label": "c",
+        "x": 340,
+        "y": 135
       },
       {
-        "id": "12",
-        "label": "12",
-        "x": 490,
-        "y": 150
+        "id": "ca",
+        "label": "a",
+        "x": 340,
+        "y": 212
       },
       {
-        "id": "2",
-        "label": "2",
-        "x": 110,
-        "y": 255
+        "id": "cat",
+        "label": "t",
+        "x": 250,
+        "y": 298
       },
       {
-        "id": "6",
-        "label": "6",
-        "x": 270,
-        "y": 255
-      },
-      {
-        "id": "10",
-        "label": "10",
-        "x": 420,
-        "y": 255
-      },
-      {
-        "id": "14",
-        "label": "14",
-        "x": 570,
-        "y": 255
+        "id": "car",
+        "label": "r",
+        "x": 430,
+        "y": 298
       }
     ],
     "edges": [
       {
-        "from": "8",
-        "to": "4"
+        "from": "root",
+        "to": "c"
       },
       {
-        "from": "8",
-        "to": "12"
+        "from": "c",
+        "to": "ca"
       },
       {
-        "from": "4",
-        "to": "2"
+        "from": "ca",
+        "to": "cat"
       },
       {
-        "from": "4",
-        "to": "6"
-      },
-      {
-        "from": "12",
-        "to": "10"
-      },
-      {
-        "from": "12",
-        "to": "14"
+        "from": "ca",
+        "to": "car"
       }
     ],
     "steps": [
       {
         "phase": "Root",
-        "title": "Check current node",
-        "note": "The code starts by handling missing nodes or the current root.",
+        "title": "Create empty root",
+        "note": "root starts as {}, before either word has inserted characters.",
         "ruleLabel": "Trie Operations invariant",
-        "rule": "Defines trie and names the input words; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
+        "rule": "Every word starts from this same root object.",
+        "activeNode": "root",
+        "targetNode": "",
         "replacementNode": "",
         "mutedNodes": [
-          "6",
-          "10",
-          "14"
+          "c",
+          "ca",
+          "cat",
+          "car"
         ]
       },
       {
-        "phase": "Node state",
-        "title": "Read character path",
-        "note": "The current node controls the next step.",
+        "phase": "Insert cat",
+        "title": "Create c -> a -> t",
+        "note": "The word cat creates a character path from root to terminal t.",
         "ruleLabel": "Trie Operations invariant",
-        "rule": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly.",
-        "activeNode": "4",
-        "targetNode": "12",
-        "replacementNode": "",
+        "rule": "node = node[char] ||= {} creates each missing child while scanning c, a, then t.",
+        "activeNode": "ca",
+        "targetNode": "cat",
+        "replacementNode": "cat",
         "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
+          "car"
+        ],
+        "nodeLabels": {
+          "root": "root",
+          "c": "c",
+          "ca": "ca",
+          "cat": "cat $"
+        }
       },
       {
-        "phase": "Child step",
-        "title": "Follow or create the child link for the current character",
-        "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "phase": "Insert car",
+        "title": "Reuse ca, branch to r",
+        "note": "The word car follows existing c and a nodes, then creates the r child.",
         "ruleLabel": "Trie Operations invariant",
-        "rule": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "rule": "The shared prefix ca is reused; only the final r node is new.",
+        "activeNode": "ca",
+        "targetNode": "car",
+        "replacementNode": "car",
+        "mutedNodes": [],
+        "nodeLabels": {
+          "root": "root",
+          "c": "c",
+          "ca": "ca",
+          "cat": "cat $",
+          "car": "car $"
+        }
       },
       {
-        "phase": "Tree result",
-        "title": "Return result",
-        "note": "The final traversal, path, measurement, or tree state is returned.",
+        "phase": "Return root",
+        "title": "Both words are stored",
+        "note": "The final trie contains root.c.a.t.$ and root.c.a.r.$.",
         "ruleLabel": "Trie Operations invariant",
-        "rule": "Returns root, the final value maintained by Trie Operations's code path.",
-        "activeNode": "2",
-        "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
+        "rule": "return root exposes the shared prefix tree for cat and car.",
+        "activeNode": "root",
+        "targetNode": "ca",
+        "replacementNode": "cat",
+        "mutedNodes": [],
+        "nodeLabels": {
+          "root": "root",
+          "c": "c",
+          "ca": "ca",
+          "cat": "cat $",
+          "car": "car $"
+        }
       }
     ]
   }
