@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Pointers",
       "title": "Set left and right",
       "note": "Both indices define the current candidate state.",
-      "activeLine": 3,
-      "codeInsight": "Executes this C++ reverse() line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines cppReverse and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Compare",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return pair or state",
       "note": "The loop stops when the target condition is met or exhausted.",
       "activeLine": 6,
-      "codeInsight": "Returns [...values].reverse(), the value produced after C++ reverse()'s state changes are complete."
+      "codeInsight": "Returns the final array-style answer [...values].reverse(), so the last frame should show the chosen positions or sequence."
     }
   ],
   "complexity": {
@@ -157,7 +157,7 @@ export const algorithmPage = {
         "title": "Set left and right",
         "note": "Both indices define the current candidate state.",
         "ruleLabel": "C++ reverse() invariant",
-        "rule": "Executes this C++ reverse() line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines cppReverse and names the input values; edits to those inputs change the visual state and output.",
         "activeIndices": [
           1,
           2
@@ -194,7 +194,7 @@ export const algorithmPage = {
         "title": "Return pair or state",
         "note": "The loop stops when the target condition is met or exhausted.",
         "ruleLabel": "C++ reverse() invariant",
-        "rule": "Returns [...values].reverse(), the value produced after C++ reverse()'s state changes are complete.",
+        "rule": "Returns the final array-style answer [...values].reverse(), so the last frame should show the chosen positions or sequence.",
         "activeIndices": [
           2,
           2

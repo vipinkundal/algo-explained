@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Read values",
       "note": "The code receives the list and any target condition.",
-      "activeLine": 6,
-      "codeInsight": "Checks !values.length; only the branch that preserves C++ max_element() / min_element()'s invariant is allowed to change state."
+      "activeLine": 5,
+      "codeInsight": "Defines cppMaxMinElement and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Index",
       "title": "Select current item",
       "note": "The loop focuses on one position at a time.",
-      "activeLine": 3,
-      "codeInsight": "Executes this C++ max_element() / min_element() line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines cppMaxMinElement and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Update",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return scan output",
       "note": "When the scan ends, the tracked result is returned.",
       "activeLine": 13,
-      "codeInsight": "Returns { min: values[minIndex], max: values[maxIndex], minIndex, maxIndex }, the value produced after C++ max_element() / min_element()'s state changes are complete."
+      "codeInsight": "Returns the final state object { min: values[minIndex], max: values[maxIndex], minIndex, maxIndex }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Read values",
         "note": "The code receives the list and any target condition.",
         "ruleLabel": "C++ max_element() / min_element() invariant",
-        "rule": "Checks !values.length; only the branch that preserves C++ max_element() / min_element()'s invariant is allowed to change state.",
+        "rule": "Defines cppMaxMinElement and names the input values; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -159,7 +159,7 @@ export const algorithmPage = {
         "title": "Select current item",
         "note": "The loop focuses on one position at a time.",
         "ruleLabel": "C++ max_element() / min_element() invariant",
-        "rule": "Executes this C++ max_element() / min_element() line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines cppMaxMinElement and names the input values; edits to those inputs change the visual state and output.",
         "activeIndices": [
           1,
           2
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Return scan output",
         "note": "When the scan ends, the tracked result is returned.",
         "ruleLabel": "C++ max_element() / min_element() invariant",
-        "rule": "Returns { min: values[minIndex], max: values[maxIndex], minIndex, maxIndex }, the value produced after C++ max_element() / min_element()'s state changes are complete.",
+        "rule": "Returns the final state object { min: values[minIndex], max: values[maxIndex], minIndex, maxIndex }, exposing the exact fields the visualizer has been tracking.",
         "activeIndices": [
           3,
           3

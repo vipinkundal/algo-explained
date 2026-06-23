@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Count Set Bits line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines countSetBits and names the input value; edits to those inputs change the visual state and output."
     },
     {
       "label": "Reduction",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
       "activeLine": 12,
-      "codeInsight": "Returns count, the value produced after Count Set Bits's state changes are complete."
+      "codeInsight": "Returns count, the final value maintained by Count Set Bits's code path."
     }
   ],
   "complexity": {
@@ -144,7 +144,7 @@ export const algorithmPage = {
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "Count Set Bits invariant",
-        "rule": "Executes this Count Set Bits line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines countSetBits and names the input value; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -160,7 +160,7 @@ export const algorithmPage = {
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "Count Set Bits invariant",
-        "rule": "Returns count, the value produced after Count Set Bits's state changes are complete.",
+        "rule": "Returns count, the final value maintained by Count Set Bits's code path.",
         "activeState": 3
       }
     ]

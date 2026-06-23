@@ -64,28 +64,28 @@ export const algorithmPage = {
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
       "activeLine": 6,
-      "codeInsight": "Initializes counts, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
       "activeLine": 6,
-      "codeInsight": "Initializes counts, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly."
     },
     {
       "label": "State change",
       "title": "Update the state described by this algorithm",
       "note": "Only the necessary algorithm state fields are changed.",
       "activeLine": 7,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Visits each input value once, letting the displayed state update in the same order as the code."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 8,
-      "codeInsight": "Returns { unorderedMap: counts, unorderedSet: [...new Set(values)] }, the value produced after C++ unordered_map / unordered_set's state changes are complete."
+      "codeInsight": "Returns the final state object { unorderedMap: counts, unorderedSet: [...new Set(values)] }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -124,63 +124,48 @@ export const algorithmPage = {
     ]
   ],
   "animation": {
-    "type": "string-flow",
-    "title": "C++ unordered_map / unordered_set character scan",
-    "ruleLabel": "String invariant",
+    "type": "state-flow",
+    "title": "C++ unordered_map / unordered_set state transitions",
+    "ruleLabel": "State rule",
     "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-    "text": "cppunordered",
-    "pattern": "cpp",
+    "states": [
+      "Algorithm State",
+      "Invariant",
+      "State change",
+      "Result"
+    ],
     "steps": [
       {
         "phase": "Algorithm State",
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "C++ unordered_map / unordered_set invariant",
-        "rule": "Initializes counts, the local state that the next highlighted lines will update.",
-        "activeRange": [
-          0,
-          2
-        ],
-        "matchedRange": []
+        "rule": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly.",
+        "activeState": 0
       },
       {
         "phase": "Invariant",
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "C++ unordered_map / unordered_set invariant",
-        "rule": "Initializes counts, the local state that the next highlighted lines will update.",
-        "activeRange": [
-          1,
-          3
-        ],
-        "matchedRange": []
+        "rule": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly.",
+        "activeState": 1
       },
       {
         "phase": "State change",
         "title": "Update the state described by this algorithm",
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "C++ unordered_map / unordered_set invariant",
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
-        "activeRange": [
-          2,
-          4
-        ],
-        "matchedRange": []
+        "rule": "Visits each input value once, letting the displayed state update in the same order as the code.",
+        "activeState": 2
       },
       {
         "phase": "Result",
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "C++ unordered_map / unordered_set invariant",
-        "rule": "Returns { unorderedMap: counts, unorderedSet: [...new Set(values)] }, the value produced after C++ unordered_map / unordered_set's state changes are complete.",
-        "activeRange": [
-          3,
-          5
-        ],
-        "matchedRange": [
-          0,
-          2
-        ]
+        "rule": "Returns the final state object { unorderedMap: counts, unorderedSet: [...new Set(values)] }, exposing the exact fields the visualizer has been tracking.",
+        "activeState": 3
       }
     ]
   }

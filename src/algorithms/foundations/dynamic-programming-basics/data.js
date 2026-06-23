@@ -64,28 +64,28 @@ export const algorithmPage = {
       "title": "Define DP cell",
       "note": "The code first needs a precise subproblem meaning.",
       "activeLine": 6,
-      "codeInsight": "Initializes numbers, the local state that the next highlighted lines will update."
+      "codeInsight": "Prepares numbers from the sample collection that the next visual step inspects."
     },
     {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Dynamic Programming Basics line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines dynamicProgrammingBasics and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Recurrence",
       "title": "Fill next state",
       "note": "The transition combines previously solved states.",
       "activeLine": 6,
-      "codeInsight": "Initializes numbers, the local state that the next highlighted lines will update."
+      "codeInsight": "Prepares numbers from the sample collection that the next visual step inspects."
     },
     {
       "label": "Target",
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
       "activeLine": 9,
-      "codeInsight": "Returns { state, answer: state[state.length - 1] }, the value produced after Dynamic Programming Basics's state changes are complete."
+      "codeInsight": "Returns the final state object { state, answer: state[state.length - 1] }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -140,7 +140,7 @@ export const algorithmPage = {
         "title": "Define DP cell",
         "note": "The code first needs a precise subproblem meaning.",
         "ruleLabel": "Dynamic Programming Basics invariant",
-        "rule": "Initializes numbers, the local state that the next highlighted lines will update.",
+        "rule": "Prepares numbers from the sample collection that the next visual step inspects.",
         "activeState": 0
       },
       {
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "Dynamic Programming Basics invariant",
-        "rule": "Executes this Dynamic Programming Basics line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines dynamicProgrammingBasics and names the input values; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Fill next state",
         "note": "The transition combines previously solved states.",
         "ruleLabel": "Dynamic Programming Basics invariant",
-        "rule": "Initializes numbers, the local state that the next highlighted lines will update.",
+        "rule": "Prepares numbers from the sample collection that the next visual step inspects.",
         "activeState": 2
       },
       {
@@ -164,7 +164,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "Dynamic Programming Basics invariant",
-        "rule": "Returns { state, answer: state[state.length - 1] }, the value produced after Dynamic Programming Basics's state changes are complete.",
+        "rule": "Returns the final state object { state, answer: state[state.length - 1] }, exposing the exact fields the visualizer has been tracking.",
         "activeState": 3
       }
     ]

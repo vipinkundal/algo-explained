@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 7,
-      "codeInsight": "Returns { inputSize: copy.length, auxiliarySpace: copy.length, note: \"O(n) copied state\" }, the value produced after Space Complexity Basics's state changes are complete."
+      "codeInsight": "Returns the final state object { inputSize: copy.length, auxiliarySpace: copy.length, note: \"O(n) copied state\" }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -164,7 +164,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Space Complexity Basics invariant",
-        "rule": "Returns { inputSize: copy.length, auxiliarySpace: copy.length, note: \"O(n) copied state\" }, the value produced after Space Complexity Basics's state changes are complete.",
+        "rule": "Returns the final state object { inputSize: copy.length, auxiliarySpace: copy.length, note: \"O(n) copied state\" }, exposing the exact fields the visualizer has been tracking.",
         "activeState": 3
       }
     ]

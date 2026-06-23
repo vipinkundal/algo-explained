@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Array",
       "title": "Read array request",
       "note": "The code receives an array plus an index, value, or command.",
-      "activeLine": 3,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "activeLine": 2,
+      "codeInsight": "Defines arrayAdtCreatingArrayOfDesiredSize as the runnable entry point for this lesson."
     },
     {
       "label": "Index / length",
       "title": "Check active range",
       "note": "Bounds and current length decide whether the operation is valid.",
       "activeLine": 4,
-      "codeInsight": "Stores sum so the algorithm can reuse this value without recomputing it."
+      "codeInsight": "Computes sum by reducing the current values, matching the aggregate shown in the result state."
     },
     {
       "label": "Slots",
       "title": "Update affected cells",
       "note": "The operation sets, shifts, scans, or resizes array slots.",
-      "activeLine": 6,
-      "codeInsight": "Executes this Array ADT Creating Array Of Desired Size line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Result",
       "title": "Return array state",
       "note": "The visible value or updated array confirms the operation.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Array ADT Creating Array Of Desired Size's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Read array request",
         "note": "The code receives an array plus an index, value, or command.",
         "ruleLabel": "Array ADT Creating Array Of Desired Size invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Defines arrayAdtCreatingArrayOfDesiredSize as the runnable entry point for this lesson.",
         "activeIndices": [
           0
         ],
@@ -174,7 +174,7 @@ export const algorithmPage = {
         "title": "Check active range",
         "note": "Bounds and current length decide whether the operation is valid.",
         "ruleLabel": "Array ADT Creating Array Of Desired Size invariant",
-        "rule": "Stores sum so the algorithm can reuse this value without recomputing it.",
+        "rule": "Computes sum by reducing the current values, matching the aggregate shown in the result state.",
         "activeIndices": [
           1,
           2
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Update affected cells",
         "note": "The operation sets, shifts, scans, or resizes array slots.",
         "ruleLabel": "Array ADT Creating Array Of Desired Size invariant",
-        "rule": "Executes this Array ADT Creating Array Of Desired Size line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking.",
         "activeIndices": [
           2
         ],
@@ -216,7 +216,7 @@ export const algorithmPage = {
         "title": "Return array state",
         "note": "The visible value or updated array confirms the operation.",
         "ruleLabel": "Array ADT Creating Array Of Desired Size invariant",
-        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Array ADT Creating Array Of Desired Size's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking.",
         "activeIndices": [
           3,
           4

@@ -704,7 +704,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
           <p>${escapeHtml(animationStep.note || current.note)}</p>
           <div class="structured-animation-rule">
             <span>${escapeHtml(animationStep.ruleLabel || animation.ruleLabel || "State rule")}</span>
-            <strong>${escapeHtml(getCodeInsight(current, activeLine) || animationStep.rule || animation.rule)}</strong>
+            <strong>${escapeHtml(animationStep.rule || getCodeInsight(current, activeLine) || animation.rule)}</strong>
           </div>
         </div>
       </div>
@@ -724,7 +724,9 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   }
 
   function renderArrayBoard(animation, animationStep) {
-    const values = Array.isArray(animation.values) && animation.values.length ? animation.values : [4, 1, 3, 2];
+    const values = Array.isArray(animationStep.values) && animationStep.values.length
+      ? animationStep.values
+      : (Array.isArray(animation.values) && animation.values.length ? animation.values : [4, 1, 3, 2]);
     const active = new Set(animationStep.activeIndices || []);
     const sorted = new Set(animationStep.sortedIndices || []);
     const muted = new Set(animationStep.mutedIndices || []);
@@ -1014,6 +1016,11 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     const findLine = (matcher) => candidates.find(({ text }) => matcher(text))?.number;
     const firstAlgorithmLine = () => findLine((text) => /^(const|let)\s+\w+\s*=|^for\s*\(|^while\s*\(|^if\s*\(/.test(text));
 
+    if (/\bswap\b/.test(label)) {
+      return findLine((text) => /^\[.+\]\s*=\s*\[.+\];?$/.test(text))
+        || findLine((text) => /swap\(|\.swap\(/.test(text));
+    }
+
     if (/\b(result|answer|return|output|visible)\b/.test(label)) {
       return findLine((text) => /^return\b/.test(text));
     }
@@ -1085,14 +1092,23 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     const declarationMatch = text.match(/^(const|let)\s+(\w+)\s*=\s*(.+);?$/);
     if (declarationMatch) {
       const [, declarationKind, name, expression] = declarationMatch;
-      if (name === "stack" && /\[\]/.test(expression)) return "This line creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear.";
-      if (name === "result" && /Array\(/.test(expression) && /\.fill\(/.test(expression)) return "This line creates the answer array and fills it with the fallback value for items that never find a next greater element.";
-      if (/\[\]/.test(expression)) return `This line creates ${name} as empty working state; later steps push, pop, or scan values through it.`;
-      if (/Array\(/.test(expression) && /\.fill\(/.test(expression)) return `This line prepares ${name} with default values, so unresolved answers already have the correct fallback.`;
-      if (/Object\.fromEntries/.test(expression)) return `This line builds ${name} as a lookup table, giving every key a clear starting value.`;
-      if (/Math\./.test(expression)) return `This line computes ${name}; the next branch uses that value to decide what part of the state changes.`;
-      if (declarationKind === "let") return `This line initializes mutable state (${name}); later branches update it as the algorithm moves.`;
-      return `This line stores ${name}, a local value the following code depends on.`;
+      if (/^\[\.\.\.\w+\]/.test(expression)) return `Copies the input into ${name}, so the animation can show mutations without pretending the caller's original array changes.`;
+      if (/\.reduce\(/.test(expression)) return `Computes ${name} by reducing the current values, matching the aggregate shown in the result state.`;
+      if (/\.length\b/.test(expression)) return `Stores ${name} from the current length, making the loop boundary explicit for the visual trace.`;
+      if (/\.filter\(/.test(expression) && /\.sort\(/.test(expression)) return `Selects ${name} by filtering unfinished candidates and ordering them by the algorithm's priority rule.`;
+      if (name === "stack" && /\[\]/.test(expression)) return "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear.";
+      if (name === "result" && /Array\(/.test(expression) && /\.fill\(/.test(expression)) return "Creates the answer array and fills it with the fallback value for items that never find a next greater element.";
+      if (/Array\(/.test(expression) && /\.fill\(/.test(expression)) return `Prepares ${name} with a default value so unresolved positions already have the correct fallback answer.`;
+      if (/new Set|new Map/.test(expression)) return `Creates ${name} for fast membership or lookup checks while the scan runs.`;
+      if (/Object\.fromEntries/.test(expression)) return `Builds ${name} as a lookup table so each key has an explicit starting state.`;
+      if (/Math\./.test(expression)) return `Computes ${name} from the current values before the algorithm decides the next move.`;
+      if (/^\[.*\]$/.test(expression.replace(/;$/, ""))) return `Seeds ${name} with the sample values shown in the visualizer, giving the trace concrete cells to inspect.`;
+      if (/\[\]/.test(expression)) return `Creates ${name} as empty working state; later lines add and remove values from it.`;
+      if (/^\{/.test(expression.replace(/;$/, ""))) return `Builds ${name} as a structured sample object that the tree, graph, or map visualizer can render directly.`;
+      if (/\{/.test(expression)) return `Builds ${name} from structured fields so the visual trace can show named values instead of an opaque blob.`;
+      if (declarationKind === "let") return `Initializes ${name} as mutable state; later branches update it as the search window or traversal changes.`;
+      if (/\[/.test(expression)) return `Prepares ${name} from the sample collection that the next visual step inspects.`;
+      return `Stores ${name} so the algorithm can reuse this value without recomputing it.`;
     }
 
     const whileMatch = text.match(/^while\s*\((.+)\)/);
@@ -1103,7 +1119,14 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       return `This condition (${whileMatch[1]}) decides whether more pending state must be resolved before the scan can continue.`;
     }
 
-    if (/^for\s*\(/.test(text)) return "This loop scans the input from left to right so each value gets one chance to resolve earlier pending values.";
+    const forMatch = text.match(/^for\s*\((.+)\)/);
+    if (forMatch) {
+      const header = forMatch[1];
+      if (/const\s+\[.+\]\s+of/.test(header)) return `Iterates over each pair from the input structure, so the animation advances one relationship at a time.`;
+      if (/const\s+\w+\s+of/.test(header)) return `Visits each input value once, letting the displayed state update in the same order as the code.`;
+      if (/left.*right|right.*left/.test(header)) return `Moves two indexes toward each other, matching the animation's paired pointer updates.`;
+      return `Runs the counted loop (${header}) so each visual step follows one code-controlled iteration.`;
+    }
 
     const ifMatch = text.match(/^if\s*\((.+)\)/);
     if (ifMatch) return `This branch checks ${ifMatch[1]}; only the matching branch is allowed to update the algorithm state.`;
@@ -1111,7 +1134,10 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     if (/result\[stack\.pop\(\)\]\s*=/.test(text)) return "This line pops an index from the stack and writes the current value as that index's next greater element.";
     if (/\.pop\(\)/.test(text)) return "This line removes the most recent pending item and resolves it with the current value.";
     if (/stack\.push\(index\)/.test(text)) return "This line pushes the current index because its next greater value has not been found yet.";
-    if (/\.push\(/.test(text)) return "This line stores the current item for a future step, which is why it appears in the visual state.";
+    if (/\.push\(/.test(text)) {
+      const target = text.split(".push(")[0].trim();
+      return `Adds the current value to ${target}, keeping it available for later comparisons or traversal.`;
+    }
 
     const returnMatch = text.match(/^return\s+(.+);?$/);
     if (returnMatch) return `This line returns ${returnMatch[1].replace(/;$/, "")}, which is the final value shown by the code output.`;

@@ -64,7 +64,7 @@ export const algorithmPage = {
       "title": "Copy values",
       "note": "The code starts with the list to reorder.",
       "activeLine": 6,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "codeInsight": "Copies the input into values, so Bubble Sort mutates only its working array."
     },
     {
       "label": "Pair",
@@ -77,15 +77,15 @@ export const algorithmPage = {
       "label": "Swap",
       "title": "Move larger right",
       "note": "Out-of-order neighbors exchange positions.",
-      "activeLine": 7,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "activeLine": 11,
+      "codeInsight": "Swaps values[index], values[index + 1] with values[index + 1], values[index], moving the larger adjacent value right."
     },
     {
       "label": "Sorted",
       "title": "Return final order",
       "note": "The last pass confirms every pair is ordered.",
       "activeLine": 17,
-      "codeInsight": "Returns values, the value produced after Bubble Sort's state changes are complete."
+      "codeInsight": "Returns values, the final value maintained by Bubble Sort's code path."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Copy values",
         "note": "The code starts with the list to reorder.",
         "ruleLabel": "Bubble Sort invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Copies the input into values, so Bubble Sort mutates only its working array.",
         "activeIndices": [
           0
         ],
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Move larger right",
         "note": "Out-of-order neighbors exchange positions.",
         "ruleLabel": "Bubble Sort invariant",
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
+        "rule": "Swaps values[index], values[index + 1] with values[index + 1], values[index], moving the larger adjacent value right.",
         "activeIndices": [
           2
         ],
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "The last pass confirms every pair is ordered.",
         "ruleLabel": "Bubble Sort invariant",
-        "rule": "Returns values, the value produced after Bubble Sort's state changes are complete.",
+        "rule": "Returns values, the final value maintained by Bubble Sort's code path.",
         "activeIndices": [
           3,
           3

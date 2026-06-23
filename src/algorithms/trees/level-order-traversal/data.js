@@ -71,7 +71,7 @@ export const algorithmPage = {
       "title": "Seed traversal queue",
       "note": "The root becomes the first discovered node.",
       "activeLine": 8,
-      "codeInsight": "Initializes queue, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Visit",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Discover next level",
       "note": "Children are pushed to the queue for later visits.",
       "activeLine": 8,
-      "codeInsight": "Initializes queue, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     }
   ],
   "complexity": {
@@ -255,7 +255,7 @@ export const algorithmPage = {
         "title": "Seed traversal queue",
         "note": "The root becomes the first discovered node.",
         "ruleLabel": "Level Order Traversal invariant",
-        "rule": "Initializes queue, the local state that the next highlighted lines will update.",
+        "rule": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -281,7 +281,7 @@ export const algorithmPage = {
         "title": "Discover next level",
         "note": "Children are pushed to the queue for later visits.",
         "ruleLabel": "Level Order Traversal invariant",
-        "rule": "Initializes queue, the local state that the next highlighted lines will update.",
+        "rule": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

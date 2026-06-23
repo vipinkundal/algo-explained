@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 8,
-      "codeInsight": "Returns 1 + Math.max(height(node.left), height(node.right)), the value produced after Red-Black Tree Basics's state changes are complete."
+      "codeInsight": "Returns 1 + Math.max(height(node.left), height(node.right)), the final value maintained by Red-Black Tree Basics's code path."
     }
   ],
   "complexity": {
@@ -260,7 +260,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Red-Black Tree Basics invariant",
-        "rule": "Returns 1 + Math.max(height(node.left), height(node.right)), the value produced after Red-Black Tree Basics's state changes are complete.",
+        "rule": "Returns 1 + Math.max(height(node.left), height(node.right)), the final value maintained by Red-Black Tree Basics's code path.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

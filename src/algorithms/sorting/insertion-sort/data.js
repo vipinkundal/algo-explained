@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Prefix",
       "title": "Start sorted area",
       "note": "The left side is maintained in order.",
-      "activeLine": 6,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "activeLine": 5,
+      "codeInsight": "Defines insertionSort and names the input array; edits to those inputs change the visual state and output."
     },
     {
       "label": "Key",
       "title": "Read next value",
       "note": "One value is removed from the unsorted side.",
-      "activeLine": 6,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "activeLine": 7,
+      "codeInsight": "Runs the counted loop (let index = 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration."
     },
     {
       "label": "Shift",
       "title": "Move larger values",
       "note": "Larger prefix values slide right to create room.",
       "activeLine": 6,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "codeInsight": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes."
     },
     {
       "label": "Insert",
       "title": "Place key",
       "note": "The sorted prefix grows by one.",
-      "activeLine": 9,
-      "codeInsight": "Initializes scan as mutable state; later branches update it as the search window or traversal changes."
+      "activeLine": 7,
+      "codeInsight": "Runs the counted loop (let index = 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Start sorted area",
         "note": "The left side is maintained in order.",
         "ruleLabel": "Insertion Sort invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Defines insertionSort and names the input array; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Read next value",
         "note": "One value is removed from the unsorted side.",
         "ruleLabel": "Insertion Sort invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Runs the counted loop (let index = 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration.",
         "activeIndices": [
           1,
           2
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Move larger values",
         "note": "Larger prefix values slide right to create room.",
         "ruleLabel": "Insertion Sort invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes.",
         "activeIndices": [
           2
         ],
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Place key",
         "note": "The sorted prefix grows by one.",
         "ruleLabel": "Insertion Sort invariant",
-        "rule": "Initializes scan as mutable state; later branches update it as the search window or traversal changes.",
+        "rule": "Runs the counted loop (let index = 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration.",
         "activeIndices": [
           3,
           3

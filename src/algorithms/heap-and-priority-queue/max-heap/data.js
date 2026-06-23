@@ -71,21 +71,21 @@ export const algorithmPage = {
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
       "activeLine": 6,
-      "codeInsight": "Creates heap as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds heap with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Enqueue / dequeue",
       "title": "Enqueue, dequeue, peek, or evict entries",
       "note": "Only the necessary queue fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Creates heap as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds heap with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 17,
-      "codeInsight": "Returns heap, the value produced after Max Heap's state changes are complete."
+      "codeInsight": "Returns heap, the final value maintained by Max Heap's code path."
     }
   ],
   "complexity": {
@@ -225,7 +225,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "Max Heap invariant",
-        "rule": "Creates heap as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds heap with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -240,7 +240,7 @@ export const algorithmPage = {
         "title": "Enqueue, dequeue, peek, or evict entries",
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "Max Heap invariant",
-        "rule": "Creates heap as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds heap with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -251,7 +251,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Max Heap invariant",
-        "rule": "Returns heap, the value produced after Max Heap's state changes are complete.",
+        "rule": "Returns heap, the final value maintained by Max Heap's code path.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

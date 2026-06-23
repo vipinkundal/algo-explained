@@ -64,14 +64,14 @@ export const algorithmPage = {
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
       "activeLine": 6,
-      "codeInsight": "Creates result as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
       "activeLine": 6,
-      "codeInsight": "Creates result as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "State change",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 10,
-      "codeInsight": "Returns result, the value produced after C++ unique()'s state changes are complete."
+      "codeInsight": "Returns result, the final value maintained by C++ unique()'s code path."
     }
   ],
   "complexity": {
@@ -126,15 +126,16 @@ export const algorithmPage = {
     ]
   ],
   "animation": {
-    "type": "state-flow",
-    "title": "C++ unique() state transitions",
-    "ruleLabel": "State rule",
+    "type": "array-flow",
+    "title": "C++ unique() array state",
+    "ruleLabel": "Array invariant",
     "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-    "states": [
-      "Algorithm State",
-      "Invariant",
-      "State change",
-      "Result"
+    "values": [
+      1,
+      1,
+      2,
+      2,
+      1
     ],
     "steps": [
       {
@@ -142,16 +143,39 @@ export const algorithmPage = {
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "C++ unique() invariant",
-        "rule": "Creates result as empty working state; later lines add and remove values from it.",
-        "activeState": 0
+        "rule": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Algorithm State",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       },
       {
         "phase": "Invariant",
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "C++ unique() invariant",
-        "rule": "Creates result as empty working state; later lines add and remove values from it.",
-        "activeState": 1
+        "rule": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          4
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Invariant",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       },
       {
         "phase": "State change",
@@ -159,15 +183,38 @@ export const algorithmPage = {
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "C++ unique() invariant",
         "rule": "Checks result.length === 0 || result[result.length - 1] !== value) result.push(value; only the branch that preserves C++ unique()'s invariant is allowed to change state.",
-        "activeState": 2
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "State change",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       },
       {
         "phase": "Result",
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "C++ unique() invariant",
-        "rule": "Returns result, the value produced after C++ unique()'s state changes are complete.",
-        "activeState": 3
+        "rule": "Returns result, the final value maintained by C++ unique()'s code path.",
+        "activeIndices": [
+          3,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Result",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       }
     ]
   }

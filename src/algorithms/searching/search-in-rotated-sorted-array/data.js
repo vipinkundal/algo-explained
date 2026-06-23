@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Rotated range",
       "title": "Read array and target",
       "note": "The code starts with a sorted array shifted around a pivot.",
-      "activeLine": 6,
-      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
+      "activeLine": 5,
+      "codeInsight": "Defines searchInRotatedSortedArray and names the input array, target; edits to those inputs change the visual state and output."
     },
     {
       "label": "mid probe",
       "title": "Choose the middle",
       "note": "mid divides the current candidate window.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Search in Rotated Sorted Array's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines searchInRotatedSortedArray and names the input array, target; edits to those inputs change the visual state and output."
     },
     {
       "label": "sorted half",
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Read array and target",
         "note": "The code starts with a sorted array shifted around a pivot.",
         "ruleLabel": "Search in Rotated Sorted Array invariant",
-        "rule": "Initializes low as mutable state; later branches update it as the search window or traversal changes.",
+        "rule": "Defines searchInRotatedSortedArray and names the input array, target; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -166,7 +166,7 @@ export const algorithmPage = {
         "title": "Choose the middle",
         "note": "mid divides the current candidate window.",
         "ruleLabel": "Search in Rotated Sorted Array invariant",
-        "rule": "This blank line separates Search in Rotated Sorted Array's setup from the next code block.",
+        "rule": "Defines searchInRotatedSortedArray and names the input array, target; edits to those inputs change the visual state and output.",
         "activeIndices": [
           1,
           2

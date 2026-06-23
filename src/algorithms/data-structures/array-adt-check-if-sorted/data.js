@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Copy values",
       "note": "The code starts with the values to reorder.",
-      "activeLine": 3,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "activeLine": 2,
+      "codeInsight": "Defines arrayAdtCheckIfSorted as the runnable entry point for this lesson."
     },
     {
       "label": "Invariant",
       "title": "Track ordered work",
       "note": "The algorithm marks what part is already safe.",
       "activeLine": 3,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Move",
       "title": "Apply ordering step",
       "note": "The current operation reduces disorder.",
-      "activeLine": 6,
-      "codeInsight": "Executes this Check Sorted Array line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Sorted output",
       "title": "Return final order",
       "note": "The result is returned when no unsorted work remains.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Check Sorted Array's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Copy values",
         "note": "The code starts with the values to reorder.",
         "ruleLabel": "Check Sorted Array invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Defines arrayAdtCheckIfSorted as the runnable entry point for this lesson.",
         "activeIndices": [
           0
         ],
@@ -174,7 +174,7 @@ export const algorithmPage = {
         "title": "Track ordered work",
         "note": "The algorithm marks what part is already safe.",
         "ruleLabel": "Check Sorted Array invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeIndices": [
           1,
           2
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Apply ordering step",
         "note": "The current operation reduces disorder.",
         "ruleLabel": "Check Sorted Array invariant",
-        "rule": "Executes this Check Sorted Array line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking.",
         "activeIndices": [
           2
         ],
@@ -216,7 +216,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "The result is returned when no unsorted work remains.",
         "ruleLabel": "Check Sorted Array invariant",
-        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Check Sorted Array's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking.",
         "activeIndices": [
           3,
           4

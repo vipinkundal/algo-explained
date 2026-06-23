@@ -71,21 +71,21 @@ export const algorithmPage = {
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
       "activeLine": 6,
-      "codeInsight": "Initializes sorted, the local state that the next highlighted lines will update."
+      "codeInsight": "Copies the input into sorted, so the animation can show mutations without pretending the caller's original array changes."
     },
     {
       "label": "Enqueue / dequeue",
       "title": "Enqueue, dequeue, peek, or evict entries",
       "note": "Only the necessary queue fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Initializes sorted, the local state that the next highlighted lines will update."
+      "codeInsight": "Copies the input into sorted, so the animation can show mutations without pretending the caller's original array changes."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 7,
-      "codeInsight": "Returns {, the value produced after Kth Largest / Smallest Element's state changes are complete."
+      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -221,7 +221,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "Kth Largest / Smallest Element invariant",
-        "rule": "Initializes sorted, the local state that the next highlighted lines will update.",
+        "rule": "Copies the input into sorted, so the animation can show mutations without pretending the caller's original array changes.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -236,7 +236,7 @@ export const algorithmPage = {
         "title": "Enqueue, dequeue, peek, or evict entries",
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "Kth Largest / Smallest Element invariant",
-        "rule": "Initializes sorted, the local state that the next highlighted lines will update.",
+        "rule": "Copies the input into sorted, so the animation can show mutations without pretending the caller's original array changes.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -247,7 +247,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Kth Largest / Smallest Element invariant",
-        "rule": "Returns {, the value produced after Kth Largest / Smallest Element's state changes are complete.",
+        "rule": "Returns the final state object {, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

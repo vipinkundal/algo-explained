@@ -62,16 +62,16 @@ export const algorithmPage = {
     {
       "label": "Base",
       "title": "Check stop condition",
-      "note": "The code first asks whether the current state is complete.",
-      "activeLine": 1,
-      "codeInsight": "Executes this Fibonacci Recursion line as part of the highlighted code path, linking the visual step to the implementation."
+      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "activeLine": 5,
+      "codeInsight": "Defines fibonacciRecursion and names the input value; edits to those inputs change the visual state and output."
     },
     {
       "label": "Choice",
       "title": "Select next option",
       "note": "One valid move is added to the state.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Fibonacci Recursion's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines fibonacciRecursion and names the input value; edits to those inputs change the visual state and output."
     },
     {
       "label": "Call",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return or backtrack",
       "note": "The result is combined or the choice is removed.",
       "activeLine": 7,
-      "codeInsight": "Returns fibonacciRecursion(value - 1) + fibonacciRecursion(value - 2), the value produced after Fibonacci Recursion's state changes are complete."
+      "codeInsight": "Returns fibonacciRecursion(value - 1) + fibonacciRecursion(value - 2), the final value maintained by Fibonacci Recursion's code path."
     }
   ],
   "complexity": {
@@ -203,9 +203,9 @@ export const algorithmPage = {
       {
         "phase": "Base",
         "title": "Check stop condition",
-        "note": "The code first asks whether the current state is complete.",
+        "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
         "ruleLabel": "Fibonacci Recursion invariant",
-        "rule": "Executes this Fibonacci Recursion line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines fibonacciRecursion and names the input value; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -220,7 +220,7 @@ export const algorithmPage = {
         "title": "Select next option",
         "note": "One valid move is added to the state.",
         "ruleLabel": "Fibonacci Recursion invariant",
-        "rule": "This blank line separates Fibonacci Recursion's setup from the next code block.",
+        "rule": "Defines fibonacciRecursion and names the input value; edits to those inputs change the visual state and output.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -246,7 +246,7 @@ export const algorithmPage = {
         "title": "Return or backtrack",
         "note": "The result is combined or the choice is removed.",
         "ruleLabel": "Fibonacci Recursion invariant",
-        "rule": "Returns fibonacciRecursion(value - 1) + fibonacciRecursion(value - 2), the value produced after Fibonacci Recursion's state changes are complete.",
+        "rule": "Returns fibonacciRecursion(value - 1) + fibonacciRecursion(value - 2), the final value maintained by Fibonacci Recursion's code path.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

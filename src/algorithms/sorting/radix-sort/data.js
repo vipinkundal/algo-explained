@@ -84,8 +84,8 @@ export const algorithmPage = {
       "label": "Concatenate",
       "title": "Concatenate buckets",
       "note": "Buckets are joined in range order.",
-      "activeLine": 12,
-      "codeInsight": "Executes this Radix Sort line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 13,
+      "codeInsight": "Returns values, the final value maintained by Radix Sort's code path."
     }
   ],
   "complexity": {
@@ -204,7 +204,7 @@ export const algorithmPage = {
         "title": "Concatenate buckets",
         "note": "Buckets are joined in range order.",
         "ruleLabel": "Radix Sort invariant",
-        "rule": "Executes this Radix Sort line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns values, the final value maintained by Radix Sort's code path.",
         "activeValue": 2,
         "bucketIndex": 2,
         "bucketValues": [

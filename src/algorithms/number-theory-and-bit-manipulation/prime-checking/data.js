@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Prime Checking line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines primeChecking and names the input value; edits to those inputs change the visual state and output."
     },
     {
       "label": "Reduction",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
       "activeLine": 12,
-      "codeInsight": "Returns true, the value produced after Prime Checking's state changes are complete."
+      "codeInsight": "Returns true, the boolean result reached by the highlighted checks."
     }
   ],
   "complexity": {
@@ -120,17 +120,15 @@ export const algorithmPage = {
     29
   ],
   "animation": {
-    "type": "array-flow",
-    "title": "Prime Checking array state",
-    "ruleLabel": "Array invariant",
+    "type": "state-flow",
+    "title": "Prime Checking state transitions",
+    "ruleLabel": "State rule",
     "rule": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
-    "values": [
-      4,
-      1,
-      7,
-      3,
-      6,
-      2
+    "states": [
+      "Numbers",
+      "Rule",
+      "Reduction",
+      "Numeric result"
     ],
     "steps": [
       {
@@ -139,39 +137,15 @@ export const algorithmPage = {
         "note": "The code receives the number, range, or modulus.",
         "ruleLabel": "Prime Checking invariant",
         "rule": "Defines primeChecking and names the input value; edits to those inputs change the visual state and output.",
-        "activeIndices": [
-          0
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
-          0,
-          1
-        ],
-        "primaryLabel": "Numbers",
-        "secondaryLabel": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant."
+        "activeState": 0
       },
       {
         "phase": "Rule",
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "Prime Checking invariant",
-        "rule": "Executes this Prime Checking line as part of the highlighted code path, linking the visual step to the implementation.",
-        "activeIndices": [
-          1,
-          2
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [
-          4,
-          5
-        ],
-        "window": [
-          0,
-          2
-        ],
-        "primaryLabel": "Rule",
-        "secondaryLabel": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant."
+        "rule": "Defines primeChecking and names the input value; edits to those inputs change the visual state and output.",
+        "activeState": 1
       },
       {
         "phase": "Reduction",
@@ -179,40 +153,15 @@ export const algorithmPage = {
         "note": "A shift, xor, multiply, divide, or mark changes state.",
         "ruleLabel": "Prime Checking invariant",
         "rule": "Defines primeChecking and names the input value; edits to those inputs change the visual state and output.",
-        "activeIndices": [
-          2
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [
-          5
-        ],
-        "window": [
-          1,
-          3
-        ],
-        "primaryLabel": "Reduction",
-        "secondaryLabel": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant."
+        "activeState": 2
       },
       {
         "phase": "Numeric result",
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "Prime Checking invariant",
-        "rule": "Returns true, the value produced after Prime Checking's state changes are complete.",
-        "activeIndices": [
-          3,
-          4
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [
-          0
-        ],
-        "window": [
-          2,
-          4
-        ],
-        "primaryLabel": "Numeric result",
-        "secondaryLabel": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant."
+        "rule": "Returns true, the boolean result reached by the highlighted checks.",
+        "activeState": 3
       }
     ]
   }

@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 3,
-      "codeInsight": "Executes this DP on Trees line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines dpOnTrees and names the input root; edits to those inputs change the visual state and output."
     },
     {
       "label": "Recurrence",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
       "activeLine": 10,
-      "codeInsight": "Returns {, the value produced after DP on Trees's state changes are complete."
+      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -227,7 +227,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "DP on Trees invariant",
-        "rule": "Executes this DP on Trees line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines dpOnTrees and names the input root; edits to those inputs change the visual state and output.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -253,7 +253,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "DP on Trees invariant",
-        "rule": "Returns {, the value produced after DP on Trees's state changes are complete.",
+        "rule": "Returns the final state object {, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Linked List",
       "title": "Read linked list action",
       "note": "The code receives the next value or command.",
-      "activeLine": 3,
-      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
+      "activeLine": 2,
+      "codeInsight": "Defines linkedListInsertion as the runnable entry point for this lesson."
     },
     {
       "label": "Node links",
       "title": "Inspect linked list",
       "note": "The active state must still satisfy node-link structure.",
       "activeLine": 3,
-      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
+      "codeInsight": "Stores nodes from the current length, making the loop boundary explicit for the visual trace."
     },
     {
       "label": "Pointer update",
       "title": "Move pointers without losing the rest of the chain",
       "note": "Only the necessary linked list fields are changed.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Insertion's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Insertion's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Read linked list action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Linked List Insertion invariant",
-        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
+        "rule": "Defines linkedListInsertion as the runnable entry point for this lesson.",
         "activeNode": "head",
         "previousNode": "head",
         "nextNode": "n2"
@@ -172,7 +172,7 @@ export const algorithmPage = {
         "title": "Inspect linked list",
         "note": "The active state must still satisfy node-link structure.",
         "ruleLabel": "Linked List Insertion invariant",
-        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
+        "rule": "Stores nodes from the current length, making the loop boundary explicit for the visual trace.",
         "activeNode": "n2",
         "previousNode": "head",
         "nextNode": "n3"
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Move pointers without losing the rest of the chain",
         "note": "Only the necessary linked list fields are changed.",
         "ruleLabel": "Linked List Insertion invariant",
-        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Insertion's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "n3",
         "previousNode": "n2",
         "nextNode": "tail"
@@ -192,7 +192,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Linked List Insertion invariant",
-        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Insertion's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "tail",
         "previousNode": "n3",
         "nextNode": "tail"

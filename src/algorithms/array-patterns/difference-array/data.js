@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Values",
       "title": "Read values or updates",
       "note": "The code receives the array, ranges, or deltas.",
-      "activeLine": 6,
-      "codeInsight": "Prepares diff with a default value so unresolved positions already have the correct fallback answer."
+      "activeLine": 5,
+      "codeInsight": "Defines differenceArray and names the input length, updates; edits to those inputs change the visual state and output."
     },
     {
       "label": "Accumulator",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Read saved state",
       "note": "The stored state gives the final or range answer.",
       "activeLine": 17,
-      "codeInsight": "Returns result, the value produced after Difference Array's state changes are complete."
+      "codeInsight": "Returns result, the final value maintained by Difference Array's code path."
     }
   ],
   "complexity": {
@@ -150,7 +150,7 @@ export const algorithmPage = {
         "title": "Read values or updates",
         "note": "The code receives the array, ranges, or deltas.",
         "ruleLabel": "Difference Array invariant",
-        "rule": "Prepares diff with a default value so unresolved positions already have the correct fallback answer.",
+        "rule": "Defines differenceArray and names the input length, updates; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -210,7 +210,7 @@ export const algorithmPage = {
         "title": "Read saved state",
         "note": "The stored state gives the final or range answer.",
         "ruleLabel": "Difference Array invariant",
-        "rule": "Returns result, the value produced after Difference Array's state changes are complete.",
+        "rule": "Returns result, the final value maintained by Difference Array's code path.",
         "activeIndices": [
           3,
           4

@@ -60,32 +60,32 @@ export const algorithmPage = {
   ],
   "dryRun": [
     {
-      "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 5,
-      "codeInsight": "Defines heightDepthOfTree and names the input root; edits to those inputs change the visual state and output."
+      "label": "Base case",
+      "title": "Check for an empty subtree",
+      "note": "Null children return height 0 before the parent combines subtree heights.",
+      "activeLine": 6,
+      "codeInsight": "Checks !root; a missing child contributes height 0 to its parent."
     },
     {
-      "label": "Node state",
-      "title": "Read child height/result",
-      "note": "The current node controls the next step.",
+      "label": "Left height",
+      "title": "Measure the left subtree",
+      "note": "The recursive call on root.left returns the height of the left child subtree.",
       "activeLine": 7,
-      "codeInsight": "Returns 1 + Math.max(heightDepthOfTree(root.left), heightDepthOfTree(root.right)), the value produced after Height / Depth of Tree's state changes are complete."
+      "codeInsight": "Evaluates heightDepthOfTree(root.left), so the visual focus moves to the left child before the parent can return."
     },
     {
-      "label": "Child step",
-      "title": "Combine child measurements into the parent answer",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "label": "Right height",
+      "title": "Measure the right subtree",
+      "note": "The recursive call on root.right returns the height of the right child subtree.",
       "activeLine": 7,
-      "codeInsight": "Returns 1 + Math.max(heightDepthOfTree(root.left), heightDepthOfTree(root.right)), the value produced after Height / Depth of Tree's state changes are complete."
+      "codeInsight": "Evaluates heightDepthOfTree(root.right), giving Math.max the second child height to compare."
     },
     {
-      "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
+      "label": "Return height",
+      "title": "Return one plus the taller child",
+      "note": "Both child subtrees have height 2, so the root returns 1 + 2 = 3.",
       "activeLine": 7,
-      "codeInsight": "Returns 1 + Math.max(heightDepthOfTree(root.left), heightDepthOfTree(root.right)), the value produced after Height / Depth of Tree's state changes are complete."
+      "codeInsight": "Returns 1 + Math.max(left height, right height), which is the height shown at the root."
     }
   ],
   "complexity": {
@@ -151,57 +151,49 @@ export const algorithmPage = {
     "title": "Height / Depth of Tree tree state",
     "nodes": [
       {
-        "id": "8",
-        "label": "8",
+        "id": "4",
+        "label": "4",
         "x": 340,
         "y": 58
       },
       {
-        "id": "4",
-        "label": "4",
+        "id": "2",
+        "label": "2",
         "x": 190,
         "y": 150
       },
       {
-        "id": "12",
-        "label": "12",
+        "id": "6",
+        "label": "6",
         "x": 490,
         "y": 150
       },
       {
-        "id": "2",
-        "label": "2",
+        "id": "1",
+        "label": "1",
         "x": 110,
         "y": 255
       },
       {
-        "id": "6",
-        "label": "6",
+        "id": "3",
+        "label": "3",
         "x": 270,
         "y": 255
       },
       {
-        "id": "10",
-        "label": "10",
+        "id": "5",
+        "label": "5",
         "x": 420,
         "y": 255
       },
       {
-        "id": "14",
-        "label": "14",
+        "id": "7",
+        "label": "7",
         "x": 570,
         "y": 255
       }
     ],
     "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
       {
         "from": "4",
         "to": "2"
@@ -211,64 +203,75 @@ export const algorithmPage = {
         "to": "6"
       },
       {
-        "from": "12",
-        "to": "10"
+        "from": "2",
+        "to": "1"
       },
       {
-        "from": "12",
-        "to": "14"
+        "from": "2",
+        "to": "3"
+      },
+      {
+        "from": "6",
+        "to": "5"
+      },
+      {
+        "from": "6",
+        "to": "7"
       }
     ],
     "steps": [
       {
-        "phase": "Root",
-        "title": "Check current node",
-        "note": "The code starts by handling missing nodes or the current root.",
+        "phase": "Base case",
+        "title": "Check for an empty subtree",
+        "note": "Null children return height 0 before the parent combines subtree heights.",
         "ruleLabel": "Height / Depth of Tree invariant",
-        "rule": "Defines heightDepthOfTree and names the input root; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
-      },
-      {
-        "phase": "Node state",
-        "title": "Read child height/result",
-        "note": "The current node controls the next step.",
-        "ruleLabel": "Height / Depth of Tree invariant",
-        "rule": "Returns 1 + Math.max(heightDepthOfTree(root.left), heightDepthOfTree(root.right)), the value produced after Height / Depth of Tree's state changes are complete.",
+        "rule": "Checks !root; a missing child contributes height 0 to its parent.",
         "activeNode": "4",
-        "targetNode": "12",
+        "targetNode": "2",
         "replacementNode": "",
         "mutedNodes": [
-          "6",
-          "10",
-          "14"
+          "5",
+          "7"
         ]
       },
       {
-        "phase": "Child step",
-        "title": "Combine child measurements into the parent answer",
-        "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+        "phase": "Left height",
+        "title": "Measure the left subtree",
+        "note": "The recursive call on root.left returns the height of the left child subtree.",
         "ruleLabel": "Height / Depth of Tree invariant",
-        "rule": "Returns 1 + Math.max(heightDepthOfTree(root.left), heightDepthOfTree(root.right)), the value produced after Height / Depth of Tree's state changes are complete.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "rule": "Evaluates heightDepthOfTree(root.left), so the visual focus moves to node 2 and its children.",
+        "activeNode": "2",
+        "targetNode": "1",
+        "replacementNode": "3",
+        "mutedNodes": [
+          "6",
+          "5",
+          "7"
+        ]
       },
       {
-        "phase": "Tree result",
-        "title": "Return result",
-        "note": "The final traversal, path, measurement, or tree state is returned.",
+        "phase": "Right height",
+        "title": "Measure the right subtree",
+        "note": "The recursive call on root.right returns the height of the right child subtree.",
         "ruleLabel": "Height / Depth of Tree invariant",
-        "rule": "Returns 1 + Math.max(heightDepthOfTree(root.left), heightDepthOfTree(root.right)), the value produced after Height / Depth of Tree's state changes are complete.",
-        "activeNode": "2",
-        "targetNode": "6",
+        "rule": "Evaluates heightDepthOfTree(root.right), so the visual focus moves to node 6 and its children.",
+        "activeNode": "6",
+        "targetNode": "5",
+        "replacementNode": "7",
+        "mutedNodes": [
+          "2",
+          "1",
+          "3"
+        ]
+      },
+      {
+        "phase": "Return height",
+        "title": "Return one plus the taller child",
+        "note": "Both child subtrees have height 2, so the root returns 1 + 2 = 3.",
+        "ruleLabel": "Height / Depth of Tree invariant",
+        "rule": "Returns 1 + Math.max(2, 2), so the tree height shown at the root is 3.",
+        "activeNode": "4",
+        "targetNode": "2",
         "replacementNode": "6",
         "mutedNodes": []
       }

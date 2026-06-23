@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 6,
-      "codeInsight": "Builds distances as a lookup table so each key has an explicit starting state."
+      "activeLine": 5,
+      "codeInsight": "Defines dijkstra and names the input graph, start; edits to those inputs change the visual state and output."
     },
     {
       "label": "Distance Table",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return shortest-path relaxation",
       "note": "The final graph state becomes the answer.",
       "activeLine": 17,
-      "codeInsight": "Returns distances, the value produced after Dijkstra’s Algorithm's state changes are complete."
+      "codeInsight": "Returns distances, the final value maintained by Dijkstra’s Algorithm's code path."
     }
   ],
   "complexity": {
@@ -193,7 +193,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Dijkstra’s Algorithm invariant",
-        "rule": "Builds distances as a lookup table so each key has an explicit starting state.",
+        "rule": "Defines dijkstra and names the input graph, start; edits to those inputs change the visual state and output.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -246,7 +246,7 @@ export const algorithmPage = {
         "title": "Return shortest-path relaxation",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Dijkstra’s Algorithm invariant",
-        "rule": "Returns distances, the value produced after Dijkstra’s Algorithm's state changes are complete.",
+        "rule": "Returns distances, the final value maintained by Dijkstra’s Algorithm's code path.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Read values",
       "note": "The code receives the list and any target condition.",
-      "activeLine": 3,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "activeLine": 2,
+      "codeInsight": "Defines arrayAdtLinearSearch as the runnable entry point for this lesson."
     },
     {
       "label": "Index",
       "title": "Select current item",
       "note": "The loop focuses on one position at a time.",
       "activeLine": 3,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Update",
       "title": "Apply comparison or count",
       "note": "The current value changes the running state only if the rule says so.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Linear Search in Array ADT's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Result",
       "title": "Return scan output",
       "note": "When the scan ends, the tracked result is returned.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Linear Search in Array ADT's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Read values",
         "note": "The code receives the list and any target condition.",
         "ruleLabel": "Linear Search in Array ADT invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Defines arrayAdtLinearSearch as the runnable entry point for this lesson.",
         "activeIndices": [
           0
         ],
@@ -180,7 +180,7 @@ export const algorithmPage = {
         "title": "Select current item",
         "note": "The loop focuses on one position at a time.",
         "ruleLabel": "Linear Search in Array ADT invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeIndices": [
           1,
           2
@@ -202,7 +202,7 @@ export const algorithmPage = {
         "title": "Apply comparison or count",
         "note": "The current value changes the running state only if the rule says so.",
         "ruleLabel": "Linear Search in Array ADT invariant",
-        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Linear Search in Array ADT's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking.",
         "activeIndices": [
           2
         ],
@@ -222,7 +222,7 @@ export const algorithmPage = {
         "title": "Return scan output",
         "note": "When the scan ends, the tracked result is returned.",
         "ruleLabel": "Linear Search in Array ADT invariant",
-        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Linear Search in Array ADT's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking.",
         "activeIndices": [
           3,
           4

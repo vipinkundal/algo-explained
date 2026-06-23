@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Fibonacci DP line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines fibonacciDp and names the input n; edits to those inputs change the visual state and output."
     },
     {
       "label": "Recurrence",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
       "activeLine": 10,
-      "codeInsight": "Returns dp[n], the value produced after Fibonacci DP's state changes are complete."
+      "codeInsight": "Returns dp[n], the final value maintained by Fibonacci DP's code path."
     }
   ],
   "complexity": {
@@ -144,7 +144,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "Fibonacci DP invariant",
-        "rule": "Executes this Fibonacci DP line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines fibonacciDp and names the input n; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -160,7 +160,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "Fibonacci DP invariant",
-        "rule": "Returns dp[n], the value produced after Fibonacci DP's state changes are complete.",
+        "rule": "Returns dp[n], the final value maintained by Fibonacci DP's code path.",
         "activeState": 3
       }
     ]

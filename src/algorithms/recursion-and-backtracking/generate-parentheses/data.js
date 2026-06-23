@@ -62,30 +62,30 @@ export const algorithmPage = {
     {
       "label": "Base",
       "title": "Check stop condition",
-      "note": "The code first asks whether the current state is complete.",
-      "activeLine": 1,
-      "codeInsight": "Executes this Generate Parentheses line as part of the highlighted code path, linking the visual step to the implementation."
+      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "activeLine": 5,
+      "codeInsight": "Defines generateParentheses and names the input pairs; edits to those inputs change the visual state and output."
     },
     {
       "label": "Choice",
       "title": "Select next option",
       "note": "One valid move is added to the state.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Generate Parentheses's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines generateParentheses and names the input pairs; edits to those inputs change the visual state and output."
     },
     {
       "label": "Call",
       "title": "Recurse deeper",
       "note": "The same rule runs on a smaller or extended state.",
       "activeLine": 6,
-      "codeInsight": "Creates result as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Unwind",
       "title": "Return or backtrack",
       "note": "The result is combined or the choice is removed.",
       "activeLine": 10,
-      "codeInsight": "Executes this Generate Parentheses line as part of the highlighted code path, linking the visual step to the implementation."
+      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
     }
   ],
   "complexity": {
@@ -196,9 +196,9 @@ export const algorithmPage = {
       {
         "phase": "Base",
         "title": "Check stop condition",
-        "note": "The code first asks whether the current state is complete.",
+        "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
         "ruleLabel": "Generate Parentheses invariant",
-        "rule": "Executes this Generate Parentheses line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines generateParentheses and names the input pairs; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -213,7 +213,7 @@ export const algorithmPage = {
         "title": "Select next option",
         "note": "One valid move is added to the state.",
         "ruleLabel": "Generate Parentheses invariant",
-        "rule": "This blank line separates Generate Parentheses's setup from the next code block.",
+        "rule": "Defines generateParentheses and names the input pairs; edits to those inputs change the visual state and output.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -228,7 +228,7 @@ export const algorithmPage = {
         "title": "Recurse deeper",
         "note": "The same rule runs on a smaller or extended state.",
         "ruleLabel": "Generate Parentheses invariant",
-        "rule": "Creates result as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -239,7 +239,7 @@ export const algorithmPage = {
         "title": "Return or backtrack",
         "note": "The result is combined or the choice is removed.",
         "ruleLabel": "Generate Parentheses invariant",
-        "rule": "Executes this Generate Parentheses line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns from this branch immediately because the current recursive or conditional state is complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

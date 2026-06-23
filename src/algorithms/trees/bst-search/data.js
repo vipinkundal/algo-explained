@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 15,
-      "codeInsight": "Returns -1, the value produced after BST Search's state changes are complete."
+      "codeInsight": "Returns -1, the final value maintained by BST Search's code path."
     }
   ],
   "complexity": {
@@ -267,7 +267,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "BST Search invariant",
-        "rule": "Returns -1, the value produced after BST Search's state changes are complete.",
+        "rule": "Returns -1, the final value maintained by BST Search's code path.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

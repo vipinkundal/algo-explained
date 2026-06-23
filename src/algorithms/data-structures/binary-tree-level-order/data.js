@@ -80,21 +80,21 @@ export const algorithmPage = {
       "title": "Seed traversal queue",
       "note": "The root becomes the first discovered node.",
       "activeLine": 3,
-      "codeInsight": "Initializes tree, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds tree as a structured sample object that the tree, graph, or map visualizer can render directly."
     },
     {
       "label": "Visit",
       "title": "Process queue front",
       "note": "The front node is appended to output.",
-      "activeLine": 5,
-      "codeInsight": "Executes this Binary Tree Level Order Traversal line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 4,
+      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Children",
       "title": "Discover next level",
       "note": "Children are pushed to the queue for later visits.",
-      "activeLine": 5,
-      "codeInsight": "Executes this Binary Tree Level Order Traversal line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 4,
+      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -249,7 +249,7 @@ export const algorithmPage = {
         "title": "Seed traversal queue",
         "note": "The root becomes the first discovered node.",
         "ruleLabel": "Binary Tree Level Order Traversal invariant",
-        "rule": "Initializes tree, the local state that the next highlighted lines will update.",
+        "rule": "Builds tree as a structured sample object that the tree, graph, or map visualizer can render directly.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -264,7 +264,7 @@ export const algorithmPage = {
         "title": "Process queue front",
         "note": "The front node is appended to output.",
         "ruleLabel": "Binary Tree Level Order Traversal invariant",
-        "rule": "Executes this Binary Tree Level Order Traversal line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -275,7 +275,7 @@ export const algorithmPage = {
         "title": "Discover next level",
         "note": "Children are pushed to the queue for later visits.",
         "ruleLabel": "Binary Tree Level Order Traversal invariant",
-        "rule": "Executes this Binary Tree Level Order Traversal line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

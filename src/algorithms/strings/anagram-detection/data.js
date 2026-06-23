@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Text",
       "title": "Read string input",
       "note": "The code receives text, pattern, or character data.",
-      "activeLine": 6,
-      "codeInsight": "Checks first.length !== second.length; only the branch that preserves Anagram Detection's invariant is allowed to change state."
+      "activeLine": 5,
+      "codeInsight": "Defines anagramDetection and names the input first, second; edits to those inputs change the visual state and output."
     },
     {
       "label": "Helper",
       "title": "Prepare string state",
       "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
       "activeLine": 7,
-      "codeInsight": "Initializes counts, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly."
     },
     {
       "label": "Character",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return string answer",
       "note": "Matches or best values are returned after the scan.",
       "activeLine": 13,
-      "codeInsight": "Returns true, the value produced after Anagram Detection's state changes are complete."
+      "codeInsight": "Returns true, the boolean result reached by the highlighted checks."
     }
   ],
   "complexity": {
@@ -140,7 +140,7 @@ export const algorithmPage = {
         "title": "Read string input",
         "note": "The code receives text, pattern, or character data.",
         "ruleLabel": "Anagram Detection invariant",
-        "rule": "Checks first.length !== second.length; only the branch that preserves Anagram Detection's invariant is allowed to change state.",
+        "rule": "Defines anagramDetection and names the input first, second; edits to those inputs change the visual state and output.",
         "activeRange": [
           0,
           5
@@ -152,7 +152,7 @@ export const algorithmPage = {
         "title": "Prepare string state",
         "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
         "ruleLabel": "Anagram Detection invariant",
-        "rule": "Initializes counts, the local state that the next highlighted lines will update.",
+        "rule": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly.",
         "activeRange": [
           1,
           5
@@ -176,7 +176,7 @@ export const algorithmPage = {
         "title": "Return string answer",
         "note": "Matches or best values are returned after the scan.",
         "ruleLabel": "Anagram Detection invariant",
-        "rule": "Returns true, the value produced after Anagram Detection's state changes are complete.",
+        "rule": "Returns true, the boolean result reached by the highlighted checks.",
         "activeRange": [
           3,
           5

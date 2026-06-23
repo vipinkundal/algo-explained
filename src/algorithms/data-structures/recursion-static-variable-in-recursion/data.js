@@ -72,15 +72,15 @@ export const algorithmPage = {
       "label": "Stack",
       "title": "Read stack action",
       "note": "The code receives the next value or command.",
-      "activeLine": 3,
-      "codeInsight": "Creates calls as empty working state; later lines add and remove values from it."
+      "activeLine": 2,
+      "codeInsight": "Defines recursionStaticVariableInRecursion and names the input n = 5; edits to those inputs change the visual state and output."
     },
     {
       "label": "Stack top",
       "title": "Inspect stack",
       "note": "The active state must still satisfy last-in, first-out state.",
       "activeLine": 3,
-      "codeInsight": "Creates calls as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds calls with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Push / pop",
@@ -94,7 +94,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 6,
-      "codeInsight": "Returns value <= 1 ? 1 : value * factorial(value - 1), the value produced after Static Variable In Recursion's state changes are complete."
+      "codeInsight": "Returns value <= 1 ? 1 : value * factorial(value - 1), the final value maintained by Static Variable In Recursion's code path."
     }
   ],
   "complexity": {
@@ -154,7 +154,7 @@ export const algorithmPage = {
         "title": "Read stack action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Static Variable In Recursion invariant",
-        "rule": "Creates calls as empty working state; later lines add and remove values from it.",
+        "rule": "Defines recursionStaticVariableInRecursion and names the input n = 5; edits to those inputs change the visual state and output.",
         "activeCall": 0,
         "returningCalls": []
       },
@@ -163,7 +163,7 @@ export const algorithmPage = {
         "title": "Inspect stack",
         "note": "The active state must still satisfy last-in, first-out state.",
         "ruleLabel": "Static Variable In Recursion invariant",
-        "rule": "Creates calls as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds calls with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeCall": 1,
         "returningCalls": []
       },
@@ -181,7 +181,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Static Variable In Recursion invariant",
-        "rule": "Returns value <= 1 ? 1 : value * factorial(value - 1), the value produced after Static Variable In Recursion's state changes are complete.",
+        "rule": "Returns value <= 1 ? 1 : value * factorial(value - 1), the final value maintained by Static Variable In Recursion's code path.",
         "activeCall": 3,
         "returningCalls": [
           0,

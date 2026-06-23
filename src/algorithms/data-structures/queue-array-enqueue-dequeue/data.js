@@ -73,14 +73,14 @@ export const algorithmPage = {
       "title": "Read queue action",
       "note": "The code receives the next value or command.",
       "activeLine": 3,
-      "codeInsight": "Creates queue as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Queue front",
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
       "activeLine": 3,
-      "codeInsight": "Creates queue as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Enqueue / dequeue",
@@ -94,7 +94,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 7,
-      "codeInsight": "Returns { structure: \"queue\", invariant: \"first in, first out\", state: queue, dequeued: output }, the value produced after Queue Enqueue and Dequeue's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"queue\", invariant: \"first in, first out\", state: queue, dequeued: output }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Read queue action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Queue Enqueue and Dequeue invariant",
-        "rule": "Creates queue as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeItems": [
           0
         ],
@@ -171,7 +171,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "Queue Enqueue and Dequeue invariant",
-        "rule": "Creates queue as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeItems": [
           1
         ],
@@ -201,7 +201,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Queue Enqueue and Dequeue invariant",
-        "rule": "Returns { structure: \"queue\", invariant: \"first in, first out\", state: queue, dequeued: output }, the value produced after Queue Enqueue and Dequeue's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"queue\", invariant: \"first in, first out\", state: queue, dequeued: output }, exposing the exact fields the visualizer has been tracking.",
         "activeItems": [
           3
         ],

@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "activeLine": 5,
+      "codeInsight": "Defines kosaraju and names the input graph; edits to those inputs change the visual state and output."
     },
     {
       "label": "Discovery Component State",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return component discovery",
       "note": "The final graph state becomes the answer.",
       "activeLine": 36,
-      "codeInsight": "Returns components, the value produced after Kosaraju’s Algorithm's state changes are complete."
+      "codeInsight": "Returns components, the final value maintained by Kosaraju’s Algorithm's code path."
     }
   ],
   "complexity": {
@@ -188,7 +188,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Kosaraju’s Algorithm invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
+        "rule": "Defines kosaraju and names the input graph; edits to those inputs change the visual state and output.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -241,7 +241,7 @@ export const algorithmPage = {
         "title": "Return component discovery",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Kosaraju’s Algorithm invariant",
-        "rule": "Returns components, the value produced after Kosaraju’s Algorithm's state changes are complete.",
+        "rule": "Returns components, the final value maintained by Kosaraju’s Algorithm's code path.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

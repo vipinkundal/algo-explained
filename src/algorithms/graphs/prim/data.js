@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "activeLine": 5,
+      "codeInsight": "Defines prim and names the input graph, start; edits to those inputs change the visual state and output."
     },
     {
       "label": "Chosen Edge Set",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return minimum-spanning-tree growth",
       "note": "The final graph state becomes the answer.",
       "activeLine": 19,
-      "codeInsight": "Returns mst, the value produced after Prim’s Algorithm's state changes are complete."
+      "codeInsight": "Returns mst, the final value maintained by Prim’s Algorithm's code path."
     }
   ],
   "complexity": {
@@ -206,7 +206,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Prim’s Algorithm invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
+        "rule": "Defines prim and names the input graph, start; edits to those inputs change the visual state and output.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -259,7 +259,7 @@ export const algorithmPage = {
         "title": "Return minimum-spanning-tree growth",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Prim’s Algorithm invariant",
-        "rule": "Returns mst, the value produced after Prim’s Algorithm's state changes are complete.",
+        "rule": "Returns mst, the final value maintained by Prim’s Algorithm's code path.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

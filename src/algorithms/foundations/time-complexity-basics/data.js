@@ -64,28 +64,28 @@ export const algorithmPage = {
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
       "activeLine": 6,
-      "codeInsight": "Stores inputSize so the algorithm can reuse this value without recomputing it."
+      "codeInsight": "Stores inputSize from the current length, making the loop boundary explicit for the visual trace."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
       "activeLine": 6,
-      "codeInsight": "Stores inputSize so the algorithm can reuse this value without recomputing it."
+      "codeInsight": "Stores inputSize from the current length, making the loop boundary explicit for the visual trace."
     },
     {
       "label": "State change",
       "title": "Update the state described by this algorithm",
       "note": "Only the necessary algorithm state fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Stores inputSize so the algorithm can reuse this value without recomputing it."
+      "codeInsight": "Stores inputSize from the current length, making the loop boundary explicit for the visual trace."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 7,
-      "codeInsight": "Returns { inputSize, linearSteps: inputSize, quadraticSteps: inputSize * inputSize }, the value produced after Time Complexity Basics's state changes are complete."
+      "codeInsight": "Returns the final state object { inputSize, linearSteps: inputSize, quadraticSteps: inputSize * inputSize }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -140,7 +140,7 @@ export const algorithmPage = {
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Time Complexity Basics invariant",
-        "rule": "Stores inputSize so the algorithm can reuse this value without recomputing it.",
+        "rule": "Stores inputSize from the current length, making the loop boundary explicit for the visual trace.",
         "activeState": 0
       },
       {
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "Time Complexity Basics invariant",
-        "rule": "Stores inputSize so the algorithm can reuse this value without recomputing it.",
+        "rule": "Stores inputSize from the current length, making the loop boundary explicit for the visual trace.",
         "activeState": 1
       },
       {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Update the state described by this algorithm",
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "Time Complexity Basics invariant",
-        "rule": "Stores inputSize so the algorithm can reuse this value without recomputing it.",
+        "rule": "Stores inputSize from the current length, making the loop boundary explicit for the visual trace.",
         "activeState": 2
       },
       {
@@ -164,7 +164,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Time Complexity Basics invariant",
-        "rule": "Returns { inputSize, linearSteps: inputSize, quadraticSteps: inputSize * inputSize }, the value produced after Time Complexity Basics's state changes are complete.",
+        "rule": "Returns the final state object { inputSize, linearSteps: inputSize, quadraticSteps: inputSize * inputSize }, exposing the exact fields the visualizer has been tracking.",
         "activeState": 3
       }
     ]

@@ -11,6 +11,7 @@ const binarySteps = [
     activeLine: 4,
     range: "[0 - 7]",
     note: "Start with the whole sorted array. The middle value is 7, so we compare it with the target.",
+    codeInsight: "Computes mid from the current low/high boundaries, so the animation can point at the exact value being compared.",
   },
   {
     low: 4,
@@ -20,6 +21,7 @@ const binarySteps = [
     activeLine: 6,
     range: "[4 - 7]",
     note: "The target is larger than 7, so the left half cannot contain the answer. Move low to mid + 1.",
+    codeInsight: "Because arr[mid] is smaller than the target, low moves to mid + 1 and the visual window discards the left half.",
   },
   {
     low: 4,
@@ -29,6 +31,7 @@ const binarySteps = [
     activeLine: 5,
     range: "[4 - 7]",
     note: "Now the middle value is 13. It matches the target, so the search returns index 5.",
+    codeInsight: "The equality check succeeds, so the code returns mid and the animation marks index 5 as the answer.",
   },
 ];
 
@@ -171,7 +174,7 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
           <div class="visualizer-secondary">
             <div class="trace-layout">
               ${renderCodeTrace(current.activeLine)}
-              ${state.debug ? `<aside class="explanation-bubble">${icon("tips_and_updates")}<strong>Conceptual insight</strong><p>${current.note}</p></aside>` : ""}
+              ${state.debug ? `<aside class="explanation-bubble">${icon("tips_and_updates")}<strong>Code insight</strong><p>${escapeHtml(current.codeInsight)}</p><em>${escapeHtml(current.note)}</em></aside>` : ""}
             </div>
             <div class="control-deck" aria-label="Visualizer controls">
               <button data-action="prev" aria-label="Previous step">${icon("skip_previous")}</button>

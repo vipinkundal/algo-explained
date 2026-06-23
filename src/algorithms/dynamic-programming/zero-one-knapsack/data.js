@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 3,
-      "codeInsight": "Executes this 0/1 Knapsack line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines zeroOneKnapsack and names the input weights, values, capacity; edits to those inputs change the visual state and output."
     },
     {
       "label": "Recurrence",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
       "activeLine": 12,
-      "codeInsight": "Returns dp[capacity], the value produced after 0/1 Knapsack's state changes are complete."
+      "codeInsight": "Returns dp[capacity], the final value maintained by 0/1 Knapsack's code path."
     }
   ],
   "complexity": {
@@ -176,7 +176,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "0/1 Knapsack invariant",
-        "rule": "Executes this 0/1 Knapsack line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines zeroOneKnapsack and names the input weights, values, capacity; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -226,7 +226,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "0/1 Knapsack invariant",
-        "rule": "Returns dp[capacity], the value produced after 0/1 Knapsack's state changes are complete.",
+        "rule": "Returns dp[capacity], the final value maintained by 0/1 Knapsack's code path.",
         "activeCells": [
           [
             1,

@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Power of Two line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines powerOfTwo and names the input value; edits to those inputs change the visual state and output."
     },
     {
       "label": "Reduction",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
       "activeLine": 6,
-      "codeInsight": "Returns value > 0 && (value & (value - 1)) === 0, the value produced after Power of Two's state changes are complete."
+      "codeInsight": "Returns value > 0 && (value & (value - 1)) === 0, the final value maintained by Power of Two's code path."
     }
   ],
   "complexity": {
@@ -144,7 +144,7 @@ export const algorithmPage = {
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "Power of Two invariant",
-        "rule": "Executes this Power of Two line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines powerOfTwo and names the input value; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -160,7 +160,7 @@ export const algorithmPage = {
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "Power of Two invariant",
-        "rule": "Returns value > 0 && (value & (value - 1)) === 0, the value produced after Power of Two's state changes are complete.",
+        "rule": "Returns value > 0 && (value & (value - 1)) === 0, the final value maintained by Power of Two's code path.",
         "activeState": 3
       }
     ]

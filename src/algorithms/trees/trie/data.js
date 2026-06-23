@@ -71,21 +71,21 @@ export const algorithmPage = {
       "title": "Read character path",
       "note": "The current node controls the next step.",
       "activeLine": 6,
-      "codeInsight": "Initializes root, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly."
     },
     {
       "label": "Child step",
       "title": "Follow or create the child link for the current character",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
       "activeLine": 6,
-      "codeInsight": "Initializes root, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 12,
-      "codeInsight": "Returns root, the value produced after Trie Operations's state changes are complete."
+      "codeInsight": "Returns root, the final value maintained by Trie Operations's code path."
     }
   ],
   "complexity": {
@@ -216,7 +216,7 @@ export const algorithmPage = {
         "title": "Read character path",
         "note": "The current node controls the next step.",
         "ruleLabel": "Trie Operations invariant",
-        "rule": "Initializes root, the local state that the next highlighted lines will update.",
+        "rule": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -231,7 +231,7 @@ export const algorithmPage = {
         "title": "Follow or create the child link for the current character",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "Trie Operations invariant",
-        "rule": "Initializes root, the local state that the next highlighted lines will update.",
+        "rule": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -242,7 +242,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Trie Operations invariant",
-        "rule": "Returns root, the value produced after Trie Operations's state changes are complete.",
+        "rule": "Returns root, the final value maintained by Trie Operations's code path.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

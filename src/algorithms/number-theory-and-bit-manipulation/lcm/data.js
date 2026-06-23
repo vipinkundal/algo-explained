@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this LCM line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines lcm and names the input a, b; edits to those inputs change the visual state and output."
     },
     {
       "label": "Reduction",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
       "activeLine": 7,
-      "codeInsight": "Returns a === 0 || b === 0 ? 0 : Math.abs(a * b) / gcd(a, b), the value produced after LCM's state changes are complete."
+      "codeInsight": "Returns a === 0 || b === 0 ? 0 : Math.abs(a * b) / gcd(a, b), the final value maintained by LCM's code path."
     }
   ],
   "complexity": {
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "LCM invariant",
-        "rule": "Executes this LCM line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines lcm and names the input a, b; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "LCM invariant",
-        "rule": "Returns a === 0 || b === 0 ? 0 : Math.abs(a * b) / gcd(a, b), the value produced after LCM's state changes are complete.",
+        "rule": "Returns a === 0 || b === 0 ? 0 : Math.abs(a * b) / gcd(a, b), the final value maintained by LCM's code path.",
         "activeState": 3
       }
     ]

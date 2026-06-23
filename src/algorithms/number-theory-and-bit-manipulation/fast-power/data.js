@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Fast Power line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines fastPower and names the input base, exponent; edits to those inputs change the visual state and output."
     },
     {
       "label": "Reduction",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
       "activeLine": 14,
-      "codeInsight": "Returns result, the value produced after Fast Power's state changes are complete."
+      "codeInsight": "Returns result, the final value maintained by Fast Power's code path."
     }
   ],
   "complexity": {
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "Fast Power invariant",
-        "rule": "Executes this Fast Power line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines fastPower and names the input base, exponent; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "Fast Power invariant",
-        "rule": "Returns result, the value produced after Fast Power's state changes are complete.",
+        "rule": "Returns result, the final value maintained by Fast Power's code path.",
         "activeState": 3
       }
     ]

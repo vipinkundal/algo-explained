@@ -62,30 +62,30 @@ export const algorithmPage = {
     {
       "label": "Base",
       "title": "Check stop condition",
-      "note": "The code first asks whether the current state is complete.",
-      "activeLine": 1,
-      "codeInsight": "Executes this N-Queens line as part of the highlighted code path, linking the visual step to the implementation."
+      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "activeLine": 5,
+      "codeInsight": "Defines nQueens and names the input size; edits to those inputs change the visual state and output."
     },
     {
       "label": "Choice",
       "title": "Select next option",
       "note": "One valid move is added to the state.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates N-Queens's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines nQueens and names the input size; edits to those inputs change the visual state and output."
     },
     {
       "label": "Call",
       "title": "Recurse deeper",
       "note": "The same rule runs on a smaller or extended state.",
       "activeLine": 6,
-      "codeInsight": "Creates result as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Unwind",
       "title": "Return or backtrack",
       "note": "The result is combined or the choice is removed.",
       "activeLine": 14,
-      "codeInsight": "Executes this N-Queens line as part of the highlighted code path, linking the visual step to the implementation."
+      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
     }
   ],
   "complexity": {
@@ -145,9 +145,9 @@ export const algorithmPage = {
       {
         "phase": "Base",
         "title": "Check stop condition",
-        "note": "The code first asks whether the current state is complete.",
+        "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
         "ruleLabel": "N-Queens invariant",
-        "rule": "Executes this N-Queens line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines nQueens and names the input size; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -166,7 +166,7 @@ export const algorithmPage = {
         "title": "Select next option",
         "note": "One valid move is added to the state.",
         "ruleLabel": "N-Queens invariant",
-        "rule": "This blank line separates N-Queens's setup from the next code block.",
+        "rule": "Defines nQueens and names the input size; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -189,7 +189,7 @@ export const algorithmPage = {
         "title": "Recurse deeper",
         "note": "The same rule runs on a smaller or extended state.",
         "ruleLabel": "N-Queens invariant",
-        "rule": "Creates result as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeCells": [
           [
             0,
@@ -216,7 +216,7 @@ export const algorithmPage = {
         "title": "Return or backtrack",
         "note": "The result is combined or the choice is removed.",
         "ruleLabel": "N-Queens invariant",
-        "rule": "Executes this N-Queens line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns from this branch immediately because the current recursive or conditional state is complete.",
         "activeCells": [
           [
             1,

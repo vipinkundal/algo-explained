@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 6,
-      "codeInsight": "Initializes grid, the local state that the next highlighted lines will update."
+      "activeLine": 5,
+      "codeInsight": "Defines floodFill and names the input image, startRow, startCol, newColor; edits to those inputs change the visual state and output."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Flood Fill line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines floodFill and names the input image, startRow, startCol, newColor; edits to those inputs change the visual state and output."
     },
     {
       "label": "Move/update",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
       "activeLine": 18,
-      "codeInsight": "Returns grid, the value produced after Flood Fill's state changes are complete."
+      "codeInsight": "Returns grid, the final value maintained by Flood Fill's code path."
     }
   ],
   "complexity": {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Flood Fill invariant",
-        "rule": "Initializes grid, the local state that the next highlighted lines will update.",
+        "rule": "Defines floodFill and names the input image, startRow, startCol, newColor; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -175,7 +175,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Flood Fill invariant",
-        "rule": "Executes this Flood Fill line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines floodFill and names the input image, startRow, startCol, newColor; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -225,7 +225,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Flood Fill invariant",
-        "rule": "Returns grid, the value produced after Flood Fill's state changes are complete.",
+        "rule": "Returns grid, the final value maintained by Flood Fill's code path.",
         "activeCells": [
           [
             1,

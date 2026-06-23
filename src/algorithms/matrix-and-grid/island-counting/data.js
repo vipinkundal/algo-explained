@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 6,
-      "codeInsight": "Stores seen so the algorithm can reuse this value without recomputing it."
+      "activeLine": 5,
+      "codeInsight": "Defines islandCounting and names the input grid; edits to those inputs change the visual state and output."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Island Counting line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines islandCounting and names the input grid; edits to those inputs change the visual state and output."
     },
     {
       "label": "Move/update",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
       "activeLine": 25,
-      "codeInsight": "Returns count, the value produced after Island Counting's state changes are complete."
+      "codeInsight": "Returns count, the final value maintained by Island Counting's code path."
     }
   ],
   "complexity": {
@@ -163,7 +163,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Island Counting invariant",
-        "rule": "Stores seen so the algorithm can reuse this value without recomputing it.",
+        "rule": "Defines islandCounting and names the input grid; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Island Counting invariant",
-        "rule": "Executes this Island Counting line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines islandCounting and names the input grid; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -232,7 +232,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Island Counting invariant",
-        "rule": "Returns count, the value produced after Island Counting's state changes are complete.",
+        "rule": "Returns count, the final value maintained by Island Counting's code path.",
         "activeCells": [
           [
             1,

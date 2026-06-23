@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "activeLine": 5,
+      "codeInsight": "Defines bfs and names the input graph, start; edits to those inputs change the visual state and output."
     },
     {
       "label": "Queue Frontier",
       "title": "Initialize queue frontier",
       "note": "Only the graph state owned by this algorithm is created.",
       "activeLine": 7,
-      "codeInsight": "Initializes queue, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Work item",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return level-by-level traversal",
       "note": "The final graph state becomes the answer.",
       "activeLine": 18,
-      "codeInsight": "Returns order, the value produced after Breadth-First Search's state changes are complete."
+      "codeInsight": "Returns order, the final value maintained by Breadth-First Search's code path."
     }
   ],
   "complexity": {
@@ -187,7 +187,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Breadth-First Search invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
+        "rule": "Defines bfs and names the input graph, start; edits to those inputs change the visual state and output.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Initialize queue frontier",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Breadth-First Search invariant",
-        "rule": "Initializes queue, the local state that the next highlighted lines will update.",
+        "rule": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -240,7 +240,7 @@ export const algorithmPage = {
         "title": "Return level-by-level traversal",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Breadth-First Search invariant",
-        "rule": "Returns order, the value produced after Breadth-First Search's state changes are complete.",
+        "rule": "Returns order, the final value maintained by Breadth-First Search's code path.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

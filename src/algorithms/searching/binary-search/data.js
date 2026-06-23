@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Sorted input",
       "title": "Read the ordered search space",
       "note": "The code starts from a range where binary decisions are valid.",
-      "activeLine": 6,
-      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
+      "activeLine": 5,
+      "codeInsight": "Defines binarySearch and names the input array, target; edits to those inputs change the visual state and output."
     },
     {
       "label": "low / high",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Emit index or boundary",
       "note": "The loop ends with a match or the collapsed boundary.",
       "activeLine": 14,
-      "codeInsight": "Returns -1, the value produced after Binary Search's state changes are complete."
+      "codeInsight": "Returns -1, the final value maintained by Binary Search's code path."
     }
   ],
   "complexity": {
@@ -147,7 +147,7 @@ export const algorithmPage = {
         "title": "Read the ordered search space",
         "note": "The code starts from a range where binary decisions are valid.",
         "ruleLabel": "Binary Search invariant",
-        "rule": "Initializes low as mutable state; later branches update it as the search window or traversal changes.",
+        "rule": "Defines binarySearch and names the input array, target; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -202,7 +202,7 @@ export const algorithmPage = {
         "title": "Emit index or boundary",
         "note": "The loop ends with a match or the collapsed boundary.",
         "ruleLabel": "Binary Search invariant",
-        "rule": "Returns -1, the value produced after Binary Search's state changes are complete.",
+        "rule": "Returns -1, the final value maintained by Binary Search's code path.",
         "activeIndices": [
           2,
           2

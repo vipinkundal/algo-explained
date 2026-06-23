@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Root",
       "title": "Start at root 4",
       "note": "The delete value is 2, so begin by comparing 2 with the root value 4.",
-      "activeLine": 6,
-      "codeInsight": "Stores fromArray so the algorithm can reuse this value without recomputing it."
+      "activeLine": 5,
+      "codeInsight": "Defines bstDelete and names the input root, value; edits to those inputs change the visual state and output."
     },
     {
       "label": "Go left",
       "title": "2 is smaller than 4",
       "note": "Because 2 < 4, the target can only be in the left subtree.",
       "activeLine": 15,
-      "codeInsight": "Executes this BST Delete line as part of the highlighted code path, linking the visual step to the implementation."
+      "codeInsight": "Defines helper remove with node, target, separating the repeated recursive or structural work from the public entry point."
     },
     {
       "label": "Found 2",
@@ -106,7 +106,7 @@ export const algorithmPage = {
       "title": "Return updated subtree",
       "note": "The updated subtree reconnects to root 4 as its left child.",
       "activeLine": 11,
-      "codeInsight": "Returns node, the value produced after BST Delete's state changes are complete."
+      "codeInsight": "Returns node, the final value maintained by BST Delete's code path."
     }
   ],
   "animation": {
@@ -186,7 +186,7 @@ export const algorithmPage = {
       {
         "phase": "Search",
         "title": "Compare target 2 with root 4",
-        "note": "The target is smaller than 4, so deletion must continue in the left subtree.",
+        "note": "The delete value is 2, so begin by comparing 2 with the root value 4.",
         "activeNode": "4",
         "targetNode": "2",
         "mutedNodes": [
@@ -195,12 +195,12 @@ export const algorithmPage = {
           "7"
         ],
         "ruleLabel": "BST direction",
-        "rule": "Stores fromArray so the algorithm can reuse this value without recomputing it."
+        "rule": "Defines bstDelete and names the input root, value; edits to those inputs change the visual state and output."
       },
       {
         "phase": "Search",
         "title": "Move into the left subtree",
-        "note": "The recursive call focuses on node 2 while root 4 waits for the updated subtree to return.",
+        "note": "Because 2 < 4, the target can only be in the left subtree.",
         "activeNode": "2",
         "targetNode": "2",
         "mutedNodes": [
@@ -209,12 +209,12 @@ export const algorithmPage = {
           "7"
         ],
         "ruleLabel": "Recursive contract",
-        "rule": "Executes this BST Delete line as part of the highlighted code path, linking the visual step to the implementation."
+        "rule": "Defines helper remove with node, target, separating the repeated recursive or structural work from the public entry point."
       },
       {
         "phase": "Match",
         "title": "Node 2 is the delete target",
-        "note": "The current value matches the requested delete value.",
+        "note": "The current node value equals the delete value, so restructuring starts here.",
         "activeNode": "2",
         "targetNode": "2",
         "ruleLabel": "Target found",
@@ -223,7 +223,7 @@ export const algorithmPage = {
       {
         "phase": "Case check",
         "title": "Two-child delete case",
-        "note": "Node 2 has left child 1 and right child 3, so the tree needs a replacement value.",
+        "note": "Node 2 has both left child 1 and right child 3, so we cannot just drop it.",
         "activeNode": "2",
         "targetNode": "2",
         "ruleLabel": "Why not remove directly?",
@@ -232,7 +232,7 @@ export const algorithmPage = {
       {
         "phase": "Replace",
         "title": "Use successor 3",
-        "note": "3 is the smallest value in node 2's right subtree, so it safely replaces 2.",
+        "note": "The smallest value in the right subtree is 3, so it can replace 2 without breaking order.",
         "activeNode": "2",
         "targetNode": "2",
         "replacementNode": "3",
@@ -242,7 +242,7 @@ export const algorithmPage = {
       {
         "phase": "Cleanup",
         "title": "Remove old successor node",
-        "note": "After copying 3 upward, the original leaf node 3 is removed from its old position.",
+        "note": "After copying 3 into node 2's position, remove the old 3 from the right subtree.",
         "activeNode": "2",
         "replacementNode": "2",
         "nodeLabels": {
@@ -257,7 +257,7 @@ export const algorithmPage = {
       {
         "phase": "Return",
         "title": "Reconnect repaired subtree",
-        "note": "Root 4 now points left to the repaired subtree, where 3 replaced 2 and 1 remains left.",
+        "note": "The updated subtree reconnects to root 4 as its left child.",
         "activeNode": "4",
         "replacementNode": "2",
         "nodeLabels": {
@@ -267,7 +267,7 @@ export const algorithmPage = {
           "3"
         ],
         "ruleLabel": "Final order",
-        "rule": "Returns node, the value produced after BST Delete's state changes are complete."
+        "rule": "Returns node, the final value maintained by BST Delete's code path."
       }
     ]
   },

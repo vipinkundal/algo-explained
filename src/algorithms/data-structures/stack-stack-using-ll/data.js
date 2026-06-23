@@ -87,14 +87,14 @@ export const algorithmPage = {
       "title": "Push, pop, peek, or resolve stack entries",
       "note": "Only the necessary stack fields are changed.",
       "activeLine": 5,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Visits each input value once, letting the displayed state update in the same order as the code."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 7,
-      "codeInsight": "Returns { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, the value produced after Stack Using Linked List's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -186,7 +186,7 @@ export const algorithmPage = {
         "title": "Push, pop, peek, or resolve stack entries",
         "note": "Only the necessary stack fields are changed.",
         "ruleLabel": "Stack Using Linked List invariant",
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
+        "rule": "Visits each input value once, letting the displayed state update in the same order as the code.",
         "activeItems": [
           2
         ],
@@ -201,7 +201,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Stack Using Linked List invariant",
-        "rule": "Returns { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, the value produced after Stack Using Linked List's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, exposing the exact fields the visualizer has been tracking.",
         "activeItems": [
           3
         ],

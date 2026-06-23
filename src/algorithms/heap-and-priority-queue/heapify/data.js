@@ -71,21 +71,21 @@ export const algorithmPage = {
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
       "activeLine": 6,
-      "codeInsight": "Initializes heap, the local state that the next highlighted lines will update."
+      "codeInsight": "Copies the input into heap, so the animation can show mutations without pretending the caller's original array changes."
     },
     {
       "label": "Enqueue / dequeue",
       "title": "Enqueue, dequeue, peek, or evict entries",
       "note": "Only the necessary queue fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Initializes heap, the local state that the next highlighted lines will update."
+      "codeInsight": "Copies the input into heap, so the animation can show mutations without pretending the caller's original array changes."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 8,
-      "codeInsight": "Returns heap, the value produced after Heapify's state changes are complete."
+      "codeInsight": "Returns heap, the final value maintained by Heapify's code path."
     }
   ],
   "complexity": {
@@ -226,7 +226,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "Heapify invariant",
-        "rule": "Initializes heap, the local state that the next highlighted lines will update.",
+        "rule": "Copies the input into heap, so the animation can show mutations without pretending the caller's original array changes.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -241,7 +241,7 @@ export const algorithmPage = {
         "title": "Enqueue, dequeue, peek, or evict entries",
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "Heapify invariant",
-        "rule": "Initializes heap, the local state that the next highlighted lines will update.",
+        "rule": "Copies the input into heap, so the animation can show mutations without pretending the caller's original array changes.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -252,7 +252,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Heapify invariant",
-        "rule": "Returns heap, the value produced after Heapify's state changes are complete.",
+        "rule": "Returns heap, the final value maintained by Heapify's code path.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

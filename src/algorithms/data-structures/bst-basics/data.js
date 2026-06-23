@@ -80,21 +80,21 @@ export const algorithmPage = {
       "title": "Read ordered branch",
       "note": "The current node controls the next step.",
       "activeLine": 3,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Child step",
       "title": "Compare with the current node and move left or right",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
       "activeLine": 6,
-      "codeInsight": "Returns { structure: \"binary search tree\", values, search, path, found: true }, the value produced after BST Basics's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"binary search tree\", values, search, path, found: true }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 6,
-      "codeInsight": "Returns { structure: \"binary search tree\", values, search, path, found: true }, the value produced after BST Basics's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"binary search tree\", values, search, path, found: true }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -243,7 +243,7 @@ export const algorithmPage = {
         "title": "Read ordered branch",
         "note": "The current node controls the next step.",
         "ruleLabel": "BST Basics invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -258,7 +258,7 @@ export const algorithmPage = {
         "title": "Compare with the current node and move left or right",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "BST Basics invariant",
-        "rule": "Returns { structure: \"binary search tree\", values, search, path, found: true }, the value produced after BST Basics's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"binary search tree\", values, search, path, found: true }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -269,7 +269,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "BST Basics invariant",
-        "rule": "Returns { structure: \"binary search tree\", values, search, path, found: true }, the value produced after BST Basics's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"binary search tree\", values, search, path, found: true }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

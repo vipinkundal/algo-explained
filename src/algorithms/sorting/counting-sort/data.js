@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Range",
       "title": "Read key bounds",
       "note": "Counting needs a finite integer range.",
-      "activeLine": 6,
-      "codeInsight": "Checks !array.length; only the branch that preserves Counting Sort's invariant is allowed to change state."
+      "activeLine": 7,
+      "codeInsight": "Computes min from the current values before the algorithm decides the next move."
     },
     {
       "label": "Counts",
       "title": "Increment frequency",
       "note": "Each input value updates one bucket.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Counting Sort's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines countingSort and names the input array; edits to those inputs change the visual state and output."
     },
     {
       "label": "Emit",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return output",
       "note": "The rebuilt list is sorted by key.",
       "activeLine": 15,
-      "codeInsight": "Returns result, the value produced after Counting Sort's state changes are complete."
+      "codeInsight": "Returns result, the final value maintained by Counting Sort's code path."
     }
   ],
   "complexity": {
@@ -152,7 +152,7 @@ export const algorithmPage = {
         "title": "Read key bounds",
         "note": "Counting needs a finite integer range.",
         "ruleLabel": "Counting Sort invariant",
-        "rule": "Checks !array.length; only the branch that preserves Counting Sort's invariant is allowed to change state.",
+        "rule": "Computes min from the current values before the algorithm decides the next move.",
         "activeValue": 4,
         "bucketIndex": 1,
         "bucketValues": [
@@ -168,7 +168,7 @@ export const algorithmPage = {
         "title": "Increment frequency",
         "note": "Each input value updates one bucket.",
         "ruleLabel": "Counting Sort invariant",
-        "rule": "This blank line separates Counting Sort's setup from the next code block.",
+        "rule": "Defines countingSort and names the input array; edits to those inputs change the visual state and output.",
         "activeValue": 1,
         "bucketIndex": 1,
         "bucketValues": [
@@ -204,7 +204,7 @@ export const algorithmPage = {
         "title": "Return output",
         "note": "The rebuilt list is sorted by key.",
         "ruleLabel": "Counting Sort invariant",
-        "rule": "Returns result, the value produced after Counting Sort's state changes are complete.",
+        "rule": "Returns result, the final value maintained by Counting Sort's code path.",
         "activeValue": 2,
         "bucketIndex": 2,
         "bucketValues": [

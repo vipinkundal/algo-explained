@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Read values",
       "note": "The code receives the list and any target condition.",
-      "activeLine": 3,
-      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
+      "activeLine": 2,
+      "codeInsight": "Defines linkedListLinearSearch as the runnable entry point for this lesson."
     },
     {
       "label": "Index",
       "title": "Select current item",
       "note": "The loop focuses on one position at a time.",
       "activeLine": 3,
-      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
+      "codeInsight": "Stores nodes from the current length, making the loop boundary explicit for the visual trace."
     },
     {
       "label": "Update",
       "title": "Apply comparison or count",
       "note": "The current value changes the running state only if the rule says so.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Linear Search's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Result",
       "title": "Return scan output",
       "note": "When the scan ends, the tracked result is returned.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Linear Search's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -170,7 +170,7 @@ export const algorithmPage = {
         "title": "Read values",
         "note": "The code receives the list and any target condition.",
         "ruleLabel": "Linked List Linear Search invariant",
-        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
+        "rule": "Defines linkedListLinearSearch as the runnable entry point for this lesson.",
         "activeNode": "head",
         "previousNode": "head",
         "nextNode": "n2"
@@ -180,7 +180,7 @@ export const algorithmPage = {
         "title": "Select current item",
         "note": "The loop focuses on one position at a time.",
         "ruleLabel": "Linked List Linear Search invariant",
-        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
+        "rule": "Stores nodes from the current length, making the loop boundary explicit for the visual trace.",
         "activeNode": "n2",
         "previousNode": "head",
         "nextNode": "n3"
@@ -190,7 +190,7 @@ export const algorithmPage = {
         "title": "Apply comparison or count",
         "note": "The current value changes the running state only if the rule says so.",
         "ruleLabel": "Linked List Linear Search invariant",
-        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Linear Search's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "n3",
         "previousNode": "n2",
         "nextNode": "tail"
@@ -200,7 +200,7 @@ export const algorithmPage = {
         "title": "Return scan output",
         "note": "When the scan ends, the tracked result is returned.",
         "ruleLabel": "Linked List Linear Search invariant",
-        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Linear Search's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "tail",
         "previousNode": "n3",
         "nextNode": "tail"

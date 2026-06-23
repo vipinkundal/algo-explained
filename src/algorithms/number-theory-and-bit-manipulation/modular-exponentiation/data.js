@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Modular Exponentiation line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines modularExponentiation and names the input base, exponent, mod; edits to those inputs change the visual state and output."
     },
     {
       "label": "Reduction",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
       "activeLine": 14,
-      "codeInsight": "Returns result, the value produced after Modular Exponentiation's state changes are complete."
+      "codeInsight": "Returns result, the final value maintained by Modular Exponentiation's code path."
     }
   ],
   "complexity": {
@@ -146,7 +146,7 @@ export const algorithmPage = {
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "Modular Exponentiation invariant",
-        "rule": "Executes this Modular Exponentiation line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines modularExponentiation and names the input base, exponent, mod; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "Modular Exponentiation invariant",
-        "rule": "Returns result, the value produced after Modular Exponentiation's state changes are complete.",
+        "rule": "Returns result, the final value maintained by Modular Exponentiation's code path.",
         "activeState": 3
       }
     ]

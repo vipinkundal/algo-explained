@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 13,
-      "codeInsight": "Returns output, the value produced after Stack Basics's state changes are complete."
+      "codeInsight": "Returns output, the final value maintained by Stack Basics's code path."
     }
   ],
   "complexity": {
@@ -235,7 +235,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Stack Basics invariant",
-        "rule": "Returns output, the value produced after Stack Basics's state changes are complete.",
+        "rule": "Returns output, the final value maintained by Stack Basics's code path.",
         "activeItems": [
           3
         ],

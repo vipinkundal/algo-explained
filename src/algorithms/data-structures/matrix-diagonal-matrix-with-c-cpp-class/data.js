@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 3,
-      "codeInsight": "Initializes matrix, the local state that the next highlighted lines will update."
+      "activeLine": 2,
+      "codeInsight": "Defines matrixDiagonalMatrixWithCCppClass as the runnable entry point for this lesson."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
       "activeLine": 3,
-      "codeInsight": "Initializes matrix, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Move/update",
       "title": "Apply neighbor or boundary rule",
       "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 6,
-      "codeInsight": "Executes this Diagonal Matrix With C++ Class line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Result",
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, the value produced after Diagonal Matrix With C++ Class's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -165,7 +165,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Diagonal Matrix With C++ Class invariant",
-        "rule": "Initializes matrix, the local state that the next highlighted lines will update.",
+        "rule": "Defines matrixDiagonalMatrixWithCCppClass as the runnable entry point for this lesson.",
         "activeCells": [
           [
             0,
@@ -184,7 +184,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Diagonal Matrix With C++ Class invariant",
-        "rule": "Initializes matrix, the local state that the next highlighted lines will update.",
+        "rule": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeCells": [
           [
             0,
@@ -207,7 +207,7 @@ export const algorithmPage = {
         "title": "Apply neighbor or boundary rule",
         "note": "The transition changes reachable cells, boundaries, or accumulated values.",
         "ruleLabel": "Diagonal Matrix With C++ Class invariant",
-        "rule": "Executes this Diagonal Matrix With C++ Class line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking.",
         "activeCells": [
           [
             0,
@@ -234,7 +234,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Diagonal Matrix With C++ Class invariant",
-        "rule": "Returns { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, the value produced after Diagonal Matrix With C++ Class's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking.",
         "activeCells": [
           [
             1,

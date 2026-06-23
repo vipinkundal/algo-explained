@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 21,
-      "codeInsight": "Returns output, the value produced after Circular Queue's state changes are complete."
+      "codeInsight": "Returns output, the final value maintained by Circular Queue's code path."
     }
   ],
   "complexity": {
@@ -231,7 +231,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Circular Queue invariant",
-        "rule": "Returns output, the value produced after Circular Queue's state changes are complete.",
+        "rule": "Returns output, the final value maintained by Circular Queue's code path.",
         "activeItems": [
           3
         ],

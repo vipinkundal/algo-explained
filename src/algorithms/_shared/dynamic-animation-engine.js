@@ -213,6 +213,7 @@ function createAnimation(page, runInput) {
   if (type === "string-flow") return createStringAnimation(page, runInput, base);
   if (type === "recursion-flow") return createRecursionAnimation(page, runInput, base);
   if (type === "graph-flow") return createGraphAnimation(page, runInput, base);
+  if (["edge-relaxation", "tree-operation", "linked-list-flow"].includes(type) && base.type) return base;
   return createStateAnimation(page, runInput, base);
 }
 
@@ -221,20 +222,22 @@ function chooseAnimationType(page, base) {
   if (!base.type) return inferred;
   if (inferred === "array-flow" && base.type === "string-flow") return inferred;
   if (inferred === "matrix-flow" && base.type !== "matrix-flow") return inferred;
-  if (inferred === "stack-queue-flow" && !["stack-queue-flow", "state-flow"].includes(base.type)) return inferred;
+  if (inferred === "stack-queue-flow" && !["stack-queue-flow", "state-flow", "linked-list-flow"].includes(base.type)) return inferred;
   return base.type;
 }
 
 function inferAnimationType(page) {
-  const haystack = `${page.visualizerType || ""} ${page.category || ""} ${page.title || ""}`.toLowerCase();
-  if (haystack.includes("matrix") || haystack.includes("grid")) return "matrix-flow";
-  if (haystack.includes("string") || haystack.includes("palindrome") || haystack.includes("text search")) return "string-flow";
-  if (haystack.includes("stack") || haystack.includes("queue")) return "stack-queue-flow";
-  if (haystack.includes("graph")) return "graph-flow";
-  if (haystack.includes("recursion")) return "recursion-flow";
-  if (haystack.includes("bucket") || haystack.includes("frequency")) return "bucket-flow";
-  if (haystack.includes("array") || haystack.includes("window") || haystack.includes("pointer") || haystack.includes("prefix") || haystack.includes("cumulative")) return "array-flow";
-  return "array-flow";
+  const haystack = `${page.visualizerType || ""} ${page.category || ""} ${page.topicGroup || ""} ${page.title || ""}`.toLowerCase();
+  if (haystack.includes("matrix") || haystack.includes("grid") || haystack.includes("board") || haystack.includes("chess") || haystack.includes("sparse")) return "matrix-flow";
+  if (haystack.includes("linked-list") || haystack.includes("linkedlist")) return "linked-list-flow";
+  if (haystack.includes("tree") || haystack.includes("heap") || haystack.includes("bst") || haystack.includes("trie") || haystack.includes("parent-tree")) return "tree-operation";
+  if (haystack.includes("graph") || haystack.includes("mst") || haystack.includes("edge") || haystack.includes("dag") || haystack.includes("scc") || haystack.includes("low-link")) return "graph-flow";
+  if (haystack.includes("recursion") || haystack.includes("call-stack") || haystack.includes("choice") || haystack.includes("decision") || haystack.includes("disk")) return "recursion-flow";
+  if (haystack.includes("stack") || haystack.includes("queue") || haystack.includes("deque") || haystack.includes("buffer")) return "stack-queue-flow";
+  if (haystack.includes("bucket") || haystack.includes("digit") || haystack.includes("frequency-array")) return "bucket-flow";
+  if (haystack.includes("string") || haystack.includes("palindrome") || haystack.includes("prefix-table") || haystack.includes("rolling-hash") || haystack.includes("z-box") || haystack.includes("anagram")) return "string-flow";
+  if (haystack.includes("array") || haystack.includes("sort") || haystack.includes("pointer") || haystack.includes("window") || haystack.includes("partition") || haystack.includes("range") || haystack.includes("candidate") || haystack.includes("min-max") || haystack.includes("running") || haystack.includes("cumulative") || haystack.includes("permutation-step") || haystack.includes("duplicate-shift") || haystack.includes("two-pointer")) return "array-flow";
+  return "state-flow";
 }
 
 function createArrayAnimation(page, runInput, base) {
@@ -244,6 +247,9 @@ function createArrayAnimation(page, runInput, base) {
 
   if (lowerTitle.includes("binary search") || lowerTitle.includes("lower bound") || lowerTitle.includes("upper bound")) {
     return createBinarySearchAnimation(page, runInput, base, values, title);
+  }
+  if (lowerTitle.includes("bubble sort") || lowerTitle.includes("bar-swap")) {
+    return createBubbleSortAnimation(page, base, values, title);
   }
   if (lowerTitle.includes("prefix") || lowerTitle.includes("cumulative")) {
     return createPrefixAnimation(page, base, values, title);
@@ -268,6 +274,104 @@ function createArrayAnimation(page, runInput, base) {
       secondaryLabel: page.transitionSummary,
     })),
   };
+}
+
+function createBubbleSortAnimation(page, base, values, title) {
+  const startValues = values.length ? [...values] : [4, 1, 3, 2];
+  const working = [...startValues];
+  const steps = [];
+
+  steps.push(makeStep(page, base, 0, {
+    phase: "Copy",
+    title: "Copy the input array",
+    note: `The code copies [${startValues.map(formatValue).join(", ")}] into values before sorting.`,
+    rule: "Copies the input into values, so Bubble Sort mutates only its working array.",
+    values: [...working],
+    activeIndices: range(0, working.length - 1),
+    sortedIndices: [],
+    mutedIndices: [],
+    window: [0, Math.max(working.length - 1, 0)],
+    primaryLabel: `values = [${working.map(formatValue).join(", ")}]`,
+    secondaryLabel: "caller input stays unchanged",
+  }));
+
+  if (working.length > 1) {
+    const left = working[0];
+    const right = working[1];
+    const shouldSwap = left > right;
+
+    steps.push(makeStep(page, base, 1, {
+      phase: "Compare",
+      title: `Compare ${formatValue(left)} and ${formatValue(right)}`,
+      note: shouldSwap
+        ? `The condition values[0] > values[1] reads ${formatValue(left)} > ${formatValue(right)}, so the adjacent pair is out of order.`
+        : `The condition values[0] > values[1] reads ${formatValue(left)} <= ${formatValue(right)}, so this pair stays in place.`,
+      rule: `Checks values[0] > values[1]; ${formatValue(left)} ${shouldSwap ? ">" : "<="} ${formatValue(right)} decides whether the pair swaps.`,
+      values: [...working],
+      activeIndices: [0, 1],
+      sortedIndices: [],
+      mutedIndices: working.map((_, index) => index).filter((index) => index > 2),
+      window: [0, 1],
+      primaryLabel: `${formatValue(left)} ${shouldSwap ? ">" : "<="} ${formatValue(right)}`,
+      secondaryLabel: shouldSwap ? "swap required" : "already ordered",
+    }));
+
+    if (shouldSwap) {
+      [working[0], working[1]] = [working[1], working[0]];
+    }
+
+    steps.push(makeStep(page, base, 2, {
+      phase: "Swap",
+      title: shouldSwap
+        ? `Swap ${formatValue(left)} with ${formatValue(right)}`
+        : `Keep ${formatValue(left)} and ${formatValue(right)}`,
+      note: shouldSwap
+        ? `The destructuring assignment exchanges the adjacent values and produces [${working.map(formatValue).join(", ")}].`
+        : "The swap line is skipped because the pair is already ordered.",
+      rule: shouldSwap
+        ? `Runs [values[0], values[1]] = [values[1], values[0]], producing [${working.map(formatValue).join(", ")}].`
+        : "No destructuring assignment runs for this pair because the if condition is false.",
+      values: [...working],
+      activeIndices: [0, 1],
+      sortedIndices: [],
+      mutedIndices: working.map((_, index) => index).filter((index) => index > 2),
+      window: [0, 1],
+      primaryLabel: `values = [${working.map(formatValue).join(", ")}]`,
+      secondaryLabel: shouldSwap ? `${formatValue(left)} moved right` : "no change",
+    }));
+  }
+
+  const sortedValues = bubbleSortedValues(startValues);
+  steps.push(makeStep(page, base, 3, {
+    phase: "Sorted",
+    title: "Return final order",
+    note: `After the passes finish, every adjacent pair is ordered as [${sortedValues.map(formatValue).join(", ")}].`,
+    rule: `Returns values after Bubble Sort finishes: [${sortedValues.map(formatValue).join(", ")}].`,
+    values: sortedValues,
+    activeIndices: sortedValues.length ? [sortedValues.length - 1] : [],
+    sortedIndices: range(0, sortedValues.length - 1),
+    mutedIndices: [],
+    window: [0, Math.max(sortedValues.length - 1, 0)],
+    primaryLabel: `sorted = [${sortedValues.map(formatValue).join(", ")}]`,
+    secondaryLabel: "no adjacent inversions remain",
+  }));
+
+  return { ...base, type: "array-flow", title, values: startValues, steps };
+}
+
+function bubbleSortedValues(items) {
+  const values = [...items];
+  for (let end = values.length - 1; end > 0; end -= 1) {
+    let swapped = false;
+    for (let index = 0; index < end; index += 1) {
+      if (values[index] > values[index + 1]) {
+        [values[index], values[index + 1]] = [values[index + 1], values[index]];
+        swapped = true;
+      }
+    }
+    if (!swapped) break;
+  }
+  return values;
 }
 
 function createBinarySearchAnimation(page, runInput, base, values, title) {

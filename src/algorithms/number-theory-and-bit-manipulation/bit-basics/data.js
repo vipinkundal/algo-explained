@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Bit Basics line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines bitBasics and names the input a, b; edits to those inputs change the visual state and output."
     },
     {
       "label": "Reduction",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
       "activeLine": 6,
-      "codeInsight": "Returns { and: a & b, or: a | b, xor: a ^ b, leftShift: a << 1, rightShift: a >> 1 }, the value produced after Bit Basics's state changes are complete."
+      "codeInsight": "Returns the final state object { and: a & b, or: a | b, xor: a ^ b, leftShift: a << 1, rightShift: a >> 1 }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "Bit Basics invariant",
-        "rule": "Executes this Bit Basics line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines bitBasics and names the input a, b; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "Bit Basics invariant",
-        "rule": "Returns { and: a & b, or: a | b, xor: a ^ b, leftShift: a << 1, rightShift: a >> 1 }, the value produced after Bit Basics's state changes are complete.",
+        "rule": "Returns the final state object { and: a & b, or: a | b, xor: a ^ b, leftShift: a << 1, rightShift: a >> 1 }, exposing the exact fields the visualizer has been tracking.",
         "activeState": 3
       }
     ]

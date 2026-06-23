@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Copy values",
       "note": "The code starts with the values to reorder.",
-      "activeLine": 6,
-      "codeInsight": "Checks !matrix.length || !matrix[0].length; only the branch that preserves Search in Sorted Matrix's invariant is allowed to change state."
+      "activeLine": 5,
+      "codeInsight": "Defines searchInSortedMatrix and names the input matrix, target; edits to those inputs change the visual state and output."
     },
     {
       "label": "Invariant",
       "title": "Track ordered work",
       "note": "The algorithm marks what part is already safe.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Search in Sorted Matrix line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines searchInSortedMatrix and names the input matrix, target; edits to those inputs change the visual state and output."
     },
     {
       "label": "Move",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return final order",
       "note": "The result is returned when no unsorted work remains.",
       "activeLine": 14,
-      "codeInsight": "Returns [-1, -1], the value produced after Search in Sorted Matrix's state changes are complete."
+      "codeInsight": "Returns the final array-style answer [-1, -1], so the last frame should show the chosen positions or sequence."
     }
   ],
   "complexity": {
@@ -154,7 +154,7 @@ export const algorithmPage = {
         "title": "Copy values",
         "note": "The code starts with the values to reorder.",
         "ruleLabel": "Search in Sorted Matrix invariant",
-        "rule": "Checks !matrix.length || !matrix[0].length; only the branch that preserves Search in Sorted Matrix's invariant is allowed to change state.",
+        "rule": "Defines searchInSortedMatrix and names the input matrix, target; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -173,7 +173,7 @@ export const algorithmPage = {
         "title": "Track ordered work",
         "note": "The algorithm marks what part is already safe.",
         "ruleLabel": "Search in Sorted Matrix invariant",
-        "rule": "Executes this Search in Sorted Matrix line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines searchInSortedMatrix and names the input matrix, target; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -223,7 +223,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "The result is returned when no unsorted work remains.",
         "ruleLabel": "Search in Sorted Matrix invariant",
-        "rule": "Returns [-1, -1], the value produced after Search in Sorted Matrix's state changes are complete.",
+        "rule": "Returns the final array-style answer [-1, -1], so the last frame should show the chosen positions or sequence.",
         "activeCells": [
           [
             1,

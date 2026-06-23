@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "activeLine": 5,
+      "codeInsight": "Defines dfs and names the input graph, start; edits to those inputs change the visual state and output."
     },
     {
       "label": "Stack Or Recursion Frontier",
       "title": "Initialize stack or recursion frontier",
       "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "activeLine": 5,
+      "codeInsight": "Defines dfs and names the input graph, start; edits to those inputs change the visual state and output."
     },
     {
       "label": "Work item",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return deep traversal",
       "note": "The final graph state becomes the answer.",
       "activeLine": 15,
-      "codeInsight": "Returns order, the value produced after Depth-First Search's state changes are complete."
+      "codeInsight": "Returns order, the final value maintained by Depth-First Search's code path."
     }
   ],
   "complexity": {
@@ -187,7 +187,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Depth-First Search invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
+        "rule": "Defines dfs and names the input graph, start; edits to those inputs change the visual state and output.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Initialize stack or recursion frontier",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Depth-First Search invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
+        "rule": "Defines dfs and names the input graph, start; edits to those inputs change the visual state and output.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -240,7 +240,7 @@ export const algorithmPage = {
         "title": "Return deep traversal",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Depth-First Search invariant",
-        "rule": "Returns order, the value produced after Depth-First Search's state changes are complete.",
+        "rule": "Returns order, the final value maintained by Depth-First Search's code path.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

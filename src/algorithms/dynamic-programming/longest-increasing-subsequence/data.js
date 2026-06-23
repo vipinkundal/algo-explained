@@ -64,28 +64,28 @@ export const algorithmPage = {
       "title": "Define DP cell",
       "note": "The code first needs a precise subproblem meaning.",
       "activeLine": 6,
-      "codeInsight": "Creates tails as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds tails with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Longest Increasing Subsequence line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines longestIncreasingSubsequence and names the input array; edits to those inputs change the visual state and output."
     },
     {
       "label": "Recurrence",
       "title": "Fill next state",
       "note": "The transition combines previously solved states.",
       "activeLine": 6,
-      "codeInsight": "Creates tails as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds tails with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Target",
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
       "activeLine": 17,
-      "codeInsight": "Returns tails.length, the value produced after Longest Increasing Subsequence's state changes are complete."
+      "codeInsight": "Returns tails.length, the final value maintained by Longest Increasing Subsequence's code path."
     }
   ],
   "complexity": {
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Define DP cell",
         "note": "The code first needs a precise subproblem meaning.",
         "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "Creates tails as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds tails with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeState": 0
       },
       {
@@ -153,7 +153,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "Executes this Longest Increasing Subsequence line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines longestIncreasingSubsequence and names the input array; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Fill next state",
         "note": "The transition combines previously solved states.",
         "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "Creates tails as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds tails with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeState": 2
       },
       {
@@ -169,7 +169,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "Returns tails.length, the value produced after Longest Increasing Subsequence's state changes are complete.",
+        "rule": "Returns tails.length, the final value maintained by Longest Increasing Subsequence's code path.",
         "activeState": 3
       }
     ]

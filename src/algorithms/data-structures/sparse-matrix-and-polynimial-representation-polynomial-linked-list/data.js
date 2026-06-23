@@ -73,28 +73,28 @@ export const algorithmPage = {
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
       "activeLine": 3,
-      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
+      "codeInsight": "Stores nodes from the current length, making the loop boundary explicit for the visual trace."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
       "activeLine": 3,
-      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
+      "codeInsight": "Stores nodes from the current length, making the loop boundary explicit for the visual trace."
     },
     {
       "label": "State change",
       "title": "Update the state described by this algorithm",
       "note": "Only the necessary algorithm state fields are changed.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Sparse Matrix / Polynomial Polynomial Linked List's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Sparse Matrix / Polynomial Polynomial Linked List's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -165,7 +165,7 @@ export const algorithmPage = {
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Sparse Matrix / Polynomial Polynomial Linked List invariant",
-        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
+        "rule": "Stores nodes from the current length, making the loop boundary explicit for the visual trace.",
         "activeCells": [
           [
             0,
@@ -184,7 +184,7 @@ export const algorithmPage = {
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "Sparse Matrix / Polynomial Polynomial Linked List invariant",
-        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
+        "rule": "Stores nodes from the current length, making the loop boundary explicit for the visual trace.",
         "activeCells": [
           [
             0,
@@ -207,7 +207,7 @@ export const algorithmPage = {
         "title": "Update the state described by this algorithm",
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "Sparse Matrix / Polynomial Polynomial Linked List invariant",
-        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Sparse Matrix / Polynomial Polynomial Linked List's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking.",
         "activeCells": [
           [
             0,
@@ -234,7 +234,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Sparse Matrix / Polynomial Polynomial Linked List invariant",
-        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Sparse Matrix / Polynomial Polynomial Linked List's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking.",
         "activeCells": [
           [
             1,

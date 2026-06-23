@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Modular Inverse line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines modularInverse and names the input value, mod; edits to those inputs change the visual state and output."
     },
     {
       "label": "Reduction",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
       "activeLine": 9,
-      "codeInsight": "Returns [g, y1, x1 - Math.floor(a / b) * y1], the value produced after Modular Inverse's state changes are complete."
+      "codeInsight": "Returns the final array-style answer [g, y1, x1 - Math.floor(a / b) * y1], so the last frame should show the chosen positions or sequence."
     }
   ],
   "complexity": {
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "Modular Inverse invariant",
-        "rule": "Executes this Modular Inverse line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines modularInverse and names the input value, mod; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "Modular Inverse invariant",
-        "rule": "Returns [g, y1, x1 - Math.floor(a / b) * y1], the value produced after Modular Inverse's state changes are complete.",
+        "rule": "Returns the final array-style answer [g, y1, x1 - Math.floor(a / b) * y1], so the last frame should show the chosen positions or sequence.",
         "activeState": 3
       }
     ]

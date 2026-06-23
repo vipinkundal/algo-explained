@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Declaration",
       "title": "Create program value",
       "note": "The code introduces the variable, pointer, structure, or object.",
-      "activeLine": 1,
-      "codeInsight": "Executes this C/C++ Structure line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 2,
+      "codeInsight": "Defines essentialCAndCppStructure as the runnable entry point for this lesson."
     },
     {
       "label": "Storage",
       "title": "Track address or copy",
       "note": "Passing by value, pointer, or reference controls what can change.",
       "activeLine": 4,
-      "codeInsight": "Executes this C/C++ Structure line as part of the highlighted code path, linking the visual step to the implementation."
+      "codeInsight": "Sets the returned topic field to \"C/C++ Structure\", which is one of the named values rendered in the visual summary."
     },
     {
       "label": "C/C++ rule",
       "title": "Apply C/C++ rule",
       "note": "Assignment, dereference, member access, or method call changes the state.",
-      "activeLine": 7,
-      "codeInsight": "Executes this C/C++ Structure line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 3,
+      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Result",
       "title": "Read final value",
       "note": "The visible output follows from the memory model.",
       "activeLine": 3,
-      "codeInsight": "Returns {, the value produced after C/C++ Structure's state changes are complete."
+      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -146,7 +146,7 @@ export const algorithmPage = {
         "title": "Create program value",
         "note": "The code introduces the variable, pointer, structure, or object.",
         "ruleLabel": "C/C++ Structure invariant",
-        "rule": "Executes this C/C++ Structure line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines essentialCAndCppStructure as the runnable entry point for this lesson.",
         "activeState": 0
       },
       {
@@ -154,7 +154,7 @@ export const algorithmPage = {
         "title": "Track address or copy",
         "note": "Passing by value, pointer, or reference controls what can change.",
         "ruleLabel": "C/C++ Structure invariant",
-        "rule": "Executes this C/C++ Structure line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Sets the returned topic field to \"C/C++ Structure\", which is one of the named values rendered in the visual summary.",
         "activeState": 1
       },
       {
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Apply C/C++ rule",
         "note": "Assignment, dereference, member access, or method call changes the state.",
         "ruleLabel": "C/C++ Structure invariant",
-        "rule": "Executes this C/C++ Structure line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object {, exposing the exact fields the visualizer has been tracking.",
         "activeState": 2
       },
       {
@@ -170,7 +170,7 @@ export const algorithmPage = {
         "title": "Read final value",
         "note": "The visible output follows from the memory model.",
         "ruleLabel": "C/C++ Structure invariant",
-        "rule": "Returns {, the value produced after C/C++ Structure's state changes are complete.",
+        "rule": "Returns the final state object {, exposing the exact fields the visualizer has been tracking.",
         "activeState": 3
       }
     ]

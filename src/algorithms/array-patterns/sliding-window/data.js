@@ -70,22 +70,22 @@ export const algorithmPage = {
       "label": "Right edge",
       "title": "Consume next value",
       "note": "The window grows by one new item.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Sliding Window's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines slidingWindow and names the input array, size; edits to those inputs change the visual state and output."
     },
     {
       "label": "Left edge",
       "title": "Drop expired state",
       "note": "Values outside the range are removed.",
       "activeLine": 7,
-      "codeInsight": "Creates sums as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds sums with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Window answer",
       "title": "Record current result",
       "note": "The current valid window updates the output.",
       "activeLine": 14,
-      "codeInsight": "Returns sums, the value produced after Sliding Window's state changes are complete."
+      "codeInsight": "Returns sums, the final value maintained by Sliding Window's code path."
     }
   ],
   "complexity": {
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Consume next value",
         "note": "The window grows by one new item.",
         "ruleLabel": "Sliding Window invariant",
-        "rule": "This blank line separates Sliding Window's setup from the next code block.",
+        "rule": "Defines slidingWindow and names the input array, size; edits to those inputs change the visual state and output.",
         "activeIndices": [
           1,
           2
@@ -183,7 +183,7 @@ export const algorithmPage = {
         "title": "Drop expired state",
         "note": "Values outside the range are removed.",
         "ruleLabel": "Sliding Window invariant",
-        "rule": "Creates sums as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds sums with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeIndices": [
           2
         ],
@@ -201,7 +201,7 @@ export const algorithmPage = {
         "title": "Record current result",
         "note": "The current valid window updates the output.",
         "ruleLabel": "Sliding Window invariant",
-        "rule": "Returns sums, the value produced after Sliding Window's state changes are complete.",
+        "rule": "Returns sums, the final value maintained by Sliding Window's code path.",
         "activeIndices": [
           3,
           4

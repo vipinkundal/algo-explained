@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 12,
-      "codeInsight": "Returns stack.length === 0, the value produced after Valid Parentheses's state changes are complete."
+      "codeInsight": "Returns stack.length === 0, the final value maintained by Valid Parentheses's code path."
     }
   ],
   "complexity": {
@@ -195,7 +195,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Valid Parentheses invariant",
-        "rule": "Returns stack.length === 0, the value produced after Valid Parentheses's state changes are complete.",
+        "rule": "Returns stack.length === 0, the final value maintained by Valid Parentheses's code path.",
         "activeItems": [
           3
         ],

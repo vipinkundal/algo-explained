@@ -72,8 +72,8 @@ export const algorithmPage = {
       "label": "Text",
       "title": "Read string input",
       "note": "The code receives text, pattern, or character data.",
-      "activeLine": 3,
-      "codeInsight": "Stores text so the algorithm can reuse this value without recomputing it."
+      "activeLine": 2,
+      "codeInsight": "Defines stringDuplicates as the runnable entry point for this lesson."
     },
     {
       "label": "Helper",
@@ -86,15 +86,15 @@ export const algorithmPage = {
       "label": "Character",
       "title": "Update on current char",
       "note": "One character changes the active string state.",
-      "activeLine": 6,
-      "codeInsight": "Executes this String Duplicates line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Returns the final state object { structure: \"string\", input: text, reversed, length: text.length }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Result",
       "title": "Return string answer",
       "note": "Matches or best values are returned after the scan.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"string\", input: text, reversed, length: text.length }, the value produced after String Duplicates's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"string\", input: text, reversed, length: text.length }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -150,7 +150,7 @@ export const algorithmPage = {
         "title": "Read string input",
         "note": "The code receives text, pattern, or character data.",
         "ruleLabel": "String Duplicates invariant",
-        "rule": "Stores text so the algorithm can reuse this value without recomputing it.",
+        "rule": "Defines stringDuplicates as the runnable entry point for this lesson.",
         "activeRange": [
           0,
           2
@@ -174,7 +174,7 @@ export const algorithmPage = {
         "title": "Update on current char",
         "note": "One character changes the active string state.",
         "ruleLabel": "String Duplicates invariant",
-        "rule": "Executes this String Duplicates line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"string\", input: text, reversed, length: text.length }, exposing the exact fields the visualizer has been tracking.",
         "activeRange": [
           2,
           4
@@ -186,7 +186,7 @@ export const algorithmPage = {
         "title": "Return string answer",
         "note": "Matches or best values are returned after the scan.",
         "ruleLabel": "String Duplicates invariant",
-        "rule": "Returns { structure: \"string\", input: text, reversed, length: text.length }, the value produced after String Duplicates's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"string\", input: text, reversed, length: text.length }, exposing the exact fields the visualizer has been tracking.",
         "activeRange": [
           3,
           5

@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 6,
-      "codeInsight": "Creates order as empty working state; later lines add and remove values from it."
+      "activeLine": 5,
+      "codeInsight": "Defines matrixTraversal and names the input matrix; edits to those inputs change the visual state and output."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Matrix Traversal line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines matrixTraversal and names the input matrix; edits to those inputs change the visual state and output."
     },
     {
       "label": "Move/update",
       "title": "Apply neighbor or boundary rule",
       "note": "The transition changes reachable cells, boundaries, or accumulated values.",
       "activeLine": 7,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Runs the counted loop (let row = 0; row < matrix.length; row += 1) so each visual step follows one code-controlled iteration."
     },
     {
       "label": "Result",
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
       "activeLine": 10,
-      "codeInsight": "Returns order, the value produced after Matrix Traversal's state changes are complete."
+      "codeInsight": "Returns order, the final value maintained by Matrix Traversal's code path."
     }
   ],
   "complexity": {
@@ -171,7 +171,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Matrix Traversal invariant",
-        "rule": "Creates order as empty working state; later lines add and remove values from it.",
+        "rule": "Defines matrixTraversal and names the input matrix; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -190,7 +190,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Matrix Traversal invariant",
-        "rule": "Executes this Matrix Traversal line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines matrixTraversal and names the input matrix; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -213,7 +213,7 @@ export const algorithmPage = {
         "title": "Apply neighbor or boundary rule",
         "note": "The transition changes reachable cells, boundaries, or accumulated values.",
         "ruleLabel": "Matrix Traversal invariant",
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
+        "rule": "Runs the counted loop (let row = 0; row < matrix.length; row += 1) so each visual step follows one code-controlled iteration.",
         "activeCells": [
           [
             1,
@@ -240,7 +240,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Matrix Traversal invariant",
-        "rule": "Returns order, the value produced after Matrix Traversal's state changes are complete.",
+        "rule": "Returns order, the final value maintained by Matrix Traversal's code path.",
         "activeCells": [
           [
             1,

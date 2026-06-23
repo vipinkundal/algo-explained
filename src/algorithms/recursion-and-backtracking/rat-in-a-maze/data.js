@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 6,
-      "codeInsight": "Stores n so the algorithm can reuse this value without recomputing it."
+      "activeLine": 5,
+      "codeInsight": "Defines ratInAMaze and names the input maze; edits to those inputs change the visual state and output."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Rat in a Maze line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines ratInAMaze and names the input maze; edits to those inputs change the visual state and output."
     },
     {
       "label": "Move/update",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
       "activeLine": 13,
-      "codeInsight": "Executes this Rat in a Maze line as part of the highlighted code path, linking the visual step to the implementation."
+      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
     }
   ],
   "complexity": {
@@ -163,7 +163,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Rat in a Maze invariant",
-        "rule": "Stores n so the algorithm can reuse this value without recomputing it.",
+        "rule": "Defines ratInAMaze and names the input maze; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Rat in a Maze invariant",
-        "rule": "Executes this Rat in a Maze line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines ratInAMaze and names the input maze; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -232,7 +232,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Rat in a Maze invariant",
-        "rule": "Executes this Rat in a Maze line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns from this branch immediately because the current recursive or conditional state is complete.",
         "activeCells": [
           [
             1,

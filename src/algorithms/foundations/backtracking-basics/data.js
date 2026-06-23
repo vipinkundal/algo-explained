@@ -68,30 +68,30 @@ export const algorithmPage = {
     {
       "label": "Base",
       "title": "Check stop condition",
-      "note": "The code first asks whether the current state is complete.",
-      "activeLine": 1,
-      "codeInsight": "Executes this Backtracking Basics line as part of the highlighted code path, linking the visual step to the implementation."
+      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "activeLine": 5,
+      "codeInsight": "Defines backtrackingBasics and names the input choices; edits to those inputs change the visual state and output."
     },
     {
       "label": "Choice",
       "title": "Select next option",
       "note": "One valid move is added to the state.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Backtracking Basics's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines backtrackingBasics and names the input choices; edits to those inputs change the visual state and output."
     },
     {
       "label": "Call",
       "title": "Recurse deeper",
       "note": "The same rule runs on a smaller or extended state.",
       "activeLine": 6,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "codeInsight": "Prepares values from the sample collection that the next visual step inspects."
     },
     {
       "label": "Unwind",
       "title": "Return or backtrack",
       "note": "The result is combined or the choice is removed.",
       "activeLine": 13,
-      "codeInsight": "Executes this Backtracking Basics line as part of the highlighted code path, linking the visual step to the implementation."
+      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
     }
   ],
   "complexity": {
@@ -199,9 +199,9 @@ export const algorithmPage = {
       {
         "phase": "Base",
         "title": "Check stop condition",
-        "note": "The code first asks whether the current state is complete.",
+        "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
         "ruleLabel": "Backtracking Basics invariant",
-        "rule": "Executes this Backtracking Basics line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines backtrackingBasics and names the input choices; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -216,7 +216,7 @@ export const algorithmPage = {
         "title": "Select next option",
         "note": "One valid move is added to the state.",
         "ruleLabel": "Backtracking Basics invariant",
-        "rule": "This blank line separates Backtracking Basics's setup from the next code block.",
+        "rule": "Defines backtrackingBasics and names the input choices; edits to those inputs change the visual state and output.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -231,7 +231,7 @@ export const algorithmPage = {
         "title": "Recurse deeper",
         "note": "The same rule runs on a smaller or extended state.",
         "ruleLabel": "Backtracking Basics invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Prepares values from the sample collection that the next visual step inspects.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -242,7 +242,7 @@ export const algorithmPage = {
         "title": "Return or backtrack",
         "note": "The result is combined or the choice is removed.",
         "ruleLabel": "Backtracking Basics invariant",
-        "rule": "Executes this Backtracking Basics line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns from this branch immediately because the current recursive or conditional state is complete.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

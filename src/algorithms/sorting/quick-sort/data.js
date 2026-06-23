@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Pivot",
       "title": "Choose pivot value",
       "note": "The pivot defines the partition rule.",
-      "activeLine": 1,
-      "codeInsight": "Executes this Quick Sort line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 12,
+      "codeInsight": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state."
     },
     {
       "label": "Scan",
       "title": "Move values by pivot",
       "note": "Values are compared with the pivot.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Quick Sort's setup from the next code block."
+      "activeLine": 12,
+      "codeInsight": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state."
     },
     {
       "label": "Place",
       "title": "Fix pivot index",
       "note": "The pivot lands between smaller and larger values.",
-      "activeLine": 8,
-      "codeInsight": "Returns values, the value produced after Quick Sort's state changes are complete."
+      "activeLine": 12,
+      "codeInsight": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state."
     },
     {
       "label": "Recurse",
       "title": "Sort both sides",
       "note": "The same partition rule handles each side.",
       "activeLine": 11,
-      "codeInsight": "Executes this Quick Sort line as part of the highlighted code path, linking the visual step to the implementation."
+      "codeInsight": "Defines helper partitionSort with values, low, high, separating the repeated recursive or structural work from the public entry point."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Choose pivot value",
         "note": "The pivot defines the partition rule.",
         "ruleLabel": "Quick Sort invariant",
-        "rule": "Executes this Quick Sort line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state.",
         "activeIndices": [
           0
         ],
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Move values by pivot",
         "note": "Values are compared with the pivot.",
         "ruleLabel": "Quick Sort invariant",
-        "rule": "This blank line separates Quick Sort's setup from the next code block.",
+        "rule": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state.",
         "activeIndices": [
           1,
           2
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Fix pivot index",
         "note": "The pivot lands between smaller and larger values.",
         "ruleLabel": "Quick Sort invariant",
-        "rule": "Returns values, the value produced after Quick Sort's state changes are complete.",
+        "rule": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state.",
         "activeIndices": [
           2
         ],
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Sort both sides",
         "note": "The same partition rule handles each side.",
         "ruleLabel": "Quick Sort invariant",
-        "rule": "Executes this Quick Sort line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines helper partitionSort with values, low, high, separating the repeated recursive or structural work from the public entry point.",
         "activeIndices": [
           3,
           3

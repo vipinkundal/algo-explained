@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 6,
-      "codeInsight": "Initializes dist, the local state that the next highlighted lines will update."
+      "activeLine": 5,
+      "codeInsight": "Defines floydWarshall and names the input matrix; edits to those inputs change the visual state and output."
     },
     {
       "label": "Distance Table",
       "title": "Initialize distance table",
       "note": "Only the graph state owned by this algorithm is created.",
       "activeLine": 6,
-      "codeInsight": "Initializes dist, the local state that the next highlighted lines will update."
+      "codeInsight": "Prepares dist from the sample collection that the next visual step inspects."
     },
     {
       "label": "Work item",
       "title": "Process next vertex or edge",
       "note": "Relax outgoing edges when a better distance is found.",
       "activeLine": 6,
-      "codeInsight": "Initializes dist, the local state that the next highlighted lines will update."
+      "codeInsight": "Prepares dist from the sample collection that the next visual step inspects."
     },
     {
       "label": "Shortest Path Relaxation",
       "title": "Return shortest-path relaxation",
       "note": "The final graph state becomes the answer.",
       "activeLine": 14,
-      "codeInsight": "Returns dist, the value produced after Floyd-Warshall Algorithm's state changes are complete."
+      "codeInsight": "Returns dist, the final value maintained by Floyd-Warshall Algorithm's code path."
     }
   ],
   "complexity": {
@@ -136,53 +136,26 @@ export const algorithmPage = {
     ]
   ],
   "animation": {
-    "type": "graph-flow",
-    "title": "Floyd-Warshall Algorithm graph state",
-    "ruleLabel": "Graph invariant",
+    "type": "matrix-flow",
+    "title": "Floyd-Warshall Algorithm matrix state",
+    "ruleLabel": "Grid rule",
     "rule": "Each step consumes one vertex or edge and updates distance table without losing the graph invariant.",
-    "nodes": [
-      {
-        "id": "A",
-        "label": "A",
-        "x": 110,
-        "y": 150
-      },
-      {
-        "id": "B",
-        "label": "B",
-        "x": 300,
-        "y": 75
-      },
-      {
-        "id": "C",
-        "label": "C",
-        "x": 500,
-        "y": 150
-      },
-      {
-        "id": "D",
-        "label": "D",
-        "x": 300,
-        "y": 235
-      }
-    ],
-    "edges": [
-      {
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "from": "D",
-        "to": "C"
-      }
+    "matrix": [
+      [
+        0,
+        3,
+        999
+      ],
+      [
+        999,
+        0,
+        1
+      ],
+      [
+        2,
+        999,
+        0
+      ]
     ],
     "steps": [
       {
@@ -190,73 +163,100 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "Initializes dist, the local state that the next highlighted lines will update.",
-        "activeNode": "A",
-        "visitedNodes": [],
-        "frontierNodes": [
-          "B"
+        "rule": "Defines floydWarshall and names the input matrix; edits to those inputs change the visual state and output.",
+        "activeCells": [
+          [
+            0,
+            0
+          ]
         ],
-        "activeEdge": {
-          "from": "A",
-          "to": "B"
-        }
+        "visitedCells": [
+          [
+            0,
+            0
+          ]
+        ]
       },
       {
         "phase": "Distance Table",
         "title": "Initialize distance table",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "Initializes dist, the local state that the next highlighted lines will update.",
-        "activeNode": "B",
-        "visitedNodes": [
-          "A"
+        "rule": "Prepares dist from the sample collection that the next visual step inspects.",
+        "activeCells": [
+          [
+            0,
+            1
+          ]
         ],
-        "frontierNodes": [
-          "C"
-        ],
-        "activeEdge": {
-          "from": "B",
-          "to": "C"
-        }
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
       },
       {
         "phase": "Work item",
         "title": "Process next vertex or edge",
         "note": "Relax outgoing edges when a better distance is found.",
         "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "Initializes dist, the local state that the next highlighted lines will update.",
-        "activeNode": "C",
-        "visitedNodes": [
-          "A",
-          "B"
+        "rule": "Prepares dist from the sample collection that the next visual step inspects.",
+        "activeCells": [
+          [
+            0,
+            2
+          ]
         ],
-        "frontierNodes": [
-          "D"
-        ],
-        "activeEdge": {
-          "from": "C",
-          "to": "D"
-        }
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
       },
       {
         "phase": "Shortest Path Relaxation",
         "title": "Return shortest-path relaxation",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "Returns dist, the value produced after Floyd-Warshall Algorithm's state changes are complete.",
-        "activeNode": "D",
-        "visitedNodes": [
-          "A",
-          "B",
-          "C"
+        "rule": "Returns dist, the final value maintained by Floyd-Warshall Algorithm's code path.",
+        "activeCells": [
+          [
+            1,
+            0
+          ]
         ],
-        "frontierNodes": [
-          "A"
-        ],
-        "activeEdge": {
-          "from": "D",
-          "to": "A"
-        }
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            0
+          ]
+        ]
       }
     ]
   }

@@ -62,30 +62,30 @@ export const algorithmPage = {
     {
       "label": "Base",
       "title": "Check stop condition",
-      "note": "The code first asks whether the current state is complete.",
-      "activeLine": 1,
-      "codeInsight": "Executes this Sudoku Solver line as part of the highlighted code path, linking the visual step to the implementation."
+      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "activeLine": 5,
+      "codeInsight": "Defines sudokuSolver and names the input board; edits to those inputs change the visual state and output."
     },
     {
       "label": "Choice",
       "title": "Select next option",
       "note": "One valid move is added to the state.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Sudoku Solver's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines sudokuSolver and names the input board; edits to those inputs change the visual state and output."
     },
     {
       "label": "Call",
       "title": "Recurse deeper",
       "note": "The same rule runs on a smaller or extended state.",
       "activeLine": 6,
-      "codeInsight": "Initializes grid, the local state that the next highlighted lines will update."
+      "codeInsight": "Prepares grid from the sample collection that the next visual step inspects."
     },
     {
       "label": "Unwind",
       "title": "Return or backtrack",
       "note": "The result is combined or the choice is removed.",
       "activeLine": 14,
-      "codeInsight": "Returns true, the value produced after Sudoku Solver's state changes are complete."
+      "codeInsight": "Returns true, the boolean result reached by the highlighted checks."
     }
   ],
   "complexity": {
@@ -254,9 +254,9 @@ export const algorithmPage = {
       {
         "phase": "Base",
         "title": "Check stop condition",
-        "note": "The code first asks whether the current state is complete.",
+        "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
         "ruleLabel": "Sudoku Solver invariant",
-        "rule": "Executes this Sudoku Solver line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines sudokuSolver and names the input board; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -275,7 +275,7 @@ export const algorithmPage = {
         "title": "Select next option",
         "note": "One valid move is added to the state.",
         "ruleLabel": "Sudoku Solver invariant",
-        "rule": "This blank line separates Sudoku Solver's setup from the next code block.",
+        "rule": "Defines sudokuSolver and names the input board; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -298,7 +298,7 @@ export const algorithmPage = {
         "title": "Recurse deeper",
         "note": "The same rule runs on a smaller or extended state.",
         "ruleLabel": "Sudoku Solver invariant",
-        "rule": "Initializes grid, the local state that the next highlighted lines will update.",
+        "rule": "Prepares grid from the sample collection that the next visual step inspects.",
         "activeCells": [
           [
             0,
@@ -325,7 +325,7 @@ export const algorithmPage = {
         "title": "Return or backtrack",
         "note": "The result is combined or the choice is removed.",
         "ruleLabel": "Sudoku Solver invariant",
-        "rule": "Returns true, the value produced after Sudoku Solver's state changes are complete.",
+        "rule": "Returns true, the boolean result reached by the highlighted checks.",
         "activeCells": [
           [
             0,

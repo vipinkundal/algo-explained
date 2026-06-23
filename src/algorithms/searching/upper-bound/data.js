@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Sorted input",
       "title": "Read the ordered search space",
       "note": "The code starts from a range where binary decisions are valid.",
-      "activeLine": 6,
-      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
+      "activeLine": 5,
+      "codeInsight": "Defines upperBound and names the input array, target; edits to those inputs change the visual state and output."
     },
     {
       "label": "low / high",
@@ -78,14 +78,14 @@ export const algorithmPage = {
       "title": "Compare the midpoint",
       "note": "The midpoint decides which half is removed.",
       "activeLine": 10,
-      "codeInsight": "Checks array[mid] <= target; only the branch that preserves Upper Bound's invariant is allowed to change state."
+      "codeInsight": "When array[mid] <= target is true, low = mid + 1; the animation should show that branch's state update immediately."
     },
     {
       "label": "Return",
       "title": "Emit index or boundary",
       "note": "The loop ends with a match or the collapsed boundary.",
       "activeLine": 13,
-      "codeInsight": "Returns low, the value produced after Upper Bound's state changes are complete."
+      "codeInsight": "Returns low, the final value maintained by Upper Bound's code path."
     }
   ],
   "complexity": {
@@ -142,7 +142,7 @@ export const algorithmPage = {
         "title": "Read the ordered search space",
         "note": "The code starts from a range where binary decisions are valid.",
         "ruleLabel": "Upper Bound invariant",
-        "rule": "Initializes low as mutable state; later branches update it as the search window or traversal changes.",
+        "rule": "Defines upperBound and names the input array, target; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -179,7 +179,7 @@ export const algorithmPage = {
         "title": "Compare the midpoint",
         "note": "The midpoint decides which half is removed.",
         "ruleLabel": "Upper Bound invariant",
-        "rule": "Checks array[mid] <= target; only the branch that preserves Upper Bound's invariant is allowed to change state.",
+        "rule": "When array[mid] <= target is true, low = mid + 1; the animation should show that branch's state update immediately.",
         "activeIndices": [
           2
         ],
@@ -197,7 +197,7 @@ export const algorithmPage = {
         "title": "Emit index or boundary",
         "note": "The loop ends with a match or the collapsed boundary.",
         "ruleLabel": "Upper Bound invariant",
-        "rule": "Returns low, the value produced after Upper Bound's state changes are complete.",
+        "rule": "Returns low, the final value maintained by Upper Bound's code path.",
         "activeIndices": [
           3,
           3

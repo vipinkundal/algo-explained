@@ -73,28 +73,28 @@ export const algorithmPage = {
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
       "activeLine": 3,
-      "codeInsight": "Initializes matrix, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
       "activeLine": 3,
-      "codeInsight": "Initializes matrix, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "State change",
       "title": "Update the state described by this algorithm",
       "note": "Only the necessary algorithm state fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Executes this Sparse Matrix line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, the value produced after Sparse Matrix's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -165,7 +165,7 @@ export const algorithmPage = {
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Sparse Matrix invariant",
-        "rule": "Initializes matrix, the local state that the next highlighted lines will update.",
+        "rule": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeCells": [
           [
             0,
@@ -184,7 +184,7 @@ export const algorithmPage = {
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "Sparse Matrix invariant",
-        "rule": "Initializes matrix, the local state that the next highlighted lines will update.",
+        "rule": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeCells": [
           [
             0,
@@ -207,7 +207,7 @@ export const algorithmPage = {
         "title": "Update the state described by this algorithm",
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "Sparse Matrix invariant",
-        "rule": "Executes this Sparse Matrix line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking.",
         "activeCells": [
           [
             0,
@@ -234,7 +234,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Sparse Matrix invariant",
-        "rule": "Returns { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, the value produced after Sparse Matrix's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking.",
         "activeCells": [
           [
             1,

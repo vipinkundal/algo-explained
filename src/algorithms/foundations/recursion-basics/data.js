@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Stack",
       "title": "Read stack action",
       "note": "The code receives the next value or command.",
-      "activeLine": 6,
-      "codeInsight": "Initializes input, the local state that the next highlighted lines will update."
+      "activeLine": 5,
+      "codeInsight": "Defines recursionBasics and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Stack top",
       "title": "Inspect stack",
       "note": "The active state must still satisfy last-in, first-out state.",
       "activeLine": 6,
-      "codeInsight": "Initializes input, the local state that the next highlighted lines will update."
+      "codeInsight": "Prepares input from the sample collection that the next visual step inspects."
     },
     {
       "label": "Push / pop",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 11,
-      "codeInsight": "Executes this Recursion Basics line as part of the highlighted code path, linking the visual step to the implementation."
+      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
     }
   ],
   "complexity": {
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Read stack action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Recursion Basics invariant",
-        "rule": "Initializes input, the local state that the next highlighted lines will update.",
+        "rule": "Defines recursionBasics and names the input values; edits to those inputs change the visual state and output.",
         "activeCall": 0,
         "returningCalls": []
       },
@@ -170,7 +170,7 @@ export const algorithmPage = {
         "title": "Inspect stack",
         "note": "The active state must still satisfy last-in, first-out state.",
         "ruleLabel": "Recursion Basics invariant",
-        "rule": "Initializes input, the local state that the next highlighted lines will update.",
+        "rule": "Prepares input from the sample collection that the next visual step inspects.",
         "activeCall": 1,
         "returningCalls": []
       },
@@ -188,7 +188,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Recursion Basics invariant",
-        "rule": "Executes this Recursion Basics line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns from this branch immediately because the current recursive or conditional state is complete.",
         "activeCall": 3,
         "returningCalls": [
           0,

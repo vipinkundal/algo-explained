@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 24,
-      "codeInsight": "Returns output, the value produced after LRU Cache's state changes are complete."
+      "codeInsight": "Returns output, the final value maintained by LRU Cache's code path."
     }
   ],
   "complexity": {
@@ -145,34 +145,30 @@ export const algorithmPage = {
     ]
   ],
   "animation": {
-    "type": "stack-queue-flow",
-    "title": "LRU Cache queue state",
-    "ruleLabel": "queue rule",
+    "type": "linked-list-flow",
+    "title": "LRU Cache pointer state",
+    "ruleLabel": "Pointer rule",
     "rule": "Each step changes only the part of the queue required to preserve the invariant.",
-    "orientation": "queue",
-    "items": [
+    "nodes": [
       {
-        "type": "put",
-        "key": 1,
-        "value": 1
+        "id": "head",
+        "label": "head",
+        "role": "head"
       },
       {
-        "type": "put",
-        "key": 2,
-        "value": 2
+        "id": "n2",
+        "label": "12",
+        "role": "node 2"
       },
       {
-        "type": "get",
-        "key": 1
+        "id": "n3",
+        "label": "18",
+        "role": "node 3"
       },
       {
-        "type": "put",
-        "key": 3,
-        "value": 3
-      },
-      {
-        "type": "get",
-        "key": 2
+        "id": "tail",
+        "label": "tail",
+        "role": "tail"
       }
     ],
     "steps": [
@@ -182,14 +178,9 @@ export const algorithmPage = {
         "note": "The code receives the next value or command.",
         "ruleLabel": "LRU Cache invariant",
         "rule": "Defines lruCache and names the input capacity, operations; edits to those inputs change the visual state and output.",
-        "activeItems": [
-          0
-        ],
-        "topIndex": 0,
-        "queueWindow": [
-          0,
-          0
-        ]
+        "activeNode": "head",
+        "previousNode": "head",
+        "nextNode": "n2"
       },
       {
         "phase": "Queue front",
@@ -197,14 +188,9 @@ export const algorithmPage = {
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "LRU Cache invariant",
         "rule": "Creates cache for fast membership or lookup checks while the scan runs.",
-        "activeItems": [
-          1
-        ],
-        "topIndex": 0,
-        "queueWindow": [
-          0,
-          1
-        ]
+        "activeNode": "n2",
+        "previousNode": "head",
+        "nextNode": "n3"
       },
       {
         "phase": "Enqueue / dequeue",
@@ -212,29 +198,19 @@ export const algorithmPage = {
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "LRU Cache invariant",
         "rule": "Creates cache for fast membership or lookup checks while the scan runs.",
-        "activeItems": [
-          2
-        ],
-        "topIndex": 0,
-        "queueWindow": [
-          0,
-          2
-        ]
+        "activeNode": "n3",
+        "previousNode": "n2",
+        "nextNode": "tail"
       },
       {
         "phase": "Result",
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "LRU Cache invariant",
-        "rule": "Returns output, the value produced after LRU Cache's state changes are complete.",
-        "activeItems": [
-          3
-        ],
-        "topIndex": 0,
-        "queueWindow": [
-          0,
-          3
-        ]
+        "rule": "Returns output, the final value maintained by LRU Cache's code path.",
+        "activeNode": "tail",
+        "previousNode": "n3",
+        "nextNode": "tail"
       }
     ]
   }

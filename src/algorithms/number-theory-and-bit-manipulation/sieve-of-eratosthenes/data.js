@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 6,
-      "codeInsight": "Prepares prime with a default value so unresolved positions already have the correct fallback answer."
+      "activeLine": 5,
+      "codeInsight": "Defines sieveOfEratosthenes and names the input limit; edits to those inputs change the visual state and output."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Sieve of Eratosthenes line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines sieveOfEratosthenes and names the input limit; edits to those inputs change the visual state and output."
     },
     {
       "label": "Move/update",
       "title": "Apply neighbor or boundary rule",
       "note": "The transition changes reachable cells, boundaries, or accumulated values.",
       "activeLine": 8,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Runs the counted loop (let value = 2; value * value <= limit; value += 1) so each visual step follows one code-controlled iteration."
     },
     {
       "label": "Result",
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
       "activeLine": 14,
-      "codeInsight": "Returns result, the value produced after Sieve of Eratosthenes's state changes are complete."
+      "codeInsight": "Returns result, the final value maintained by Sieve of Eratosthenes's code path."
     }
   ],
   "complexity": {
@@ -147,7 +147,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Sieve of Eratosthenes invariant",
-        "rule": "Prepares prime with a default value so unresolved positions already have the correct fallback answer.",
+        "rule": "Defines sieveOfEratosthenes and names the input limit; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -166,7 +166,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Sieve of Eratosthenes invariant",
-        "rule": "Executes this Sieve of Eratosthenes line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines sieveOfEratosthenes and names the input limit; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -189,7 +189,7 @@ export const algorithmPage = {
         "title": "Apply neighbor or boundary rule",
         "note": "The transition changes reachable cells, boundaries, or accumulated values.",
         "ruleLabel": "Sieve of Eratosthenes invariant",
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
+        "rule": "Runs the counted loop (let value = 2; value * value <= limit; value += 1) so each visual step follows one code-controlled iteration.",
         "activeCells": [
           [
             0,
@@ -216,7 +216,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Sieve of Eratosthenes invariant",
-        "rule": "Returns result, the value produced after Sieve of Eratosthenes's state changes are complete.",
+        "rule": "Returns result, the final value maintained by Sieve of Eratosthenes's code path.",
         "activeCells": [
           [
             1,

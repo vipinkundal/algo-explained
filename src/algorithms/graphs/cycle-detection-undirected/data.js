@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 13,
-      "codeInsight": "Returns false, the value produced after Cycle Detection in Undirected Graph's state changes are complete."
+      "codeInsight": "Returns false, the boolean result reached by the highlighted checks."
     }
   ],
   "complexity": {
@@ -240,7 +240,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Cycle Detection in Undirected Graph invariant",
-        "rule": "Returns false, the value produced after Cycle Detection in Undirected Graph's state changes are complete.",
+        "rule": "Returns false, the boolean result reached by the highlighted checks.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

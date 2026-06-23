@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Text",
       "title": "Read string input",
       "note": "The code receives text, pattern, or character data.",
-      "activeLine": 6,
-      "codeInsight": "Creates matches as empty working state; later lines add and remove values from it."
+      "activeLine": 5,
+      "codeInsight": "Defines rabinKarp and names the input text, pattern; edits to those inputs change the visual state and output."
     },
     {
       "label": "Helper",
       "title": "Prepare string state",
       "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
       "activeLine": 6,
-      "codeInsight": "Creates matches as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds matches with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Character",
       "title": "Update on current char",
       "note": "One character changes the active string state.",
       "activeLine": 8,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Runs the counted loop (let index = 0; index <= text.length - size; index += 1) so each visual step follows one code-controlled iteration."
     },
     {
       "label": "Result",
       "title": "Return string answer",
       "note": "Matches or best values are returned after the scan.",
       "activeLine": 11,
-      "codeInsight": "Returns matches, the value produced after Rabin-Karp Algorithm's state changes are complete."
+      "codeInsight": "Returns matches, the final value maintained by Rabin-Karp Algorithm's code path."
     }
   ],
   "complexity": {
@@ -133,7 +133,7 @@ export const algorithmPage = {
         "title": "Read string input",
         "note": "The code receives text, pattern, or character data.",
         "ruleLabel": "Rabin-Karp Algorithm invariant",
-        "rule": "Creates matches as empty working state; later lines add and remove values from it.",
+        "rule": "Defines rabinKarp and names the input text, pattern; edits to those inputs change the visual state and output.",
         "activeRange": [
           0,
           3
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Prepare string state",
         "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
         "ruleLabel": "Rabin-Karp Algorithm invariant",
-        "rule": "Creates matches as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds matches with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeRange": [
           1,
           4
@@ -157,7 +157,7 @@ export const algorithmPage = {
         "title": "Update on current char",
         "note": "One character changes the active string state.",
         "ruleLabel": "Rabin-Karp Algorithm invariant",
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
+        "rule": "Runs the counted loop (let index = 0; index <= text.length - size; index += 1) so each visual step follows one code-controlled iteration.",
         "activeRange": [
           2,
           5
@@ -169,7 +169,7 @@ export const algorithmPage = {
         "title": "Return string answer",
         "note": "Matches or best values are returned after the scan.",
         "ruleLabel": "Rabin-Karp Algorithm invariant",
-        "rule": "Returns matches, the value produced after Rabin-Karp Algorithm's state changes are complete.",
+        "rule": "Returns matches, the final value maintained by Rabin-Karp Algorithm's code path.",
         "activeRange": [
           3,
           6

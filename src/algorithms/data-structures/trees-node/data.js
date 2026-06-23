@@ -80,21 +80,21 @@ export const algorithmPage = {
       "title": "Read balance invariant",
       "note": "The current node controls the next step.",
       "activeLine": 3,
-      "codeInsight": "Initializes tree, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds tree as a structured sample object that the tree, graph, or map visualizer can render directly."
     },
     {
       "label": "Child step",
       "title": "Rotate or recolor when height/color rules are violated",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 5,
-      "codeInsight": "Executes this Binary Tree Node line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 4,
+      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 4,
-      "codeInsight": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Node's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -231,7 +231,7 @@ export const algorithmPage = {
         "title": "Read balance invariant",
         "note": "The current node controls the next step.",
         "ruleLabel": "Binary Tree Node invariant",
-        "rule": "Initializes tree, the local state that the next highlighted lines will update.",
+        "rule": "Builds tree as a structured sample object that the tree, graph, or map visualizer can render directly.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -246,7 +246,7 @@ export const algorithmPage = {
         "title": "Rotate or recolor when height/color rules are violated",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "Binary Tree Node invariant",
-        "rule": "Executes this Binary Tree Node line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -257,7 +257,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Binary Tree Node invariant",
-        "rule": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Node's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

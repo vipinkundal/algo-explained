@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 3,
-      "codeInsight": "Initializes matrix, the local state that the next highlighted lines will update."
+      "activeLine": 2,
+      "codeInsight": "Defines sparseMatrixSparseMatrixUsingCCpp as the runnable entry point for this lesson."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
       "activeLine": 3,
-      "codeInsight": "Initializes matrix, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Move/update",
       "title": "Apply neighbor or boundary rule",
       "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 6,
-      "codeInsight": "Executes this Sparse Matrix Using C++ line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Result",
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, the value produced after Sparse Matrix Using C++'s state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -165,7 +165,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Sparse Matrix Using C++ invariant",
-        "rule": "Initializes matrix, the local state that the next highlighted lines will update.",
+        "rule": "Defines sparseMatrixSparseMatrixUsingCCpp as the runnable entry point for this lesson.",
         "activeCells": [
           [
             0,
@@ -184,7 +184,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Sparse Matrix Using C++ invariant",
-        "rule": "Initializes matrix, the local state that the next highlighted lines will update.",
+        "rule": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeCells": [
           [
             0,
@@ -207,7 +207,7 @@ export const algorithmPage = {
         "title": "Apply neighbor or boundary rule",
         "note": "The transition changes reachable cells, boundaries, or accumulated values.",
         "ruleLabel": "Sparse Matrix Using C++ invariant",
-        "rule": "Executes this Sparse Matrix Using C++ line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking.",
         "activeCells": [
           [
             0,
@@ -234,7 +234,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Sparse Matrix Using C++ invariant",
-        "rule": "Returns { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, the value produced after Sparse Matrix Using C++'s state changes are complete.",
+        "rule": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking.",
         "activeCells": [
           [
             1,

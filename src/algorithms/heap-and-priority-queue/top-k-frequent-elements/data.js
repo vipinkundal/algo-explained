@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 8,
-      "codeInsight": "Returns [...frequency.entries()].sort((a, b) => b[1] - a[1]).slice(0, k).map(([value]) => value), the value produced after Top K Frequent Elements's state changes are complete."
+      "codeInsight": "Returns the final array-style answer [...frequency.entries()].sort((a, b) => b[1] - a[1]).slice(0, k).map(([value]) => value), so the last frame should show the chosen positions or sequence."
     }
   ],
   "complexity": {
@@ -247,7 +247,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Top K Frequent Elements invariant",
-        "rule": "Returns [...frequency.entries()].sort((a, b) => b[1] - a[1]).slice(0, k).map(([value]) => value), the value produced after Top K Frequent Elements's state changes are complete.",
+        "rule": "Returns the final array-style answer [...frequency.entries()].sort((a, b) => b[1] - a[1]).slice(0, k).map(([value]) => value), so the last frame should show the chosen positions or sequence.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

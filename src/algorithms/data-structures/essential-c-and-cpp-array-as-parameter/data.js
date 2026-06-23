@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Declaration",
       "title": "Create program value",
       "note": "The code introduces the variable, pointer, structure, or object.",
-      "activeLine": 1,
-      "codeInsight": "Executes this C/C++ Array As Parameter line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 2,
+      "codeInsight": "Defines essentialCAndCppArrayAsParameter as the runnable entry point for this lesson."
     },
     {
       "label": "Storage",
       "title": "Track address or copy",
       "note": "Passing by value, pointer, or reference controls what can change.",
       "activeLine": 4,
-      "codeInsight": "Stores sum so the algorithm can reuse this value without recomputing it."
+      "codeInsight": "Computes sum by reducing the current values, matching the aggregate shown in the result state."
     },
     {
       "label": "C/C++ rule",
       "title": "Apply C/C++ rule",
       "note": "Assignment, dereference, member access, or method call changes the state.",
-      "activeLine": 6,
-      "codeInsight": "Executes this C/C++ Array As Parameter line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Result",
       "title": "Read final value",
       "note": "The visible output follows from the memory model.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after C/C++ Array As Parameter's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -156,7 +156,7 @@ export const algorithmPage = {
         "title": "Create program value",
         "note": "The code introduces the variable, pointer, structure, or object.",
         "ruleLabel": "C/C++ Array As Parameter invariant",
-        "rule": "Executes this C/C++ Array As Parameter line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines essentialCAndCppArrayAsParameter as the runnable entry point for this lesson.",
         "activeIndices": [
           0
         ],
@@ -174,7 +174,7 @@ export const algorithmPage = {
         "title": "Track address or copy",
         "note": "Passing by value, pointer, or reference controls what can change.",
         "ruleLabel": "C/C++ Array As Parameter invariant",
-        "rule": "Stores sum so the algorithm can reuse this value without recomputing it.",
+        "rule": "Computes sum by reducing the current values, matching the aggregate shown in the result state.",
         "activeIndices": [
           1,
           2
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Apply C/C++ rule",
         "note": "Assignment, dereference, member access, or method call changes the state.",
         "ruleLabel": "C/C++ Array As Parameter invariant",
-        "rule": "Executes this C/C++ Array As Parameter line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking.",
         "activeIndices": [
           2
         ],
@@ -216,7 +216,7 @@ export const algorithmPage = {
         "title": "Read final value",
         "note": "The visible output follows from the memory model.",
         "ruleLabel": "C/C++ Array As Parameter invariant",
-        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after C/C++ Array As Parameter's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking.",
         "activeIndices": [
           3,
           4

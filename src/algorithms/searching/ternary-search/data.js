@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 12,
-      "codeInsight": "Returns (low + high) / 2, the value produced after Ternary Search's state changes are complete."
+      "codeInsight": "Returns (low + high) / 2, the final value maintained by Ternary Search's code path."
     }
   ],
   "complexity": {
@@ -195,7 +195,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Ternary Search invariant",
-        "rule": "Returns (low + high) / 2, the value produced after Ternary Search's state changes are complete.",
+        "rule": "Returns (low + high) / 2, the final value maintained by Ternary Search's code path.",
         "activeIndices": [
           3,
           4

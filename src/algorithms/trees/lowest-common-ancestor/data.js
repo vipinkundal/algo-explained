@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 10,
-      "codeInsight": "Returns left !== null ? left : right, the value produced after Lowest Common Ancestor's state changes are complete."
+      "codeInsight": "Returns left !== null ? left : right, the final value maintained by Lowest Common Ancestor's code path."
     }
   ],
   "complexity": {
@@ -261,7 +261,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Lowest Common Ancestor invariant",
-        "rule": "Returns left !== null ? left : right, the value produced after Lowest Common Ancestor's state changes are complete.",
+        "rule": "Returns left !== null ? left : right, the final value maintained by Lowest Common Ancestor's code path.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

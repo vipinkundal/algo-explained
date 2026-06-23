@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this GCD / Euclidean Algorithm line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines gcdEuclidean and names the input a, b; edits to those inputs change the visual state and output."
     },
     {
       "label": "Reduction",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
       "activeLine": 9,
-      "codeInsight": "Returns x, the value produced after GCD / Euclidean Algorithm's state changes are complete."
+      "codeInsight": "Returns x, the final value maintained by GCD / Euclidean Algorithm's code path."
     }
   ],
   "complexity": {
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "GCD / Euclidean Algorithm invariant",
-        "rule": "Executes this GCD / Euclidean Algorithm line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines gcdEuclidean and names the input a, b; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "GCD / Euclidean Algorithm invariant",
-        "rule": "Returns x, the value produced after GCD / Euclidean Algorithm's state changes are complete.",
+        "rule": "Returns x, the final value maintained by GCD / Euclidean Algorithm's code path.",
         "activeState": 3
       }
     ]

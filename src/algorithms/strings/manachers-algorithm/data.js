@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Text",
       "title": "Read string input",
       "note": "The code receives text, pattern, or character data.",
-      "activeLine": 6,
-      "codeInsight": "Initializes best as mutable state; later branches update it as the search window or traversal changes."
+      "activeLine": 5,
+      "codeInsight": "Defines manachersAlgorithm and names the input text; edits to those inputs change the visual state and output."
     },
     {
       "label": "Helper",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return string answer",
       "note": "Matches or best values are returned after the scan.",
       "activeLine": 19,
-      "codeInsight": "Returns best, the value produced after Manacher’s Algorithm's state changes are complete."
+      "codeInsight": "Returns best, the final value maintained by Manacher’s Algorithm's code path."
     }
   ],
   "complexity": {
@@ -132,7 +132,7 @@ export const algorithmPage = {
         "title": "Read string input",
         "note": "The code receives text, pattern, or character data.",
         "ruleLabel": "Manacher’s Algorithm invariant",
-        "rule": "Initializes best as mutable state; later branches update it as the search window or traversal changes.",
+        "rule": "Defines manachersAlgorithm and names the input text; edits to those inputs change the visual state and output.",
         "activeRange": [
           0,
           2
@@ -168,7 +168,7 @@ export const algorithmPage = {
         "title": "Return string answer",
         "note": "Matches or best values are returned after the scan.",
         "ruleLabel": "Manacher’s Algorithm invariant",
-        "rule": "Returns best, the value produced after Manacher’s Algorithm's state changes are complete.",
+        "rule": "Returns best, the final value maintained by Manacher’s Algorithm's code path.",
         "activeRange": [
           3,
           4

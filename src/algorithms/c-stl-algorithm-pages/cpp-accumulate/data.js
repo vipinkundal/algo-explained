@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Read saved state",
       "note": "The stored state gives the final or range answer.",
       "activeLine": 6,
-      "codeInsight": "Returns values.reduce((total, value) => total + value, initialValue), the value produced after C++ accumulate()'s state changes are complete."
+      "codeInsight": "Returns values.reduce((total, value) => total + value, initialValue), the final value maintained by C++ accumulate()'s code path."
     }
   ],
   "complexity": {
@@ -195,7 +195,7 @@ export const algorithmPage = {
         "title": "Read saved state",
         "note": "The stored state gives the final or range answer.",
         "ruleLabel": "C++ accumulate() invariant",
-        "rule": "Returns values.reduce((total, value) => total + value, initialValue), the value produced after C++ accumulate()'s state changes are complete.",
+        "rule": "Returns values.reduce((total, value) => total + value, initialValue), the final value maintained by C++ accumulate()'s code path.",
         "activeIndices": [
           2,
           2

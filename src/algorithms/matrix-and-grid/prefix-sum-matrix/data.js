@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Grid",
       "title": "Read rows and columns",
       "note": "The code starts from the matrix shape.",
-      "activeLine": 6,
-      "codeInsight": "Stores rows so the algorithm can reuse this value without recomputing it."
+      "activeLine": 5,
+      "codeInsight": "Defines prefixSumMatrix and names the input matrix; edits to those inputs change the visual state and output."
     },
     {
       "label": "Position",
       "title": "Choose active cell",
       "note": "The current row/column controls the next update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Prefix Sum Matrix line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines prefixSumMatrix and names the input matrix; edits to those inputs change the visual state and output."
     },
     {
       "label": "Move/update",
       "title": "Apply neighbor or boundary rule",
       "note": "The transition changes reachable cells, boundaries, or accumulated values.",
       "activeLine": 9,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Runs the counted loop (let row = 1; row <= rows; row += 1) so each visual step follows one code-controlled iteration."
     },
     {
       "label": "Result",
       "title": "Return grid output",
       "note": "The final matrix, count, or query answer is returned.",
       "activeLine": 14,
-      "codeInsight": "Returns prefix, the value produced after Prefix Sum Matrix's state changes are complete."
+      "codeInsight": "Returns prefix, the final value maintained by Prefix Sum Matrix's code path."
     }
   ],
   "complexity": {
@@ -149,7 +149,7 @@ export const algorithmPage = {
         "title": "Read rows and columns",
         "note": "The code starts from the matrix shape.",
         "ruleLabel": "Prefix Sum Matrix invariant",
-        "rule": "Stores rows so the algorithm can reuse this value without recomputing it.",
+        "rule": "Defines prefixSumMatrix and names the input matrix; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -168,7 +168,7 @@ export const algorithmPage = {
         "title": "Choose active cell",
         "note": "The current row/column controls the next update.",
         "ruleLabel": "Prefix Sum Matrix invariant",
-        "rule": "Executes this Prefix Sum Matrix line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines prefixSumMatrix and names the input matrix; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -191,7 +191,7 @@ export const algorithmPage = {
         "title": "Apply neighbor or boundary rule",
         "note": "The transition changes reachable cells, boundaries, or accumulated values.",
         "ruleLabel": "Prefix Sum Matrix invariant",
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
+        "rule": "Runs the counted loop (let row = 1; row <= rows; row += 1) so each visual step follows one code-controlled iteration.",
         "activeCells": [
           [
             1,
@@ -218,7 +218,7 @@ export const algorithmPage = {
         "title": "Return grid output",
         "note": "The final matrix, count, or query answer is returned.",
         "ruleLabel": "Prefix Sum Matrix invariant",
-        "rule": "Returns prefix, the value produced after Prefix Sum Matrix's state changes are complete.",
+        "rule": "Returns prefix, the final value maintained by Prefix Sum Matrix's code path.",
         "activeCells": [
           [
             1,

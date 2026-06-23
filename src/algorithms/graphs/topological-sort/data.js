@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Copy values",
       "note": "The code starts with the values to reorder.",
-      "activeLine": 6,
-      "codeInsight": "Builds indegree as a lookup table so each key has an explicit starting state."
+      "activeLine": 5,
+      "codeInsight": "Defines topologicalSort and names the input graph; edits to those inputs change the visual state and output."
     },
     {
       "label": "Invariant",
       "title": "Track ordered work",
       "note": "The algorithm marks what part is already safe.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Topological Sort line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines topologicalSort and names the input graph; edits to those inputs change the visual state and output."
     },
     {
       "label": "Move",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return final order",
       "note": "The result is returned when no unsorted work remains.",
       "activeLine": 18,
-      "codeInsight": "Returns order.length === Object.keys(indegree).length ? order : null, the value produced after Topological Sort's state changes are complete."
+      "codeInsight": "Returns order.length === Object.keys(indegree).length ? order : null, the final value maintained by Topological Sort's code path."
     }
   ],
   "complexity": {
@@ -186,7 +186,7 @@ export const algorithmPage = {
         "title": "Copy values",
         "note": "The code starts with the values to reorder.",
         "ruleLabel": "Topological Sort invariant",
-        "rule": "Builds indegree as a lookup table so each key has an explicit starting state.",
+        "rule": "Defines topologicalSort and names the input graph; edits to those inputs change the visual state and output.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -202,7 +202,7 @@ export const algorithmPage = {
         "title": "Track ordered work",
         "note": "The algorithm marks what part is already safe.",
         "ruleLabel": "Topological Sort invariant",
-        "rule": "Executes this Topological Sort line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines topologicalSort and names the input graph; edits to those inputs change the visual state and output.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -239,7 +239,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "The result is returned when no unsorted work remains.",
         "ruleLabel": "Topological Sort invariant",
-        "rule": "Returns order.length === Object.keys(indegree).length ? order : null, the value produced after Topological Sort's state changes are complete.",
+        "rule": "Returns order.length === Object.keys(indegree).length ? order : null, the final value maintained by Topological Sort's code path.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

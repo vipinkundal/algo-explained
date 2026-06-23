@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 14,
-      "codeInsight": "Returns result, the value produced after Next Greater Element's state changes are complete."
+      "codeInsight": "Returns result, the final value maintained by Next Greater Element's code path."
     }
   ],
   "complexity": {
@@ -189,7 +189,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Next Greater Element invariant",
-        "rule": "Returns result, the value produced after Next Greater Element's state changes are complete.",
+        "rule": "Returns result, the final value maintained by Next Greater Element's code path.",
         "activeItems": [
           3
         ],

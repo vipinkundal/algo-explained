@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Values",
       "title": "Read values or updates",
       "note": "The code receives the array, ranges, or deltas.",
-      "activeLine": 6,
-      "codeInsight": "Initializes bestEndingHere as mutable state; later branches update it as the search window or traversal changes."
+      "activeLine": 5,
+      "codeInsight": "Defines kadanesAlgorithm and names the input array; edits to those inputs change the visual state and output."
     },
     {
       "label": "Accumulator",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Read saved state",
       "note": "The stored state gives the final or range answer.",
       "activeLine": 12,
-      "codeInsight": "Returns best, the value produced after Kadane’s Algorithm's state changes are complete."
+      "codeInsight": "Returns best, the final value maintained by Kadane’s Algorithm's code path."
     }
   ],
   "complexity": {
@@ -150,7 +150,7 @@ export const algorithmPage = {
         "title": "Read values or updates",
         "note": "The code receives the array, ranges, or deltas.",
         "ruleLabel": "Kadane’s Algorithm invariant",
-        "rule": "Initializes bestEndingHere as mutable state; later branches update it as the search window or traversal changes.",
+        "rule": "Defines kadanesAlgorithm and names the input array; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -214,7 +214,7 @@ export const algorithmPage = {
         "title": "Read saved state",
         "note": "The stored state gives the final or range answer.",
         "ruleLabel": "Kadane’s Algorithm invariant",
-        "rule": "Returns best, the value produced after Kadane’s Algorithm's state changes are complete.",
+        "rule": "Returns best, the final value maintained by Kadane’s Algorithm's code path.",
         "activeIndices": [
           3,
           4

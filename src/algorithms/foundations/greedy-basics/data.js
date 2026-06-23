@@ -62,16 +62,16 @@ export const algorithmPage = {
     {
       "label": "Base",
       "title": "Check stop condition",
-      "note": "The code first asks whether the current state is complete.",
-      "activeLine": 1,
-      "codeInsight": "Executes this Greedy Basics line as part of the highlighted code path, linking the visual step to the implementation."
+      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "activeLine": 5,
+      "codeInsight": "Defines greedyBasics and names the input values, capacity = 10; edits to those inputs change the visual state and output."
     },
     {
       "label": "Choice",
       "title": "Select next option",
       "note": "One valid move is added to the state.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Greedy Basics's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines greedyBasics and names the input values, capacity = 10; edits to those inputs change the visual state and output."
     },
     {
       "label": "Call",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return or backtrack",
       "note": "The result is combined or the choice is removed.",
       "activeLine": 15,
-      "codeInsight": "Returns { chosen, total }, the value produced after Greedy Basics's state changes are complete."
+      "codeInsight": "Returns the final state object { chosen, total }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -139,9 +139,9 @@ export const algorithmPage = {
       {
         "phase": "Base",
         "title": "Check stop condition",
-        "note": "The code first asks whether the current state is complete.",
+        "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
         "ruleLabel": "Greedy Basics invariant",
-        "rule": "Executes this Greedy Basics line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines greedyBasics and names the input values, capacity = 10; edits to those inputs change the visual state and output.",
         "activeCall": 0,
         "returningCalls": []
       },
@@ -150,7 +150,7 @@ export const algorithmPage = {
         "title": "Select next option",
         "note": "One valid move is added to the state.",
         "ruleLabel": "Greedy Basics invariant",
-        "rule": "This blank line separates Greedy Basics's setup from the next code block.",
+        "rule": "Defines greedyBasics and names the input values, capacity = 10; edits to those inputs change the visual state and output.",
         "activeCall": 1,
         "returningCalls": []
       },
@@ -168,7 +168,7 @@ export const algorithmPage = {
         "title": "Return or backtrack",
         "note": "The result is combined or the choice is removed.",
         "ruleLabel": "Greedy Basics invariant",
-        "rule": "Returns { chosen, total }, the value produced after Greedy Basics's state changes are complete.",
+        "rule": "Returns the final state object { chosen, total }, exposing the exact fields the visualizer has been tracking.",
         "activeCall": 3,
         "returningCalls": [
           0,

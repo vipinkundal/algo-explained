@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 6,
-      "codeInsight": "Initializes index as mutable state; later branches update it as the search window or traversal changes."
+      "activeLine": 5,
+      "codeInsight": "Defines tarjan and names the input graph; edits to those inputs change the visual state and output."
     },
     {
       "label": "Discovery Component State",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return component discovery",
       "note": "The final graph state becomes the answer.",
       "activeLine": 34,
-      "codeInsight": "Returns components, the value produced after Tarjan’s Algorithm's state changes are complete."
+      "codeInsight": "Returns components, the final value maintained by Tarjan’s Algorithm's code path."
     }
   ],
   "complexity": {
@@ -188,7 +188,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Tarjan’s Algorithm invariant",
-        "rule": "Initializes index as mutable state; later branches update it as the search window or traversal changes.",
+        "rule": "Defines tarjan and names the input graph; edits to those inputs change the visual state and output.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -241,7 +241,7 @@ export const algorithmPage = {
         "title": "Return component discovery",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Tarjan’s Algorithm invariant",
-        "rule": "Returns components, the value produced after Tarjan’s Algorithm's state changes are complete.",
+        "rule": "Returns components, the final value maintained by Tarjan’s Algorithm's code path.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

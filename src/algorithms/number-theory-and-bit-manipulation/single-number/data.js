@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Rule",
       "title": "Select math invariant",
       "note": "The chosen identity controls every update.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Single Number line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines singleNumber and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Reduction",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return numeric result",
       "note": "The loop ends when the invariant gives the answer.",
       "activeLine": 6,
-      "codeInsight": "Returns values.reduce((answer, value) => answer ^ value, 0), the value produced after Single Number's state changes are complete."
+      "codeInsight": "Returns values.reduce((answer, value) => answer ^ value, 0), the final value maintained by Single Number's code path."
     }
   ],
   "complexity": {
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Select math invariant",
         "note": "The chosen identity controls every update.",
         "ruleLabel": "Single Number invariant",
-        "rule": "Executes this Single Number line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines singleNumber and names the input values; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -164,7 +164,7 @@ export const algorithmPage = {
         "title": "Return numeric result",
         "note": "The loop ends when the invariant gives the answer.",
         "ruleLabel": "Single Number invariant",
-        "rule": "Returns values.reduce((answer, value) => answer ^ value, 0), the value produced after Single Number's state changes are complete.",
+        "rule": "Returns values.reduce((answer, value) => answer ^ value, 0), the final value maintained by Single Number's code path.",
         "activeState": 3
       }
     ]

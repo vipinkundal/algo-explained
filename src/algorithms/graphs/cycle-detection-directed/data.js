@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Stack",
       "title": "Read stack action",
       "note": "The code receives the next value or command.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "activeLine": 5,
+      "codeInsight": "Defines cycleDetectionDirected and names the input graph; edits to those inputs change the visual state and output."
     },
     {
       "label": "Stack top",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 15,
-      "codeInsight": "Returns false, the value produced after Cycle Detection in Directed Graph's state changes are complete."
+      "codeInsight": "Returns false, the boolean result reached by the highlighted checks."
     }
   ],
   "complexity": {
@@ -184,7 +184,7 @@ export const algorithmPage = {
         "title": "Read stack action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Cycle Detection in Directed Graph invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
+        "rule": "Defines cycleDetectionDirected and names the input graph; edits to those inputs change the visual state and output.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -237,7 +237,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Cycle Detection in Directed Graph invariant",
-        "rule": "Returns false, the value produced after Cycle Detection in Directed Graph's state changes are complete.",
+        "rule": "Returns false, the boolean result reached by the highlighted checks.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

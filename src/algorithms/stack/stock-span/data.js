@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 13,
-      "codeInsight": "Returns spans, the value produced after Stock Span Problem's state changes are complete."
+      "codeInsight": "Returns spans, the final value maintained by Stock Span Problem's code path."
     }
   ],
   "complexity": {
@@ -191,7 +191,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Stock Span Problem invariant",
-        "rule": "Returns spans, the value produced after Stock Span Problem's state changes are complete.",
+        "rule": "Returns spans, the final value maintained by Stock Span Problem's code path.",
         "activeItems": [
           3
         ],

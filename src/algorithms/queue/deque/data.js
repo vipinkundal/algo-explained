@@ -71,21 +71,21 @@ export const algorithmPage = {
       "title": "Inspect queue",
       "note": "The active state must still satisfy first-in, first-out state.",
       "activeLine": 6,
-      "codeInsight": "Creates values as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Enqueue / dequeue",
       "title": "Enqueue, dequeue, peek, or evict entries",
       "note": "Only the necessary queue fields are changed.",
       "activeLine": 6,
-      "codeInsight": "Creates values as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Result",
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 14,
-      "codeInsight": "Returns output, the value produced after Deque's state changes are complete."
+      "codeInsight": "Returns output, the final value maintained by Deque's code path."
     }
   ],
   "complexity": {
@@ -177,7 +177,7 @@ export const algorithmPage = {
         "title": "Inspect queue",
         "note": "The active state must still satisfy first-in, first-out state.",
         "ruleLabel": "Deque invariant",
-        "rule": "Creates values as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeItems": [
           1
         ],
@@ -192,7 +192,7 @@ export const algorithmPage = {
         "title": "Enqueue, dequeue, peek, or evict entries",
         "note": "Only the necessary queue fields are changed.",
         "ruleLabel": "Deque invariant",
-        "rule": "Creates values as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeItems": [
           2
         ],
@@ -207,7 +207,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Deque invariant",
-        "rule": "Returns output, the value produced after Deque's state changes are complete.",
+        "rule": "Returns output, the final value maintained by Deque's code path.",
         "activeItems": [
           3
         ],

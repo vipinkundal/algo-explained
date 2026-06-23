@@ -62,30 +62,30 @@ export const algorithmPage = {
     {
       "label": "Base",
       "title": "Check stop condition",
-      "note": "The code first asks whether the current state is complete.",
-      "activeLine": 1,
-      "codeInsight": "Executes this Tower of Hanoi line as part of the highlighted code path, linking the visual step to the implementation."
+      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "activeLine": 5,
+      "codeInsight": "Defines towerOfHanoi and names the input disks, from = \"A\", to = \"C\", helper = \"B\"; edits to those inputs change the visual state and output."
     },
     {
       "label": "Choice",
       "title": "Select next option",
       "note": "One valid move is added to the state.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Tower of Hanoi's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines towerOfHanoi and names the input disks, from = \"A\", to = \"C\", helper = \"B\"; edits to those inputs change the visual state and output."
     },
     {
       "label": "Call",
       "title": "Recurse deeper",
       "note": "The same rule runs on a smaller or extended state.",
       "activeLine": 6,
-      "codeInsight": "Creates moves as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds moves with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Unwind",
       "title": "Return or backtrack",
       "note": "The result is combined or the choice is removed.",
       "activeLine": 14,
-      "codeInsight": "Returns moves, the value produced after Tower of Hanoi's state changes are complete."
+      "codeInsight": "Returns moves, the final value maintained by Tower of Hanoi's code path."
     }
   ],
   "complexity": {
@@ -141,9 +141,9 @@ export const algorithmPage = {
       {
         "phase": "Base",
         "title": "Check stop condition",
-        "note": "The code first asks whether the current state is complete.",
+        "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
         "ruleLabel": "Tower of Hanoi invariant",
-        "rule": "Executes this Tower of Hanoi line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines towerOfHanoi and names the input disks, from = \"A\", to = \"C\", helper = \"B\"; edits to those inputs change the visual state and output.",
         "activeCall": 0,
         "returningCalls": []
       },
@@ -152,7 +152,7 @@ export const algorithmPage = {
         "title": "Select next option",
         "note": "One valid move is added to the state.",
         "ruleLabel": "Tower of Hanoi invariant",
-        "rule": "This blank line separates Tower of Hanoi's setup from the next code block.",
+        "rule": "Defines towerOfHanoi and names the input disks, from = \"A\", to = \"C\", helper = \"B\"; edits to those inputs change the visual state and output.",
         "activeCall": 1,
         "returningCalls": []
       },
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Recurse deeper",
         "note": "The same rule runs on a smaller or extended state.",
         "ruleLabel": "Tower of Hanoi invariant",
-        "rule": "Creates moves as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds moves with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeCall": 2,
         "returningCalls": []
       },
@@ -170,7 +170,7 @@ export const algorithmPage = {
         "title": "Return or backtrack",
         "note": "The result is combined or the choice is removed.",
         "ruleLabel": "Tower of Hanoi invariant",
-        "rule": "Returns moves, the value produced after Tower of Hanoi's state changes are complete.",
+        "rule": "Returns moves, the final value maintained by Tower of Hanoi's code path.",
         "activeCall": 3,
         "returningCalls": [
           0,

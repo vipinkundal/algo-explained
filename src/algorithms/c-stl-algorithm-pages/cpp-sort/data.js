@@ -70,22 +70,22 @@ export const algorithmPage = {
       "label": "Invariant",
       "title": "Track ordered work",
       "note": "The algorithm marks what part is already safe.",
-      "activeLine": 3,
-      "codeInsight": "Executes this C++ sort() line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines cppSort and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Move",
       "title": "Apply ordering step",
       "note": "The current operation reduces disorder.",
       "activeLine": 6,
-      "codeInsight": "Returns [...values].sort((a, b) => a - b), the value produced after C++ sort()'s state changes are complete."
+      "codeInsight": "Returns the final array-style answer [...values].sort((a, b) => a - b), so the last frame should show the chosen positions or sequence."
     },
     {
       "label": "Sorted output",
       "title": "Return final order",
       "note": "The result is returned when no unsorted work remains.",
       "activeLine": 6,
-      "codeInsight": "Returns [...values].sort((a, b) => a - b), the value produced after C++ sort()'s state changes are complete."
+      "codeInsight": "Returns the final array-style answer [...values].sort((a, b) => a - b), so the last frame should show the chosen positions or sequence."
     }
   ],
   "complexity": {
@@ -157,7 +157,7 @@ export const algorithmPage = {
         "title": "Track ordered work",
         "note": "The algorithm marks what part is already safe.",
         "ruleLabel": "C++ sort() invariant",
-        "rule": "Executes this C++ sort() line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines cppSort and names the input values; edits to those inputs change the visual state and output.",
         "activeIndices": [
           1,
           2
@@ -176,7 +176,7 @@ export const algorithmPage = {
         "title": "Apply ordering step",
         "note": "The current operation reduces disorder.",
         "ruleLabel": "C++ sort() invariant",
-        "rule": "Returns [...values].sort((a, b) => a - b), the value produced after C++ sort()'s state changes are complete.",
+        "rule": "Returns the final array-style answer [...values].sort((a, b) => a - b), so the last frame should show the chosen positions or sequence.",
         "activeIndices": [
           2
         ],
@@ -194,7 +194,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "The result is returned when no unsorted work remains.",
         "ruleLabel": "C++ sort() invariant",
-        "rule": "Returns [...values].sort((a, b) => a - b), the value produced after C++ sort()'s state changes are complete.",
+        "rule": "Returns the final array-style answer [...values].sort((a, b) => a - b), so the last frame should show the chosen positions or sequence.",
         "activeIndices": [
           2,
           2

@@ -62,30 +62,30 @@ export const algorithmPage = {
     {
       "label": "Base",
       "title": "Check stop condition",
-      "note": "The code first asks whether the current state is complete.",
-      "activeLine": 1,
-      "codeInsight": "Executes this C++ next_permutation() line as part of the highlighted code path, linking the visual step to the implementation."
+      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "activeLine": 5,
+      "codeInsight": "Defines cppNextPermutation and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Choice",
       "title": "Select next option",
       "note": "One valid move is added to the state.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates C++ next_permutation()'s setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines cppNextPermutation and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Call",
       "title": "Recurse deeper",
       "note": "The same rule runs on a smaller or extended state.",
       "activeLine": 6,
-      "codeInsight": "Initializes result, the local state that the next highlighted lines will update."
+      "codeInsight": "Copies the input into result, so the animation can show mutations without pretending the caller's original array changes."
     },
     {
       "label": "Unwind",
       "title": "Return or backtrack",
       "note": "The result is combined or the choice is removed.",
       "activeLine": 17,
-      "codeInsight": "Returns result, the value produced after C++ next_permutation()'s state changes are complete."
+      "codeInsight": "Returns result, the final value maintained by C++ next_permutation()'s code path."
     }
   ],
   "complexity": {
@@ -124,48 +124,89 @@ export const algorithmPage = {
     ]
   ],
   "animation": {
-    "type": "state-flow",
-    "title": "C++ next_permutation() state transitions",
-    "ruleLabel": "State rule",
+    "type": "array-flow",
+    "title": "C++ next_permutation() array state",
+    "ruleLabel": "Array invariant",
     "rule": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-    "states": [
-      "Base",
-      "Choice",
-      "Call",
-      "Unwind"
+    "values": [
+      1,
+      2,
+      3
     ],
     "steps": [
       {
         "phase": "Base",
         "title": "Check stop condition",
-        "note": "The code first asks whether the current state is complete.",
+        "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
         "ruleLabel": "C++ next_permutation() invariant",
-        "rule": "Executes this C++ next_permutation() line as part of the highlighted code path, linking the visual step to the implementation.",
-        "activeState": 0
+        "rule": "Defines cppNextPermutation and names the input values; edits to those inputs change the visual state and output.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Base",
+        "secondaryLabel": "Each step either reaches a base case or moves one level deeper with a smaller decision state."
       },
       {
         "phase": "Choice",
         "title": "Select next option",
         "note": "One valid move is added to the state.",
         "ruleLabel": "C++ next_permutation() invariant",
-        "rule": "This blank line separates C++ next_permutation()'s setup from the next code block.",
-        "activeState": 1
+        "rule": "Defines cppNextPermutation and names the input values; edits to those inputs change the visual state and output.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Choice",
+        "secondaryLabel": "Each step either reaches a base case or moves one level deeper with a smaller decision state."
       },
       {
         "phase": "Call",
         "title": "Recurse deeper",
         "note": "The same rule runs on a smaller or extended state.",
         "ruleLabel": "C++ next_permutation() invariant",
-        "rule": "Initializes result, the local state that the next highlighted lines will update.",
-        "activeState": 2
+        "rule": "Copies the input into result, so the animation can show mutations without pretending the caller's original array changes.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Call",
+        "secondaryLabel": "Each step either reaches a base case or moves one level deeper with a smaller decision state."
       },
       {
         "phase": "Unwind",
         "title": "Return or backtrack",
         "note": "The result is combined or the choice is removed.",
         "ruleLabel": "C++ next_permutation() invariant",
-        "rule": "Returns result, the value produced after C++ next_permutation()'s state changes are complete.",
-        "activeState": 3
+        "rule": "Returns result, the final value maintained by C++ next_permutation()'s code path.",
+        "activeIndices": [
+          2,
+          2
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Unwind",
+        "secondaryLabel": "Each step either reaches a base case or moves one level deeper with a smaller decision state."
       }
     ]
   }

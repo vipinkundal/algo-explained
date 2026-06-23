@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 6,
-      "codeInsight": "Initializes parent, the local state that the next highlighted lines will update."
+      "activeLine": 5,
+      "codeInsight": "Defines unionFind and names the input size, operations; edits to those inputs change the visual state and output."
     },
     {
       "label": "Parent Array",
       "title": "Initialize parent array",
       "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 6,
-      "codeInsight": "Initializes parent, the local state that the next highlighted lines will update."
+      "activeLine": 5,
+      "codeInsight": "Defines unionFind and names the input size, operations; edits to those inputs change the visual state and output."
     },
     {
       "label": "Work item",
       "title": "Process next vertex or edge",
       "note": "Find roots and union separate sets.",
       "activeLine": 6,
-      "codeInsight": "Initializes parent, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds parent from structured fields so the visual trace can show named values instead of an opaque blob."
     },
     {
       "label": "Component Merging",
       "title": "Return component merging",
       "note": "The final graph state becomes the answer.",
       "activeLine": 16,
-      "codeInsight": "Returns true, the value produced after Disjoint Set Union / Union Find's state changes are complete."
+      "codeInsight": "Returns true, the boolean result reached by the highlighted checks."
     }
   ],
   "complexity": {
@@ -138,52 +138,76 @@ export const algorithmPage = {
     ]
   ],
   "animation": {
-    "type": "graph-flow",
-    "title": "Disjoint Set Union / Union Find graph state",
-    "ruleLabel": "Graph invariant",
-    "rule": "Each step consumes one vertex or edge and updates parent array without losing the graph invariant.",
+    "type": "tree-operation",
+    "title": "Disjoint Set Union / Union Find tree state",
     "nodes": [
       {
-        "id": "A",
-        "label": "A",
+        "id": "8",
+        "label": "8",
+        "x": 340,
+        "y": 58
+      },
+      {
+        "id": "4",
+        "label": "4",
+        "x": 190,
+        "y": 150
+      },
+      {
+        "id": "12",
+        "label": "12",
+        "x": 490,
+        "y": 150
+      },
+      {
+        "id": "2",
+        "label": "2",
         "x": 110,
-        "y": 150
+        "y": 255
       },
       {
-        "id": "B",
-        "label": "B",
-        "x": 300,
-        "y": 75
+        "id": "6",
+        "label": "6",
+        "x": 270,
+        "y": 255
       },
       {
-        "id": "C",
-        "label": "C",
-        "x": 500,
-        "y": 150
+        "id": "10",
+        "label": "10",
+        "x": 420,
+        "y": 255
       },
       {
-        "id": "D",
-        "label": "D",
-        "x": 300,
-        "y": 235
+        "id": "14",
+        "label": "14",
+        "x": 570,
+        "y": 255
       }
     ],
     "edges": [
       {
-        "from": "A",
-        "to": "B"
+        "from": "8",
+        "to": "4"
       },
       {
-        "from": "A",
-        "to": "D"
+        "from": "8",
+        "to": "12"
       },
       {
-        "from": "B",
-        "to": "C"
+        "from": "4",
+        "to": "2"
       },
       {
-        "from": "D",
-        "to": "C"
+        "from": "4",
+        "to": "6"
+      },
+      {
+        "from": "12",
+        "to": "10"
+      },
+      {
+        "from": "12",
+        "to": "14"
       }
     ],
     "steps": [
@@ -192,73 +216,52 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "Initializes parent, the local state that the next highlighted lines will update.",
-        "activeNode": "A",
-        "visitedNodes": [],
-        "frontierNodes": [
-          "B"
-        ],
-        "activeEdge": {
-          "from": "A",
-          "to": "B"
-        }
+        "rule": "Defines unionFind and names the input size, operations; edits to those inputs change the visual state and output.",
+        "activeNode": "8",
+        "targetNode": "4",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
       },
       {
         "phase": "Parent Array",
         "title": "Initialize parent array",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "Initializes parent, the local state that the next highlighted lines will update.",
-        "activeNode": "B",
-        "visitedNodes": [
-          "A"
-        ],
-        "frontierNodes": [
-          "C"
-        ],
-        "activeEdge": {
-          "from": "B",
-          "to": "C"
-        }
+        "rule": "Defines unionFind and names the input size, operations; edits to those inputs change the visual state and output.",
+        "activeNode": "4",
+        "targetNode": "12",
+        "replacementNode": "",
+        "mutedNodes": [
+          "6",
+          "10",
+          "14"
+        ]
       },
       {
         "phase": "Work item",
         "title": "Process next vertex or edge",
         "note": "Find roots and union separate sets.",
         "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "Initializes parent, the local state that the next highlighted lines will update.",
-        "activeNode": "C",
-        "visitedNodes": [
-          "A",
-          "B"
-        ],
-        "frontierNodes": [
-          "D"
-        ],
-        "activeEdge": {
-          "from": "C",
-          "to": "D"
-        }
+        "rule": "Builds parent from structured fields so the visual trace can show named values instead of an opaque blob.",
+        "activeNode": "12",
+        "targetNode": "2",
+        "replacementNode": "2",
+        "mutedNodes": []
       },
       {
         "phase": "Component Merging",
         "title": "Return component merging",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "Returns true, the value produced after Disjoint Set Union / Union Find's state changes are complete.",
-        "activeNode": "D",
-        "visitedNodes": [
-          "A",
-          "B",
-          "C"
-        ],
-        "frontierNodes": [
-          "A"
-        ],
-        "activeEdge": {
-          "from": "D",
-          "to": "A"
-        }
+        "rule": "Returns true, the boolean result reached by the highlighted checks.",
+        "activeNode": "2",
+        "targetNode": "6",
+        "replacementNode": "6",
+        "mutedNodes": []
       }
     ]
   }

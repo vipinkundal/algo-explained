@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Pivot",
       "title": "Choose pivot value",
       "note": "The pivot defines the partition rule.",
-      "activeLine": 1,
-      "codeInsight": "Executes this Partition DP line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines partitionDp and names the input array; edits to those inputs change the visual state and output."
     },
     {
       "label": "Scan",
       "title": "Move values by pivot",
       "note": "Values are compared with the pivot.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Partition DP's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines partitionDp and names the input array; edits to those inputs change the visual state and output."
     },
     {
       "label": "Place",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Sort both sides",
       "note": "The same partition rule handles each side.",
       "activeLine": 11,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Visits each input value once, letting the displayed state update in the same order as the code."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Choose pivot value",
         "note": "The pivot defines the partition rule.",
         "ruleLabel": "Partition DP invariant",
-        "rule": "Executes this Partition DP line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines partitionDp and names the input array; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -159,7 +159,7 @@ export const algorithmPage = {
         "title": "Move values by pivot",
         "note": "Values are compared with the pivot.",
         "ruleLabel": "Partition DP invariant",
-        "rule": "This blank line separates Partition DP's setup from the next code block.",
+        "rule": "Defines partitionDp and names the input array; edits to those inputs change the visual state and output.",
         "activeIndices": [
           1,
           2
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Sort both sides",
         "note": "The same partition rule handles each side.",
         "ruleLabel": "Partition DP invariant",
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
+        "rule": "Visits each input value once, letting the displayed state update in the same order as the code.",
         "activeIndices": [
           3,
           3

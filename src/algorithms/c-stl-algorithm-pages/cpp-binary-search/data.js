@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Sorted input",
       "title": "Read the ordered search space",
       "note": "The code starts from a range where binary decisions are valid.",
-      "activeLine": 6,
-      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
+      "activeLine": 5,
+      "codeInsight": "Defines cppBinarySearch and names the input values, target; edits to those inputs change the visual state and output."
     },
     {
       "label": "low / high",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Emit index or boundary",
       "note": "The loop ends with a match or the collapsed boundary.",
       "activeLine": 14,
-      "codeInsight": "Returns false, the value produced after C++ binary_search()'s state changes are complete."
+      "codeInsight": "Returns false, the boolean result reached by the highlighted checks."
     }
   ],
   "complexity": {
@@ -140,7 +140,7 @@ export const algorithmPage = {
         "title": "Read the ordered search space",
         "note": "The code starts from a range where binary decisions are valid.",
         "ruleLabel": "C++ binary_search() invariant",
-        "rule": "Initializes low as mutable state; later branches update it as the search window or traversal changes.",
+        "rule": "Defines cppBinarySearch and names the input values, target; edits to those inputs change the visual state and output.",
         "activeIndices": [
           0
         ],
@@ -195,7 +195,7 @@ export const algorithmPage = {
         "title": "Emit index or boundary",
         "note": "The loop ends with a match or the collapsed boundary.",
         "ruleLabel": "C++ binary_search() invariant",
-        "rule": "Returns false, the value produced after C++ binary_search()'s state changes are complete.",
+        "rule": "Returns false, the boolean result reached by the highlighted checks.",
         "activeIndices": [
           2,
           2

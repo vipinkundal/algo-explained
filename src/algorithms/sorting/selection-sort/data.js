@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Boundary",
       "title": "Choose next fixed slot",
       "note": "The left side is already sorted.",
-      "activeLine": 1,
-      "codeInsight": "Executes this Selection Sort line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 6,
+      "codeInsight": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes."
     },
     {
       "label": "Minimum",
       "title": "Scan unsorted suffix",
       "note": "The code tracks the smallest remaining value.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Selection Sort's setup from the next code block."
+      "activeLine": 9,
+      "codeInsight": "Runs the counted loop (let index = start + 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration."
     },
     {
       "label": "Swap",
       "title": "Place selected value",
       "note": "The minimum moves into its final position.",
       "activeLine": 7,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Runs the counted loop (let start = 0; start < values.length; start += 1) so each visual step follows one code-controlled iteration."
     },
     {
       "label": "Sorted",
       "title": "Return final order",
       "note": "All positions are fixed after the last pass.",
       "activeLine": 14,
-      "codeInsight": "Returns values, the value produced after Selection Sort's state changes are complete."
+      "codeInsight": "Returns values, the final value maintained by Selection Sort's code path."
     }
   ],
   "complexity": {
@@ -141,7 +141,7 @@ export const algorithmPage = {
         "title": "Choose next fixed slot",
         "note": "The left side is already sorted.",
         "ruleLabel": "Selection Sort invariant",
-        "rule": "Executes this Selection Sort line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes.",
         "activeIndices": [
           0
         ],
@@ -161,7 +161,7 @@ export const algorithmPage = {
         "title": "Scan unsorted suffix",
         "note": "The code tracks the smallest remaining value.",
         "ruleLabel": "Selection Sort invariant",
-        "rule": "This blank line separates Selection Sort's setup from the next code block.",
+        "rule": "Runs the counted loop (let index = start + 1; index < values.length; index += 1) so each visual step follows one code-controlled iteration.",
         "activeIndices": [
           1,
           2
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Place selected value",
         "note": "The minimum moves into its final position.",
         "ruleLabel": "Selection Sort invariant",
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
+        "rule": "Runs the counted loop (let start = 0; start < values.length; start += 1) so each visual step follows one code-controlled iteration.",
         "activeIndices": [
           2
         ],
@@ -203,7 +203,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "All positions are fixed after the last pass.",
         "ruleLabel": "Selection Sort invariant",
-        "rule": "Returns values, the value produced after Selection Sort's state changes are complete.",
+        "rule": "Returns values, the final value maintained by Selection Sort's code path.",
         "activeIndices": [
           3,
           3

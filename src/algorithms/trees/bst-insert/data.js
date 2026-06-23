@@ -71,7 +71,7 @@ export const algorithmPage = {
       "title": "Read ordered branch",
       "note": "The current node controls the next step.",
       "activeLine": 13,
-      "codeInsight": "Stores tree so the algorithm can reuse this value without recomputing it."
+      "codeInsight": "Computes tree by reducing the current values, matching the aggregate shown in the result state."
     },
     {
       "label": "Child step",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 11,
-      "codeInsight": "Returns copy, the value produced after BST Insert's state changes are complete."
+      "codeInsight": "Returns copy, the final value maintained by BST Insert's code path."
     }
   ],
   "complexity": {
@@ -241,7 +241,7 @@ export const algorithmPage = {
         "title": "Read ordered branch",
         "note": "The current node controls the next step.",
         "ruleLabel": "BST Insert invariant",
-        "rule": "Stores tree so the algorithm can reuse this value without recomputing it.",
+        "rule": "Computes tree by reducing the current values, matching the aggregate shown in the result state.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -267,7 +267,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "BST Insert invariant",
-        "rule": "Returns copy, the value produced after BST Insert's state changes are complete.",
+        "rule": "Returns copy, the final value maintained by BST Insert's code path.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

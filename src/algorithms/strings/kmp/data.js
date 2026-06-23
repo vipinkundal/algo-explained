@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Text",
       "title": "Read string input",
       "note": "The code receives text, pattern, or character data.",
-      "activeLine": 6,
-      "codeInsight": "Prepares lps with a default value so unresolved positions already have the correct fallback answer."
+      "activeLine": 5,
+      "codeInsight": "Defines kmp and names the input text, pattern; edits to those inputs change the visual state and output."
     },
     {
       "label": "Helper",
       "title": "Prepare string state",
       "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
       "activeLine": 6,
-      "codeInsight": "Prepares lps with a default value so unresolved positions already have the correct fallback answer."
+      "codeInsight": "Stores lps from the current length, making the loop boundary explicit for the visual trace."
     },
     {
       "label": "Character",
       "title": "Update on current char",
       "note": "One character changes the active string state.",
       "activeLine": 7,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Runs the counted loop (let index = 1, length = 0; index < pattern.length;) so each visual step follows one code-controlled iteration."
     },
     {
       "label": "Result",
       "title": "Return string answer",
       "note": "Matches or best values are returned after the scan.",
       "activeLine": 24,
-      "codeInsight": "Returns matches, the value produced after KMP Algorithm's state changes are complete."
+      "codeInsight": "Returns matches, the final value maintained by KMP Algorithm's code path."
     }
   ],
   "complexity": {
@@ -133,7 +133,7 @@ export const algorithmPage = {
         "title": "Read string input",
         "note": "The code receives text, pattern, or character data.",
         "ruleLabel": "KMP Algorithm invariant",
-        "rule": "Prepares lps with a default value so unresolved positions already have the correct fallback answer.",
+        "rule": "Defines kmp and names the input text, pattern; edits to those inputs change the visual state and output.",
         "activeRange": [
           0,
           3
@@ -145,7 +145,7 @@ export const algorithmPage = {
         "title": "Prepare string state",
         "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
         "ruleLabel": "KMP Algorithm invariant",
-        "rule": "Prepares lps with a default value so unresolved positions already have the correct fallback answer.",
+        "rule": "Stores lps from the current length, making the loop boundary explicit for the visual trace.",
         "activeRange": [
           1,
           4
@@ -157,7 +157,7 @@ export const algorithmPage = {
         "title": "Update on current char",
         "note": "One character changes the active string state.",
         "ruleLabel": "KMP Algorithm invariant",
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values.",
+        "rule": "Runs the counted loop (let index = 1, length = 0; index < pattern.length;) so each visual step follows one code-controlled iteration.",
         "activeRange": [
           2,
           5
@@ -169,7 +169,7 @@ export const algorithmPage = {
         "title": "Return string answer",
         "note": "Matches or best values are returned after the scan.",
         "ruleLabel": "KMP Algorithm invariant",
-        "rule": "Returns matches, the value produced after KMP Algorithm's state changes are complete.",
+        "rule": "Returns matches, the final value maintained by KMP Algorithm's code path.",
         "activeRange": [
           3,
           6

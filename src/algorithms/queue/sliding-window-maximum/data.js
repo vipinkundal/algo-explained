@@ -70,22 +70,22 @@ export const algorithmPage = {
       "label": "Right edge",
       "title": "Consume next value",
       "note": "The window grows by one new item.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Sliding Window Maximum's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines slidingWindowMaximum and names the input values, size; edits to those inputs change the visual state and output."
     },
     {
       "label": "Left edge",
       "title": "Drop expired state",
       "note": "Values outside the range are removed.",
       "activeLine": 6,
-      "codeInsight": "Creates deque as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds deque with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Window answer",
       "title": "Record current result",
       "note": "The current valid window updates the output.",
       "activeLine": 14,
-      "codeInsight": "Returns result, the value produced after Sliding Window Maximum's state changes are complete."
+      "codeInsight": "Returns result, the final value maintained by Sliding Window Maximum's code path."
     }
   ],
   "complexity": {
@@ -163,7 +163,7 @@ export const algorithmPage = {
         "title": "Consume next value",
         "note": "The window grows by one new item.",
         "ruleLabel": "Sliding Window Maximum invariant",
-        "rule": "This blank line separates Sliding Window Maximum's setup from the next code block.",
+        "rule": "Defines slidingWindowMaximum and names the input values, size; edits to those inputs change the visual state and output.",
         "activeItems": [
           1
         ],
@@ -178,7 +178,7 @@ export const algorithmPage = {
         "title": "Drop expired state",
         "note": "Values outside the range are removed.",
         "ruleLabel": "Sliding Window Maximum invariant",
-        "rule": "Creates deque as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds deque with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeItems": [
           2
         ],
@@ -193,7 +193,7 @@ export const algorithmPage = {
         "title": "Record current result",
         "note": "The current valid window updates the output.",
         "ruleLabel": "Sliding Window Maximum invariant",
-        "rule": "Returns result, the value produced after Sliding Window Maximum's state changes are complete.",
+        "rule": "Returns result, the final value maintained by Sliding Window Maximum's code path.",
         "activeItems": [
           3
         ],

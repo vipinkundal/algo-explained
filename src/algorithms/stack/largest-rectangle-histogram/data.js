@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 17,
-      "codeInsight": "Returns best, the value produced after Largest Rectangle in Histogram's state changes are complete."
+      "codeInsight": "Returns best, the final value maintained by Largest Rectangle in Histogram's code path."
     }
   ],
   "complexity": {
@@ -190,7 +190,7 @@ export const algorithmPage = {
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Largest Rectangle in Histogram invariant",
-        "rule": "Returns best, the value produced after Largest Rectangle in Histogram's state changes are complete.",
+        "rule": "Returns best, the final value maintained by Largest Rectangle in Histogram's code path.",
         "activeItems": [
           3
         ],

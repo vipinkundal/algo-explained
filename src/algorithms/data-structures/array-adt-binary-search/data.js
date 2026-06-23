@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Sorted input",
       "title": "Read the ordered search space",
       "note": "The code starts from a range where binary decisions are valid.",
-      "activeLine": 3,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "activeLine": 2,
+      "codeInsight": "Defines arrayAdtBinarySearch as the runnable entry point for this lesson."
     },
     {
       "label": "low / high",
       "title": "Open the candidate window",
       "note": "low and high mark every position that may still answer.",
       "activeLine": 3,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "mid check",
       "title": "Compare the midpoint",
       "note": "The midpoint decides which half is removed.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Binary Search in Array ADT's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Return",
       "title": "Emit index or boundary",
       "note": "The loop ends with a match or the collapsed boundary.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Binary Search in Array ADT's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Read the ordered search space",
         "note": "The code starts from a range where binary decisions are valid.",
         "ruleLabel": "Binary Search in Array ADT invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Defines arrayAdtBinarySearch as the runnable entry point for this lesson.",
         "activeIndices": [
           0
         ],
@@ -180,7 +180,7 @@ export const algorithmPage = {
         "title": "Open the candidate window",
         "note": "low and high mark every position that may still answer.",
         "ruleLabel": "Binary Search in Array ADT invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeIndices": [
           1,
           2
@@ -202,7 +202,7 @@ export const algorithmPage = {
         "title": "Compare the midpoint",
         "note": "The midpoint decides which half is removed.",
         "ruleLabel": "Binary Search in Array ADT invariant",
-        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Binary Search in Array ADT's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking.",
         "activeIndices": [
           2
         ],
@@ -222,7 +222,7 @@ export const algorithmPage = {
         "title": "Emit index or boundary",
         "note": "The loop ends with a match or the collapsed boundary.",
         "ruleLabel": "Binary Search in Array ADT invariant",
-        "rule": "Returns { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, the value produced after Binary Search in Array ADT's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking.",
         "activeIndices": [
           3,
           4

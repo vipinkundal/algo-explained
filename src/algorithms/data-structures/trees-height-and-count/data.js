@@ -80,21 +80,21 @@ export const algorithmPage = {
       "title": "Read child height/result",
       "note": "The current node controls the next step.",
       "activeLine": 4,
-      "codeInsight": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Child step",
       "title": "Combine child measurements into the parent answer",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
       "activeLine": 4,
-      "codeInsight": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 4,
-      "codeInsight": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -237,7 +237,7 @@ export const algorithmPage = {
         "title": "Read child height/result",
         "note": "The current node controls the next step.",
         "ruleLabel": "Binary Tree Height and Node Count invariant",
-        "rule": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -252,7 +252,7 @@ export const algorithmPage = {
         "title": "Combine child measurements into the parent answer",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "Binary Tree Height and Node Count invariant",
-        "rule": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -263,7 +263,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Binary Tree Height and Node Count invariant",
-        "rule": "Returns { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, the value produced after Binary Tree Height and Node Count's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

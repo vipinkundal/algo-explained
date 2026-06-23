@@ -62,30 +62,30 @@ export const algorithmPage = {
     {
       "label": "Base",
       "title": "Check stop condition",
-      "note": "The code first asks whether the current state is complete.",
-      "activeLine": 1,
-      "codeInsight": "Executes this Bitmasking for Subsets line as part of the highlighted code path, linking the visual step to the implementation."
+      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "activeLine": 5,
+      "codeInsight": "Defines bitmaskingSubsets and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Choice",
       "title": "Select next option",
       "note": "One valid move is added to the state.",
-      "activeLine": 4,
-      "codeInsight": "This blank line separates Bitmasking for Subsets's setup from the next code block."
+      "activeLine": 5,
+      "codeInsight": "Defines bitmaskingSubsets and names the input values; edits to those inputs change the visual state and output."
     },
     {
       "label": "Call",
       "title": "Recurse deeper",
       "note": "The same rule runs on a smaller or extended state.",
       "activeLine": 6,
-      "codeInsight": "Creates result as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Unwind",
       "title": "Return or backtrack",
       "note": "The result is combined or the choice is removed.",
       "activeLine": 12,
-      "codeInsight": "Returns result, the value produced after Bitmasking for Subsets's state changes are complete."
+      "codeInsight": "Returns result, the final value maintained by Bitmasking for Subsets's code path."
     }
   ],
   "complexity": {
@@ -137,9 +137,9 @@ export const algorithmPage = {
       {
         "phase": "Base",
         "title": "Check stop condition",
-        "note": "The code first asks whether the current state is complete.",
+        "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
         "ruleLabel": "Bitmasking for Subsets invariant",
-        "rule": "Executes this Bitmasking for Subsets line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines bitmaskingSubsets and names the input values; edits to those inputs change the visual state and output.",
         "activeState": 0
       },
       {
@@ -147,7 +147,7 @@ export const algorithmPage = {
         "title": "Select next option",
         "note": "One valid move is added to the state.",
         "ruleLabel": "Bitmasking for Subsets invariant",
-        "rule": "This blank line separates Bitmasking for Subsets's setup from the next code block.",
+        "rule": "Defines bitmaskingSubsets and names the input values; edits to those inputs change the visual state and output.",
         "activeState": 1
       },
       {
@@ -155,7 +155,7 @@ export const algorithmPage = {
         "title": "Recurse deeper",
         "note": "The same rule runs on a smaller or extended state.",
         "ruleLabel": "Bitmasking for Subsets invariant",
-        "rule": "Creates result as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeState": 2
       },
       {
@@ -163,7 +163,7 @@ export const algorithmPage = {
         "title": "Return or backtrack",
         "note": "The result is combined or the choice is removed.",
         "ruleLabel": "Bitmasking for Subsets invariant",
-        "rule": "Returns result, the value produced after Bitmasking for Subsets's state changes are complete.",
+        "rule": "Returns result, the final value maintained by Bitmasking for Subsets's code path.",
         "activeState": 3
       }
     ]

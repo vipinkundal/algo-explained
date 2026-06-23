@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 14,
-      "codeInsight": "Returns best, the value produced after Longest Consecutive Sequence's state changes are complete."
+      "codeInsight": "Returns best, the final value maintained by Longest Consecutive Sequence's code path."
     }
   ],
   "complexity": {
@@ -127,12 +127,18 @@ export const algorithmPage = {
     ]
   ],
   "animation": {
-    "type": "string-flow",
-    "title": "Longest Consecutive Sequence character scan",
-    "ruleLabel": "String invariant",
+    "type": "array-flow",
+    "title": "Longest Consecutive Sequence array state",
+    "ruleLabel": "Array invariant",
     "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-    "text": "longestconse",
-    "pattern": "lon",
+    "values": [
+      100,
+      4,
+      200,
+      1,
+      3,
+      2
+    ],
     "steps": [
       {
         "phase": "Algorithm State",
@@ -140,11 +146,17 @@ export const algorithmPage = {
         "note": "The code receives the next value or command.",
         "ruleLabel": "Longest Consecutive Sequence invariant",
         "rule": "Creates values for fast membership or lookup checks while the scan runs.",
-        "activeRange": [
-          0,
-          2
+        "activeIndices": [
+          0
         ],
-        "matchedRange": []
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Algorithm State",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       },
       {
         "phase": "Invariant",
@@ -152,11 +164,21 @@ export const algorithmPage = {
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "Longest Consecutive Sequence invariant",
         "rule": "Creates values for fast membership or lookup checks while the scan runs.",
-        "activeRange": [
+        "activeIndices": [
           1,
-          3
+          2
         ],
-        "matchedRange": []
+        "sortedIndices": [],
+        "mutedIndices": [
+          4,
+          5
+        ],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Invariant",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       },
       {
         "phase": "State change",
@@ -164,26 +186,40 @@ export const algorithmPage = {
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "Longest Consecutive Sequence invariant",
         "rule": "Checks values.has(value - 1); only the branch that preserves Longest Consecutive Sequence's invariant is allowed to change state.",
-        "activeRange": [
-          2,
-          4
+        "activeIndices": [
+          2
         ],
-        "matchedRange": []
+        "sortedIndices": [],
+        "mutedIndices": [
+          5
+        ],
+        "window": [
+          1,
+          3
+        ],
+        "primaryLabel": "State change",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       },
       {
         "phase": "Result",
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Longest Consecutive Sequence invariant",
-        "rule": "Returns best, the value produced after Longest Consecutive Sequence's state changes are complete.",
-        "activeRange": [
+        "rule": "Returns best, the final value maintained by Longest Consecutive Sequence's code path.",
+        "activeIndices": [
           3,
-          5
+          4
         ],
-        "matchedRange": [
-          0,
-          2
-        ]
+        "sortedIndices": [],
+        "mutedIndices": [
+          0
+        ],
+        "window": [
+          2,
+          4
+        ],
+        "primaryLabel": "Result",
+        "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       }
     ]
   }

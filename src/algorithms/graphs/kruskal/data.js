@@ -63,29 +63,29 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "The code receives vertices, edges, weights, or adjacency lists.",
-      "activeLine": 6,
-      "codeInsight": "Initializes parent, the local state that the next highlighted lines will update."
+      "activeLine": 5,
+      "codeInsight": "Defines kruskal and names the input vertexCount, edges; edits to those inputs change the visual state and output."
     },
     {
       "label": "Chosen Edge Set",
       "title": "Initialize chosen edge set",
       "note": "Only the graph state owned by this algorithm is created.",
       "activeLine": 6,
-      "codeInsight": "Initializes parent, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds parent from structured fields so the visual trace can show named values instead of an opaque blob."
     },
     {
       "label": "Work item",
       "title": "Process next vertex or edge",
       "note": "Add the cheapest safe edge.",
       "activeLine": 6,
-      "codeInsight": "Initializes parent, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds parent from structured fields so the visual trace can show named values instead of an opaque blob."
     },
     {
       "label": "Minimum Spanning Tree Growth",
       "title": "Return minimum-spanning-tree growth",
       "note": "The final graph state becomes the answer.",
       "activeLine": 13,
-      "codeInsight": "Returns true, the value produced after Kruskal’s Algorithm's state changes are complete."
+      "codeInsight": "Returns true, the boolean result reached by the highlighted checks."
     }
   ],
   "complexity": {
@@ -196,7 +196,7 @@ export const algorithmPage = {
         "title": "Read graph input",
         "note": "The code receives vertices, edges, weights, or adjacency lists.",
         "ruleLabel": "Kruskal’s Algorithm invariant",
-        "rule": "Initializes parent, the local state that the next highlighted lines will update.",
+        "rule": "Defines kruskal and names the input vertexCount, edges; edits to those inputs change the visual state and output.",
         "activeNode": "A",
         "visitedNodes": [],
         "frontierNodes": [
@@ -212,7 +212,7 @@ export const algorithmPage = {
         "title": "Initialize chosen edge set",
         "note": "Only the graph state owned by this algorithm is created.",
         "ruleLabel": "Kruskal’s Algorithm invariant",
-        "rule": "Initializes parent, the local state that the next highlighted lines will update.",
+        "rule": "Builds parent from structured fields so the visual trace can show named values instead of an opaque blob.",
         "activeNode": "B",
         "visitedNodes": [
           "A"
@@ -230,7 +230,7 @@ export const algorithmPage = {
         "title": "Process next vertex or edge",
         "note": "Add the cheapest safe edge.",
         "ruleLabel": "Kruskal’s Algorithm invariant",
-        "rule": "Initializes parent, the local state that the next highlighted lines will update.",
+        "rule": "Builds parent from structured fields so the visual trace can show named values instead of an opaque blob.",
         "activeNode": "C",
         "visitedNodes": [
           "A",
@@ -249,7 +249,7 @@ export const algorithmPage = {
         "title": "Return minimum-spanning-tree growth",
         "note": "The final graph state becomes the answer.",
         "ruleLabel": "Kruskal’s Algorithm invariant",
-        "rule": "Returns true, the value produced after Kruskal’s Algorithm's state changes are complete.",
+        "rule": "Returns true, the boolean result reached by the highlighted checks.",
         "activeNode": "D",
         "visitedNodes": [
           "A",

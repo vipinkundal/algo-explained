@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 8,
-      "codeInsight": "Returns { map: Object.fromEntries(counts), set: [...new Set(values)] }, the value produced after C++ map / set's state changes are complete."
+      "codeInsight": "Returns the final state object { map: Object.fromEntries(counts), set: [...new Set(values)] }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -243,7 +243,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "C++ map / set invariant",
-        "rule": "Returns { map: Object.fromEntries(counts), set: [...new Set(values)] }, the value produced after C++ map / set's state changes are complete.",
+        "rule": "Returns the final state object { map: Object.fromEntries(counts), set: [...new Set(values)] }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

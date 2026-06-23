@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Matrix Chain Multiplication line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines matrixChainMultiplication and names the input dimensions; edits to those inputs change the visual state and output."
     },
     {
       "label": "Recurrence",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
       "activeLine": 18,
-      "codeInsight": "Returns dp[0]?.[n - 1] ?? 0, the value produced after Matrix Chain Multiplication's state changes are complete."
+      "codeInsight": "Returns dp[0]?.[n - 1] ?? 0, the final value maintained by Matrix Chain Multiplication's code path."
     }
   ],
   "complexity": {
@@ -170,7 +170,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "Matrix Chain Multiplication invariant",
-        "rule": "Executes this Matrix Chain Multiplication line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines matrixChainMultiplication and names the input dimensions; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -220,7 +220,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "Matrix Chain Multiplication invariant",
-        "rule": "Returns dp[0]?.[n - 1] ?? 0, the value produced after Matrix Chain Multiplication's state changes are complete.",
+        "rule": "Returns dp[0]?.[n - 1] ?? 0, the final value maintained by Matrix Chain Multiplication's code path.",
         "activeCells": [
           [
             1,

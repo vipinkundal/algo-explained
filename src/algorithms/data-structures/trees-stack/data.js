@@ -94,7 +94,7 @@ export const algorithmPage = {
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 7,
-      "codeInsight": "Returns { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, the value produced after Binary Tree Stack's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -263,7 +263,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Binary Tree Stack invariant",
-        "rule": "Returns { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, the value produced after Binary Tree Stack's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

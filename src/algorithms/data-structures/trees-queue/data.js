@@ -80,7 +80,7 @@ export const algorithmPage = {
       "title": "Read balance invariant",
       "note": "The current node controls the next step.",
       "activeLine": 3,
-      "codeInsight": "Creates queue as empty working state; later lines add and remove values from it."
+      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Child step",
@@ -94,7 +94,7 @@ export const algorithmPage = {
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 7,
-      "codeInsight": "Returns { structure: \"queue\", invariant: \"first in, first out\", state: queue, dequeued: output }, the value produced after Binary Tree Queue's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"queue\", invariant: \"first in, first out\", state: queue, dequeued: output }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -237,7 +237,7 @@ export const algorithmPage = {
         "title": "Read balance invariant",
         "note": "The current node controls the next step.",
         "ruleLabel": "Binary Tree Queue invariant",
-        "rule": "Creates queue as empty working state; later lines add and remove values from it.",
+        "rule": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -263,7 +263,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Binary Tree Queue invariant",
-        "rule": "Returns { structure: \"queue\", invariant: \"first in, first out\", state: queue, dequeued: output }, the value produced after Binary Tree Queue's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"queue\", invariant: \"first in, first out\", state: queue, dequeued: output }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

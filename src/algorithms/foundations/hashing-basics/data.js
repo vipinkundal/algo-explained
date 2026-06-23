@@ -64,14 +64,14 @@ export const algorithmPage = {
       "title": "Read algorithm state action",
       "note": "The code receives the next value or command.",
       "activeLine": 6,
-      "codeInsight": "Initializes counts, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly."
     },
     {
       "label": "Invariant",
       "title": "Inspect algorithm state",
       "note": "The active state must still satisfy page-specific invariant.",
       "activeLine": 6,
-      "codeInsight": "Initializes counts, the local state that the next highlighted lines will update."
+      "codeInsight": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly."
     },
     {
       "label": "State change",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return visible result",
       "note": "The return value or printed state confirms the operation.",
       "activeLine": 11,
-      "codeInsight": "Returns counts, the value produced after Hashing Basics's state changes are complete."
+      "codeInsight": "Returns counts, the final value maintained by Hashing Basics's code path."
     }
   ],
   "complexity": {
@@ -124,36 +124,32 @@ export const algorithmPage = {
     ]
   ],
   "animation": {
-    "type": "string-flow",
-    "title": "Hashing Basics character scan",
-    "ruleLabel": "String invariant",
+    "type": "state-flow",
+    "title": "Hashing Basics state transitions",
+    "ruleLabel": "State rule",
     "rule": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-    "text": "hashingbasic",
-    "pattern": "has",
+    "states": [
+      "Algorithm State",
+      "Invariant",
+      "State change",
+      "Result"
+    ],
     "steps": [
       {
         "phase": "Algorithm State",
         "title": "Read algorithm state action",
         "note": "The code receives the next value or command.",
         "ruleLabel": "Hashing Basics invariant",
-        "rule": "Initializes counts, the local state that the next highlighted lines will update.",
-        "activeRange": [
-          0,
-          2
-        ],
-        "matchedRange": []
+        "rule": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly.",
+        "activeState": 0
       },
       {
         "phase": "Invariant",
         "title": "Inspect algorithm state",
         "note": "The active state must still satisfy page-specific invariant.",
         "ruleLabel": "Hashing Basics invariant",
-        "rule": "Initializes counts, the local state that the next highlighted lines will update.",
-        "activeRange": [
-          1,
-          3
-        ],
-        "matchedRange": []
+        "rule": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly.",
+        "activeState": 1
       },
       {
         "phase": "State change",
@@ -161,26 +157,15 @@ export const algorithmPage = {
         "note": "Only the necessary algorithm state fields are changed.",
         "ruleLabel": "Hashing Basics invariant",
         "rule": "Updates counts[key] with (counts[key] || 0) + 1; this is the state change the animation should reflect.",
-        "activeRange": [
-          2,
-          4
-        ],
-        "matchedRange": []
+        "activeState": 2
       },
       {
         "phase": "Result",
         "title": "Return visible result",
         "note": "The return value or printed state confirms the operation.",
         "ruleLabel": "Hashing Basics invariant",
-        "rule": "Returns counts, the value produced after Hashing Basics's state changes are complete.",
-        "activeRange": [
-          3,
-          5
-        ],
-        "matchedRange": [
-          0,
-          2
-        ]
+        "rule": "Returns counts, the final value maintained by Hashing Basics's code path.",
+        "activeState": 3
       }
     ]
   }

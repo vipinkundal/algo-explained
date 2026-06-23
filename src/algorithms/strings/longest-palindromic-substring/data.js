@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Text",
       "title": "Read string input",
       "note": "The code receives text, pattern, or character data.",
-      "activeLine": 6,
-      "codeInsight": "Initializes best as mutable state; later branches update it as the search window or traversal changes."
+      "activeLine": 5,
+      "codeInsight": "Defines longestPalindromicSubstring and names the input text; edits to those inputs change the visual state and output."
     },
     {
       "label": "Helper",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return string answer",
       "note": "Matches or best values are returned after the scan.",
       "activeLine": 19,
-      "codeInsight": "Returns best, the value produced after Longest Palindromic Substring's state changes are complete."
+      "codeInsight": "Returns best, the final value maintained by Longest Palindromic Substring's code path."
     }
   ],
   "complexity": {
@@ -198,7 +198,7 @@ export const algorithmPage = {
         "title": "Read string input",
         "note": "The code receives text, pattern, or character data.",
         "ruleLabel": "Longest Palindromic Substring invariant",
-        "rule": "Initializes best as mutable state; later branches update it as the search window or traversal changes.",
+        "rule": "Defines longestPalindromicSubstring and names the input text; edits to those inputs change the visual state and output.",
         "activeNode": "8",
         "targetNode": "4",
         "replacementNode": "",
@@ -239,7 +239,7 @@ export const algorithmPage = {
         "title": "Return string answer",
         "note": "Matches or best values are returned after the scan.",
         "ruleLabel": "Longest Palindromic Substring invariant",
-        "rule": "Returns best, the value produced after Longest Palindromic Substring's state changes are complete.",
+        "rule": "Returns best, the final value maintained by Longest Palindromic Substring's code path.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

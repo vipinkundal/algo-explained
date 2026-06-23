@@ -19,15 +19,15 @@ function words(value) {
 
 function getKind(page) {
   const haystack = words(`${page.visualizerType} ${page.category} ${page.track} ${page.title}`);
-  if (haystack.includes("bucket") || haystack.includes("digit") || haystack.includes("frequency-array")) return "bucket-flow";
-  if (haystack.includes("graph") || haystack.includes("mst") || haystack.includes("edge") || haystack.includes("dag") || haystack.includes("scc") || haystack.includes("low-link") || haystack.includes("parent-tree")) return "graph-flow";
-  if (haystack.includes("linked-list")) return "linked-list-flow";
-  if (haystack.includes("tree") || haystack.includes("heap") || haystack.includes("bst") || haystack.includes("trie")) return "tree-operation";
   if (haystack.includes("matrix") || haystack.includes("grid") || haystack.includes("board") || haystack.includes("chess")) return "matrix-flow";
+  if (haystack.includes("linked-list") || haystack.includes("linkedlist")) return "linked-list-flow";
+  if (haystack.includes("tree") || haystack.includes("heap") || haystack.includes("bst") || haystack.includes("trie") || haystack.includes("parent-tree")) return "tree-operation";
+  if (haystack.includes("graph") || haystack.includes("mst") || haystack.includes("edge") || haystack.includes("dag") || haystack.includes("scc") || haystack.includes("low-link")) return "graph-flow";
   if (haystack.includes("recursion") || haystack.includes("call-stack") || haystack.includes("choice") || haystack.includes("decision") || haystack.includes("disk")) return "recursion-flow";
   if (haystack.includes("stack") || haystack.includes("queue") || haystack.includes("deque") || haystack.includes("buffer")) return "stack-queue-flow";
-  if (haystack.includes("string") || haystack.includes("palindrome") || haystack.includes("prefix") || haystack.includes("hash") || haystack.includes("z-box") || haystack.includes("anagram")) return "string-flow";
-  if (haystack.includes("array") || haystack.includes("sort") || haystack.includes("scan") || haystack.includes("pointer") || haystack.includes("window") || haystack.includes("partition") || haystack.includes("range") || haystack.includes("candidate") || haystack.includes("min-max") || haystack.includes("running") || haystack.includes("cumulative")) return "array-flow";
+  if (haystack.includes("bucket") || haystack.includes("digit") || haystack.includes("frequency-array")) return "bucket-flow";
+  if (haystack.includes("string") || haystack.includes("palindrome") || haystack.includes("prefix-table") || haystack.includes("rolling-hash") || haystack.includes("z-box") || haystack.includes("anagram")) return "string-flow";
+  if (haystack.includes("array") || haystack.includes("sort") || haystack.includes("pointer") || haystack.includes("window") || haystack.includes("partition") || haystack.includes("range") || haystack.includes("candidate") || haystack.includes("min-max") || haystack.includes("running") || haystack.includes("cumulative") || haystack.includes("permutation-step") || haystack.includes("duplicate-shift") || haystack.includes("two-pointer")) return "array-flow";
   return "state-flow";
 }
 

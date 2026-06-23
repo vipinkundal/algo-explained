@@ -80,21 +80,21 @@ export const algorithmPage = {
       "title": "Read balance invariant",
       "note": "The current node controls the next step.",
       "activeLine": 3,
-      "codeInsight": "Initializes values, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Child step",
       "title": "Rotate or recolor when height/color rules are violated",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "Executes this Heap Creation line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Returns the final state object { structure: \"max heap\", inserted: values, heap }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"max heap\", inserted: values, heap }, the value produced after Heap Creation's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"max heap\", inserted: values, heap }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -237,7 +237,7 @@ export const algorithmPage = {
         "title": "Read balance invariant",
         "note": "The current node controls the next step.",
         "ruleLabel": "Heap Creation invariant",
-        "rule": "Initializes values, the local state that the next highlighted lines will update.",
+        "rule": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -252,7 +252,7 @@ export const algorithmPage = {
         "title": "Rotate or recolor when height/color rules are violated",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "Heap Creation invariant",
-        "rule": "Executes this Heap Creation line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"max heap\", inserted: values, heap }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -263,7 +263,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Heap Creation invariant",
-        "rule": "Returns { structure: \"max heap\", inserted: values, heap }, the value produced after Heap Creation's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"max heap\", inserted: values, heap }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

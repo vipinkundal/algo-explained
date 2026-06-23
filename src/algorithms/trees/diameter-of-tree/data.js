@@ -71,21 +71,21 @@ export const algorithmPage = {
       "title": "Read child height/result",
       "note": "The current node controls the next step.",
       "activeLine": 12,
-      "codeInsight": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete."
+      "codeInsight": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path."
     },
     {
       "label": "Child step",
       "title": "Combine child measurements into the parent answer",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
       "activeLine": 12,
-      "codeInsight": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete."
+      "codeInsight": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 12,
-      "codeInsight": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete."
+      "codeInsight": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path."
     }
   ],
   "complexity": {
@@ -233,7 +233,7 @@ export const algorithmPage = {
         "title": "Read child height/result",
         "note": "The current node controls the next step.",
         "ruleLabel": "Diameter of Tree invariant",
-        "rule": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete.",
+        "rule": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path.",
         "activeNode": "4",
         "targetNode": "12",
         "replacementNode": "",
@@ -248,7 +248,7 @@ export const algorithmPage = {
         "title": "Combine child measurements into the parent answer",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "Diameter of Tree invariant",
-        "rule": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete.",
+        "rule": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -259,7 +259,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Diameter of Tree invariant",
-        "rule": "Returns 1 + Math.max(left, right), the value produced after Diameter of Tree's state changes are complete.",
+        "rule": "Returns 1 + Math.max(left, right), the final value maintained by Diameter of Tree's code path.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

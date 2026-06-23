@@ -87,14 +87,14 @@ export const algorithmPage = {
       "title": "Rotate or recolor when height/color rules are violated",
       "note": "The algorithm moves to a child, combines a value, or repairs structure.",
       "activeLine": 6,
-      "codeInsight": "Executes this AVL LL Rotation line as part of the highlighted code path, linking the visual step to the implementation."
+      "codeInsight": "Sets the returned rotation field to \"right rotation\", which is one of the named values rendered in the visual summary."
     },
     {
       "label": "Tree result",
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 3,
-      "codeInsight": "Returns {, the value produced after AVL LL Rotation's state changes are complete."
+      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -252,7 +252,7 @@ export const algorithmPage = {
         "title": "Rotate or recolor when height/color rules are violated",
         "note": "The algorithm moves to a child, combines a value, or repairs structure.",
         "ruleLabel": "AVL LL Rotation invariant",
-        "rule": "Executes this AVL LL Rotation line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Sets the returned rotation field to \"right rotation\", which is one of the named values rendered in the visual summary.",
         "activeNode": "12",
         "targetNode": "2",
         "replacementNode": "2",
@@ -263,7 +263,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "AVL LL Rotation invariant",
-        "rule": "Returns {, the value produced after AVL LL Rotation's state changes are complete.",
+        "rule": "Returns the final state object {, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

@@ -63,15 +63,15 @@ export const algorithmPage = {
       "label": "Values",
       "title": "Read values or updates",
       "note": "The code receives the array, ranges, or deltas.",
-      "activeLine": 6,
-      "codeInsight": "Initializes prefix, the local state that the next highlighted lines will update."
+      "activeLine": 5,
+      "codeInsight": "Defines prefixSum and names the input array; edits to those inputs change the visual state and output."
     },
     {
       "label": "Accumulator",
       "title": "Start running state",
       "note": "A neutral starting value makes every update consistent.",
       "activeLine": 6,
-      "codeInsight": "Initializes prefix, the local state that the next highlighted lines will update."
+      "codeInsight": "Seeds prefix with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
     },
     {
       "label": "Prefix step",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Read saved state",
       "note": "The stored state gives the final or range answer.",
       "activeLine": 8,
-      "codeInsight": "Returns prefix, the value produced after Prefix Sum's state changes are complete."
+      "codeInsight": "Returns prefix, the final value maintained by Prefix Sum's code path."
     }
   ],
   "complexity": {
@@ -124,36 +124,52 @@ export const algorithmPage = {
     ]
   ],
   "animation": {
-    "type": "string-flow",
-    "title": "Prefix Sum character scan",
-    "ruleLabel": "String invariant",
+    "type": "array-flow",
+    "title": "Prefix Sum array state",
+    "ruleLabel": "Array invariant",
     "rule": "Each item updates the running total, difference, or accumulator exactly once.",
-    "text": "prefixsum",
-    "pattern": "pre",
+    "values": [
+      1,
+      2,
+      3
+    ],
     "steps": [
       {
         "phase": "Values",
         "title": "Read values or updates",
         "note": "The code receives the array, ranges, or deltas.",
         "ruleLabel": "Prefix Sum invariant",
-        "rule": "Initializes prefix, the local state that the next highlighted lines will update.",
-        "activeRange": [
-          0,
-          2
+        "rule": "Defines prefixSum and names the input array; edits to those inputs change the visual state and output.",
+        "activeIndices": [
+          0
         ],
-        "matchedRange": []
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          1
+        ],
+        "primaryLabel": "Values",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
       },
       {
         "phase": "Accumulator",
         "title": "Start running state",
         "note": "A neutral starting value makes every update consistent.",
         "ruleLabel": "Prefix Sum invariant",
-        "rule": "Initializes prefix, the local state that the next highlighted lines will update.",
-        "activeRange": [
+        "rule": "Seeds prefix with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
+        "activeIndices": [
           1,
-          3
+          2
         ],
-        "matchedRange": []
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          2
+        ],
+        "primaryLabel": "Accumulator",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
       },
       {
         "phase": "Prefix step",
@@ -161,26 +177,36 @@ export const algorithmPage = {
         "note": "The running state changes by the current value or boundary delta.",
         "ruleLabel": "Prefix Sum invariant",
         "rule": "Defines prefixSum and names the input array; edits to those inputs change the visual state and output.",
-        "activeRange": [
-          2,
-          4
+        "activeIndices": [
+          2
         ],
-        "matchedRange": []
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Prefix step",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
       },
       {
         "phase": "Range result",
         "title": "Read saved state",
         "note": "The stored state gives the final or range answer.",
         "ruleLabel": "Prefix Sum invariant",
-        "rule": "Returns prefix, the value produced after Prefix Sum's state changes are complete.",
-        "activeRange": [
-          3,
-          5
-        ],
-        "matchedRange": [
-          0,
+        "rule": "Returns prefix, the final value maintained by Prefix Sum's code path.",
+        "activeIndices": [
+          2,
           2
-        ]
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          1,
+          2
+        ],
+        "primaryLabel": "Range result",
+        "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
       }
     ]
   }

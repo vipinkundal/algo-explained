@@ -63,8 +63,8 @@ export const algorithmPage = {
       "label": "Graph",
       "title": "Read graph input",
       "note": "Use vertices A, B, C and weighted edges A -> B (1), B -> C (2), and A -> C (5).",
-      "activeLine": 6,
-      "codeInsight": "Builds distance as a lookup table so each key has an explicit starting state."
+      "activeLine": 5,
+      "codeInsight": "Defines bellmanFord and names the input vertices, edges, start; edits to those inputs change the visual state and output."
     },
     {
       "label": "Start distance",
@@ -78,14 +78,14 @@ export const algorithmPage = {
       "title": "Improve B",
       "note": "A is reachable with cost 0, so A -> B gives B a better cost of 1.",
       "activeLine": 8,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
     },
     {
       "label": "Relax B -> C",
       "title": "Improve C",
       "note": "B is now reachable with cost 1, so B -> C improves C from infinity to 3.",
       "activeLine": 8,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
     },
     {
       "label": "Check A -> C",
@@ -99,21 +99,21 @@ export const algorithmPage = {
       "title": "Repeat edge scan",
       "note": "The second pass checks every edge again, but no distance improves.",
       "activeLine": 8,
-      "codeInsight": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+      "codeInsight": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
     },
     {
       "label": "Cycle check",
       "title": "Detect negative cycle",
       "note": "A final scan asks whether any edge can still improve a distance.",
       "activeLine": 15,
-      "codeInsight": "Initializes hasNegativeCycle, the local state that the next highlighted lines will update."
+      "codeInsight": "Prepares hasNegativeCycle from the sample collection that the next visual step inspects."
     },
     {
       "label": "Result",
       "title": "Return distances",
       "note": "The final answer is A: 0, B: 1, C: 3 with no negative cycle.",
       "activeLine": 16,
-      "codeInsight": "Returns { distance, hasNegativeCycle }, the value produced after Bellman-Ford Algorithm's state changes are complete."
+      "codeInsight": "Returns the final state object { distance, hasNegativeCycle }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "animation": {
@@ -160,18 +160,18 @@ export const algorithmPage = {
       {
         "pass": "Input",
         "title": "Graph loaded",
-        "note": "The weighted directed graph is ready, but no shortest paths have been calculated yet.",
+        "note": "Use vertices A, B, C and weighted edges A -> B (1), B -> C (2), and A -> C (5).",
         "distances": {
           "A": "∞",
           "B": "∞",
           "C": "∞"
         },
-        "rule": "Builds distance as a lookup table so each key has an explicit starting state."
+        "rule": "Defines bellmanFord and names the input vertices, edges, start; edits to those inputs change the visual state and output."
       },
       {
         "pass": "Setup",
         "title": "Start at A",
-        "note": "A becomes 0 and every other vertex stays infinity until an edge proves a cheaper route.",
+        "note": "Every vertex starts at infinity except A, because the distance from A to itself is 0.",
         "relaxedNode": "A",
         "distances": {
           "A": 0,
@@ -183,7 +183,7 @@ export const algorithmPage = {
       {
         "pass": "Pass 1",
         "title": "Relax A -> B",
-        "note": "0 + 1 is better than infinity, so B becomes 1.",
+        "note": "A is reachable with cost 0, so A -> B gives B a better cost of 1.",
         "activeEdge": {
           "from": "A",
           "to": "B"
@@ -194,12 +194,12 @@ export const algorithmPage = {
           "B": 1,
           "C": "∞"
         },
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+        "rule": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
       },
       {
         "pass": "Pass 1",
         "title": "Relax B -> C",
-        "note": "1 + 2 is better than infinity, so C becomes 3.",
+        "note": "B is now reachable with cost 1, so B -> C improves C from infinity to 3.",
         "activeEdge": {
           "from": "B",
           "to": "C"
@@ -210,12 +210,12 @@ export const algorithmPage = {
           "B": 1,
           "C": 3
         },
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+        "rule": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
       },
       {
         "pass": "Pass 1",
         "title": "Check A -> C",
-        "note": "0 + 5 is worse than the current C distance of 3, so C stays unchanged.",
+        "note": "A -> C costs 5, but C already has cost 3, so the table does not change.",
         "activeEdge": {
           "from": "A",
           "to": "C"
@@ -230,7 +230,7 @@ export const algorithmPage = {
       {
         "pass": "Pass 2",
         "title": "No more improvements",
-        "note": "The next pass scans all edges again, but every proposed route is already worse or equal.",
+        "note": "The second pass checks every edge again, but no distance improves.",
         "activeEdge": {
           "from": "A",
           "to": "B"
@@ -240,29 +240,29 @@ export const algorithmPage = {
           "B": 1,
           "C": 3
         },
-        "rule": "Scans the input from left to right so each value gets one chance to resolve earlier pending values."
+        "rule": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
       },
       {
         "pass": "Final scan",
         "title": "Check negative cycle",
-        "note": "No edge can still improve a distance, so there is no reachable negative cycle.",
+        "note": "A final scan asks whether any edge can still improve a distance.",
         "distances": {
           "A": 0,
           "B": 1,
           "C": 3
         },
-        "rule": "Initializes hasNegativeCycle, the local state that the next highlighted lines will update."
+        "rule": "Prepares hasNegativeCycle from the sample collection that the next visual step inspects."
       },
       {
         "pass": "Answer",
         "title": "Return shortest paths",
-        "note": "Bellman-Ford returns the final distance table and hasNegativeCycle: false.",
+        "note": "The final answer is A: 0, B: 1, C: 3 with no negative cycle.",
         "distances": {
           "A": 0,
           "B": 1,
           "C": 3
         },
-        "rule": "Returns { distance, hasNegativeCycle }, the value produced after Bellman-Ford Algorithm's state changes are complete."
+        "rule": "Returns the final state object { distance, hasNegativeCycle }, exposing the exact fields the visualizer has been tracking."
       }
     ]
   },

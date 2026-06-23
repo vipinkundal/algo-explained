@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 3,
-      "codeInsight": "Executes this DP on Grids line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines dpOnGrids and names the input grid; edits to those inputs change the visual state and output."
     },
     {
       "label": "Recurrence",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
       "activeLine": 16,
-      "codeInsight": "Returns dp[rows - 1]?.[cols - 1] || 0, the value produced after DP on Grids's state changes are complete."
+      "codeInsight": "Returns dp[rows - 1]?.[cols - 1] || 0, the final value maintained by DP on Grids's code path."
     }
   ],
   "complexity": {
@@ -168,7 +168,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "DP on Grids invariant",
-        "rule": "Executes this DP on Grids line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines dpOnGrids and names the input grid; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -218,7 +218,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "DP on Grids invariant",
-        "rule": "Returns dp[rows - 1]?.[cols - 1] || 0, the value produced after DP on Grids's state changes are complete.",
+        "rule": "Returns dp[rows - 1]?.[cols - 1] || 0, the final value maintained by DP on Grids's code path.",
         "activeCells": [
           [
             1,

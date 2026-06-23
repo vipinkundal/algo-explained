@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return result",
       "note": "The final traversal, path, measurement, or tree state is returned.",
       "activeLine": 14,
-      "codeInsight": "Returns result, the value produced after Inorder Traversal's state changes are complete."
+      "codeInsight": "Returns result, the final value maintained by Inorder Traversal's code path."
     }
   ],
   "complexity": {
@@ -271,7 +271,7 @@ export const algorithmPage = {
         "title": "Return result",
         "note": "The final traversal, path, measurement, or tree state is returned.",
         "ruleLabel": "Inorder Traversal invariant",
-        "rule": "Returns result, the value produced after Inorder Traversal's state changes are complete.",
+        "rule": "Returns result, the final value maintained by Inorder Traversal's code path.",
         "activeNode": "2",
         "targetNode": "6",
         "replacementNode": "6",

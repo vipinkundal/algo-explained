@@ -64,28 +64,28 @@ export const algorithmPage = {
       "title": "Define DP cell",
       "note": "The code first needs a precise subproblem meaning.",
       "activeLine": 6,
-      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
+      "codeInsight": "Stores dp from the current length, making the loop boundary explicit for the visual trace."
     },
     {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Longest Common Subsequence line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines longestCommonSubsequence and names the input a, b; edits to those inputs change the visual state and output."
     },
     {
       "label": "Recurrence",
       "title": "Fill next state",
       "note": "The transition combines previously solved states.",
       "activeLine": 6,
-      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
+      "codeInsight": "Stores dp from the current length, making the loop boundary explicit for the visual trace."
     },
     {
       "label": "Target",
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
       "activeLine": 12,
-      "codeInsight": "Returns dp[a.length][b.length], the value produced after Longest Common Subsequence's state changes are complete."
+      "codeInsight": "Returns dp[a.length][b.length], the final value maintained by Longest Common Subsequence's code path."
     }
   ],
   "complexity": {
@@ -148,7 +148,7 @@ export const algorithmPage = {
         "title": "Define DP cell",
         "note": "The code first needs a precise subproblem meaning.",
         "ruleLabel": "Longest Common Subsequence invariant",
-        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
+        "rule": "Stores dp from the current length, making the loop boundary explicit for the visual trace.",
         "activeCells": [
           [
             0,
@@ -167,7 +167,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "Longest Common Subsequence invariant",
-        "rule": "Executes this Longest Common Subsequence line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines longestCommonSubsequence and names the input a, b; edits to those inputs change the visual state and output.",
         "activeCells": [
           [
             0,
@@ -190,7 +190,7 @@ export const algorithmPage = {
         "title": "Fill next state",
         "note": "The transition combines previously solved states.",
         "ruleLabel": "Longest Common Subsequence invariant",
-        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
+        "rule": "Stores dp from the current length, making the loop boundary explicit for the visual trace.",
         "activeCells": [
           [
             0,
@@ -217,7 +217,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "Longest Common Subsequence invariant",
-        "rule": "Returns dp[a.length][b.length], the value produced after Longest Common Subsequence's state changes are complete.",
+        "rule": "Returns dp[a.length][b.length], the final value maintained by Longest Common Subsequence's code path.",
         "activeCells": [
           [
             1,

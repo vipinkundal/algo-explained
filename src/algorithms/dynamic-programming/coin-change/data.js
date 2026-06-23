@@ -70,8 +70,8 @@ export const algorithmPage = {
       "label": "Base case",
       "title": "Seed known answers",
       "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 3,
-      "codeInsight": "Executes this Coin Change line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Defines coinChange and names the input coins, amount; edits to those inputs change the visual state and output."
     },
     {
       "label": "Recurrence",
@@ -85,7 +85,7 @@ export const algorithmPage = {
       "title": "Return requested state",
       "note": "The answer is read from the final DP state.",
       "activeLine": 13,
-      "codeInsight": "Returns dp[amount] === Infinity ? -1 : dp[amount], the value produced after Coin Change's state changes are complete."
+      "codeInsight": "Returns dp[amount] === Infinity ? -1 : dp[amount], the final value maintained by Coin Change's code path."
     }
   ],
   "complexity": {
@@ -158,7 +158,7 @@ export const algorithmPage = {
         "title": "Seed known answers",
         "note": "Base values stop the recurrence from falling through.",
         "ruleLabel": "Coin Change invariant",
-        "rule": "Executes this Coin Change line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Defines coinChange and names the input coins, amount; edits to those inputs change the visual state and output.",
         "activeIndices": [
           1,
           2
@@ -195,7 +195,7 @@ export const algorithmPage = {
         "title": "Return requested state",
         "note": "The answer is read from the final DP state.",
         "ruleLabel": "Coin Change invariant",
-        "rule": "Returns dp[amount] === Infinity ? -1 : dp[amount], the value produced after Coin Change's state changes are complete.",
+        "rule": "Returns dp[amount] === Infinity ? -1 : dp[amount], the final value maintained by Coin Change's code path.",
         "activeIndices": [
           2,
           2

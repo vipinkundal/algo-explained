@@ -72,29 +72,29 @@ export const algorithmPage = {
       "label": "Input array",
       "title": "Copy values",
       "note": "The code starts with the values to reorder.",
-      "activeLine": 3,
-      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
+      "activeLine": 2,
+      "codeInsight": "Defines linkedListSortedChecking as the runnable entry point for this lesson."
     },
     {
       "label": "Invariant",
       "title": "Track ordered work",
       "note": "The algorithm marks what part is already safe.",
       "activeLine": 3,
-      "codeInsight": "Initializes nodes, the local state that the next highlighted lines will update."
+      "codeInsight": "Stores nodes from the current length, making the loop boundary explicit for the visual trace."
     },
     {
       "label": "Move",
       "title": "Apply ordering step",
       "note": "The current operation reduces disorder.",
-      "activeLine": 6,
-      "codeInsight": "Executes this Linked List Sorted Checking line as part of the highlighted code path, linking the visual step to the implementation."
+      "activeLine": 5,
+      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
     },
     {
       "label": "Sorted output",
       "title": "Return final order",
       "note": "The result is returned when no unsorted work remains.",
       "activeLine": 5,
-      "codeInsight": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Sorted Checking's state changes are complete."
+      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
     }
   ],
   "complexity": {
@@ -162,7 +162,7 @@ export const algorithmPage = {
         "title": "Copy values",
         "note": "The code starts with the values to reorder.",
         "ruleLabel": "Linked List Sorted Checking invariant",
-        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
+        "rule": "Defines linkedListSortedChecking as the runnable entry point for this lesson.",
         "activeNode": "head",
         "previousNode": "head",
         "nextNode": "n2"
@@ -172,7 +172,7 @@ export const algorithmPage = {
         "title": "Track ordered work",
         "note": "The algorithm marks what part is already safe.",
         "ruleLabel": "Linked List Sorted Checking invariant",
-        "rule": "Initializes nodes, the local state that the next highlighted lines will update.",
+        "rule": "Stores nodes from the current length, making the loop boundary explicit for the visual trace.",
         "activeNode": "n2",
         "previousNode": "head",
         "nextNode": "n3"
@@ -182,7 +182,7 @@ export const algorithmPage = {
         "title": "Apply ordering step",
         "note": "The current operation reduces disorder.",
         "ruleLabel": "Linked List Sorted Checking invariant",
-        "rule": "Executes this Linked List Sorted Checking line as part of the highlighted code path, linking the visual step to the implementation.",
+        "rule": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "n3",
         "previousNode": "n2",
         "nextNode": "tail"
@@ -192,7 +192,7 @@ export const algorithmPage = {
         "title": "Return final order",
         "note": "The result is returned when no unsorted work remains.",
         "ruleLabel": "Linked List Sorted Checking invariant",
-        "rule": "Returns { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, the value produced after Linked List Sorted Checking's state changes are complete.",
+        "rule": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking.",
         "activeNode": "tail",
         "previousNode": "n3",
         "nextNode": "tail"
