@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/longest-increasing-subsequence/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Longest Increasing Subsequence is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "LIS keeps minimal tail values for increasing subsequences of each length.",
-  "concept": "Longest Increasing Subsequence is useful when the same subproblems appear again and storing answers prevents repeated work. Use this when you can define a state, base cases, and a recurrence.",
-  "logicSummary": "Define what one DP state means, initialize base cases, fill dependent states, and read the target state.",
-  "transitionSummary": "Each step computes one state from already-solved smaller or earlier states.",
-  "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
-  "realLifeExample": "Longest Increasing Subsequence appears when overlapping subproblems would otherwise be recomputed.",
-  "whenToUse": "Use Longest Increasing Subsequence when the recurrence and base cases match the problem statement.",
-  "memoryTrick": "Longest Increasing Subsequence: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Longest Increasing Subsequence is shown as a dependency-ordered DP fill. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Longest Increasing Subsequence is taught with its own DP state definition, transition, code trace, and answer state.",
+  "problem": "Find the length of the longest subsequence whose values strictly increase while keeping original order.",
+  "concept": "The O(n log n) LIS method stores tails[length - 1] as the smallest possible tail value for any increasing subsequence of that length.",
+  "logicSummary": "Scan the numbers left to right, binary-search the first tail that is greater than or equal to the current number, and replace it.",
+  "transitionSummary": "For each value, replace the lower_bound position in tails; if no position exists, append a longer subsequence tail.",
+  "codeInsight": "Replacing a tail does not claim that exact subsequence is final; it keeps the best future extension candidate for that length.",
+  "realLifeExample": "Use LIS for ranking trends, envelope nesting, timeline ordering, and any problem asking for longest ordered growth.",
+  "whenToUse": "Use this version when only the LIS length is needed and strict increasing order matters.",
+  "memoryTrick": "Smallest tail leaves the most room to grow.",
+  "visualizerCaption": "The trace shows how the compact tails array changes as each input value is processed.",
   "logicSteps": [
     {
-      "title": "Define state",
-      "text": "Name exactly what one cell or entry means."
+      "title": "Define tails",
+      "text": "tails[k] is the minimum tail value seen for an increasing subsequence of length k + 1."
     },
     {
-      "title": "Set base cases",
-      "text": "Fill answers that need no recurrence."
+      "title": "Process each value",
+      "text": "Use binary search to find the first tail that is at least the current value."
     },
     {
-      "title": "Apply recurrence",
-      "text": "Compute each state from solved dependencies."
+      "title": "Replace or append",
+      "text": "Replace to improve a tail, or append when the value extends every known length."
     },
     {
-      "title": "Read target",
-      "text": "Return the state requested by the problem."
+      "title": "Return tails length",
+      "text": "The number of maintained tails equals the LIS length."
     }
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "nums",
+      "purpose": "Input sequence."
     },
     {
-      "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "name": "tails",
+      "purpose": "Best tail value for each subsequence length."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "left, right",
+      "purpose": "Binary-search bounds inside tails."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "position",
+      "purpose": "The tail slot replaced or appended for the current value."
     }
   ],
   "dryRun": [
     {
-      "label": "State meaning",
-      "title": "Define DP cell",
-      "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 6,
-      "codeInsight": "Seeds tails with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
+      "label": "10",
+      "title": "Start tails = [10]",
+      "note": "The first number creates a length-1 subsequence.",
+      "activeLine": 4,
+      "codeInsight": "tails starts empty and grows from scanned values."
     },
     {
-      "label": "Base case",
-      "title": "Seed known answers",
-      "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 5,
-      "codeInsight": "Defines longestIncreasingSubsequence and names the input array; edits to those inputs change the visual state and output."
+      "label": "2",
+      "title": "Replace the length-1 tail",
+      "note": "2 replaces 9/10 because a smaller tail is better for future values.",
+      "activeLine": 10,
+      "codeInsight": "lower_bound finds the first tail that is not smaller than value."
     },
     {
-      "label": "Recurrence",
-      "title": "Fill next state",
-      "note": "The transition combines previously solved states.",
-      "activeLine": 6,
-      "codeInsight": "Seeds tails with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
+      "label": "7",
+      "title": "Extend after 3",
+      "note": "7 appends after [2, 3], producing a length-3 candidate.",
+      "activeLine": 9,
+      "codeInsight": "Appending means the current value is greater than every maintained tail."
     },
     {
-      "label": "Target",
-      "title": "Return requested state",
-      "note": "The answer is read from the final DP state.",
-      "activeLine": 17,
-      "codeInsight": "Returns tails.length, the final value maintained by Longest Increasing Subsequence's code path."
+      "label": "Answer",
+      "title": "Return tails.length = 4",
+      "note": "For [10,9,2,5,3,7,101,18], one LIS length is 4.",
+      "activeLine": 13,
+      "codeInsight": "The compact table's length is the answer."
     }
   ],
   "complexity": {
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n)."
   },
   "quiz": {
-    "question": "Which state choice keeps Longest Increasing Subsequence correct?",
+    "question": "Which state keeps Longest Increasing Subsequence correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track dp table and update it only through Longest Increasing Subsequence's transition.",
+        "text": "Define tails[k] as the smallest tail for length k + 1 and update it with lower_bound.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another DP recurrence without matching this algorithm's state.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Read the final answer before the required dependency states are solved.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Longest Increasing Subsequence stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Longest Increasing Subsequence needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Longest Increasing Subsequence works when the state meaning, transition, and answer state stay aligned.",
+    "incorrectText": "Not quite. Longest Increasing Subsequence needs its own state, dependencies, and stop condition."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "longest-increasing-subsequence",
@@ -129,48 +129,103 @@ export const algorithmPage = {
     ]
   ],
   "animation": {
-    "type": "state-flow",
-    "title": "Longest Increasing Subsequence state transitions",
-    "ruleLabel": "State rule",
-    "rule": "Each step computes one state from already-solved smaller or earlier states.",
-    "states": [
-      "State meaning",
-      "Base case",
-      "Recurrence",
-      "Target"
+    "type": "array-flow",
+    "static": true,
+    "title": "Longest Increasing Subsequence DP trace",
+    "ruleLabel": "DP invariant",
+    "rule": "For each value, replace the lower_bound position in tails; if no position exists, append a longer subsequence tail.",
+    "values": [
+      2,
+      3,
+      7,
+      18
     ],
     "steps": [
       {
-        "phase": "State meaning",
-        "title": "Define DP cell",
-        "note": "The code first needs a precise subproblem meaning.",
-        "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "Seeds tails with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
-        "activeState": 0
+        "phase": "seed",
+        "title": "10 opens length 1",
+        "note": "tails = [10].",
+        "ruleLabel": "DP invariant",
+        "rule": "For each value, replace the lower_bound position in tails; if no position exists, append a longer subsequence tail.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "seed",
+        "secondaryLabel": "For each value, replace the lower_bound position in tails; if no position exists, append a longer subsequence tail."
       },
       {
-        "phase": "Base case",
-        "title": "Seed known answers",
-        "note": "Base values stop the recurrence from falling through.",
-        "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "Defines longestIncreasingSubsequence and names the input array; edits to those inputs change the visual state and output.",
-        "activeState": 1
+        "phase": "replace",
+        "title": "2 becomes the smallest length-1 tail",
+        "note": "After 9 and 2, the best length-1 tail is 2.",
+        "ruleLabel": "DP invariant",
+        "rule": "For each value, replace the lower_bound position in tails; if no position exists, append a longer subsequence tail.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [
+          0
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "replace",
+        "secondaryLabel": "For each value, replace the lower_bound position in tails; if no position exists, append a longer subsequence tail."
       },
       {
-        "phase": "Recurrence",
-        "title": "Fill next state",
-        "note": "The transition combines previously solved states.",
-        "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "Seeds tails with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
-        "activeState": 2
+        "phase": "extend",
+        "title": "5 and 7 extend the chain",
+        "note": "tails reaches [2, 3, 7].",
+        "ruleLabel": "DP invariant",
+        "rule": "For each value, replace the lower_bound position in tails; if no position exists, append a longer subsequence tail.",
+        "activeIndices": [
+          1,
+          2
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "extend",
+        "secondaryLabel": "For each value, replace the lower_bound position in tails; if no position exists, append a longer subsequence tail."
       },
       {
-        "phase": "Target",
-        "title": "Return requested state",
-        "note": "The answer is read from the final DP state.",
-        "ruleLabel": "Longest Increasing Subsequence invariant",
-        "rule": "Returns tails.length, the final value maintained by Longest Increasing Subsequence's code path.",
-        "activeState": 3
+        "phase": "answer",
+        "title": "LIS length is 4",
+        "note": "101 appends, then 18 replaces the length-4 tail.",
+        "ruleLabel": "DP invariant",
+        "rule": "For each value, replace the lower_bound position in tails; if no position exists, append a longer subsequence tail.",
+        "activeIndices": [
+          3
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "answer",
+        "secondaryLabel": "For each value, replace the lower_bound position in tails; if no position exists, append a longer subsequence tail."
       }
     ]
   }

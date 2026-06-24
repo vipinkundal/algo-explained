@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Fibonacci DP
 // Route: /algorithms/dynamic-programming/fibonacci-dp
 

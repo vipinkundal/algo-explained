@@ -12,107 +12,107 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/dp-on-trees/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "DP on Trees is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "DP on Trees combines child states into a parent state during DFS.",
-  "concept": "DP on Trees is useful when the same subproblems appear again and storing answers prevents repeated work. Use this when you can define a state, base cases, and a recurrence.",
-  "logicSummary": "Define what one DP state means, initialize base cases, fill dependent states, and read the target state.",
-  "transitionSummary": "Each step computes one state from already-solved smaller or earlier states.",
-  "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
-  "realLifeExample": "DP on Trees appears when overlapping subproblems would otherwise be recomputed.",
-  "whenToUse": "Use DP on Trees when the recurrence and base cases match the problem statement.",
-  "memoryTrick": "DP on Trees: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "DP on Trees is shown as a dependency-ordered DP fill. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "DP on Trees is taught with its own DP state definition, transition, code trace, and answer state.",
+  "problem": "Choose a maximum-value set of tree nodes where no chosen node is directly connected to another chosen node.",
+  "concept": "Tree DP stores two values per node: take means include this node, skip means exclude this node.",
+  "logicSummary": "Traverse children first, compute their take/skip pairs, then combine those pairs at the parent.",
+  "transitionSummary": "take = node.value + left.skip + right.skip; skip = max(left.take,left.skip) + max(right.take,right.skip).",
+  "codeInsight": "Postorder recursion is required because a parent cannot decide take or skip until every child DP pair is known.",
+  "realLifeExample": "Use tree DP for hierarchy selection, independent set on trees, and manager/subordinate planning constraints.",
+  "whenToUse": "Use DP on Trees when each subtree can return a compact summary to its parent.",
+  "memoryTrick": "Take parent means skip children; skip parent means children choose their best.",
+  "visualizerCaption": "The trace follows postorder combination of take/skip values through the sample tree.",
   "logicSteps": [
     {
-      "title": "Define state",
-      "text": "Name exactly what one cell or entry means."
+      "title": "Define node state",
+      "text": "Each node returns { take, skip } for its subtree."
     },
     {
-      "title": "Set base cases",
-      "text": "Fill answers that need no recurrence."
+      "title": "Solve children first",
+      "text": "Postorder traversal gives child summaries before the parent combines them."
     },
     {
-      "title": "Apply recurrence",
-      "text": "Compute each state from solved dependencies."
+      "title": "Compute take",
+      "text": "Taking a node forces both children to be skipped."
     },
     {
-      "title": "Read target",
-      "text": "Return the state requested by the problem."
+      "title": "Compute skip",
+      "text": "Skipping a node lets each child choose its better state."
     }
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "root",
+      "purpose": "Root of the input tree."
     },
     {
-      "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "name": "take",
+      "purpose": "Best sum when the current node is selected."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "skip",
+      "purpose": "Best sum when the current node is not selected."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "left, right",
+      "purpose": "Child DP summaries."
     }
   ],
   "dryRun": [
     {
-      "label": "State meaning",
-      "title": "Define DP cell",
-      "note": "The code first needs a precise subproblem meaning.",
+      "label": "Leaf 3",
+      "title": "Leaf returns {3, 0}",
+      "note": "Taking a leaf gives its value; skipping gives 0.",
+      "activeLine": 4,
+      "codeInsight": "The null base case lets leaves combine empty children."
+    },
+    {
+      "label": "Node 4",
+      "title": "Combine children 1 and 3",
+      "note": "take = 4, skip = 1 + 3 = 4.",
       "activeLine": 8,
-      "codeInsight": "Stores left so the algorithm can reuse this value without recomputing it."
+      "codeInsight": "take reads child skip values only."
     },
     {
-      "label": "Base case",
-      "title": "Seed known answers",
-      "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 5,
-      "codeInsight": "Defines dpOnTrees and names the input root; edits to those inputs change the visual state and output."
+      "label": "Node 5",
+      "title": "Right subtree returns {5, 1}",
+      "note": "Skipping 5 allows child 1, but taking 5 is better.",
+      "activeLine": 9,
+      "codeInsight": "skip reads each child's max state."
     },
     {
-      "label": "Recurrence",
-      "title": "Fill next state",
-      "note": "The transition combines previously solved states.",
-      "activeLine": 8,
-      "codeInsight": "Stores left so the algorithm can reuse this value without recomputing it."
-    },
-    {
-      "label": "Target",
-      "title": "Return requested state",
-      "note": "The answer is read from the final DP state.",
-      "activeLine": 10,
-      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
+      "label": "Root",
+      "title": "Best root answer is 9",
+      "note": "Root 3 can take 4 from left skip and 2 from right skip for 9.",
+      "activeLine": 13,
+      "codeInsight": "The final answer is max(root.take, root.skip)."
     }
   ],
   "complexity": {
     "time": "O(n).",
-    "space": "O(h) recursion stack."
+    "space": "O(h) recursion stack, where h is tree height."
   },
   "quiz": {
-    "question": "Which state choice keeps DP on Trees correct?",
+    "question": "Which state keeps DP on Trees correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track dp table and update it only through DP on Trees' transition.",
+        "text": "Return take and skip for every subtree, then combine children in postorder.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another DP recurrence without matching this algorithm's state.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Read the final answer before the required dependency states are solved.",
         "correct": false
       }
     ],
-    "correctText": "Correct. DP on Trees stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. DP on Trees needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. DP on Trees works when the state meaning, transition, and answer state stay aligned.",
+    "incorrectText": "Not quite. DP on Trees needs its own state, dependencies, and stop condition."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "dp-on-trees",
@@ -120,13 +120,16 @@ export const algorithmPage = {
     {
       "value": 3,
       "left": {
-        "value": 2,
+        "value": 4,
+        "left": {
+          "value": 1
+        },
         "right": {
           "value": 3
         }
       },
       "right": {
-        "value": 3,
+        "value": 5,
         "right": {
           "value": 1
         }
@@ -134,130 +137,50 @@ export const algorithmPage = {
     }
   ],
   "animation": {
-    "type": "tree-operation",
-    "title": "DP on Trees tree state",
-    "nodes": [
-      {
-        "id": "8",
-        "label": "8",
-        "x": 340,
-        "y": 58
-      },
-      {
-        "id": "4",
-        "label": "4",
-        "x": 190,
-        "y": 150
-      },
-      {
-        "id": "12",
-        "label": "12",
-        "x": 490,
-        "y": 150
-      },
-      {
-        "id": "2",
-        "label": "2",
-        "x": 110,
-        "y": 255
-      },
-      {
-        "id": "6",
-        "label": "6",
-        "x": 270,
-        "y": 255
-      },
-      {
-        "id": "10",
-        "label": "10",
-        "x": 420,
-        "y": 255
-      },
-      {
-        "id": "14",
-        "label": "14",
-        "x": 570,
-        "y": 255
-      }
-    ],
-    "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
-      {
-        "from": "4",
-        "to": "2"
-      },
-      {
-        "from": "4",
-        "to": "6"
-      },
-      {
-        "from": "12",
-        "to": "10"
-      },
-      {
-        "from": "12",
-        "to": "14"
-      }
+    "type": "state-flow",
+    "static": true,
+    "title": "DP on Trees state trace",
+    "ruleLabel": "DP invariant",
+    "rule": "take = node.value + left.skip + right.skip; skip = max(left.take,left.skip) + max(right.take,right.skip).",
+    "states": [
+      "leaf 1 -> {1,0}",
+      "leaf 3 -> {3,0}",
+      "node 4 -> {4,4}",
+      "node 5 -> {5,1}",
+      "root 3 -> {9,9}"
     ],
     "steps": [
       {
-        "phase": "State meaning",
-        "title": "Define DP cell",
-        "note": "The code first needs a precise subproblem meaning.",
-        "ruleLabel": "DP on Trees invariant",
-        "rule": "Stores left so the algorithm can reuse this value without recomputing it.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
+        "phase": "leaf",
+        "title": "Solve leaf nodes",
+        "note": "Leaves produce {value, 0}.",
+        "ruleLabel": "DP invariant",
+        "rule": "take = node.value + left.skip + right.skip; skip = max(left.take,left.skip) + max(right.take,right.skip).",
+        "activeState": 0
       },
       {
-        "phase": "Base case",
-        "title": "Seed known answers",
-        "note": "Base values stop the recurrence from falling through.",
-        "ruleLabel": "DP on Trees invariant",
-        "rule": "Defines dpOnTrees and names the input root; edits to those inputs change the visual state and output.",
-        "activeNode": "4",
-        "targetNode": "12",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
+        "phase": "left subtree",
+        "title": "Combine node 4",
+        "note": "Node 4 can be taken or skipped for value 4.",
+        "ruleLabel": "DP invariant",
+        "rule": "take = node.value + left.skip + right.skip; skip = max(left.take,left.skip) + max(right.take,right.skip).",
+        "activeState": 2
       },
       {
-        "phase": "Recurrence",
-        "title": "Fill next state",
-        "note": "The transition combines previously solved states.",
-        "ruleLabel": "DP on Trees invariant",
-        "rule": "Stores left so the algorithm can reuse this value without recomputing it.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "phase": "right subtree",
+        "title": "Combine node 5",
+        "note": "Taking 5 beats skipping it.",
+        "ruleLabel": "DP invariant",
+        "rule": "take = node.value + left.skip + right.skip; skip = max(left.take,left.skip) + max(right.take,right.skip).",
+        "activeState": 3
       },
       {
-        "phase": "Target",
-        "title": "Return requested state",
-        "note": "The answer is read from the final DP state.",
-        "ruleLabel": "DP on Trees invariant",
-        "rule": "Returns the final state object {, exposing the exact fields the visualizer has been tracking.",
-        "activeNode": "2",
-        "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
+        "phase": "answer",
+        "title": "Root answer is 9",
+        "note": "The root summary is {take: 9, skip: 9}.",
+        "ruleLabel": "DP invariant",
+        "rule": "take = node.value + left.skip + right.skip; skip = max(left.take,left.skip) + max(right.take,right.skip).",
+        "activeState": 4
       }
     ]
   }

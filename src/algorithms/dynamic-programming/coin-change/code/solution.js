@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Coin Change
 // Route: /algorithms/dynamic-programming/coin-change
 

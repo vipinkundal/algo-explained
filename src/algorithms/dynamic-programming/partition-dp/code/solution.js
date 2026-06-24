@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Partition DP
 // Route: /algorithms/dynamic-programming/partition-dp
 
@@ -9,7 +8,9 @@ export function partitionDp(array) {
   const possible = Array(target + 1).fill(false);
   possible[0] = true;
   for (const value of array) {
-    for (let sum = target; sum >= value; sum -= 1) possible[sum] ||= possible[sum - value];
+    for (let sum = target; sum >= value; sum -= 1) {
+      possible[sum] = possible[sum] || possible[sum - value];
+    }
   }
   return possible[target];
 }

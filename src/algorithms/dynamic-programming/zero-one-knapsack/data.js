@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/zero-one-knapsack/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "0/1 Knapsack is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "0/1 Knapsack decides for each item whether taking it improves capacity-limited value.",
-  "concept": "0/1 Knapsack is useful when the same subproblems appear again and storing answers prevents repeated work. Use this when you can define a state, base cases, and a recurrence.",
-  "logicSummary": "Define what one DP state means, initialize base cases, fill dependent states, and read the target state.",
-  "transitionSummary": "Each step computes one state from already-solved smaller or earlier states.",
-  "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
-  "realLifeExample": "0/1 Knapsack appears when overlapping subproblems would otherwise be recomputed.",
-  "whenToUse": "Use 0/1 Knapsack when the recurrence and base cases match the problem statement.",
-  "memoryTrick": "0/1 Knapsack: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "0/1 Knapsack is shown as a dependency-ordered DP fill. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "0/1 Knapsack is taught with its own DP state definition, recurrence, code trace, and answer cell.",
+  "problem": "Given item weights and values, maximize value without exceeding capacity when each item can be taken at most once.",
+  "concept": "0/1 Knapsack defines dp[cap] as the best value reachable for a capacity after processing some prefix of items.",
+  "logicSummary": "Initialize dp with zeros, process each item once, scan capacities backward, and decide whether taking the item improves dp[cap].",
+  "transitionSummary": "For each item and capacity, dp[cap] becomes max(skip item, dp[cap - weight] + value).",
+  "codeInsight": "The capacity loop goes backward so the same item cannot be reused inside one item pass.",
+  "realLifeExample": "Use it for budgeted selection, packing, feature choice, or any take/skip optimization with limited capacity.",
+  "whenToUse": "Use 0/1 Knapsack when every item is either taken once or skipped.",
+  "memoryTrick": "Backward capacity means one copy of the item.",
+  "visualizerCaption": "The trace shows each item updating capacity cells from right to left.",
   "logicSteps": [
     {
-      "title": "Define state",
-      "text": "Name exactly what one cell or entry means."
+      "title": "Define dp[cap]",
+      "text": "Best value possible with the processed items and capacity cap."
     },
     {
-      "title": "Set base cases",
-      "text": "Fill answers that need no recurrence."
+      "title": "Start at zero",
+      "text": "No items means value 0 for every capacity."
     },
     {
-      "title": "Apply recurrence",
-      "text": "Compute each state from solved dependencies."
+      "title": "Scan capacity backward",
+      "text": "Update larger capacities first so the current item is used once."
     },
     {
-      "title": "Read target",
-      "text": "Return the state requested by the problem."
+      "title": "Read dp[capacity]",
+      "text": "The final capacity cell is the best valid value."
     }
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "weights, values",
+      "purpose": "Parallel item arrays."
     },
     {
-      "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "name": "capacity",
+      "purpose": "Maximum allowed total weight."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "dp[cap]",
+      "purpose": "Best value for capacity cap after processed items."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "item, cap",
+      "purpose": "Current item and capacity cell being updated."
     }
   ],
   "dryRun": [
     {
-      "label": "State meaning",
-      "title": "Define DP cell",
-      "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 6,
-      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
+      "label": "Initial",
+      "title": "dp = [0,0,0,0,0,0]",
+      "note": "With no items, every capacity has value 0.",
+      "activeLine": 2,
+      "codeInsight": "The one-dimensional table stores the best value for each capacity."
     },
     {
-      "label": "Base case",
-      "title": "Seed known answers",
-      "note": "Base values stop the recurrence from falling through.",
+      "label": "Item 0",
+      "title": "Weight 2, value 3",
+      "note": "Capacities 5 down to 2 can take item 0.",
       "activeLine": 5,
-      "codeInsight": "Defines zeroOneKnapsack and names the input weights, values, capacity; edits to those inputs change the visual state and output."
+      "codeInsight": "The backward loop protects the 0/1 restriction."
     },
     {
-      "label": "Recurrence",
-      "title": "Fill next state",
-      "note": "The transition combines previously solved states.",
+      "label": "Item 1",
+      "title": "Weight 3, value 4",
+      "note": "At capacity 5, taking item 1 plus dp[2] gives 7.",
       "activeLine": 6,
-      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
+      "codeInsight": "The recurrence compares skip versus take."
     },
     {
-      "label": "Target",
-      "title": "Return requested state",
-      "note": "The answer is read from the final DP state.",
-      "activeLine": 12,
-      "codeInsight": "Returns dp[capacity], the final value maintained by 0/1 Knapsack's code path."
+      "label": "Answer",
+      "title": "Return dp[5] = 7",
+      "note": "Items with weights 2 and 3 fit exactly and give value 7.",
+      "activeLine": 9,
+      "codeInsight": "The requested capacity cell is the final answer."
     }
   ],
   "complexity": {
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(capacity)."
   },
   "quiz": {
-    "question": "Which state choice keeps 0/1 Knapsack correct?",
+    "question": "Which state keeps 0/1 Knapsack correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track dp table and update it only through 0/1 Knapsack's transition.",
+        "text": "Define dp[cap] as best value and scan capacity backward for each item.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another DP recurrence without matching the state definition.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Read the answer before the required dependency cells have been filled.",
         "correct": false
       }
     ],
-    "correctText": "Correct. 0/1 Knapsack stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. 0/1 Knapsack needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. 0/1 Knapsack works when its table meaning and recurrence stay aligned.",
+    "incorrectText": "Not quite. 0/1 Knapsack needs its own state, recurrence, and answer cell."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "zero-one-knapsack",
@@ -131,79 +131,55 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "matrix-flow",
-    "title": "0/1 Knapsack matrix state",
-    "ruleLabel": "Grid rule",
-    "rule": "Each step computes one state from already-solved smaller or earlier states.",
+    "static": true,
+    "title": "0/1 Knapsack DP table",
+    "ruleLabel": "DP recurrence",
+    "rule": "For each item and capacity, dp[cap] becomes max(skip item, dp[cap - weight] + value).",
     "matrix": [
       [
-        1,
         0,
-        1
-      ],
-      [
         0,
-        1,
+        0,
+        0,
+        0,
         0
       ],
       [
-        1,
-        1,
-        1
+        0,
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      [
+        0,
+        0,
+        3,
+        4,
+        4,
+        7
+      ],
+      [
+        0,
+        0,
+        3,
+        4,
+        5,
+        7
       ]
     ],
     "steps": [
       {
-        "phase": "State meaning",
-        "title": "Define DP cell",
-        "note": "The code first needs a precise subproblem meaning.",
-        "ruleLabel": "0/1 Knapsack invariant",
-        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
+        "phase": "base row",
+        "title": "No items processed",
+        "note": "All capacities start at value 0.",
+        "ruleLabel": "DP recurrence",
+        "rule": "For each item and capacity, dp[cap] becomes max(skip item, dp[cap - weight] + value).",
         "activeCells": [
           [
             0,
             0
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ]
-        ]
-      },
-      {
-        "phase": "Base case",
-        "title": "Seed known answers",
-        "note": "Base values stop the recurrence from falling through.",
-        "ruleLabel": "0/1 Knapsack invariant",
-        "rule": "Defines zeroOneKnapsack and names the input weights, values, capacity; edits to those inputs change the visual state and output.",
-        "activeCells": [
-          [
-            0,
-            1
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ]
-        ]
-      },
-      {
-        "phase": "Recurrence",
-        "title": "Fill next state",
-        "note": "The transition combines previously solved states.",
-        "ruleLabel": "0/1 Knapsack invariant",
-        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
-        "activeCells": [
-          [
-            0,
-            2
           ]
         ],
         "visitedCells": [
@@ -218,37 +194,115 @@ export const algorithmPage = {
           [
             0,
             2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            5
           ]
         ]
       },
       {
-        "phase": "Target",
-        "title": "Return requested state",
-        "note": "The answer is read from the final DP state.",
-        "ruleLabel": "0/1 Knapsack invariant",
-        "rule": "Returns dp[capacity], the final value maintained by 0/1 Knapsack's code path.",
+        "phase": "item 0",
+        "title": "Take weight 2 at cap 2..5",
+        "note": "Item 0 sets reachable value 3.",
+        "ruleLabel": "DP recurrence",
+        "rule": "For each item and capacity, dp[cap] becomes max(skip item, dp[cap - weight] + value).",
         "activeCells": [
           [
             1,
-            0
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
             2
           ],
           [
             1,
+            5
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
             0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            1,
+            5
+          ]
+        ]
+      },
+      {
+        "phase": "item 1",
+        "title": "Combine weights 2 and 3",
+        "note": "dp[5] improves to 7 using value 3 + 4.",
+        "ruleLabel": "DP recurrence",
+        "rule": "For each item and capacity, dp[cap] becomes max(skip item, dp[cap - weight] + value).",
+        "activeCells": [
+          [
+            2,
+            5
+          ]
+        ],
+        "visitedCells": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            5
+          ]
+        ]
+      },
+      {
+        "phase": "answer",
+        "title": "Best value at capacity 5",
+        "note": "The final answer is 7.",
+        "ruleLabel": "DP recurrence",
+        "rule": "For each item and capacity, dp[cap] becomes max(skip item, dp[cap - weight] + value).",
+        "activeCells": [
+          [
+            3,
+            5
+          ]
+        ],
+        "visitedCells": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
           ]
         ]
       }

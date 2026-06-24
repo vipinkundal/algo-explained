@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/longest-common-subsequence/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Longest Common Subsequence is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "LCS compares prefixes of two strings and keeps the best subsequence length for every prefix pair.",
-  "concept": "Longest Common Subsequence is useful when the same subproblems appear again and storing answers prevents repeated work. Use this when you can define a state, base cases, and a recurrence.",
-  "logicSummary": "Define what one DP state means, initialize base cases, fill dependent states, and read the target state.",
-  "transitionSummary": "Each step computes one state from already-solved smaller or earlier states.",
-  "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
-  "realLifeExample": "Longest Common Subsequence appears when overlapping subproblems would otherwise be recomputed.",
-  "whenToUse": "Use Longest Common Subsequence when the recurrence and base cases match the problem statement.",
-  "memoryTrick": "Longest Common Subsequence: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Longest Common Subsequence is shown as a dependency-ordered DP fill. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Longest Common Subsequence is taught with its own DP state definition, recurrence, code trace, and answer cell.",
+  "problem": "Find the length of the longest sequence that appears in both strings without requiring contiguous positions.",
+  "concept": "LCS defines dp[i][j] as the best subsequence length using the first i characters of a and first j characters of b.",
+  "logicSummary": "Build a prefix-pair table; matching characters extend the diagonal, while mismatches keep the better top or left answer.",
+  "transitionSummary": "If a[i - 1] === b[j - 1], use dp[i - 1][j - 1] + 1; otherwise use max(dp[i - 1][j], dp[i][j - 1]).",
+  "codeInsight": "Rows and columns include an empty-prefix base row and column, which makes boundary transitions simple.",
+  "realLifeExample": "Use LCS for diff tools, similarity scoring, DNA sequence comparison, and edit-distance-style reasoning.",
+  "whenToUse": "Use LCS when order matters but characters do not need to be adjacent.",
+  "memoryTrick": "Match takes diagonal plus one; mismatch takes best of top or left.",
+  "visualizerCaption": "The trace fills prefix-pair cells and ends at dp[a.length][b.length].",
   "logicSteps": [
     {
-      "title": "Define state",
-      "text": "Name exactly what one cell or entry means."
+      "title": "Define dp[i][j]",
+      "text": "Best LCS length for prefixes a[0..i) and b[0..j)."
     },
     {
-      "title": "Set base cases",
-      "text": "Fill answers that need no recurrence."
+      "title": "Seed empty prefixes",
+      "text": "Empty string against anything has LCS length 0."
     },
     {
-      "title": "Apply recurrence",
-      "text": "Compute each state from solved dependencies."
+      "title": "Match or mismatch",
+      "text": "Use diagonal on match, otherwise best top/left."
     },
     {
-      "title": "Read target",
-      "text": "Return the state requested by the problem."
+      "title": "Read bottom-right",
+      "text": "The final cell is the full-string LCS length."
     }
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "a, b",
+      "purpose": "Input strings."
     },
     {
-      "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "name": "dp[i][j]",
+      "purpose": "Best LCS length for two prefixes."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "i, j",
+      "purpose": "Current prefix lengths."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "bottom-right cell",
+      "purpose": "Answer for the full strings."
     }
   ],
   "dryRun": [
     {
-      "label": "State meaning",
-      "title": "Define DP cell",
-      "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 6,
-      "codeInsight": "Stores dp from the current length, making the loop boundary explicit for the visual trace."
+      "label": "Base",
+      "title": "Empty prefixes are zero",
+      "note": "Row 0 and column 0 start as 0.",
+      "activeLine": 2,
+      "codeInsight": "The table has one extra row and column for empty prefixes."
     },
     {
-      "label": "Base case",
-      "title": "Seed known answers",
-      "note": "Base values stop the recurrence from falling through.",
+      "label": "Match a",
+      "title": "a matches a",
+      "note": "dp[1][1] = dp[0][0] + 1.",
       "activeLine": 5,
-      "codeInsight": "Defines longestCommonSubsequence and names the input a, b; edits to those inputs change the visual state and output."
+      "codeInsight": "A match extends the diagonal result."
     },
     {
-      "label": "Recurrence",
-      "title": "Fill next state",
-      "note": "The transition combines previously solved states.",
-      "activeLine": 6,
-      "codeInsight": "Stores dp from the current length, making the loop boundary explicit for the visual trace."
+      "label": "Mismatch",
+      "title": "b versus c",
+      "note": "Keep max(top, left) when characters differ.",
+      "activeLine": 5,
+      "codeInsight": "Mismatch never decreases the best subsequence length."
     },
     {
-      "label": "Target",
-      "title": "Return requested state",
-      "note": "The answer is read from the final DP state.",
-      "activeLine": 12,
-      "codeInsight": "Returns dp[a.length][b.length], the final value maintained by Longest Common Subsequence's code path."
+      "label": "Answer",
+      "title": "LCS length is 3",
+      "note": "abcde and ace share ace.",
+      "activeLine": 8,
+      "codeInsight": "The bottom-right cell is returned."
     }
   ],
   "complexity": {
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(nm)."
   },
   "quiz": {
-    "question": "Which state choice keeps Longest Common Subsequence correct?",
+    "question": "Which state keeps Longest Common Subsequence correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track dp table and update it only through Longest Common Subsequence's transition.",
+        "text": "Define dp[i][j] for prefixes and use diagonal/top/left dependencies.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another DP recurrence without matching the state definition.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Read the answer before the required dependency cells have been filled.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Longest Common Subsequence stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Longest Common Subsequence needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Longest Common Subsequence works when its table meaning and recurrence stay aligned.",
+    "incorrectText": "Not quite. Longest Common Subsequence needs its own state, recurrence, and answer cell."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "longest-common-subsequence",
@@ -122,79 +122,59 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "matrix-flow",
-    "title": "Longest Common Subsequence matrix state",
-    "ruleLabel": "Grid rule",
-    "rule": "Each step computes one state from already-solved smaller or earlier states.",
+    "static": true,
+    "title": "Longest Common Subsequence DP table",
+    "ruleLabel": "DP recurrence",
+    "rule": "If a[i - 1] === b[j - 1], use dp[i - 1][j - 1] + 1; otherwise use max(dp[i - 1][j], dp[i][j - 1]).",
     "matrix": [
       [
-        1,
         0,
-        1
-      ],
-      [
         0,
-        1,
+        0,
         0
       ],
       [
+        0,
         1,
         1,
         1
+      ],
+      [
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        2,
+        2
+      ],
+      [
+        0,
+        1,
+        2,
+        2
+      ],
+      [
+        0,
+        1,
+        2,
+        3
       ]
     ],
     "steps": [
       {
-        "phase": "State meaning",
-        "title": "Define DP cell",
-        "note": "The code first needs a precise subproblem meaning.",
-        "ruleLabel": "Longest Common Subsequence invariant",
-        "rule": "Stores dp from the current length, making the loop boundary explicit for the visual trace.",
+        "phase": "base",
+        "title": "Empty prefixes",
+        "note": "Top row and left column are 0.",
+        "ruleLabel": "DP recurrence",
+        "rule": "If a[i - 1] === b[j - 1], use dp[i - 1][j - 1] + 1; otherwise use max(dp[i - 1][j], dp[i][j - 1]).",
         "activeCells": [
           [
             0,
             0
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ]
-        ]
-      },
-      {
-        "phase": "Base case",
-        "title": "Seed known answers",
-        "note": "Base values stop the recurrence from falling through.",
-        "ruleLabel": "Longest Common Subsequence invariant",
-        "rule": "Defines longestCommonSubsequence and names the input a, b; edits to those inputs change the visual state and output.",
-        "activeCells": [
-          [
-            0,
-            1
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ]
-        ]
-      },
-      {
-        "phase": "Recurrence",
-        "title": "Fill next state",
-        "note": "The transition combines previously solved states.",
-        "ruleLabel": "Longest Common Subsequence invariant",
-        "rule": "Stores dp from the current length, making the loop boundary explicit for the visual trace.",
-        "activeCells": [
-          [
-            0,
-            2
           ]
         ],
         "visitedCells": [
@@ -209,19 +189,23 @@ export const algorithmPage = {
           [
             0,
             2
+          ],
+          [
+            0,
+            3
           ]
         ]
       },
       {
-        "phase": "Target",
-        "title": "Return requested state",
-        "note": "The answer is read from the final DP state.",
-        "ruleLabel": "Longest Common Subsequence invariant",
-        "rule": "Returns dp[a.length][b.length], the final value maintained by Longest Common Subsequence's code path.",
+        "phase": "match a",
+        "title": "a == a",
+        "note": "dp[1][1] becomes 1 from the diagonal.",
+        "ruleLabel": "DP recurrence",
+        "rule": "If a[i - 1] === b[j - 1], use dp[i - 1][j - 1] + 1; otherwise use max(dp[i - 1][j], dp[i][j - 1]).",
         "activeCells": [
           [
             1,
-            0
+            1
           ]
         ],
         "visitedCells": [
@@ -230,16 +214,62 @@ export const algorithmPage = {
             0
           ],
           [
-            0,
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "phase": "match c",
+        "title": "c == c",
+        "note": "dp[3][2] becomes 2.",
+        "ruleLabel": "DP recurrence",
+        "rule": "If a[i - 1] === b[j - 1], use dp[i - 1][j - 1] + 1; otherwise use max(dp[i - 1][j], dp[i][j - 1]).",
+        "activeCells": [
+          [
+            3,
+            2
+          ]
+        ],
+        "visitedCells": [
+          [
+            1,
             1
           ],
           [
-            0,
+            2,
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ]
+      },
+      {
+        "phase": "answer",
+        "title": "ace has length 3",
+        "note": "The bottom-right cell dp[5][3] is 3.",
+        "ruleLabel": "DP recurrence",
+        "rule": "If a[i - 1] === b[j - 1], use dp[i - 1][j - 1] + 1; otherwise use max(dp[i - 1][j], dp[i][j - 1]).",
+        "activeCells": [
+          [
+            5,
+            3
+          ]
+        ],
+        "visitedCells": [
+          [
+            1,
+            1
+          ],
+          [
+            3,
             2
           ],
           [
-            1,
-            0
+            5,
+            3
           ]
         ]
       }

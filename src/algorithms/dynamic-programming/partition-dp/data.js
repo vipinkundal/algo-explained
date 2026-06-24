@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/partition-dp/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Partition DP is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Partition DP tracks which subset sums are reachable to decide whether equal partition is possible.",
-  "concept": "Partition DP is useful when a pivot can partition values into smaller and larger sides. Use this when in-place average-case n log n sorting fits the dataset.",
-  "logicSummary": "Choose a pivot, partition values around it, then recursively sort the left and right partitions.",
-  "transitionSummary": "Each partition step moves values to the correct side of the pivot and fixes the pivot position.",
-  "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
-  "realLifeExample": "Partition DP appears when overlapping subproblems would otherwise be recomputed.",
-  "whenToUse": "Use Partition DP when the recurrence and base cases match the problem statement.",
-  "memoryTrick": "Partition DP: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Partition DP is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Partition DP is taught with its own DP state definition, transition, code trace, and answer state.",
+  "problem": "Decide whether an array can be split into two subsets with equal sum.",
+  "concept": "Partition DP reduces equal partition to subset sum: can any subset reach total / 2?",
+  "logicSummary": "Reject odd totals, set possible[0] = true, then scan sums backward for each value so each number is used once.",
+  "transitionSummary": "For each value and target sum, possible[sum] becomes possible[sum] OR possible[sum - value].",
+  "codeInsight": "Backward sum scanning keeps the problem 0/1; forward scanning would let one value be reused in the same pass.",
+  "realLifeExample": "Use it for equal load balancing, package splitting, and subset feasibility checks.",
+  "whenToUse": "Use partition DP when the objective is whether a subset can hit a target sum exactly.",
+  "memoryTrick": "Equal partition asks for half the total.",
+  "visualizerCaption": "The trace shows reachable subset sums expanding toward target 11.",
   "logicSteps": [
     {
-      "title": "Choose pivot",
-      "text": "Select the value that splits the range."
+      "title": "Check total",
+      "text": "An odd total can never be split evenly."
     },
     {
-      "title": "Partition range",
-      "text": "Move smaller values left and larger values right."
+      "title": "Set target",
+      "text": "The subset target is total / 2."
     },
     {
-      "title": "Fix pivot",
-      "text": "Place pivot at its final index."
+      "title": "Seed zero sum",
+      "text": "Sum 0 is always reachable by picking nothing."
     },
     {
-      "title": "Sort partitions",
-      "text": "Recurse on both sides."
+      "title": "Scan sums backward",
+      "text": "Each value updates reachable sums without being reused."
     }
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "array",
+      "purpose": "Input values."
     },
     {
-      "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "name": "target",
+      "purpose": "Half of the total sum."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "possible[sum]",
+      "purpose": "Whether some processed subset reaches sum."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "value",
+      "purpose": "Current number being considered once."
     }
   ],
   "dryRun": [
     {
-      "label": "Pivot",
-      "title": "Choose pivot value",
-      "note": "The pivot defines the partition rule.",
-      "activeLine": 5,
-      "codeInsight": "Defines partitionDp and names the input array; edits to those inputs change the visual state and output."
+      "label": "Total",
+      "title": "Total is 22, target is 11",
+      "note": "[1,5,11,5] can only partition if some subset reaches 11.",
+      "activeLine": 2,
+      "codeInsight": "The odd-total guard avoids impossible tables."
     },
     {
-      "label": "Scan",
-      "title": "Move values by pivot",
-      "note": "Values are compared with the pivot.",
+      "label": "Seed",
+      "title": "possible[0] = true",
+      "note": "The empty subset starts the recurrence.",
       "activeLine": 5,
-      "codeInsight": "Defines partitionDp and names the input array; edits to those inputs change the visual state and output."
+      "codeInsight": "Every reachable sum grows from the zero-sum base."
     },
     {
-      "label": "Place",
-      "title": "Fix pivot index",
-      "note": "The pivot lands between smaller and larger values.",
+      "label": "Value 5",
+      "title": "Sums 1, 5, and 6 become reachable",
+      "note": "Backward scanning combines 5 with earlier reachable sums.",
       "activeLine": 8,
-      "codeInsight": "Stores target so the algorithm can reuse this value without recomputing it."
+      "codeInsight": "The loop direction prevents using the same value twice."
     },
     {
-      "label": "Recurse",
-      "title": "Sort both sides",
-      "note": "The same partition rule handles each side.",
-      "activeLine": 11,
-      "codeInsight": "Visits each input value once, letting the displayed state update in the same order as the code."
+      "label": "Answer",
+      "title": "possible[11] is true",
+      "note": "The value 11 alone reaches the half-total target.",
+      "activeLine": 10,
+      "codeInsight": "The target boolean is the final answer."
     }
   ],
   "complexity": {
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(target)."
   },
   "quiz": {
-    "question": "Which state choice keeps Partition DP correct?",
+    "question": "Which state keeps Partition DP correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track dp table and update it only through Partition DP's transition.",
+        "text": "Define possible[sum] as subset reachability and scan sums backward for each value.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another DP recurrence without matching this algorithm's state.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Read the final answer before the required dependency states are solved.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Partition DP stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Partition DP needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Partition DP works when the state meaning, transition, and answer state stay aligned.",
+    "incorrectText": "Not quite. Partition DP needs its own state, dependencies, and stop condition."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "partition-dp",
@@ -126,91 +126,110 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "array-flow",
-    "title": "Partition DP array state",
-    "ruleLabel": "Array invariant",
-    "rule": "Each partition step moves values to the correct side of the pivot and fixes the pivot position.",
+    "static": true,
+    "title": "Partition DP DP trace",
+    "ruleLabel": "DP invariant",
+    "rule": "For each value and target sum, possible[sum] becomes possible[sum] OR possible[sum - value].",
     "values": [
       1,
-      5,
-      11,
-      5
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1
     ],
     "steps": [
       {
-        "phase": "Pivot",
-        "title": "Choose pivot value",
-        "note": "The pivot defines the partition rule.",
-        "ruleLabel": "Partition DP invariant",
-        "rule": "Defines partitionDp and names the input array; edits to those inputs change the visual state and output.",
+        "phase": "target",
+        "title": "Target is 11",
+        "note": "The total is 22, so a subset must hit 11.",
+        "ruleLabel": "DP invariant",
+        "rule": "For each value and target sum, possible[sum] becomes possible[sum] OR possible[sum - value].",
         "activeIndices": [
-          0
+          11
         ],
         "sortedIndices": [],
         "mutedIndices": [],
         "window": [
           0,
-          1
+          11
         ],
-        "primaryLabel": "Pivot",
-        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+        "primaryLabel": "target",
+        "secondaryLabel": "For each value and target sum, possible[sum] becomes possible[sum] OR possible[sum - value]."
       },
       {
-        "phase": "Scan",
-        "title": "Move values by pivot",
-        "note": "Values are compared with the pivot.",
-        "ruleLabel": "Partition DP invariant",
-        "rule": "Defines partitionDp and names the input array; edits to those inputs change the visual state and output.",
+        "phase": "seed",
+        "title": "Sum 0 is reachable",
+        "note": "possible[0] = true before reading values.",
+        "ruleLabel": "DP invariant",
+        "rule": "For each value and target sum, possible[sum] becomes possible[sum] OR possible[sum - value].",
         "activeIndices": [
-          1,
-          2
+          0
         ],
-        "sortedIndices": [],
+        "sortedIndices": [
+          0
+        ],
         "mutedIndices": [],
         "window": [
           0,
-          2
+          11
         ],
-        "primaryLabel": "Scan",
-        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+        "primaryLabel": "seed",
+        "secondaryLabel": "For each value and target sum, possible[sum] becomes possible[sum] OR possible[sum - value]."
       },
       {
-        "phase": "Place",
-        "title": "Fix pivot index",
-        "note": "The pivot lands between smaller and larger values.",
-        "ruleLabel": "Partition DP invariant",
-        "rule": "Stores target so the algorithm can reuse this value without recomputing it.",
+        "phase": "value 5",
+        "title": "Reach 5 and 6",
+        "note": "After values 1 and 5, sums 1, 5, and 6 are reachable.",
+        "ruleLabel": "DP invariant",
+        "rule": "For each value and target sum, possible[sum] becomes possible[sum] OR possible[sum - value].",
         "activeIndices": [
-          2
+          5,
+          6
         ],
-        "sortedIndices": [],
+        "sortedIndices": [
+          0,
+          1,
+          5,
+          6
+        ],
         "mutedIndices": [],
         "window": [
-          1,
-          3
+          0,
+          11
         ],
-        "primaryLabel": "Place",
-        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+        "primaryLabel": "value 5",
+        "secondaryLabel": "For each value and target sum, possible[sum] becomes possible[sum] OR possible[sum - value]."
       },
       {
-        "phase": "Recurse",
-        "title": "Sort both sides",
-        "note": "The same partition rule handles each side.",
-        "ruleLabel": "Partition DP invariant",
-        "rule": "Visits each input value once, letting the displayed state update in the same order as the code.",
+        "phase": "answer",
+        "title": "Target sum 11 is reachable",
+        "note": "The value 11 turns possible[11] true.",
+        "ruleLabel": "DP invariant",
+        "rule": "For each value and target sum, possible[sum] becomes possible[sum] OR possible[sum - value].",
         "activeIndices": [
-          3,
-          3
+          11
         ],
-        "sortedIndices": [],
-        "mutedIndices": [
-          0
+        "sortedIndices": [
+          0,
+          1,
+          5,
+          6,
+          11
         ],
+        "mutedIndices": [],
         "window": [
-          2,
-          3
+          0,
+          11
         ],
-        "primaryLabel": "Recurse",
-        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+        "primaryLabel": "answer",
+        "secondaryLabel": "For each value and target sum, possible[sum] becomes possible[sum] OR possible[sum - value]."
       }
     ]
   }

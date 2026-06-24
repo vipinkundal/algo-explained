@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/matrix-chain-multiplication/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Matrix Chain Multiplication is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Matrix Chain Multiplication chooses split points that minimize multiplication cost for every interval.",
-  "concept": "Matrix Chain Multiplication is useful when the same subproblems appear again and storing answers prevents repeated work. Use this when you can define a state, base cases, and a recurrence.",
-  "logicSummary": "Define what one DP state means, initialize base cases, fill dependent states, and read the target state.",
-  "transitionSummary": "Each step computes one state from already-solved smaller or earlier states.",
-  "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
-  "realLifeExample": "Matrix Chain Multiplication appears when overlapping subproblems would otherwise be recomputed.",
-  "whenToUse": "Use Matrix Chain Multiplication when the recurrence and base cases match the problem statement.",
-  "memoryTrick": "Matrix Chain Multiplication: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Matrix Chain Multiplication is shown as a dependency-ordered DP fill. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Matrix Chain Multiplication is taught with its own DP state definition, transition, code trace, and answer state.",
+  "problem": "Find the minimum scalar multiplication cost for multiplying a chain of matrices without changing their order.",
+  "concept": "Matrix Chain DP defines dp[left][right] as the minimum cost to multiply matrices left through right.",
+  "logicSummary": "Solve short intervals first, then try every split point for larger intervals and keep the cheapest split.",
+  "transitionSummary": "dp[l][r] = min over split k of dp[l][k] + dp[k+1][r] + dims[l] * dims[k+1] * dims[r+1].",
+  "codeInsight": "The outer interval-length loop guarantees both subchains around each split are already solved.",
+  "realLifeExample": "Use it for optimizing matrix expression evaluation and any ordered interval split optimization.",
+  "whenToUse": "Use matrix-chain DP when the problem asks for the best way to parenthesize an ordered sequence.",
+  "memoryTrick": "Every interval tries every final split.",
+  "visualizerCaption": "The trace fills interval costs by increasing chain length.",
   "logicSteps": [
     {
-      "title": "Define state",
-      "text": "Name exactly what one cell or entry means."
+      "title": "Define interval state",
+      "text": "dp[left][right] is the minimum cost for matrices left through right."
     },
     {
-      "title": "Set base cases",
-      "text": "Fill answers that need no recurrence."
+      "title": "Set single matrix cost",
+      "text": "A single matrix needs no multiplication, so diagonal cells are 0."
     },
     {
-      "title": "Apply recurrence",
-      "text": "Compute each state from solved dependencies."
+      "title": "Grow intervals",
+      "text": "Fill length 2, then length 3, and so on."
     },
     {
-      "title": "Read target",
-      "text": "Return the state requested by the problem."
+      "title": "Try splits",
+      "text": "Each interval tests every possible final split point."
     }
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "dimensions",
+      "purpose": "Matrix i has size dimensions[i] x dimensions[i + 1]."
     },
     {
-      "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "name": "dp[left][right]",
+      "purpose": "Minimum cost for an interval of matrices."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "length",
+      "purpose": "Current interval size."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "split",
+      "purpose": "Final multiplication boundary tested inside an interval."
     }
   ],
   "dryRun": [
     {
-      "label": "State meaning",
-      "title": "Define DP cell",
-      "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 7,
-      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
+      "label": "Base",
+      "title": "Diagonal costs are zero",
+      "note": "A single matrix has no multiplication cost.",
+      "activeLine": 3,
+      "codeInsight": "The DP table is indexed by matrix interval."
     },
     {
-      "label": "Base case",
-      "title": "Seed known answers",
-      "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 5,
-      "codeInsight": "Defines matrixChainMultiplication and names the input dimensions; edits to those inputs change the visual state and output."
+      "label": "Length 2",
+      "title": "Compute adjacent products",
+      "note": "A1*A2 costs 10*30*5 = 1500.",
+      "activeLine": 9,
+      "codeInsight": "Length 2 intervals have one possible split."
     },
     {
-      "label": "Recurrence",
-      "title": "Fill next state",
-      "note": "The transition combines previously solved states.",
-      "activeLine": 7,
-      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
+      "label": "Length 3",
+      "title": "Try both split points",
+      "note": "The interval [0,2] chooses the cheaper of two parenthesizations.",
+      "activeLine": 10,
+      "codeInsight": "The split loop is the core optimization."
     },
     {
-      "label": "Target",
-      "title": "Return requested state",
-      "note": "The answer is read from the final DP state.",
-      "activeLine": 18,
-      "codeInsight": "Returns dp[0]?.[n - 1] ?? 0, the final value maintained by Matrix Chain Multiplication's code path."
+      "label": "Answer",
+      "title": "Minimum cost is 4500",
+      "note": "For dimensions [10,30,5,60], the best order costs 4500.",
+      "activeLine": 14,
+      "codeInsight": "dp[0][n-1] covers the whole matrix chain."
     }
   ],
   "complexity": {
@@ -93,156 +93,190 @@ export const algorithmPage = {
     "space": "O(n^2)."
   },
   "quiz": {
-    "question": "Which state choice keeps Matrix Chain Multiplication correct?",
+    "question": "Which state keeps Matrix Chain Multiplication correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track dp table and update it only through Matrix Chain Multiplication's transition.",
+        "text": "Define dp[left][right] for intervals and try every split after shorter intervals are solved.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another DP recurrence without matching this algorithm's state.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Read the final answer before the required dependency states are solved.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Matrix Chain Multiplication stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Matrix Chain Multiplication needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Matrix Chain Multiplication works when the state meaning, transition, and answer state stay aligned.",
+    "incorrectText": "Not quite. Matrix Chain Multiplication needs its own state, dependencies, and stop condition."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "matrix-chain-multiplication",
   "runnerInput": [
     [
       10,
-      20,
-      30
+      30,
+      5,
+      60
     ]
   ],
   "animation": {
     "type": "matrix-flow",
-    "title": "Matrix Chain Multiplication matrix state",
-    "ruleLabel": "Grid rule",
-    "rule": "Each step computes one state from already-solved smaller or earlier states.",
+    "static": true,
+    "title": "Matrix Chain Multiplication DP table",
+    "ruleLabel": "DP recurrence",
+    "rule": "dp[l][r] = min over split k of dp[l][k] + dp[k+1][r] + dims[l] * dims[k+1] * dims[r+1].",
     "matrix": [
       [
-        1,
         0,
-        1
+        1500,
+        4500
       ],
       [
         0,
-        1,
+        0,
+        9000
+      ],
+      [
+        0,
+        0,
         0
-      ],
-      [
-        1,
-        1,
-        1
       ]
     ],
     "steps": [
       {
-        "phase": "State meaning",
-        "title": "Define DP cell",
-        "note": "The code first needs a precise subproblem meaning.",
-        "ruleLabel": "Matrix Chain Multiplication invariant",
-        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
+        "phase": "base",
+        "title": "Single matrices cost 0",
+        "note": "The diagonal is the base case.",
+        "ruleLabel": "DP recurrence",
+        "rule": "dp[l][r] = min over split k of dp[l][k] + dp[k+1][r] + dims[l] * dims[k+1] * dims[r+1].",
         "activeCells": [
           [
             0,
             0
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ]
-        ]
-      },
-      {
-        "phase": "Base case",
-        "title": "Seed known answers",
-        "note": "Base values stop the recurrence from falling through.",
-        "ruleLabel": "Matrix Chain Multiplication invariant",
-        "rule": "Defines matrixChainMultiplication and names the input dimensions; edits to those inputs change the visual state and output.",
-        "activeCells": [
-          [
-            0,
-            1
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ]
-        ]
-      },
-      {
-        "phase": "Recurrence",
-        "title": "Fill next state",
-        "note": "The transition combines previously solved states.",
-        "ruleLabel": "Matrix Chain Multiplication invariant",
-        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
-        "activeCells": [
-          [
-            0,
-            2
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
-          ]
-        ]
-      },
-      {
-        "phase": "Target",
-        "title": "Return requested state",
-        "note": "The answer is read from the final DP state.",
-        "ruleLabel": "Matrix Chain Multiplication invariant",
-        "rule": "Returns dp[0]?.[n - 1] ?? 0, the final value maintained by Matrix Chain Multiplication's code path.",
-        "activeCells": [
-          [
-            1,
-            0
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
           ],
           [
             1,
+            1
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
             0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ]
+        ]
+      },
+      {
+        "phase": "length 2",
+        "title": "Fill adjacent intervals",
+        "note": "dp[0][1] = 1500 and dp[1][2] = 9000.",
+        "ruleLabel": "DP recurrence",
+        "rule": "dp[l][r] = min over split k of dp[l][k] + dp[k+1][r] + dims[l] * dims[k+1] * dims[r+1].",
+        "activeCells": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      },
+      {
+        "phase": "split",
+        "title": "Try splits for [0,2]",
+        "note": "Split at 1 gives 1500 + 10*5*60 = 4500.",
+        "ruleLabel": "DP recurrence",
+        "rule": "dp[l][r] = min over split k of dp[l][k] + dp[k+1][r] + dims[l] * dims[k+1] * dims[r+1].",
+        "activeCells": [
+          [
+            0,
+            2
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      {
+        "phase": "answer",
+        "title": "Minimum cost is 4500",
+        "note": "The full-chain answer is dp[0][2].",
+        "ruleLabel": "DP recurrence",
+        "rule": "dp[l][r] = min over split k of dp[l][k] + dp[k+1][r] + dims[l] * dims[k+1] * dims[r+1].",
+        "activeCells": [
+          [
+            0,
+            2
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            2
           ]
         ]
       }

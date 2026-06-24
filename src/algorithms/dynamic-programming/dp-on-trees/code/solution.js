@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // DP on Trees
 // Route: /algorithms/dynamic-programming/dp-on-trees
 
