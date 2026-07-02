@@ -1040,15 +1040,17 @@ function focusSmartSearch() {
 function getSearchResults() {
   const query = state.searchQuery.trim();
   const records = algorithms.map((algorithm) => getSearchRecord(algorithm));
-  if (!query) return records.sort(sortSuggestedSearchRecords);
+  if (!query) return mergeEquivalentSearchRecords(records).sort(sortSuggestedSearchRecords);
 
   const tokens = tokenize(query);
-  return records
+  const scoredRecords = records
     .map((record) => ({
       ...record,
       score: scoreSearchRecord(record, query, tokens),
     }))
-    .filter((record) => record.score > 0)
+    .filter((record) => record.score > 0);
+
+  return mergeEquivalentSearchRecords(scoredRecords)
     .sort((a, b) => b.score - a.score || sortSuggestedSearchRecords(a, b))
     .slice(0, 24);
 }
@@ -1066,6 +1068,7 @@ function renderSearchResult(record) {
         <span class="search-result-summary">${escapeHtml(record.match)}</span>
         <span class="search-result-meta">
           <b>${escapeHtml(record.category)}</b>
+          ${record.mergedCount ? `<b>${record.mergedCount} merged</b>` : ""}
           <b>${escapeHtml(record.priority)}</b>
           <b>${escapeHtml(record.visualizerType)}</b>
           ${completedCount ? `<b class="progress-chip">${icon("task_alt")} ${completedCount}/3</b>` : ""}
@@ -1118,10 +1121,11 @@ function sortScoredSearchGroups(a, b) {
 function getSearchGroup(record) {
   const category = record.category || "Algorithms";
   if (category === "Data Structures" && record.topicGroup) {
+    const mappedCategory = getDataStructureSearchCategory(record.topicGroup);
     return {
-      key: `${category}:${record.topicGroup}`,
-      category: `Data Structures: ${record.topicGroup}`,
-      baseCategory: category,
+      key: mappedCategory,
+      category: mappedCategory,
+      baseCategory: mappedCategory,
       topicGroup: record.topicGroup,
     };
   }
@@ -1134,23 +1138,90 @@ function getSearchGroup(record) {
   };
 }
 
+function getDataStructureSearchCategory(topicGroup) {
+  const categoryMap = {
+    "C/C++ Essentials": "C/C++ Essentials",
+    Recursion: "Recursion and Backtracking",
+    "Arrays / Array ADT": "Arrays",
+    Strings: "Strings",
+    "Matrix / Sparse Matrix / Polynomial": "Matrix and Grid",
+    "Linked List": "Linked Lists",
+    Stack: "Stack",
+    Queue: "Queue",
+    "Trees / BST / AVL / Heap": "Trees",
+  };
+  return categoryMap[topicGroup] || topicGroup || "Data Structures";
+}
+
+function mergeEquivalentSearchRecords(records) {
+  const groups = new Map();
+  records.forEach((record) => {
+    const group = getSearchGroup(record);
+    const key = `${group.key}:${normalizeEquivalentSearchTitle(record.title)}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(record);
+  });
+
+  return [...groups.values()].map((groupRecords) => {
+    if (groupRecords.length === 1) return groupRecords[0];
+    return createMergedSearchRecord(groupRecords);
+  });
+}
+
+function createMergedSearchRecord(records) {
+  const primary = choosePrimarySearchRecord(records);
+  const mergedTitles = records
+    .map((record) => record.title)
+    .filter(Boolean)
+    .filter((title, index, titles) => titles.indexOf(title) === index);
+  const mergedCount = records.length;
+  const mergedMatch = `${mergedCount} related lessons merged here: ${mergedTitles.slice(0, 3).join(", ")}${mergedTitles.length > 3 ? ", and more" : ""}.`;
+
+  return {
+    ...primary,
+    score: Math.max(...records.map((record) => record.score || 0)),
+    tags: uniqueSearchTags(records.flatMap((record) => record.tags || [])),
+    haystack: records.map((record) => record.haystack).join(" "),
+    match: mergedMatch,
+    mergedCount,
+  };
+}
+
+function choosePrimarySearchRecord(records) {
+  return [...records].sort((a, b) => {
+    if (a.category === "Data Structures" && b.category !== "Data Structures") return 1;
+    if (a.category !== "Data Structures" && b.category === "Data Structures") return -1;
+    return sortSuggestedSearchRecords(a, b);
+  })[0];
+}
+
+function normalizeEquivalentSearchTitle(title) {
+  return String(title || "")
+    .toLowerCase()
+    .replace(/\b(c\+\+|cpp|with|using|and|the|of|to|in|a|an)\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
 function sortSearchCategoryGroups(a, b) {
   const categoryOrder = [
     "Foundations",
     "Searching",
     "Sorting",
-    "Trees",
-    "Graphs",
     "Arrays",
-    "Strings",
-    "Hashing",
-    "Stacks",
-    "Queues",
-    "Linked Lists",
-    "Heaps",
+    "Array Patterns",
+    "Recursion and Backtracking",
     "Dynamic Programming",
-    "Greedy",
-    "Backtracking",
+    "Graphs",
+    "Trees",
+    "Heap and Priority Queue",
+    "Stack",
+    "Queue",
+    "Linked Lists",
+    "Strings",
+    "Matrix and Grid",
+    "Number Theory and Bit Manipulation",
+    "C/C++ Essentials",
     "C++ STL Algorithm Pages",
     "Data Structures",
   ];
