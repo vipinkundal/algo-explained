@@ -1,8 +1,8 @@
-// REFERENCE ALGORITHM SOLUTION
 // Z Algorithm
 // Route: /algorithms/strings/z-algorithm
 
 export function zAlgorithm(text, pattern) {
+  if (pattern.length === 0) return Array.from({ length: text.length + 1 }, (_, index) => index);
   const combined = pattern + "$" + text;
   const z = Array(combined.length).fill(0);
   for (let index = 1, left = 0, right = 0; index < combined.length; index += 1) {

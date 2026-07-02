@@ -12,107 +12,107 @@ export const algorithmPage = {
   "icon": "search",
   "codePath": "./src/algorithms/searching/linear-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Linear Search is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Linear Search scans items one by one and stops as soon as the target is found.",
-  "concept": "Linear Search is useful when every item may matter and the input has no stronger ordering to exploit. Use this when a simple pass is clearer or cheaper than preprocessing.",
-  "logicSummary": "Move one index through the array, update the running state, and stop when the required condition is met.",
-  "transitionSummary": "Each loop consumes the current item exactly once and advances the index.",
-  "codeInsight": "The loop has no hidden structure: correctness comes from checking every earlier item before moving forward.",
-  "realLifeExample": "Use it for unsorted lists, small inputs, or cases where sorting first would cost more than scanning.",
-  "whenToUse": "Use Linear Search when the data is unsorted or a single sequential pass is acceptable.",
-  "memoryTrick": "Linear Search: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Linear Search is shown as a left-to-right scan. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Linear Search is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Find the first index whose value equals the target in an unsorted array.",
+  "concept": "Linear Search checks each value from left to right because no ordering rule lets it skip positions.",
+  "logicSummary": "Start at index 0, compare the current value with target, and advance one position after each miss.",
+  "transitionSummary": "A failed comparison increments the index; a match returns immediately.",
+  "codeInsight": "The loop is intentionally simple: every earlier value has been proven not equal before the index moves right.",
+  "realLifeExample": "Use it for small or unsorted lists such as scanning recent actions, names, or command history.",
+  "whenToUse": "Use Linear Search when the data is unsorted or sorting would cost more than one scan.",
+  "memoryTrick": "Linear search asks one item at a time: are you the target?",
+  "visualizerCaption": "Linear Search is shown with the exact boundary, probe, or scan state used by the code.",
   "logicSteps": [
     {
-      "title": "Start scan",
-      "text": "Set the first index and initial result."
+      "title": "Compare 4",
+      "text": "4 is not the target 9, so the scan moves right."
     },
     {
-      "title": "Read value",
-      "text": "Inspect the current array item."
+      "title": "Compare 2",
+      "text": "2 is also a miss."
     },
     {
-      "title": "Update state",
-      "text": "Change the answer, counter, or candidate."
+      "title": "Compare 9",
+      "text": "9 matches the target, so return index 2."
     },
     {
-      "title": "Finish pass",
-      "text": "Return the maintained result after the scan."
+      "title": "Return result",
+      "text": "No later positions are inspected after the first match."
     }
   ],
   "variables": [
     {
       "name": "array, target",
-      "purpose": "The list to scan and the value to find."
+      "purpose": "Input values and the value to find."
     },
     {
       "name": "index",
-      "purpose": "The current position being compared."
+      "purpose": "Current position being compared."
     },
     {
-      "name": "matching index",
-      "purpose": "The first index whose value equals the target, or -1."
+      "name": "answer",
+      "purpose": "First matching index, or -1 if no value matches."
     },
     {
       "name": "index < array.length",
-      "purpose": "The loop continues while unchecked items remain."
+      "purpose": "The scan continues while unchecked items remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Input array",
-      "title": "Read values",
-      "note": "The code receives the list and any target condition.",
-      "activeLine": 5,
-      "codeInsight": "Defines linearSearch and names the input array, target; edits to those inputs change the visual state and output."
+      "label": "Index 0",
+      "title": "Compare 4",
+      "note": "4 is not the target 9, so the scan moves right.",
+      "activeLine": 3,
+      "codeInsight": "The for-loop owns the scan position."
     },
     {
-      "label": "Index",
-      "title": "Select current item",
-      "note": "The loop focuses on one position at a time.",
-      "activeLine": 5,
-      "codeInsight": "Defines linearSearch and names the input array, target; edits to those inputs change the visual state and output."
+      "label": "Index 1",
+      "title": "Compare 2",
+      "note": "2 is also a miss.",
+      "activeLine": 4,
+      "codeInsight": "Only equality can stop the loop early."
     },
     {
-      "label": "Update",
-      "title": "Apply comparison or count",
-      "note": "The current value changes the running state only if the rule says so.",
-      "activeLine": 6,
-      "codeInsight": "Runs the counted loop (let index = 0; index < array.length; index += 1) so each visual step follows one code-controlled iteration."
+      "label": "Index 2",
+      "title": "Compare 9",
+      "note": "9 matches the target, so return index 2.",
+      "activeLine": 4,
+      "codeInsight": "The first match returns immediately."
     },
     {
-      "label": "Result",
-      "title": "Return scan output",
-      "note": "When the scan ends, the tracked result is returned.",
-      "activeLine": 9,
-      "codeInsight": "Returns -1, the final value maintained by Linear Search's code path."
+      "label": "Done",
+      "title": "Return result",
+      "note": "No later positions are inspected after the first match.",
+      "activeLine": 4,
+      "codeInsight": "The answer is the first matching index."
     }
   ],
   "complexity": {
-    "time": "O(n) worst case.",
+    "time": "O(n).",
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Linear Search correct?",
+    "question": "Which state keeps Linear Search correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track search window and update it only through Linear Search's transition.",
+        "text": "Use the page's own search boundary or scan state and update it only through the listed transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another search algorithm's comparison rule without checking the invariant.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Stop before the algorithm-specific boundary or scan condition is resolved.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Linear Search stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Linear Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Linear Search works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Linear Search needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "searching",
   "algorithmSlug": "linear-search",
@@ -120,9 +120,11 @@ export const algorithmPage = {
     [
       4,
       2,
-      7
+      9,
+      7,
+      9
     ],
-    7
+    9
   ],
   "relatedLinks": [
     {
@@ -138,21 +140,24 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "array-flow",
-    "title": "Linear Search array state",
-    "ruleLabel": "Array invariant",
-    "rule": "Each loop consumes the current item exactly once and advances the index.",
+    "static": true,
+    "title": "Linear Search trace",
+    "ruleLabel": "Search invariant",
+    "rule": "A failed comparison increments the index; a match returns immediately.",
     "values": [
       4,
       2,
-      7
+      9,
+      7,
+      9
     ],
     "steps": [
       {
-        "phase": "Input array",
-        "title": "Read values",
-        "note": "The code receives the list and any target condition.",
-        "ruleLabel": "Linear Search invariant",
-        "rule": "Defines linearSearch and names the input array, target; edits to those inputs change the visual state and output.",
+        "phase": "index = 0",
+        "title": "Check 4",
+        "note": "4 != 9.",
+        "ruleLabel": "Search invariant",
+        "rule": "A failed comparison increments the index; a match returns immediately.",
         "activeIndices": [
           0
         ],
@@ -160,66 +165,78 @@ export const algorithmPage = {
         "mutedIndices": [],
         "window": [
           0,
+          4
+        ],
+        "primaryLabel": "index = 0",
+        "secondaryLabel": "A failed comparison increments the index; a match returns immediately."
+      },
+      {
+        "phase": "index = 1",
+        "title": "Check 2",
+        "note": "2 != 9.",
+        "ruleLabel": "Search invariant",
+        "rule": "A failed comparison increments the index; a match returns immediately.",
+        "activeIndices": [
           1
         ],
-        "primaryLabel": "Input array",
-        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
-      },
-      {
-        "phase": "Index",
-        "title": "Select current item",
-        "note": "The loop focuses on one position at a time.",
-        "ruleLabel": "Linear Search invariant",
-        "rule": "Defines linearSearch and names the input array, target; edits to those inputs change the visual state and output.",
-        "activeIndices": [
-          1,
-          2
-        ],
         "sortedIndices": [],
-        "mutedIndices": [],
+        "mutedIndices": [
+          0
+        ],
         "window": [
           0,
-          2
+          4
         ],
-        "primaryLabel": "Index",
-        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
+        "primaryLabel": "index = 1",
+        "secondaryLabel": "A failed comparison increments the index; a match returns immediately."
       },
       {
-        "phase": "Update",
-        "title": "Apply comparison or count",
-        "note": "The current value changes the running state only if the rule says so.",
-        "ruleLabel": "Linear Search invariant",
-        "rule": "Runs the counted loop (let index = 0; index < array.length; index += 1) so each visual step follows one code-controlled iteration.",
+        "phase": "index = 2",
+        "title": "Found 9",
+        "note": "Return the first matching index.",
+        "ruleLabel": "Search invariant",
+        "rule": "A failed comparison increments the index; a match returns immediately.",
         "activeIndices": [
           2
         ],
-        "sortedIndices": [],
-        "mutedIndices": [],
+        "sortedIndices": [
+          2
+        ],
+        "mutedIndices": [
+          0,
+          1
+        ],
         "window": [
-          1,
-          2
+          0,
+          4
         ],
-        "primaryLabel": "Update",
-        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
+        "primaryLabel": "index = 2",
+        "secondaryLabel": "A failed comparison increments the index; a match returns immediately."
       },
       {
-        "phase": "Result",
-        "title": "Return scan output",
-        "note": "When the scan ends, the tracked result is returned.",
-        "ruleLabel": "Linear Search invariant",
-        "rule": "Returns -1, the final value maintained by Linear Search's code path.",
+        "phase": "return 2",
+        "title": "Stop at first match",
+        "note": "Later values do not affect first occurrence.",
+        "ruleLabel": "Search invariant",
+        "rule": "A failed comparison increments the index; a match returns immediately.",
         "activeIndices": [
+          2
+        ],
+        "sortedIndices": [
+          2
+        ],
+        "mutedIndices": [
+          0,
+          1,
+          3,
+          4
+        ],
+        "window": [
           2,
           2
         ],
-        "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
-          1,
-          2
-        ],
-        "primaryLabel": "Result",
-        "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
+        "primaryLabel": "return 2",
+        "secondaryLabel": "A failed comparison increments the index; a match returns immediately."
       }
     ]
   }

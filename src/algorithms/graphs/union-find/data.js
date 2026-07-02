@@ -13,255 +13,265 @@ export const algorithmPage = {
   "codePath": "./src/algorithms/graphs/union-find/code/solution.js",
   "codeFilename": "solution.js",
   "meaning": "Disjoint Set Union / Union Find is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Union Find keeps components as parent trees and compresses paths during lookup.",
-  "concept": "Disjoint Set Union / Union Find is useful when graph structure can be solved by maintaining parent array. Use this when the required result is component merging.",
-  "logicSummary": "Initialize graph input and parent array, choose the next work item, then find roots and union separate sets.",
-  "transitionSummary": "Each step consumes one vertex or edge and updates parent array without losing the graph invariant.",
-  "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
-  "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
-  "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Disjoint Set Union / Union Find: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Disjoint Set Union / Union Find is shown as graph frontier/state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "problem": "Union Find tracks which vertices belong to the same component while merging sets quickly.",
+  "concept": "Disjoint Set Union represents each component as a parent tree; find returns the root and union attaches one root to another.",
+  "logicSummary": "Initialize every vertex as its own parent, compress paths during find, and union only when two roots differ.",
+  "transitionSummary": "One transition checks two roots; if they differ, the lower-rank root points at the higher-rank root.",
+  "codeInsight": "The parent array is the component map. Path compression edits parent pointers without changing the component answer.",
+  "realLifeExample": "Use Union Find for connectivity queries, Kruskal's MST, grouping accounts, and dynamic component merging.",
+  "whenToUse": "Use it when edges arrive as merge operations and you need fast same-component checks.",
+  "memoryTrick": "Union Find: ask each node for its root, then merge roots, not leaves.",
+  "visualizerCaption": "Watch parent trees merge and path compression flatten component lookups.",
   "logicSteps": [
     {
-      "title": "Read graph",
-      "text": "Identify vertices, edges, weights, and start state."
+      "title": "Create singleton sets",
+      "text": "Every node starts as its own parent with rank 0."
     },
     {
-      "title": "Build graph state",
-      "text": "Create the parent array."
+      "title": "Find roots",
+      "text": "Follow parent pointers until the component root is reached."
     },
     {
-      "title": "Process work item",
-      "text": "Find roots and union separate sets."
+      "title": "Union roots",
+      "text": "Attach one root under the other when the components differ."
     },
     {
-      "title": "Return graph result",
-      "text": "Return the component merging."
+      "title": "Return merge results",
+      "text": "Each operation reports whether a real merge happened."
     }
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "size, operations",
+      "purpose": "Number of vertices and the pairs to merge."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "parent",
+      "purpose": "Parent pointer for each component tree."
     },
     {
-      "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "name": "rank",
+      "purpose": "Approximate tree height used to keep merges shallow."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "merge result",
+      "purpose": "Boolean per operation: true when two components merged."
     }
   ],
   "dryRun": [
     {
-      "label": "Graph",
-      "title": "Read graph input",
-      "note": "The code receives vertices, edges, weights, or adjacency lists.",
+      "label": "Singletons",
+      "title": "Each node is its own parent",
+      "note": "parent = [0, 1, 2, 3, 4].",
       "activeLine": 5,
-      "codeInsight": "Defines unionFind and names the input size, operations; edits to those inputs change the visual state and output."
+      "codeInsight": "Array.from creates one component root per vertex."
     },
     {
-      "label": "Parent Array",
-      "title": "Initialize parent array",
-      "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 5,
-      "codeInsight": "Defines unionFind and names the input size, operations; edits to those inputs change the visual state and output."
+      "label": "Union 0-1",
+      "title": "Merge roots 0 and 1",
+      "note": "The roots differ, so 1 points to 0 and rank[0] grows.",
+      "activeLine": 13,
+      "codeInsight": "The code updates parent[rootB], not parent[b], so the whole component is merged."
     },
     {
-      "label": "Work item",
-      "title": "Process next vertex or edge",
-      "note": "Find roots and union separate sets.",
-      "activeLine": 6,
-      "codeInsight": "Builds parent from structured fields so the visual trace can show named values instead of an opaque blob."
+      "label": "Union 1-2",
+      "title": "Find compresses 1 to root 0",
+      "note": "1 already points to 0, so 2 joins the same component.",
+      "activeLine": 7,
+      "codeInsight": "find rewrites parent[node] to the root while returning it."
     },
     {
-      "label": "Component Merging",
-      "title": "Return component merging",
-      "note": "The final graph state becomes the answer.",
-      "activeLine": 16,
-      "codeInsight": "Returns true, the boolean result reached by the highlighted checks."
+      "label": "Union 3-4",
+      "title": "Build a second component",
+      "note": "3 and 4 form another component tree.",
+      "activeLine": 13,
+      "codeInsight": "Separate roots remain separate until a union connects them."
+    },
+    {
+      "label": "Union 2-4",
+      "title": "Merge the two components",
+      "note": "Root 0 and root 3 differ, so the two sets become one.",
+      "activeLine": 15,
+      "codeInsight": "Rank decides which root stays higher in the tree."
     }
   ],
   "complexity": {
-    "time": "Nearly O(1) amortized per operation.",
+    "time": "Almost O(1) amortized per operation with path compression and union by rank.",
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state choice keeps Disjoint Set Union / Union Find correct?",
+    "question": "Which state keeps Disjoint Set Union / Union Find correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track visited and frontier and update it only through Disjoint Set Union / Union Find's transition.",
+        "text": "parent follows the page's own transition rule.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Skip the stop condition once one edge has been inspected.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Disjoint Set Union / Union Find stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Disjoint Set Union / Union Find needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
+    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "union-find",
   "runnerInput": [
-    4,
+    5,
     [
       [
         0,
         1
       ],
       [
-        2,
-        3
-      ],
-      [
         1,
         2
       ],
       [
-        0,
-        3
+        3,
+        4
+      ],
+      [
+        2,
+        4
       ]
     ]
   ],
   "animation": {
+    "static": true,
     "type": "tree-operation",
-    "title": "Disjoint Set Union / Union Find tree state",
+    "title": "Union Find parent forest",
     "nodes": [
       {
-        "id": "8",
-        "label": "8",
-        "x": 340,
-        "y": 58
+        "id": "0",
+        "label": "0",
+        "x": 120,
+        "y": 80
       },
       {
-        "id": "4",
-        "label": "4",
-        "x": 190,
-        "y": 150
-      },
-      {
-        "id": "12",
-        "label": "12",
-        "x": 490,
-        "y": 150
+        "id": "1",
+        "label": "1",
+        "x": 60,
+        "y": 190
       },
       {
         "id": "2",
         "label": "2",
-        "x": 110,
-        "y": 255
+        "x": 180,
+        "y": 190
       },
       {
-        "id": "6",
-        "label": "6",
-        "x": 270,
-        "y": 255
+        "id": "3",
+        "label": "3",
+        "x": 440,
+        "y": 90
       },
       {
-        "id": "10",
-        "label": "10",
-        "x": 420,
-        "y": 255
-      },
-      {
-        "id": "14",
-        "label": "14",
-        "x": 570,
-        "y": 255
+        "id": "4",
+        "label": "4",
+        "x": 440,
+        "y": 210
       }
     ],
     "edges": [
       {
-        "from": "8",
-        "to": "4"
+        "from": "0",
+        "to": "1"
       },
       {
-        "from": "8",
-        "to": "12"
-      },
-      {
-        "from": "4",
+        "from": "0",
         "to": "2"
       },
       {
-        "from": "4",
-        "to": "6"
+        "from": "3",
+        "to": "4"
+      }
+    ],
+    "legend": [
+      {
+        "className": "current",
+        "label": "Find root"
       },
       {
-        "from": "12",
-        "to": "10"
+        "className": "target",
+        "label": "Root being attached"
       },
       {
-        "from": "12",
-        "to": "14"
+        "className": "replacement",
+        "label": "Merged root"
       }
     ],
     "steps": [
       {
-        "phase": "Graph",
-        "title": "Read graph input",
-        "note": "The code receives vertices, edges, weights, or adjacency lists.",
-        "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "Defines unionFind and names the input size, operations; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
+        "phase": "Make sets",
+        "title": "Start with five singleton components",
+        "note": "Each vertex is its own root before any union runs.",
+        "ruleLabel": "Parents",
+        "rule": "0->0, 1->1, 2->2, 3->3, 4->4",
+        "activeNode": "0",
+        "targetNode": "1",
         "mutedNodes": [
-          "6",
-          "10",
-          "14"
+          "1",
+          "2",
+          "3",
+          "4"
         ]
       },
       {
-        "phase": "Parent Array",
-        "title": "Initialize parent array",
-        "note": "Only the graph state owned by this algorithm is created.",
-        "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "Defines unionFind and names the input size, operations; edits to those inputs change the visual state and output.",
-        "activeNode": "4",
-        "targetNode": "12",
-        "replacementNode": "",
+        "phase": "union(0, 1)",
+        "title": "Attach 1 under 0",
+        "note": "find(0) and find(1) return different roots.",
+        "ruleLabel": "Parents",
+        "rule": "1 now points to 0",
+        "activeNode": "0",
+        "targetNode": "1",
+        "replacementNode": "0",
         "mutedNodes": [
-          "6",
-          "10",
-          "14"
+          "2",
+          "3",
+          "4"
         ]
       },
       {
-        "phase": "Work item",
-        "title": "Process next vertex or edge",
-        "note": "Find roots and union separate sets.",
-        "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "Builds parent from structured fields so the visual trace can show named values instead of an opaque blob.",
-        "activeNode": "12",
+        "phase": "union(1, 2)",
+        "title": "Compress 1, attach 2 under 0",
+        "note": "find(1) follows 1 -> 0, then 2 joins root 0.",
+        "ruleLabel": "Parents",
+        "rule": "2 now points to 0",
+        "activeNode": "1",
         "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "replacementNode": "0",
+        "mutedNodes": [
+          "3",
+          "4"
+        ]
       },
       {
-        "phase": "Component Merging",
-        "title": "Return component merging",
-        "note": "The final graph state becomes the answer.",
-        "ruleLabel": "Disjoint Set Union / Union Find invariant",
-        "rule": "Returns true, the boolean result reached by the highlighted checks.",
+        "phase": "union(3, 4)",
+        "title": "Create the second component",
+        "note": "3 and 4 merge separately from 0, 1, and 2.",
+        "ruleLabel": "Parents",
+        "rule": "4 now points to 3",
+        "activeNode": "3",
+        "targetNode": "4",
+        "replacementNode": "3"
+      },
+      {
+        "phase": "union(2, 4)",
+        "title": "Connect both components",
+        "note": "find(2) returns 0 and find(4) returns 3, so the components merge.",
+        "ruleLabel": "Answer",
+        "rule": "all five vertices are connected",
         "activeNode": "2",
-        "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
+        "targetNode": "4",
+        "replacementNode": "0"
       }
     ]
   }

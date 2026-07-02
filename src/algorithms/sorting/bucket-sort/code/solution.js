@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Bucket Sort
 // Route: /algorithms/sorting/bucket-sort
 

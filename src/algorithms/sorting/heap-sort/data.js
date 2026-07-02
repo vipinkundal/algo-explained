@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/heap-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Heap Sort is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Build a max heap and repeatedly move the maximum value to the end.",
-  "concept": "Heap Sort is useful when a heap can repeatedly expose the next largest or smallest value. Use this when in-place n log n sorting with heap structure is the right tradeoff.",
-  "logicSummary": "Build a heap, swap the root into its final position, shrink the heap, and restore heap order.",
-  "transitionSummary": "Each extraction fixes one output position and heapifies the remaining prefix.",
-  "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
-  "realLifeExample": "Heap Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
-  "whenToUse": "Use Heap Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Heap Sort: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Heap Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Heap Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Sort an array by building a max heap and repeatedly extracting the maximum value.",
+  "concept": "Heap Sort first makes the array obey the max-heap property, then swaps the root into the final suffix and heapifies the reduced heap.",
+  "logicSummary": "Build a max heap, swap root with the end of the heap, shrink heap size, and sift down the new root.",
+  "transitionSummary": "Each extraction places one maximum into the sorted suffix and restores heap order in the remaining prefix.",
+  "codeInsight": "heapify works only inside the current heap size; the sorted suffix is excluded from future heap repairs.",
+  "realLifeExample": "Use heap sort when in-place O(n log n) sorting is needed without quick sort's worst-case risk.",
+  "whenToUse": "Use Heap Sort when predictable time and O(1) auxiliary space matter more than stability.",
+  "memoryTrick": "Max at root, swap to end, repair the heap.",
+  "visualizerCaption": "Heap Sort is shown with the actual sorted/unsorted state that its code maintains.",
   "logicSteps": [
     {
-      "title": "Build heap",
-      "text": "Arrange values into parent-child priority order."
+      "title": "Heapify internal nodes",
+      "text": "Bottom-up heapify creates a max heap."
     },
     {
-      "title": "Swap root",
-      "text": "Move the top priority value to the end."
+      "title": "Swap root with end",
+      "text": "The maximum moves into its final sorted slot."
     },
     {
-      "title": "Shrink heap",
-      "text": "Exclude the fixed value."
+      "title": "Exclude sorted suffix",
+      "text": "The heap size decreases before the next heapify."
     },
     {
-      "title": "Heapify",
-      "text": "Restore the root rule for the remaining values."
+      "title": "Sift root down",
+      "text": "The remaining prefix becomes a valid max heap again."
     }
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The values to sort."
+      "name": "values",
+      "purpose": "Array holding both heap prefix and sorted suffix."
     },
     {
-      "name": "working array",
-      "purpose": "A copy that is rearranged during sorting."
+      "name": "size",
+      "purpose": "Number of active heap values."
     },
     {
-      "name": "sorted array",
-      "purpose": "The final ordered result."
+      "name": "root",
+      "purpose": "Node being sifted down."
     },
     {
-      "name": "unsorted work remains",
-      "purpose": "Continue until every value is in final order."
+      "name": "largest",
+      "purpose": "Largest among root and children."
     }
   ],
   "dryRun": [
     {
-      "label": "Heap",
-      "title": "Build priority tree",
-      "note": "The array is interpreted as a heap.",
+      "label": "Build heap",
+      "title": "Heapify internal nodes",
+      "note": "Bottom-up heapify creates a max heap.",
+      "activeLine": 3,
+      "codeInsight": "The first loop starts at the last parent node."
+    },
+    {
+      "label": "Extract max",
+      "title": "Swap root with end",
+      "note": "The maximum moves into its final sorted slot.",
+      "activeLine": 5,
+      "codeInsight": "Root is always the largest active heap value."
+    },
+    {
+      "label": "Shrink heap",
+      "title": "Exclude sorted suffix",
+      "note": "The heap size decreases before the next heapify.",
       "activeLine": 6,
-      "codeInsight": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes."
+      "codeInsight": "heapify receives end as its active size."
     },
     {
-      "label": "Root",
-      "title": "Move root to output",
-      "note": "The max or min root becomes fixed.",
-      "activeLine": 12,
-      "codeInsight": "Returns values, the final value maintained by Heap Sort's code path."
-    },
-    {
-      "label": "Size",
-      "title": "Shrink active heap",
-      "note": "Fixed values are no longer heapified.",
-      "activeLine": 6,
-      "codeInsight": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes."
-    },
-    {
-      "label": "Restore",
-      "title": "Heapify remaining range",
-      "note": "The parent-child invariant is repaired.",
-      "activeLine": 9,
-      "codeInsight": "Swaps values[0], values[end] with values[end], values[0], so the animation should move those highlighted positions together."
+      "label": "Repair",
+      "title": "Sift root down",
+      "note": "The remaining prefix becomes a valid max heap again.",
+      "activeLine": 17,
+      "codeInsight": "Recursive heapify follows the swapped child."
     }
   ],
   "complexity": {
@@ -93,162 +93,136 @@ export const algorithmPage = {
     "space": "O(1) auxiliary space."
   },
   "quiz": {
-    "question": "Which state choice keeps Heap Sort correct?",
+    "question": "Which state keeps Heap Sort correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and working array and update it only through Heap Sort's transition.",
+        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Use one generic sorted-array story for every sorting algorithm.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Move values without preserving the algorithm's stated invariant.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Heap Sort stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Heap Sort needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Heap Sort works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Heap Sort needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "heap-sort",
   "runnerInput": [
     [
-      4,
+      5,
       1,
-      3,
-      2
+      4,
+      2,
+      8
     ]
   ],
   "animation": {
-    "type": "tree-operation",
-    "title": "Heap Sort tree state",
-    "nodes": [
-      {
-        "id": "8",
-        "label": "8",
-        "x": 340,
-        "y": 58
-      },
-      {
-        "id": "4",
-        "label": "4",
-        "x": 190,
-        "y": 150
-      },
-      {
-        "id": "12",
-        "label": "12",
-        "x": 490,
-        "y": 150
-      },
-      {
-        "id": "2",
-        "label": "2",
-        "x": 110,
-        "y": 255
-      },
-      {
-        "id": "6",
-        "label": "6",
-        "x": 270,
-        "y": 255
-      },
-      {
-        "id": "10",
-        "label": "10",
-        "x": 420,
-        "y": 255
-      },
-      {
-        "id": "14",
-        "label": "14",
-        "x": 570,
-        "y": 255
-      }
-    ],
-    "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
-      {
-        "from": "4",
-        "to": "2"
-      },
-      {
-        "from": "4",
-        "to": "6"
-      },
-      {
-        "from": "12",
-        "to": "10"
-      },
-      {
-        "from": "12",
-        "to": "14"
-      }
+    "type": "array-flow",
+    "static": true,
+    "title": "Heap Sort trace",
+    "ruleLabel": "Sorting invariant",
+    "rule": "Each extraction places one maximum into the sorted suffix and restores heap order in the remaining prefix.",
+    "values": [
+      5,
+      1,
+      4,
+      2,
+      8
     ],
     "steps": [
       {
-        "phase": "Heap",
-        "title": "Build priority tree",
-        "note": "The array is interpreted as a heap.",
-        "ruleLabel": "Heap Sort invariant",
-        "rule": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
+        "phase": "heapify",
+        "title": "Build max heap",
+        "note": "8 rises to the root.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each extraction places one maximum into the sorted suffix and restores heap order in the remaining prefix.",
+        "activeIndices": [
+          0,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          4
+        ],
+        "primaryLabel": "heapify",
+        "secondaryLabel": "Each extraction places one maximum into the sorted suffix and restores heap order in the remaining prefix."
       },
       {
-        "phase": "Root",
-        "title": "Move root to output",
-        "note": "The max or min root becomes fixed.",
-        "ruleLabel": "Heap Sort invariant",
-        "rule": "Returns values, the final value maintained by Heap Sort's code path.",
-        "activeNode": "4",
-        "targetNode": "12",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
+        "phase": "extract",
+        "title": "Move max to end",
+        "note": "Swap root with last heap item.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each extraction places one maximum into the sorted suffix and restores heap order in the remaining prefix.",
+        "activeIndices": [
+          0,
+          4
+        ],
+        "sortedIndices": [
+          4
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "extract",
+        "secondaryLabel": "Each extraction places one maximum into the sorted suffix and restores heap order in the remaining prefix."
       },
       {
-        "phase": "Size",
-        "title": "Shrink active heap",
-        "note": "Fixed values are no longer heapified.",
-        "ruleLabel": "Heap Sort invariant",
-        "rule": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
+        "phase": "sift",
+        "title": "Repair heap prefix",
+        "note": "The new root moves down as needed.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each extraction places one maximum into the sorted suffix and restores heap order in the remaining prefix.",
+        "activeIndices": [
+          0,
+          2
+        ],
+        "sortedIndices": [
+          4
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "sift",
+        "secondaryLabel": "Each extraction places one maximum into the sorted suffix and restores heap order in the remaining prefix."
       },
       {
-        "phase": "Restore",
-        "title": "Heapify remaining range",
-        "note": "The parent-child invariant is repaired.",
-        "ruleLabel": "Heap Sort invariant",
-        "rule": "Swaps values[0], values[end] with values[end], values[0], so the animation should move those highlighted positions together.",
-        "activeNode": "2",
-        "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
+        "phase": "sorted",
+        "title": "Repeat until heap empty",
+        "note": "The sorted suffix grows from right to left.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "Each extraction places one maximum into the sorted suffix and restores heap order in the remaining prefix.",
+        "activeIndices": [
+          0
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          4
+        ],
+        "primaryLabel": "sorted",
+        "secondaryLabel": "Each extraction places one maximum into the sorted suffix and restores heap order in the remaining prefix."
       }
     ]
   }

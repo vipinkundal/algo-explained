@@ -818,15 +818,36 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     const visited = new Set(animationStep.visitedNodes || []);
     const frontier = new Set(animationStep.frontierNodes || []);
     const activeEdge = animationStep.activeEdge || {};
+    const markerId = `structured-graph-arrow-${algorithmPage.id}`;
 
     return `
       <svg class="structured-graph-svg" viewBox="0 0 640 300" role="img" aria-label="${escapeHtml(animation.title || algorithmPage.title)}">
+        <defs>
+          <marker id="${escapeHtml(markerId)}" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z"></path>
+          </marker>
+        </defs>
         ${edges.map((edge) => {
           const from = nodes.find((node) => node.id === edge.from);
           const to = nodes.find((node) => node.id === edge.to);
           if (!from || !to) return "";
           const active = activeEdge.from === edge.from && activeEdge.to === edge.to;
-          return `<line class="structured-graph-edge ${active ? "active" : ""}" x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}"></line>`;
+          const directed = Boolean(edge.directed || animation.directed);
+          const dx = to.x - from.x;
+          const dy = to.y - from.y;
+          const length = Math.max(Math.sqrt((dx * dx) + (dy * dy)), 1);
+          const radius = 30;
+          const startX = from.x + (dx / length) * radius;
+          const startY = from.y + (dy / length) * radius;
+          const endX = to.x - (dx / length) * radius;
+          const endY = to.y - (dy / length) * radius;
+          const label = edge.label ?? edge.weight ?? "";
+          return `
+            <g class="structured-graph-edge-group ${active ? "active" : ""}">
+              <line class="structured-graph-edge ${active ? "active" : ""}" x1="${startX}" y1="${startY}" x2="${endX}" y2="${endY}" ${directed ? `marker-end="url(#${escapeHtml(markerId)})"` : ""}></line>
+              ${label !== "" ? `<text class="structured-graph-edge-label ${active ? "active" : ""}" x="${(startX + endX) / 2}" y="${((startY + endY) / 2) - 10}">${escapeHtml(label)}</text>` : ""}
+            </g>
+          `;
         }).join("")}
         ${nodes.map((node) => `
           <g class="structured-graph-node ${node.id === activeNode ? "active" : ""} ${visited.has(node.id) ? "visited" : ""} ${frontier.has(node.id) ? "frontier" : ""}" transform="translate(${node.x} ${node.y})">

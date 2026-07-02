@@ -12,213 +12,218 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/radix-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Radix Sort is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Sort integers digit by digit from least significant to most significant.",
-  "concept": "Radix Sort is useful when values distribute naturally into ranges that can be sorted independently. Use this when inputs are spread across buckets and per-bucket sorting is cheaper.",
-  "logicSummary": "Create buckets, place each value by range, sort each bucket, and concatenate the buckets.",
-  "transitionSummary": "Each value moves into its bucket, then each bucket is locally sorted before concatenation.",
-  "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
-  "realLifeExample": "Radix Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
-  "whenToUse": "Use Radix Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Radix Sort: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Radix Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Radix Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Sort non-negative integers digit by digit from least significant to most significant.",
+  "concept": "Radix Sort uses stable digit buckets so lower-place ordering is preserved while higher places are processed.",
+  "logicSummary": "Find the max digit length, bucket values by the current place, flatten buckets, and move to the next place.",
+  "transitionSummary": "For each digit place, every value enters bucket digit(value, place), then buckets are flattened from 0 to 9.",
+  "codeInsight": "Stability is essential: flattening buckets in insertion order preserves previous digit work.",
+  "realLifeExample": "Use it for fixed-width integer-like keys such as IDs when digits are bounded.",
+  "whenToUse": "Use Radix Sort for non-negative integers with manageable digit length.",
+  "memoryTrick": "Ones, tens, hundreds: stable buckets each round.",
+  "visualizerCaption": "Radix Sort is shown with the actual sorted/unsorted state that its code maintains.",
   "logicSteps": [
     {
-      "title": "Create buckets",
-      "text": "Divide the value range into buckets."
+      "title": "Find largest value",
+      "text": "The largest value tells how many digit passes are needed."
     },
     {
-      "title": "Place values",
-      "text": "Map each value to its bucket."
+      "title": "Bucket by ones digit",
+      "text": "Every value enters bucket 0 through 9."
     },
     {
-      "title": "Sort buckets",
-      "text": "Order values inside each bucket."
+      "title": "Preserve bucket order",
+      "text": "Buckets flatten from 0 to 9 while preserving order inside each bucket."
     },
     {
-      "title": "Concatenate",
-      "text": "Join buckets from low to high."
+      "title": "Repeat for tens",
+      "text": "The same distribution runs for the next digit place."
     }
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The values to sort."
+      "name": "place",
+      "purpose": "Current digit place: 1, 10, 100, ..."
     },
     {
-      "name": "working array",
-      "purpose": "A copy that is rearranged during sorting."
+      "name": "buckets",
+      "purpose": "Ten digit buckets for current place."
     },
     {
-      "name": "sorted array",
-      "purpose": "The final ordered result."
+      "name": "max",
+      "purpose": "Largest value, used to know when digits are finished."
     },
     {
-      "name": "unsorted work remains",
-      "purpose": "Continue until every value is in final order."
+      "name": "values",
+      "purpose": "Current stable order after each digit pass."
     }
   ],
   "dryRun": [
     {
-      "label": "Buckets",
-      "title": "Create bucket ranges",
-      "note": "The code creates containers for value ranges.",
-      "activeLine": 9,
-      "codeInsight": "Creates buckets as empty working state; later lines add and remove values from it."
+      "label": "max",
+      "title": "Find largest value",
+      "note": "The largest value tells how many digit passes are needed.",
+      "activeLine": 3,
+      "codeInsight": "The loop stops when max / place becomes 0."
     },
     {
-      "label": "Value",
-      "title": "Assign to bucket",
-      "note": "Each input value lands in one bucket.",
-      "activeLine": 9,
-      "codeInsight": "Creates buckets as empty working state; later lines add and remove values from it."
+      "label": "ones",
+      "title": "Bucket by ones digit",
+      "note": "Every value enters bucket 0 through 9.",
+      "activeLine": 6,
+      "codeInsight": "Digit extraction uses Math.floor(value / place) % 10."
     },
     {
-      "label": "Inside bucket",
-      "title": "Sort local values",
-      "note": "Small bucket lists are ordered independently.",
-      "activeLine": 9,
-      "codeInsight": "Creates buckets as empty working state; later lines add and remove values from it."
+      "label": "flatten",
+      "title": "Preserve bucket order",
+      "note": "Buckets flatten from 0 to 9 while preserving order inside each bucket.",
+      "activeLine": 7,
+      "codeInsight": "Stable flattening carries previous digit sorting forward."
     },
     {
-      "label": "Concatenate",
-      "title": "Concatenate buckets",
-      "note": "Buckets are joined in range order.",
-      "activeLine": 13,
-      "codeInsight": "Returns values, the final value maintained by Radix Sort's code path."
+      "label": "next place",
+      "title": "Repeat for tens",
+      "note": "The same distribution runs for the next digit place.",
+      "activeLine": 4,
+      "codeInsight": "place *= 10 moves to the next digit."
     }
   ],
   "complexity": {
-    "time": "O(d(n + b)) for d digits and b buckets.",
+    "time": "O(d(n + b)) for d digits and b = 10 buckets.",
     "space": "O(n + b)."
   },
   "quiz": {
-    "question": "Which state choice keeps Radix Sort correct?",
+    "question": "Which state keeps Radix Sort correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and working array and update it only through Radix Sort's transition.",
+        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Use one generic sorted-array story for every sorting algorithm.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Move values without preserving the algorithm's stated invariant.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Radix Sort stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Radix Sort needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Radix Sort works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Radix Sort needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "radix-sort",
   "runnerInput": [
     [
-      4,
-      1,
-      3,
-      2
+      170,
+      45,
+      75,
+      90,
+      802,
+      24
     ]
   ],
   "animation": {
-    "type": "bucket-flow",
-    "title": "Radix Sort bucket movement",
-    "ruleLabel": "Bucket rule",
-    "rule": "Each value moves into its bucket, then each bucket is locally sorted before concatenation.",
+    "type": "array-flow",
+    "static": true,
+    "title": "Radix Sort trace",
+    "ruleLabel": "Sorting invariant",
+    "rule": "For each digit place, every value enters bucket digit(value, place), then buckets are flattened from 0 to 9.",
     "values": [
-      4,
-      1,
-      3,
-      2
-    ],
-    "buckets": [
-      {
-        "label": "low range"
-      },
-      {
-        "label": "middle range"
-      },
-      {
-        "label": "high range"
-      }
+      170,
+      45,
+      75,
+      90,
+      802,
+      24
     ],
     "steps": [
       {
-        "phase": "Buckets",
-        "title": "Create bucket ranges",
-        "note": "The code creates containers for value ranges.",
-        "ruleLabel": "Radix Sort invariant",
-        "rule": "Creates buckets as empty working state; later lines add and remove values from it.",
-        "activeValue": 4,
-        "bucketIndex": 1,
-        "bucketValues": [
-          [],
-          [
-            4
-          ],
-          []
-        ]
+        "phase": "place 1",
+        "title": "Bucket ones digits",
+        "note": "170 goes to bucket 0, 45 to bucket 5.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "For each digit place, every value enters bucket digit(value, place), then buckets are flattened from 0 to 9.",
+        "activeIndices": [
+          0,
+          1
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          5
+        ],
+        "primaryLabel": "place 1",
+        "secondaryLabel": "For each digit place, every value enters bucket digit(value, place), then buckets are flattened from 0 to 9."
       },
       {
-        "phase": "Value",
-        "title": "Assign to bucket",
-        "note": "Each input value lands in one bucket.",
-        "ruleLabel": "Radix Sort invariant",
-        "rule": "Creates buckets as empty working state; later lines add and remove values from it.",
-        "activeValue": 1,
-        "bucketIndex": 1,
-        "bucketValues": [
-          [],
-          [
-            4,
-            1
-          ],
-          []
-        ]
+        "phase": "flatten",
+        "title": "Ones pass order",
+        "note": "Buckets flatten in digit order.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "For each digit place, every value enters bucket digit(value, place), then buckets are flattened from 0 to 9.",
+        "activeIndices": [
+          0,
+          3,
+          5
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          5
+        ],
+        "primaryLabel": "flatten",
+        "secondaryLabel": "For each digit place, every value enters bucket digit(value, place), then buckets are flattened from 0 to 9."
       },
       {
-        "phase": "Inside bucket",
-        "title": "Sort local values",
-        "note": "Small bucket lists are ordered independently.",
-        "ruleLabel": "Radix Sort invariant",
-        "rule": "Creates buckets as empty working state; later lines add and remove values from it.",
-        "activeValue": 3,
-        "bucketIndex": 0,
-        "bucketValues": [
-          [
-            3
-          ],
-          [
-            4,
-            1
-          ],
-          []
-        ]
+        "phase": "place 10",
+        "title": "Bucket tens digits",
+        "note": "Now tens digits decide order.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "For each digit place, every value enters bucket digit(value, place), then buckets are flattened from 0 to 9.",
+        "activeIndices": [
+          2,
+          4
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          5
+        ],
+        "primaryLabel": "place 10",
+        "secondaryLabel": "For each digit place, every value enters bucket digit(value, place), then buckets are flattened from 0 to 9."
       },
       {
-        "phase": "Concatenate",
-        "title": "Concatenate buckets",
-        "note": "Buckets are joined in range order.",
-        "ruleLabel": "Radix Sort invariant",
-        "rule": "Returns values, the final value maintained by Radix Sort's code path.",
-        "activeValue": 2,
-        "bucketIndex": 2,
-        "bucketValues": [
-          [
-            3
-          ],
-          [
-            4,
-            1
-          ],
-          [
-            2
-          ]
-        ]
+        "phase": "place 100",
+        "title": "Final digit pass",
+        "note": "Hundreds digit finishes the sorted order.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "For each digit place, every value enters bucket digit(value, place), then buckets are flattened from 0 to 9.",
+        "activeIndices": [
+          0,
+          4
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          5
+        ],
+        "primaryLabel": "place 100",
+        "secondaryLabel": "For each digit place, every value enters bucket digit(value, place), then buckets are flattened from 0 to 9."
       }
     ]
   }

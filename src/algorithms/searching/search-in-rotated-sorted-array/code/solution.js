@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Search in Rotated Sorted Array
 // Route: /algorithms/searching/search-in-rotated-sorted-array
 

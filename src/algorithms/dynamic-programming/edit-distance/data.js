@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/edit-distance/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Edit Distance is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Edit Distance stores the minimum insert/delete/replace operations for every prefix pair.",
-  "concept": "Edit Distance is useful when the same subproblems appear again and storing answers prevents repeated work. Use this when you can define a state, base cases, and a recurrence.",
-  "logicSummary": "Define what one DP state means, initialize base cases, fill dependent states, and read the target state.",
-  "transitionSummary": "Each step computes one state from already-solved smaller or earlier states.",
-  "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
-  "realLifeExample": "Edit Distance appears when overlapping subproblems would otherwise be recomputed.",
-  "whenToUse": "Use Edit Distance when the recurrence and base cases match the problem statement.",
-  "memoryTrick": "Edit Distance: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Edit Distance is shown as a dependency-ordered DP fill. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Edit Distance is taught with its own DP state definition, transition, code trace, and answer state.",
+  "problem": "Find the minimum number of insert, delete, or replace operations needed to transform one string into another.",
+  "concept": "Edit Distance defines dp[i][j] as the fewest operations needed to convert the first i characters of a into the first j characters of b.",
+  "logicSummary": "Initialize empty-prefix costs, then fill each prefix pair by matching characters or trying insert, delete, and replace.",
+  "transitionSummary": "If characters match, use dp[i-1][j-1]; otherwise use 1 + min(delete, insert, replace).",
+  "codeInsight": "The first row and column model converting from or to an empty string, so every later cell has valid neighbors.",
+  "realLifeExample": "Use edit distance for spell checking, fuzzy search, DNA mutation distance, and text diff scoring.",
+  "whenToUse": "Use it when the allowed operations are insert, delete, and replace with equal cost.",
+  "memoryTrick": "Match takes diagonal; mismatch costs one plus the cheapest neighbor.",
+  "visualizerCaption": "The trace fills a prefix-pair table for horse -> ros.",
   "logicSteps": [
     {
-      "title": "Define state",
-      "text": "Name exactly what one cell or entry means."
+      "title": "Define dp[i][j]",
+      "text": "Minimum edits to convert a[0..i) into b[0..j)."
     },
     {
-      "title": "Set base cases",
-      "text": "Fill answers that need no recurrence."
+      "title": "Seed empty prefixes",
+      "text": "Deleting i characters or inserting j characters creates the first column and row."
     },
     {
-      "title": "Apply recurrence",
-      "text": "Compute each state from solved dependencies."
+      "title": "Compare characters",
+      "text": "A match copies the diagonal; a mismatch tries the three edit operations."
     },
     {
-      "title": "Read target",
-      "text": "Return the state requested by the problem."
+      "title": "Read bottom-right",
+      "text": "dp[a.length][b.length] is the full transformation cost."
     }
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "a, b",
+      "purpose": "Source and target strings."
     },
     {
-      "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "name": "dp[i][j]",
+      "purpose": "Best edit count for prefix pair."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "deleteCost",
+      "purpose": "Cost after deleting a character from a."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "insertCost, replaceCost",
+      "purpose": "Costs for inserting into a or replacing a character."
     }
   ],
   "dryRun": [
     {
-      "label": "State meaning",
-      "title": "Define DP cell",
-      "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 6,
-      "codeInsight": "Stores dp from the current length, making the loop boundary explicit for the visual trace."
+      "label": "Base",
+      "title": "Empty prefix costs",
+      "note": "horse -> empty needs deletions, empty -> ros needs insertions.",
+      "activeLine": 3,
+      "codeInsight": "Boundary rows are real edit operations, not placeholders."
     },
     {
-      "label": "Base case",
-      "title": "Seed known answers",
-      "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 5,
-      "codeInsight": "Defines editDistance and names the input a, b; edits to those inputs change the visual state and output."
+      "label": "h vs r",
+      "title": "Replace h with r",
+      "note": "The first real cell becomes 1.",
+      "activeLine": 10,
+      "codeInsight": "Mismatch takes one edit plus the cheapest dependency."
     },
     {
-      "label": "Recurrence",
-      "title": "Fill next state",
-      "note": "The transition combines previously solved states.",
-      "activeLine": 6,
-      "codeInsight": "Stores dp from the current length, making the loop boundary explicit for the visual trace."
+      "label": "o vs o",
+      "title": "Copy diagonal on match",
+      "note": "Matching o carries dp[1][1].",
+      "activeLine": 9,
+      "codeInsight": "A match adds no operation."
     },
     {
-      "label": "Target",
-      "title": "Return requested state",
-      "note": "The answer is read from the final DP state.",
-      "activeLine": 15,
-      "codeInsight": "Returns dp[a.length][b.length], the final value maintained by Edit Distance's code path."
+      "label": "Answer",
+      "title": "horse -> ros costs 3",
+      "note": "One optimal sequence is replace h, delete r, delete e.",
+      "activeLine": 13,
+      "codeInsight": "The bottom-right cell stores the minimum edit count."
     }
   ],
   "complexity": {
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(nm)."
   },
   "quiz": {
-    "question": "Which state choice keeps Edit Distance correct?",
+    "question": "Which state keeps Edit Distance correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track dp table and update it only through Edit Distance's transition.",
+        "text": "Define dp[i][j] as the edit count for prefixes and use insert/delete/replace dependencies.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another DP recurrence without matching this algorithm's state.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Read the final answer before the required dependency states are solved.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Edit Distance stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Edit Distance needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Edit Distance works when the state meaning, transition, and answer state stay aligned.",
+    "incorrectText": "Not quite. Edit Distance needs its own state, dependencies, and stop condition."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "edit-distance",
@@ -122,79 +122,59 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "matrix-flow",
-    "title": "Edit Distance matrix state",
-    "ruleLabel": "Grid rule",
-    "rule": "Each step computes one state from already-solved smaller or earlier states.",
+    "static": true,
+    "title": "Edit Distance DP table",
+    "ruleLabel": "DP recurrence",
+    "rule": "If characters match, use dp[i-1][j-1]; otherwise use 1 + min(delete, insert, replace).",
     "matrix": [
       [
-        1,
-        0,
-        1
-      ],
-      [
         0,
         1,
-        0
+        2,
+        3
       ],
       [
         1,
         1,
-        1
+        2,
+        3
+      ],
+      [
+        2,
+        2,
+        1,
+        2
+      ],
+      [
+        3,
+        2,
+        2,
+        2
+      ],
+      [
+        4,
+        3,
+        3,
+        2
+      ],
+      [
+        5,
+        4,
+        4,
+        3
       ]
     ],
     "steps": [
       {
-        "phase": "State meaning",
-        "title": "Define DP cell",
-        "note": "The code first needs a precise subproblem meaning.",
-        "ruleLabel": "Edit Distance invariant",
-        "rule": "Stores dp from the current length, making the loop boundary explicit for the visual trace.",
+        "phase": "base",
+        "title": "Seed empty prefixes",
+        "note": "First row and column count insertions/deletions.",
+        "ruleLabel": "DP recurrence",
+        "rule": "If characters match, use dp[i-1][j-1]; otherwise use 1 + min(delete, insert, replace).",
         "activeCells": [
           [
             0,
             0
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ]
-        ]
-      },
-      {
-        "phase": "Base case",
-        "title": "Seed known answers",
-        "note": "Base values stop the recurrence from falling through.",
-        "ruleLabel": "Edit Distance invariant",
-        "rule": "Defines editDistance and names the input a, b; edits to those inputs change the visual state and output.",
-        "activeCells": [
-          [
-            0,
-            1
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ]
-        ]
-      },
-      {
-        "phase": "Recurrence",
-        "title": "Fill next state",
-        "note": "The transition combines previously solved states.",
-        "ruleLabel": "Edit Distance invariant",
-        "rule": "Stores dp from the current length, making the loop boundary explicit for the visual trace.",
-        "activeCells": [
-          [
-            0,
-            2
           ]
         ],
         "visitedCells": [
@@ -206,23 +186,23 @@ export const algorithmPage = {
             0,
             1
           ],
-          [
-            0,
-            2
-          ]
-        ]
-      },
-      {
-        "phase": "Target",
-        "title": "Return requested state",
-        "note": "The answer is read from the final DP state.",
-        "ruleLabel": "Edit Distance invariant",
-        "rule": "Returns dp[a.length][b.length], the final value maintained by Edit Distance's code path.",
-        "activeCells": [
           [
             1,
             0
           ]
+        ]
+      },
+      {
+        "phase": "replace",
+        "title": "h vs r needs one replace",
+        "note": "dp[1][1] = 1.",
+        "ruleLabel": "DP recurrence",
+        "rule": "If characters match, use dp[i-1][j-1]; otherwise use 1 + min(delete, insert, replace).",
+        "activeCells": [
+          [
+            1,
+            1
+          ]
         ],
         "visitedCells": [
           [
@@ -234,12 +214,70 @@ export const algorithmPage = {
             1
           ],
           [
-            0,
-            2
+            1,
+            0
           ],
           [
             1,
-            0
+            1
+          ]
+        ]
+      },
+      {
+        "phase": "match",
+        "title": "o matches o",
+        "note": "dp[2][2] copies the diagonal.",
+        "ruleLabel": "DP recurrence",
+        "rule": "If characters match, use dp[i-1][j-1]; otherwise use 1 + min(delete, insert, replace).",
+        "activeCells": [
+          [
+            2,
+            2
+          ]
+        ],
+        "visitedCells": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            2
+          ]
+        ]
+      },
+      {
+        "phase": "answer",
+        "title": "horse -> ros costs 3",
+        "note": "The answer is dp[5][3] = 3.",
+        "ruleLabel": "DP recurrence",
+        "rule": "If characters match, use dp[i-1][j-1]; otherwise use 1 + min(delete, insert, replace).",
+        "activeCells": [
+          [
+            5,
+            3
+          ]
+        ],
+        "visitedCells": [
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            3
           ]
         ]
       }

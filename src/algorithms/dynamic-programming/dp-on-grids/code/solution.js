@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // DP on Grids
 // Route: /algorithms/dynamic-programming/dp-on-grids
 

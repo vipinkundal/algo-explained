@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Selection Sort
 // Route: /algorithms/sorting/selection-sort
 

@@ -13,79 +13,86 @@ export const algorithmPage = {
   "codePath": "./src/algorithms/graphs/bfs/code/solution.js",
   "codeFilename": "solution.js",
   "meaning": "Breadth-First Search is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Breadth-First Search explores a graph level by level with a FIFO queue.",
-  "concept": "Breadth-First Search is useful when graph structure can be solved by maintaining queue frontier. Use this when the required result is level-by-level traversal.",
-  "logicSummary": "Initialize graph input and queue frontier, choose the next work item, then enqueue newly discovered neighbors.",
-  "transitionSummary": "Each step consumes one vertex or edge and updates queue frontier without losing the graph invariant.",
-  "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
-  "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
-  "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Breadth-First Search: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Breadth-First Search is shown as graph frontier/state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "problem": "Breadth-First Search explores a graph in layers from a start vertex.",
+  "concept": "BFS uses a FIFO queue so every vertex at distance k is processed before any vertex at distance k + 1.",
+  "logicSummary": "Mark the start vertex, push it into the queue, pop from the front, and enqueue each unseen neighbor.",
+  "transitionSummary": "One transition removes the queue front, appends it to traversal order, and adds newly discovered neighbors to the back.",
+  "codeInsight": "The queue is the algorithm: replacing it with a stack would change the page into DFS.",
+  "realLifeExample": "Use BFS for shortest path length in unweighted graphs, level-order traversal, friend-of-friend expansion, and nearest target searches.",
+  "whenToUse": "Use BFS when edges are unweighted and the answer depends on levels, minimum edge count, or exploring all near states first.",
+  "memoryTrick": "BFS is a ripple: everything one edge away is handled before anything two edges away.",
+  "visualizerCaption": "Watch the queue frontier expand level by level while visited prevents repeated work.",
   "logicSteps": [
     {
-      "title": "Read graph",
-      "text": "Identify vertices, edges, weights, and start state."
+      "title": "Seed the queue",
+      "text": "Add the start vertex and mark it visited immediately."
     },
     {
-      "title": "Build graph state",
-      "text": "Create the queue frontier."
+      "title": "Pop the front",
+      "text": "The oldest discovered vertex becomes the current vertex."
     },
     {
-      "title": "Process work item",
-      "text": "Enqueue newly discovered neighbors."
+      "title": "Discover neighbors",
+      "text": "Every unseen neighbor is marked and pushed to the back of the queue."
     },
     {
-      "title": "Return graph result",
-      "text": "Return the level-by-level traversal."
+      "title": "Return traversal order",
+      "text": "The order records the level-by-level visit sequence."
     }
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "graph, start",
+      "purpose": "Adjacency list and the vertex where BFS begins."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "queue",
+      "purpose": "FIFO frontier of discovered vertices waiting to be processed."
     },
     {
-      "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "name": "visited",
+      "purpose": "Set that prevents the same vertex from entering the queue twice."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "order",
+      "purpose": "The level-order traversal returned by the algorithm."
     }
   ],
   "dryRun": [
     {
-      "label": "Graph",
-      "title": "Read graph input",
-      "note": "The code receives vertices, edges, weights, or adjacency lists.",
+      "label": "Start",
+      "title": "Mark A and enqueue it",
+      "note": "A is discovered before its neighbors, so it enters the queue first.",
       "activeLine": 5,
-      "codeInsight": "Defines bfs and names the input graph, start; edits to those inputs change the visual state and output."
+      "codeInsight": "visited starts with A because discovery and marking happen together."
     },
     {
-      "label": "Queue Frontier",
-      "title": "Initialize queue frontier",
-      "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 7,
-      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
+      "label": "Layer 1",
+      "title": "Pop A, enqueue B and C",
+      "note": "Both neighbors of A are now known and will be processed before deeper vertices.",
+      "activeLine": 10,
+      "codeInsight": "queue.shift() gives FIFO behavior: A leaves before B and C run."
     },
     {
-      "label": "Work item",
-      "title": "Process next vertex or edge",
-      "note": "Enqueue newly discovered neighbors.",
-      "activeLine": 6,
-      "codeInsight": "Creates visited for fast membership or lookup checks while the scan runs."
+      "label": "Expand B",
+      "title": "Pop B, enqueue D and E",
+      "note": "D and E are distance two from A, so they are appended behind C.",
+      "activeLine": 13,
+      "codeInsight": "New neighbors are marked before enqueueing so no later edge can enqueue duplicates."
     },
     {
-      "label": "Level By Level Traversal",
-      "title": "Return level-by-level traversal",
-      "note": "The final graph state becomes the answer.",
-      "activeLine": 18,
-      "codeInsight": "Returns order, the final value maintained by Breadth-First Search's code path."
+      "label": "Expand C",
+      "title": "Pop C, enqueue F",
+      "note": "C is still in the first layer, then F joins the next layer.",
+      "activeLine": 13,
+      "codeInsight": "The same loop handles every adjacency list without mixing traversal rules."
+    },
+    {
+      "label": "Finish",
+      "title": "Drain the queue and return order",
+      "note": "D, E, and F have no unseen outgoing neighbors, so the traversal is complete.",
+      "activeLine": 16,
+      "codeInsight": "order is the only returned value; queue and visited are internal control state."
     }
   ],
   "complexity": {
@@ -93,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state choice keeps Breadth-First Search correct?",
+    "question": "Which state keeps Breadth-First Search correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track queue, visited and update it only through Breadth-First Search's transition.",
+        "text": "queue follows the page's own transition rule.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Skip the stop condition once one edge has been inspected.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Breadth-First Search stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Breadth-First Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
+    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "bfs",
@@ -123,138 +130,186 @@ export const algorithmPage = {
         "C"
       ],
       "B": [
-        "D"
+        "D",
+        "E"
       ],
       "C": [
-        "D"
+        "F"
       ],
-      "D": []
+      "D": [],
+      "E": [],
+      "F": []
     },
     "A"
   ],
   "animation": {
     "type": "graph-flow",
-    "title": "Breadth-First Search graph state",
-    "ruleLabel": "Graph invariant",
-    "rule": "Each step consumes one vertex or edge and updates queue frontier without losing the graph invariant.",
+    "title": "BFS queue frontier",
+    "ruleLabel": "Queue invariant",
+    "rule": "Vertices leave the queue in the same order they were discovered.",
     "nodes": [
       {
         "id": "A",
         "label": "A",
-        "x": 110,
+        "x": 90,
         "y": 150
       },
       {
         "id": "B",
         "label": "B",
-        "x": 300,
-        "y": 75
+        "x": 230,
+        "y": 70
       },
       {
         "id": "C",
         "label": "C",
-        "x": 500,
-        "y": 150
+        "x": 230,
+        "y": 230
       },
       {
         "id": "D",
         "label": "D",
-        "x": 300,
-        "y": 235
+        "x": 390,
+        "y": 55
+      },
+      {
+        "id": "E",
+        "label": "E",
+        "x": 390,
+        "y": 150
+      },
+      {
+        "id": "F",
+        "label": "F",
+        "x": 540,
+        "y": 230
       }
     ],
     "edges": [
       {
         "from": "A",
-        "to": "B"
+        "to": "B",
+        "directed": true
       },
       {
         "from": "A",
-        "to": "D"
+        "to": "C",
+        "directed": true
       },
       {
         "from": "B",
-        "to": "C"
+        "to": "D",
+        "directed": true
       },
       {
-        "from": "D",
-        "to": "C"
+        "from": "B",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "from": "C",
+        "to": "F",
+        "directed": true
       }
     ],
     "steps": [
       {
-        "phase": "Graph",
-        "title": "Read graph input",
-        "note": "The code receives vertices, edges, weights, or adjacency lists.",
-        "ruleLabel": "Breadth-First Search invariant",
-        "rule": "Defines bfs and names the input graph, start; edits to those inputs change the visual state and output.",
+        "phase": "Queue: [A]",
+        "title": "A is discovered first",
+        "note": "visited = {A}; queue holds only the start.",
+        "ruleLabel": "Queue",
+        "rule": "[A]",
         "activeNode": "A",
-        "visitedNodes": [],
-        "frontierNodes": [
-          "B"
-        ],
-        "activeEdge": {
-          "from": "A",
-          "to": "B"
-        }
-      },
-      {
-        "phase": "Queue Frontier",
-        "title": "Initialize queue frontier",
-        "note": "Only the graph state owned by this algorithm is created.",
-        "ruleLabel": "Breadth-First Search invariant",
-        "rule": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
-        "activeNode": "B",
         "visitedNodes": [
           "A"
         ],
         "frontierNodes": [
+          "A"
+        ]
+      },
+      {
+        "phase": "Queue: [B, C]",
+        "title": "A expands to B and C",
+        "note": "The first layer is discovered from A.",
+        "ruleLabel": "Queue",
+        "rule": "[B, C]",
+        "activeNode": "A",
+        "visitedNodes": [
+          "A"
+        ],
+        "frontierNodes": [
+          "B",
           "C"
         ],
         "activeEdge": {
-          "from": "B",
+          "from": "A",
           "to": "C"
         }
       },
       {
-        "phase": "Work item",
-        "title": "Process next vertex or edge",
-        "note": "Enqueue newly discovered neighbors.",
-        "ruleLabel": "Breadth-First Search invariant",
-        "rule": "Creates visited for fast membership or lookup checks while the scan runs.",
-        "activeNode": "C",
-        "visitedNodes": [
-          "A",
-          "B"
-        ],
-        "frontierNodes": [
-          "D"
-        ],
-        "activeEdge": {
-          "from": "C",
-          "to": "D"
-        }
-      },
-      {
-        "phase": "Level By Level Traversal",
-        "title": "Return level-by-level traversal",
-        "note": "The final graph state becomes the answer.",
-        "ruleLabel": "Breadth-First Search invariant",
-        "rule": "Returns order, the final value maintained by Breadth-First Search's code path.",
-        "activeNode": "D",
+        "phase": "Queue: [C, D, E]",
+        "title": "B expands next",
+        "note": "B leaves the front; D and E join the back.",
+        "ruleLabel": "Queue",
+        "rule": "[C, D, E]",
+        "activeNode": "B",
         "visitedNodes": [
           "A",
           "B",
           "C"
         ],
         "frontierNodes": [
-          "A"
+          "C",
+          "D",
+          "E"
         ],
         "activeEdge": {
-          "from": "D",
-          "to": "A"
+          "from": "B",
+          "to": "E"
         }
+      },
+      {
+        "phase": "Queue: [D, E, F]",
+        "title": "C expands before D",
+        "note": "C was discovered before D, so C runs first and discovers F.",
+        "ruleLabel": "Queue",
+        "rule": "[D, E, F]",
+        "activeNode": "C",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "frontierNodes": [
+          "D",
+          "E",
+          "F"
+        ],
+        "activeEdge": {
+          "from": "C",
+          "to": "F"
+        }
+      },
+      {
+        "phase": "Queue: []",
+        "title": "Traversal is complete",
+        "note": "All discovered vertices were processed once.",
+        "ruleLabel": "Order",
+        "rule": "A, B, C, D, E, F",
+        "activeNode": "F",
+        "visitedNodes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "frontierNodes": []
       }
-    ]
+    ],
+    "static": true
   }
 };

@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "search",
   "codePath": "./src/algorithms/searching/upper-bound/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Upper Bound is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Upper Bound finds the first sorted position whose value is strictly greater than the target.",
-  "concept": "Upper Bound is useful when sorted order lets you discard a whole half of the search space. Use this when the input is sorted or the answer predicate changes only once.",
-  "logicSummary": "Maintain low/high boundaries, test the middle, and keep only the half that can still contain the answer.",
-  "transitionSummary": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
-  "codeInsight": "The only difference from lower bound is the comparison: <= target is discarded.",
-  "realLifeExample": "Use it to count duplicates with upperBound - lowerBound.",
-  "whenToUse": "Use Upper Bound when you need the first item after all target-equal values.",
-  "memoryTrick": "Upper Bound: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Upper Bound is shown as a shrinking boundary search. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Upper Bound is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Find the first sorted position whose value is strictly greater than target.",
+  "concept": "Upper Bound discards every value less than or equal to target, including duplicates equal to target.",
+  "logicSummary": "Search [low, high), move past mid when array[mid] <= target, and keep mid only when it is greater.",
+  "transitionSummary": "array[mid] <= target moves low to mid + 1; otherwise high becomes mid.",
+  "codeInsight": "The comparison is <=, which is why upper bound returns the slot after the final duplicate.",
+  "realLifeExample": "Use it to count equal values: upperBound(x) - lowerBound(x).",
+  "whenToUse": "Use Upper Bound when you need the first value after all target-equal values.",
+  "memoryTrick": "Upper bound skips equals.",
+  "visualizerCaption": "Upper Bound is shown with the exact boundary, probe, or scan state used by the code.",
   "logicSteps": [
     {
-      "title": "Read sorted input",
-      "text": "Confirm the array or predicate has monotonic order."
+      "title": "Open half range",
+      "text": "Search for the first value greater than 5."
     },
     {
-      "title": "Set boundaries",
-      "text": "Place low and high around every candidate."
+      "title": "Value 5 is skipped",
+      "text": "5 <= target, so move low to 4."
     },
     {
-      "title": "Compare middle",
-      "text": "Use mid to decide which half is impossible."
+      "title": "Value 12 is greater",
+      "text": "Keep index 5 by setting high to 5."
     },
     {
-      "title": "Return boundary",
-      "text": "Return the found index or final insertion boundary."
+      "title": "First greater index",
+      "text": "Index 4 holds 9, the first value greater than 5."
     }
   ],
   "variables": [
     {
       "name": "array, target",
-      "purpose": "A sorted array and boundary value."
+      "purpose": "Sorted values and boundary target."
     },
     {
       "name": "low, high",
-      "purpose": "A half-open search range."
+      "purpose": "Half-open candidate range [low, high)."
     },
     {
-      "name": "upper index",
-      "purpose": "The first index with value > target."
+      "name": "mid",
+      "purpose": "Index being tested for first greater value."
     },
     {
       "name": "low < high",
-      "purpose": "Stop when one insertion point remains."
+      "purpose": "Stop when one boundary remains."
     }
   ],
   "dryRun": [
     {
-      "label": "Sorted input",
-      "title": "Read the ordered search space",
-      "note": "The code starts from a range where binary decisions are valid.",
-      "activeLine": 5,
-      "codeInsight": "Defines upperBound and names the input array, target; edits to those inputs change the visual state and output."
+      "label": "[0, 6)",
+      "title": "Open half range",
+      "note": "Search for the first value greater than 5.",
+      "activeLine": 2,
+      "codeInsight": "high allows insertion after the last element."
     },
     {
-      "label": "low / high",
-      "title": "Open the candidate window",
-      "note": "low and high mark every position that may still answer.",
+      "label": "mid = 3",
+      "title": "Value 5 is skipped",
+      "note": "5 <= target, so move low to 4.",
       "activeLine": 6,
-      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
+      "codeInsight": "Equals are not valid upper-bound answers."
     },
     {
-      "label": "mid check",
-      "title": "Compare the midpoint",
-      "note": "The midpoint decides which half is removed.",
-      "activeLine": 10,
-      "codeInsight": "When array[mid] <= target is true, low = mid + 1; the animation should show that branch's state update immediately."
+      "label": "mid = 5",
+      "title": "Value 12 is greater",
+      "note": "Keep index 5 by setting high to 5.",
+      "activeLine": 7,
+      "codeInsight": "A greater value may be the first greater value."
     },
     {
-      "label": "Return",
-      "title": "Emit index or boundary",
-      "note": "The loop ends with a match or the collapsed boundary.",
-      "activeLine": 13,
-      "codeInsight": "Returns low, the final value maintained by Upper Bound's code path."
+      "label": "return 4",
+      "title": "First greater index",
+      "note": "Index 4 holds 9, the first value greater than 5.",
+      "activeLine": 9,
+      "codeInsight": "low is the upper-bound insertion point."
     }
   ],
   "complexity": {
@@ -93,125 +93,144 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Upper Bound correct?",
+    "question": "Which state keeps Upper Bound correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track search window and update it only through Upper Bound's transition.",
+        "text": "Use the page's own search boundary or scan state and update it only through the listed transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another search algorithm's comparison rule without checking the invariant.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Stop before the algorithm-specific boundary or scan condition is resolved.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Upper Bound stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Upper Bound needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Upper Bound works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Upper Bound needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "searching",
   "algorithmSlug": "upper-bound",
   "runnerInput": [
     [
       1,
-      3,
-      3,
-      5
+      2,
+      5,
+      5,
+      9,
+      12
     ],
-    3
+    5
   ],
   "animation": {
     "type": "array-flow",
-    "title": "Upper Bound array state",
-    "ruleLabel": "Array invariant",
-    "rule": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
+    "static": true,
+    "title": "Upper Bound trace",
+    "ruleLabel": "Search invariant",
+    "rule": "array[mid] <= target moves low to mid + 1; otherwise high becomes mid.",
     "values": [
       1,
-      3,
-      3,
-      5
+      2,
+      5,
+      5,
+      9,
+      12
     ],
     "steps": [
       {
-        "phase": "Sorted input",
-        "title": "Read the ordered search space",
-        "note": "The code starts from a range where binary decisions are valid.",
-        "ruleLabel": "Upper Bound invariant",
-        "rule": "Defines upperBound and names the input array, target; edits to those inputs change the visual state and output.",
+        "phase": "[0, 6)",
+        "title": "Start full insertion range",
+        "note": "The answer is after the target duplicates.",
+        "ruleLabel": "Search invariant",
+        "rule": "array[mid] <= target moves low to mid + 1; otherwise high becomes mid.",
         "activeIndices": [
-          0
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
-          0,
-          1
-        ],
-        "primaryLabel": "Sorted input",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
-      },
-      {
-        "phase": "low / high",
-        "title": "Open the candidate window",
-        "note": "low and high mark every position that may still answer.",
-        "ruleLabel": "Upper Bound invariant",
-        "rule": "Initializes low as mutable state; later branches update it as the search window or traversal changes.",
-        "activeIndices": [
-          1,
-          2
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
-          0,
-          2
-        ],
-        "primaryLabel": "low / high",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
-      },
-      {
-        "phase": "mid check",
-        "title": "Compare the midpoint",
-        "note": "The midpoint decides which half is removed.",
-        "ruleLabel": "Upper Bound invariant",
-        "rule": "When array[mid] <= target is true, low = mid + 1; the animation should show that branch's state update immediately.",
-        "activeIndices": [
-          2
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
-          1,
           3
         ],
-        "primaryLabel": "mid check",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          5
+        ],
+        "primaryLabel": "[0, 6)",
+        "secondaryLabel": "array[mid] <= target moves low to mid + 1; otherwise high becomes mid."
       },
       {
-        "phase": "Return",
-        "title": "Emit index or boundary",
-        "note": "The loop ends with a match or the collapsed boundary.",
-        "ruleLabel": "Upper Bound invariant",
-        "rule": "Returns low, the final value maintained by Upper Bound's code path.",
+        "phase": "low = 4",
+        "title": "Skip equal 5",
+        "note": "Index 3 cannot be the first greater value.",
+        "ruleLabel": "Search invariant",
+        "rule": "array[mid] <= target moves low to mid + 1; otherwise high becomes mid.",
         "activeIndices": [
-          3,
           3
         ],
         "sortedIndices": [],
         "mutedIndices": [
-          0
-        ],
-        "window": [
+          0,
+          1,
           2,
           3
         ],
-        "primaryLabel": "Return",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+        "window": [
+          4,
+          5
+        ],
+        "primaryLabel": "low = 4",
+        "secondaryLabel": "array[mid] <= target moves low to mid + 1; otherwise high becomes mid."
+      },
+      {
+        "phase": "high = 5",
+        "title": "12 is greater",
+        "note": "Keep index 5 as a candidate.",
+        "ruleLabel": "Search invariant",
+        "rule": "array[mid] <= target moves low to mid + 1; otherwise high becomes mid.",
+        "activeIndices": [
+          5
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "window": [
+          4,
+          5
+        ],
+        "primaryLabel": "high = 5",
+        "secondaryLabel": "array[mid] <= target moves low to mid + 1; otherwise high becomes mid."
+      },
+      {
+        "phase": "return 4",
+        "title": "9 is first greater",
+        "note": "Index 4 is the upper bound.",
+        "ruleLabel": "Search invariant",
+        "rule": "array[mid] <= target moves low to mid + 1; otherwise high becomes mid.",
+        "activeIndices": [
+          4
+        ],
+        "sortedIndices": [
+          4
+        ],
+        "mutedIndices": [
+          0,
+          1,
+          2,
+          3,
+          5
+        ],
+        "window": [
+          4,
+          4
+        ],
+        "primaryLabel": "return 4",
+        "secondaryLabel": "array[mid] <= target moves low to mid + 1; otherwise high becomes mid."
       }
     ]
   }

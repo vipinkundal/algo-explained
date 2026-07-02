@@ -13,256 +13,214 @@ export const algorithmPage = {
   "codePath": "./src/algorithms/graphs/bellman-ford/code/solution.js",
   "codeFilename": "solution.js",
   "meaning": "Bellman-Ford Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Bellman-Ford relaxes every edge repeatedly, so it can handle negative edges and detect negative cycles.",
-  "concept": "Bellman-Ford Algorithm is useful when graph structure can be solved by maintaining distance table. Use this when the required result is shortest-path relaxation.",
-  "logicSummary": "Initialize graph input and distance table, choose the next work item, then relax outgoing edges when a better distance is found.",
-  "transitionSummary": "Each step consumes one vertex or edge and updates distance table without losing the graph invariant.",
-  "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
-  "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
-  "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Bellman-Ford Algorithm: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Bellman-Ford Algorithm is shown as graph frontier/state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "problem": "Bellman-Ford computes single-source shortest paths even when some edges are negative.",
+  "concept": "Bellman-Ford relaxes every edge V - 1 times, then scans once more to detect a reachable negative cycle.",
+  "logicSummary": "Set the start distance to 0, scan every edge repeatedly, and keep any shorter candidate distance.",
+  "transitionSummary": "One transition tests distance[from] + weight against distance[to] and updates only when it improves.",
+  "codeInsight": "The final extra edge scan is not another shortest-path pass; it is the proof that a negative cycle exists or does not.",
+  "realLifeExample": "Use Bellman-Ford for graphs with rebates, penalties, currency arbitrage checks, or any shortest-path graph with negative edges.",
+  "whenToUse": "Use it when edge weights may be negative and you also need negative-cycle detection.",
+  "memoryTrick": "Bellman-Ford lets every edge make an offer, then asks if any offer is still improving.",
+  "visualizerCaption": "Watch repeated edge relaxation update the distance table and then test for a negative cycle.",
   "logicSteps": [
     {
-      "title": "Read graph",
-      "text": "Identify vertices, edges, weights, and start state."
+      "title": "Initialize distances",
+      "text": "Start is 0; all other vertices are infinity."
     },
     {
-      "title": "Build graph state",
-      "text": "Create the distance table."
+      "title": "Relax every edge",
+      "text": "Try to improve each destination using each source edge."
     },
     {
-      "title": "Process work item",
-      "text": "Relax outgoing edges when a better distance is found."
+      "title": "Repeat V - 1 times",
+      "text": "Enough passes allow paths with up to V - 1 edges."
     },
     {
-      "title": "Return graph result",
-      "text": "Return the shortest-path relaxation."
+      "title": "Check one more pass",
+      "text": "Any remaining improvement means a negative cycle is reachable."
     }
   ],
   "variables": [
     {
-      "name": "vertices",
-      "purpose": "The nodes whose shortest distance must be computed."
-    },
-    {
-      "name": "edges",
-      "purpose": "Directed weighted connections tested during every pass."
+      "name": "vertices, edges, start",
+      "purpose": "Graph vertex list, weighted directed edges, and source vertex."
     },
     {
       "name": "distance",
-      "purpose": "Best known cost from the start vertex to each vertex."
+      "purpose": "Best known cost from start to each vertex."
+    },
+    {
+      "name": "pass",
+      "purpose": "The current full edge-scan iteration."
     },
     {
       "name": "hasNegativeCycle",
-      "purpose": "A final check that becomes true if any edge can still relax."
+      "purpose": "True when an edge still improves after V - 1 passes."
     }
   ],
   "dryRun": [
     {
-      "label": "Graph",
-      "title": "Read graph input",
-      "note": "Use vertices A, B, C and weighted edges A -> B (1), B -> C (2), and A -> C (5).",
-      "activeLine": 5,
-      "codeInsight": "Defines bellmanFord and names the input vertices, edges, start; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Start distance",
-      "title": "Initialize distances",
-      "note": "Every vertex starts at infinity except A, because the distance from A to itself is 0.",
+      "label": "Initialize",
+      "title": "Set A = 0",
+      "note": "B, C, and D start at infinity.",
       "activeLine": 6,
-      "codeInsight": "Builds distance as a lookup table so each key has an explicit starting state."
+      "codeInsight": "Only the source can relax outgoing edges at first."
     },
     {
-      "label": "Relax A -> B",
-      "title": "Improve B",
-      "note": "A is reachable with cost 0, so A -> B gives B a better cost of 1.",
-      "activeLine": 8,
-      "codeInsight": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
-    },
-    {
-      "label": "Relax B -> C",
-      "title": "Improve C",
-      "note": "B is now reachable with cost 1, so B -> C improves C from infinity to 3.",
-      "activeLine": 8,
-      "codeInsight": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
-    },
-    {
-      "label": "Check A -> C",
-      "title": "Skip worse edge",
-      "note": "A -> C costs 5, but C already has cost 3, so the table does not change.",
+      "label": "Relax A-B",
+      "title": "B becomes 4",
+      "note": "A -> B offers 0 + 4.",
       "activeLine": 10,
-      "codeInsight": "Checks distance[from] !== Infinity && distance[from] + weight < distance[to]; only the branch that preserves Bellman-Ford Algorithm's invariant is allowed to change state."
+      "codeInsight": "The update only happens when the candidate is smaller."
     },
     {
-      "label": "Next pass",
-      "title": "Repeat edge scan",
-      "note": "The second pass checks every edge again, but no distance improves.",
-      "activeLine": 8,
-      "codeInsight": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
+      "label": "Relax A-C",
+      "title": "C becomes 5",
+      "note": "A -> C offers 0 + 5.",
+      "activeLine": 10,
+      "codeInsight": "Every edge is tested in the same pass."
+    },
+    {
+      "label": "Relax B-C",
+      "title": "C improves to 2",
+      "note": "B has 4, and B -> C has weight -2, so C becomes 2.",
+      "activeLine": 10,
+      "codeInsight": "Negative edges are allowed because the algorithm repeats full passes."
     },
     {
       "label": "Cycle check",
-      "title": "Detect negative cycle",
-      "note": "A final scan asks whether any edge can still improve a distance.",
+      "title": "No further improvement",
+      "note": "The final scan finds no edge that can still lower a distance.",
       "activeLine": 15,
-      "codeInsight": "Prepares hasNegativeCycle from the sample collection that the next visual step inspects."
-    },
-    {
-      "label": "Result",
-      "title": "Return distances",
-      "note": "The final answer is A: 0, B: 1, C: 3 with no negative cycle.",
-      "activeLine": 16,
-      "codeInsight": "Returns the final state object { distance, hasNegativeCycle }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "The extra scan sets hasNegativeCycle."
     }
   ],
   "animation": {
+    "static": true,
     "type": "edge-relaxation",
-    "title": "Bellman-Ford edge relaxation",
+    "title": "Bellman-Ford repeated relaxation",
     "nodes": [
       {
         "id": "A",
         "label": "A",
-        "x": 110,
+        "x": 90,
         "y": 150
       },
       {
         "id": "B",
         "label": "B",
-        "x": 330,
-        "y": 78
+        "x": 260,
+        "y": 80
       },
       {
         "id": "C",
         "label": "C",
-        "x": 530,
-        "y": 200
+        "x": 260,
+        "y": 220
+      },
+      {
+        "id": "D",
+        "label": "D",
+        "x": 480,
+        "y": 150
       }
     ],
     "edges": [
       {
         "from": "A",
         "to": "B",
-        "weight": 1
-      },
-      {
-        "from": "B",
-        "to": "C",
-        "weight": 2
+        "weight": 4
       },
       {
         "from": "A",
         "to": "C",
         "weight": 5
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "weight": -2
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "weight": 3
+      },
+      {
+        "from": "B",
+        "to": "D",
+        "weight": 6
       }
     ],
     "steps": [
       {
-        "pass": "Input",
-        "title": "Graph loaded",
-        "note": "Use vertices A, B, C and weighted edges A -> B (1), B -> C (2), and A -> C (5).",
+        "pass": "Initialize",
+        "title": "Only A is reachable",
+        "note": "distance[A] = 0; every other vertex starts at infinity.",
         "distances": {
-          "A": "∞",
-          "B": "∞",
-          "C": "∞"
+          "A": 0
         },
-        "rule": "Defines bellmanFord and names the input vertices, edges, start; edits to those inputs change the visual state and output."
-      },
-      {
-        "pass": "Setup",
-        "title": "Start at A",
-        "note": "Every vertex starts at infinity except A, because the distance from A to itself is 0.",
-        "relaxedNode": "A",
-        "distances": {
-          "A": 0,
-          "B": "∞",
-          "C": "∞"
-        },
-        "rule": "Builds distance as a lookup table so each key has an explicit starting state."
+        "relaxedNode": "A"
       },
       {
         "pass": "Pass 1",
         "title": "Relax A -> B",
-        "note": "A is reachable with cost 0, so A -> B gives B a better cost of 1.",
+        "note": "B improves from infinity to 4.",
+        "distances": {
+          "A": 0,
+          "B": 4
+        },
         "activeEdge": {
           "from": "A",
           "to": "B"
         },
-        "relaxedNode": "B",
+        "relaxedNode": "B"
+      },
+      {
+        "pass": "Pass 1",
+        "title": "Relax A -> C",
+        "note": "C improves from infinity to 5.",
         "distances": {
           "A": 0,
-          "B": 1,
-          "C": "∞"
+          "B": 4,
+          "C": 5
         },
-        "rule": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
+        "activeEdge": {
+          "from": "A",
+          "to": "C"
+        },
+        "relaxedNode": "C"
       },
       {
         "pass": "Pass 1",
         "title": "Relax B -> C",
-        "note": "B is now reachable with cost 1, so B -> C improves C from infinity to 3.",
+        "note": "The negative edge lowers C from 5 to 2.",
+        "distances": {
+          "A": 0,
+          "B": 4,
+          "C": 2
+        },
         "activeEdge": {
           "from": "B",
           "to": "C"
         },
-        "relaxedNode": "C",
-        "distances": {
-          "A": 0,
-          "B": 1,
-          "C": 3
-        },
-        "rule": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
-      },
-      {
-        "pass": "Pass 1",
-        "title": "Check A -> C",
-        "note": "A -> C costs 5, but C already has cost 3, so the table does not change.",
-        "activeEdge": {
-          "from": "A",
-          "to": "C"
-        },
-        "distances": {
-          "A": 0,
-          "B": 1,
-          "C": 3
-        },
-        "rule": "Checks distance[from] !== Infinity && distance[from] + weight < distance[to]; only the branch that preserves Bellman-Ford Algorithm's invariant is allowed to change state."
+        "relaxedNode": "C"
       },
       {
         "pass": "Pass 2",
-        "title": "No more improvements",
-        "note": "The second pass checks every edge again, but no distance improves.",
+        "title": "Relax C -> D",
+        "note": "D becomes 5 through A -> B -> C -> D.",
+        "distances": {
+          "A": 0,
+          "B": 4,
+          "C": 2,
+          "D": 5
+        },
         "activeEdge": {
-          "from": "A",
-          "to": "B"
+          "from": "C",
+          "to": "D"
         },
-        "distances": {
-          "A": 0,
-          "B": 1,
-          "C": 3
-        },
-        "rule": "Runs the counted loop (let pass = 1; pass < vertices.length; pass += 1) so each visual step follows one code-controlled iteration."
-      },
-      {
-        "pass": "Final scan",
-        "title": "Check negative cycle",
-        "note": "A final scan asks whether any edge can still improve a distance.",
-        "distances": {
-          "A": 0,
-          "B": 1,
-          "C": 3
-        },
-        "rule": "Prepares hasNegativeCycle from the sample collection that the next visual step inspects."
-      },
-      {
-        "pass": "Answer",
-        "title": "Return shortest paths",
-        "note": "The final answer is A: 0, B: 1, C: 3 with no negative cycle.",
-        "distances": {
-          "A": 0,
-          "B": 1,
-          "C": 3
-        },
-        "rule": "Returns the final state object { distance, hasNegativeCycle }, exposing the exact fields the visualizer has been tracking."
+        "relaxedNode": "D"
       }
     ]
   },
@@ -271,26 +229,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state choice keeps Bellman-Ford Algorithm correct?",
+    "question": "Which state keeps Bellman-Ford Algorithm correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track visited and frontier and update it only through Bellman-Ford Algorithm's transition.",
+        "text": "distance follows the page's own transition rule.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Skip the stop condition once one edge has been inspected.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Bellman-Ford Algorithm stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Bellman-Ford Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
+    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "bellman-ford",
@@ -298,23 +256,34 @@ export const algorithmPage = {
     [
       "A",
       "B",
-      "C"
+      "C",
+      "D"
     ],
     [
       [
         "A",
         "B",
-        1
-      ],
-      [
-        "B",
-        "C",
-        2
+        4
       ],
       [
         "A",
         "C",
         5
+      ],
+      [
+        "B",
+        "C",
+        -2
+      ],
+      [
+        "C",
+        "D",
+        3
+      ],
+      [
+        "B",
+        "D",
+        6
       ]
     ],
     "A"

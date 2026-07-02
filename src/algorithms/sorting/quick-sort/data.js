@@ -12,216 +12,212 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/quick-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Quick Sort is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Partition values around a pivot, then recursively sort values smaller and greater than the pivot.",
-  "concept": "Quick Sort is useful when a pivot can partition values into smaller and larger sides. Use this when in-place average-case n log n sorting fits the dataset.",
-  "logicSummary": "Choose a pivot, partition values around it, then recursively sort the left and right partitions.",
-  "transitionSummary": "Each partition step moves values to the correct side of the pivot and fixes the pivot position.",
-  "codeInsight": "The implementation copies the input array, then mutates only the working copy so callers keep their original data.",
-  "realLifeExample": "Quick Sort appears when values must be ordered and the chosen invariant matches the input size or stability needs.",
-  "whenToUse": "Use Quick Sort when its ordering invariant and complexity tradeoff match the dataset.",
-  "memoryTrick": "Quick Sort: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Quick Sort is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Quick Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Sort an array by partitioning around a pivot and recursively sorting both sides.",
+  "concept": "Quick Sort places one pivot in final position, with smaller-or-equal values on the left and larger values on the right.",
+  "logicSummary": "Choose a pivot, partition the current range, then recursively sort the left and right partitions.",
+  "transitionSummary": "During partition, each value <= pivot swaps into the smaller region; the final pivot swap fixes the pivot index.",
+  "codeInsight": "partition returns the pivot's final index, which is excluded from both recursive calls.",
+  "realLifeExample": "Use quick sort when average-case speed and in-place partitioning are more important than stability.",
+  "whenToUse": "Use Quick Sort for general in-memory sorting with good pivot strategy.",
+  "memoryTrick": "Partition first; recurse around the fixed pivot.",
+  "visualizerCaption": "Quick Sort is shown with the actual sorted/unsorted state that its code maintains.",
   "logicSteps": [
     {
-      "title": "Choose pivot",
-      "text": "Select the value that splits the range."
+      "title": "Use last value as pivot",
+      "text": "8 is the pivot for the first full range."
     },
     {
-      "title": "Partition range",
-      "text": "Move smaller values left and larger values right."
+      "title": "Move smaller values left",
+      "text": "Every value <= pivot joins the left partition."
     },
     {
-      "title": "Fix pivot",
-      "text": "Place pivot at its final index."
+      "title": "Swap pivot into place",
+      "text": "The pivot lands between smaller and larger values."
     },
     {
-      "title": "Sort partitions",
-      "text": "Recurse on both sides."
+      "title": "Sort both sides",
+      "text": "The pivot is excluded from recursive ranges."
     }
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The values to sort."
+      "name": "low, high",
+      "purpose": "Current partition range."
     },
     {
-      "name": "working array",
-      "purpose": "A copy that is rearranged during sorting."
+      "name": "pivot",
+      "purpose": "Value used to split the range."
     },
     {
-      "name": "sorted array",
-      "purpose": "The final ordered result."
+      "name": "smaller",
+      "purpose": "Boundary of values <= pivot."
     },
     {
-      "name": "unsorted work remains",
-      "purpose": "Continue until every value is in final order."
+      "name": "pivotIndex",
+      "purpose": "Final pivot position."
     }
   ],
   "dryRun": [
     {
       "label": "Pivot",
-      "title": "Choose pivot value",
-      "note": "The pivot defines the partition rule.",
-      "activeLine": 12,
-      "codeInsight": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state."
+      "title": "Use last value as pivot",
+      "note": "8 is the pivot for the first full range.",
+      "activeLine": 11,
+      "codeInsight": "This implementation chooses values[high]."
     },
     {
-      "label": "Scan",
-      "title": "Move values by pivot",
-      "note": "Values are compared with the pivot.",
-      "activeLine": 12,
-      "codeInsight": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state."
+      "label": "Partition",
+      "title": "Move smaller values left",
+      "note": "Every value <= pivot joins the left partition.",
+      "activeLine": 15,
+      "codeInsight": "smaller marks the next slot for a small value."
     },
     {
-      "label": "Place",
-      "title": "Fix pivot index",
+      "label": "Fix pivot",
+      "title": "Swap pivot into place",
       "note": "The pivot lands between smaller and larger values.",
-      "activeLine": 12,
-      "codeInsight": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state."
+      "activeLine": 20,
+      "codeInsight": "The pivot index is final after this swap."
     },
     {
       "label": "Recurse",
       "title": "Sort both sides",
-      "note": "The same partition rule handles each side.",
-      "activeLine": 11,
-      "codeInsight": "Defines helper partitionSort with values, low, high, separating the repeated recursive or structural work from the public entry point."
+      "note": "The pivot is excluded from recursive ranges.",
+      "activeLine": 7,
+      "codeInsight": "Recursive calls work on [low, pivot-1] and [pivot+1, high]."
     }
   ],
   "complexity": {
-    "time": "Average O(n log n), worst-case O(n^2).",
+    "time": "Average O(n log n), worst case O(n^2).",
     "space": "O(log n) average recursion stack."
   },
   "quiz": {
-    "question": "Which state choice keeps Quick Sort correct?",
+    "question": "Which state keeps Quick Sort correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and working array and update it only through Quick Sort's transition.",
+        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Use one generic sorted-array story for every sorting algorithm.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Move values without preserving the algorithm's stated invariant.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Quick Sort stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Quick Sort needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Quick Sort works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Quick Sort needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "quick-sort",
   "runnerInput": [
     [
-      4,
+      5,
       1,
-      3,
-      2
+      4,
+      2,
+      8
     ]
   ],
   "animation": {
     "type": "array-flow",
-    "title": "Quick Sort array state",
-    "ruleLabel": "Array invariant",
-    "rule": "Each partition step moves values to the correct side of the pivot and fixes the pivot position.",
+    "static": true,
+    "title": "Quick Sort trace",
+    "ruleLabel": "Sorting invariant",
+    "rule": "During partition, each value <= pivot swaps into the smaller region; the final pivot swap fixes the pivot index.",
     "values": [
-      4,
+      5,
       1,
-      3,
-      2
+      4,
+      2,
+      8
     ],
     "steps": [
       {
-        "phase": "Pivot",
-        "title": "Choose pivot value",
-        "note": "The pivot defines the partition rule.",
-        "ruleLabel": "Quick Sort invariant",
-        "rule": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state.",
+        "phase": "pivot 8",
+        "title": "Choose pivot",
+        "note": "The last value is pivot.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "During partition, each value <= pivot swaps into the smaller region; the final pivot swap fixes the pivot index.",
         "activeIndices": [
-          0
+          4
         ],
-        "sortedIndices": [
-          0
-        ],
+        "sortedIndices": [],
         "mutedIndices": [],
         "window": [
           0,
-          1
+          4
         ],
-        "primaryLabel": "Pivot",
-        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+        "primaryLabel": "pivot 8",
+        "secondaryLabel": "During partition, each value <= pivot swaps into the smaller region; the final pivot swap fixes the pivot index."
       },
       {
-        "phase": "Scan",
-        "title": "Move values by pivot",
-        "note": "Values are compared with the pivot.",
-        "ruleLabel": "Quick Sort invariant",
-        "rule": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state.",
+        "phase": "partition",
+        "title": "Move <= pivot left",
+        "note": "All values are <= 8 in this pass.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "During partition, each value <= pivot swaps into the smaller region; the final pivot swap fixes the pivot index.",
         "activeIndices": [
-          1,
-          2
-        ],
-        "sortedIndices": [
-          0
-        ],
-        "mutedIndices": [],
-        "window": [
-          0,
-          2
-        ],
-        "primaryLabel": "Scan",
-        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
-      },
-      {
-        "phase": "Place",
-        "title": "Fix pivot index",
-        "note": "The pivot lands between smaller and larger values.",
-        "ruleLabel": "Quick Sort invariant",
-        "rule": "Checks low >= high; only the branch that preserves Quick Sort's invariant is allowed to change state.",
-        "activeIndices": [
-          2
-        ],
-        "sortedIndices": [
-          0,
-          1
-        ],
-        "mutedIndices": [],
-        "window": [
-          1,
-          3
-        ],
-        "primaryLabel": "Place",
-        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
-      },
-      {
-        "phase": "Recurse",
-        "title": "Sort both sides",
-        "note": "The same partition rule handles each side.",
-        "ruleLabel": "Quick Sort invariant",
-        "rule": "Defines helper partitionSort with values, low, high, separating the repeated recursive or structural work from the public entry point.",
-        "activeIndices": [
-          3,
-          3
-        ],
-        "sortedIndices": [
           0,
           1,
-          2
-        ],
-        "mutedIndices": [
-          0
-        ],
-        "window": [
           2,
           3
         ],
-        "primaryLabel": "Recurse",
-        "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          4
+        ],
+        "primaryLabel": "partition",
+        "secondaryLabel": "During partition, each value <= pivot swaps into the smaller region; the final pivot swap fixes the pivot index."
+      },
+      {
+        "phase": "pivot fixed",
+        "title": "8 lands at end",
+        "note": "The pivot is in final position.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "During partition, each value <= pivot swaps into the smaller region; the final pivot swap fixes the pivot index.",
+        "activeIndices": [
+          4
+        ],
+        "sortedIndices": [
+          4
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "pivot fixed",
+        "secondaryLabel": "During partition, each value <= pivot swaps into the smaller region; the final pivot swap fixes the pivot index."
+      },
+      {
+        "phase": "recurse",
+        "title": "Sort left side",
+        "note": "Repeat partitioning for the left range.",
+        "ruleLabel": "Sorting invariant",
+        "rule": "During partition, each value <= pivot swaps into the smaller region; the final pivot swap fixes the pivot index.",
+        "activeIndices": [
+          0,
+          3
+        ],
+        "sortedIndices": [
+          4
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "recurse",
+        "secondaryLabel": "During partition, each value <= pivot swaps into the smaller region; the final pivot swap fixes the pivot index."
       }
     ]
   }

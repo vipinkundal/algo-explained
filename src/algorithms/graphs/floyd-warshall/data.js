@@ -13,79 +13,86 @@ export const algorithmPage = {
   "codePath": "./src/algorithms/graphs/floyd-warshall/code/solution.js",
   "codeFilename": "solution.js",
   "meaning": "Floyd-Warshall Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Floyd-Warshall lets every vertex act as an intermediate stop for every pair of vertices.",
-  "concept": "Floyd-Warshall Algorithm is useful when graph structure can be solved by maintaining distance table. Use this when the required result is shortest-path relaxation.",
-  "logicSummary": "Initialize graph input and distance table, choose the next work item, then relax outgoing edges when a better distance is found.",
-  "transitionSummary": "Each step consumes one vertex or edge and updates distance table without losing the graph invariant.",
-  "codeInsight": "The code keeps visited, distance, parent, indegree, or component state explicit so it is not confused with another graph routine.",
-  "realLifeExample": "Use this graph routine when the problem's required result matches its traversal, shortest path, ordering, or connectivity invariant.",
-  "whenToUse": "Use it when the graph input and required output match this algorithm's invariant.",
-  "memoryTrick": "Floyd-Warshall Algorithm: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Floyd-Warshall Algorithm is shown as graph frontier/state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "problem": "Floyd-Warshall computes shortest paths between every pair of vertices.",
+  "concept": "The algorithm lets each vertex become an intermediate stop and asks whether i -> k -> j improves i -> j.",
+  "logicSummary": "Copy the distance matrix, choose an intermediate vertex, and update every from/to pair through that intermediate.",
+  "transitionSummary": "One transition replaces dist[from][to] with dist[from][mid] + dist[mid][to] only when that route is shorter.",
+  "codeInsight": "The loop order is the algorithm: mid is outside so each phase allows one more intermediate vertex.",
+  "realLifeExample": "Use Floyd-Warshall for all-pairs shortest paths on small dense graphs or route tables.",
+  "whenToUse": "Use it when you need every source-to-target shortest path and O(V^3) is acceptable.",
+  "memoryTrick": "Floyd-Warshall asks: would going through k make this pair cheaper?",
+  "visualizerCaption": "Watch a distance matrix improve as each vertex is allowed as an intermediate stop.",
   "logicSteps": [
     {
-      "title": "Read graph",
-      "text": "Identify vertices, edges, weights, and start state."
+      "title": "Copy the matrix",
+      "text": "Start from direct edge distances."
     },
     {
-      "title": "Build graph state",
-      "text": "Create the distance table."
+      "title": "Pick intermediate k",
+      "text": "Allow one vertex to be used as a bridge."
     },
     {
-      "title": "Process work item",
-      "text": "Relax outgoing edges when a better distance is found."
+      "title": "Update every pair",
+      "text": "Compare direct distance with from -> k -> to."
     },
     {
-      "title": "Return graph result",
-      "text": "Return the shortest-path relaxation."
+      "title": "Return the matrix",
+      "text": "After all k phases, every pair has its shortest distance."
     }
   ],
   "variables": [
     {
-      "name": "graph input",
-      "purpose": "Vertices, edges, weights, or adjacency lists."
+      "name": "matrix",
+      "purpose": "Initial all-pairs distance table."
     },
     {
-      "name": "graph state",
-      "purpose": "Visited, distance, parent, indegree, or component state."
+      "name": "mid",
+      "purpose": "Intermediate vertex currently allowed."
     },
     {
-      "name": "graph result",
-      "purpose": "Traversal order, shortest paths, MST edges, SCCs, or cycle status."
+      "name": "from, to",
+      "purpose": "Pair being tested against the intermediate route."
     },
     {
-      "name": "work remains",
-      "purpose": "Continue while vertices, edges, or frontier items remain."
+      "name": "dist",
+      "purpose": "Improving all-pairs shortest-path table."
     }
   ],
   "dryRun": [
     {
-      "label": "Graph",
-      "title": "Read graph input",
-      "note": "The code receives vertices, edges, weights, or adjacency lists.",
+      "label": "Copy",
+      "title": "Copy direct distances",
+      "note": "A large value stands for no direct edge.",
       "activeLine": 5,
-      "codeInsight": "Defines floydWarshall and names the input matrix; edits to those inputs change the visual state and output."
+      "codeInsight": "The spread copy prevents the input matrix from being mutated."
     },
     {
-      "label": "Distance Table",
-      "title": "Initialize distance table",
-      "note": "Only the graph state owned by this algorithm is created.",
-      "activeLine": 6,
-      "codeInsight": "Prepares dist from the sample collection that the next visual step inspects."
+      "label": "Through B",
+      "title": "A reaches C through B",
+      "note": "A -> B -> C costs 3 + 2 = 5, better than infinity.",
+      "activeLine": 9,
+      "codeInsight": "The nested loops compare direct and through-mid costs."
     },
     {
-      "label": "Work item",
-      "title": "Process next vertex or edge",
-      "note": "Relax outgoing edges when a better distance is found.",
-      "activeLine": 6,
-      "codeInsight": "Prepares dist from the sample collection that the next visual step inspects."
+      "label": "Through C",
+      "title": "A reaches D through C",
+      "note": "A -> C -> D costs 5 + 1 = 6.",
+      "activeLine": 9,
+      "codeInsight": "Newly improved entries can help later intermediate phases."
     },
     {
-      "label": "Shortest Path Relaxation",
-      "title": "Return shortest-path relaxation",
-      "note": "The final graph state becomes the answer.",
+      "label": "Through D",
+      "title": "B reaches A through D",
+      "note": "B -> C -> D -> A becomes 6.",
+      "activeLine": 9,
+      "codeInsight": "Every ordered pair is checked, not just outgoing edges from one source."
+    },
+    {
+      "label": "Return",
+      "title": "Return all-pairs distances",
+      "note": "The matrix now stores the best known distance for every source and destination.",
       "activeLine": 14,
-      "codeInsight": "Returns dist, the final value maintained by Floyd-Warshall Algorithm's code path."
+      "codeInsight": "The returned matrix is the answer, not a single path."
     }
   ],
   "complexity": {
@@ -93,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V^2)."
   },
   "quiz": {
-    "question": "Which state choice keeps Floyd-Warshall Algorithm correct?",
+    "question": "Which state keeps Floyd-Warshall Algorithm correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track visited and frontier and update it only through Floyd-Warshall Algorithm's transition.",
+        "text": "mid follows the page's own transition rule.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Skip the stop condition once one edge has been inspected.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Floyd-Warshall Algorithm stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Floyd-Warshall Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
+    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "floyd-warshall",
@@ -121,91 +128,90 @@ export const algorithmPage = {
       [
         0,
         3,
-        999
+        99,
+        7
       ],
       [
-        999,
+        8,
+        0,
+        2,
+        99
+      ],
+      [
+        5,
+        99,
         0,
         1
       ],
       [
         2,
-        999,
+        99,
+        99,
         0
       ]
     ]
   ],
   "animation": {
+    "static": true,
     "type": "matrix-flow",
-    "title": "Floyd-Warshall Algorithm matrix state",
-    "ruleLabel": "Grid rule",
-    "rule": "Each step consumes one vertex or edge and updates distance table without losing the graph invariant.",
+    "title": "Floyd-Warshall distance matrix",
+    "ruleLabel": "Intermediate rule",
+    "rule": "dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])",
     "matrix": [
       [
         0,
         3,
-        999
+        "∞",
+        7
       ],
       [
-        999,
+        8,
+        0,
+        2,
+        "∞"
+      ],
+      [
+        5,
+        "∞",
         0,
         1
       ],
       [
         2,
-        999,
+        "∞",
+        "∞",
         0
       ]
     ],
     "steps": [
       {
-        "phase": "Graph",
-        "title": "Read graph input",
-        "note": "The code receives vertices, edges, weights, or adjacency lists.",
-        "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "Defines floydWarshall and names the input matrix; edits to those inputs change the visual state and output.",
-        "activeCells": [
-          [
-            0,
-            0
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
-          ]
-        ]
-      },
-      {
-        "phase": "Distance Table",
-        "title": "Initialize distance table",
-        "note": "Only the graph state owned by this algorithm is created.",
-        "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "Prepares dist from the sample collection that the next visual step inspects.",
+        "phase": "Initial",
+        "title": "Direct distances only",
+        "note": "The matrix starts with edge weights and infinity for missing edges.",
+        "ruleLabel": "Allowed intermediates",
+        "rule": "none",
         "activeCells": [
           [
             0,
             1
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
           ],
           [
-            0,
-            1
+            1,
+            2
+          ],
+          [
+            2,
+            3
           ]
-        ]
+        ],
+        "visitedCells": []
       },
       {
-        "phase": "Work item",
-        "title": "Process next vertex or edge",
-        "note": "Relax outgoing edges when a better distance is found.",
-        "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "Prepares dist from the sample collection that the next visual step inspects.",
+        "phase": "k = B",
+        "title": "A reaches C through B",
+        "note": "A -> B -> C costs 5, so A,C improves from infinity.",
+        "ruleLabel": "Update",
+        "rule": "dist[A][C] = 5",
         "activeCells": [
           [
             0,
@@ -215,11 +221,11 @@ export const algorithmPage = {
         "visitedCells": [
           [
             0,
-            0
+            1
           ],
           [
-            0,
-            1
+            1,
+            2
           ],
           [
             0,
@@ -228,11 +234,38 @@ export const algorithmPage = {
         ]
       },
       {
-        "phase": "Shortest Path Relaxation",
-        "title": "Return shortest-path relaxation",
-        "note": "The final graph state becomes the answer.",
-        "ruleLabel": "Floyd-Warshall Algorithm invariant",
-        "rule": "Returns dist, the final value maintained by Floyd-Warshall Algorithm's code path.",
+        "phase": "k = C",
+        "title": "A reaches D through C",
+        "note": "A -> C -> D costs 6, better than 7.",
+        "ruleLabel": "Update",
+        "rule": "dist[A][D] = 6",
+        "activeCells": [
+          [
+            0,
+            3
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            0,
+            3
+          ]
+        ]
+      },
+      {
+        "phase": "k = D",
+        "title": "B reaches A through D",
+        "note": "B -> C -> D -> A costs 6.",
+        "ruleLabel": "Update",
+        "rule": "dist[B][A] = 6",
         "activeCells": [
           [
             1,
@@ -241,6 +274,49 @@ export const algorithmPage = {
         ],
         "visitedCells": [
           [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      },
+      {
+        "phase": "Done",
+        "title": "All intermediates processed",
+        "note": "Every pair has been tested through every possible middle vertex.",
+        "ruleLabel": "Answer",
+        "rule": "all-pairs shortest paths",
+        "activeCells": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "visitedCells": [
+          [
             0,
             0
           ],
@@ -253,8 +329,56 @@ export const algorithmPage = {
             2
           ],
           [
+            0,
+            3
+          ],
+          [
             1,
             0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            3
           ]
         ]
       }

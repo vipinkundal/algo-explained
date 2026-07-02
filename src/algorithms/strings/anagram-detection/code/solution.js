@@ -1,14 +1,14 @@
-// REFERENCE ALGORITHM SOLUTION
 // Anagram Detection
 // Route: /algorithms/strings/anagram-detection
 
 export function anagramDetection(first, second) {
   if (first.length !== second.length) return false;
-  const counts = {};
-  for (const char of first) counts[char] = (counts[char] || 0) + 1;
+  const counts = new Map();
+  for (const char of first) counts.set(char, (counts.get(char) || 0) + 1);
   for (const char of second) {
-    if (!counts[char]) return false;
-    counts[char] -= 1;
+    const remaining = counts.get(char) || 0;
+    if (remaining === 0) return false;
+    counts.set(char, remaining - 1);
   }
   return true;
 }

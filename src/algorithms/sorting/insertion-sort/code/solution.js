@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Insertion Sort
 // Route: /algorithms/sorting/insertion-sort
 

@@ -12,107 +12,107 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/anagram-detection/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Anagram Detection is a Strings technique focused on matches or string result.",
-  "problem": "Anagram Detection turns character comparisons into reusable state so the string is not rechecked from scratch.",
-  "concept": "String algorithms are useful when character order, frequency, prefix, hash, or palindrome structure can be reused. Use this when scanning every substring directly would repeat character work.",
-  "logicSummary": "Prepare helper state, scan characters, update the pattern state, and record matches or the best string result.",
-  "transitionSummary": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-  "codeInsight": "String algorithms are safest when index movement is explicit and every mismatch has a defined fallback.",
-  "realLifeExample": "Anagram Detection appears when the input is text and pattern and the required result is matches or string result.",
-  "whenToUse": "Use Anagram Detection when a problem matches the Strings pattern and the expected state changes match a frequency map dry run.",
-  "memoryTrick": "Anagram Detection: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Anagram Detection is shown as character-state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Anagram Detection is taught with its own string state, transition, code trace, and stopping rule.",
+  "problem": "Decide whether two strings contain the same characters with the same frequencies.",
+  "concept": "Anagram detection compares frequency balance, not character order.",
+  "logicSummary": "Reject unequal lengths, count characters in the first string, subtract characters from the second string, and fail if any count would go negative.",
+  "transitionSummary": "Each character in the second string consumes one previously counted character from the first string.",
+  "codeInsight": "The length check is a real stop condition: two unequal-length strings cannot have identical character counts.",
+  "realLifeExample": "Use it for word games, duplicate normalized names, and grouping words by character inventory.",
+  "whenToUse": "Use frequency-based anagram detection when order is irrelevant but counts must match exactly.",
+  "memoryTrick": "Same letters, same counts, any order.",
+  "visualizerCaption": "The trace balances counts from the first word against the second word.",
   "logicSteps": [
     {
-      "title": "Read text",
-      "text": "Identify text, pattern, or character rule."
+      "title": "Compare lengths",
+      "text": "Unequal lengths return false immediately."
     },
     {
-      "title": "Prepare state",
-      "text": "Build frequency, prefix, hash, trie, or radius state."
+      "title": "Count first string",
+      "text": "Add one count for each character."
     },
     {
-      "title": "Scan character",
-      "text": "Consume the next character and update state."
+      "title": "Subtract second string",
+      "text": "Consume one count for each character in the second word."
     },
     {
-      "title": "Return match",
-      "text": "Return matches, validity, or the best substring result."
+      "title": "Return balanced",
+      "text": "If no count is missing, the strings are anagrams."
     }
   ],
   "variables": [
     {
-      "name": "text, pattern",
-      "purpose": "text: The string data used for character comparisons, matching, or dynamic programming states. pattern: The string data used for character comparisons, matching, or dynamic programming states."
+      "name": "first, second",
+      "purpose": "Strings being compared."
     },
     {
-      "name": "indices and match state",
-      "purpose": "Pointers, prefix/hash values, or windows that decide how characters match. This page visualizes it as frequency map."
+      "name": "counts",
+      "purpose": "Remaining characters from first after subtraction."
     },
     {
-      "name": "match result",
-      "purpose": "The value produced by anagramDetection after the maintained state reaches the stop rule."
+      "name": "char",
+      "purpose": "Current character being counted or consumed."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state. Stop when no valid work remains or the answer is known."
+      "name": "balanced counts",
+      "purpose": "Condition proving both strings have equal character inventory."
     }
   ],
   "dryRun": [
     {
-      "label": "Text",
-      "title": "Read string input",
-      "note": "The code receives text, pattern, or character data.",
-      "activeLine": 5,
-      "codeInsight": "Defines anagramDetection and names the input first, second; edits to those inputs change the visual state and output."
+      "label": "Length",
+      "title": "listen and silent both length 6",
+      "note": "The algorithm can continue because lengths match.",
+      "activeLine": 2,
+      "codeInsight": "Unequal length would return before counting."
     },
     {
-      "label": "Helper",
-      "title": "Prepare string state",
-      "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-      "activeLine": 7,
-      "codeInsight": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly."
+      "label": "Count",
+      "title": "Count listen",
+      "note": "counts has l, i, s, t, e, n each once.",
+      "activeLine": 4,
+      "codeInsight": "The first loop builds available inventory."
     },
     {
-      "label": "Character",
-      "title": "Update on current char",
-      "note": "One character changes the active string state.",
+      "label": "Consume",
+      "title": "Read silent",
+      "note": "Each second-string character removes one matching count.",
       "activeLine": 6,
-      "codeInsight": "Checks first.length !== second.length; only the branch that preserves Anagram Detection's invariant is allowed to change state."
+      "codeInsight": "A missing count proves not an anagram."
     },
     {
-      "label": "Result",
-      "title": "Return string answer",
-      "note": "Matches or best values are returned after the scan.",
-      "activeLine": 13,
-      "codeInsight": "Returns true, the boolean result reached by the highlighted checks."
+      "label": "True",
+      "title": "All counts balanced",
+      "note": "No character was missing, so return true.",
+      "activeLine": 10,
+      "codeInsight": "The method does not need to sort either string."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "O(n).",
+    "space": "O(k), where k is the number of distinct characters."
   },
   "quiz": {
-    "question": "Which state choice keeps Anagram Detection correct?",
+    "question": "Which state keeps Anagram Detection correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and prefix/hash state and update it only through Anagram Detection's transition.",
+        "text": "Track frequency counts and consume exactly one count for every character in the second string.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another string algorithm's state names without matching its invariant.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Anagram Detection stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Anagram Detection needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Anagram Detection works because the page state follows that exact string invariant.",
+    "incorrectText": "Not quite. Anagram Detection needs its own string state and stop condition."
   },
   "categorySlug": "strings",
   "algorithmSlug": "anagram-detection",
@@ -129,18 +129,19 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "string-flow",
-    "title": "Anagram Detection character scan",
+    "static": true,
+    "title": "Anagram Detection trace",
     "ruleLabel": "String invariant",
-    "rule": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-    "text": "listen",
-    "pattern": "silent",
+    "rule": "Each character in the second string consumes one previously counted character from the first string.",
+    "text": "listen|silent",
+    "pattern": "same frequency",
     "steps": [
       {
-        "phase": "Text",
-        "title": "Read string input",
-        "note": "The code receives text, pattern, or character data.",
-        "ruleLabel": "Anagram Detection invariant",
-        "rule": "Defines anagramDetection and names the input first, second; edits to those inputs change the visual state and output.",
+        "phase": "length",
+        "title": "Lengths match",
+        "note": "Both words have six characters.",
+        "ruleLabel": "String invariant",
+        "rule": "Each character in the second string consumes one previously counted character from the first string.",
         "activeRange": [
           0,
           5
@@ -148,42 +149,42 @@ export const algorithmPage = {
         "matchedRange": []
       },
       {
-        "phase": "Helper",
-        "title": "Prepare string state",
-        "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-        "ruleLabel": "Anagram Detection invariant",
-        "rule": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly.",
+        "phase": "count",
+        "title": "Count listen",
+        "note": "Build inventory from the first word.",
+        "ruleLabel": "String invariant",
+        "rule": "Each character in the second string consumes one previously counted character from the first string.",
         "activeRange": [
-          1,
+          0,
           5
         ],
         "matchedRange": []
       },
       {
-        "phase": "Character",
-        "title": "Update on current char",
-        "note": "One character changes the active string state.",
-        "ruleLabel": "Anagram Detection invariant",
-        "rule": "Checks first.length !== second.length; only the branch that preserves Anagram Detection's invariant is allowed to change state.",
+        "phase": "consume",
+        "title": "Consume silent",
+        "note": "Every character in silent finds a count.",
+        "ruleLabel": "String invariant",
+        "rule": "Each character in the second string consumes one previously counted character from the first string.",
         "activeRange": [
-          2,
-          5
+          7,
+          12
         ],
         "matchedRange": []
       },
       {
-        "phase": "Result",
-        "title": "Return string answer",
-        "note": "Matches or best values are returned after the scan.",
-        "ruleLabel": "Anagram Detection invariant",
-        "rule": "Returns true, the boolean result reached by the highlighted checks.",
+        "phase": "balanced",
+        "title": "Anagram confirmed",
+        "note": "The frequency inventory is fully balanced.",
+        "ruleLabel": "String invariant",
+        "rule": "Each character in the second string consumes one previously counted character from the first string.",
         "activeRange": [
-          3,
-          5
+          0,
+          12
         ],
         "matchedRange": [
           0,
-          5
+          12
         ]
       }
     ]

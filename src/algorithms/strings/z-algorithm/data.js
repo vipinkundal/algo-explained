@@ -12,171 +12,175 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/z-algorithm/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Z Algorithm is a Strings technique focused on matches or string result.",
-  "problem": "Z Algorithm turns character comparisons into reusable state so the string is not rechecked from scratch.",
-  "concept": "String algorithms are useful when character order, frequency, prefix, hash, or palindrome structure can be reused. Use this when scanning every substring directly would repeat character work.",
-  "logicSummary": "Prepare helper state, scan characters, update the pattern state, and record matches or the best string result.",
-  "transitionSummary": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-  "codeInsight": "String algorithms are safest when index movement is explicit and every mismatch has a defined fallback.",
-  "realLifeExample": "Z Algorithm appears when the input is text and pattern and the required result is matches or string result.",
-  "whenToUse": "Use Z Algorithm when a problem matches the Strings pattern and the expected state changes match a z box dry run.",
-  "memoryTrick": "Z Algorithm: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Z Algorithm is shown as character-state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Z Algorithm is taught with its own string state, transition, code trace, and stopping rule.",
+  "problem": "Find pattern matches by computing, for every position, how many characters match the combined string prefix.",
+  "concept": "The Z-array stores prefix match length at each position. A Z-box [left, right] reuses earlier comparisons inside the current matching window.",
+  "logicSummary": "Build pattern + sentinel + text, compute Z values with a reusable Z-box, then report text positions whose Z value equals pattern length.",
+  "transitionSummary": "Inside the Z-box copy the known minimum match; outside or after copying, expand while characters match and update the box.",
+  "codeInsight": "The sentinel prevents matches from crossing from pattern into text accidentally.",
+  "realLifeExample": "Use it for exact string matching, prefix analysis, and problems asking for repeated prefix lengths.",
+  "whenToUse": "Use Z Algorithm when prefix-match lengths for many positions are useful.",
+  "memoryTrick": "Z[i] says how much prefix starts again at i.",
+  "visualizerCaption": "The trace shows combined string positions, Z-box reuse, expansion, and match extraction.",
   "logicSteps": [
     {
-      "title": "Read text",
-      "text": "Identify text, pattern, or character rule."
+      "title": "Combine strings",
+      "text": "Use pattern + sentinel + text."
     },
     {
-      "title": "Prepare state",
-      "text": "Build frequency, prefix, hash, trie, or radius state."
+      "title": "Reuse Z-box",
+      "text": "If index is inside [left, right], copy the known bounded Z value."
     },
     {
-      "title": "Scan character",
-      "text": "Consume the next character and update state."
+      "title": "Expand match",
+      "text": "Compare beyond the box while prefix characters match."
     },
     {
-      "title": "Return match",
-      "text": "Return matches, validity, or the best substring result."
+      "title": "Report matches",
+      "text": "A text-side Z value equal to pattern length marks a match."
     }
   ],
   "variables": [
     {
-      "name": "text, pattern",
-      "purpose": "text: The string data used for character comparisons, matching, or dynamic programming states. pattern: The string data used for character comparisons, matching, or dynamic programming states."
+      "name": "combined",
+      "purpose": "pattern + sentinel + text."
     },
     {
-      "name": "indices and match state",
-      "purpose": "Pointers, prefix/hash values, or windows that decide how characters match. This page visualizes it as z box."
+      "name": "z",
+      "purpose": "Prefix match length for every combined index."
     },
     {
-      "name": "match result",
-      "purpose": "The value produced by zAlgorithm after the maintained state reaches the stop rule."
+      "name": "left, right",
+      "purpose": "Current Z-box boundaries."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state. Stop when no valid work remains or the answer is known."
+      "name": "matches",
+      "purpose": "Text indices where z[index] equals pattern length."
     }
   ],
   "dryRun": [
     {
-      "label": "Text",
-      "title": "Read string input",
-      "note": "The code receives text, pattern, or character data.",
+      "label": "Combine",
+      "title": "aba$ababa",
+      "note": "The sentinel separates pattern from text.",
+      "activeLine": 2,
+      "codeInsight": "Combined indexing makes text matches visible as prefix matches."
+    },
+    {
+      "label": "Expand",
+      "title": "At index 4, match aba",
+      "note": "Z[4] becomes 3 because the text starts with aba.",
+      "activeLine": 6,
+      "codeInsight": "The while loop expands direct character matches."
+    },
+    {
+      "label": "Z-box",
+      "title": "Reuse [4,6]",
+      "note": "Positions inside the box can copy bounded Z values.",
       "activeLine": 5,
-      "codeInsight": "Defines zAlgorithm and names the input text, pattern; edits to those inputs change the visual state and output."
+      "codeInsight": "Z-box reuse avoids repeated comparisons."
     },
     {
-      "label": "Helper",
-      "title": "Prepare string state",
-      "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-      "activeLine": 7,
-      "codeInsight": "Stores z from the current length, making the loop boundary explicit for the visual trace."
-    },
-    {
-      "label": "Character",
-      "title": "Update on current char",
-      "note": "One character changes the active string state.",
-      "activeLine": 8,
-      "codeInsight": "Moves two indexes toward each other, matching the animation's paired pointer updates."
-    },
-    {
-      "label": "Result",
-      "title": "Return string answer",
-      "note": "Matches or best values are returned after the scan.",
-      "activeLine": 20,
-      "codeInsight": "Returns matches, the final value maintained by Z Algorithm's code path."
+      "label": "Report",
+      "title": "Z value equals pattern length",
+      "note": "A value of 3 on the text side reports a match.",
+      "activeLine": 12,
+      "codeInsight": "Subtract pattern.length + 1 to convert combined index to text index."
     }
   ],
   "complexity": {
-    "time": "O(n + m) for the usual text/pattern model.",
-    "space": "O(n + m) for preprocessing or result state."
+    "time": "O(n + m).",
+    "space": "O(n + m) for combined string and Z array."
   },
   "quiz": {
-    "question": "Which state choice keeps Z Algorithm correct?",
+    "question": "Which state keeps Z Algorithm correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and prefix/hash state and update it only through Z Algorithm's transition.",
+        "text": "Track the combined string, Z array, and current Z-box while extracting matches.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another string algorithm's state names without matching its invariant.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Z Algorithm stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Z Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Z Algorithm works because the page state follows that exact string invariant.",
+    "incorrectText": "Not quite. Z Algorithm needs its own string state and stop condition."
   },
   "categorySlug": "strings",
   "algorithmSlug": "z-algorithm",
   "runnerInput": [
-    "abracadabra",
-    "abra"
+    "ababa",
+    "aba"
   ],
   "animation": {
     "type": "string-flow",
-    "title": "Z Algorithm character scan",
+    "static": true,
+    "title": "Z Algorithm trace",
     "ruleLabel": "String invariant",
-    "rule": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-    "text": "abracadabra",
-    "pattern": "abra",
+    "rule": "Inside the Z-box copy the known minimum match; outside or after copying, expand while characters match and update the box.",
+    "text": "aba$ababa",
+    "pattern": "aba",
     "steps": [
       {
-        "phase": "Text",
-        "title": "Read string input",
-        "note": "The code receives text, pattern, or character data.",
-        "ruleLabel": "Z Algorithm invariant",
-        "rule": "Defines zAlgorithm and names the input text, pattern; edits to those inputs change the visual state and output.",
+        "phase": "combine",
+        "title": "Build aba$ababa",
+        "note": "The sentinel separates pattern and text.",
+        "ruleLabel": "String invariant",
+        "rule": "Inside the Z-box copy the known minimum match; outside or after copying, expand while characters match and update the box.",
         "activeRange": [
           0,
-          3
+          2
         ],
         "matchedRange": []
       },
       {
-        "phase": "Helper",
-        "title": "Prepare string state",
-        "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-        "ruleLabel": "Z Algorithm invariant",
-        "rule": "Stores z from the current length, making the loop boundary explicit for the visual trace.",
+        "phase": "Z[4]=3",
+        "title": "Expand at text start",
+        "note": "The prefix aba matches at combined index 4.",
+        "ruleLabel": "String invariant",
+        "rule": "Inside the Z-box copy the known minimum match; outside or after copying, expand while characters match and update the box.",
         "activeRange": [
-          1,
-          4
-        ],
-        "matchedRange": []
-      },
-      {
-        "phase": "Character",
-        "title": "Update on current char",
-        "note": "One character changes the active string state.",
-        "ruleLabel": "Z Algorithm invariant",
-        "rule": "Moves two indexes toward each other, matching the animation's paired pointer updates.",
-        "activeRange": [
-          2,
-          5
-        ],
-        "matchedRange": []
-      },
-      {
-        "phase": "Result",
-        "title": "Return string answer",
-        "note": "Matches or best values are returned after the scan.",
-        "ruleLabel": "Z Algorithm invariant",
-        "rule": "Returns matches, the final value maintained by Z Algorithm's code path.",
-        "activeRange": [
-          3,
+          4,
           6
         ],
         "matchedRange": [
-          0,
-          3
+          4,
+          6
+        ]
+      },
+      {
+        "phase": "Z-box",
+        "title": "Reuse box [4,6]",
+        "note": "Known matches bound the next Z values.",
+        "ruleLabel": "String invariant",
+        "rule": "Inside the Z-box copy the known minimum match; outside or after copying, expand while characters match and update the box.",
+        "activeRange": [
+          4,
+          6
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "match",
+        "title": "Report text index 0",
+        "note": "Z[4] equals pattern length 3.",
+        "ruleLabel": "String invariant",
+        "rule": "Inside the Z-box copy the known minimum match; outside or after copying, expand while characters match and update the box.",
+        "activeRange": [
+          4,
+          6
+        ],
+        "matchedRange": [
+          4,
+          6
         ]
       }
     ]

@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Binary Search
 // Route: /algorithms/searching/binary-search
 

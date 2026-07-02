@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Radix Sort
 // Route: /algorithms/sorting/radix-sort
 

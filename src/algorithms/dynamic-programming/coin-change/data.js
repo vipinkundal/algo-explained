@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/coin-change/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Coin Change is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Coin Change stores the fewest coins needed for every amount up to the target.",
-  "concept": "Coin Change is useful when the same subproblems appear again and storing answers prevents repeated work. Use this when you can define a state, base cases, and a recurrence.",
-  "logicSummary": "Define what one DP state means, initialize base cases, fill dependent states, and read the target state.",
-  "transitionSummary": "Each step computes one state from already-solved smaller or earlier states.",
-  "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
-  "realLifeExample": "Coin Change appears when overlapping subproblems would otherwise be recomputed.",
-  "whenToUse": "Use Coin Change when the recurrence and base cases match the problem statement.",
-  "memoryTrick": "Coin Change: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Coin Change is shown as a dependency-ordered DP fill. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Coin Change is taught with its own DP state definition, recurrence, code trace, and answer cell.",
+  "problem": "Find the fewest coins needed to make an amount when each coin denomination can be reused.",
+  "concept": "Coin Change defines dp[value] as the minimum number of coins needed to form that value.",
+  "logicSummary": "Set dp[0] = 0, initialize other amounts to Infinity, and relax every amount reachable by each coin.",
+  "transitionSummary": "For each coin and amount, dp[value] becomes min(current, dp[value - coin] + 1).",
+  "codeInsight": "The amount loop goes forward because coins are unlimited and the same coin may be reused.",
+  "realLifeExample": "Use it for payment denominations, minimum token counts, or any unbounded item-count minimization.",
+  "whenToUse": "Use Coin Change when each denomination can be used repeatedly and the goal is minimum count.",
+  "memoryTrick": "Forward amount means unlimited coins.",
+  "visualizerCaption": "The trace shows amounts improving as coin denominations relax the DP array.",
   "logicSteps": [
     {
-      "title": "Define state",
-      "text": "Name exactly what one cell or entry means."
+      "title": "Define dp[value]",
+      "text": "Fewest coins required to form value."
     },
     {
-      "title": "Set base cases",
-      "text": "Fill answers that need no recurrence."
+      "title": "Seed amount zero",
+      "text": "Amount 0 needs 0 coins."
     },
     {
-      "title": "Apply recurrence",
-      "text": "Compute each state from solved dependencies."
+      "title": "Relax by coin",
+      "text": "Use solved smaller amount value - coin."
     },
     {
-      "title": "Read target",
-      "text": "Return the state requested by the problem."
+      "title": "Return target",
+      "text": "Return dp[amount], or -1 if it stayed unreachable."
     }
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "coins",
+      "purpose": "Reusable denominations."
     },
     {
-      "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "name": "amount",
+      "purpose": "Target value to form."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "dp[value]",
+      "purpose": "Minimum coins for each amount."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "Infinity",
+      "purpose": "Marker for amounts not yet reachable."
     }
   ],
   "dryRun": [
     {
-      "label": "State meaning",
-      "title": "Define DP cell",
-      "note": "The code first needs a precise subproblem meaning.",
+      "label": "Base",
+      "title": "dp[0] = 0",
+      "note": "The empty amount needs no coins.",
+      "activeLine": 3,
+      "codeInsight": "Every reachable state grows from the base amount."
+    },
+    {
+      "label": "Coin 1",
+      "title": "Fill every amount with ones",
+      "note": "Coin 1 makes all amounts reachable, but not optimal.",
       "activeLine": 6,
-      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
+      "codeInsight": "Forward iteration allows unlimited reuse of coin 1."
     },
     {
-      "label": "Base case",
-      "title": "Seed known answers",
-      "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 5,
-      "codeInsight": "Defines coinChange and names the input coins, amount; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Recurrence",
-      "title": "Fill next state",
-      "note": "The transition combines previously solved states.",
+      "label": "Coin 3",
+      "title": "Improve amount 3 and 6",
+      "note": "dp[3] becomes 1, and dp[6] can become 2.",
       "activeLine": 6,
-      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
+      "codeInsight": "The recurrence uses the already-updated dp[value - coin]."
     },
     {
-      "label": "Target",
-      "title": "Return requested state",
-      "note": "The answer is read from the final DP state.",
-      "activeLine": 13,
-      "codeInsight": "Returns dp[amount] === Infinity ? -1 : dp[amount], the final value maintained by Coin Change's code path."
+      "label": "Coin 4",
+      "title": "Improve amount 4",
+      "note": "dp[4] becomes 1 and dp[6] remains 2.",
+      "activeLine": 6,
+      "codeInsight": "Each coin tries to improve every reachable amount."
     }
   ],
   "complexity": {
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(amount)."
   },
   "quiz": {
-    "question": "Which state choice keeps Coin Change correct?",
+    "question": "Which state keeps Coin Change correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track dp table and update it only through Coin Change's transition.",
+        "text": "Define dp[value] as the fewest coins and scan amounts forward for reusable coins.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another DP recurrence without matching the state definition.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Read the answer before the required dependency cells have been filled.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Coin Change stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Coin Change needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Coin Change works when its table meaning and recurrence stay aligned.",
+    "incorrectText": "Not quite. Coin Change needs its own state, recurrence, and answer cell."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "coin-change",
@@ -126,88 +126,112 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "array-flow",
-    "title": "Coin Change array state",
-    "ruleLabel": "Array invariant",
-    "rule": "Each step computes one state from already-solved smaller or earlier states.",
+    "static": true,
+    "title": "Coin Change DP trace",
+    "ruleLabel": "DP invariant",
+    "rule": "For each coin and amount, dp[value] becomes min(current, dp[value - coin] + 1).",
     "values": [
+      0,
       1,
-      3,
-      4
+      2,
+      1,
+      1,
+      2,
+      2
     ],
     "steps": [
       {
-        "phase": "State meaning",
-        "title": "Define DP cell",
-        "note": "The code first needs a precise subproblem meaning.",
-        "ruleLabel": "Coin Change invariant",
-        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
+        "phase": "base",
+        "title": "Amount 0 is solved",
+        "note": "dp[0] = 0.",
+        "ruleLabel": "DP invariant",
+        "rule": "For each coin and amount, dp[value] becomes min(current, dp[value - coin] + 1).",
         "activeIndices": [
           0
         ],
-        "sortedIndices": [],
+        "sortedIndices": [
+          0
+        ],
         "mutedIndices": [],
         "window": [
           0,
-          1
+          6
         ],
-        "primaryLabel": "State meaning",
-        "secondaryLabel": "Each step computes one state from already-solved smaller or earlier states."
+        "primaryLabel": "base",
+        "secondaryLabel": "For each coin and amount, dp[value] becomes min(current, dp[value - coin] + 1)."
       },
       {
-        "phase": "Base case",
-        "title": "Seed known answers",
-        "note": "Base values stop the recurrence from falling through.",
-        "ruleLabel": "Coin Change invariant",
-        "rule": "Defines coinChange and names the input coins, amount; edits to those inputs change the visual state and output.",
+        "phase": "coin 1",
+        "title": "One coin fills the table",
+        "note": "Amounts 1 through 6 are reachable with repeated 1s.",
+        "ruleLabel": "DP invariant",
+        "rule": "For each coin and amount, dp[value] becomes min(current, dp[value - coin] + 1).",
         "activeIndices": [
           1,
-          2
+          6
         ],
-        "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
+        "sortedIndices": [
           0,
-          2
-        ],
-        "primaryLabel": "Base case",
-        "secondaryLabel": "Each step computes one state from already-solved smaller or earlier states."
-      },
-      {
-        "phase": "Recurrence",
-        "title": "Fill next state",
-        "note": "The transition combines previously solved states.",
-        "ruleLabel": "Coin Change invariant",
-        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
-        "activeIndices": [
-          2
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
           1,
-          2
-        ],
-        "primaryLabel": "Recurrence",
-        "secondaryLabel": "Each step computes one state from already-solved smaller or earlier states."
-      },
-      {
-        "phase": "Target",
-        "title": "Return requested state",
-        "note": "The answer is read from the final DP state.",
-        "ruleLabel": "Coin Change invariant",
-        "rule": "Returns dp[amount] === Infinity ? -1 : dp[amount], the final value maintained by Coin Change's code path.",
-        "activeIndices": [
           2,
-          2
+          3,
+          4,
+          5,
+          6
         ],
-        "sortedIndices": [],
         "mutedIndices": [],
         "window": [
-          1,
-          2
+          0,
+          6
         ],
-        "primaryLabel": "Target",
-        "secondaryLabel": "Each step computes one state from already-solved smaller or earlier states."
+        "primaryLabel": "coin 1",
+        "secondaryLabel": "For each coin and amount, dp[value] becomes min(current, dp[value - coin] + 1)."
+      },
+      {
+        "phase": "coin 3",
+        "title": "Amount 3 improves to 1",
+        "note": "dp[3] = min(3, dp[0] + 1).",
+        "ruleLabel": "DP invariant",
+        "rule": "For each coin and amount, dp[value] becomes min(current, dp[value - coin] + 1).",
+        "activeIndices": [
+          3
+        ],
+        "sortedIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          6
+        ],
+        "primaryLabel": "coin 3",
+        "secondaryLabel": "For each coin and amount, dp[value] becomes min(current, dp[value - coin] + 1)."
+      },
+      {
+        "phase": "amount 6",
+        "title": "Answer is 2 coins",
+        "note": "6 can be made as 3 + 3.",
+        "ruleLabel": "DP invariant",
+        "rule": "For each coin and amount, dp[value] becomes min(current, dp[value - coin] + 1).",
+        "activeIndices": [
+          6
+        ],
+        "sortedIndices": [
+          0,
+          3,
+          4,
+          6
+        ],
+        "mutedIndices": [],
+        "window": [
+          0,
+          6
+        ],
+        "primaryLabel": "amount 6",
+        "secondaryLabel": "For each coin and amount, dp[value] becomes min(current, dp[value - coin] + 1)."
       }
     ]
   }

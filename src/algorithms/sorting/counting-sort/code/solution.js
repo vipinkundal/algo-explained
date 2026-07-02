@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Counting Sort
 // Route: /algorithms/sorting/counting-sort
 

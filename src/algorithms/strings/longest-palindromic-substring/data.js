@@ -12,107 +12,107 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/longest-palindromic-substring/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Longest Palindromic Substring is a Strings technique focused on matches or string result.",
-  "problem": "Longest Palindromic Substring turns character comparisons into reusable state so the string is not rechecked from scratch.",
-  "concept": "String algorithms are useful when character order, frequency, prefix, hash, or palindrome structure can be reused. Use this when scanning every substring directly would repeat character work.",
-  "logicSummary": "Prepare helper state, scan characters, update the pattern state, and record matches or the best string result.",
-  "transitionSummary": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-  "codeInsight": "String algorithms are safest when index movement is explicit and every mismatch has a defined fallback.",
-  "realLifeExample": "Longest Palindromic Substring appears when the input is text and pattern and the required result is matches or string result.",
-  "whenToUse": "Use Longest Palindromic Substring when a problem matches the Strings pattern and the expected state changes match a expand center dry run.",
-  "memoryTrick": "Longest Palindromic Substring: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Longest Palindromic Substring is shown as character-state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Longest Palindromic Substring is taught with its own string state, transition, code trace, and stopping rule.",
+  "problem": "Return the longest contiguous substring that reads the same forward and backward.",
+  "concept": "Expanding around each possible center finds every odd and even palindrome without checking every substring separately.",
+  "logicSummary": "For each index, expand around one-character and two-character centers, then keep the longest valid palindrome.",
+  "transitionSummary": "A center expands while left and right characters match; the best substring updates after expansion stops.",
+  "codeInsight": "Both odd and even centers are required, otherwise palindromes like bb would be missed.",
+  "realLifeExample": "Use it for text analysis, DNA symmetry scans, and interview problems asking for the longest mirrored block.",
+  "whenToUse": "Use center expansion for simple O(n^2) palindrome search with O(1) extra state.",
+  "memoryTrick": "Pick a center, grow while both sides mirror.",
+  "visualizerCaption": "The trace expands candidate centers and locks the best palindrome found so far.",
   "logicSteps": [
     {
-      "title": "Read text",
-      "text": "Identify text, pattern, or character rule."
+      "title": "Pick center",
+      "text": "Treat each index as an odd center and each gap as an even center."
     },
     {
-      "title": "Prepare state",
-      "text": "Build frequency, prefix, hash, trie, or radius state."
+      "title": "Expand outward",
+      "text": "Move left and right while characters match."
     },
     {
-      "title": "Scan character",
-      "text": "Consume the next character and update state."
+      "title": "Capture substring",
+      "text": "The valid palindrome is text.slice(left + 1, right)."
     },
     {
-      "title": "Return match",
-      "text": "Return matches, validity, or the best substring result."
+      "title": "Keep best",
+      "text": "Replace best only when the current palindrome is longer."
     }
   ],
   "variables": [
     {
-      "name": "text, pattern",
-      "purpose": "text: The string data used for character comparisons, matching, or dynamic programming states. pattern: The string data used for character comparisons, matching, or dynamic programming states."
+      "name": "text",
+      "purpose": "Input string."
     },
     {
-      "name": "indices and match state",
-      "purpose": "Pointers, prefix/hash values, or windows that decide how characters match. This page visualizes it as expand center."
+      "name": "left, right",
+      "purpose": "Expanding mirror pointers."
     },
     {
-      "name": "match result",
-      "purpose": "The value produced by longestPalindromicSubstring after the maintained state reaches the stop rule."
+      "name": "current",
+      "purpose": "Palindrome produced by one center expansion."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state. Stop when no valid work remains or the answer is known."
+      "name": "best",
+      "purpose": "Longest palindrome seen so far."
     }
   ],
   "dryRun": [
     {
-      "label": "Text",
-      "title": "Read string input",
-      "note": "The code receives text, pattern, or character data.",
-      "activeLine": 5,
-      "codeInsight": "Defines longestPalindromicSubstring and names the input text; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Helper",
-      "title": "Prepare string state",
-      "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
+      "label": "babad",
+      "title": "Center at a",
+      "note": "Expanding around index 1 yields bab.",
       "activeLine": 12,
-      "codeInsight": "Stores current so the algorithm can reuse this value without recomputing it."
+      "codeInsight": "Odd centers call expand(index, index)."
     },
     {
-      "label": "Character",
-      "title": "Update on current char",
-      "note": "One character changes the active string state.",
-      "activeLine": 8,
-      "codeInsight": "Repeats while left >= 0 && right < text.length && text[left] === text[right] is true, so the algorithm keeps resolving current work before moving on."
+      "label": "Mirror",
+      "title": "b equals b",
+      "note": "left and right move outward while characters match.",
+      "activeLine": 5,
+      "codeInsight": "The while condition is the palindrome check."
     },
     {
-      "label": "Result",
-      "title": "Return string answer",
-      "note": "Matches or best values are returned after the scan.",
-      "activeLine": 19,
-      "codeInsight": "Returns best, the final value maintained by Longest Palindromic Substring's code path."
+      "label": "Best",
+      "title": "Store bab",
+      "note": "bab is longer than the previous best.",
+      "activeLine": 10,
+      "codeInsight": "best changes only after a full center expansion."
+    },
+    {
+      "label": "Even",
+      "title": "Check gap centers",
+      "note": "The second expand call handles even-length palindromes.",
+      "activeLine": 13,
+      "codeInsight": "Even centers prevent missing double-letter palindromes."
     }
   ],
   "complexity": {
-    "time": "O(n + m) for the usual text/pattern model.",
-    "space": "O(n + m) for preprocessing or result state."
+    "time": "O(n^2).",
+    "space": "O(1) auxiliary space."
   },
   "quiz": {
-    "question": "Which state choice keeps Longest Palindromic Substring correct?",
+    "question": "Which state keeps Longest Palindromic Substring correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and prefix/hash state and update it only through Longest Palindromic Substring's transition.",
+        "text": "Track center expansion pointers and update best only after a valid palindrome is known.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another string algorithm's state names without matching its invariant.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Longest Palindromic Substring stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Longest Palindromic Substring needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Longest Palindromic Substring works because the page state follows that exact string invariant.",
+    "incorrectText": "Not quite. Longest Palindromic Substring needs its own string state and stop condition."
   },
   "categorySlug": "strings",
   "algorithmSlug": "longest-palindromic-substring",
@@ -120,130 +120,67 @@ export const algorithmPage = {
     "babad"
   ],
   "animation": {
-    "type": "tree-operation",
-    "title": "Longest Palindromic Substring tree state",
-    "nodes": [
-      {
-        "id": "8",
-        "label": "8",
-        "x": 340,
-        "y": 58
-      },
-      {
-        "id": "4",
-        "label": "4",
-        "x": 190,
-        "y": 150
-      },
-      {
-        "id": "12",
-        "label": "12",
-        "x": 490,
-        "y": 150
-      },
-      {
-        "id": "2",
-        "label": "2",
-        "x": 110,
-        "y": 255
-      },
-      {
-        "id": "6",
-        "label": "6",
-        "x": 270,
-        "y": 255
-      },
-      {
-        "id": "10",
-        "label": "10",
-        "x": 420,
-        "y": 255
-      },
-      {
-        "id": "14",
-        "label": "14",
-        "x": 570,
-        "y": 255
-      }
-    ],
-    "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
-      {
-        "from": "4",
-        "to": "2"
-      },
-      {
-        "from": "4",
-        "to": "6"
-      },
-      {
-        "from": "12",
-        "to": "10"
-      },
-      {
-        "from": "12",
-        "to": "14"
-      }
-    ],
+    "type": "string-flow",
+    "static": true,
+    "title": "Longest Palindromic Substring trace",
+    "ruleLabel": "String invariant",
+    "rule": "A center expands while left and right characters match; the best substring updates after expansion stops.",
+    "text": "babad",
+    "pattern": "expand centers",
     "steps": [
       {
-        "phase": "Text",
-        "title": "Read string input",
-        "note": "The code receives text, pattern, or character data.",
-        "ruleLabel": "Longest Palindromic Substring invariant",
-        "rule": "Defines longestPalindromicSubstring and names the input text; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
+        "phase": "center a",
+        "title": "Start at index 1",
+        "note": "a is the center of a possible odd palindrome.",
+        "ruleLabel": "String invariant",
+        "rule": "A center expands while left and right characters match; the best substring updates after expansion stops.",
+        "activeRange": [
+          1,
+          1
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "expand",
+        "title": "b a b matches",
+        "note": "Characters at indices 0 and 2 match.",
+        "ruleLabel": "String invariant",
+        "rule": "A center expands while left and right characters match; the best substring updates after expansion stops.",
+        "activeRange": [
+          0,
+          2
+        ],
+        "matchedRange": [
+          0,
+          2
         ]
       },
       {
-        "phase": "Helper",
-        "title": "Prepare string state",
-        "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-        "ruleLabel": "Longest Palindromic Substring invariant",
-        "rule": "Stores current so the algorithm can reuse this value without recomputing it.",
-        "activeNode": "4",
-        "targetNode": "12",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
+        "phase": "best bab",
+        "title": "Store longest so far",
+        "note": "bab becomes best.",
+        "ruleLabel": "String invariant",
+        "rule": "A center expands while left and right characters match; the best substring updates after expansion stops.",
+        "activeRange": [
+          0,
+          2
+        ],
+        "matchedRange": [
+          0,
+          2
         ]
       },
       {
-        "phase": "Character",
-        "title": "Update on current char",
-        "note": "One character changes the active string state.",
-        "ruleLabel": "Longest Palindromic Substring invariant",
-        "rule": "Repeats while left >= 0 && right < text.length && text[left] === text[right] is true, so the algorithm keeps resolving current work before moving on.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
-      },
-      {
-        "phase": "Result",
-        "title": "Return string answer",
-        "note": "Matches or best values are returned after the scan.",
-        "ruleLabel": "Longest Palindromic Substring invariant",
-        "rule": "Returns best, the final value maintained by Longest Palindromic Substring's code path.",
-        "activeNode": "2",
-        "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
+        "phase": "next centers",
+        "title": "Continue scanning",
+        "note": "Every center is checked for a longer palindrome.",
+        "ruleLabel": "String invariant",
+        "rule": "A center expands while left and right characters match; the best substring updates after expansion stops.",
+        "activeRange": [
+          2,
+          3
+        ],
+        "matchedRange": []
       }
     ]
   }

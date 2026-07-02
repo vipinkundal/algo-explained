@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Edit Distance
 // Route: /algorithms/dynamic-programming/edit-distance
 

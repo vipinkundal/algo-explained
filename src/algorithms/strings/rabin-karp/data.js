@@ -12,107 +12,107 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/rabin-karp/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Rabin-Karp Algorithm is a Strings technique focused on matches or string result.",
-  "problem": "Rabin-Karp Algorithm turns character comparisons into reusable state so the string is not rechecked from scratch.",
-  "concept": "String algorithms are useful when character order, frequency, prefix, hash, or palindrome structure can be reused. Use this when scanning every substring directly would repeat character work.",
-  "logicSummary": "Prepare helper state, scan characters, update the pattern state, and record matches or the best string result.",
-  "transitionSummary": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-  "codeInsight": "String algorithms are safest when index movement is explicit and every mismatch has a defined fallback.",
-  "realLifeExample": "Rabin-Karp Algorithm appears when the input is text and pattern and the required result is matches or string result.",
-  "whenToUse": "Use Rabin-Karp Algorithm when a problem matches the Strings pattern and the expected state changes match a rolling hash dry run.",
-  "memoryTrick": "Rabin-Karp Algorithm: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Rabin-Karp Algorithm is shown as character-state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Rabin-Karp Algorithm is taught with its own string state, transition, code trace, and stopping rule.",
+  "problem": "Find pattern matches by comparing rolling hash values before confirming matching text windows.",
+  "concept": "Rabin-Karp gives every window a hash. Sliding the window updates the hash in O(1), and exact string comparison handles collisions.",
+  "logicSummary": "Compute the pattern hash and first window hash, slide one character at a time, update the rolling hash, and verify equal hashes.",
+  "transitionSummary": "Remove the outgoing character contribution, multiply by base, add the incoming character, and normalize by modulus.",
+  "codeInsight": "Hash equality is only a candidate match. The code still checks text.slice(...) to avoid false positives from collisions.",
+  "realLifeExample": "Use it for multi-pattern search, plagiarism checks, and fast candidate filtering over long text.",
+  "whenToUse": "Use Rabin-Karp when rolling hashes can quickly reject most windows.",
+  "memoryTrick": "Slide the hash, then verify the match.",
+  "visualizerCaption": "The trace slides a fixed-size window and updates the rolling hash.",
   "logicSteps": [
     {
-      "title": "Read text",
-      "text": "Identify text, pattern, or character rule."
+      "title": "Hash pattern",
+      "text": "Compute the hash for the exact pattern."
     },
     {
-      "title": "Prepare state",
-      "text": "Build frequency, prefix, hash, trie, or radius state."
+      "title": "Hash first window",
+      "text": "Compute the text hash for the first pattern-sized window."
     },
     {
-      "title": "Scan character",
-      "text": "Consume the next character and update state."
+      "title": "Slide window",
+      "text": "Update hash by removing one char and adding the next."
     },
     {
-      "title": "Return match",
-      "text": "Return matches, validity, or the best substring result."
+      "title": "Verify candidate",
+      "text": "When hashes match, compare the actual strings."
     }
   ],
   "variables": [
     {
-      "name": "text, pattern",
-      "purpose": "text: The string data used for character comparisons, matching, or dynamic programming states. pattern: The string data used for character comparisons, matching, or dynamic programming states."
+      "name": "patternHash",
+      "purpose": "Hash of the pattern."
     },
     {
-      "name": "indices and match state",
-      "purpose": "Pointers, prefix/hash values, or windows that decide how characters match. This page visualizes it as rolling hash."
+      "name": "windowHash",
+      "purpose": "Rolling hash of current text window."
     },
     {
-      "name": "match result",
-      "purpose": "The value produced by rabinKarp after the maintained state reaches the stop rule."
+      "name": "highestPower",
+      "purpose": "Contribution multiplier for outgoing character."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state. Stop when no valid work remains or the answer is known."
+      "name": "matches",
+      "purpose": "Verified match indices."
     }
   ],
   "dryRun": [
     {
-      "label": "Text",
-      "title": "Read string input",
-      "note": "The code receives text, pattern, or character data.",
-      "activeLine": 5,
-      "codeInsight": "Defines rabinKarp and names the input text, pattern; edits to those inputs change the visual state and output."
+      "label": "Hash",
+      "title": "Hash aba",
+      "note": "The pattern hash is computed once.",
+      "activeLine": 15,
+      "codeInsight": "Initial hashes are built with the same base and modulus."
     },
     {
-      "label": "Helper",
-      "title": "Prepare string state",
-      "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-      "activeLine": 6,
-      "codeInsight": "Seeds matches with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
+      "label": "Window 0",
+      "title": "Check abr",
+      "note": "The first hash does not match aba.",
+      "activeLine": 18,
+      "codeInsight": "Non-matching hashes skip exact comparison."
     },
     {
-      "label": "Character",
-      "title": "Update on current char",
-      "note": "One character changes the active string state.",
-      "activeLine": 8,
-      "codeInsight": "Runs the counted loop (let index = 0; index <= text.length - size; index += 1) so each visual step follows one code-controlled iteration."
+      "label": "Slide",
+      "title": "Move to bra then rac",
+      "note": "Outgoing and incoming characters update the rolling hash.",
+      "activeLine": 22,
+      "codeInsight": "The slide formula avoids rebuilding the hash from scratch."
     },
     {
-      "label": "Result",
-      "title": "Return string answer",
-      "note": "Matches or best values are returned after the scan.",
-      "activeLine": 11,
-      "codeInsight": "Returns matches, the final value maintained by Rabin-Karp Algorithm's code path."
+      "label": "Verify",
+      "title": "Hash match at index 7",
+      "note": "The hash matches and exact comparison confirms aba.",
+      "activeLine": 19,
+      "codeInsight": "Exact comparison protects against collisions."
     }
   ],
   "complexity": {
-    "time": "O(n + m) for the usual text/pattern model.",
-    "space": "O(n + m) for preprocessing or result state."
+    "time": "Average O(n + m), worst-case O(nm) if many hash collisions verify.",
+    "space": "O(1) besides matches."
   },
   "quiz": {
-    "question": "Which state choice keeps Rabin-Karp Algorithm correct?",
+    "question": "Which state keeps Rabin-Karp Algorithm correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and prefix/hash state and update it only through Rabin-Karp Algorithm's transition.",
+        "text": "Track rolling window hash and verify exact text when hashes match.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another string algorithm's state names without matching its invariant.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Rabin-Karp Algorithm stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Rabin-Karp Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Rabin-Karp Algorithm works because the page state follows that exact string invariant.",
+    "incorrectText": "Not quite. Rabin-Karp Algorithm needs its own string state and stop condition."
   },
   "categorySlug": "strings",
   "algorithmSlug": "rabin-karp",
@@ -122,18 +122,19 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "string-flow",
-    "title": "Rabin-Karp Algorithm character scan",
+    "static": true,
+    "title": "Rabin-Karp Algorithm trace",
     "ruleLabel": "String invariant",
-    "rule": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
+    "rule": "Remove the outgoing character contribution, multiply by base, add the incoming character, and normalize by modulus.",
     "text": "abracadabra",
     "pattern": "abra",
     "steps": [
       {
-        "phase": "Text",
-        "title": "Read string input",
-        "note": "The code receives text, pattern, or character data.",
-        "ruleLabel": "Rabin-Karp Algorithm invariant",
-        "rule": "Defines rabinKarp and names the input text, pattern; edits to those inputs change the visual state and output.",
+        "phase": "pattern hash",
+        "title": "Hash abra",
+        "note": "Create a numeric fingerprint for the pattern.",
+        "ruleLabel": "String invariant",
+        "rule": "Remove the outgoing character contribution, multiply by base, add the incoming character, and normalize by modulus.",
         "activeRange": [
           0,
           3
@@ -141,11 +142,26 @@ export const algorithmPage = {
         "matchedRange": []
       },
       {
-        "phase": "Helper",
-        "title": "Prepare string state",
-        "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-        "ruleLabel": "Rabin-Karp Algorithm invariant",
-        "rule": "Seeds matches with the sample values shown in the visualizer, giving the trace concrete cells to inspect.",
+        "phase": "window 0",
+        "title": "Compare first window",
+        "note": "abracadabra starts with abra, so index 0 verifies.",
+        "ruleLabel": "String invariant",
+        "rule": "Remove the outgoing character contribution, multiply by base, add the incoming character, and normalize by modulus.",
+        "activeRange": [
+          0,
+          3
+        ],
+        "matchedRange": [
+          0,
+          3
+        ]
+      },
+      {
+        "phase": "slide",
+        "title": "Update rolling hash",
+        "note": "Remove a and add c for the next window.",
+        "ruleLabel": "String invariant",
+        "rule": "Remove the outgoing character contribution, multiply by base, add the incoming character, and normalize by modulus.",
         "activeRange": [
           1,
           4
@@ -153,30 +169,18 @@ export const algorithmPage = {
         "matchedRange": []
       },
       {
-        "phase": "Character",
-        "title": "Update on current char",
-        "note": "One character changes the active string state.",
-        "ruleLabel": "Rabin-Karp Algorithm invariant",
-        "rule": "Runs the counted loop (let index = 0; index <= text.length - size; index += 1) so each visual step follows one code-controlled iteration.",
+        "phase": "window 7",
+        "title": "Verify second match",
+        "note": "The final window abra also verifies.",
+        "ruleLabel": "String invariant",
+        "rule": "Remove the outgoing character contribution, multiply by base, add the incoming character, and normalize by modulus.",
         "activeRange": [
-          2,
-          5
-        ],
-        "matchedRange": []
-      },
-      {
-        "phase": "Result",
-        "title": "Return string answer",
-        "note": "Matches or best values are returned after the scan.",
-        "ruleLabel": "Rabin-Karp Algorithm invariant",
-        "rule": "Returns matches, the final value maintained by Rabin-Karp Algorithm's code path.",
-        "activeRange": [
-          3,
-          6
+          7,
+          10
         ],
         "matchedRange": [
-          0,
-          3
+          7,
+          10
         ]
       }
     ]

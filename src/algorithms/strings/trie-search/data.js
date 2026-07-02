@@ -12,242 +12,177 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/trie-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Trie-Based Search is a Strings technique focused on matches or string result.",
-  "problem": "Trie-Based Search turns character comparisons into reusable state so the string is not rechecked from scratch.",
-  "concept": "Trie-Based Search is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on character path.",
-  "logicSummary": "Start at the root, maintain character path, follow or create the child link for the current character, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses character path to decide the next child, rotation, or returned value.",
-  "codeInsight": "String algorithms are safest when index movement is explicit and every mismatch has a defined fallback.",
-  "realLifeExample": "Trie-Based Search appears when the input is text and pattern and the required result is matches or string result.",
-  "whenToUse": "Use Trie-Based Search when a problem matches the Strings pattern and the expected state changes match a prefix tree dry run.",
-  "memoryTrick": "Trie-Based Search: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Trie-Based Search is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Trie-Based Search is taught with its own string state, transition, code trace, and stopping rule.",
+  "problem": "Store words in a prefix tree and answer whether a query word exists exactly.",
+  "concept": "A trie shares common prefixes. Each character chooses one child edge, and the terminal marker decides whether the path is a complete word.",
+  "logicSummary": "Insert each word character by character, mark terminal nodes, then walk the query path from the root.",
+  "transitionSummary": "Every query character must have a child edge; missing edge returns false, and the final node must be terminal.",
+  "codeInsight": "Prefix existence is not the same as word existence. The terminal marker is what makes cart true while car can be checked separately.",
+  "realLifeExample": "Use tries for autocomplete, dictionary lookup, prefix filters, and routing by character tokens.",
+  "whenToUse": "Use trie search when many words share prefixes or many repeated prefix queries are expected.",
+  "memoryTrick": "Characters are edges; terminal means complete word.",
+  "visualizerCaption": "The trace follows the query through the prefix tree and checks the terminal marker.",
   "logicSteps": [
     {
-      "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "title": "Create root",
+      "text": "Start with an empty object representing the root node."
     },
     {
-      "title": "Read node state",
-      "text": "Inspect character path."
+      "title": "Insert words",
+      "text": "Create child nodes for each character along every word path."
     },
     {
-      "title": "Move/combine",
-      "text": "follow or create the child link for the current character."
+      "title": "Walk query",
+      "text": "Follow the query characters one by one."
     },
     {
-      "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "title": "Check terminal",
+      "text": "Return true only if the final node is marked as a complete word."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "words",
+      "purpose": "Dictionary words inserted into the trie."
     },
     {
-      "name": "trie node and child links",
-      "purpose": "The current prefix node and the links followed or created for each character."
+      "name": "root",
+      "purpose": "Starting node of the prefix tree."
     },
     {
-      "name": "match result",
-      "purpose": "The value produced by trieSearch after the maintained state reaches the stop rule."
+      "name": "node",
+      "purpose": "Current node while inserting or searching."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Each transition consumes one character and updates the prefix, hash, trie, or palindrome state. Stop when no valid work remains or the answer is known."
+      "name": "$",
+      "purpose": "Terminal marker for complete words."
     }
   ],
   "dryRun": [
     {
-      "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
-      "activeLine": 5,
-      "codeInsight": "Defines trieSearch and names the input words, query; edits to those inputs change the visual state and output."
+      "label": "Insert",
+      "title": "Insert car, cart, dog",
+      "note": "car and cart share c -> a -> r before cart adds t.",
+      "activeLine": 4,
+      "codeInsight": "The insertion loop creates only missing child nodes."
     },
     {
-      "label": "Node state",
-      "title": "Read character path",
-      "note": "The current node controls the next step.",
-      "activeLine": 6,
-      "codeInsight": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly."
+      "label": "Query c",
+      "title": "Follow c",
+      "note": "The root has a c child, so search can continue.",
+      "activeLine": 11,
+      "codeInsight": "A missing child would return false immediately."
     },
     {
-      "label": "Child step",
-      "title": "Follow or create the child link for the current character",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly."
+      "label": "Query cart",
+      "title": "Finish path",
+      "note": "c -> a -> r -> t exists.",
+      "activeLine": 12,
+      "codeInsight": "node moves down one trie edge per character."
     },
     {
-      "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 17,
-      "codeInsight": "Returns Boolean(node.$), the final value maintained by Trie-Based Search's code path."
+      "label": "Terminal",
+      "title": "Check word marker",
+      "note": "The final node has $, so cart is a complete stored word.",
+      "activeLine": 14,
+      "codeInsight": "The terminal marker distinguishes words from prefixes."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "O(total inserted characters + query length).",
+    "space": "O(total inserted characters)."
   },
   "quiz": {
-    "question": "Which state choice keeps Trie-Based Search correct?",
+    "question": "Which state keeps Trie-Based Search correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and prefix/hash state and update it only through Trie-Based Search's transition.",
+        "text": "Track trie nodes and the terminal marker, not just whether the prefix path exists.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another string algorithm's state names without matching its invariant.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Trie-Based Search stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Trie-Based Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Trie-Based Search works because the page state follows that exact string invariant.",
+    "incorrectText": "Not quite. Trie-Based Search needs its own string state and stop condition."
   },
   "categorySlug": "strings",
   "algorithmSlug": "trie-search",
   "runnerInput": [
     [
-      "cat",
-      "car"
+      "car",
+      "cart",
+      "dog"
     ],
-    "car"
+    "cart"
   ],
   "animation": {
-    "type": "tree-operation",
-    "title": "Trie-Based Search tree state",
-    "nodes": [
-      {
-        "id": "8",
-        "label": "8",
-        "x": 340,
-        "y": 58
-      },
-      {
-        "id": "4",
-        "label": "4",
-        "x": 190,
-        "y": 150
-      },
-      {
-        "id": "12",
-        "label": "12",
-        "x": 490,
-        "y": 150
-      },
-      {
-        "id": "2",
-        "label": "2",
-        "x": 110,
-        "y": 255
-      },
-      {
-        "id": "6",
-        "label": "6",
-        "x": 270,
-        "y": 255
-      },
-      {
-        "id": "10",
-        "label": "10",
-        "x": 420,
-        "y": 255
-      },
-      {
-        "id": "14",
-        "label": "14",
-        "x": 570,
-        "y": 255
-      }
-    ],
-    "edges": [
-      {
-        "from": "8",
-        "to": "4"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
-      {
-        "from": "4",
-        "to": "2"
-      },
-      {
-        "from": "4",
-        "to": "6"
-      },
-      {
-        "from": "12",
-        "to": "10"
-      },
-      {
-        "from": "12",
-        "to": "14"
-      }
-    ],
+    "type": "string-flow",
+    "static": true,
+    "title": "Trie-Based Search trace",
+    "ruleLabel": "String invariant",
+    "rule": "Every query character must have a child edge; missing edge returns false, and the final node must be terminal.",
+    "text": "cart",
+    "pattern": "car, cart, dog",
     "steps": [
       {
-        "phase": "Root",
-        "title": "Check current node",
-        "note": "The code starts by handling missing nodes or the current root.",
-        "ruleLabel": "Trie-Based Search invariant",
-        "rule": "Defines trieSearch and names the input words, query; edits to those inputs change the visual state and output.",
-        "activeNode": "8",
-        "targetNode": "4",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
+        "phase": "insert",
+        "title": "Build shared prefix",
+        "note": "car and cart share c-a-r.",
+        "ruleLabel": "String invariant",
+        "rule": "Shared prefixes reuse the same trie nodes.",
+        "activeRange": [
+          0,
+          2
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "c",
+        "title": "Root has c",
+        "note": "The first query edge exists.",
+        "ruleLabel": "String invariant",
+        "rule": "Every query character must have a child edge; missing edge returns false, and the final node must be terminal.",
+        "activeRange": [
+          0,
+          0
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "car",
+        "title": "Continue through a and r",
+        "note": "The path remains valid.",
+        "ruleLabel": "String invariant",
+        "rule": "Every query character must have a child edge; missing edge returns false, and the final node must be terminal.",
+        "activeRange": [
+          0,
+          2
+        ],
+        "matchedRange": []
+      },
+      {
+        "phase": "cart",
+        "title": "Terminal node found",
+        "note": "The t node is marked as a full word.",
+        "ruleLabel": "String invariant",
+        "rule": "Every query character must have a child edge; missing edge returns false, and the final node must be terminal.",
+        "activeRange": [
+          0,
+          3
+        ],
+        "matchedRange": [
+          0,
+          3
         ]
-      },
-      {
-        "phase": "Node state",
-        "title": "Read character path",
-        "note": "The current node controls the next step.",
-        "ruleLabel": "Trie-Based Search invariant",
-        "rule": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly.",
-        "activeNode": "4",
-        "targetNode": "12",
-        "replacementNode": "",
-        "mutedNodes": [
-          "6",
-          "10",
-          "14"
-        ]
-      },
-      {
-        "phase": "Child step",
-        "title": "Follow or create the child link for the current character",
-        "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-        "ruleLabel": "Trie-Based Search invariant",
-        "rule": "Builds root as a structured sample object that the tree, graph, or map visualizer can render directly.",
-        "activeNode": "12",
-        "targetNode": "2",
-        "replacementNode": "2",
-        "mutedNodes": []
-      },
-      {
-        "phase": "Tree result",
-        "title": "Return result",
-        "note": "The final traversal, path, measurement, or tree state is returned.",
-        "ruleLabel": "Trie-Based Search invariant",
-        "rule": "Returns Boolean(node.$), the final value maintained by Trie-Based Search's code path.",
-        "activeNode": "2",
-        "targetNode": "6",
-        "replacementNode": "6",
-        "mutedNodes": []
       }
     ]
   }

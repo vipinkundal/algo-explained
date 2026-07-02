@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/dp-on-grids/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "DP on Grids is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "DP on Grids fills each cell from previously reachable neighboring cells.",
-  "concept": "DP on Grids is useful when the same subproblems appear again and storing answers prevents repeated work. Use this when you can define a state, base cases, and a recurrence.",
-  "logicSummary": "Define what one DP state means, initialize base cases, fill dependent states, and read the target state.",
-  "transitionSummary": "Each step computes one state from already-solved smaller or earlier states.",
-  "codeInsight": "The DP table shape is the algorithm: every index in the code corresponds to a named subproblem.",
-  "realLifeExample": "DP on Grids appears when overlapping subproblems would otherwise be recomputed.",
-  "whenToUse": "Use DP on Grids when the recurrence and base cases match the problem statement.",
-  "memoryTrick": "DP on Grids: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "DP on Grids is shown as a dependency-ordered DP fill. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "DP on Grids is taught with its own DP state definition, recurrence, code trace, and answer cell.",
+  "problem": "Count paths from the top-left to bottom-right of a grid while blocked cells cannot be used.",
+  "concept": "Grid DP defines dp[row][col] as the number of ways to reach that cell from allowed top and left predecessors.",
+  "logicSummary": "Scan cells in row-major order, skip obstacles, seed the start cell, and add ways from top plus left.",
+  "transitionSummary": "For each open cell, dp[row][col] = ways from above + ways from left.",
+  "codeInsight": "Row-major order is valid because the top and left dependencies have already been computed.",
+  "realLifeExample": "Use it for path counting, robot movement, grid scoring, and blocked-map route planning.",
+  "whenToUse": "Use DP on Grids when each cell depends on nearby previously solved cells.",
+  "memoryTrick": "A grid cell inherits ways from top and left.",
+  "visualizerCaption": "The trace fills a path-count table cell by cell while skipping obstacles.",
   "logicSteps": [
     {
-      "title": "Define state",
-      "text": "Name exactly what one cell or entry means."
+      "title": "Define dp[row][col]",
+      "text": "Number of valid paths to that cell."
     },
     {
-      "title": "Set base cases",
-      "text": "Fill answers that need no recurrence."
+      "title": "Seed start",
+      "text": "The start cell has one path if it is open."
     },
     {
-      "title": "Apply recurrence",
-      "text": "Compute each state from solved dependencies."
+      "title": "Skip blockers",
+      "text": "Blocked cells contribute zero paths."
     },
     {
-      "title": "Read target",
-      "text": "Return the state requested by the problem."
+      "title": "Add dependencies",
+      "text": "Open cells add top and left path counts."
     }
   ],
   "variables": [
     {
-      "name": "input parameters",
-      "purpose": "The values that define the DP problem."
+      "name": "grid",
+      "purpose": "0 means open, 1 means blocked."
     },
     {
-      "name": "dp table",
-      "purpose": "Stored answers for subproblems."
+      "name": "row, col",
+      "purpose": "Current cell being filled."
     },
     {
-      "name": "target state",
-      "purpose": "The final state returned as the answer."
+      "name": "dp[row][col]",
+      "purpose": "Number of paths to current cell."
     },
     {
-      "name": "states remain",
-      "purpose": "Continue until every dependency needed by the answer is filled."
+      "name": "top, left",
+      "purpose": "Already-computed predecessor cells."
     }
   ],
   "dryRun": [
     {
-      "label": "State meaning",
-      "title": "Define DP cell",
-      "note": "The code first needs a precise subproblem meaning.",
+      "label": "Start",
+      "title": "dp[0][0] = 1",
+      "note": "There is one way to stand at the open start.",
       "activeLine": 8,
-      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
+      "codeInsight": "The start cell is the base case."
     },
     {
-      "label": "Base case",
-      "title": "Seed known answers",
-      "note": "Base values stop the recurrence from falling through.",
-      "activeLine": 5,
-      "codeInsight": "Defines dpOnGrids and names the input grid; edits to those inputs change the visual state and output."
+      "label": "First row",
+      "title": "Carry paths right",
+      "note": "Open cells in the first row inherit from the left.",
+      "activeLine": 9,
+      "codeInsight": "Missing top values contribute 0."
     },
     {
-      "label": "Recurrence",
-      "title": "Fill next state",
-      "note": "The transition combines previously solved states.",
-      "activeLine": 8,
-      "codeInsight": "Prepares dp with a default value so unresolved positions already have the correct fallback answer."
+      "label": "Block",
+      "title": "Obstacle at center",
+      "note": "A blocked cell is skipped and stays 0.",
+      "activeLine": 7,
+      "codeInsight": "continue prevents blocked cells from receiving paths."
     },
     {
       "label": "Target",
-      "title": "Return requested state",
-      "note": "The answer is read from the final DP state.",
-      "activeLine": 16,
-      "codeInsight": "Returns dp[rows - 1]?.[cols - 1] || 0, the final value maintained by DP on Grids's code path."
+      "title": "Bottom-right gets 2",
+      "note": "The target combines paths from top and left.",
+      "activeLine": 11,
+      "codeInsight": "The final cell is the answer."
     }
   ],
   "complexity": {
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(rows * cols)."
   },
   "quiz": {
-    "question": "Which state choice keeps DP on Grids correct?",
+    "question": "Which state keeps DP on Grids correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track dp table and update it only through DP on Grids' transition.",
+        "text": "Define each cell by top and left dependencies and fill in dependency order.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another DP recurrence without matching the state definition.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Read the answer before the required dependency cells have been filled.",
         "correct": false
       }
     ],
-    "correctText": "Correct. DP on Grids stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. DP on Grids needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. DP on Grids works when its table meaning and recurrence stay aligned.",
+    "incorrectText": "Not quite. DP on Grids needs its own state, recurrence, and answer cell."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "dp-on-grids",
@@ -120,9 +120,16 @@ export const algorithmPage = {
     [
       [
         0,
+        0,
         0
       ],
       [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
         0,
         0
       ]
@@ -130,26 +137,34 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "matrix-flow",
-    "title": "DP on Grids matrix state",
-    "ruleLabel": "Grid rule",
-    "rule": "Each step computes one state from already-solved smaller or earlier states.",
+    "static": true,
+    "title": "DP on Grids DP table",
+    "ruleLabel": "DP recurrence",
+    "rule": "For each open cell, dp[row][col] = ways from above + ways from left.",
     "matrix": [
       [
-        0,
-        0
+        1,
+        1,
+        1
       ],
       [
+        1,
         0,
-        0
+        1
+      ],
+      [
+        1,
+        1,
+        2
       ]
     ],
     "steps": [
       {
-        "phase": "State meaning",
-        "title": "Define DP cell",
-        "note": "The code first needs a precise subproblem meaning.",
-        "ruleLabel": "DP on Grids invariant",
-        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
+        "phase": "start",
+        "title": "Seed start cell",
+        "note": "dp[0][0] = 1.",
+        "ruleLabel": "DP recurrence",
+        "rule": "For each open cell, dp[row][col] = ways from above + ways from left.",
         "activeCells": [
           [
             0,
@@ -164,15 +179,19 @@ export const algorithmPage = {
         ]
       },
       {
-        "phase": "Base case",
-        "title": "Seed known answers",
-        "note": "Base values stop the recurrence from falling through.",
-        "ruleLabel": "DP on Grids invariant",
-        "rule": "Defines dpOnGrids and names the input grid; edits to those inputs change the visual state and output.",
+        "phase": "first row",
+        "title": "Fill right from left",
+        "note": "Each open first-row cell has one path.",
+        "ruleLabel": "DP recurrence",
+        "rule": "For each open cell, dp[row][col] = ways from above + ways from left.",
         "activeCells": [
           [
             0,
             1
+          ],
+          [
+            0,
+            2
           ]
         ],
         "visitedCells": [
@@ -182,65 +201,69 @@ export const algorithmPage = {
           ],
           [
             0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      {
+        "phase": "obstacle",
+        "title": "Center is blocked",
+        "note": "The blocked center stays 0.",
+        "ruleLabel": "DP recurrence",
+        "rule": "For each open cell, dp[row][col] = ways from above + ways from left.",
+        "activeCells": [
+          [
+            1,
+            1
+          ]
+        ],
+        "visitedCells": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
             1
           ]
         ]
       },
       {
-        "phase": "Recurrence",
-        "title": "Fill next state",
-        "note": "The transition combines previously solved states.",
-        "ruleLabel": "DP on Grids invariant",
-        "rule": "Prepares dp with a default value so unresolved positions already have the correct fallback answer.",
+        "phase": "target",
+        "title": "Target combines top and left",
+        "note": "dp[2][2] = 1 + 1 = 2.",
+        "ruleLabel": "DP recurrence",
+        "rule": "For each open cell, dp[row][col] = ways from above + ways from left.",
         "activeCells": [
           [
-            1,
-            0
+            2,
+            2
           ]
         ],
         "visitedCells": [
           [
             0,
-            0
-          ],
-          [
-            0,
-            1
+            2
           ],
           [
             1,
-            0
-          ]
-        ]
-      },
-      {
-        "phase": "Target",
-        "title": "Return requested state",
-        "note": "The answer is read from the final DP state.",
-        "ruleLabel": "DP on Grids invariant",
-        "rule": "Returns dp[rows - 1]?.[cols - 1] || 0, the final value maintained by DP on Grids's code path.",
-        "activeCells": [
-          [
-            1,
-            1
-          ]
-        ],
-        "visitedCells": [
-          [
-            0,
-            0
+            2
           ],
           [
-            0,
+            2,
             1
           ],
           [
-            1,
-            0
-          ],
-          [
-            1,
-            1
+            2,
+            2
           ]
         ]
       }

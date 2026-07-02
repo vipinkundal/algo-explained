@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "search",
   "codePath": "./src/algorithms/searching/binary-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Binary Search is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Binary Search repeatedly halves a sorted search range using the middle value.",
-  "concept": "Binary Search is useful when sorted order lets you discard a whole half of the search space. Use this when the input is sorted or the answer predicate changes only once.",
-  "logicSummary": "Maintain low/high boundaries, test the middle, and keep only the half that can still contain the answer.",
-  "transitionSummary": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
-  "codeInsight": "Every branch must shrink the search window, otherwise binary search can loop forever.",
-  "realLifeExample": "Use it for sorted arrays, lookup tables, and monotonic answer spaces.",
-  "whenToUse": "Use Binary Search when the range is sorted or the predicate is monotonic.",
-  "memoryTrick": "Binary Search: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Binary Search is shown as a shrinking boundary search. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Binary Search is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Find a target inside a sorted array by repeatedly halving the candidate range.",
+  "concept": "Binary Search relies on sorted order: one midpoint comparison proves an entire half impossible.",
+  "logicSummary": "Keep low and high around the remaining range, test mid, and discard the half that cannot contain target.",
+  "transitionSummary": "If array[mid] is too small move low to mid + 1; if too large move high to mid - 1; equality returns mid.",
+  "codeInsight": "Every branch shrinks the window, so the loop cannot repeat the same mid forever.",
+  "realLifeExample": "Use it for sorted lookup tables, dictionary pages, IDs, timestamps, and monotonic predicates.",
+  "whenToUse": "Use Binary Search only when the array is sorted or the predicate changes direction once.",
+  "memoryTrick": "Middle decides which half survives.",
+  "visualizerCaption": "Binary Search is shown with the exact boundary, probe, or scan state used by the code.",
   "logicSteps": [
     {
-      "title": "Read sorted input",
-      "text": "Confirm the array or predicate has monotonic order."
+      "title": "low = 0, high = 6",
+      "text": "The target 13 can be anywhere in the sorted range."
     },
     {
-      "title": "Set boundaries",
-      "text": "Place low and high around every candidate."
+      "title": "Compare 7",
+      "text": "7 is smaller than 13, so the left half cannot contain 13."
     },
     {
-      "title": "Compare middle",
-      "text": "Use mid to decide which half is impossible."
+      "title": "Move low to 4",
+      "text": "Only indices 4 through 6 remain."
     },
     {
-      "title": "Return boundary",
-      "text": "Return the found index or final insertion boundary."
+      "title": "Compare 13",
+      "text": "The new midpoint equals target, so return its index."
     }
   ],
   "variables": [
     {
       "name": "array, target",
-      "purpose": "A sorted array and the value to find."
+      "purpose": "Sorted values and the value to locate."
     },
     {
-      "name": "low, high, mid",
-      "purpose": "The current search window and its midpoint."
+      "name": "low, high",
+      "purpose": "Inclusive candidate range."
     },
     {
-      "name": "index",
-      "purpose": "The target index, or -1 when absent."
+      "name": "mid",
+      "purpose": "Probe index in the current range."
     },
     {
       "name": "low <= high",
-      "purpose": "The loop runs while the window is non-empty."
+      "purpose": "The loop runs while candidates remain."
     }
   ],
   "dryRun": [
     {
-      "label": "Sorted input",
-      "title": "Read the ordered search space",
-      "note": "The code starts from a range where binary decisions are valid.",
+      "label": "Full range",
+      "title": "low = 0, high = 6",
+      "note": "The target 13 can be anywhere in the sorted range.",
+      "activeLine": 2,
+      "codeInsight": "low and high define the inclusive search window."
+    },
+    {
+      "label": "mid = 3",
+      "title": "Compare 7",
+      "note": "7 is smaller than 13, so the left half cannot contain 13.",
       "activeLine": 5,
-      "codeInsight": "Defines binarySearch and names the input array, target; edits to those inputs change the visual state and output."
+      "codeInsight": "mid is computed from the current window."
     },
     {
-      "label": "low / high",
-      "title": "Open the candidate window",
-      "note": "low and high mark every position that may still answer.",
+      "label": "Right half",
+      "title": "Move low to 4",
+      "note": "Only indices 4 through 6 remain.",
+      "activeLine": 7,
+      "codeInsight": "low = mid + 1 discards mid and everything left of it."
+    },
+    {
+      "label": "Found",
+      "title": "Compare 13",
+      "note": "The new midpoint equals target, so return its index.",
       "activeLine": 6,
-      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
-    },
-    {
-      "label": "mid check",
-      "title": "Compare the midpoint",
-      "note": "The midpoint decides which half is removed.",
-      "activeLine": 10,
-      "codeInsight": "Checks array[mid] === target; only the branch that preserves Binary Search's invariant is allowed to change state."
-    },
-    {
-      "label": "Return",
-      "title": "Emit index or boundary",
-      "note": "The loop ends with a match or the collapsed boundary.",
-      "activeLine": 14,
-      "codeInsight": "Returns -1, the final value maintained by Binary Search's code path."
+      "codeInsight": "Equality is the only successful stop condition."
     }
   ],
   "complexity": {
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Binary Search correct?",
+    "question": "Which state keeps Binary Search correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track search window and update it only through Binary Search's transition.",
+        "text": "Use the page's own search boundary or scan state and update it only through the listed transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another search algorithm's comparison rule without checking the invariant.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Stop before the algorithm-specific boundary or scan condition is resolved.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Binary Search stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Binary Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Binary Search works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Binary Search needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "searching",
   "algorithmSlug": "binary-search",
@@ -120,9 +120,13 @@ export const algorithmPage = {
     [
       1,
       3,
-      5
+      5,
+      7,
+      9,
+      13,
+      15
     ],
-    3
+    13
   ],
   "relatedLinks": [
     {
@@ -133,88 +137,110 @@ export const algorithmPage = {
   ],
   "animation": {
     "type": "array-flow",
-    "title": "Binary Search array state",
-    "ruleLabel": "Array invariant",
-    "rule": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
+    "static": true,
+    "title": "Binary Search trace",
+    "ruleLabel": "Search invariant",
+    "rule": "If array[mid] is too small move low to mid + 1; if too large move high to mid - 1; equality returns mid.",
     "values": [
       1,
       3,
-      5
+      5,
+      7,
+      9,
+      13,
+      15
     ],
     "steps": [
       {
-        "phase": "Sorted input",
-        "title": "Read the ordered search space",
-        "note": "The code starts from a range where binary decisions are valid.",
-        "ruleLabel": "Binary Search invariant",
-        "rule": "Defines binarySearch and names the input array, target; edits to those inputs change the visual state and output.",
+        "phase": "[0, 6]",
+        "title": "Start full range",
+        "note": "Every index is a candidate.",
+        "ruleLabel": "Search invariant",
+        "rule": "If array[mid] is too small move low to mid + 1; if too large move high to mid - 1; equality returns mid.",
         "activeIndices": [
-          0
+          3
         ],
         "sortedIndices": [],
         "mutedIndices": [],
         "window": [
           0,
-          1
+          6
         ],
-        "primaryLabel": "Sorted input",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+        "primaryLabel": "[0, 6]",
+        "secondaryLabel": "If array[mid] is too small move low to mid + 1; if too large move high to mid - 1; equality returns mid."
       },
       {
-        "phase": "low / high",
-        "title": "Open the candidate window",
-        "note": "low and high mark every position that may still answer.",
-        "ruleLabel": "Binary Search invariant",
-        "rule": "Initializes low as mutable state; later branches update it as the search window or traversal changes.",
+        "phase": "mid = 3",
+        "title": "7 is too small",
+        "note": "Discard indices 0 through 3.",
+        "ruleLabel": "Search invariant",
+        "rule": "If array[mid] is too small move low to mid + 1; if too large move high to mid - 1; equality returns mid.",
         "activeIndices": [
-          1,
-          2
+          3
         ],
         "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
+        "mutedIndices": [
           0,
-          2
-        ],
-        "primaryLabel": "low / high",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
-      },
-      {
-        "phase": "mid check",
-        "title": "Compare the midpoint",
-        "note": "The midpoint decides which half is removed.",
-        "ruleLabel": "Binary Search invariant",
-        "rule": "Checks array[mid] === target; only the branch that preserves Binary Search's invariant is allowed to change state.",
-        "activeIndices": [
-          2
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
           1,
-          2
-        ],
-        "primaryLabel": "mid check",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
-      },
-      {
-        "phase": "Return",
-        "title": "Emit index or boundary",
-        "note": "The loop ends with a match or the collapsed boundary.",
-        "ruleLabel": "Binary Search invariant",
-        "rule": "Returns -1, the final value maintained by Binary Search's code path.",
-        "activeIndices": [
           2,
-          2
+          3
+        ],
+        "window": [
+          0,
+          6
+        ],
+        "primaryLabel": "mid = 3",
+        "secondaryLabel": "If array[mid] is too small move low to mid + 1; if too large move high to mid - 1; equality returns mid."
+      },
+      {
+        "phase": "[4, 6]",
+        "title": "Search right half",
+        "note": "The next midpoint is index 5.",
+        "ruleLabel": "Search invariant",
+        "rule": "If array[mid] is too small move low to mid + 1; if too large move high to mid - 1; equality returns mid.",
+        "activeIndices": [
+          5
         ],
         "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
+        "mutedIndices": [
+          0,
           1,
-          2
+          2,
+          3
         ],
-        "primaryLabel": "Return",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+        "window": [
+          4,
+          6
+        ],
+        "primaryLabel": "[4, 6]",
+        "secondaryLabel": "If array[mid] is too small move low to mid + 1; if too large move high to mid - 1; equality returns mid."
+      },
+      {
+        "phase": "return 5",
+        "title": "13 found",
+        "note": "array[5] equals the target.",
+        "ruleLabel": "Search invariant",
+        "rule": "If array[mid] is too small move low to mid + 1; if too large move high to mid - 1; equality returns mid.",
+        "activeIndices": [
+          5
+        ],
+        "sortedIndices": [
+          5
+        ],
+        "mutedIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "window": [
+          5,
+          5
+        ],
+        "primaryLabel": "return 5",
+        "secondaryLabel": "If array[mid] is too small move low to mid + 1; if too large move high to mid - 1; equality returns mid."
       }
     ]
   }

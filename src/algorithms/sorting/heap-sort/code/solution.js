@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Heap Sort
 // Route: /algorithms/sorting/heap-sort
 

@@ -204,6 +204,7 @@ function normalizeName(value) {
 
 function createAnimation(page, runInput) {
   const base = page.animation || {};
+  if (base.static === true) return base;
   const type = chooseAnimationType(page, base);
 
   if (type === "array-flow") return createArrayAnimation(page, runInput, base);

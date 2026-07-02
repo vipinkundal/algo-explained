@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // Longest Common Subsequence
 // Route: /algorithms/dynamic-programming/longest-common-subsequence
 

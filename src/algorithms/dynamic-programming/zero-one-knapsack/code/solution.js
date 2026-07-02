@@ -1,4 +1,3 @@
-// SPECIFIC ALGORITHM SOLUTION
 // 0/1 Knapsack
 // Route: /algorithms/dynamic-programming/zero-one-knapsack
 

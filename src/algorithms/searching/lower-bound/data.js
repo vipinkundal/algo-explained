@@ -12,80 +12,80 @@ export const algorithmPage = {
   "icon": "search",
   "codePath": "./src/algorithms/searching/lower-bound/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Lower Bound is taught here with its own state, transition, code trace, and stopping rule.",
-  "problem": "Lower Bound finds the first sorted position whose value is greater than or equal to the target.",
-  "concept": "Lower Bound is useful when sorted order lets you discard a whole half of the search space. Use this when the input is sorted or the answer predicate changes only once.",
-  "logicSummary": "Maintain low/high boundaries, test the middle, and keep only the half that can still contain the answer.",
-  "transitionSummary": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
-  "codeInsight": "Using high = mid keeps a valid candidate in the range until low is the answer.",
-  "realLifeExample": "Use it for insertion positions, frequency ranges, and first-true binary-search predicates.",
-  "whenToUse": "Use Lower Bound when you need the first position that can hold target without breaking order.",
-  "memoryTrick": "Lower Bound: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Lower Bound is shown as a shrinking boundary search. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Lower Bound is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "problem": "Find the first sorted position whose value is greater than or equal to target.",
+  "concept": "Lower Bound keeps the first possible answer inside a half-open range until low and high meet.",
+  "logicSummary": "Search [low, high), discard values strictly less than target, and keep mid when it may be the answer.",
+  "transitionSummary": "array[mid] < target moves low to mid + 1; otherwise high becomes mid to preserve that candidate.",
+  "codeInsight": "The key detail is high = mid, not mid - 1, because mid may already be the first valid index.",
+  "realLifeExample": "Use it for insertion points, first true predicates, and counting duplicates with upper bound.",
+  "whenToUse": "Use Lower Bound when you need the first value not less than target.",
+  "memoryTrick": "Lower bound keeps equals; it only throws away values that are too small.",
+  "visualizerCaption": "Lower Bound is shown with the exact boundary, probe, or scan state used by the code.",
   "logicSteps": [
     {
-      "title": "Read sorted input",
-      "text": "Confirm the array or predicate has monotonic order."
+      "title": "Open half range",
+      "text": "The answer is somewhere before high."
     },
     {
-      "title": "Set boundaries",
-      "text": "Place low and high around every candidate."
+      "title": "Value 5 is not less than 5",
+      "text": "Keep mid by moving high to 3."
     },
     {
-      "title": "Compare middle",
-      "text": "Use mid to decide which half is impossible."
+      "title": "Value 2 is too small",
+      "text": "Move low to 2."
     },
     {
-      "title": "Return boundary",
-      "text": "Return the found index or final insertion boundary."
+      "title": "First 5",
+      "text": "low and high meet at the first valid index."
     }
   ],
   "variables": [
     {
       "name": "array, target",
-      "purpose": "A sorted array and boundary value."
+      "purpose": "Sorted values and boundary target."
     },
     {
       "name": "low, high",
-      "purpose": "A half-open candidate range."
+      "purpose": "Half-open candidate range [low, high)."
     },
     {
-      "name": "insertion index",
-      "purpose": "The first index with value >= target."
+      "name": "mid",
+      "purpose": "Candidate tested during each loop."
     },
     {
       "name": "low < high",
-      "purpose": "The loop continues until the candidate range collapses."
+      "purpose": "Stop when one insertion point remains."
     }
   ],
   "dryRun": [
     {
-      "label": "Sorted input",
-      "title": "Read the ordered search space",
-      "note": "The code starts from a range where binary decisions are valid.",
-      "activeLine": 5,
-      "codeInsight": "Defines lowerBound and names the input array, target; edits to those inputs change the visual state and output."
+      "label": "[0, 6)",
+      "title": "Open half range",
+      "note": "The answer is somewhere before high.",
+      "activeLine": 2,
+      "codeInsight": "high starts at array.length because insertion can be after the last value."
     },
     {
-      "label": "low / high",
-      "title": "Open the candidate window",
-      "note": "low and high mark every position that may still answer.",
+      "label": "mid = 3",
+      "title": "Value 5 is not less than 5",
+      "note": "Keep mid by moving high to 3.",
+      "activeLine": 7,
+      "codeInsight": "The candidate remains in the range."
+    },
+    {
+      "label": "mid = 1",
+      "title": "Value 2 is too small",
+      "note": "Move low to 2.",
       "activeLine": 6,
-      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
+      "codeInsight": "Everything at or before mid is too small."
     },
     {
-      "label": "mid check",
-      "title": "Compare the midpoint",
-      "note": "The midpoint decides which half is removed.",
-      "activeLine": 10,
-      "codeInsight": "When array[mid] < target is true, low = mid + 1; the animation should show that branch's state update immediately."
-    },
-    {
-      "label": "Return",
-      "title": "Emit index or boundary",
-      "note": "The loop ends with a match or the collapsed boundary.",
-      "activeLine": 13,
-      "codeInsight": "Returns low, the final value maintained by Lower Bound's code path."
+      "label": "return 2",
+      "title": "First 5",
+      "note": "low and high meet at the first valid index.",
+      "activeLine": 9,
+      "codeInsight": "low is the lower-bound insertion point."
     }
   ],
   "complexity": {
@@ -93,125 +93,142 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Lower Bound correct?",
+    "question": "Which state keeps Lower Bound correct?",
     "options": [
       {
         "key": "A",
-        "text": "Track search window and update it only through Lower Bound's transition.",
+        "text": "Use the page's own search boundary or scan state and update it only through the listed transition.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Reuse another search algorithm's comparison rule without checking the invariant.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "Stop before the algorithm-specific boundary or scan condition is resolved.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Lower Bound stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Lower Bound needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Lower Bound works because that state and transition match the algorithm.",
+    "incorrectText": "Not quite. Lower Bound needs its own state and stop condition instead of borrowed page logic."
   },
   "categorySlug": "searching",
   "algorithmSlug": "lower-bound",
   "runnerInput": [
     [
       1,
-      3,
-      3,
-      5
+      2,
+      5,
+      5,
+      9,
+      12
     ],
-    3
+    5
   ],
   "animation": {
     "type": "array-flow",
-    "title": "Lower Bound array state",
-    "ruleLabel": "Array invariant",
-    "rule": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
+    "static": true,
+    "title": "Lower Bound trace",
+    "ruleLabel": "Search invariant",
+    "rule": "array[mid] < target moves low to mid + 1; otherwise high becomes mid to preserve that candidate.",
     "values": [
       1,
-      3,
-      3,
-      5
+      2,
+      5,
+      5,
+      9,
+      12
     ],
     "steps": [
       {
-        "phase": "Sorted input",
-        "title": "Read the ordered search space",
-        "note": "The code starts from a range where binary decisions are valid.",
-        "ruleLabel": "Lower Bound invariant",
-        "rule": "Defines lowerBound and names the input array, target; edits to those inputs change the visual state and output.",
+        "phase": "[0, 6)",
+        "title": "Start full insertion range",
+        "note": "Any position from 0 to 6 can be the boundary.",
+        "ruleLabel": "Search invariant",
+        "rule": "array[mid] < target moves low to mid + 1; otherwise high becomes mid to preserve that candidate.",
         "activeIndices": [
-          0
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
-          0,
-          1
-        ],
-        "primaryLabel": "Sorted input",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
-      },
-      {
-        "phase": "low / high",
-        "title": "Open the candidate window",
-        "note": "low and high mark every position that may still answer.",
-        "ruleLabel": "Lower Bound invariant",
-        "rule": "Initializes low as mutable state; later branches update it as the search window or traversal changes.",
-        "activeIndices": [
-          1,
-          2
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
-          0,
-          2
-        ],
-        "primaryLabel": "low / high",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
-      },
-      {
-        "phase": "mid check",
-        "title": "Compare the midpoint",
-        "note": "The midpoint decides which half is removed.",
-        "ruleLabel": "Lower Bound invariant",
-        "rule": "When array[mid] < target is true, low = mid + 1; the animation should show that branch's state update immediately.",
-        "activeIndices": [
-          2
-        ],
-        "sortedIndices": [],
-        "mutedIndices": [],
-        "window": [
-          1,
           3
         ],
-        "primaryLabel": "mid check",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+        "sortedIndices": [],
+        "mutedIndices": [],
+        "window": [
+          0,
+          5
+        ],
+        "primaryLabel": "[0, 6)",
+        "secondaryLabel": "array[mid] < target moves low to mid + 1; otherwise high becomes mid to preserve that candidate."
       },
       {
-        "phase": "Return",
-        "title": "Emit index or boundary",
-        "note": "The loop ends with a match or the collapsed boundary.",
-        "ruleLabel": "Lower Bound invariant",
-        "rule": "Returns low, the final value maintained by Lower Bound's code path.",
+        "phase": "high = 3",
+        "title": "5 can be the answer",
+        "note": "Keep index 3 and all earlier possible answers.",
+        "ruleLabel": "Search invariant",
+        "rule": "array[mid] < target moves low to mid + 1; otherwise high becomes mid to preserve that candidate.",
         "activeIndices": [
-          3,
           3
         ],
         "sortedIndices": [],
         "mutedIndices": [
-          0
+          4,
+          5
+        ],
+        "window": [
+          0,
+          3
+        ],
+        "primaryLabel": "high = 3",
+        "secondaryLabel": "array[mid] < target moves low to mid + 1; otherwise high becomes mid to preserve that candidate."
+      },
+      {
+        "phase": "low = 2",
+        "title": "2 is too small",
+        "note": "Discard indices 0 and 1.",
+        "ruleLabel": "Search invariant",
+        "rule": "array[mid] < target moves low to mid + 1; otherwise high becomes mid to preserve that candidate.",
+        "activeIndices": [
+          1
+        ],
+        "sortedIndices": [],
+        "mutedIndices": [
+          0,
+          1,
+          4,
+          5
         ],
         "window": [
           2,
           3
         ],
-        "primaryLabel": "Return",
-        "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
+        "primaryLabel": "low = 2",
+        "secondaryLabel": "array[mid] < target moves low to mid + 1; otherwise high becomes mid to preserve that candidate."
+      },
+      {
+        "phase": "return 2",
+        "title": "First valid index",
+        "note": "Index 2 is the first value >= 5.",
+        "ruleLabel": "Search invariant",
+        "rule": "array[mid] < target moves low to mid + 1; otherwise high becomes mid to preserve that candidate.",
+        "activeIndices": [
+          2
+        ],
+        "sortedIndices": [
+          2
+        ],
+        "mutedIndices": [
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        "window": [
+          2,
+          2
+        ],
+        "primaryLabel": "return 2",
+        "secondaryLabel": "array[mid] < target moves low to mid + 1; otherwise high becomes mid to preserve that candidate."
       }
     ]
   }
