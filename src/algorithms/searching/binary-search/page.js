@@ -68,9 +68,8 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
   };
 
   function render(view) {
-    if (view === "visualizer") return renderVisualizer();
     if (view === "challenge") return renderChallenge();
-    return renderLesson();
+    return renderVisualizer();
   }
 
   function bind(root) {
@@ -95,10 +94,12 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
   }
 
   function renderLesson() {
+    return renderVisualizer();
+  }
+
+  function renderLessonOverview() {
     return `
-      <section class="lesson-panel" aria-labelledby="lesson-title">
-        <p class="eyebrow">${escapeHtml(algorithmPage.category)}</p>
-        <h2 id="lesson-title">${escapeHtml(pageTitle)}</h2>
+      <div class="lesson-overview">
         <p class="lede">${escapeHtml(algorithmPage.meaning)}</p>
         <div class="analogy-media">
           <div class="dictionary-scene" aria-hidden="true">
@@ -126,9 +127,8 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
             </div>
           `).join("")}
         </div>
-        <button class="primary-action" data-view="visualizer">Continue ${icon("arrow_forward")}</button>
         <p class="time-note">Estimated time: 12 minutes</p>
-      </section>
+      </div>
     `;
   }
 
@@ -136,16 +136,17 @@ export function createAlgorithmPage({ icon, escapeHtml, requestRender }) {
     const current = binarySteps[state.step];
     return `
       <section class="visualizer-panel binary-search-visualizer" data-algorithm-page="${escapeHtml(algorithmPage.id)}" aria-labelledby="visualizer-title">
+        <div class="title-row">
+          <div>
+            ${renderPageTags(["Searching", "Array boundaries", "Sorted array", "High"])}
+            <h2 id="visualizer-title">${escapeHtml(pageTitle)}</h2>
+            <p>${escapeHtml(algorithmPage.problem)}</p>
+          </div>
+          <span class="step-pill">Step ${state.step + 1}/${binarySteps.length}</span>
+        </div>
+        ${renderLessonOverview()}
         <div class="visualizer-desktop-grid">
           <div class="visualizer-primary">
-            <div class="title-row">
-              <div>
-                ${renderPageTags(["Searching", "Array boundaries", "Sorted array", "High"])}
-                <h2 id="visualizer-title">${escapeHtml(pageTitle)}</h2>
-                <p>${escapeHtml(algorithmPage.problem)}</p>
-              </div>
-              <span class="step-pill">Step ${state.step + 1}/${binarySteps.length}</span>
-            </div>
             <div class="array-stage">
               <div class="array-track" aria-label="Binary search array state">
                 ${arrayValues.map((value, index) => renderArrayCell(value, index, current)).join("")}

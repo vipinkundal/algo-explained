@@ -221,9 +221,8 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   };
 
   function render(view) {
-    if (view === "visualizer") return renderVisualizer();
     if (view === "challenge") return renderChallenge();
-    return renderLesson();
+    return renderVisualizer();
   }
 
   function bind(root) {
@@ -269,10 +268,12 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   function onViewChange() {}
 
   function renderLesson() {
+    return renderVisualizer();
+  }
+
+  function renderLessonOverview() {
     return `
-      <section class="algorithm-page lesson-panel" aria-labelledby="lesson-title">
-        <p class="eyebrow">${escapeHtml(algorithmPage.category)}</p>
-        <h2 id="lesson-title">${escapeHtml(algorithmPage.title)}</h2>
+      <div class="lesson-overview">
         <p class="lede">${escapeHtml(algorithmPage.meaning)}</p>
         <div class="algorithm-hero" data-visualizer="${escapeHtml(algorithmPage.visualizerType)}">
           <div class="hero-symbol" aria-hidden="true">${icon(algorithmPage.icon)}</div>
@@ -300,9 +301,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             <p>${escapeHtml(algorithmPage.memoryTrick)}</p>
           </article>
         </div>
-        ${renderRelatedLinks()}
-        <button class="primary-action" data-view="visualizer">${escapeHtml(t("algorithmPage.startVisualizer"))} ${icon("arrow_forward")}</button>
-      </section>
+      </div>
     `;
   }
 
@@ -320,6 +319,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
           </div>
           <span class="step-pill">${escapeHtml(t("algorithmPage.stepCounter", { current: state.step + 1, total: stepTotal }))}</span>
         </div>
+        ${renderLessonOverview()}
         <div class="concept-loop-grid">
           <article>
             <strong>${icon("psychology")} ${escapeHtml(t("algorithmPage.concept"))}</strong>

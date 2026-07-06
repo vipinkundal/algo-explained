@@ -251,6 +251,11 @@
   min-width: 0;
 }
 
+.lesson-overview {
+  margin: 0 0 28px;
+  min-width: 0;
+}
+
 .page-tags {
   display: flex;
   flex-wrap: wrap;
@@ -2076,6 +2081,11 @@
     margin-bottom: 0;
   }
 
+  .visualizer-panel .lesson-overview {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
   .visualizer-panel .concept-loop-grid {
     grid-column: 1;
     grid-template-columns: 1fr;
@@ -2112,7 +2122,7 @@
 
   .visualizer-panel .trace-layout {
     grid-column: 2;
-    grid-row: 2 / 6;
+    grid-row: 3 / 7;
     grid-template-columns: minmax(0, 1fr);
     align-self: stretch;
   }

@@ -194,7 +194,7 @@ function renderDashboardReports() {
   const recentAlgorithms = getRecentAlgorithms();
   const savedCount = state.savedIds.size;
   const completedCount = Object.values(state.progress)
-    .reduce((total, progress) => total + ["lesson", "visualizer", "challenge"].filter((section) => progress?.[section]).length, 0);
+    .reduce((total, progress) => total + getProgressCompleteCount(progress), 0);
 
   return `
     <section class="dashboard-reports" aria-labelledby="dashboard-reports-title">
@@ -204,7 +204,7 @@ function renderDashboardReports() {
       </div>
       <div class="report-grid">
         ${renderReportCard("history", "Recent activity", `${recentAlgorithms.length}`, "Algorithms opened recently")}
-        ${renderReportCard("fact_check", "Completed checks", `${completedCount}`, "Lesson, visualizer, and quiz marks")}
+        ${renderReportCard("fact_check", "Completed checks", `${completedCount}`, "Learn and quiz marks")}
         ${renderReportCard("bookmark", "Saved for later", `${savedCount}`, "Algorithms saved to revisit")}
       </div>
     </section>
@@ -255,7 +255,7 @@ function renderEmptyRecentDashboard() {
 function renderRecentCard(algorithm) {
   const title = algorithm.title || algorithm.name;
   const progressCount = getCompletedCount(algorithm.id);
-  const progressLabel = progressCount ? `${progressCount}/3 complete` : "Started";
+  const progressLabel = progressCount ? `${progressCount}/2 complete` : "Started";
   return `
     <button type="button" class="recent-card" data-algorithm="${algorithm.id}">
       <span class="card-icon ${slugify(algorithm.category || "algorithms")}">${icon(algorithm.icon || iconForAlgorithm(algorithm))}</span>
@@ -393,7 +393,7 @@ function renderAuthForms() {
       <article>
         ${icon("history")}
         <strong>Recent activity</strong>
-        <p>Resume from recently opened lessons, visualizers, and progress marks.</p>
+        <p>Resume from recently opened lessons and progress marks.</p>
       </article>
     </div>
     <form class="auth-form" data-auth-form="${escapeHtml(state.authMode)}">
@@ -543,7 +543,7 @@ function renderAlgorithmCard(algorithm) {
       <span class="card-meta">
         <b>${escapeHtml(phase)}</b>
         ${algorithm.visualizerType ? `<b>${escapeHtml(algorithm.visualizerType)}</b>` : ""}
-        ${completedCount ? `<b class="progress-chip">${icon("task_alt")} ${completedCount}/3</b>` : ""}
+        ${completedCount ? `<b class="progress-chip">${icon("task_alt")} ${completedCount}/2</b>` : ""}
         ${saved ? `<b class="saved-chip">${icon("bookmark")} Saved</b>` : ""}
       </span>
     </button>
@@ -631,16 +631,15 @@ function renderProgressPanel(selected) {
     <section class="progress-panel" aria-label="${escapeHtml(selected.title || selected.name)} progress">
       <div>
         <strong>${icon("fact_check")} Progress</strong>
-        <span>${completeCount}/3 complete · ${syncText}</span>
+        <span>${completeCount}/2 complete · ${syncText}</span>
       </div>
       <div class="progress-actions">
         ${[
-          ["lesson", "school", "Lesson"],
-          ["visualizer", "play_circle", "Visualizer"],
+          ["lesson", "school", "Learn"],
           ["challenge", "quiz", "Quiz"],
         ].map(([section, symbol, label]) => `
-          <button type="button" class="${progress[section] ? "completed" : ""}" data-progress-section="${section}">
-            ${icon(progress[section] ? "check_circle" : symbol)}<span>${label}</span>
+          <button type="button" class="${isProgressSectionComplete(progress, section) ? "completed" : ""}" data-progress-section="${section}">
+            ${icon(isProgressSectionComplete(progress, section) ? "check_circle" : symbol)}<span>${label}</span>
           </button>
         `).join("")}
         ${state.authUser ? `
@@ -1071,7 +1070,7 @@ function renderSearchResult(record) {
           ${record.mergedCount ? `<b>${record.mergedCount} merged</b>` : ""}
           <b>${escapeHtml(record.priority)}</b>
           <b>${escapeHtml(record.visualizerType)}</b>
-          ${completedCount ? `<b class="progress-chip">${icon("task_alt")} ${completedCount}/3</b>` : ""}
+          ${completedCount ? `<b class="progress-chip">${icon("task_alt")} ${completedCount}/2</b>` : ""}
           ${saved ? `<b class="saved-chip">${icon("bookmark")} Saved</b>` : ""}
         </span>
       </span>
@@ -2052,13 +2051,20 @@ function toggleProgress(section) {
   if (!selected) return;
 
   const progress = getAlgorithmProgress(selected.id);
-  progress[section] = !progress[section];
+  if (section === "lesson") {
+    const completed = !isProgressSectionComplete(progress, "lesson");
+    progress.lesson = completed;
+    progress.visualizer = completed;
+  } else {
+    progress[section] = !progress[section];
+  }
   progress.updatedAt = new Date().toISOString();
   state.progress[selected.id] = progress;
   markAlgorithmRecent(selected.id, { sync: false });
   persistProgress();
   render();
-  syncProgressSection(selected.id, section, progress[section]);
+  syncProgressSection(selected.id, section, isProgressSectionComplete(progress, section));
+  if (section === "lesson") syncProgressSection(selected.id, "visualizer", progress.visualizer);
 }
 
 function showSignIn() {
@@ -2077,7 +2083,16 @@ function getAlgorithmProgress(id) {
 
 function getCompletedCount(id) {
   const progress = state.progress[id] || {};
-  return ["lesson", "visualizer", "challenge"].filter((section) => progress[section]).length;
+  return getProgressCompleteCount(progress);
+}
+
+function getProgressCompleteCount(progress = {}) {
+  return ["lesson", "challenge"].filter((section) => isProgressSectionComplete(progress, section)).length;
+}
+
+function isProgressSectionComplete(progress = {}, section) {
+  if (section === "lesson") return Boolean(progress.lesson || progress.visualizer);
+  return Boolean(progress[section]);
 }
 
 function loadUserId(options = {}) {

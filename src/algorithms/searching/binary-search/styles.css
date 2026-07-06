@@ -244,6 +244,11 @@ blockquote {
   min-width: 0;
 }
 
+.lesson-overview {
+  margin: 0 0 28px;
+  min-width: 0;
+}
+
 .page-tags {
   display: flex;
   flex-wrap: wrap;
