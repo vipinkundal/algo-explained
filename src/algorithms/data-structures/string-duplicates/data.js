@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/string-duplicates/code/original.cpp",
   "originalCodeFilename": "07_duplicates.cpp",
   "originalActiveLine": 4,
-  "meaning": "String Duplicates shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "String Duplicates explains the string state model and how one focused change updates it.",
-  "concept": "String algorithms are useful when character order, frequency, prefix, hash, or palindrome structure can be reused. Use this when scanning every substring directly would repeat character work.",
-  "logicSummary": "Prepare helper state, scan characters, update the pattern state, and record matches or the best string result.",
-  "transitionSummary": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Find duplicate characters by tracking how often each character appears.",
+  "problem": "Find duplicate characters by tracking how often each character appears.",
+  "concept": "Find duplicate characters by tracking how often each character appears.",
+  "logicSummary": "Find duplicate characters by tracking how often each character appears.",
+  "transitionSummary": "In banana, a occurs 3 times and n occurs twice.",
+  "codeInsight": "Find duplicate characters by tracking how often each character appears.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
-  "realLifeExample": "String Duplicates is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Strings behavior through state changes instead of memorized code.",
-  "memoryTrick": "String Duplicates: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "String Duplicates is shown as character-state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "In banana, a occurs 3 times and n occurs twice.",
+  "whenToUse": "Find duplicate characters by tracking how often each character appears.",
+  "memoryTrick": "Find duplicate characters by tracking how often each character appears.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read text",
-      "text": "Identify text, pattern, or character rule."
+      "title": "Identify what the operation means",
+      "text": "Find duplicate characters by tracking how often each character appears."
     },
     {
-      "title": "Prepare state",
-      "text": "Build frequency, prefix, hash, trie, or radius state."
+      "title": "Work through a small case",
+      "text": "In banana, a occurs 3 times and n occurs twice."
     },
     {
-      "title": "Scan character",
-      "text": "Consume the next character and update state."
-    },
-    {
-      "title": "Return match",
-      "text": "Return matches, validity, or the best substring result."
+      "title": "Check the boundary cases",
+      "text": "Check empty strings and repeated characters. State whether case, spaces, and Unicode characters affect matching."
     }
   ],
   "variables": [
     {
-      "name": "read index",
-      "purpose": "Selects the current character."
+      "name": "text",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "write index",
-      "purpose": "Marks where the next transformed character lands."
-    },
-    {
-      "name": "character bag",
-      "purpose": "Tracks characters considered by String Duplicates."
-    },
-    {
-      "name": "text result",
-      "purpose": "Shows the string after the scan or transformation."
+      "name": "reversed",
+      "purpose": "Holds a separate copy of the values so working changes do not overwrite the caller’s array."
     }
   ],
   "dryRun": [
     {
-      "label": "Text",
-      "title": "Read string input",
-      "note": "The code receives text, pattern, or character data.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Find duplicate characters by tracking how often each character appears.",
       "activeLine": 2,
-      "codeInsight": "Defines stringDuplicates as the runnable entry point for this lesson."
+      "codeInsight": "Find duplicate characters by tracking how often each character appears."
     },
     {
-      "label": "Helper",
-      "title": "Prepare string state",
-      "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-      "activeLine": 3,
-      "codeInsight": "Stores text so the algorithm can reuse this value without recomputing it."
-    },
-    {
-      "label": "Character",
-      "title": "Update on current char",
-      "note": "One character changes the active string state.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "In banana, a occurs 3 times and n occurs twice.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"string\", input: text, reversed, length: text.length }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return string answer",
-      "note": "Matches or best values are returned after the scan.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"string\", input: text, reversed, length: text.length }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Find duplicate characters by tracking how often each character appears."
     }
   ],
   "complexity": {
@@ -197,5 +171,34 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A string is an ordered sequence. A substring occupies consecutive positions; a subsequence can skip positions.",
+    "family": "Characters and positions",
+    "example": "In banana, a occurs 3 times and n occurs twice.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "string",
+      "input": "decimal",
+      "reversed": "lamiced",
+      "length": 7
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Prefix",
+        "Characters at the beginning of a string."
+      ],
+      [
+        "Substring",
+        "A consecutive section of a string."
+      ],
+      [
+        "Frequency",
+        "How often a character occurs."
+      ]
+    ],
+    "pitfall": "Check empty strings and repeated characters. State whether case, spaces, and Unicode characters affect matching.",
+    "checkpoint": "Explain this in your own words: Find duplicate characters by tracking how often each character appears."
   }
 };

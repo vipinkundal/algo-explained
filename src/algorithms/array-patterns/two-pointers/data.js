@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "view_week",
   "codePath": "./src/algorithms/array-patterns/two-pointers/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Two Pointers is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Two Pointers moves two indices toward a condition without trying every pair.",
   "problem": "Two Pointers moves two indices toward a condition without trying every pair.",
   "concept": "Two pointers are useful when moving one side changes the condition predictably. Use this when order lets you skip many pairs or positions.",
   "logicSummary": "Place two indices, inspect their combined state, and move the pointer that can still improve the condition.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Two Pointers appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Two Pointers when the problem statement matches its array invariant.",
   "memoryTrick": "Two Pointers: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Two Pointers is shown as two coordinated indices. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Two Pointers through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Place pointers",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Two Pointers correct?",
+    "question": "Which explanation best describes Two Pointers?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Two Pointers' transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Two Pointers moves two indices toward a condition without trying every pair.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Two Pointers stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Two Pointers needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Two Pointers moves two indices toward a condition without trying every pair.",
+    "incorrectText": "Try again. Two Pointers moves two indices toward a condition without trying every pair. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "array-patterns",
   "algorithmSlug": "two-pointers",
@@ -218,5 +218,42 @@ export const algorithmPage = {
         "secondaryLabel": "Each step moves left or right inward instead of trying all combinations."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Place pointers: Start left and right at meaningful boundaries. Inspect pair: Read the values or state between them. Move one side: Advance the pointer that cannot produce the answer. Return match: Return the pair, range, or transformed array.",
+    "sampleInput": [
+      [
+        1,
+        2,
+        4,
+        6,
+        8
+      ],
+      10
+    ],
+    "sampleResult": [
+      1,
+      4
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Two Pointers moves two indices toward a condition without trying every pair."
+  },
+  "relatedLinks": []
 };

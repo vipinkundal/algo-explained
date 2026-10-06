@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/queue-using-linked-list/code/original.cpp",
   "originalCodeFilename": "03_queue_using_ll.cpp",
   "originalActiveLine": 4,
-  "meaning": "Queue Using Linked List shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Queue Using Linked List explains the queue state model and how one focused change updates it.",
-  "concept": "Queue Using Linked List is useful when queue behavior is the clearest model for the data changes. Use this when the problem is naturally described by first-in, first-out state.",
-  "logicSummary": "Read the next value or operation, maintain first-in, first-out state, then enqueue, dequeue, peek, or evict entries.",
-  "transitionSummary": "Each step changes only the part of the queue required to preserve the invariant.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "A linked queue uses front and rear node pointers to add at one end and remove at the other.",
+  "problem": "A linked queue uses front and rear node pointers to add at one end and remove at the other.",
+  "concept": "A linked queue uses front and rear node pointers to add at one end and remove at the other.",
+  "logicSummary": "A linked queue uses front and rear node pointers to add at one end and remove at the other.",
+  "transitionSummary": "A → B has front A and rear B; enqueue C changes the rear to C.",
+  "codeInsight": "A linked queue uses front and rear node pointers to add at one end and remove at the other.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
-  "realLifeExample": "Queue Using Linked List is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Queue behavior through state changes instead of memorized code.",
-  "memoryTrick": "Queue Using Linked List: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Queue Using Linked List is shown as queue state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "A → B has front A and rear B; enqueue C changes the rear to C.",
+  "whenToUse": "A linked queue uses front and rear node pointers to add at one end and remove at the other.",
+  "memoryTrick": "A linked queue uses front and rear node pointers to add at one end and remove at the other.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read queue",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "A linked queue uses front and rear node pointers to add at one end and remove at the other."
     },
     {
-      "title": "Inspect queue front",
-      "text": "Look at the active queue fields."
+      "title": "Work through a small case",
+      "text": "A → B has front A and rear B; enqueue C changes the rear to C."
     },
     {
-      "title": "Enqueue / dequeue",
-      "text": "enqueue, dequeue, peek, or evict entries."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Check empty and full states, and identify which end an operation changes."
     }
   ],
   "variables": [
     {
-      "name": "front cursor",
-      "purpose": "Marks the next value that would leave the queue."
+      "name": "queue",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "rear cursor",
-      "purpose": "Marks where the next incoming value is placed."
-    },
-    {
-      "name": "waiting line",
-      "purpose": "The ordered queue contents while Queue Using Linked List runs."
-    },
-    {
-      "name": "served item",
-      "purpose": "The value removed or inspected by the current queue operation."
+      "name": "output",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     }
   ],
   "dryRun": [
     {
-      "label": "Queue",
-      "title": "Read queue action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 3,
-      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A linked queue uses front and rear node pointers to add at one end and remove at the other.",
+      "activeLine": 2,
+      "codeInsight": "A linked queue uses front and rear node pointers to add at one end and remove at the other."
     },
     {
-      "label": "Queue front",
-      "title": "Inspect queue",
-      "note": "The active state must still satisfy first-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Enqueue / dequeue",
-      "title": "Enqueue, dequeue, peek, or evict entries",
-      "note": "Only the necessary queue fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Adds the current value to output, keeping it available for later comparisons or traversal."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "A → B has front A and rear B; enqueue C changes the rear to C.",
       "activeLine": 7,
-      "codeInsight": "Returns the final state object { structure: \"queue\", invariant: \"first in, first out\", state: queue, dequeued: output }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A linked queue uses front and rear node pointers to add at one end and remove at the other."
     }
   ],
   "complexity": {
@@ -212,5 +186,40 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "A → B has front A and rear B; enqueue C changes the rear to C.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "queue",
+      "invariant": "first in, first out",
+      "state": [
+        2,
+        3,
+        4
+      ],
+      "dequeued": [
+        1
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: A linked queue uses front and rear node pointers to add at one end and remove at the other."
   }
 };

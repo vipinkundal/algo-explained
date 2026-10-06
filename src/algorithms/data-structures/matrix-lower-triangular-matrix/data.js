@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/matrix-lower-triangular-matrix/code/original.c",
   "originalCodeFilename": "03_lower_triangular_matrix.c",
   "originalActiveLine": 3,
-  "meaning": "Lower Triangular Matrix shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Lower Triangular Matrix explains the matrix state model and how one focused change updates it.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "A lower triangular matrix has zeros above its main diagonal.",
+  "problem": "A lower triangular matrix has zeros above its main diagonal.",
+  "concept": "A lower triangular matrix has zeros above its main diagonal.",
+  "logicSummary": "A lower triangular matrix has zeros above its main diagonal.",
+  "transitionSummary": "A 3 × 3 lower triangular matrix needs 3 × 4 / 2 = 6 stored entries instead of 9.",
+  "codeInsight": "A lower triangular matrix has zeros above its main diagonal.",
   "originalCodeInsight": "Dynamic allocation creates storage at runtime; every pointer assignment changes how nodes or arrays are connected.",
-  "realLifeExample": "Lower Triangular Matrix is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Matrix / Sparse Matrix / Polynomial behavior through state changes instead of memorized code.",
-  "memoryTrick": "Lower Triangular Matrix: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Lower Triangular Matrix is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "A 3 × 3 lower triangular matrix needs 3 × 4 / 2 = 6 stored entries instead of 9.",
+  "whenToUse": "A lower triangular matrix has zeros above its main diagonal.",
+  "memoryTrick": "A lower triangular matrix has zeros above its main diagonal.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "A lower triangular matrix has zeros above its main diagonal."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "A 3 × 3 lower triangular matrix needs 3 × 4 / 2 = 6 stored entries instead of 9."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
-      "name": "row marker",
-      "purpose": "Selects the row being inspected."
+      "name": "matrix",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "column marker",
-      "purpose": "Selects the column being inspected."
-    },
-    {
-      "name": "stored cell",
-      "purpose": "The value addressed by Lower Triangular Matrix."
-    },
-    {
-      "name": "matrix view",
-      "purpose": "Shows the compact or expanded grid state."
+      "name": "nonZero",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A lower triangular matrix has zeros above its main diagonal.",
       "activeLine": 2,
-      "codeInsight": "Defines matrixLowerTriangularMatrix as the runnable entry point for this lesson."
+      "codeInsight": "A lower triangular matrix has zeros above its main diagonal."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
-      "activeLine": 3,
-      "codeInsight": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "A 3 × 3 lower triangular matrix needs 3 × 4 / 2 = 6 stored entries instead of 9.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A lower triangular matrix has zeros above its main diagonal."
     }
   ],
   "complexity": {
@@ -261,5 +235,49 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "A 3 × 3 lower triangular matrix needs 3 × 4 / 2 = 6 stored entries instead of 9.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "matrix",
+      "representation": "non-zero entries",
+      "nonZero": [
+        {
+          "r": 0,
+          "c": 0,
+          "value": 1
+        },
+        {
+          "r": 1,
+          "c": 1,
+          "value": 2
+        },
+        {
+          "r": 2,
+          "c": 2,
+          "value": 3
+        }
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: A lower triangular matrix has zeros above its main diagonal."
   }
 };

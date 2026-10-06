@@ -12,107 +12,85 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/foundations/dynamic-programming-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Dynamic Programming Basics is a Foundations technique focused on answer.",
-  "problem": "Dynamic Programming Basics solves a Foundations problem by maintaining only the state needed for its dp table transition.",
-  "concept": "Dynamic Programming Basics is useful when the same subproblems appear again and storing answers prevents repeated work. Use this when you can define a state, base cases, and a recurrence.",
-  "logicSummary": "Define what one DP state means, initialize base cases, fill dependent states, and read the target state.",
-  "transitionSummary": "Each step computes one state from already-solved smaller or earlier states.",
-  "codeInsight": "The implementation keeps Dynamic Programming Basics' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Dynamic Programming Basics appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Dynamic Programming Basics when a problem matches the Foundations pattern and the expected state changes match a dp table dry run.",
-  "memoryTrick": "Dynamic Programming Basics: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Dynamic Programming Basics is shown as a dependency-ordered DP fill. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused.",
+  "problem": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused.",
+  "concept": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused.",
+  "logicSummary": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused.",
+  "transitionSummary": "For Fibonacci, save F(0) = 0 and F(1) = 1. Then F(2) = 1, F(3) = 2, and F(4) = 3 reuse earlier answers.",
+  "codeInsight": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused.",
+  "realLifeExample": "For Fibonacci, save F(0) = 0 and F(1) = 1. Then F(2) = 1, F(3) = 2, and F(4) = 3 reuse earlier answers.",
+  "whenToUse": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused.",
+  "memoryTrick": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Define state",
-      "text": "Name exactly what one cell or entry means."
+      "title": "Identify what the operation means",
+      "text": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused."
     },
     {
-      "title": "Set base cases",
-      "text": "Fill answers that need no recurrence."
+      "title": "Work through a small case",
+      "text": "For Fibonacci, save F(0) = 0 and F(1) = 1. Then F(2) = 1, F(3) = 2, and F(4) = 3 reuse earlier answers."
     },
     {
-      "title": "Apply recurrence",
-      "text": "Compute each state from solved dependencies."
-    },
-    {
-      "title": "Read target",
-      "text": "Return the state requested by the problem."
+      "title": "Check the boundary cases",
+      "text": "Define what each table entry means before filling it. Check base cases, evaluation order, and whether a choice can be reused."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "dp table",
-      "purpose": "A table of subproblem answers filled in dependency order."
+      "name": "numbers",
+      "purpose": "Chooses the provided array or a fallback sample so the following collection operations have an array to read."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by dynamicProgrammingBasics after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the dp table transition until the stop condition for Dynamic Programming Basics is reached. Stop when no valid work remains or the answer is known."
+      "name": "state",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     }
   ],
   "dryRun": [
     {
-      "label": "State meaning",
-      "title": "Define DP cell",
-      "note": "The code first needs a precise subproblem meaning.",
-      "activeLine": 6,
-      "codeInsight": "Prepares numbers from the sample collection that the next visual step inspects."
-    },
-    {
-      "label": "Base case",
-      "title": "Seed known answers",
-      "note": "Base values stop the recurrence from falling through.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused.",
       "activeLine": 5,
-      "codeInsight": "Defines dynamicProgrammingBasics and names the input values; edits to those inputs change the visual state and output."
+      "codeInsight": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused."
     },
     {
-      "label": "Recurrence",
-      "title": "Fill next state",
-      "note": "The transition combines previously solved states.",
-      "activeLine": 6,
-      "codeInsight": "Prepares numbers from the sample collection that the next visual step inspects."
-    },
-    {
-      "label": "Target",
-      "title": "Return requested state",
-      "note": "The answer is read from the final DP state.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For Fibonacci, save F(0) = 0 and F(1) = 1. Then F(2) = 1, F(3) = 2, and F(4) = 3 reuse earlier answers.",
       "activeLine": 9,
-      "codeInsight": "Returns the final state object { state, answer: state[state.length - 1] }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(n) for this cumulative-total demo. In general: number of distinct states × work per state.",
+    "space": "O(n) for this demo’s stored totals. Other DP routines store a different number of states."
   },
   "quiz": {
-    "question": "Which state choice keeps Dynamic Programming Basics correct?",
+    "question": "Which explanation best describes Dynamic Programming Basics?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Dynamic Programming Basics' transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Dynamic programming saves answers to smaller subproblems so repeated work can be reused.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Dynamic Programming Basics stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Dynamic Programming Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Dynamic programming saves answers to smaller subproblems so repeated work can be reused.",
+    "incorrectText": "Try again. Dynamic programming saves answers to smaller subproblems so repeated work can be reused. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "foundations",
   "algorithmSlug": "dynamic-programming-basics",
@@ -168,5 +146,44 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A dynamic-programming state names a smaller question. A recurrence explains how its answer uses answers you already know.",
+    "family": "Saved subproblems",
+    "example": "For Fibonacci, save F(0) = 0 and F(1) = 1. Then F(2) = 1, F(3) = 2, and F(4) = 3 reuse earlier answers.",
+    "sampleInput": [
+      [
+        1,
+        2,
+        3
+      ]
+    ],
+    "sampleResult": {
+      "state": [
+        0,
+        1,
+        3,
+        6
+      ],
+      "answer": 6
+    },
+    "sampleScope": "This JavaScript sample saves cumulative totals. The Fibonacci example above illustrates another way to reuse earlier answers.",
+    "terms": [
+      [
+        "State",
+        "One precisely defined subproblem."
+      ],
+      [
+        "Recurrence",
+        "A rule for computing a state from smaller states."
+      ],
+      [
+        "Base case",
+        "A known answer that starts the table or recursion."
+      ]
+    ],
+    "pitfall": "Define what each table entry means before filling it. Check base cases, evaluation order, and whether a choice can be reused.",
+    "checkpoint": "Explain this in your own words: Dynamic programming saves answers to smaller subproblems so repeated work can be reused."
+  },
+  "relatedLinks": []
 };

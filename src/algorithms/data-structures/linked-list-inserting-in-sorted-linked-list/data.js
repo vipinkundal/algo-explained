@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/linked-list-inserting-in-sorted-linked-list/code/original.cpp",
   "originalCodeFilename": "07_Inserting_in_sorted_linked_list.cpp",
   "originalActiveLine": 5,
-  "meaning": "Inserting In Sorted Linked List shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Inserting In Sorted Linked List explains the linked-list state model and how one focused change updates it.",
-  "concept": "Inserting In Sorted Linked List is useful when values must be placed into a reliable order before later work can be simple. Use this when the algorithm's ordering invariant and cost fit the input size and stability needs.",
-  "logicSummary": "Protect the algorithm's ordering invariant until every value reaches final order.",
-  "transitionSummary": "Each step compares or moves values so the unsorted region gets smaller.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Find the gap where a new value belongs and reconnect the list around a new node.",
+  "problem": "Find the gap where a new value belongs and reconnect the list around a new node.",
+  "concept": "Find the gap where a new value belongs and reconnect the list around a new node.",
+  "logicSummary": "Find the gap where a new value belongs and reconnect the list around a new node.",
+  "transitionSummary": "Inserting 3 into 1 → 4 → 7 gives 1 → 3 → 4 → 7.",
+  "codeInsight": "Find the gap where a new value belongs and reconnect the list around a new node.",
   "originalCodeInsight": "The C/C++ Node struct is the memory layout: data stores the value and next/child pointers connect the structure.",
-  "realLifeExample": "Inserting In Sorted Linked List is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Linked List behavior through state changes instead of memorized code.",
-  "memoryTrick": "Inserting In Sorted Linked List: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Inserting In Sorted Linked List is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Inserting 3 into 1 → 4 → 7 gives 1 → 3 → 4 → 7.",
+  "whenToUse": "Find the gap where a new value belongs and reconnect the list around a new node.",
+  "memoryTrick": "Find the gap where a new value belongs and reconnect the list around a new node.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Copy values",
-      "text": "Work on a mutable array without changing the original input."
+      "title": "Identify what the operation means",
+      "text": "Find the gap where a new value belongs and reconnect the list around a new node."
     },
     {
-      "title": "Choose invariant",
-      "text": "Track the sorted or partitioned region."
+      "title": "Work through a small case",
+      "text": "Inserting 3 into 1 → 4 → 7 gives 1 → 3 → 4 → 7."
     },
     {
-      "title": "Move values",
-      "text": "Perform the comparison, swap, merge, or placement."
-    },
-    {
-      "title": "Return order",
-      "text": "Return the fully sorted array."
+      "title": "Check the boundary cases",
+      "text": "Save the next link before changing it. Handle an empty list and a change to the head; circular lists need a different stop rule."
     }
   ],
   "variables": [
     {
-      "name": "head link",
-      "purpose": "References the first node in the chain."
-    },
-    {
-      "name": "walk pointer",
-      "purpose": "Moves through links one node at a time."
-    },
-    {
-      "name": "new node",
-      "purpose": "Represents the node created or examined in Inserting In Sorted Linked List."
-    },
-    {
-      "name": "chain view",
-      "purpose": "Shows the visible node order after pointer updates."
+      "name": "nodes",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Input array",
-      "title": "Copy values",
-      "note": "The code starts with the values to reorder.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Find the gap where a new value belongs and reconnect the list around a new node.",
       "activeLine": 2,
-      "codeInsight": "Defines linkedListInsertingInSortedLinkedList as the runnable entry point for this lesson."
+      "codeInsight": "Find the gap where a new value belongs and reconnect the list around a new node."
     },
     {
-      "label": "Invariant",
-      "title": "Track ordered work",
-      "note": "The algorithm marks what part is already safe.",
-      "activeLine": 3,
-      "codeInsight": "Stores nodes from the current length, making the loop boundary explicit for the visual trace."
-    },
-    {
-      "label": "Move",
-      "title": "Apply ordering step",
-      "note": "The current operation reduces disorder.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Inserting 3 into 1 → 4 → 7 gives 1 → 3 → 4 → 7.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Sorted output",
-      "title": "Return final order",
-      "note": "The result is returned when no unsorted work remains.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Find the gap where a new value belongs and reconnect the list around a new node."
     }
   ],
   "complexity": {
@@ -198,5 +168,38 @@ export const algorithmPage = {
         "nextNode": "tail"
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A linked list follows arrows from node to node. Unlike an array, its nodes do not need neighboring memory slots.",
+    "family": "Linked nodes",
+    "example": "Inserting 3 into 1 → 4 → 7 gives 1 → 3 → 4 → 7.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "linked list",
+      "operation": "insert at position 1",
+      "values": [
+        10,
+        15,
+        20,
+        30
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Head",
+        "The first node in a list."
+      ],
+      [
+        "Next",
+        "The link leading to another node."
+      ],
+      [
+        "Null",
+        "No object or next node is present."
+      ]
+    ],
+    "pitfall": "Save the next link before changing it. Handle an empty list and a change to the head; circular lists need a different stop rule.",
+    "checkpoint": "Explain this in your own words: Find the gap where a new value belongs and reconnect the list around a new node."
   }
 };

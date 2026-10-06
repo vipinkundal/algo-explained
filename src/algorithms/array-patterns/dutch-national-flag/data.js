@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "view_week",
   "codePath": "./src/algorithms/array-patterns/dutch-national-flag/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Dutch National Flag is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Dutch National Flag partitions values into low, middle, and high regions in one pass.",
   "problem": "Dutch National Flag partitions values into low, middle, and high regions in one pass.",
   "concept": "Dutch National Flag is useful when a pivot can partition values into smaller and larger sides. Use this when in-place average-case n log n sorting fits the dataset.",
   "logicSummary": "Choose a pivot, partition values around it, then recursively sort the left and right partitions.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Dutch National Flag appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Dutch National Flag when the problem statement matches its array invariant.",
   "memoryTrick": "Dutch National Flag: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Dutch National Flag is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Dutch National Flag through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Choose pivot",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Dutch National Flag correct?",
+    "question": "Which explanation best describes Dutch National Flag?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Dutch National Flag's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Dutch National Flag partitions values into low, middle, and high regions in one pass.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Dutch National Flag stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Dutch National Flag needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Dutch National Flag partitions values into low, middle, and high regions in one pass.",
+    "incorrectText": "Try again. Dutch National Flag partitions values into low, middle, and high regions in one pass. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "array-patterns",
   "algorithmSlug": "dutch-national-flag",
@@ -222,5 +222,46 @@ export const algorithmPage = {
         "secondaryLabel": "Each partition step moves values to the correct side of the pivot and fixes the pivot position."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Choose pivot: Select the value that splits the range. Partition range: Move smaller values left and larger values right. Fix pivot: Place pivot at its final index. Sort partitions: Recurse on both sides.",
+    "sampleInput": [
+      [
+        2,
+        0,
+        2,
+        1,
+        1,
+        0
+      ]
+    ],
+    "sampleResult": [
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Dutch National Flag partitions values into low, middle, and high regions in one pass."
+  },
+  "relatedLinks": []
 };

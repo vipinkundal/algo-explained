@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/heap-creation/code/original.cpp",
   "originalCodeFilename": "create_heap.cpp",
   "originalActiveLine": 6,
-  "meaning": "Heap Creation shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Heap Creation explains the heap state model and how one focused change updates it.",
-  "concept": "Heap Creation is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on balance invariant.",
-  "logicSummary": "Start at the root, maintain balance invariant, rotate or recolor when height/color rules are violated, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses balance invariant to decide the next child, rotation, or returned value.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Build a heap so every parent has at least as much priority as its children.",
+  "problem": "Build a heap so every parent has at least as much priority as its children.",
+  "concept": "Build a heap so every parent has at least as much priority as its children.",
+  "logicSummary": "Build a heap so every parent has at least as much priority as its children.",
+  "transitionSummary": "In a max heap built from [2, 7, 4], the root is 7, but the rest of the array need not be fully sorted.",
+  "codeInsight": "Build a heap so every parent has at least as much priority as its children.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
-  "realLifeExample": "Heap Creation is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Trees / BST / AVL / Heap behavior through state changes instead of memorized code.",
-  "memoryTrick": "Heap Creation: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Heap Creation is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "In a max heap built from [2, 7, 4], the root is 7, but the rest of the array need not be fully sorted.",
+  "whenToUse": "Build a heap so every parent has at least as much priority as its children.",
+  "memoryTrick": "Build a heap so every parent has at least as much priority as its children.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "title": "Identify what the operation means",
+      "text": "Build a heap so every parent has at least as much priority as its children."
     },
     {
-      "title": "Read node state",
-      "text": "Inspect balance invariant."
+      "title": "Work through a small case",
+      "text": "In a max heap built from [2, 7, 4], the root is 7, but the rest of the array need not be fully sorted."
     },
     {
-      "title": "Move/combine",
-      "text": "rotate or recolor when height/color rules are violated."
-    },
-    {
-      "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "title": "Check the boundary cases",
+      "text": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it."
     }
   ],
   "variables": [
     {
-      "name": "priority root",
-      "purpose": "Stores the highest-priority value in the heap."
+      "name": "values",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "candidate child",
-      "purpose": "The child compared during heap adjustment."
-    },
-    {
-      "name": "swap path",
-      "purpose": "Records the movement needed to restore heap order."
-    },
-    {
-      "name": "heap view",
-      "purpose": "Shows the array-backed tree after the operation."
+      "name": "heap",
+      "purpose": "Holds ordered values so later comparisons or selections can rely on their order."
     }
   ],
   "dryRun": [
     {
-      "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Build a heap so every parent has at least as much priority as its children.",
       "activeLine": 2,
-      "codeInsight": "Defines heapCreation as the runnable entry point for this lesson."
+      "codeInsight": "Build a heap so every parent has at least as much priority as its children."
     },
     {
-      "label": "Node state",
-      "title": "Read balance invariant",
-      "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Child step",
-      "title": "Rotate or recolor when height/color rules are violated",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "In a max heap built from [2, 7, 4], the root is 7, but the rest of the array need not be fully sorted.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"max heap\", inserted: values, heap }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"max heap\", inserted: values, heap }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Build a heap so every parent has at least as much priority as its children."
     }
   ],
   "complexity": {
@@ -270,5 +244,45 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "In a max heap built from [2, 7, 4], the root is 7, but the rest of the array need not be fully sorted.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "max heap",
+      "inserted": [
+        10,
+        20,
+        15,
+        30,
+        40
+      ],
+      "heap": [
+        40,
+        30,
+        20,
+        15,
+        10
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Build a heap so every parent has at least as much priority as its children."
   }
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/z-algorithm/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Z Algorithm is taught with its own string state, transition, code trace, and stopping rule.",
+  "meaning": "Find pattern matches by computing, for every position, how many characters match the combined string prefix.",
   "problem": "Find pattern matches by computing, for every position, how many characters match the combined string prefix.",
   "concept": "The Z-array stores prefix match length at each position. A Z-box [left, right] reuses earlier comparisons inside the current matching window.",
   "logicSummary": "Build pattern + sentinel + text, compute Z values with a reusable Z-box, then report text positions whose Z value equals pattern length.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for exact string matching, prefix analysis, and problems asking for repeated prefix lengths.",
   "whenToUse": "Use Z Algorithm when prefix-match lengths for many positions are useful.",
   "memoryTrick": "Z[i] says how much prefix starts again at i.",
-  "visualizerCaption": "The trace shows combined string positions, Z-box reuse, expansion, and match extraction.",
+  "visualizerCaption": "Explore Z Algorithm through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Combine strings",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n + m) for combined string and Z array."
   },
   "quiz": {
-    "question": "Which state keeps Z Algorithm correct?",
+    "question": "Which explanation best describes Z Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "Track the combined string, Z array, and current Z-box while extracting matches.",
+        "text": "Find pattern matches by computing, for every position, how many characters match the combined string prefix.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse another string algorithm's state names without matching its invariant.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Z Algorithm works because the page state follows that exact string invariant.",
-    "incorrectText": "Not quite. Z Algorithm needs its own string state and stop condition."
+    "correctText": "Correct. Find pattern matches by computing, for every position, how many characters match the combined string prefix.",
+    "incorrectText": "Try again. Find pattern matches by computing, for every position, how many characters match the combined string prefix. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "strings",
   "algorithmSlug": "z-algorithm",
@@ -184,5 +184,36 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A string is an ordered sequence. A substring occupies consecutive positions; a subsequence can skip positions.",
+    "family": "Characters and positions",
+    "example": "Combine strings: Use pattern + sentinel + text. Reuse Z-box: If index is inside [left, right], copy the known bounded Z value. Expand match: Compare beyond the box while prefix characters match. Report matches: A text-side Z value equal to pattern length marks a match.",
+    "sampleInput": [
+      "ababa",
+      "aba"
+    ],
+    "sampleResult": [
+      0,
+      2
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Prefix",
+        "Characters at the beginning of a string."
+      ],
+      [
+        "Substring",
+        "A consecutive section of a string."
+      ],
+      [
+        "Frequency",
+        "How often a character occurs."
+      ]
+    ],
+    "pitfall": "Check empty strings and repeated characters. State whether case, spaces, and Unicode characters affect matching.",
+    "checkpoint": "Explain this in your own words: Find pattern matches by computing, for every position, how many characters match the combined string prefix."
+  },
+  "relatedLinks": []
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "layers",
   "codePath": "./src/algorithms/stack/valid-parentheses/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Valid Parentheses is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Valid Parentheses uses a stack of expected closing brackets.",
   "problem": "Valid Parentheses uses a stack of expected closing brackets.",
   "concept": "Valid Parentheses is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
   "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Valid Parentheses appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Valid Parentheses when its state transition is the natural way to model the problem.",
   "memoryTrick": "Valid Parentheses: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Valid Parentheses is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Valid Parentheses through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read stack",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n)."
   },
   "quiz": {
-    "question": "Which state choice keeps Valid Parentheses correct?",
+    "question": "Which explanation best describes Valid Parentheses?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Valid Parentheses' transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Valid Parentheses uses a stack of expected closing brackets.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Valid Parentheses stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Valid Parentheses needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Valid Parentheses uses a stack of expected closing brackets.",
+    "incorrectText": "Try again. Valid Parentheses uses a stack of expected closing brackets. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "stack",
   "algorithmSlug": "valid-parentheses",
@@ -206,5 +206,31 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "Read stack: Identify the next command, value, node, or library call. Inspect stack top: Look at the active stack fields. Push / pop: push, pop, peek, or resolve stack entries. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      "({[]})"
+    ],
+    "sampleResult": true,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: Valid Parentheses uses a stack of expected closing brackets."
   }
 };

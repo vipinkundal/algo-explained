@@ -12,107 +12,77 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/c-stl-algorithm-pages/cpp-reverse/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "C++ reverse() is a C++ STL Algorithm Pages technique focused on answer.",
-  "problem": "C++ reverse() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its two pointer swap transition.",
-  "concept": "Two pointers are useful when moving one side changes the condition predictably. Use this when order lets you skip many pairs or positions.",
-  "logicSummary": "Place two indices, inspect their combined state, and move the pointer that can still improve the condition.",
-  "transitionSummary": "Each step moves left or right inward instead of trying all combinations.",
-  "codeInsight": "The implementation keeps C++ reverse()'s state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "C++ reverse() appears when the input is input and the required result is answer.",
-  "whenToUse": "Use C++ reverse() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a two pointer swap dry run.",
-  "memoryTrick": "C++ reverse(): name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C++ reverse() is shown as two coordinated indices. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "std::reverse reverses the order of elements inside a range.",
+  "problem": "std::reverse reverses the order of elements inside a range.",
+  "concept": "std::reverse reverses the order of elements inside a range.",
+  "logicSummary": "std::reverse reverses the order of elements inside a range.",
+  "transitionSummary": "[1, 2, 3, 4] becomes [4, 3, 2, 1], swapping elements from opposite ends.",
+  "codeInsight": "std::reverse reverses the order of elements inside a range.",
+  "realLifeExample": "[1, 2, 3, 4] becomes [4, 3, 2, 1], swapping elements from opposite ends.",
+  "whenToUse": "std::reverse reverses the order of elements inside a range.",
+  "memoryTrick": "std::reverse reverses the order of elements inside a range.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Place pointers",
-      "text": "Start left and right at meaningful boundaries."
+      "title": "Identify what the operation means",
+      "text": "std::reverse reverses the order of elements inside a range."
     },
     {
-      "title": "Inspect pair",
-      "text": "Read the values or state between them."
+      "title": "Work through a small case",
+      "text": "[1, 2, 3, 4] becomes [4, 3, 2, 1], swapping elements from opposite ends."
     },
     {
-      "title": "Move one side",
-      "text": "Advance the pointer that cannot produce the answer."
-    },
-    {
-      "title": "Return match",
-      "text": "Return the pair, range, or transformed array."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
-    },
-    {
-      "name": "left and right swap pointers",
-      "purpose": "The two endpoints that move inward after each swap."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by cppReverse after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the two pointer swap transition until the stop condition for C++ reverse() is reached. Stop when no valid work remains or the answer is known."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     }
   ],
   "dryRun": [
     {
-      "label": "Range",
-      "title": "Read ordered range",
-      "note": "The code receives values where pointer movement has meaning.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "std::reverse reverses the order of elements inside a range.",
       "activeLine": 5,
-      "codeInsight": "Defines cppReverse and names the input values; edits to those inputs change the visual state and output."
+      "codeInsight": "std::reverse reverses the order of elements inside a range."
     },
     {
-      "label": "Pointers",
-      "title": "Set left and right",
-      "note": "Both indices define the current candidate state.",
-      "activeLine": 5,
-      "codeInsight": "Defines cppReverse and names the input values; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Compare",
-      "title": "Choose pointer movement",
-      "note": "The condition decides which pointer moves.",
-      "activeLine": 5,
-      "codeInsight": "Defines cppReverse and names the input values; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Pair result",
-      "title": "Return pair or state",
-      "note": "The loop stops when the target condition is met or exhausted.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "[1, 2, 3, 4] becomes [4, 3, 2, 1], swapping elements from opposite ends.",
       "activeLine": 6,
-      "codeInsight": "Returns the final array-style answer [...values].reverse(), so the last frame should show the chosen positions or sequence."
+      "codeInsight": "std::reverse reverses the order of elements inside a range."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(n) work (approximately n/2 swaps).",
+    "space": "O(1) auxiliary state."
   },
   "quiz": {
-    "question": "Which state choice keeps C++ reverse() correct?",
+    "question": "Which explanation best describes C++ reverse()?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through C++ reverse()'s transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "std::reverse reverses the order of elements inside a range.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. C++ reverse() stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. C++ reverse() needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. std::reverse reverses the order of elements inside a range.",
+    "incorrectText": "Try again. std::reverse reverses the order of elements inside a range. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "c-stl-algorithm-pages",
   "algorithmSlug": "cpp-reverse",
@@ -209,5 +179,40 @@ export const algorithmPage = {
         "secondaryLabel": "Each step moves left or right inward instead of trying all combinations."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "[1, 2, 3, 4] becomes [4, 3, 2, 1], swapping elements from opposite ends.",
+    "sampleInput": [
+      [
+        1,
+        2,
+        3
+      ]
+    ],
+    "sampleResult": [
+      3,
+      2,
+      1
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: std::reverse reverses the order of elements inside a range."
+  },
+  "relatedLinks": []
 };

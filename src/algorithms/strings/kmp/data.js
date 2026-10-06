@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/kmp/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "KMP Algorithm is taught with its own string state, transition, code trace, and stopping rule.",
+  "meaning": "Find every occurrence of a pattern in text without rechecking characters that the prefix table already explains.",
   "problem": "Find every occurrence of a pattern in text without rechecking characters that the prefix table already explains.",
   "concept": "KMP preprocesses the pattern into an LPS table. On mismatch, the pattern index falls back to the longest proper prefix that is also a suffix.",
   "logicSummary": "Build the LPS table for the pattern, scan text with indices i and j, and use LPS fallback instead of moving i backward.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use KMP for search boxes, command matching, DNA motif search, or any exact substring search that must avoid repeated scans.",
   "whenToUse": "Use KMP when many repeated prefixes in the pattern make naive backtracking expensive.",
   "memoryTrick": "KMP keeps text moving and lets the pattern jump.",
-  "visualizerCaption": "The trace shows LPS construction and the text scan using fallback jumps.",
+  "visualizerCaption": "Explore KMP Algorithm through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Build LPS table",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(m) for the LPS table."
   },
   "quiz": {
-    "question": "Which state keeps KMP Algorithm correct?",
+    "question": "Which explanation best describes KMP Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "Track the LPS table plus text/pattern indices, and use LPS for every mismatch fallback.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another string algorithm's state names without matching its invariant.",
-        "correct": false
+        "text": "Find every occurrence of a pattern in text without rechecking characters that the prefix table already explains.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. KMP Algorithm works because the page state follows that exact string invariant.",
-    "incorrectText": "Not quite. KMP Algorithm needs its own string state and stop condition."
+    "correctText": "Correct. Find every occurrence of a pattern in text without rechecking characters that the prefix table already explains.",
+    "incorrectText": "Try again. Find every occurrence of a pattern in text without rechecking characters that the prefix table already explains. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "strings",
   "algorithmSlug": "kmp",
@@ -181,5 +181,36 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A string is an ordered sequence. A substring occupies consecutive positions; a subsequence can skip positions.",
+    "family": "Characters and positions",
+    "example": "Build LPS table: For each pattern index, store the longest reusable prefix length. Compare text and pattern: Move i and j while characters match. Fallback on mismatch: Use lps[j - 1] so the text index does not rewind. Record match: When j reaches pattern length, save i - j and fallback again for overlaps.",
+    "sampleInput": [
+      "ababcababc",
+      "ababc"
+    ],
+    "sampleResult": [
+      0,
+      5
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Prefix",
+        "Characters at the beginning of a string."
+      ],
+      [
+        "Substring",
+        "A consecutive section of a string."
+      ],
+      [
+        "Frequency",
+        "How often a character occurs."
+      ]
+    ],
+    "pitfall": "Check empty strings and repeated characters. State whether case, spaces, and Unicode characters affect matching.",
+    "checkpoint": "Explain this in your own words: Find every occurrence of a pattern in text without rechecking characters that the prefix table already explains."
+  },
+  "relatedLinks": []
 };

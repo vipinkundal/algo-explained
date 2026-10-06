@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/merge-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Merge Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Sort an array by recursively sorting halves and merging two sorted lists.",
   "problem": "Sort an array by recursively sorting halves and merging two sorted lists.",
   "concept": "Merge Sort divides until single-item arrays, then merges sorted halves by repeatedly taking the smaller front value.",
   "logicSummary": "Split the array around mid, recursively sort both halves, then merge the two sorted results.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for stable sorting and linked-list sorting where predictable O(n log n) matters.",
   "whenToUse": "Use Merge Sort when stable O(n log n) sorting is preferred and O(n) extra space is acceptable.",
   "memoryTrick": "Split down, merge up.",
-  "visualizerCaption": "Merge Sort is shown with the actual sorted/unsorted state that its code maintains.",
+  "visualizerCaption": "Explore Merge Sort through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Divide at mid",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n)."
   },
   "quiz": {
-    "question": "Which state keeps Merge Sort correct?",
+    "question": "Which explanation best describes Merge Sort?",
     "options": [
       {
         "key": "A",
-        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Use one generic sorted-array story for every sorting algorithm.",
-        "correct": false
+        "text": "Sort an array by recursively sorting halves and merging two sorted lists.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Move values without preserving the algorithm's stated invariant.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Merge Sort works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Merge Sort needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Sort an array by recursively sorting halves and merging two sorted lists.",
+    "incorrectText": "Try again. Sort an array by recursively sorting halves and merging two sorted lists. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "merge-sort",
@@ -226,5 +226,42 @@ export const algorithmPage = {
         "secondaryLabel": "During merge, compare the left and right front values and append the smaller one to output."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Divide at mid: Break [5,1,4,2] into [5,1] and [4,2]. Single items are sorted: Arrays of length 1 return immediately. Compare fronts: Take the smaller front from left or right. Merged result: Concatenate leftovers after one half is empty.",
+    "sampleInput": [
+      [
+        5,
+        1,
+        4,
+        2
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      4,
+      5
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Sort an array by recursively sorting halves and merging two sorted lists."
+  },
+  "relatedLinks": []
 };

@@ -12,107 +12,85 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/foundations/recursion-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Recursion Basics is a Foundations technique focused on solutions.",
-  "problem": "Recursion Basics explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Recursion Basics is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
-  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
-  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "Recursion Basics appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use Recursion Basics when a problem matches the Foundations pattern and the expected state changes match a call stack dry run.",
-  "memoryTrick": "Recursion Basics: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Recursion Basics is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls.",
+  "problem": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls.",
+  "concept": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls.",
+  "logicSummary": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls.",
+  "transitionSummary": "For sum(3), compute 3 + sum(2), then 2 + sum(1), then 1 + sum(0). With sum(0) = 0, the answer is 6.",
+  "codeInsight": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls.",
+  "realLifeExample": "For sum(3), compute 3 + sum(2), then 2 + sum(1), then 1 + sum(0). With sum(0) = 0, the answer is 6.",
+  "whenToUse": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls.",
+  "memoryTrick": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read stack",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls."
     },
     {
-      "title": "Inspect stack top",
-      "text": "Look at the active stack fields."
+      "title": "Work through a small case",
+      "text": "For sum(3), compute 3 + sum(2), then 2 + sum(1), then 1 + sum(0). With sum(0) = 0, the answer is 6."
     },
     {
-      "title": "Push / pop",
-      "text": "push, pop, peek, or resolve stack entries."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays."
     }
   ],
   "variables": [
     {
-      "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "working state",
-      "purpose": "The local state updated by the algorithm transition. This page visualizes it as call stack."
+      "name": "input",
+      "purpose": "Chooses the provided array or a fallback sample so the following collection operations have an array to read."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by recursionBasics after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Stack",
-      "title": "Read stack action",
-      "note": "The code receives the next value or command.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls.",
       "activeLine": 5,
-      "codeInsight": "Defines recursionBasics and names the input values; edits to those inputs change the visual state and output."
+      "codeInsight": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls."
     },
     {
-      "label": "Stack top",
-      "title": "Inspect stack",
-      "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 6,
-      "codeInsight": "Prepares input from the sample collection that the next visual step inspects."
-    },
-    {
-      "label": "Push / pop",
-      "title": "Push, pop, peek, or resolve stack entries",
-      "note": "Only the necessary stack fields are changed.",
-      "activeLine": 10,
-      "codeInsight": "Adds the current value to result, keeping it available for later comparisons or traversal."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
-      "activeLine": 11,
-      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For sum(3), compute 3 + sum(2), then 2 + sum(1), then 1 + sum(0). With sum(0) = 0, the answer is 6.",
+      "activeLine": 17,
+      "codeInsight": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "This subset-enumeration demo takes O(n × 2ⁿ) work, including copied paths; recursion alone does not determine complexity.",
+    "space": "O(n) call depth plus O(n × 2ⁿ) stored subset output."
   },
   "quiz": {
-    "question": "Which state choice keeps Recursion Basics correct?",
+    "question": "Which explanation best describes Recursion Basics?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through Recursion Basics' transition.",
-        "correct": true
+        "text": "Every recursive function must try every possible arrangement and undo every call.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Recursion Basics stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Recursion Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls.",
+    "incorrectText": "Try again. Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "foundations",
   "algorithmSlug": "recursion-basics",
@@ -198,5 +176,46 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "Each call remembers its own unfinished work. A base case returns directly; the other calls resume as smaller calls finish.",
+    "family": "Recursive calls",
+    "example": "For sum(3), compute 3 + sum(2), then 2 + sum(1), then 1 + sum(0). With sum(0) = 0, the answer is 6.",
+    "sampleInput": [
+      [
+        1,
+        2
+      ]
+    ],
+    "sampleResult": [
+      [],
+      [
+        2
+      ],
+      [
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "sampleScope": "This JavaScript sample lists subsets with include/exclude recursive branches. The sum example above introduces recursion with a simpler call chain.",
+    "terms": [
+      [
+        "Base case",
+        "An input that returns without another recursive call."
+      ],
+      [
+        "Call frame",
+        "The parameters and local work belonging to one call."
+      ],
+      [
+        "Backtracking",
+        "Undoing a choice to explore another branch; not every recursion needs it."
+      ]
+    ],
+    "pitfall": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays.",
+    "checkpoint": "Explain this in your own words: Recursion solves a problem by calling the same function on a smaller problem until a base case stops the calls."
   }
 };

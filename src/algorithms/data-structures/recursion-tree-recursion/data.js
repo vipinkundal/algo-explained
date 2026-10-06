@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/recursion-tree-recursion/code/original.cpp",
   "originalCodeFilename": "03_tree_recursion.cpp",
   "originalActiveLine": 3,
-  "meaning": "Tree Recursion shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Tree Recursion explains the tree state model and how one focused change updates it.",
-  "concept": "Tree Recursion is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
-  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
-  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Tree recursion makes more than one recursive call from a call frame.",
+  "problem": "Tree recursion makes more than one recursive call from a call frame.",
+  "concept": "Tree recursion makes more than one recursive call from a call frame.",
+  "logicSummary": "Tree recursion makes more than one recursive call from a call frame.",
+  "transitionSummary": "A function calling itself twice on n − 1 creates branching work instead of one chain.",
+  "codeInsight": "Tree recursion makes more than one recursive call from a call frame.",
   "originalCodeInsight": "The C/C++ reference Tree Recursion source shows the C/C++ memory model and operation order used by this lesson.",
-  "realLifeExample": "Tree Recursion is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Recursion behavior through state changes instead of memorized code.",
-  "memoryTrick": "Tree Recursion: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Tree Recursion is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "A function calling itself twice on n − 1 creates branching work instead of one chain.",
+  "whenToUse": "Tree recursion makes more than one recursive call from a call frame.",
+  "memoryTrick": "Tree recursion makes more than one recursive call from a call frame.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read stack",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "Tree recursion makes more than one recursive call from a call frame."
     },
     {
-      "title": "Inspect stack top",
-      "text": "Look at the active stack fields."
+      "title": "Work through a small case",
+      "text": "A function calling itself twice on n − 1 creates branching work instead of one chain."
     },
     {
-      "title": "Push / pop",
-      "text": "push, pop, peek, or resolve stack entries."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays."
     }
   ],
   "variables": [
     {
-      "name": "entry node",
-      "purpose": "The node where the traversal or creation step begins."
-    },
-    {
-      "name": "visit queue",
-      "purpose": "Holds nodes waiting to be processed."
-    },
-    {
-      "name": "current node",
-      "purpose": "The node being handled by Tree Recursion."
-    },
-    {
-      "name": "visit order",
-      "purpose": "The visible order produced by the traversal."
+      "name": "tree",
+      "purpose": "Groups named values and relationships into a record that the companion can inspect and report."
     }
   ],
   "dryRun": [
     {
-      "label": "Stack",
-      "title": "Read stack action",
-      "note": "The code receives the next value or command.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Tree recursion makes more than one recursive call from a call frame.",
       "activeLine": 2,
-      "codeInsight": "Defines recursionTreeRecursion as the runnable entry point for this lesson."
+      "codeInsight": "Tree recursion makes more than one recursive call from a call frame."
     },
     {
-      "label": "Stack top",
-      "title": "Inspect stack",
-      "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "Builds tree as a structured sample object that the tree, graph, or map visualizer can render directly."
-    },
-    {
-      "label": "Push / pop",
-      "title": "Push, pop, peek, or resolve stack entries",
-      "note": "Only the necessary stack fields are changed.",
-      "activeLine": 3,
-      "codeInsight": "Builds tree as a structured sample object that the tree, graph, or map visualizer can render directly."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "A function calling itself twice on n − 1 creates branching work instead of one chain.",
       "activeLine": 4,
-      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Tree recursion makes more than one recursive call from a call frame."
     }
   ],
   "complexity": {
@@ -270,5 +240,37 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "Each call remembers its own unfinished work. A base case returns directly; the other calls resume as smaller calls finish.",
+    "family": "Recursive calls",
+    "example": "A function calling itself twice on n − 1 creates branching work instead of one chain.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "binary tree",
+      "traversal": "level order",
+      "result": [
+        1,
+        2,
+        3
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Base case",
+        "An input that returns without another recursive call."
+      ],
+      [
+        "Call frame",
+        "The parameters and local work belonging to one call."
+      ],
+      [
+        "Backtracking",
+        "Undoing a choice to explore another branch; not every recursion needs it."
+      ]
+    ],
+    "pitfall": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays.",
+    "checkpoint": "Explain this in your own words: Tree recursion makes more than one recursive call from a call frame."
   }
 };

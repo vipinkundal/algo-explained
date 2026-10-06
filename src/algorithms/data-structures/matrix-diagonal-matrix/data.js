@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/matrix-diagonal-matrix/code/original.c",
   "originalCodeFilename": "01_Diagonal_matrix.c",
   "originalActiveLine": 2,
-  "meaning": "Diagonal Matrix shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Diagonal Matrix explains the matrix state model and how one focused change updates it.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "A diagonal matrix has non-zero values only where row and column indexes are equal.",
+  "problem": "A diagonal matrix has non-zero values only where row and column indexes are equal.",
+  "concept": "A diagonal matrix has non-zero values only where row and column indexes are equal.",
+  "logicSummary": "A diagonal matrix has non-zero values only where row and column indexes are equal.",
+  "transitionSummary": "[[2, 0], [0, 5]] can be stored as [2, 5].",
+  "codeInsight": "A diagonal matrix has non-zero values only where row and column indexes are equal.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
-  "realLifeExample": "Diagonal Matrix is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Matrix / Sparse Matrix / Polynomial behavior through state changes instead of memorized code.",
-  "memoryTrick": "Diagonal Matrix: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Diagonal Matrix is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "[[2, 0], [0, 5]] can be stored as [2, 5].",
+  "whenToUse": "A diagonal matrix has non-zero values only where row and column indexes are equal.",
+  "memoryTrick": "A diagonal matrix has non-zero values only where row and column indexes are equal.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "A diagonal matrix has non-zero values only where row and column indexes are equal."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "[[2, 0], [0, 5]] can be stored as [2, 5]."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
-      "name": "row marker",
-      "purpose": "Selects the row being inspected."
+      "name": "matrix",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "column marker",
-      "purpose": "Selects the column being inspected."
-    },
-    {
-      "name": "stored cell",
-      "purpose": "The value addressed by Diagonal Matrix."
-    },
-    {
-      "name": "matrix view",
-      "purpose": "Shows the compact or expanded grid state."
+      "name": "nonZero",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A diagonal matrix has non-zero values only where row and column indexes are equal.",
       "activeLine": 2,
-      "codeInsight": "Defines matrixDiagonalMatrix as the runnable entry point for this lesson."
+      "codeInsight": "A diagonal matrix has non-zero values only where row and column indexes are equal."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
-      "activeLine": 3,
-      "codeInsight": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "[[2, 0], [0, 5]] can be stored as [2, 5].",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A diagonal matrix has non-zero values only where row and column indexes are equal."
     }
   ],
   "complexity": {
@@ -261,5 +235,49 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "[[2, 0], [0, 5]] can be stored as [2, 5].",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "matrix",
+      "representation": "non-zero entries",
+      "nonZero": [
+        {
+          "r": 0,
+          "c": 0,
+          "value": 1
+        },
+        {
+          "r": 1,
+          "c": 1,
+          "value": 2
+        },
+        {
+          "r": 2,
+          "c": 2,
+          "value": 3
+        }
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: A diagonal matrix has non-zero values only where row and column indexes are equal."
   }
 };

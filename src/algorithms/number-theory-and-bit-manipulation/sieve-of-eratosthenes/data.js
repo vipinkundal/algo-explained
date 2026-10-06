@@ -12,107 +12,93 @@ export const algorithmPage = {
   "icon": "memory",
   "codePath": "./src/algorithms/number-theory-and-bit-manipulation/sieve-of-eratosthenes/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Sieve of Eratosthenes is a Number Theory and Bit Manipulation technique focused on answer.",
-  "problem": "Sieve of Eratosthenes solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its number grid transition.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "The implementation keeps Sieve of Eratosthenes' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Sieve of Eratosthenes appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Sieve of Eratosthenes when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a number grid dry run.",
-  "memoryTrick": "Sieve of Eratosthenes: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Sieve of Eratosthenes is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime.",
+  "problem": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime.",
+  "concept": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime.",
+  "logicSummary": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime.",
+  "transitionSummary": "Up to 10, cross out multiples of 2 and 3. The remaining numbers greater than 1 are 2, 3, 5, and 7.",
+  "codeInsight": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime.",
+  "realLifeExample": "Up to 10, cross out multiples of 2 and 3. The remaining numbers greater than 1 are 2, 3, 5, and 7.",
+  "whenToUse": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime.",
+  "memoryTrick": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "Up to 10, cross out multiples of 2 and 3. The remaining numbers greater than 1 are 2, 3, 5, and 7."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Handle zero, one, negative values, and invalid domains explicitly. Large Number calculations can lose exact integer precision."
     }
   ],
   "variables": [
     {
-      "name": "value, other",
-      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "limit",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "marked numbers",
-      "purpose": "Composite markers that remove numbers from the candidate prime set."
+      "name": "prime",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by sieveOfEratosthenes after the maintained state reaches the stop rule."
+      "name": "value",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the number grid transition until the stop condition for Sieve of Eratosthenes is reached. Stop when no valid work remains or the answer is known."
+      "name": "multiple",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime.",
       "activeLine": 5,
-      "codeInsight": "Defines sieveOfEratosthenes and names the input limit; edits to those inputs change the visual state and output."
+      "codeInsight": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
-      "activeLine": 5,
-      "codeInsight": "Defines sieveOfEratosthenes and names the input limit; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 8,
-      "codeInsight": "Runs the counted loop (let value = 2; value * value <= limit; value += 1) so each visual step follows one code-controlled iteration."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Up to 10, cross out multiples of 2 and 3. The remaining numbers greater than 1 are 2, 3, 5, and 7.",
       "activeLine": 14,
-      "codeInsight": "Returns result, the final value maintained by Sieve of Eratosthenes's code path."
+      "codeInsight": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(n log log n) for the standard sieve through n.",
+    "space": "O(n) primality flags."
   },
   "quiz": {
-    "question": "Which state choice keeps Sieve of Eratosthenes correct?",
+    "question": "Which explanation best describes Sieve of Eratosthenes?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Sieve of Eratosthenes' transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "The sieve finds primes up to a limit by crossing out multiples of each discovered prime.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Sieve of Eratosthenes stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Sieve of Eratosthenes needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The sieve finds primes up to a limit by crossing out multiples of each discovered prime.",
+    "incorrectText": "Try again. The sieve finds primes up to a limit by crossing out multiples of each discovered prime. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
   "algorithmSlug": "sieve-of-eratosthenes",
@@ -243,5 +229,37 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "Arithmetic properties can reduce a search: factors come in pairs, remainders shrink GCD problems, and squaring reduces exponent work.",
+    "family": "Arithmetic structure",
+    "example": "Up to 10, cross out multiples of 2 and 3. The remaining numbers greater than 1 are 2, 3, 5, and 7.",
+    "sampleInput": [
+      10
+    ],
+    "sampleResult": [
+      2,
+      3,
+      5,
+      7
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Remainder",
+        "What remains after integer division."
+      ],
+      [
+        "Modulo",
+        "Keeping a value’s remainder under a chosen modulus."
+      ],
+      [
+        "Divisor",
+        "An integer that divides another integer exactly."
+      ]
+    ],
+    "pitfall": "Handle zero, one, negative values, and invalid domains explicitly. Large Number calculations can lose exact integer precision.",
+    "checkpoint": "Explain this in your own words: The sieve finds primes up to a limit by crossing out multiples of each discovered prime."
+  },
+  "relatedLinks": []
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "queue",
   "codePath": "./src/algorithms/queue/sliding-window-maximum/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Sliding Window Maximum is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Sliding Window Maximum keeps a deque of indices whose values are decreasing.",
   "problem": "Sliding Window Maximum keeps a deque of indices whose values are decreasing.",
   "concept": "Sliding-window logic is useful when the answer depends on a contiguous range that changes one edge at a time. Use this when recomputing every range would repeat work.",
   "logicSummary": "Expand or slide the window, remove expired items, and keep the answer from the current valid range.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Sliding Window Maximum appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Sliding Window Maximum when its state transition is the natural way to model the problem.",
   "memoryTrick": "Sliding Window Maximum: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Sliding Window Maximum is shown as a moving range over an array. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Sliding Window Maximum through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Open window",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(k)."
   },
   "quiz": {
-    "question": "Which state choice keeps Sliding Window Maximum correct?",
+    "question": "Which explanation best describes Sliding Window Maximum?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Sliding Window Maximum's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Sliding Window Maximum keeps a deque of indices whose values are decreasing.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Sliding Window Maximum stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Sliding Window Maximum needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Sliding Window Maximum keeps a deque of indices whose values are decreasing.",
+    "incorrectText": "Try again. Sliding Window Maximum keeps a deque of indices whose values are decreasing. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "queue",
   "algorithmSlug": "sliding-window-maximum",
@@ -204,5 +204,49 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "Open window: Start with an empty or first valid range. Add right edge: Include the next value. Remove stale edge: Shrink or pop values that no longer belong. Record answer: Emit the best value for the current window.",
+    "sampleInput": [
+      [
+        1,
+        3,
+        -1,
+        -3,
+        5,
+        3,
+        6,
+        7
+      ],
+      3
+    ],
+    "sampleResult": [
+      3,
+      3,
+      5,
+      5,
+      6,
+      7
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: Sliding Window Maximum keeps a deque of indices whose values are decreasing."
+  },
+  "relatedLinks": []
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/trie-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Trie-Based Search is taught with its own string state, transition, code trace, and stopping rule.",
+  "meaning": "Store words in a prefix tree and answer whether a query word exists exactly.",
   "problem": "Store words in a prefix tree and answer whether a query word exists exactly.",
   "concept": "A trie shares common prefixes. Each character chooses one child edge, and the terminal marker decides whether the path is a complete word.",
   "logicSummary": "Insert each word character by character, mark terminal nodes, then walk the query path from the root.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use tries for autocomplete, dictionary lookup, prefix filters, and routing by character tokens.",
   "whenToUse": "Use trie search when many words share prefixes or many repeated prefix queries are expected.",
   "memoryTrick": "Characters are edges; terminal means complete word.",
-  "visualizerCaption": "The trace follows the query through the prefix tree and checks the terminal marker.",
+  "visualizerCaption": "Explore Trie-Based Search through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Create root",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(total inserted characters)."
   },
   "quiz": {
-    "question": "Which state keeps Trie-Based Search correct?",
+    "question": "Which explanation best describes Trie-Based Search?",
     "options": [
       {
         "key": "A",
-        "text": "Track trie nodes and the terminal marker, not just whether the prefix path exists.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another string algorithm's state names without matching its invariant.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
-        "correct": false
+        "text": "Store words in a prefix tree and answer whether a query word exists exactly.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Trie-Based Search works because the page state follows that exact string invariant.",
-    "incorrectText": "Not quite. Trie-Based Search needs its own string state and stop condition."
+    "correctText": "Correct. Store words in a prefix tree and answer whether a query word exists exactly.",
+    "incorrectText": "Try again. Store words in a prefix tree and answer whether a query word exists exactly. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "strings",
   "algorithmSlug": "trie-search",
@@ -185,5 +185,37 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A string is an ordered sequence. A substring occupies consecutive positions; a subsequence can skip positions.",
+    "family": "Characters and positions",
+    "example": "Create root: Start with an empty object representing the root node. Insert words: Create child nodes for each character along every word path. Walk query: Follow the query characters one by one. Check terminal: Return true only if the final node is marked as a complete word.",
+    "sampleInput": [
+      [
+        "car",
+        "cart",
+        "dog"
+      ],
+      "cart"
+    ],
+    "sampleResult": true,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Prefix",
+        "Characters at the beginning of a string."
+      ],
+      [
+        "Substring",
+        "A consecutive section of a string."
+      ],
+      [
+        "Frequency",
+        "How often a character occurs."
+      ]
+    ],
+    "pitfall": "Check empty strings and repeated characters. State whether case, spaces, and Unicode characters affect matching.",
+    "checkpoint": "Explain this in your own words: Store words in a prefix tree and answer whether a query word exists exactly."
+  },
+  "relatedLinks": []
 };

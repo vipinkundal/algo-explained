@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/linked-list-middlenode-and-intersection-of-two-ll/code/original.cpp",
   "originalCodeFilename": "20_MiddleNode_and_intersection_of_two_LL.cpp",
   "originalActiveLine": 1,
-  "meaning": "MiddleNode And Intersection Of Two Linked List shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "MiddleNode And Intersection Of Two Linked List explains the linked-list state model and how one focused change updates it.",
-  "concept": "MiddleNode And Intersection Of Two Linked List is useful when linked list behavior is the clearest model for the data changes. Use this when the problem is naturally described by node-link structure.",
-  "logicSummary": "Read the next value or operation, maintain node-link structure, then move pointers without losing the rest of the chain.",
-  "transitionSummary": "Each step changes only the part of the linked list required to preserve the invariant.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Pointer techniques can locate a list’s middle or find where two lists share the same node.",
+  "problem": "Pointer techniques can locate a list’s middle or find where two lists share the same node.",
+  "concept": "Pointer techniques can locate a list’s middle or find where two lists share the same node.",
+  "logicSummary": "Pointer techniques can locate a list’s middle or find where two lists share the same node.",
+  "transitionSummary": "A slow pointer reaches the middle when a fast pointer reaches the end. Intersection means the same node object, not merely equal values.",
+  "codeInsight": "Pointer techniques can locate a list’s middle or find where two lists share the same node.",
   "originalCodeInsight": "The C/C++ reference MiddleNode And Intersection Of Two Linked List source shows the C/C++ memory model and operation order used by this lesson.",
-  "realLifeExample": "MiddleNode And Intersection Of Two Linked List is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Linked List behavior through state changes instead of memorized code.",
-  "memoryTrick": "MiddleNode And Intersection Of Two Linked List: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "MiddleNode And Intersection Of Two Linked List is shown as linked list state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "A slow pointer reaches the middle when a fast pointer reaches the end. Intersection means the same node object, not merely equal values.",
+  "whenToUse": "Pointer techniques can locate a list’s middle or find where two lists share the same node.",
+  "memoryTrick": "Pointer techniques can locate a list’s middle or find where two lists share the same node.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read linked list",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "Pointer techniques can locate a list’s middle or find where two lists share the same node."
     },
     {
-      "title": "Inspect node links",
-      "text": "Look at the active linked list fields."
+      "title": "Work through a small case",
+      "text": "A slow pointer reaches the middle when a fast pointer reaches the end. Intersection means the same node object, not merely equal values."
     },
     {
-      "title": "Pointer update",
-      "text": "move pointers without losing the rest of the chain."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Save the next link before changing it. Handle an empty list and a change to the head; circular lists need a different stop rule."
     }
   ],
   "variables": [
     {
-      "name": "head link",
-      "purpose": "References the first node in the chain."
-    },
-    {
-      "name": "walk pointer",
-      "purpose": "Moves through links one node at a time."
-    },
-    {
-      "name": "new node",
-      "purpose": "Represents the node created or examined in MiddleNode And Intersection Of Two Linked List."
-    },
-    {
-      "name": "chain view",
-      "purpose": "Shows the visible node order after pointer updates."
+      "name": "nodes",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Linked List",
-      "title": "Read linked list action",
-      "note": "The code receives the next value or command.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Pointer techniques can locate a list’s middle or find where two lists share the same node.",
       "activeLine": 2,
-      "codeInsight": "Defines linkedListMiddlenodeAndIntersectionOfTwoLl as the runnable entry point for this lesson."
+      "codeInsight": "Pointer techniques can locate a list’s middle or find where two lists share the same node."
     },
     {
-      "label": "Node links",
-      "title": "Inspect linked list",
-      "note": "The active state must still satisfy node-link structure.",
-      "activeLine": 3,
-      "codeInsight": "Stores nodes from the current length, making the loop boundary explicit for the visual trace."
-    },
-    {
-      "label": "Pointer update",
-      "title": "Move pointers without losing the rest of the chain",
-      "note": "Only the necessary linked list fields are changed.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "A slow pointer reaches the middle when a fast pointer reaches the end. Intersection means the same node object, not merely equal values.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Pointer techniques can locate a list’s middle or find where two lists share the same node."
     }
   ],
   "complexity": {
@@ -198,5 +168,38 @@ export const algorithmPage = {
         "nextNode": "tail"
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A linked list follows arrows from node to node. Unlike an array, its nodes do not need neighboring memory slots.",
+    "family": "Linked nodes",
+    "example": "A slow pointer reaches the middle when a fast pointer reaches the end. Intersection means the same node object, not merely equal values.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "linked list",
+      "operation": "insert at position 1",
+      "values": [
+        10,
+        15,
+        20,
+        30
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Head",
+        "The first node in a list."
+      ],
+      [
+        "Next",
+        "The link leading to another node."
+      ],
+      [
+        "Null",
+        "No object or next node is present."
+      ]
+    ],
+    "pitfall": "Save the next link before changing it. Handle an empty list and a change to the head; circular lists need a different stop rule.",
+    "checkpoint": "Explain this in your own words: Pointer techniques can locate a list’s middle or find where two lists share the same node."
   }
 };

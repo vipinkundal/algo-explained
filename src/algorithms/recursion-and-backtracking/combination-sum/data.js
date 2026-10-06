@@ -12,80 +12,66 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/recursion-and-backtracking/combination-sum/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Combination Sum is a Recursion and Backtracking technique focused on solutions.",
-  "problem": "Combination Sum explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
-  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
-  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "Combination Sum appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use Combination Sum when a problem matches the Recursion and Backtracking pattern and the expected state changes match a choice tree dry run.",
-  "memoryTrick": "Combination Sum: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Combination Sum is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it.",
+  "problem": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it.",
+  "concept": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it.",
+  "logicSummary": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it.",
+  "transitionSummary": "With [2, 3] and target 7, [2, 2, 3] works. Keeping choices in a fixed order avoids reporting its rearrangements again.",
+  "codeInsight": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it.",
+  "realLifeExample": "With [2, 3] and target 7, [2, 2, 3] works. Keeping choices in a fixed order avoids reporting its rearrangements again.",
+  "whenToUse": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it.",
+  "memoryTrick": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Base case",
-      "text": "Stop when the current state is complete or invalid."
+      "title": "Identify what the operation means",
+      "text": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it."
     },
     {
-      "title": "Choose option",
-      "text": "Pick the next valid branch."
+      "title": "Work through a small case",
+      "text": "With [2, 3] and target 7, [2, 2, 3] works. Keeping choices in a fixed order avoids reporting its rearrangements again."
     },
     {
-      "title": "Recurse",
-      "text": "Solve the smaller state."
-    },
-    {
-      "title": "Return or undo",
-      "text": "Collect the result or backtrack before the next choice."
+      "title": "Check the boundary cases",
+      "text": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it."
     }
   ],
   "variables": [
     {
-      "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "name": "candidates",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "path and recursion frame",
-      "purpose": "The partial choice path plus the current recursive frame before backtracking restores it. This page visualizes it as choice tree."
+      "name": "target",
+      "purpose": "The value or total the operation is trying to locate or reach."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by combinationSum after the maintained state reaches the stop rule."
+      "name": "values",
+      "purpose": "Holds ordered values so later comparisons or selections can rely on their order."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
+    },
+    {
+      "name": "index",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Base",
-      "title": "Check stop condition",
-      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it.",
       "activeLine": 5,
-      "codeInsight": "Defines combinationSum and names the input candidates, target; edits to those inputs change the visual state and output."
+      "codeInsight": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it."
     },
     {
-      "label": "Choice",
-      "title": "Select next option",
-      "note": "One valid move is added to the state.",
-      "activeLine": 5,
-      "codeInsight": "Defines combinationSum and names the input candidates, target; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Call",
-      "title": "Recurse deeper",
-      "note": "The same rule runs on a smaller or extended state.",
-      "activeLine": 6,
-      "codeInsight": "Copies the input into values, so the animation can show mutations without pretending the caller's original array changes."
-    },
-    {
-      "label": "Unwind",
-      "title": "Return or backtrack",
-      "note": "The result is combined or the choice is removed.",
-      "activeLine": 11,
-      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "With [2, 3] and target 7, [2, 2, 3] works. Keeping choices in a fixed order avoids reporting its rearrangements again.",
+      "activeLine": 21,
+      "codeInsight": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it."
     }
   ],
   "complexity": {
@@ -93,26 +79,26 @@ export const algorithmPage = {
     "space": "O(n) for tracked state when needed."
   },
   "quiz": {
-    "question": "Which state choice keeps Combination Sum correct?",
+    "question": "Which explanation best describes Combination Sum?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through Combination Sum's transition.",
+        "text": "Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Combination Sum stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Combination Sum needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it.",
+    "incorrectText": "Try again. Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "recursion-and-backtracking",
   "algorithmSlug": "combination-sum",
@@ -252,5 +238,47 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "With [2, 3] and target 7, [2, 2, 3] works. Keeping choices in a fixed order avoids reporting its rearrangements again.",
+    "sampleInput": [
+      [
+        2,
+        3,
+        6,
+        7
+      ],
+      7
+    ],
+    "sampleResult": [
+      [
+        2,
+        2,
+        3
+      ],
+      [
+        7
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Combination Sum tries choices of positive numbers whose sum reaches a target, allowing reuse when the problem permits it."
+  },
+  "relatedLinks": []
 };

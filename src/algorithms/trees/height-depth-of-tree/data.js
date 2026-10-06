@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/height-depth-of-tree/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Tree height is the number of nodes on the longest path from the current node down to a leaf. Depth is the distance from the root down to a node.",
+  "meaning": "Height / Depth of Tree computes how tall a tree is by asking each child for its height and returning one plus the taller child.",
   "problem": "Height / Depth of Tree computes how tall a tree is by asking each child for its height and returning one plus the taller child.",
   "concept": "A null child has height 0. A real node returns 1 + Math.max(left height, right height), so each parent only needs the two child results.",
   "logicSummary": "Start at the root, recursively measure the left and right subtrees, then return one plus the larger child height.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Height is like measuring an org chart by asking each manager for the longest reporting chain below them, then adding the manager.",
   "whenToUse": "Use this pattern when a tree answer can be computed from left-subtree and right-subtree results.",
   "memoryTrick": "Tree height: null is 0, node is 1 plus the taller child.",
-  "visualizerCaption": "The animation shows child heights rolling up from subtrees to the root.",
+  "visualizerCaption": "Explore Height / Depth of Tree through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check node",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(h) recursion or traversal state."
   },
   "quiz": {
-    "question": "Which state choice keeps Height / Depth of Tree correct?",
+    "question": "Which explanation best describes Height / Depth of Tree?",
     "options": [
       {
         "key": "A",
-        "text": "Return 0 for null children, then return 1 plus the larger child height for each real node.",
+        "text": "Height / Depth of Tree computes how tall a tree is by asking each child for its height and returning one plus the taller child.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Each parent can compute its height from only the two child heights.",
-    "incorrectText": "Not quite. Height needs the null base case and the max of the left and right subtree heights."
+    "correctText": "Correct. Height / Depth of Tree computes how tall a tree is by asking each child for its height and returning one plus the taller child.",
+    "incorrectText": "Try again. Height / Depth of Tree computes how tall a tree is by asking each child for its height and returning one plus the taller child. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "height-depth-of-tree",
@@ -250,8 +250,8 @@ export const algorithmPage = {
           "7"
         ],
         "nodeLabels": {
-          "4": "4 ?",
           "2": "2 ?",
+          "4": "4 ?",
           "6": "6 ?"
         }
       },
@@ -270,8 +270,8 @@ export const algorithmPage = {
           "7"
         ],
         "nodeLabels": {
-          "2": "2 h=2",
           "1": "1 h=1",
+          "2": "2 h=2",
           "3": "3 h=1"
         }
       },
@@ -290,8 +290,8 @@ export const algorithmPage = {
           "3"
         ],
         "nodeLabels": {
-          "6": "6 h=2",
           "5": "5 h=1",
+          "6": "6 h=2",
           "7": "7 h=1"
         }
       },
@@ -306,11 +306,57 @@ export const algorithmPage = {
         "replacementNode": "6",
         "mutedNodes": [],
         "nodeLabels": {
-          "4": "4 h=3",
           "2": "2 h=2",
+          "4": "4 h=3",
           "6": "6 h=2"
         }
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check node: Treat null children as height 0. Read node state: Recursively measure the left subtree. Move/combine: Recursively measure the right subtree. Return tree result: Return 1 plus the taller child height.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        }
+      }
+    ],
+    "sampleResult": 3,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Height / Depth of Tree computes how tall a tree is by asking each child for its height and returning one plus the taller child."
   }
 };

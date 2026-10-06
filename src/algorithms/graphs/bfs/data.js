@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/bfs/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Breadth-First Search is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Breadth-First Search explores a graph in layers from a start vertex.",
   "problem": "Breadth-First Search explores a graph in layers from a start vertex.",
   "concept": "BFS uses a FIFO queue so every vertex at distance k is processed before any vertex at distance k + 1.",
   "logicSummary": "Mark the start vertex, push it into the queue, pop from the front, and enqueue each unseen neighbor.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use BFS for shortest path length in unweighted graphs, level-order traversal, friend-of-friend expansion, and nearest target searches.",
   "whenToUse": "Use BFS when edges are unweighted and the answer depends on levels, minimum edge count, or exploring all near states first.",
   "memoryTrick": "BFS is a ripple: everything one edge away is handled before anything two edges away.",
-  "visualizerCaption": "Watch the queue frontier expand level by level while visited prevents repeated work.",
+  "visualizerCaption": "Explore Breadth-First Search through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Seed the queue",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state keeps Breadth-First Search correct?",
+    "question": "Which explanation best describes Breadth-First Search?",
     "options": [
       {
         "key": "A",
-        "text": "queue follows the page's own transition rule.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
-        "correct": false
+        "text": "Breadth-First Search explores a graph in layers from a start vertex.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Breadth-First Search explores a graph in layers from a start vertex.",
+    "incorrectText": "Try again. Breadth-First Search explores a graph in layers from a start vertex. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "bfs",
@@ -311,5 +311,55 @@ export const algorithmPage = {
       }
     ],
     "static": true
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A graph contains vertices (places) and edges (connections). Arrows mean a connection can be followed only in that direction.",
+    "family": "Graphs and connections",
+    "example": "Seed the queue: Add the start vertex and mark it visited immediately. Pop the front: The oldest discovered vertex becomes the current vertex. Discover neighbors: Every unseen neighbor is marked and pushed to the back of the queue. Return traversal order: The order records the level-by-level visit sequence.",
+    "sampleInput": [
+      {
+        "A": [
+          "B",
+          "C"
+        ],
+        "B": [
+          "D",
+          "E"
+        ],
+        "C": [
+          "F"
+        ],
+        "D": [],
+        "E": [],
+        "F": []
+      },
+      "A"
+    ],
+    "sampleResult": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Vertex",
+        "One point in a graph; also called a node."
+      ],
+      [
+        "Edge",
+        "A connection between vertices."
+      ],
+      [
+        "Visited",
+        "A record that a vertex has already been discovered."
+      ]
+    ],
+    "pitfall": "Mark discovered vertices to avoid repeating work. Check directedness and whether every component must be visited.",
+    "checkpoint": "Explain this in your own words: Breadth-First Search explores a graph in layers from a start vertex."
+  },
+  "relatedLinks": []
 };

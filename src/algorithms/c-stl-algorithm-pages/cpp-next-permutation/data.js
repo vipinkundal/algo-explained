@@ -12,107 +12,93 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/c-stl-algorithm-pages/cpp-next-permutation/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "C++ next_permutation() is a C++ STL Algorithm Pages technique focused on answer.",
-  "problem": "C++ next_permutation() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its permutation step transition.",
-  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
-  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
-  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-  "codeInsight": "The implementation keeps C++ next_permutation()'s state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "C++ next_permutation() appears when the input is input and the required result is answer.",
-  "whenToUse": "Use C++ next_permutation() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a permutation step dry run.",
-  "memoryTrick": "C++ next_permutation(): name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C++ next_permutation() is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering.",
+  "problem": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering.",
+  "concept": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering.",
+  "logicSummary": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering.",
+  "transitionSummary": "[1, 2, 3] becomes [1, 3, 2]. [3, 2, 1] wraps to [1, 2, 3] and the function returns false.",
+  "codeInsight": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering.",
+  "realLifeExample": "[1, 2, 3] becomes [1, 3, 2]. [3, 2, 1] wraps to [1, 2, 3] and the function returns false.",
+  "whenToUse": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering.",
+  "memoryTrick": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Base case",
-      "text": "Stop when the current state is complete or invalid."
+      "title": "Identify what the operation means",
+      "text": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering."
     },
     {
-      "title": "Choose option",
-      "text": "Pick the next valid branch."
+      "title": "Work through a small case",
+      "text": "[1, 2, 3] becomes [1, 3, 2]. [3, 2, 1] wraps to [1, 2, 3] and the function returns false."
     },
     {
-      "title": "Recurse",
-      "text": "Solve the smaller state."
-    },
-    {
-      "title": "Return or undo",
-      "text": "Collect the result or backtrack before the next choice."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "working state",
-      "purpose": "The local state updated by the algorithm transition. This page visualizes it as permutation step."
+      "name": "result",
+      "purpose": "Holds a separate copy of the values so working changes do not overwrite the caller’s array."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by cppNextPermutation after the maintained state reaches the stop rule."
+      "name": "pivot",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the permutation step transition until the stop condition for C++ next_permutation() is reached. Stop when no valid work remains or the answer is known."
+      "name": "successor",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
+    },
+    {
+      "name": "left",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Base",
-      "title": "Check stop condition",
-      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering.",
       "activeLine": 5,
-      "codeInsight": "Defines cppNextPermutation and names the input values; edits to those inputs change the visual state and output."
+      "codeInsight": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering."
     },
     {
-      "label": "Choice",
-      "title": "Select next option",
-      "note": "One valid move is added to the state.",
-      "activeLine": 5,
-      "codeInsight": "Defines cppNextPermutation and names the input values; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Call",
-      "title": "Recurse deeper",
-      "note": "The same rule runs on a smaller or extended state.",
-      "activeLine": 6,
-      "codeInsight": "Copies the input into result, so the animation can show mutations without pretending the caller's original array changes."
-    },
-    {
-      "label": "Unwind",
-      "title": "Return or backtrack",
-      "note": "The result is combined or the choice is removed.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "[1, 2, 3] becomes [1, 3, 2]. [3, 2, 1] wraps to [1, 2, 3] and the function returns false.",
       "activeLine": 17,
-      "codeInsight": "Returns result, the final value maintained by C++ next_permutation()'s code path."
+      "codeInsight": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(n) work in the worst case.",
+    "space": "O(1) auxiliary state."
   },
   "quiz": {
-    "question": "Which state choice keeps C++ next_permutation() correct?",
+    "question": "Which explanation best describes C++ next_permutation()?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through C++ next_permutation()'s transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. C++ next_permutation() stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. C++ next_permutation() needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering.",
+    "incorrectText": "Try again. std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "c-stl-algorithm-pages",
   "algorithmSlug": "cpp-next-permutation",
@@ -209,5 +195,40 @@ export const algorithmPage = {
         "secondaryLabel": "Each step either reaches a base case or moves one level deeper with a smaller decision state."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "[1, 2, 3] becomes [1, 3, 2]. [3, 2, 1] wraps to [1, 2, 3] and the function returns false.",
+    "sampleInput": [
+      [
+        1,
+        2,
+        3
+      ]
+    ],
+    "sampleResult": [
+      1,
+      3,
+      2
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: std::next_permutation rearranges a range into the next lexicographic ordering, or wraps to the first ordering."
+  },
+  "relatedLinks": []
 };

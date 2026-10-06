@@ -12,107 +12,97 @@ export const algorithmPage = {
   "icon": "grid_on",
   "codePath": "./src/algorithms/matrix-and-grid/flood-fill/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Flood Fill is a Matrix and Grid technique focused on answer.",
-  "problem": "Flood Fill solves a Matrix and Grid problem by maintaining only the state needed for its grid bfs dfs transition.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "The implementation keeps Flood Fill's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Flood Fill appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Flood Fill when a problem matches the Matrix and Grid pattern and the expected state changes match a grid bfs dfs dry run.",
-  "memoryTrick": "Flood Fill: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Flood Fill is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Flood Fill changes the connected region of cells that share the starting cell’s color.",
+  "problem": "Flood Fill changes the connected region of cells that share the starting cell’s color.",
+  "concept": "Flood Fill changes the connected region of cells that share the starting cell’s color.",
+  "logicSummary": "Flood Fill changes the connected region of cells that share the starting cell’s color.",
+  "transitionSummary": "Starting in one blue cell, recolor blue neighbors and their blue neighbors. A red cell blocks that region.",
+  "codeInsight": "Flood Fill changes the connected region of cells that share the starting cell’s color.",
+  "realLifeExample": "Starting in one blue cell, recolor blue neighbors and their blue neighbors. A red cell blocks that region.",
+  "whenToUse": "Flood Fill changes the connected region of cells that share the starting cell’s color.",
+  "memoryTrick": "Flood Fill changes the connected region of cells that share the starting cell’s color.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "Flood Fill changes the connected region of cells that share the starting cell’s color."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "Starting in one blue cell, recolor blue neighbors and their blue neighbors. A red cell blocks that region."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
-      "name": "matrix",
-      "purpose": "The two-dimensional structure whose cells are visited or updated."
+      "name": "image",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "row, column, and visited state",
-      "purpose": "Cell coordinates and visited or transformed values used by the grid transition. This page visualizes it as grid bfs dfs."
+      "name": "startRow",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by floodFill after the maintained state reaches the stop rule."
+      "name": "startCol",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the grid bfs dfs transition until the stop condition for Flood Fill is reached. Stop when no valid work remains or the answer is known."
+      "name": "newColor",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
+    },
+    {
+      "name": "grid",
+      "purpose": "Holds a separate copy of the values so working changes do not overwrite the caller’s array."
+    },
+    {
+      "name": "original",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Flood Fill changes the connected region of cells that share the starting cell’s color.",
       "activeLine": 5,
-      "codeInsight": "Defines floodFill and names the input image, startRow, startCol, newColor; edits to those inputs change the visual state and output."
+      "codeInsight": "Flood Fill changes the connected region of cells that share the starting cell’s color."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
-      "activeLine": 5,
-      "codeInsight": "Defines floodFill and names the input image, startRow, startCol, newColor; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Starting in one blue cell, recolor blue neighbors and their blue neighbors. A red cell blocks that region.",
       "activeLine": 8,
-      "codeInsight": "Checks original === undefined || original === newColor; only the branch that preserves Flood Fill's invariant is allowed to change state."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
-      "activeLine": 18,
-      "codeInsight": "Returns grid, the final value maintained by Flood Fill's code path."
+      "codeInsight": "Flood Fill changes the connected region of cells that share the starting cell’s color."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(R × C) in the worst case for a rectangular R-by-C grid.",
+    "space": "O(R × C) for a queue, visited set, or recursion stack in the worst case."
   },
   "quiz": {
-    "question": "Which state choice keeps Flood Fill correct?",
+    "question": "Which explanation best describes Flood Fill?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Flood Fill's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Flood Fill changes the connected region of cells that share the starting cell’s color.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Flood Fill stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Flood Fill needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Flood Fill changes the connected region of cells that share the starting cell’s color.",
+    "incorrectText": "Try again. Flood Fill changes the connected region of cells that share the starting cell’s color. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "matrix-and-grid",
   "algorithmSlug": "flood-fill",
@@ -252,5 +242,57 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "Starting in one blue cell, recolor blue neighbors and their blue neighbors. A red cell blocks that region.",
+    "sampleInput": [
+      [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      0,
+      0,
+      2
+    ],
+    "sampleResult": [
+      [
+        2,
+        2,
+        0
+      ],
+      [
+        2,
+        0,
+        0
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: Flood Fill changes the connected region of cells that share the starting cell’s color."
+  },
+  "relatedLinks": []
 };

@@ -12,107 +12,89 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/c-stl-algorithm-pages/cpp-max-min-element/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "C++ max_element() / min_element() is a C++ STL Algorithm Pages technique focused on answer.",
-  "problem": "C++ max_element() / min_element() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its array scan transition.",
-  "concept": "C++ max_element() / min_element() is useful when every item may matter and the input has no stronger ordering to exploit. Use this when a simple pass is clearer or cheaper than preprocessing.",
-  "logicSummary": "Move one index through the array, update the running state, and stop when the required condition is met.",
-  "transitionSummary": "Each loop consumes the current item exactly once and advances the index.",
-  "codeInsight": "The implementation keeps C++ max_element() / min_element()'s state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "C++ max_element() / min_element() appears when the input is input and the required result is answer.",
-  "whenToUse": "Use C++ max_element() / min_element() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a array scan dry run.",
-  "memoryTrick": "C++ max_element() / min_element(): name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C++ max_element() / min_element() is shown as a left-to-right scan. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range.",
+  "problem": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range.",
+  "concept": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range.",
+  "logicSummary": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range.",
+  "transitionSummary": "In [4, 1, 7], the minimum is at index 1 and maximum at index 2. An empty range returns the end iterator.",
+  "codeInsight": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range.",
+  "realLifeExample": "In [4, 1, 7], the minimum is at index 1 and maximum at index 2. An empty range returns the end iterator.",
+  "whenToUse": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range.",
+  "memoryTrick": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Start scan",
-      "text": "Set the first index and initial result."
+      "title": "Identify what the operation means",
+      "text": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range."
     },
     {
-      "title": "Read value",
-      "text": "Inspect the current array item."
+      "title": "Work through a small case",
+      "text": "In [4, 1, 7], the minimum is at index 1 and maximum at index 2. An empty range returns the end iterator."
     },
     {
-      "title": "Update state",
-      "text": "Change the answer, counter, or candidate."
-    },
-    {
-      "title": "Finish pass",
-      "text": "Return the maintained result after the scan."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "index and comparison",
-      "purpose": "The current array position and comparison that decide whether C++ max_element() / min_element() returns now or moves on."
+      "name": "minIndex",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by cppMaxMinElement after the maintained state reaches the stop rule."
+      "name": "maxIndex",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the array scan transition until the stop condition for C++ max_element() / min_element() is reached. Stop when no valid work remains or the answer is known."
+      "name": "index",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Input array",
-      "title": "Read values",
-      "note": "The code receives the list and any target condition.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range.",
       "activeLine": 5,
-      "codeInsight": "Defines cppMaxMinElement and names the input values; edits to those inputs change the visual state and output."
+      "codeInsight": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range."
     },
     {
-      "label": "Index",
-      "title": "Select current item",
-      "note": "The loop focuses on one position at a time.",
-      "activeLine": 5,
-      "codeInsight": "Defines cppMaxMinElement and names the input values; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Update",
-      "title": "Apply comparison or count",
-      "note": "The current value changes the running state only if the rule says so.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "In [4, 1, 7], the minimum is at index 1 and maximum at index 2. An empty range returns the end iterator.",
       "activeLine": 6,
-      "codeInsight": "Checks !values.length; only the branch that preserves C++ max_element() / min_element()'s invariant is allowed to change state."
-    },
-    {
-      "label": "Result",
-      "title": "Return scan output",
-      "note": "When the scan ends, the tracked result is returned.",
-      "activeLine": 13,
-      "codeInsight": "Returns the final state object { min: values[minIndex], max: values[maxIndex], minIndex, maxIndex }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(n) comparisons to scan the range.",
+    "space": "O(1) auxiliary state."
   },
   "quiz": {
-    "question": "Which state choice keeps C++ max_element() / min_element() correct?",
+    "question": "Which explanation best describes C++ max_element() / min_element()?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through C++ max_element() / min_element()'s transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "std::max_element and std::min_element return iterators to the greatest and smallest elements in a range.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. C++ max_element() / min_element() stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. C++ max_element() / min_element() needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. std::max_element and std::min_element return iterators to the greatest and smallest elements in a range.",
+    "incorrectText": "Try again. std::max_element and std::min_element return iterators to the greatest and smallest elements in a range. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "c-stl-algorithm-pages",
   "algorithmSlug": "cpp-max-min-element",
@@ -213,5 +195,42 @@ export const algorithmPage = {
         "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "In [4, 1, 7], the minimum is at index 1 and maximum at index 2. An empty range returns the end iterator.",
+    "sampleInput": [
+      [
+        3,
+        1,
+        4,
+        2
+      ]
+    ],
+    "sampleResult": {
+      "min": 1,
+      "max": 4,
+      "minIndex": 1,
+      "maxIndex": 2
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: std::max_element and std::min_element return iterators to the greatest and smallest elements in a range."
+  },
+  "relatedLinks": []
 };

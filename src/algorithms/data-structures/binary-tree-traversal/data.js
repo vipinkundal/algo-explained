@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/binary-tree-traversal/code/original.cpp",
   "originalCodeFilename": "02_Traversing.cpp",
   "originalActiveLine": 10,
-  "meaning": "Binary Tree Traversal shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Binary Tree Traversal explains the tree state model and how one focused change updates it.",
-  "concept": "Binary Tree Traversal is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on balance invariant.",
-  "logicSummary": "Start at the root, maintain balance invariant, rotate or recolor when height/color rules are violated, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses balance invariant to decide the next child, rotation, or returned value.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Tree traversal chooses when to visit a node relative to its left and right children.",
+  "problem": "Tree traversal chooses when to visit a node relative to its left and right children.",
+  "concept": "Tree traversal chooses when to visit a node relative to its left and right children.",
+  "logicSummary": "Tree traversal chooses when to visit a node relative to its left and right children.",
+  "transitionSummary": "For root 4 with children 2 and 6, inorder is [2, 4, 6], preorder [4, 2, 6], and postorder [2, 6, 4].",
+  "codeInsight": "Tree traversal chooses when to visit a node relative to its left and right children.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
-  "realLifeExample": "Binary Tree Traversal is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Trees / BST / AVL / Heap behavior through state changes instead of memorized code.",
-  "memoryTrick": "Binary Tree Traversal: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Binary Tree Traversal is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "For root 4 with children 2 and 6, inorder is [2, 4, 6], preorder [4, 2, 6], and postorder [2, 6, 4].",
+  "whenToUse": "Tree traversal chooses when to visit a node relative to its left and right children.",
+  "memoryTrick": "Tree traversal chooses when to visit a node relative to its left and right children.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "title": "Identify what the operation means",
+      "text": "Tree traversal chooses when to visit a node relative to its left and right children."
     },
     {
-      "title": "Read node state",
-      "text": "Inspect balance invariant."
+      "title": "Work through a small case",
+      "text": "For root 4 with children 2 and 6, inorder is [2, 4, 6], preorder [4, 2, 6], and postorder [2, 6, 4]."
     },
     {
-      "title": "Move/combine",
-      "text": "rotate or recolor when height/color rules are violated."
-    },
-    {
-      "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "title": "Check the boundary cases",
+      "text": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it."
     }
   ],
   "variables": [
     {
-      "name": "entry node",
-      "purpose": "The node where the traversal or creation step begins."
-    },
-    {
-      "name": "visit queue",
-      "purpose": "Holds nodes waiting to be processed."
-    },
-    {
-      "name": "current node",
-      "purpose": "The node being handled by Binary Tree Traversal."
-    },
-    {
-      "name": "visit order",
-      "purpose": "The visible order produced by the traversal."
+      "name": "tree",
+      "purpose": "Groups named values and relationships into a record that the companion can inspect and report."
     }
   ],
   "dryRun": [
     {
-      "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Tree traversal chooses when to visit a node relative to its left and right children.",
       "activeLine": 2,
-      "codeInsight": "Defines binaryTreeTraversal as the runnable entry point for this lesson."
+      "codeInsight": "Tree traversal chooses when to visit a node relative to its left and right children."
     },
     {
-      "label": "Node state",
-      "title": "Read balance invariant",
-      "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "Builds tree as a structured sample object that the tree, graph, or map visualizer can render directly."
-    },
-    {
-      "label": "Child step",
-      "title": "Rotate or recolor when height/color rules are violated",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For root 4 with children 2 and 6, inorder is [2, 4, 6], preorder [4, 2, 6], and postorder [2, 6, 4].",
       "activeLine": 4,
-      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 4,
-      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Tree traversal chooses when to visit a node relative to its left and right children."
     }
   ],
   "complexity": {
@@ -282,5 +252,37 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "For root 4 with children 2 and 6, inorder is [2, 4, 6], preorder [4, 2, 6], and postorder [2, 6, 4].",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "binary tree",
+      "traversal": "level order",
+      "result": [
+        1,
+        2,
+        3
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Tree traversal chooses when to visit a node relative to its left and right children."
   }
 };

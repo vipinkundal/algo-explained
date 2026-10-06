@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/coin-change/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Coin Change is taught with its own DP state definition, recurrence, code trace, and answer cell.",
+  "meaning": "Find the fewest coins needed to make an amount when each coin denomination can be reused.",
   "problem": "Find the fewest coins needed to make an amount when each coin denomination can be reused.",
   "concept": "Coin Change defines dp[value] as the minimum number of coins needed to form that value.",
   "logicSummary": "Set dp[0] = 0, initialize other amounts to Infinity, and relax every amount reachable by each coin.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for payment denominations, minimum token counts, or any unbounded item-count minimization.",
   "whenToUse": "Use Coin Change when each denomination can be used repeatedly and the goal is minimum count.",
   "memoryTrick": "Forward amount means unlimited coins.",
-  "visualizerCaption": "The trace shows amounts improving as coin denominations relax the DP array.",
+  "visualizerCaption": "Explore Coin Change through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Define dp[value]",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(amount)."
   },
   "quiz": {
-    "question": "Which state keeps Coin Change correct?",
+    "question": "Which explanation best describes Coin Change?",
     "options": [
       {
         "key": "A",
-        "text": "Define dp[value] as the fewest coins and scan amounts forward for reusable coins.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another DP recurrence without matching the state definition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Read the answer before the required dependency cells have been filled.",
-        "correct": false
+        "text": "Find the fewest coins needed to make an amount when each coin denomination can be reused.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Coin Change works when its table meaning and recurrence stay aligned.",
-    "incorrectText": "Not quite. Coin Change needs its own state, recurrence, and answer cell."
+    "correctText": "Correct. Find the fewest coins needed to make an amount when each coin denomination can be reused.",
+    "incorrectText": "Try again. Find the fewest coins needed to make an amount when each coin denomination can be reused. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "coin-change",
@@ -234,5 +234,37 @@ export const algorithmPage = {
         "secondaryLabel": "For each coin and amount, dp[value] becomes min(current, dp[value - coin] + 1)."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A dynamic-programming state names a smaller question. A recurrence explains how its answer uses answers you already know.",
+    "family": "Saved subproblems",
+    "example": "Define dp[value]: Fewest coins required to form value. Seed amount zero: Amount 0 needs 0 coins. Relax by coin: Use solved smaller amount value - coin. Return target: Return dp[amount], or -1 if it stayed unreachable.",
+    "sampleInput": [
+      [
+        1,
+        3,
+        4
+      ],
+      6
+    ],
+    "sampleResult": 2,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "One precisely defined subproblem."
+      ],
+      [
+        "Recurrence",
+        "A rule for computing a state from smaller states."
+      ],
+      [
+        "Base case",
+        "A known answer that starts the table or recursion."
+      ]
+    ],
+    "pitfall": "Define what each table entry means before filling it. Check base cases, evaluation order, and whether a choice can be reused.",
+    "checkpoint": "Explain this in your own words: Find the fewest coins needed to make an amount when each coin denomination can be reused."
+  },
+  "relatedLinks": []
 };

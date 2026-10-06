@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/bst-insert/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "BST Insert adds a value by following the binary-search-tree ordering rule until it reaches an empty child slot.",
+  "meaning": "Insert value 8 into the sample BST without breaking the left-smaller/right-larger invariant.",
   "problem": "Insert value 8 into the sample BST without breaking the left-smaller/right-larger invariant.",
   "concept": "Compare the value with each current node: smaller moves left, larger moves right, and a null child becomes the new node.",
   "logicSummary": "Start at root 4, move right to 6, move right to 7, then create 8 as the right child of 7.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "BST Insert is like placing a number into a sorted decision tree by following comparison signs until an empty slot appears.",
   "whenToUse": "Use BST Insert when values must remain searchable by the BST ordering rule.",
   "memoryTrick": "BST Insert: compare, descend, create at null.",
-  "visualizerCaption": "The animation inserts 8 along path 4 -> 6 -> 7 -> right child.",
+  "visualizerCaption": "Explore BST Insert through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check node",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n) for tracked state when needed."
   },
   "quiz": {
-    "question": "Which state choice keeps BST Insert correct?",
+    "question": "Which explanation best describes BST Insert?",
     "options": [
       {
         "key": "A",
-        "text": "Follow the ordered path and create the new value only at the null child slot.",
+        "text": "Insert value 8 into the sample BST without breaking the left-smaller/right-larger invariant.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. The BST order is preserved because every comparison chooses the only valid child.",
-    "incorrectText": "Not quite. Inserting at the wrong child would break the left-smaller/right-larger invariant."
+    "correctText": "Correct. Insert value 8 into the sample BST without breaking the left-smaller/right-larger invariant.",
+    "incorrectText": "Try again. Insert value 8 into the sample BST without breaking the left-smaller/right-larger invariant. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "bst-insert",
@@ -325,5 +325,77 @@ export const algorithmPage = {
         }
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check node: Start insertion from the current tree root. Read node state: Compare the inserted value with the current node. Move/combine: Move to the child that can contain the new value. Return tree result: Create the new node when the recursive call reaches null.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        }
+      },
+      8
+    ],
+    "sampleResult": {
+      "value": 4,
+      "left": {
+        "value": 2,
+        "left": {
+          "value": 1
+        },
+        "right": {
+          "value": 3
+        }
+      },
+      "right": {
+        "value": 6,
+        "left": {
+          "value": 5
+        },
+        "right": {
+          "value": 7,
+          "right": {
+            "value": 8,
+            "left": null,
+            "right": null
+          }
+        }
+      }
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Insert value 8 into the sample BST without breaking the left-smaller/right-larger invariant."
   }
 };

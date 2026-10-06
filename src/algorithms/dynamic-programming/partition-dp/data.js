@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/partition-dp/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Partition DP is taught with its own DP state definition, transition, code trace, and answer state.",
+  "meaning": "Decide whether an array can be split into two subsets with equal sum.",
   "problem": "Decide whether an array can be split into two subsets with equal sum.",
   "concept": "Partition DP reduces equal partition to subset sum: can any subset reach total / 2?",
   "logicSummary": "Reject odd totals, set possible[0] = true, then scan sums backward for each value so each number is used once.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for equal load balancing, package splitting, and subset feasibility checks.",
   "whenToUse": "Use partition DP when the objective is whether a subset can hit a target sum exactly.",
   "memoryTrick": "Equal partition asks for half the total.",
-  "visualizerCaption": "The trace shows reachable subset sums expanding toward target 11.",
+  "visualizerCaption": "Explore Partition DP through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check total",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(target)."
   },
   "quiz": {
-    "question": "Which state keeps Partition DP correct?",
+    "question": "Which explanation best describes Partition DP?",
     "options": [
       {
         "key": "A",
-        "text": "Define possible[sum] as subset reachability and scan sums backward for each value.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another DP recurrence without matching this algorithm's state.",
-        "correct": false
+        "text": "Decide whether an array can be split into two subsets with equal sum.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Read the final answer before the required dependency states are solved.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Partition DP works when the state meaning, transition, and answer state stay aligned.",
-    "incorrectText": "Not quite. Partition DP needs its own state, dependencies, and stop condition."
+    "correctText": "Correct. Decide whether an array can be split into two subsets with equal sum.",
+    "incorrectText": "Try again. Decide whether an array can be split into two subsets with equal sum. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "partition-dp",
@@ -232,5 +232,37 @@ export const algorithmPage = {
         "secondaryLabel": "For each value and target sum, possible[sum] becomes possible[sum] OR possible[sum - value]."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A dynamic-programming state names a smaller question. A recurrence explains how its answer uses answers you already know.",
+    "family": "Saved subproblems",
+    "example": "Check total: An odd total can never be split evenly. Set target: The subset target is total / 2. Seed zero sum: Sum 0 is always reachable by picking nothing. Scan sums backward: Each value updates reachable sums without being reused.",
+    "sampleInput": [
+      [
+        1,
+        5,
+        11,
+        5
+      ]
+    ],
+    "sampleResult": true,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "One precisely defined subproblem."
+      ],
+      [
+        "Recurrence",
+        "A rule for computing a state from smaller states."
+      ],
+      [
+        "Base case",
+        "A known answer that starts the table or recursion."
+      ]
+    ],
+    "pitfall": "Define what each table entry means before filling it. Check base cases, evaluation order, and whether a choice can be reused.",
+    "checkpoint": "Explain this in your own words: Decide whether an array can be split into two subsets with equal sum."
+  },
+  "relatedLinks": []
 };

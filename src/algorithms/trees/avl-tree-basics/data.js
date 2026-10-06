@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/avl-tree-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "An AVL tree keeps every node height-balanced: the left and right subtree heights differ by at most 1.",
+  "meaning": "This page checks whether the sample tree satisfies the AVL balance invariant and reports its height.",
   "problem": "This page checks whether the sample tree satisfies the AVL balance invariant and reports its height.",
   "concept": "The helper computes height, then balanced(node) verifies the height difference at every node and recurses into both children.",
   "logicSummary": "Compute subtree heights, compare the height difference at each node, recurse through the tree, and return { height, balanced }.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "AVL balancing keeps lookup paths short in a sorted in-memory index.",
   "whenToUse": "Use AVL trees when search, insert, and delete should stay logarithmic through strict height balance.",
   "memoryTrick": "AVL: every node's balance factor is -1, 0, or 1.",
-  "visualizerCaption": "The animation checks subtree heights and confirms the sample tree has height 3 and balanced: true.",
+  "visualizerCaption": "Explore AVL Tree Basics through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check node",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(h) recursion or traversal state."
   },
   "quiz": {
-    "question": "Which state choice keeps AVL Tree Basics correct?",
+    "question": "Which explanation best describes AVL Tree Basics?",
     "options": [
       {
         "key": "A",
-        "text": "Check that every node has left and right subtree heights differing by at most 1.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "This page checks whether the sample tree satisfies the AVL balance invariant and reports its height.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. AVL balance is a height-difference invariant checked at every node.",
-    "incorrectText": "Not quite. AVL balance is not just a root check; every subtree must also be balanced."
+    "correctText": "Correct. This page checks whether the sample tree satisfies the AVL balance invariant and reports its height.",
+    "incorrectText": "Try again. This page checks whether the sample tree satisfies the AVL balance invariant and reports its height. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "avl-tree-basics",
@@ -245,12 +245,12 @@ export const algorithmPage = {
         "replacementNode": "6",
         "mutedNodes": [],
         "nodeLabels": {
-          "4": "4 h=3",
-          "2": "2 h=2",
-          "6": "6 h=2",
           "1": "1 h=1",
+          "2": "2 h=2",
           "3": "3 h=1",
+          "4": "4 h=3",
           "5": "5 h=1",
+          "6": "6 h=2",
           "7": "7 h=1"
         }
       },
@@ -265,8 +265,8 @@ export const algorithmPage = {
         "replacementNode": "6",
         "mutedNodes": [],
         "nodeLabels": {
-          "4": "4 bf=0",
           "2": "L h=2",
+          "4": "4 bf=0",
           "6": "R h=2"
         }
       },
@@ -284,10 +284,10 @@ export const algorithmPage = {
           "7"
         ],
         "nodeLabels": {
-          "2": "2 bf=0",
-          "6": "6 bf=0",
           "1": "1 h=1",
-          "3": "3 h=1"
+          "2": "2 bf=0",
+          "3": "3 h=1",
+          "6": "6 bf=0"
         }
       },
       {
@@ -301,11 +301,60 @@ export const algorithmPage = {
         "replacementNode": "6",
         "mutedNodes": [],
         "nodeLabels": {
-          "4": "height 3",
           "2": "ok",
+          "4": "height 3",
           "6": "ok"
         }
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check node: Compute subtree heights. Read node state: Compare left and right heights at each node. Move/combine: Recurse into both child subtrees. Return tree result: Return the tree height and boolean balance result.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        }
+      }
+    ],
+    "sampleResult": {
+      "height": 3,
+      "balanced": true
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: This page checks whether the sample tree satisfies the AVL balance invariant and reports its height."
   }
 };

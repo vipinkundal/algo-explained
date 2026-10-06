@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "view_week",
   "codePath": "./src/algorithms/array-patterns/longest-consecutive-sequence/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Longest Consecutive Sequence is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Longest Consecutive Sequence starts only at numbers that have no predecessor and counts the chain forward.",
   "problem": "Longest Consecutive Sequence starts only at numbers that have no predecessor and counts the chain forward.",
   "concept": "Longest Consecutive Sequence is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
   "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Longest Consecutive Sequence appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Longest Consecutive Sequence when the problem statement matches its array invariant.",
   "memoryTrick": "Longest Consecutive Sequence: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Longest Consecutive Sequence is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Longest Consecutive Sequence through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read algorithm state",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n)."
   },
   "quiz": {
-    "question": "Which state choice keeps Longest Consecutive Sequence correct?",
+    "question": "Which explanation best describes Longest Consecutive Sequence?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Longest Consecutive Sequence's transition.",
+        "text": "Longest Consecutive Sequence starts only at numbers that have no predecessor and counts the chain forward.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Longest Consecutive Sequence stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Longest Consecutive Sequence needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Longest Consecutive Sequence starts only at numbers that have no predecessor and counts the chain forward.",
+    "incorrectText": "Try again. Longest Consecutive Sequence starts only at numbers that have no predecessor and counts the chain forward. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "array-patterns",
   "algorithmSlug": "longest-consecutive-sequence",
@@ -222,5 +222,39 @@ export const algorithmPage = {
         "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Read algorithm state: Identify the next command, value, node, or library call. Inspect invariant: Look at the active algorithm state fields. State change: update the state described by this algorithm. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      [
+        100,
+        4,
+        200,
+        1,
+        3,
+        2
+      ]
+    ],
+    "sampleResult": 4,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Longest Consecutive Sequence starts only at numbers that have no predecessor and counts the chain forward."
+  },
+  "relatedLinks": []
 };

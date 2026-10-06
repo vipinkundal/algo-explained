@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/stack-using-array/code/original.cpp",
   "originalCodeFilename": "01_Stack_using_Arry.cpp",
   "originalActiveLine": 4,
-  "meaning": "Stack Using Array shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Stack Using Array explains the stack state model and how one focused change updates it.",
-  "concept": "Stack Using Array is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
-  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
-  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "An array stack uses a top index to track the most recently pushed item.",
+  "problem": "An array stack uses a top index to track the most recently pushed item.",
+  "concept": "An array stack uses a top index to track the most recently pushed item.",
+  "logicSummary": "An array stack uses a top index to track the most recently pushed item.",
+  "transitionSummary": "Push A, then B; popping returns B and decreases the top index.",
+  "codeInsight": "An array stack uses a top index to track the most recently pushed item.",
   "originalCodeInsight": "Dynamic allocation creates storage at runtime; every pointer assignment changes how nodes or arrays are connected.",
-  "realLifeExample": "Stack Using Array is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Stack behavior through state changes instead of memorized code.",
-  "memoryTrick": "Stack Using Array: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Stack Using Array is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Push A, then B; popping returns B and decreases the top index.",
+  "whenToUse": "An array stack uses a top index to track the most recently pushed item.",
+  "memoryTrick": "An array stack uses a top index to track the most recently pushed item.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read stack",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "An array stack uses a top index to track the most recently pushed item."
     },
     {
-      "title": "Inspect stack top",
-      "text": "Look at the active stack fields."
+      "title": "Work through a small case",
+      "text": "Push A, then B; popping returns B and decreases the top index."
     },
     {
-      "title": "Push / pop",
-      "text": "push, pop, peek, or resolve stack entries."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Check empty and full states, and identify which end an operation changes."
     }
   ],
   "variables": [
     {
-      "name": "top marker",
-      "purpose": "Points at the most recent item in the stack."
+      "name": "stack",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "stack slots",
-      "purpose": "The ordered storage used by Stack Using Array."
-    },
-    {
-      "name": "popped item",
-      "purpose": "The value removed when the top marker moves down."
-    },
-    {
-      "name": "balance flag",
-      "purpose": "Shows whether the stack invariant still holds."
+      "name": "output",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     }
   ],
   "dryRun": [
     {
-      "label": "Stack",
-      "title": "Read stack action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 3,
-      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "An array stack uses a top index to track the most recently pushed item.",
+      "activeLine": 2,
+      "codeInsight": "An array stack uses a top index to track the most recently pushed item."
     },
     {
-      "label": "Stack top",
-      "title": "Inspect stack",
-      "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
-    },
-    {
-      "label": "Push / pop",
-      "title": "Push, pop, peek, or resolve stack entries",
-      "note": "Only the necessary stack fields are changed.",
-      "activeLine": 5,
-      "codeInsight": "Visits each input value once, letting the displayed state update in the same order as the code."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Push A, then B; popping returns B and decreases the top index.",
       "activeLine": 7,
-      "codeInsight": "Returns the final state object { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "An array stack uses a top index to track the most recently pushed item."
     }
   ],
   "complexity": {
@@ -130,9 +104,9 @@ export const algorithmPage = {
   ],
   "relatedLinks": [
     {
-      "id": "array-patterns",
-      "title": "Array Patterns",
-      "label": "Existing algorithm lesson"
+      "id": "linear-search",
+      "title": "Linear Search",
+      "label": "Start with indexed array values"
     },
     {
       "id": "stack-basics",
@@ -218,5 +192,39 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "Push A, then B; popping returns B and decreases the top index.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "stack",
+      "invariant": "last in, first out",
+      "state": [
+        10,
+        20
+      ],
+      "popped": [
+        30
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: An array stack uses a top index to track the most recently pushed item."
   }
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/anagram-detection/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Anagram Detection is taught with its own string state, transition, code trace, and stopping rule.",
+  "meaning": "Decide whether two strings contain the same characters with the same frequencies.",
   "problem": "Decide whether two strings contain the same characters with the same frequencies.",
   "concept": "Anagram detection compares frequency balance, not character order.",
   "logicSummary": "Reject unequal lengths, count characters in the first string, subtract characters from the second string, and fail if any count would go negative.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for word games, duplicate normalized names, and grouping words by character inventory.",
   "whenToUse": "Use frequency-based anagram detection when order is irrelevant but counts must match exactly.",
   "memoryTrick": "Same letters, same counts, any order.",
-  "visualizerCaption": "The trace balances counts from the first word against the second word.",
+  "visualizerCaption": "Explore Anagram Detection through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Compare lengths",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(k), where k is the number of distinct characters."
   },
   "quiz": {
-    "question": "Which state keeps Anagram Detection correct?",
+    "question": "Which explanation best describes Anagram Detection?",
     "options": [
       {
         "key": "A",
-        "text": "Track frequency counts and consume exactly one count for every character in the second string.",
+        "text": "Decide whether two strings contain the same characters with the same frequencies.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse another string algorithm's state names without matching its invariant.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Anagram Detection works because the page state follows that exact string invariant.",
-    "incorrectText": "Not quite. Anagram Detection needs its own string state and stop condition."
+    "correctText": "Correct. Decide whether two strings contain the same characters with the same frequencies.",
+    "incorrectText": "Try again. Decide whether two strings contain the same characters with the same frequencies. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "strings",
   "algorithmSlug": "anagram-detection",
@@ -188,5 +188,32 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A string is an ordered sequence. A substring occupies consecutive positions; a subsequence can skip positions.",
+    "family": "Characters and positions",
+    "example": "Compare lengths: Unequal lengths return false immediately. Count first string: Add one count for each character. Subtract second string: Consume one count for each character in the second word. Return balanced: If no count is missing, the strings are anagrams.",
+    "sampleInput": [
+      "listen",
+      "silent"
+    ],
+    "sampleResult": true,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Prefix",
+        "Characters at the beginning of a string."
+      ],
+      [
+        "Substring",
+        "A consecutive section of a string."
+      ],
+      [
+        "Frequency",
+        "How often a character occurs."
+      ]
+    ],
+    "pitfall": "Check empty strings and repeated characters. State whether case, spaces, and Unicode characters affect matching.",
+    "checkpoint": "Explain this in your own words: Decide whether two strings contain the same characters with the same frequencies."
   }
 };

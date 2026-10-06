@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/red-black-tree-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "A red-black tree is a balanced binary search tree that uses node colors to keep paths short.",
+  "meaning": "This reference page summarizes the sample tree by computing height, reading the root color, and confirming that a root exists for color-rule checks.",
   "problem": "This reference page summarizes the sample tree by computing height, reading the root color, and confirming that a root exists for color-rule checks.",
   "concept": "The included code is a basics summary: height(root), root?.color || \"black\", and Boolean(root).",
   "logicSummary": "Compute the sample tree height, read the root color as black, and return the red-black summary object.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Red-black trees are used in ordered maps and sets where operations should stay logarithmic.",
   "whenToUse": "Use red-black trees when you need a balanced ordered structure with less strict balancing than AVL.",
   "memoryTrick": "Red-black basics: root is black, colors constrain paths, rotations repair updates.",
-  "visualizerCaption": "The animation summarizes the sample root color, height 3, and non-empty color-rule status.",
+  "visualizerCaption": "Explore Red-Black Tree Basics through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check node",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(h) recursion or traversal state."
   },
   "quiz": {
-    "question": "Which state choice keeps Red-Black Tree Basics correct?",
+    "question": "Which explanation best describes Red-Black Tree Basics?",
     "options": [
       {
         "key": "A",
-        "text": "Read the root color and preserve black-root color-rule reasoning.",
+        "text": "This reference page summarizes the sample tree by computing height, reading the root color, and confirming that a root exists for color-rule checks.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Red-black basics start with color rules such as a black root.",
-    "incorrectText": "Not quite. This basics page reports color-rule fields; it does not simulate an unrelated traversal."
+    "correctText": "Correct. This reference page summarizes the sample tree by computing height, reading the root color, and confirming that a root exists for color-rule checks.",
+    "incorrectText": "Try again. This reference page summarizes the sample tree by computing height, reading the root color, and confirming that a root exists for color-rule checks. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "red-black-tree-basics",
@@ -239,8 +239,8 @@ export const algorithmPage = {
         "replacementNode": "6",
         "mutedNodes": [],
         "nodeLabels": {
-          "4": "4 h=3",
           "2": "h=2",
+          "4": "4 h=3",
           "6": "h=2"
         }
       },
@@ -276,8 +276,8 @@ export const algorithmPage = {
         "replacementNode": "4",
         "mutedNodes": [],
         "nodeLabels": {
-          "4": "root ok",
           "2": "child",
+          "4": "root ok",
           "6": "child"
         }
       },
@@ -292,11 +292,63 @@ export const algorithmPage = {
         "replacementNode": "6",
         "mutedNodes": [],
         "nodeLabels": {
-          "4": "black",
           "2": "height",
+          "4": "black",
           "6": "height"
         }
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check node: Compute the tree height. Read node state: Read the root color. Move/combine: Confirm a root exists for color-rule checks. Return tree result: Return the summary object.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        },
+        "color": "black"
+      }
+    ],
+    "sampleResult": {
+      "height": 3,
+      "rootColor": "black",
+      "balancedByColorRules": true
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: This reference page summarizes the sample tree by computing height, reading the root color, and confirming that a root exists for color-rule checks."
+  },
+  "relatedLinks": []
 };

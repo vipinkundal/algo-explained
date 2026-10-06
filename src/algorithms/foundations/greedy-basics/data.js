@@ -12,107 +12,93 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/foundations/greedy-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Greedy Basics is a Foundations technique focused on answer.",
-  "problem": "Greedy Basics solves a Foundations problem by maintaining only the state needed for its decision timeline transition.",
-  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
-  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
-  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-  "codeInsight": "The implementation keeps Greedy Basics' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Greedy Basics appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Greedy Basics when a problem matches the Foundations pattern and the expected state changes match a decision timeline dry run.",
-  "memoryTrick": "Greedy Basics: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Greedy Basics is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer.",
+  "problem": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer.",
+  "concept": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer.",
+  "logicSummary": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer.",
+  "transitionSummary": "To select the most non-overlapping meetings, choose the meeting that ends earliest, then repeat. Greedy coin choice fails for coins [1, 3, 4] and amount 6: 4 + 1 + 1 loses to 3 + 3.",
+  "codeInsight": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer.",
+  "realLifeExample": "To select the most non-overlapping meetings, choose the meeting that ends earliest, then repeat. Greedy coin choice fails for coins [1, 3, 4] and amount 6: 4 + 1 + 1 loses to 3 + 3.",
+  "whenToUse": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer.",
+  "memoryTrick": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Base case",
-      "text": "Stop when the current state is complete or invalid."
+      "title": "Identify what the operation means",
+      "text": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer."
     },
     {
-      "title": "Choose option",
-      "text": "Pick the next valid branch."
+      "title": "Work through a small case",
+      "text": "To select the most non-overlapping meetings, choose the meeting that ends earliest, then repeat. Greedy coin choice fails for coins [1, 3, 4] and amount 6: 4 + 1 + 1 loses to 3 + 3."
     },
     {
-      "title": "Recurse",
-      "text": "Solve the smaller state."
-    },
-    {
-      "title": "Return or undo",
-      "text": "Collect the result or backtrack before the next choice."
+      "title": "Check the boundary cases",
+      "text": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "working state",
-      "purpose": "The local state updated by the algorithm transition. This page visualizes it as decision timeline."
+      "name": "capacity = 10",
+      "purpose": "The allowed capacity, used to decide whether a choice fits."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by greedyBasics after the maintained state reaches the stop rule."
+      "name": "sorted",
+      "purpose": "Chooses the provided array or a fallback sample so the following collection operations have an array to read."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the decision timeline transition until the stop condition for Greedy Basics is reached. Stop when no valid work remains or the answer is known."
+      "name": "chosen",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
+    },
+    {
+      "name": "total",
+      "purpose": "Remembers the accumulated total instead of recomputing it from all earlier items."
     }
   ],
   "dryRun": [
     {
-      "label": "Base",
-      "title": "Check stop condition",
-      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer.",
       "activeLine": 5,
-      "codeInsight": "Defines greedyBasics and names the input values, capacity = 10; edits to those inputs change the visual state and output."
+      "codeInsight": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer."
     },
     {
-      "label": "Choice",
-      "title": "Select next option",
-      "note": "One valid move is added to the state.",
-      "activeLine": 5,
-      "codeInsight": "Defines greedyBasics and names the input values, capacity = 10; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Call",
-      "title": "Recurse deeper",
-      "note": "The same rule runs on a smaller or extended state.",
-      "activeLine": 6,
-      "codeInsight": "Creates sorted as empty working state; later lines add and remove values from it."
-    },
-    {
-      "label": "Unwind",
-      "title": "Return or backtrack",
-      "note": "The result is combined or the choice is removed.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "To select the most non-overlapping meetings, choose the meeting that ends earliest, then repeat. Greedy coin choice fails for coins [1, 3, 4] and amount 6: 4 + 1 + 1 loses to 3 + 3.",
       "activeLine": 15,
-      "codeInsight": "Returns the final state object { chosen, total }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "This sort-then-select demo takes O(n log n) work under a standard comparison-sort model. Other greedy problems have different costs.",
+    "space": "O(n) for the sorted copy and selected output."
   },
   "quiz": {
-    "question": "Which state choice keeps Greedy Basics correct?",
+    "question": "Which explanation best describes Greedy Basics?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Greedy Basics' transition.",
-        "correct": true
+        "text": "Every recursive function must try every possible arrangement and undo every call.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Greedy Basics stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Greedy Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer.",
+    "incorrectText": "Try again. A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "foundations",
   "algorithmSlug": "greedy-basics",
@@ -178,5 +164,44 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "Each call remembers its own unfinished work. A base case returns directly; the other calls resume as smaller calls finish.",
+    "family": "Recursive calls",
+    "example": "To select the most non-overlapping meetings, choose the meeting that ends earliest, then repeat. Greedy coin choice fails for coins [1, 3, 4] and amount 6: 4 + 1 + 1 loses to 3 + 3.",
+    "sampleInput": [
+      [
+        4,
+        2,
+        7,
+        1
+      ]
+    ],
+    "sampleResult": {
+      "chosen": [
+        1,
+        2,
+        4
+      ],
+      "total": 7
+    },
+    "sampleScope": "This JavaScript sample sorts numbers and chooses values within a capacity. Its behavior is meaningful for non-negative values; the meeting and coin examples above illustrate why the optimization goal and assumptions matter.",
+    "terms": [
+      [
+        "Base case",
+        "An input that returns without another recursive call."
+      ],
+      [
+        "Call frame",
+        "The parameters and local work belonging to one call."
+      ],
+      [
+        "Backtracking",
+        "Undoing a choice to explore another branch; not every recursion needs it."
+      ]
+    ],
+    "pitfall": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays.",
+    "checkpoint": "Explain this in your own words: A greedy algorithm takes the best available choice now. It works only when those choices can lead to a globally best answer."
+  },
+  "relatedLinks": []
 };

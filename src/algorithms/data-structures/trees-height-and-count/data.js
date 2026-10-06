@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/trees-height-and-count/code/original.cpp",
   "originalCodeFilename": "04_Height_and_count.cpp",
   "originalActiveLine": 7,
-  "meaning": "Binary Tree Height and Node Count shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Binary Tree Height and Node Count explains the tree state model and how one focused change updates it.",
-  "concept": "Binary Tree Height and Node Count is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on child height/result.",
-  "logicSummary": "Start at the root, maintain child height/result, combine child measurements into the parent answer, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses child height/result to decide the next child, rotation, or returned value.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Tree height measures the longest root-to-leaf route; node count totals the nodes.",
+  "problem": "Tree height measures the longest root-to-leaf route; node count totals the nodes.",
+  "concept": "Tree height measures the longest root-to-leaf route; node count totals the nodes.",
+  "logicSummary": "Tree height measures the longest root-to-leaf route; node count totals the nodes.",
+  "transitionSummary": "A root with two leaf children has 3 nodes and height 1 when height counts edges, or 2 when it counts nodes.",
+  "codeInsight": "Tree height measures the longest root-to-leaf route; node count totals the nodes.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
-  "realLifeExample": "Binary Tree Height and Node Count is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Trees / BST / AVL / Heap behavior through state changes instead of memorized code.",
-  "memoryTrick": "Binary Tree Height and Node Count: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Binary Tree Height and Node Count is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "A root with two leaf children has 3 nodes and height 1 when height counts edges, or 2 when it counts nodes.",
+  "whenToUse": "Tree height measures the longest root-to-leaf route; node count totals the nodes.",
+  "memoryTrick": "Tree height measures the longest root-to-leaf route; node count totals the nodes.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "title": "Identify what the operation means",
+      "text": "Tree height measures the longest root-to-leaf route; node count totals the nodes."
     },
     {
-      "title": "Read node state",
-      "text": "Inspect child height/result."
+      "title": "Work through a small case",
+      "text": "A root with two leaf children has 3 nodes and height 1 when height counts edges, or 2 when it counts nodes."
     },
     {
-      "title": "Move/combine",
-      "text": "combine child measurements into the parent answer."
-    },
-    {
-      "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "title": "Check the boundary cases",
+      "text": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it."
     }
   ],
   "variables": [
     {
-      "name": "entry node",
-      "purpose": "The node where the traversal or creation step begins."
-    },
-    {
-      "name": "visit queue",
-      "purpose": "Holds nodes waiting to be processed."
-    },
-    {
-      "name": "current node",
-      "purpose": "The node being handled by Binary Tree Height and Node Count."
-    },
-    {
-      "name": "visit order",
-      "purpose": "The visible order produced by the traversal."
+      "name": "tree",
+      "purpose": "Groups named values and relationships into a record that the companion can inspect and report."
     }
   ],
   "dryRun": [
     {
-      "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Tree height measures the longest root-to-leaf route; node count totals the nodes.",
       "activeLine": 2,
-      "codeInsight": "Defines treesHeightAndCount as the runnable entry point for this lesson."
+      "codeInsight": "Tree height measures the longest root-to-leaf route; node count totals the nodes."
     },
     {
-      "label": "Node state",
-      "title": "Read child height/result",
-      "note": "The current node controls the next step.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "A root with two leaf children has 3 nodes and height 1 when height counts edges, or 2 when it counts nodes.",
       "activeLine": 4,
-      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Child step",
-      "title": "Combine child measurements into the parent answer",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 4,
-      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 4,
-      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Tree height measures the longest root-to-leaf route; node count totals the nodes."
     }
   ],
   "complexity": {
@@ -270,5 +240,37 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "A root with two leaf children has 3 nodes and height 1 when height counts edges, or 2 when it counts nodes.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "binary tree",
+      "traversal": "level order",
+      "result": [
+        1,
+        2,
+        3
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Tree height measures the longest root-to-leaf route; node count totals the nodes."
   }
 };

@@ -8,6 +8,9 @@
     "check:data-pages": "node scripts/audit-page-data-usage.mjs",
     "check:server": "node --check server.mjs",
     "serve": "node server.mjs",
-    "generate:algorithm-pages": "node scripts/generate-algorithm-pages.mjs"
+    "generate:algorithm-pages": "node scripts/generate-algorithm-pages.mjs",
+    "check:learning": "node scripts/audit-learning-coverage.mjs",
+    "check:shell": "node scripts/audit-shell-views.mjs",
+    "check:interactions": "node scripts/check-learning-interactions.mjs"
   }
 }

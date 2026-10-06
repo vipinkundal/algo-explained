@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/longest-increasing-subsequence/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Longest Increasing Subsequence is taught with its own DP state definition, transition, code trace, and answer state.",
+  "meaning": "Find the length of the longest subsequence whose values strictly increase while keeping original order.",
   "problem": "Find the length of the longest subsequence whose values strictly increase while keeping original order.",
   "concept": "The O(n log n) LIS method stores tails[length - 1] as the smallest possible tail value for any increasing subsequence of that length.",
   "logicSummary": "Scan the numbers left to right, binary-search the first tail that is greater than or equal to the current number, and replace it.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use LIS for ranking trends, envelope nesting, timeline ordering, and any problem asking for longest ordered growth.",
   "whenToUse": "Use this version when only the LIS length is needed and strict increasing order matters.",
   "memoryTrick": "Smallest tail leaves the most room to grow.",
-  "visualizerCaption": "The trace shows how the compact tails array changes as each input value is processed.",
+  "visualizerCaption": "Explore Longest Increasing Subsequence through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Define tails",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n)."
   },
   "quiz": {
-    "question": "Which state keeps Longest Increasing Subsequence correct?",
+    "question": "Which explanation best describes Longest Increasing Subsequence?",
     "options": [
       {
         "key": "A",
-        "text": "Define tails[k] as the smallest tail for length k + 1 and update it with lower_bound.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another DP recurrence without matching this algorithm's state.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Read the final answer before the required dependency states are solved.",
-        "correct": false
+        "text": "Find the length of the longest subsequence whose values strictly increase while keeping original order.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Longest Increasing Subsequence works when the state meaning, transition, and answer state stay aligned.",
-    "incorrectText": "Not quite. Longest Increasing Subsequence needs its own state, dependencies, and stop condition."
+    "correctText": "Correct. Find the length of the longest subsequence whose values strictly increase while keeping original order.",
+    "incorrectText": "Try again. Find the length of the longest subsequence whose values strictly increase while keeping original order. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "longest-increasing-subsequence",
@@ -228,5 +228,41 @@ export const algorithmPage = {
         "secondaryLabel": "For each value, replace the lower_bound position in tails; if no position exists, append a longer subsequence tail."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A dynamic-programming state names a smaller question. A recurrence explains how its answer uses answers you already know.",
+    "family": "Saved subproblems",
+    "example": "Define tails: tails[k] is the minimum tail value seen for an increasing subsequence of length k + 1. Process each value: Use binary search to find the first tail that is at least the current value. Replace or append: Replace to improve a tail, or append when the value extends every known length. Return tails length: The number of maintained tails equals the LIS length.",
+    "sampleInput": [
+      [
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
+      ]
+    ],
+    "sampleResult": 4,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "One precisely defined subproblem."
+      ],
+      [
+        "Recurrence",
+        "A rule for computing a state from smaller states."
+      ],
+      [
+        "Base case",
+        "A known answer that starts the table or recursion."
+      ]
+    ],
+    "pitfall": "Define what each table entry means before filling it. Check base cases, evaluation order, and whether a choice can be reused.",
+    "checkpoint": "Explain this in your own words: Find the length of the longest subsequence whose values strictly increase while keeping original order."
+  },
+  "relatedLinks": []
 };

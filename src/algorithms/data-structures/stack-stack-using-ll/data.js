@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/stack-stack-using-ll/code/original.cpp",
   "originalCodeFilename": "02_Stack_using_LL.cpp",
   "originalActiveLine": 5,
-  "meaning": "Stack Using Linked List shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Stack Using Linked List explains the stack state model and how one focused change updates it.",
-  "concept": "Stack Using Linked List is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
-  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
-  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "A linked stack pushes and pops at the head of a linked list.",
+  "problem": "A linked stack pushes and pops at the head of a linked list.",
+  "concept": "A linked stack pushes and pops at the head of a linked list.",
+  "logicSummary": "A linked stack pushes and pops at the head of a linked list.",
+  "transitionSummary": "Push A, then B: the head is B and the next pop returns B.",
+  "codeInsight": "A linked stack pushes and pops at the head of a linked list.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
-  "realLifeExample": "Stack Using Linked List is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Stack behavior through state changes instead of memorized code.",
-  "memoryTrick": "Stack Using Linked List: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Stack Using Linked List is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Push A, then B: the head is B and the next pop returns B.",
+  "whenToUse": "A linked stack pushes and pops at the head of a linked list.",
+  "memoryTrick": "A linked stack pushes and pops at the head of a linked list.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read stack",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "A linked stack pushes and pops at the head of a linked list."
     },
     {
-      "title": "Inspect stack top",
-      "text": "Look at the active stack fields."
+      "title": "Work through a small case",
+      "text": "Push A, then B: the head is B and the next pop returns B."
     },
     {
-      "title": "Push / pop",
-      "text": "push, pop, peek, or resolve stack entries."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Check empty and full states, and identify which end an operation changes."
     }
   ],
   "variables": [
     {
-      "name": "top marker",
-      "purpose": "Points at the most recent item in the stack."
+      "name": "stack",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "stack slots",
-      "purpose": "The ordered storage used by Stack Using Linked List."
-    },
-    {
-      "name": "popped item",
-      "purpose": "The value removed when the top marker moves down."
-    },
-    {
-      "name": "balance flag",
-      "purpose": "Shows whether the stack invariant still holds."
+      "name": "output",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     }
   ],
   "dryRun": [
     {
-      "label": "Stack",
-      "title": "Read stack action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 3,
-      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A linked stack pushes and pops at the head of a linked list.",
+      "activeLine": 2,
+      "codeInsight": "A linked stack pushes and pops at the head of a linked list."
     },
     {
-      "label": "Stack top",
-      "title": "Inspect stack",
-      "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
-    },
-    {
-      "label": "Push / pop",
-      "title": "Push, pop, peek, or resolve stack entries",
-      "note": "Only the necessary stack fields are changed.",
-      "activeLine": 5,
-      "codeInsight": "Visits each input value once, letting the displayed state update in the same order as the code."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Push A, then B: the head is B and the next pop returns B.",
       "activeLine": 7,
-      "codeInsight": "Returns the final state object { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A linked stack pushes and pops at the head of a linked list."
     }
   ],
   "complexity": {
@@ -212,5 +186,39 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "Push A, then B: the head is B and the next pop returns B.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "stack",
+      "invariant": "last in, first out",
+      "state": [
+        10,
+        20
+      ],
+      "popped": [
+        30
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: A linked stack pushes and pops at the head of a linked list."
   }
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/prim/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Prim’s Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Prim's Algorithm grows a minimum spanning tree from one start vertex.",
   "problem": "Prim's Algorithm grows a minimum spanning tree from one start vertex.",
   "concept": "Prim keeps a visited tree and repeatedly adds the cheapest edge crossing from visited to unvisited.",
   "logicSummary": "Start with one vertex, scan all outgoing frontier edges, choose the cheapest safe edge, and add its far endpoint.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use Prim when growing a minimum-cost network outward from a chosen starting site.",
   "whenToUse": "Use it for connected undirected weighted graphs when MST growth from a start vertex is natural.",
   "memoryTrick": "Prim grows one island by buying the cheapest bridge leaving it.",
-  "visualizerCaption": "Watch the tree expand through the cheapest edge that crosses the visited boundary.",
+  "visualizerCaption": "Explore Prim’s Algorithm through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Choose a start",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state keeps Prim’s Algorithm correct?",
+    "question": "Which explanation best describes Prim’s Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "visited follows the page's own transition rule.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
-        "correct": false
+        "text": "Prim's Algorithm grows a minimum spanning tree from one start vertex.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Prim's Algorithm grows a minimum spanning tree from one start vertex.",
+    "incorrectText": "Try again. Prim's Algorithm grows a minimum spanning tree from one start vertex. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "prim",
@@ -354,5 +354,113 @@ export const algorithmPage = {
         }
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A graph contains vertices (places) and edges (connections). Arrows mean a connection can be followed only in that direction.",
+    "family": "Graphs and connections",
+    "example": "Choose a start: The MST begins from one visited vertex. Scan crossing edges: Only edges from visited to unvisited vertices are candidates. Add cheapest edge: The best candidate joins the MST and visits one new vertex. Return MST: Stop when every vertex is included or no crossing edge remains.",
+    "sampleInput": [
+      {
+        "A": [
+          [
+            "B",
+            2
+          ],
+          [
+            "C",
+            3
+          ]
+        ],
+        "B": [
+          [
+            "A",
+            2
+          ],
+          [
+            "C",
+            1
+          ],
+          [
+            "D",
+            4
+          ]
+        ],
+        "C": [
+          [
+            "A",
+            3
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "D",
+            5
+          ]
+        ],
+        "D": [
+          [
+            "B",
+            4
+          ],
+          [
+            "C",
+            5
+          ],
+          [
+            "E",
+            2
+          ]
+        ],
+        "E": [
+          [
+            "D",
+            2
+          ]
+        ]
+      },
+      "A"
+    ],
+    "sampleResult": [
+      [
+        "A",
+        "B",
+        2
+      ],
+      [
+        "B",
+        "C",
+        1
+      ],
+      [
+        "B",
+        "D",
+        4
+      ],
+      [
+        "D",
+        "E",
+        2
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Vertex",
+        "One point in a graph; also called a node."
+      ],
+      [
+        "Edge",
+        "A connection between vertices."
+      ],
+      [
+        "Visited",
+        "A record that a vertex has already been discovered."
+      ]
+    ],
+    "pitfall": "Mark discovered vertices to avoid repeating work. Check directedness and whether every component must be visited.",
+    "checkpoint": "Explain this in your own words: Prim's Algorithm grows a minimum spanning tree from one start vertex."
+  },
+  "relatedLinks": []
 };

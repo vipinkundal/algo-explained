@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/essential-c-and-cpp-structure-as-parameter/code/original.cpp",
   "originalCodeFilename": "08_structure_as_parameter.cpp",
   "originalActiveLine": 4,
-  "meaning": "C/C++ Structure As Parameter shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "C/C++ Structure As Parameter explains the C/C++ storage state model and how one focused change updates it.",
-  "concept": "C/C++ Structure As Parameter is useful when C/C++ storage, addresses, structures, or object ownership affect the program result. Use this when the lesson depends on stack memory, heap memory, references, pointers, structs, or classes.",
-  "logicSummary": "Create the C/C++ value, inspect how it is passed or referenced, apply the operation, and read the final memory-visible result.",
-  "transitionSummary": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original.",
+  "problem": "A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original.",
+  "concept": "A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original.",
+  "logicSummary": "A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original.",
+  "transitionSummary": "Passing a Rectangle by value copies its fields; passing by reference can update the original.",
+  "codeInsight": "A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original.",
   "originalCodeInsight": "Dynamic allocation creates storage at runtime; every pointer assignment changes how nodes or arrays are connected.",
-  "realLifeExample": "C/C++ Structure As Parameter is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning C/C++ Essentials behavior through state changes instead of memorized code.",
-  "memoryTrick": "C/C++ Structure As Parameter: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C/C++ Structure As Parameter is shown as C/C++ memory and value flow. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Passing a Rectangle by value copies its fields; passing by reference can update the original.",
+  "whenToUse": "A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original.",
+  "memoryTrick": "A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Declare value",
-      "text": "Create the variable, pointer, structure, or object."
+      "title": "Identify what the operation means",
+      "text": "A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original."
     },
     {
-      "title": "Inspect storage",
-      "text": "Notice whether the code uses value, address, reference, or member access."
+      "title": "Work through a small case",
+      "text": "Passing a Rectangle by value copies its fields; passing by reference can update the original."
     },
     {
-      "title": "Apply operation",
-      "text": "Run the function, assignment, dereference, or method call."
-    },
-    {
-      "title": "Read result",
-      "text": "Read the changed value, member, pointer target, or object output."
+      "title": "Check the boundary cases",
+      "text": "Do not use a pointer after its object’s lifetime ends. Passing by value copies an object; passing by pointer or reference can access the original."
     }
   ],
   "variables": [
     {
-      "name": "declared name",
-      "purpose": "The identifier introduced by the C/C++ example."
-    },
-    {
-      "name": "stored value",
-      "purpose": "The value currently associated with that identifier."
-    },
-    {
-      "name": "address view",
-      "purpose": "Shows where pointer-style examples refer in memory."
-    },
-    {
-      "name": "printed output",
-      "purpose": "The observable result produced by C/C++ Structure As Parameter."
+      "name": "return",
+      "purpose": "The function returns a value or snapshot. Open the JavaScript source to inspect the fixed sample."
     }
   ],
   "dryRun": [
     {
-      "label": "Declaration",
-      "title": "Create program value",
-      "note": "The code introduces the variable, pointer, structure, or object.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original.",
       "activeLine": 2,
-      "codeInsight": "Defines essentialCAndCppStructureAsParameter as the runnable entry point for this lesson."
+      "codeInsight": "A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original."
     },
     {
-      "label": "Storage",
-      "title": "Track address or copy",
-      "note": "Passing by value, pointer, or reference controls what can change.",
-      "activeLine": 4,
-      "codeInsight": "Sets the returned topic field to \"C/C++ Structure As Parameter\", which is one of the named values rendered in the visual summary."
-    },
-    {
-      "label": "C/C++ rule",
-      "title": "Apply C/C++ rule",
-      "note": "Assignment, dereference, member access, or method call changes the state.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Passing a Rectangle by value copies its fields; passing by reference can update the original.",
       "activeLine": 3,
-      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Read final value",
-      "note": "The visible output follows from the memory model.",
-      "activeLine": 3,
-      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original."
     }
   ],
   "complexity": {
@@ -174,5 +144,37 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "C/C++ separates a value from the memory that stores it. Pointers and references explain how a function can access an existing object.",
+    "family": "Storage and ownership",
+    "example": "Passing a Rectangle by value copies its fields; passing by reference can update the original.",
+    "sampleInput": [],
+    "sampleResult": {
+      "topic": "C/C++ Structure As Parameter",
+      "idea": "This runnable JS companion mirrors the state-first C/C++ lesson in browser-safe JavaScript.",
+      "state": [
+        "input",
+        "working memory",
+        "result"
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Pointer",
+        "A value representing a memory address."
+      ],
+      [
+        "Reference",
+        "A C++ alias for an existing object."
+      ],
+      [
+        "Lifetime",
+        "The interval during which an object exists and may be accessed."
+      ]
+    ],
+    "pitfall": "Do not use a pointer after its object’s lifetime ends. Passing by value copies an object; passing by pointer or reference can access the original.",
+    "checkpoint": "Explain this in your own words: A structure can be passed by value, pointer, or reference, affecting whether a function sees a copy or the original."
   }
 };

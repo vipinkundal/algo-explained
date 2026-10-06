@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/dp-on-trees/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "DP on Trees is taught with its own DP state definition, transition, code trace, and answer state.",
+  "meaning": "Choose a maximum-value set of tree nodes where no chosen node is directly connected to another chosen node.",
   "problem": "Choose a maximum-value set of tree nodes where no chosen node is directly connected to another chosen node.",
   "concept": "Tree DP stores two values per node: take means include this node, skip means exclude this node.",
   "logicSummary": "Traverse children first, compute their take/skip pairs, then combine those pairs at the parent.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use tree DP for hierarchy selection, independent set on trees, and manager/subordinate planning constraints.",
   "whenToUse": "Use DP on Trees when each subtree can return a compact summary to its parent.",
   "memoryTrick": "Take parent means skip children; skip parent means children choose their best.",
-  "visualizerCaption": "The trace follows postorder combination of take/skip values through the sample tree.",
+  "visualizerCaption": "Explore DP on Trees through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Define node state",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(h) recursion stack, where h is tree height."
   },
   "quiz": {
-    "question": "Which state keeps DP on Trees correct?",
+    "question": "Which explanation best describes DP on Trees?",
     "options": [
       {
         "key": "A",
-        "text": "Return take and skip for every subtree, then combine children in postorder.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another DP recurrence without matching this algorithm's state.",
-        "correct": false
+        "text": "Choose a maximum-value set of tree nodes where no chosen node is directly connected to another chosen node.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Read the final answer before the required dependency states are solved.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. DP on Trees works when the state meaning, transition, and answer state stay aligned.",
-    "incorrectText": "Not quite. DP on Trees needs its own state, dependencies, and stop condition."
+    "correctText": "Correct. Choose a maximum-value set of tree nodes where no chosen node is directly connected to another chosen node.",
+    "incorrectText": "Try again. Choose a maximum-value set of tree nodes where no chosen node is directly connected to another chosen node. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "dp-on-trees",
@@ -183,5 +183,49 @@ export const algorithmPage = {
         "activeState": 4
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A dynamic-programming state names a smaller question. A recurrence explains how its answer uses answers you already know.",
+    "family": "Saved subproblems",
+    "example": "Define node state: Each node returns { take, skip } for its subtree. Solve children first: Postorder traversal gives child summaries before the parent combines them. Compute take: Taking a node forces both children to be skipped. Compute skip: Skipping a node lets each child choose its better state.",
+    "sampleInput": [
+      {
+        "value": 3,
+        "left": {
+          "value": 4,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 5,
+          "right": {
+            "value": 1
+          }
+        }
+      }
+    ],
+    "sampleResult": 9,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "One precisely defined subproblem."
+      ],
+      [
+        "Recurrence",
+        "A rule for computing a state from smaller states."
+      ],
+      [
+        "Base case",
+        "A known answer that starts the table or recursion."
+      ]
+    ],
+    "pitfall": "Define what each table entry means before filling it. Check base cases, evaluation order, and whether a choice can be reused.",
+    "checkpoint": "Explain this in your own words: Choose a maximum-value set of tree nodes where no chosen node is directly connected to another chosen node."
+  },
+  "relatedLinks": []
 };

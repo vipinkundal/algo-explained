@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/edit-distance/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Edit Distance is taught with its own DP state definition, transition, code trace, and answer state.",
+  "meaning": "Find the minimum number of insert, delete, or replace operations needed to transform one string into another.",
   "problem": "Find the minimum number of insert, delete, or replace operations needed to transform one string into another.",
   "concept": "Edit Distance defines dp[i][j] as the fewest operations needed to convert the first i characters of a into the first j characters of b.",
   "logicSummary": "Initialize empty-prefix costs, then fill each prefix pair by matching characters or trying insert, delete, and replace.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use edit distance for spell checking, fuzzy search, DNA mutation distance, and text diff scoring.",
   "whenToUse": "Use it when the allowed operations are insert, delete, and replace with equal cost.",
   "memoryTrick": "Match takes diagonal; mismatch costs one plus the cheapest neighbor.",
-  "visualizerCaption": "The trace fills a prefix-pair table for horse -> ros.",
+  "visualizerCaption": "Explore Edit Distance through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Define dp[i][j]",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(nm)."
   },
   "quiz": {
-    "question": "Which state keeps Edit Distance correct?",
+    "question": "Which explanation best describes Edit Distance?",
     "options": [
       {
         "key": "A",
-        "text": "Define dp[i][j] as the edit count for prefixes and use insert/delete/replace dependencies.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another DP recurrence without matching this algorithm's state.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Read the final answer before the required dependency states are solved.",
-        "correct": false
+        "text": "Find the minimum number of insert, delete, or replace operations needed to transform one string into another.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Edit Distance works when the state meaning, transition, and answer state stay aligned.",
-    "incorrectText": "Not quite. Edit Distance needs its own state, dependencies, and stop condition."
+    "correctText": "Correct. Find the minimum number of insert, delete, or replace operations needed to transform one string into another.",
+    "incorrectText": "Try again. Find the minimum number of insert, delete, or replace operations needed to transform one string into another. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "edit-distance",
@@ -282,5 +282,33 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A dynamic-programming state names a smaller question. A recurrence explains how its answer uses answers you already know.",
+    "family": "Saved subproblems",
+    "example": "Define dp[i][j]: Minimum edits to convert a[0..i) into b[0..j). Seed empty prefixes: Deleting i characters or inserting j characters creates the first column and row. Compare characters: A match copies the diagonal; a mismatch tries the three edit operations. Read bottom-right: dp[a.length][b.length] is the full transformation cost.",
+    "sampleInput": [
+      "horse",
+      "ros"
+    ],
+    "sampleResult": 3,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "One precisely defined subproblem."
+      ],
+      [
+        "Recurrence",
+        "A rule for computing a state from smaller states."
+      ],
+      [
+        "Base case",
+        "A known answer that starts the table or recursion."
+      ]
+    ],
+    "pitfall": "Define what each table entry means before filling it. Check base cases, evaluation order, and whether a choice can be reused.",
+    "checkpoint": "Explain this in your own words: Find the minimum number of insert, delete, or replace operations needed to transform one string into another."
+  },
+  "relatedLinks": []
 };

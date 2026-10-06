@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/bst-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "BST Search uses the binary-search-tree ordering rule to find a target by following one root-to-leaf path.",
+  "meaning": "BST Search decides whether a target exists in a tree where every left subtree value is smaller and every right subtree value is larger.",
   "problem": "BST Search decides whether a target exists in a tree where every left subtree value is smaller and every right subtree value is larger.",
   "concept": "At each node, compare target with node.value. Equal means found, a smaller target moves left, and a larger target moves right.",
   "logicSummary": "Start at the root, compare the target with the current node, move to the only child that can still contain the target, and return whether the target is found.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "BST Search is like looking up a word in a sorted decision tree: each comparison tells you which half of the remaining choices can still contain the answer.",
   "whenToUse": "Use BST Search when values are organized in a binary search tree and you only need to follow the ordered path to a target.",
   "memoryTrick": "BST Search: equal returns, smaller goes left, larger goes right.",
-  "visualizerCaption": "BST Search is shown as a root-to-target path. The numbered steps follow the exact comparisons used by the code.",
+  "visualizerCaption": "Explore BST Search through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check node",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1) for the iterative tree search."
   },
   "quiz": {
-    "question": "Which state choice keeps BST Search correct?",
+    "question": "Which explanation best describes BST Search?",
     "options": [
       {
         "key": "A",
-        "text": "Track the current node and move only to the child allowed by the BST ordering rule.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "BST Search decides whether a target exists in a tree where every left subtree value is smaller and every right subtree value is larger.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. BST Search stays efficient because each comparison discards one entire subtree.",
-    "incorrectText": "Not quite. BST Search must use the node value and the left-smaller/right-larger invariant."
+    "correctText": "Correct. BST Search decides whether a target exists in a tree where every left subtree value is smaller and every right subtree value is larger.",
+    "incorrectText": "Try again. BST Search decides whether a target exists in a tree where every left subtree value is smaller and every right subtree value is larger. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "bst-search",
@@ -286,5 +286,52 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check node: Start with node pointing at the root. Read node state: Compare target with the current node value. Move/combine: Move left or right based on the BST ordering rule. Return tree result: Return true when the target node is reached, or false if the path ends.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        }
+      },
+      5
+    ],
+    "sampleResult": true,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: BST Search decides whether a target exists in a tree where every left subtree value is smaller and every right subtree value is larger."
   }
 };

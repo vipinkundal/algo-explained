@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "layers",
   "codePath": "./src/algorithms/stack/previous-greater-element/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Previous Greater Element is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Previous Greater Element keeps a decreasing stack of candidates to the left.",
   "problem": "Previous Greater Element keeps a decreasing stack of candidates to the left.",
   "concept": "Previous Greater Element is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
   "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Previous Greater Element appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Previous Greater Element when its state transition is the natural way to model the problem.",
   "memoryTrick": "Previous Greater Element: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Previous Greater Element is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Previous Greater Element through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read stack",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n)."
   },
   "quiz": {
-    "question": "Which state choice keeps Previous Greater Element correct?",
+    "question": "Which explanation best describes Previous Greater Element?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Previous Greater Element's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Previous Greater Element keeps a decreasing stack of candidates to the left.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Previous Greater Element stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Previous Greater Element needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Previous Greater Element keeps a decreasing stack of candidates to the left.",
+    "incorrectText": "Try again. Previous Greater Element keeps a decreasing stack of candidates to the left. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "stack",
   "algorithmSlug": "previous-greater-element",
@@ -200,5 +200,44 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "Read stack: Identify the next command, value, node, or library call. Inspect stack top: Look at the active stack fields. Push / pop: push, pop, peek, or resolve stack entries. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      [
+        2,
+        1,
+        2,
+        4,
+        3
+      ]
+    ],
+    "sampleResult": [
+      -1,
+      2,
+      -1,
+      -1,
+      4
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: Previous Greater Element keeps a decreasing stack of candidates to the left."
+  },
+  "relatedLinks": []
 };

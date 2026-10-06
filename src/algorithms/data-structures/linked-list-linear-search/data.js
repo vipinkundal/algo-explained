@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/linked-list-linear-search/code/original.cpp",
   "originalCodeFilename": "05_linear_search.cpp",
   "originalActiveLine": 5,
-  "meaning": "Linked List Linear Search shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Linked List Linear Search explains the linked-list state model and how one focused change updates it.",
-  "concept": "Linked List Linear Search is useful when every item may matter and the input has no stronger ordering to exploit. Use this when a simple pass is clearer or cheaper than preprocessing.",
-  "logicSummary": "Move one index through the array, update the running state, and stop when the required condition is met.",
-  "transitionSummary": "Each loop consumes the current item exactly once and advances the index.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Search a linked list by following next links and comparing each node value.",
+  "problem": "Search a linked list by following next links and comparing each node value.",
+  "concept": "Search a linked list by following next links and comparing each node value.",
+  "logicSummary": "Search a linked list by following next links and comparing each node value.",
+  "transitionSummary": "To find 6 in 2 → 4 → 6, inspect three nodes.",
+  "codeInsight": "Search a linked list by following next links and comparing each node value.",
   "originalCodeInsight": "The C/C++ Node struct is the memory layout: data stores the value and next/child pointers connect the structure.",
-  "realLifeExample": "Linked List Linear Search is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Linked List behavior through state changes instead of memorized code.",
-  "memoryTrick": "Linked List Linear Search: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Linked List Linear Search is shown as a left-to-right scan. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "To find 6 in 2 → 4 → 6, inspect three nodes.",
+  "whenToUse": "Search a linked list by following next links and comparing each node value.",
+  "memoryTrick": "Search a linked list by following next links and comparing each node value.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Start scan",
-      "text": "Set the first index and initial result."
+      "title": "Identify what the operation means",
+      "text": "Search a linked list by following next links and comparing each node value."
     },
     {
-      "title": "Read value",
-      "text": "Inspect the current array item."
+      "title": "Work through a small case",
+      "text": "To find 6 in 2 → 4 → 6, inspect three nodes."
     },
     {
-      "title": "Update state",
-      "text": "Change the answer, counter, or candidate."
-    },
-    {
-      "title": "Finish pass",
-      "text": "Return the maintained result after the scan."
+      "title": "Check the boundary cases",
+      "text": "Save the next link before changing it. Handle an empty list and a change to the head; circular lists need a different stop rule."
     }
   ],
   "variables": [
     {
-      "name": "head link",
-      "purpose": "References the first node in the chain."
-    },
-    {
-      "name": "walk pointer",
-      "purpose": "Moves through links one node at a time."
-    },
-    {
-      "name": "new node",
-      "purpose": "Represents the node created or examined in Linked List Linear Search."
-    },
-    {
-      "name": "chain view",
-      "purpose": "Shows the visible node order after pointer updates."
+      "name": "nodes",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Input array",
-      "title": "Read values",
-      "note": "The code receives the list and any target condition.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Search a linked list by following next links and comparing each node value.",
       "activeLine": 2,
-      "codeInsight": "Defines linkedListLinearSearch as the runnable entry point for this lesson."
+      "codeInsight": "Search a linked list by following next links and comparing each node value."
     },
     {
-      "label": "Index",
-      "title": "Select current item",
-      "note": "The loop focuses on one position at a time.",
-      "activeLine": 3,
-      "codeInsight": "Stores nodes from the current length, making the loop boundary explicit for the visual trace."
-    },
-    {
-      "label": "Update",
-      "title": "Apply comparison or count",
-      "note": "The current value changes the running state only if the rule says so.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "To find 6 in 2 → 4 → 6, inspect three nodes.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return scan output",
-      "note": "When the scan ends, the tracked result is returned.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Search a linked list by following next links and comparing each node value."
     }
   ],
   "complexity": {
@@ -206,5 +176,38 @@ export const algorithmPage = {
         "nextNode": "tail"
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A linked list follows arrows from node to node. Unlike an array, its nodes do not need neighboring memory slots.",
+    "family": "Linked nodes",
+    "example": "To find 6 in 2 → 4 → 6, inspect three nodes.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "linked list",
+      "operation": "insert at position 1",
+      "values": [
+        10,
+        15,
+        20,
+        30
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Head",
+        "The first node in a list."
+      ],
+      [
+        "Next",
+        "The link leading to another node."
+      ],
+      [
+        "Null",
+        "No object or next node is present."
+      ]
+    ],
+    "pitfall": "Save the next link before changing it. Handle an empty list and a change to the head; circular lists need a different stop rule.",
+    "checkpoint": "Explain this in your own words: Search a linked list by following next links and comparing each node value."
   }
 };

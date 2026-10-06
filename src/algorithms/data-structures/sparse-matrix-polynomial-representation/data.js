@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/sparse-matrix-polynomial-representation/code/original.cpp",
   "originalCodeFilename": "04_polynomial_representation.cpp",
   "originalActiveLine": 5,
-  "meaning": "Sparse Matrix Polynomial Representation shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Sparse Matrix Polynomial Representation explains the matrix state model and how one focused change updates it.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "A polynomial can be represented by coefficient–exponent pairs instead of all possible powers.",
+  "problem": "A polynomial can be represented by coefficient–exponent pairs instead of all possible powers.",
+  "concept": "A polynomial can be represented by coefficient–exponent pairs instead of all possible powers.",
+  "logicSummary": "A polynomial can be represented by coefficient–exponent pairs instead of all possible powers.",
+  "transitionSummary": "3x⁴ + 2x + 1 uses (3, 4), (2, 1), and (1, 0).",
+  "codeInsight": "A polynomial can be represented by coefficient–exponent pairs instead of all possible powers.",
   "originalCodeInsight": "Dynamic allocation creates storage at runtime; every pointer assignment changes how nodes or arrays are connected.",
-  "realLifeExample": "Sparse Matrix Polynomial Representation is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Matrix / Sparse Matrix / Polynomial behavior through state changes instead of memorized code.",
-  "memoryTrick": "Sparse Matrix Polynomial Representation: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Sparse Matrix Polynomial Representation is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "3x⁴ + 2x + 1 uses (3, 4), (2, 1), and (1, 0).",
+  "whenToUse": "A polynomial can be represented by coefficient–exponent pairs instead of all possible powers.",
+  "memoryTrick": "A polynomial can be represented by coefficient–exponent pairs instead of all possible powers.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "A polynomial can be represented by coefficient–exponent pairs instead of all possible powers."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "3x⁴ + 2x + 1 uses (3, 4), (2, 1), and (1, 0)."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Check the allowed input and stopping rule before running the routine. A picture of state alone is not a proof of correctness."
     }
   ],
   "variables": [
     {
-      "name": "row marker",
-      "purpose": "Selects the row being inspected."
+      "name": "matrix",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "column marker",
-      "purpose": "Selects the column being inspected."
-    },
-    {
-      "name": "stored cell",
-      "purpose": "The value addressed by Sparse Matrix Polynomial Representation."
-    },
-    {
-      "name": "matrix view",
-      "purpose": "Shows the compact or expanded grid state."
+      "name": "nonZero",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A polynomial can be represented by coefficient–exponent pairs instead of all possible powers.",
       "activeLine": 2,
-      "codeInsight": "Defines sparseMatrixPolynomialRepresentation as the runnable entry point for this lesson."
+      "codeInsight": "A polynomial can be represented by coefficient–exponent pairs instead of all possible powers."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
-      "activeLine": 3,
-      "codeInsight": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "3x⁴ + 2x + 1 uses (3, 4), (2, 1), and (1, 0).",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A polynomial can be represented by coefficient–exponent pairs instead of all possible powers."
     }
   ],
   "complexity": {
@@ -261,5 +235,49 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "State is the information a computation remembers between steps. A transition changes that information; a stop rule ends the computation.",
+    "family": "State and rules",
+    "example": "3x⁴ + 2x + 1 uses (3, 4), (2, 1), and (1, 0).",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "matrix",
+      "representation": "non-zero entries",
+      "nonZero": [
+        {
+          "r": 0,
+          "c": 0,
+          "value": 1
+        },
+        {
+          "r": 1,
+          "c": 1,
+          "value": 2
+        },
+        {
+          "r": 2,
+          "c": 2,
+          "value": 3
+        }
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "State",
+        "Values remembered at the current step."
+      ],
+      [
+        "Transition",
+        "The update that moves to the next state."
+      ],
+      [
+        "Base case",
+        "A small or finished situation with a known answer."
+      ]
+    ],
+    "pitfall": "Check the allowed input and stopping rule before running the routine. A picture of state alone is not a proof of correctness.",
+    "checkpoint": "Explain this in your own words: A polynomial can be represented by coefficient–exponent pairs instead of all possible powers."
   }
 };

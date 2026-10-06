@@ -12,107 +12,81 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/recursion-and-backtracking/subsets/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Subsets is a Recursion and Backtracking technique focused on solutions.",
-  "problem": "Subsets explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
-  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
-  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "Subsets appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use Subsets when a problem matches the Recursion and Backtracking pattern and the expected state changes match a decision tree dry run.",
-  "memoryTrick": "Subsets: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Subsets is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Subsets lists every selection of elements by deciding whether to include or exclude each element.",
+  "problem": "Subsets lists every selection of elements by deciding whether to include or exclude each element.",
+  "concept": "Subsets lists every selection of elements by deciding whether to include or exclude each element.",
+  "logicSummary": "Subsets lists every selection of elements by deciding whether to include or exclude each element.",
+  "transitionSummary": "For [1, 2], the subsets are [], [1], [2], and [1, 2]. There are 2ⁿ subsets for n distinct elements.",
+  "codeInsight": "Subsets lists every selection of elements by deciding whether to include or exclude each element.",
+  "realLifeExample": "For [1, 2], the subsets are [], [1], [2], and [1, 2]. There are 2ⁿ subsets for n distinct elements.",
+  "whenToUse": "Subsets lists every selection of elements by deciding whether to include or exclude each element.",
+  "memoryTrick": "Subsets lists every selection of elements by deciding whether to include or exclude each element.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Base case",
-      "text": "Stop when the current state is complete or invalid."
+      "title": "Identify what the operation means",
+      "text": "Subsets lists every selection of elements by deciding whether to include or exclude each element."
     },
     {
-      "title": "Choose option",
-      "text": "Pick the next valid branch."
+      "title": "Work through a small case",
+      "text": "For [1, 2], the subsets are [], [1], [2], and [1, 2]. There are 2ⁿ subsets for n distinct elements."
     },
     {
-      "title": "Recurse",
-      "text": "Solve the smaller state."
-    },
-    {
-      "title": "Return or undo",
-      "text": "Collect the result or backtrack before the next choice."
+      "title": "Check the boundary cases",
+      "text": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it."
     }
   ],
   "variables": [
     {
-      "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "path and recursion frame",
-      "purpose": "The partial choice path plus the current recursive frame before backtracking restores it. This page visualizes it as decision tree."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by subsets after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Base",
-      "title": "Check stop condition",
-      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Subsets lists every selection of elements by deciding whether to include or exclude each element.",
       "activeLine": 5,
-      "codeInsight": "Defines subsets and names the input values; edits to those inputs change the visual state and output."
+      "codeInsight": "Subsets lists every selection of elements by deciding whether to include or exclude each element."
     },
     {
-      "label": "Choice",
-      "title": "Select next option",
-      "note": "One valid move is added to the state.",
-      "activeLine": 5,
-      "codeInsight": "Defines subsets and names the input values; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Call",
-      "title": "Recurse deeper",
-      "note": "The same rule runs on a smaller or extended state.",
-      "activeLine": 6,
-      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Unwind",
-      "title": "Return or backtrack",
-      "note": "The result is combined or the choice is removed.",
-      "activeLine": 10,
-      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For [1, 2], the subsets are [], [1], [2], and [1, 2]. There are 2ⁿ subsets for n distinct elements.",
+      "activeLine": 18,
+      "codeInsight": "Subsets lists every selection of elements by deciding whether to include or exclude each element."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "O(n × 2ⁿ) when each subset is copied into the output.",
+    "space": "O(n) recursion state, plus O(n × 2ⁿ) stored output."
   },
   "quiz": {
-    "question": "Which state choice keeps Subsets correct?",
+    "question": "Which explanation best describes Subsets?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through Subsets' transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Subsets lists every selection of elements by deciding whether to include or exclude each element.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Subsets stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Subsets needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Subsets lists every selection of elements by deciding whether to include or exclude each element.",
+    "incorrectText": "Try again. Subsets lists every selection of elements by deciding whether to include or exclude each element. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "recursion-and-backtracking",
   "algorithmSlug": "subsets",
@@ -249,5 +223,47 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "For [1, 2], the subsets are [], [1], [2], and [1, 2]. There are 2ⁿ subsets for n distinct elements.",
+    "sampleInput": [
+      [
+        1,
+        2
+      ]
+    ],
+    "sampleResult": [
+      [],
+      [
+        2
+      ],
+      [
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Subsets lists every selection of elements by deciding whether to include or exclude each element."
+  },
+  "relatedLinks": []
 };

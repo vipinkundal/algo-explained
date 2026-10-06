@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/essential-c-and-cpp-rectangle-class-with-oop/code/original.cpp",
   "originalCodeFilename": "10_rectangle_class_with_oop.cpp",
   "originalActiveLine": 3,
-  "meaning": "C/C++ Rectangle Class With Oop shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "C/C++ Rectangle Class With Oop explains the C/C++ storage state model and how one focused change updates it.",
-  "concept": "C/C++ Rectangle Class With Oop is useful when C/C++ storage, addresses, structures, or object ownership affect the program result. Use this when the lesson depends on stack memory, heap memory, references, pointers, structs, or classes.",
-  "logicSummary": "Create the C/C++ value, inspect how it is passed or referenced, apply the operation, and read the final memory-visible result.",
-  "transitionSummary": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "A rectangle class keeps dimensions and area-related behavior in one object.",
+  "problem": "A rectangle class keeps dimensions and area-related behavior in one object.",
+  "concept": "A rectangle class keeps dimensions and area-related behavior in one object.",
+  "logicSummary": "A rectangle class keeps dimensions and area-related behavior in one object.",
+  "transitionSummary": "Rectangle(3, 4).area() returns 12; changing width changes the area.",
+  "codeInsight": "A rectangle class keeps dimensions and area-related behavior in one object.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
-  "realLifeExample": "C/C++ Rectangle Class With Oop is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning C/C++ Essentials behavior through state changes instead of memorized code.",
-  "memoryTrick": "C/C++ Rectangle Class With Oop: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C/C++ Rectangle Class With Oop is shown as C/C++ memory and value flow. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Rectangle(3, 4).area() returns 12; changing width changes the area.",
+  "whenToUse": "A rectangle class keeps dimensions and area-related behavior in one object.",
+  "memoryTrick": "A rectangle class keeps dimensions and area-related behavior in one object.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Declare value",
-      "text": "Create the variable, pointer, structure, or object."
+      "title": "Identify what the operation means",
+      "text": "A rectangle class keeps dimensions and area-related behavior in one object."
     },
     {
-      "title": "Inspect storage",
-      "text": "Notice whether the code uses value, address, reference, or member access."
+      "title": "Work through a small case",
+      "text": "Rectangle(3, 4).area() returns 12; changing width changes the area."
     },
     {
-      "title": "Apply operation",
-      "text": "Run the function, assignment, dereference, or method call."
-    },
-    {
-      "title": "Read result",
-      "text": "Read the changed value, member, pointer target, or object output."
+      "title": "Check the boundary cases",
+      "text": "Do not use a pointer after its object’s lifetime ends. Passing by value copies an object; passing by pointer or reference can access the original."
     }
   ],
   "variables": [
     {
-      "name": "declared name",
-      "purpose": "The identifier introduced by the C/C++ example."
-    },
-    {
-      "name": "stored value",
-      "purpose": "The value currently associated with that identifier."
-    },
-    {
-      "name": "address view",
-      "purpose": "Shows where pointer-style examples refer in memory."
-    },
-    {
-      "name": "printed output",
-      "purpose": "The observable result produced by C/C++ Rectangle Class With Oop."
+      "name": "return",
+      "purpose": "The function returns a value or snapshot. Open the JavaScript source to inspect the fixed sample."
     }
   ],
   "dryRun": [
     {
-      "label": "Declaration",
-      "title": "Create program value",
-      "note": "The code introduces the variable, pointer, structure, or object.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A rectangle class keeps dimensions and area-related behavior in one object.",
       "activeLine": 2,
-      "codeInsight": "Defines essentialCAndCppRectangleClassWithOop as the runnable entry point for this lesson."
+      "codeInsight": "A rectangle class keeps dimensions and area-related behavior in one object."
     },
     {
-      "label": "Storage",
-      "title": "Track address or copy",
-      "note": "Passing by value, pointer, or reference controls what can change.",
-      "activeLine": 4,
-      "codeInsight": "Sets the returned topic field to \"C/C++ Rectangle Class With Oop\", which is one of the named values rendered in the visual summary."
-    },
-    {
-      "label": "C/C++ rule",
-      "title": "Apply C/C++ rule",
-      "note": "Assignment, dereference, member access, or method call changes the state.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Rectangle(3, 4).area() returns 12; changing width changes the area.",
       "activeLine": 3,
-      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Read final value",
-      "note": "The visible output follows from the memory model.",
-      "activeLine": 3,
-      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A rectangle class keeps dimensions and area-related behavior in one object."
     }
   ],
   "complexity": {
@@ -174,5 +144,37 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "C/C++ separates a value from the memory that stores it. Pointers and references explain how a function can access an existing object.",
+    "family": "Storage and ownership",
+    "example": "Rectangle(3, 4).area() returns 12; changing width changes the area.",
+    "sampleInput": [],
+    "sampleResult": {
+      "topic": "C/C++ Rectangle Class With Oop",
+      "idea": "This runnable JS companion mirrors the state-first C/C++ lesson in browser-safe JavaScript.",
+      "state": [
+        "input",
+        "working memory",
+        "result"
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Pointer",
+        "A value representing a memory address."
+      ],
+      [
+        "Reference",
+        "A C++ alias for an existing object."
+      ],
+      [
+        "Lifetime",
+        "The interval during which an object exists and may be accessed."
+      ]
+    ],
+    "pitfall": "Do not use a pointer after its object’s lifetime ends. Passing by value copies an object; passing by pointer or reference can access the original.",
+    "checkpoint": "Explain this in your own words: A rectangle class keeps dimensions and area-related behavior in one object."
   }
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "view_week",
   "codePath": "./src/algorithms/array-patterns/sliding-window/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Sliding Window is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Sliding Window reuses a contiguous range instead of recomputing it after every move.",
   "problem": "Sliding Window reuses a contiguous range instead of recomputing it after every move.",
   "concept": "Sliding-window logic is useful when the answer depends on a contiguous range that changes one edge at a time. Use this when recomputing every range would repeat work.",
   "logicSummary": "Expand or slide the window, remove expired items, and keep the answer from the current valid range.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Sliding Window appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Sliding Window when the problem statement matches its array invariant.",
   "memoryTrick": "Sliding Window: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Sliding Window is shown as a moving range over an array. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Sliding Window through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Open window",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(number of windows)."
   },
   "quiz": {
-    "question": "Which state choice keeps Sliding Window correct?",
+    "question": "Which explanation best describes Sliding Window?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Sliding Window's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Sliding Window reuses a contiguous range instead of recomputing it after every move.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Sliding Window stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Sliding Window needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Sliding Window reuses a contiguous range instead of recomputing it after every move.",
+    "incorrectText": "Try again. Sliding Window reuses a contiguous range instead of recomputing it after every move. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "array-patterns",
   "algorithmSlug": "sliding-window",
@@ -218,5 +218,43 @@ export const algorithmPage = {
         "secondaryLabel": "Each step adds the right item and removes or ignores items that no longer belong."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Open window: Start with an empty or first valid range. Add right edge: Include the next value. Remove stale edge: Shrink or pop values that no longer belong. Record answer: Emit the best value for the current window.",
+    "sampleInput": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      3
+    ],
+    "sampleResult": [
+      6,
+      9,
+      12
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Sliding Window reuses a contiguous range instead of recomputing it after every move."
+  },
+  "relatedLinks": []
 };

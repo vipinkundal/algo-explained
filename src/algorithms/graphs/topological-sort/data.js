@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/topological-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Topological Sort is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Topological Sort orders a directed acyclic graph so every prerequisite appears before the work that depends on it.",
   "problem": "Topological Sort orders a directed acyclic graph so every prerequisite appears before the work that depends on it.",
   "concept": "Kahn's algorithm repeatedly removes zero-indegree vertices and decreases the indegree of their outgoing neighbors.",
   "logicSummary": "Build indegree counts, enqueue every zero-indegree vertex, pop one safe vertex, and unlock neighbors as counts reach zero.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use topological sort for course schedules, build steps, migration order, and dependency execution plans.",
   "whenToUse": "Use it on directed acyclic graphs when dependencies must be respected.",
   "memoryTrick": "Topo sort only releases a task when its prerequisite count reaches zero.",
-  "visualizerCaption": "Watch zero-indegree vertices leave the DAG and unlock the next tasks.",
+  "visualizerCaption": "Explore Topological Sort through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Count prerequisites",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state keeps Topological Sort correct?",
+    "question": "Which explanation best describes Topological Sort?",
     "options": [
       {
         "key": "A",
-        "text": "indegree follows the page's own transition rule.",
+        "text": "Topological Sort orders a directed acyclic graph so every prerequisite appears before the work that depends on it.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Topological Sort orders a directed acyclic graph so every prerequisite appears before the work that depends on it.",
+    "incorrectText": "Try again. Topological Sort orders a directed acyclic graph so every prerequisite appears before the work that depends on it. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "topological-sort",
@@ -311,5 +311,57 @@ export const algorithmPage = {
         "frontierNodes": []
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A graph contains vertices (places) and edges (connections). Arrows mean a connection can be followed only in that direction.",
+    "family": "Graphs and connections",
+    "example": "Count prerequisites: Compute indegree for every vertex. Seed safe queue: Add all vertices with indegree 0. Emit and decrement: Remove one safe vertex and decrement its outgoing neighbors. Detect cycles: If not every vertex is emitted, the graph was not a DAG.",
+    "sampleInput": [
+      {
+        "A": [
+          "C"
+        ],
+        "B": [
+          "C",
+          "D"
+        ],
+        "C": [
+          "E"
+        ],
+        "D": [
+          "F"
+        ],
+        "E": [
+          "F"
+        ],
+        "F": []
+      }
+    ],
+    "sampleResult": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Vertex",
+        "One point in a graph; also called a node."
+      ],
+      [
+        "Edge",
+        "A connection between vertices."
+      ],
+      [
+        "Visited",
+        "A record that a vertex has already been discovered."
+      ]
+    ],
+    "pitfall": "Mark discovered vertices to avoid repeating work. Check directedness and whether every component must be visited.",
+    "checkpoint": "Explain this in your own words: Topological Sort orders a directed acyclic graph so every prerequisite appears before the work that depends on it."
+  },
+  "relatedLinks": []
 };

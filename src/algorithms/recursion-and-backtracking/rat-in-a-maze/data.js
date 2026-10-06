@@ -12,80 +12,74 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/recursion-and-backtracking/rat-in-a-maze/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Rat in a Maze is a Recursion and Backtracking technique focused on solutions.",
-  "problem": "Rat in a Maze explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "Rat in a Maze appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use Rat in a Maze when a problem matches the Recursion and Backtracking pattern and the expected state changes match a grid path dry run.",
-  "memoryTrick": "Rat in a Maze: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Rat in a Maze is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells.",
+  "problem": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells.",
+  "concept": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells.",
+  "logicSummary": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells.",
+  "transitionSummary": "In a grid, 1 can mean open and 0 blocked. If a branch reaches a dead end, undo that move and try another open neighbor.",
+  "codeInsight": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells.",
+  "realLifeExample": "In a grid, 1 can mean open and 0 blocked. If a branch reaches a dead end, undo that move and try another open neighbor.",
+  "whenToUse": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells.",
+  "memoryTrick": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "In a grid, 1 can mean open and 0 blocked. If a branch reaches a dead end, undo that move and try another open neighbor."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
-      "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "name": "maze",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "path and recursion frame",
-      "purpose": "The partial choice path plus the current recursive frame before backtracking restores it. This page visualizes it as grid path."
+      "name": "n",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by ratInAMaze after the maintained state reaches the stop rule."
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "seen",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "moves",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
+    },
+    {
+      "name": "nextRow",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "nextCol",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells.",
       "activeLine": 5,
-      "codeInsight": "Defines ratInAMaze and names the input maze; edits to those inputs change the visual state and output."
+      "codeInsight": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
-      "activeLine": 5,
-      "codeInsight": "Defines ratInAMaze and names the input maze; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 11,
-      "codeInsight": "Checks row === n - 1 && col === n - 1; only the branch that preserves Rat in a Maze's invariant is allowed to change state."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
-      "activeLine": 13,
-      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "In a grid, 1 can mean open and 0 blocked. If a branch reaches a dead end, undo that move and try another open neighbor.",
+      "activeLine": 26,
+      "codeInsight": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells."
     }
   ],
   "complexity": {
@@ -93,26 +87,26 @@ export const algorithmPage = {
     "space": "O(n) for tracked state when needed."
   },
   "quiz": {
-    "question": "Which state choice keeps Rat in a Maze correct?",
+    "question": "Which explanation best describes Rat in a Maze?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through Rat in a Maze's transition.",
+        "text": "A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Rat in a Maze stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Rat in a Maze needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells.",
+    "incorrectText": "Try again. A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "recursion-and-backtracking",
   "algorithmSlug": "rat-in-a-maze",
@@ -259,5 +253,50 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "In a grid, 1 can mean open and 0 blocked. If a branch reaches a dead end, undo that move and try another open neighbor.",
+    "sampleInput": [
+      [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ]
+    ],
+    "sampleResult": [
+      "DRDR"
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: A maze search tries open neighboring cells, marking the current path so it does not loop through the same cells."
+  },
+  "relatedLinks": []
 };

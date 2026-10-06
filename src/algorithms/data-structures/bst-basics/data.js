@@ -20,81 +20,59 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/bst-basics/code/original.cpp",
   "originalCodeFilename": "01_bst.cpp",
   "originalActiveLine": 7,
-  "meaning": "BST Basics shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "BST Basics explains the search-tree state model and how one focused change updates it.",
-  "concept": "BST Basics is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on ordered branch.",
-  "logicSummary": "Start at the root, maintain ordered branch, compare with the current node and move left or right, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses ordered branch to decide the next child, rotation, or returned value.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree.",
+  "problem": "A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree.",
+  "concept": "A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree.",
+  "logicSummary": "A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree.",
+  "transitionSummary": "To find 6 under root 4, follow the right link; searching for 2 follows the left.",
+  "codeInsight": "A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree.",
   "originalCodeInsight": "The C/C++ Node struct is the memory layout: data stores the value and next/child pointers connect the structure.",
-  "realLifeExample": "BST Basics is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Trees / BST / AVL / Heap behavior through state changes instead of memorized code.",
-  "memoryTrick": "BST Basics: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "BST Basics is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "To find 6 under root 4, follow the right link; searching for 2 follows the left.",
+  "whenToUse": "A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree.",
+  "memoryTrick": "A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "title": "Identify what the operation means",
+      "text": "A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree."
     },
     {
-      "title": "Read node state",
-      "text": "Inspect ordered branch."
+      "title": "Work through a small case",
+      "text": "To find 6 under root 4, follow the right link; searching for 2 follows the left."
     },
     {
-      "title": "Move/combine",
-      "text": "compare with the current node and move left or right."
-    },
-    {
-      "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "title": "Check the boundary cases",
+      "text": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it."
     }
   ],
   "variables": [
     {
-      "name": "root key",
-      "purpose": "Starts every comparison path in the search tree."
+      "name": "values",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "branch choice",
-      "purpose": "Records whether the next move goes left or right."
+      "name": "search",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "matched node",
-      "purpose": "Holds the node found by the comparison path."
-    },
-    {
-      "name": "ordered keys",
-      "purpose": "Shows the tree values while preserving sorted order."
+      "name": "path",
+      "purpose": "Remembers the current partial choice sequence; backtracking restores it before trying a sibling branch."
     }
   ],
   "dryRun": [
     {
-      "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree.",
       "activeLine": 2,
-      "codeInsight": "Defines bstBasics as the runnable entry point for this lesson."
+      "codeInsight": "A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree."
     },
     {
-      "label": "Node state",
-      "title": "Read ordered branch",
-      "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Child step",
-      "title": "Compare with the current node and move left or right",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "To find 6 under root 4, follow the right link; searching for 2 follows the left.",
       "activeLine": 6,
-      "codeInsight": "Returns the final state object { structure: \"binary search tree\", values, search, path, found: true }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
-      "activeLine": 6,
-      "codeInsight": "Returns the final state object { structure: \"binary search tree\", values, search, path, found: true }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree."
     }
   ],
   "complexity": {
@@ -276,5 +254,47 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "To find 6 under root 4, follow the right link; searching for 2 follows the left.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "binary search tree",
+      "values": [
+        40,
+        20,
+        60,
+        10,
+        30,
+        50,
+        70
+      ],
+      "search": 50,
+      "path": [
+        40,
+        60,
+        50
+      ],
+      "found": true
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: A binary search tree keeps smaller keys in the left subtree and larger keys in the right subtree."
   }
 };

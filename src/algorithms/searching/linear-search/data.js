@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "search",
   "codePath": "./src/algorithms/searching/linear-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Linear Search is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Find the first index whose value equals the target in an unsorted array.",
   "problem": "Find the first index whose value equals the target in an unsorted array.",
   "concept": "Linear Search checks each value from left to right because no ordering rule lets it skip positions.",
   "logicSummary": "Start at index 0, compare the current value with target, and advance one position after each miss.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for small or unsorted lists such as scanning recent actions, names, or command history.",
   "whenToUse": "Use Linear Search when the data is unsorted or sorting would cost more than one scan.",
   "memoryTrick": "Linear search asks one item at a time: are you the target?",
-  "visualizerCaption": "Linear Search is shown with the exact boundary, probe, or scan state used by the code.",
+  "visualizerCaption": "Explore Linear Search through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Compare 4",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state keeps Linear Search correct?",
+    "question": "Which explanation best describes Linear Search?",
     "options": [
       {
         "key": "A",
-        "text": "Use the page's own search boundary or scan state and update it only through the listed transition.",
+        "text": "Find the first index whose value equals the target in an unsorted array.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse another search algorithm's comparison rule without checking the invariant.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Stop before the algorithm-specific boundary or scan condition is resolved.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Linear Search works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Linear Search needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Find the first index whose value equals the target in an unsorted array.",
+    "incorrectText": "Try again. Find the first index whose value equals the target in an unsorted array. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "searching",
   "algorithmSlug": "linear-search",
@@ -239,5 +239,38 @@ export const algorithmPage = {
         "secondaryLabel": "A failed comparison increments the index; a match returns immediately."
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Compare 4: 4 is not the target 9, so the scan moves right. Compare 2: 2 is also a miss. Compare 9: 9 matches the target, so return index 2. Return result: No later positions are inspected after the first match.",
+    "sampleInput": [
+      [
+        4,
+        2,
+        9,
+        7,
+        9
+      ],
+      9
+    ],
+    "sampleResult": 2,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Find the first index whose value equals the target in an unsorted array."
   }
 };

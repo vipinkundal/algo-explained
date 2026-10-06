@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "queue",
   "codePath": "./src/algorithms/heap-and-priority-queue/top-k-frequent-elements/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Top K Frequent Elements is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Top K Frequent Elements counts values, then selects the highest-frequency entries.",
   "problem": "Top K Frequent Elements counts values, then selects the highest-frequency entries.",
   "concept": "Top K Frequent Elements is useful when queue behavior is the clearest model for the data changes. Use this when the problem is naturally described by first-in, first-out state.",
   "logicSummary": "Read the next value or operation, maintain first-in, first-out state, then enqueue, dequeue, peek, or evict entries.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Top K Frequent Elements appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Top K Frequent Elements when its state transition is the natural way to model the problem.",
   "memoryTrick": "Top K Frequent Elements: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Top K Frequent Elements is shown as queue state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Top K Frequent Elements through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read queue",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(u)."
   },
   "quiz": {
-    "question": "Which state choice keeps Top K Frequent Elements correct?",
+    "question": "Which explanation best describes Top K Frequent Elements?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Top K Frequent Elements' transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Top K Frequent Elements counts values, then selects the highest-frequency entries.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Top K Frequent Elements stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Top K Frequent Elements needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Top K Frequent Elements counts values, then selects the highest-frequency entries.",
+    "incorrectText": "Try again. Top K Frequent Elements counts values, then selects the highest-frequency entries. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "heap-and-priority-queue",
   "algorithmSlug": "top-k-frequent-elements",
@@ -254,5 +254,43 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Read queue: Identify the next command, value, node, or library call. Inspect queue front: Look at the active queue fields. Enqueue / dequeue: enqueue, dequeue, peek, or evict entries. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      [
+        1,
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      2
+    ],
+    "sampleResult": [
+      1,
+      2
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Top K Frequent Elements counts values, then selects the highest-frequency entries."
+  },
+  "relatedLinks": []
 };

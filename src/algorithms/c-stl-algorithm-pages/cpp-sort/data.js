@@ -12,107 +12,77 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/c-stl-algorithm-pages/cpp-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "C++ sort() is a C++ STL Algorithm Pages technique focused on sorted array.",
-  "problem": "C++ sort() is a sorting strategy that repeatedly narrows unsorted work until every value is in order.",
-  "concept": "C++ sort() is useful when values must be placed into a reliable order before later work can be simple. Use this when the algorithm's ordering invariant and cost fit the input size and stability needs.",
-  "logicSummary": "Protect the algorithm's ordering invariant until every value reaches final order.",
-  "transitionSummary": "Each step compares or moves values so the unsorted region gets smaller.",
-  "codeInsight": "The implementation copies the input first, then mutates only that working array so the original caller data is not changed.",
-  "realLifeExample": "C++ sort() appears when the input is array and the required result is sorted array.",
-  "whenToUse": "Use C++ sort() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a comparator sort dry run.",
-  "memoryTrick": "C++ sort(): name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C++ sort() is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order.",
+  "problem": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order.",
+  "concept": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order.",
+  "logicSummary": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order.",
+  "transitionSummary": "[3, 1, 2] becomes [1, 2, 3] with the default ascending comparison. Use stable_sort when equal-key order must be preserved.",
+  "codeInsight": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order.",
+  "realLifeExample": "[3, 1, 2] becomes [1, 2, 3] with the default ascending comparison. Use stable_sort when equal-key order must be preserved.",
+  "whenToUse": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order.",
+  "memoryTrick": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Copy values",
-      "text": "Work on a mutable array without changing the original input."
+      "title": "Identify what the operation means",
+      "text": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order."
     },
     {
-      "title": "Choose invariant",
-      "text": "Track the sorted or partitioned region."
+      "title": "Work through a small case",
+      "text": "[3, 1, 2] becomes [1, 2, 3] with the default ascending comparison. Use stable_sort when equal-key order must be preserved."
     },
     {
-      "title": "Move values",
-      "text": "Perform the comparison, swap, merge, or placement."
-    },
-    {
-      "title": "Return order",
-      "text": "Return the fully sorted array."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "array",
-      "purpose": "The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms."
-    },
-    {
-      "name": "working state",
-      "purpose": "The local state updated by the algorithm transition. This page visualizes it as comparator sort."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by cppSort after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Compare, move, swap, merge, or bucket values according to this sorter until no unsorted work remains. Stop when no valid work remains or the answer is known."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     }
   ],
   "dryRun": [
     {
-      "label": "Input array",
-      "title": "Copy values",
-      "note": "The code starts with the values to reorder.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order.",
       "activeLine": 5,
-      "codeInsight": "Defines cppSort and names the input values; edits to those inputs change the visual state and output."
+      "codeInsight": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order."
     },
     {
-      "label": "Invariant",
-      "title": "Track ordered work",
-      "note": "The algorithm marks what part is already safe.",
-      "activeLine": 5,
-      "codeInsight": "Defines cppSort and names the input values; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Move",
-      "title": "Apply ordering step",
-      "note": "The current operation reduces disorder.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "[3, 1, 2] becomes [1, 2, 3] with the default ascending comparison. Use stable_sort when equal-key order must be preserved.",
       "activeLine": 6,
-      "codeInsight": "Returns the final array-style answer [...values].sort((a, b) => a - b), so the last frame should show the chosen positions or sequence."
-    },
-    {
-      "label": "Sorted output",
-      "title": "Return final order",
-      "note": "The result is returned when no unsorted work remains.",
-      "activeLine": 6,
-      "codeInsight": "Returns the final array-style answer [...values].sort((a, b) => a - b), so the last frame should show the chosen positions or sequence."
+      "codeInsight": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "O(n log n) comparisons for std::sort.",
+    "space": "Implementation dependent; the JavaScript companion is not a measurement of C++ library storage."
   },
   "quiz": {
-    "question": "Which state choice keeps C++ sort() correct?",
+    "question": "Which explanation best describes C++ sort()?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and working array and update it only through C++ sort()'s transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. C++ sort() stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. C++ sort() needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order.",
+    "incorrectText": "Try again. std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "c-stl-algorithm-pages",
   "algorithmSlug": "cpp-sort",
@@ -209,5 +179,40 @@ export const algorithmPage = {
         "secondaryLabel": "Each step compares or moves values so the unsorted region gets smaller."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "[3, 1, 2] becomes [1, 2, 3] with the default ascending comparison. Use stable_sort when equal-key order must be preserved.",
+    "sampleInput": [
+      [
+        3,
+        1,
+        2
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      3
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: std::sort arranges a range according to a comparison rule; equal elements need not keep their original relative order."
+  },
+  "relatedLinks": []
 };

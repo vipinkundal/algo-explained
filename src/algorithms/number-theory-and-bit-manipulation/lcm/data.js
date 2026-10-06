@@ -12,107 +12,85 @@ export const algorithmPage = {
   "icon": "memory",
   "codePath": "./src/algorithms/number-theory-and-bit-manipulation/lcm/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "LCM is a Number Theory and Bit Manipulation technique focused on answer.",
-  "problem": "LCM solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its formula card transition.",
-  "concept": "Number and bit algorithms are useful when arithmetic properties let you skip brute-force work. Use this when divisibility, powers, bits, xor, or modular rules define the answer.",
-  "logicSummary": "Read numeric input, keep the relevant arithmetic state, apply the identity, and return the reduced result.",
-  "transitionSummary": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
-  "codeInsight": "The implementation keeps LCM's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "LCM appears when the input is input and the required result is answer.",
-  "whenToUse": "Use LCM when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a formula card dry run.",
-  "memoryTrick": "LCM: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "LCM is shown as arithmetic-state reduction. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "The least common multiple is the smallest positive number divisible by both input numbers.",
+  "problem": "The least common multiple is the smallest positive number divisible by both input numbers.",
+  "concept": "The least common multiple is the smallest positive number divisible by both input numbers.",
+  "logicSummary": "The least common multiple is the smallest positive number divisible by both input numbers.",
+  "transitionSummary": "lcm(6, 8) = 24. Use |(a / gcd(a, b)) × b|; if either input is zero, the LCM is zero.",
+  "codeInsight": "The least common multiple is the smallest positive number divisible by both input numbers.",
+  "realLifeExample": "lcm(6, 8) = 24. Use |(a / gcd(a, b)) × b|; if either input is zero, the LCM is zero.",
+  "whenToUse": "The least common multiple is the smallest positive number divisible by both input numbers.",
+  "memoryTrick": "The least common multiple is the smallest positive number divisible by both input numbers.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read numbers",
-      "text": "Identify the integer, range, or modulus."
+      "title": "Identify what the operation means",
+      "text": "The least common multiple is the smallest positive number divisible by both input numbers."
     },
     {
-      "title": "Set invariant",
-      "text": "Choose the arithmetic or bit rule."
+      "title": "Work through a small case",
+      "text": "lcm(6, 8) = 24. Use |(a / gcd(a, b)) × b|; if either input is zero, the LCM is zero."
     },
     {
-      "title": "Apply operation",
-      "text": "Shift, xor, divide, multiply, or mark values."
-    },
-    {
-      "title": "Return result",
-      "text": "Return the reduced number or boolean answer."
+      "title": "Check the boundary cases",
+      "text": "Handle zero, one, negative values, and invalid domains explicitly. Large Number calculations can lose exact integer precision."
     }
   ],
   "variables": [
     {
-      "name": "value, other",
-      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "a",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "numeric invariant",
-      "purpose": "The remainder, bit mask, power, xor, or primality state updated each step. This page visualizes it as formula card."
+      "name": "b",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by lcm after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the formula card transition until the stop condition for LCM is reached. Stop when no valid work remains or the answer is known."
+      "name": "gcd",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Numbers",
-      "title": "Read numeric state",
-      "note": "The code receives the number, range, or modulus.",
-      "activeLine": 6,
-      "codeInsight": "Computes gcd from the current values before the algorithm decides the next move."
-    },
-    {
-      "label": "Rule",
-      "title": "Select math invariant",
-      "note": "The chosen identity controls every update.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "The least common multiple is the smallest positive number divisible by both input numbers.",
       "activeLine": 5,
-      "codeInsight": "Defines lcm and names the input a, b; edits to those inputs change the visual state and output."
+      "codeInsight": "The least common multiple is the smallest positive number divisible by both input numbers."
     },
     {
-      "label": "Reduction",
-      "title": "Apply one reduction",
-      "note": "A shift, xor, multiply, divide, or mark changes state.",
-      "activeLine": 5,
-      "codeInsight": "Defines lcm and names the input a, b; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Numeric result",
-      "title": "Return numeric result",
-      "note": "The loop ends when the invariant gives the answer.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "lcm(6, 8) = 24. Use |(a / gcd(a, b)) × b|; if either input is zero, the LCM is zero.",
       "activeLine": 7,
-      "codeInsight": "Returns a === 0 || b === 0 ? 0 : Math.abs(a * b) / gcd(a, b), the final value maintained by LCM's code path."
+      "codeInsight": "The least common multiple is the smallest positive number divisible by both input numbers."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "Dominated by the GCD calculation.",
+    "space": "O(1) in an iterative version."
   },
   "quiz": {
-    "question": "Which state choice keeps LCM correct?",
+    "question": "Which explanation best describes LCM?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through LCM's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "The least common multiple is the smallest positive number divisible by both input numbers.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. LCM stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. LCM needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The least common multiple is the smallest positive number divisible by both input numbers.",
+    "incorrectText": "Try again. The least common multiple is the smallest positive number divisible by both input numbers. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
   "algorithmSlug": "lcm",
@@ -165,5 +143,33 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "Arithmetic properties can reduce a search: factors come in pairs, remainders shrink GCD problems, and squaring reduces exponent work.",
+    "family": "Arithmetic structure",
+    "example": "lcm(6, 8) = 24. Use |(a / gcd(a, b)) × b|; if either input is zero, the LCM is zero.",
+    "sampleInput": [
+      4,
+      6
+    ],
+    "sampleResult": 12,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Remainder",
+        "What remains after integer division."
+      ],
+      [
+        "Modulo",
+        "Keeping a value’s remainder under a chosen modulus."
+      ],
+      [
+        "Divisor",
+        "An integer that divides another integer exactly."
+      ]
+    ],
+    "pitfall": "Handle zero, one, negative values, and invalid domains explicitly. Large Number calculations can lose exact integer precision.",
+    "checkpoint": "Explain this in your own words: The least common multiple is the smallest positive number divisible by both input numbers."
+  },
+  "relatedLinks": []
 };

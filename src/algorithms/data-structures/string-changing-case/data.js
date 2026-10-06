@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/string-changing-case/code/original.cpp",
   "originalCodeFilename": "02_changing_case.cpp",
   "originalActiveLine": 2,
-  "meaning": "String Changing Case shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "String Changing Case explains the string state model and how one focused change updates it.",
-  "concept": "String algorithms are useful when character order, frequency, prefix, hash, or palindrome structure can be reused. Use this when scanning every substring directly would repeat character work.",
-  "logicSummary": "Prepare helper state, scan characters, update the pattern state, and record matches or the best string result.",
-  "transitionSummary": "Each step consumes one character and updates prefix, hash, frequency, trie, or palindrome state.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Case conversion changes alphabetic characters between uppercase and lowercase.",
+  "problem": "Case conversion changes alphabetic characters between uppercase and lowercase.",
+  "concept": "Case conversion changes alphabetic characters between uppercase and lowercase.",
+  "logicSummary": "Case conversion changes alphabetic characters between uppercase and lowercase.",
+  "transitionSummary": "AbC becomes abc in lowercase and ABC in uppercase. ASCII arithmetic does not cover every Unicode letter.",
+  "codeInsight": "Case conversion changes alphabetic characters between uppercase and lowercase.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
-  "realLifeExample": "String Changing Case is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Strings behavior through state changes instead of memorized code.",
-  "memoryTrick": "String Changing Case: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "String Changing Case is shown as character-state updates. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "AbC becomes abc in lowercase and ABC in uppercase. ASCII arithmetic does not cover every Unicode letter.",
+  "whenToUse": "Case conversion changes alphabetic characters between uppercase and lowercase.",
+  "memoryTrick": "Case conversion changes alphabetic characters between uppercase and lowercase.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read text",
-      "text": "Identify text, pattern, or character rule."
+      "title": "Identify what the operation means",
+      "text": "Case conversion changes alphabetic characters between uppercase and lowercase."
     },
     {
-      "title": "Prepare state",
-      "text": "Build frequency, prefix, hash, trie, or radius state."
+      "title": "Work through a small case",
+      "text": "AbC becomes abc in lowercase and ABC in uppercase. ASCII arithmetic does not cover every Unicode letter."
     },
     {
-      "title": "Scan character",
-      "text": "Consume the next character and update state."
-    },
-    {
-      "title": "Return match",
-      "text": "Return matches, validity, or the best substring result."
+      "title": "Check the boundary cases",
+      "text": "Check empty strings and repeated characters. State whether case, spaces, and Unicode characters affect matching."
     }
   ],
   "variables": [
     {
-      "name": "read index",
-      "purpose": "Selects the current character."
+      "name": "text",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "write index",
-      "purpose": "Marks where the next transformed character lands."
-    },
-    {
-      "name": "character bag",
-      "purpose": "Tracks characters considered by String Changing Case."
-    },
-    {
-      "name": "text result",
-      "purpose": "Shows the string after the scan or transformation."
+      "name": "reversed",
+      "purpose": "Holds a separate copy of the values so working changes do not overwrite the caller’s array."
     }
   ],
   "dryRun": [
     {
-      "label": "Text",
-      "title": "Read string input",
-      "note": "The code receives text, pattern, or character data.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Case conversion changes alphabetic characters between uppercase and lowercase.",
       "activeLine": 2,
-      "codeInsight": "Defines stringChangingCase as the runnable entry point for this lesson."
+      "codeInsight": "Case conversion changes alphabetic characters between uppercase and lowercase."
     },
     {
-      "label": "Helper",
-      "title": "Prepare string state",
-      "note": "Prefix, hash, frequency, or radius state avoids repeated work.",
-      "activeLine": 3,
-      "codeInsight": "Stores text so the algorithm can reuse this value without recomputing it."
-    },
-    {
-      "label": "Character",
-      "title": "Update on current char",
-      "note": "One character changes the active string state.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "AbC becomes abc in lowercase and ABC in uppercase. ASCII arithmetic does not cover every Unicode letter.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"string\", input: text, reversed, length: text.length }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return string answer",
-      "note": "Matches or best values are returned after the scan.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"string\", input: text, reversed, length: text.length }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Case conversion changes alphabetic characters between uppercase and lowercase."
     }
   ],
   "complexity": {
@@ -197,5 +171,34 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A string is an ordered sequence. A substring occupies consecutive positions; a subsequence can skip positions.",
+    "family": "Characters and positions",
+    "example": "AbC becomes abc in lowercase and ABC in uppercase. ASCII arithmetic does not cover every Unicode letter.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "string",
+      "input": "decimal",
+      "reversed": "lamiced",
+      "length": 7
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Prefix",
+        "Characters at the beginning of a string."
+      ],
+      [
+        "Substring",
+        "A consecutive section of a string."
+      ],
+      [
+        "Frequency",
+        "How often a character occurs."
+      ]
+    ],
+    "pitfall": "Check empty strings and repeated characters. State whether case, spaces, and Unicode characters affect matching.",
+    "checkpoint": "Explain this in your own words: Case conversion changes alphabetic characters between uppercase and lowercase."
   }
 };

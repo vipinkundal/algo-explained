@@ -12,107 +12,81 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/recursion-and-backtracking/generate-parentheses/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Generate Parentheses is a Recursion and Backtracking technique focused on solutions.",
-  "problem": "Generate Parentheses explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
-  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
-  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "Generate Parentheses appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use Generate Parentheses when a problem matches the Recursion and Backtracking pattern and the expected state changes match a state tree dry run.",
-  "memoryTrick": "Generate Parentheses: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Generate Parentheses is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one.",
+  "problem": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one.",
+  "concept": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one.",
+  "logicSummary": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one.",
+  "transitionSummary": "With 2 pairs, (()) and ()() are valid. A prefix like )( is already invalid and can be rejected early.",
+  "codeInsight": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one.",
+  "realLifeExample": "With 2 pairs, (()) and ()() are valid. A prefix like )( is already invalid and can be rejected early.",
+  "whenToUse": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one.",
+  "memoryTrick": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Base case",
-      "text": "Stop when the current state is complete or invalid."
+      "title": "Identify what the operation means",
+      "text": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one."
     },
     {
-      "title": "Choose option",
-      "text": "Pick the next valid branch."
+      "title": "Work through a small case",
+      "text": "With 2 pairs, (()) and ()() are valid. A prefix like )( is already invalid and can be rejected early."
     },
     {
-      "title": "Recurse",
-      "text": "Solve the smaller state."
-    },
-    {
-      "title": "Return or undo",
-      "text": "Collect the result or backtrack before the next choice."
+      "title": "Check the boundary cases",
+      "text": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it."
     }
   ],
   "variables": [
     {
-      "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "name": "pairs",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "path and recursion frame",
-      "purpose": "The partial choice path plus the current recursive frame before backtracking restores it. This page visualizes it as state tree."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by generateParentheses after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Base",
-      "title": "Check stop condition",
-      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one.",
       "activeLine": 5,
-      "codeInsight": "Defines generateParentheses and names the input pairs; edits to those inputs change the visual state and output."
+      "codeInsight": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one."
     },
     {
-      "label": "Choice",
-      "title": "Select next option",
-      "note": "One valid move is added to the state.",
-      "activeLine": 5,
-      "codeInsight": "Defines generateParentheses and names the input pairs; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Call",
-      "title": "Recurse deeper",
-      "note": "The same rule runs on a smaller or extended state.",
-      "activeLine": 6,
-      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Unwind",
-      "title": "Return or backtrack",
-      "note": "The result is combined or the choice is removed.",
-      "activeLine": 10,
-      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "With 2 pairs, (()) and ()() are valid. A prefix like )( is already invalid and can be rejected early.",
+      "activeLine": 16,
+      "codeInsight": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "Proportional to valid outputs and the work of constructing each length-2n string.",
+    "space": "O(n) active path; storing all valid strings costs additional output space."
   },
   "quiz": {
-    "question": "Which state choice keeps Generate Parentheses correct?",
+    "question": "Which explanation best describes Generate Parentheses?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through Generate Parentheses' transition.",
+        "text": "Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Generate Parentheses stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Generate Parentheses needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one.",
+    "incorrectText": "Try again. Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "recursion-and-backtracking",
   "algorithmSlug": "generate-parentheses",
@@ -246,5 +220,38 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "With 2 pairs, (()) and ()() are valid. A prefix like )( is already invalid and can be rejected early.",
+    "sampleInput": [
+      3
+    ],
+    "sampleResult": [
+      "((()))",
+      "(()())",
+      "(())()",
+      "()(())",
+      "()()()"
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Generate Parentheses builds balanced strings by adding an opening bracket when allowed and a closing bracket only when it has a matching open one."
+  },
+  "relatedLinks": []
 };

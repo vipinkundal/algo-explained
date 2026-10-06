@@ -12,107 +12,81 @@ export const algorithmPage = {
   "icon": "memory",
   "codePath": "./src/algorithms/number-theory-and-bit-manipulation/prime-checking/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Prime Checking is a Number Theory and Bit Manipulation technique focused on answer.",
-  "problem": "Prime Checking solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its divisor scan transition.",
-  "concept": "Number and bit algorithms are useful when arithmetic properties let you skip brute-force work. Use this when divisibility, powers, bits, xor, or modular rules define the answer.",
-  "logicSummary": "Read numeric input, keep the relevant arithmetic state, apply the identity, and return the reduced result.",
-  "transitionSummary": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
-  "codeInsight": "The implementation keeps Prime Checking's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Prime Checking appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Prime Checking when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a divisor scan dry run.",
-  "memoryTrick": "Prime Checking: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Prime Checking is shown as arithmetic-state reduction. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "A prime number is an integer greater than 1 with no divisors other than 1 and itself.",
+  "problem": "A prime number is an integer greater than 1 with no divisors other than 1 and itself.",
+  "concept": "A prime number is an integer greater than 1 with no divisors other than 1 and itself.",
+  "logicSummary": "A prime number is an integer greater than 1 with no divisors other than 1 and itself.",
+  "transitionSummary": "To check 29, test divisors only through √29. If it had a larger factor, the paired factor would be smaller than √29.",
+  "codeInsight": "A prime number is an integer greater than 1 with no divisors other than 1 and itself.",
+  "realLifeExample": "To check 29, test divisors only through √29. If it had a larger factor, the paired factor would be smaller than √29.",
+  "whenToUse": "A prime number is an integer greater than 1 with no divisors other than 1 and itself.",
+  "memoryTrick": "A prime number is an integer greater than 1 with no divisors other than 1 and itself.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read numbers",
-      "text": "Identify the integer, range, or modulus."
+      "title": "Identify what the operation means",
+      "text": "A prime number is an integer greater than 1 with no divisors other than 1 and itself."
     },
     {
-      "title": "Set invariant",
-      "text": "Choose the arithmetic or bit rule."
+      "title": "Work through a small case",
+      "text": "To check 29, test divisors only through √29. If it had a larger factor, the paired factor would be smaller than √29."
     },
     {
-      "title": "Apply operation",
-      "text": "Shift, xor, divide, multiply, or mark values."
-    },
-    {
-      "title": "Return result",
-      "text": "Return the reduced number or boolean answer."
+      "title": "Check the boundary cases",
+      "text": "Handle zero, one, negative values, and invalid domains explicitly. Large Number calculations can lose exact integer precision."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "value",
+      "purpose": "The number to compute with; recursive routines pass a smaller value to the next call."
     },
     {
-      "name": "numeric invariant",
-      "purpose": "The remainder, bit mask, power, xor, or primality state updated each step. This page visualizes it as divisor scan."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by primeChecking after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the divisor scan transition until the stop condition for Prime Checking is reached. Stop when no valid work remains or the answer is known."
+      "name": "divisor",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Numbers",
-      "title": "Read numeric state",
-      "note": "The code receives the number, range, or modulus.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A prime number is an integer greater than 1 with no divisors other than 1 and itself.",
       "activeLine": 5,
-      "codeInsight": "Defines primeChecking and names the input value; edits to those inputs change the visual state and output."
+      "codeInsight": "A prime number is an integer greater than 1 with no divisors other than 1 and itself."
     },
     {
-      "label": "Rule",
-      "title": "Select math invariant",
-      "note": "The chosen identity controls every update.",
-      "activeLine": 5,
-      "codeInsight": "Defines primeChecking and names the input value; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Reduction",
-      "title": "Apply one reduction",
-      "note": "A shift, xor, multiply, divide, or mark changes state.",
-      "activeLine": 5,
-      "codeInsight": "Defines primeChecking and names the input value; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Numeric result",
-      "title": "Return numeric result",
-      "note": "The loop ends when the invariant gives the answer.",
-      "activeLine": 12,
-      "codeInsight": "Returns true, the boolean result reached by the highlighted checks."
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "To check 29, test divisors only through √29. If it had a larger factor, the paired factor would be smaller than √29.",
+      "activeLine": 6,
+      "codeInsight": "A prime number is an integer greater than 1 with no divisors other than 1 and itself."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(√n) trial divisions in the basic method.",
+    "space": "O(1) auxiliary state."
   },
   "quiz": {
-    "question": "Which state choice keeps Prime Checking correct?",
+    "question": "Which explanation best describes Prime Checking?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Prime Checking's transition.",
+        "text": "A prime number is an integer greater than 1 with no divisors other than 1 and itself.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Prime Checking stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Prime Checking needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. A prime number is an integer greater than 1 with no divisors other than 1 and itself.",
+    "incorrectText": "Try again. A prime number is an integer greater than 1 with no divisors other than 1 and itself. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
   "algorithmSlug": "prime-checking",
@@ -164,5 +138,32 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "Arithmetic properties can reduce a search: factors come in pairs, remainders shrink GCD problems, and squaring reduces exponent work.",
+    "family": "Arithmetic structure",
+    "example": "To check 29, test divisors only through √29. If it had a larger factor, the paired factor would be smaller than √29.",
+    "sampleInput": [
+      29
+    ],
+    "sampleResult": true,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Remainder",
+        "What remains after integer division."
+      ],
+      [
+        "Modulo",
+        "Keeping a value’s remainder under a chosen modulus."
+      ],
+      [
+        "Divisor",
+        "An integer that divides another integer exactly."
+      ]
+    ],
+    "pitfall": "Handle zero, one, negative values, and invalid domains explicitly. Large Number calculations can lose exact integer precision.",
+    "checkpoint": "Explain this in your own words: A prime number is an integer greater than 1 with no divisors other than 1 and itself."
+  },
+  "relatedLinks": []
 };

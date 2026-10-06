@@ -12,107 +12,89 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/recursion-and-backtracking/permutations/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Permutations is a Recursion and Backtracking technique focused on solutions.",
-  "problem": "Permutations explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
-  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
-  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "Permutations appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use Permutations when a problem matches the Recursion and Backtracking pattern and the expected state changes match a swap tree dry run.",
-  "memoryTrick": "Permutations: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Permutations is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Permutations lists arrangements of elements by trying each unused element in the next position.",
+  "problem": "Permutations lists arrangements of elements by trying each unused element in the next position.",
+  "concept": "Permutations lists arrangements of elements by trying each unused element in the next position.",
+  "logicSummary": "Permutations lists arrangements of elements by trying each unused element in the next position.",
+  "transitionSummary": "For [1, 2, 3], both [1, 2, 3] and [2, 1, 3] are different arrangements. There are 3! = 6 arrangements.",
+  "codeInsight": "Permutations lists arrangements of elements by trying each unused element in the next position.",
+  "realLifeExample": "For [1, 2, 3], both [1, 2, 3] and [2, 1, 3] are different arrangements. There are 3! = 6 arrangements.",
+  "whenToUse": "Permutations lists arrangements of elements by trying each unused element in the next position.",
+  "memoryTrick": "Permutations lists arrangements of elements by trying each unused element in the next position.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Base case",
-      "text": "Stop when the current state is complete or invalid."
+      "title": "Identify what the operation means",
+      "text": "Permutations lists arrangements of elements by trying each unused element in the next position."
     },
     {
-      "title": "Choose option",
-      "text": "Pick the next valid branch."
+      "title": "Work through a small case",
+      "text": "For [1, 2, 3], both [1, 2, 3] and [2, 1, 3] are different arrangements. There are 3! = 6 arrangements."
     },
     {
-      "title": "Recurse",
-      "text": "Solve the smaller state."
-    },
-    {
-      "title": "Return or undo",
-      "text": "Collect the result or backtrack before the next choice."
+      "title": "Check the boundary cases",
+      "text": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it."
     }
   ],
   "variables": [
     {
-      "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "path and recursion frame",
-      "purpose": "The partial choice path plus the current recursive frame before backtracking restores it. This page visualizes it as swap tree."
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by permutations after the maintained state reaches the stop rule."
+      "name": "used",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "index",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Base",
-      "title": "Check stop condition",
-      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Permutations lists arrangements of elements by trying each unused element in the next position.",
       "activeLine": 5,
-      "codeInsight": "Defines permutations and names the input values; edits to those inputs change the visual state and output."
+      "codeInsight": "Permutations lists arrangements of elements by trying each unused element in the next position."
     },
     {
-      "label": "Choice",
-      "title": "Select next option",
-      "note": "One valid move is added to the state.",
-      "activeLine": 5,
-      "codeInsight": "Defines permutations and names the input values; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Call",
-      "title": "Recurse deeper",
-      "note": "The same rule runs on a smaller or extended state.",
-      "activeLine": 6,
-      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Unwind",
-      "title": "Return or backtrack",
-      "note": "The result is combined or the choice is removed.",
-      "activeLine": 11,
-      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For [1, 2, 3], both [1, 2, 3] and [2, 1, 3] are different arrangements. There are 3! = 6 arrangements.",
+      "activeLine": 23,
+      "codeInsight": "Permutations lists arrangements of elements by trying each unused element in the next position."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "O(n × n!) when n-element arrangements are copied into the output.",
+    "space": "O(n) recursion/choice state, plus O(n × n!) stored output."
   },
   "quiz": {
-    "question": "Which state choice keeps Permutations correct?",
+    "question": "Which explanation best describes Permutations?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through Permutations' transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Permutations lists arrangements of elements by trying each unused element in the next position.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Permutations stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Permutations needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Permutations lists arrangements of elements by trying each unused element in the next position.",
+    "incorrectText": "Try again. Permutations lists arrangements of elements by trying each unused element in the next position. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "recursion-and-backtracking",
   "algorithmSlug": "permutations",
@@ -250,5 +232,67 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "For [1, 2, 3], both [1, 2, 3] and [2, 1, 3] are different arrangements. There are 3! = 6 arrangements.",
+    "sampleInput": [
+      [
+        1,
+        2,
+        3
+      ]
+    ],
+    "sampleResult": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        1,
+        3,
+        2
+      ],
+      [
+        2,
+        1,
+        3
+      ],
+      [
+        2,
+        3,
+        1
+      ],
+      [
+        3,
+        1,
+        2
+      ],
+      [
+        3,
+        2,
+        1
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Permutations lists arrangements of elements by trying each unused element in the next position."
+  },
+  "relatedLinks": []
 };

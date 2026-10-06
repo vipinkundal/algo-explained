@@ -12,107 +12,93 @@ export const algorithmPage = {
   "icon": "memory",
   "codePath": "./src/algorithms/number-theory-and-bit-manipulation/bitmasking-subsets/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Bitmasking for Subsets is a Number Theory and Bit Manipulation technique focused on answer.",
-  "problem": "Bitmasking for Subsets solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its subset mask transition.",
-  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
-  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
-  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-  "codeInsight": "The implementation keeps Bitmasking for Subsets' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Bitmasking for Subsets appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Bitmasking for Subsets when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a subset mask dry run.",
-  "memoryTrick": "Bitmasking for Subsets: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Bitmasking for Subsets is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "A bitmask represents a selection: bit i says whether element i is included.",
+  "problem": "A bitmask represents a selection: bit i says whether element i is included.",
+  "concept": "A bitmask represents a selection: bit i says whether element i is included.",
+  "logicSummary": "A bitmask represents a selection: bit i says whether element i is included.",
+  "transitionSummary": "For [a, b, c], mask 101₂ selects a and c. Masks 000₂ through 111₂ cover all 8 subsets.",
+  "codeInsight": "A bitmask represents a selection: bit i says whether element i is included.",
+  "realLifeExample": "For [a, b, c], mask 101₂ selects a and c. Masks 000₂ through 111₂ cover all 8 subsets.",
+  "whenToUse": "A bitmask represents a selection: bit i says whether element i is included.",
+  "memoryTrick": "A bitmask represents a selection: bit i says whether element i is included.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Base case",
-      "text": "Stop when the current state is complete or invalid."
+      "title": "Identify what the operation means",
+      "text": "A bitmask represents a selection: bit i says whether element i is included."
     },
     {
-      "title": "Choose option",
-      "text": "Pick the next valid branch."
+      "title": "Work through a small case",
+      "text": "For [a, b, c], mask 101₂ selects a and c. Masks 000₂ through 111₂ cover all 8 subsets."
     },
     {
-      "title": "Recurse",
-      "text": "Solve the smaller state."
-    },
-    {
-      "title": "Return or undo",
-      "text": "Collect the result or backtrack before the next choice."
+      "title": "Check the boundary cases",
+      "text": "JavaScript bitwise operators on Number use 32-bit integers. Check non-negative input assumptions and use suitable integer arithmetic for larger values."
     }
   ],
   "variables": [
     {
-      "name": "value, other",
-      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "numeric invariant",
-      "purpose": "The remainder, bit mask, power, xor, or primality state updated each step. This page visualizes it as subset mask."
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by bitmaskingSubsets after the maintained state reaches the stop rule."
+      "name": "mask",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the subset mask transition until the stop condition for Bitmasking for Subsets is reached. Stop when no valid work remains or the answer is known."
+      "name": "subset",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
+    },
+    {
+      "name": "bit",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Base",
-      "title": "Check stop condition",
-      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A bitmask represents a selection: bit i says whether element i is included.",
       "activeLine": 5,
-      "codeInsight": "Defines bitmaskingSubsets and names the input values; edits to those inputs change the visual state and output."
+      "codeInsight": "A bitmask represents a selection: bit i says whether element i is included."
     },
     {
-      "label": "Choice",
-      "title": "Select next option",
-      "note": "One valid move is added to the state.",
-      "activeLine": 5,
-      "codeInsight": "Defines bitmaskingSubsets and names the input values; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Call",
-      "title": "Recurse deeper",
-      "note": "The same rule runs on a smaller or extended state.",
-      "activeLine": 6,
-      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Unwind",
-      "title": "Return or backtrack",
-      "note": "The result is combined or the choice is removed.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For [a, b, c], mask 101₂ selects a and c. Masks 000₂ through 111₂ cover all 8 subsets.",
       "activeLine": 12,
-      "codeInsight": "Returns result, the final value maintained by Bitmasking for Subsets's code path."
+      "codeInsight": "A bitmask represents a selection: bit i says whether element i is included."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(n × 2ⁿ) to inspect n flags for all masks and materialize the subsets.",
+    "space": "O(n) for one subset, plus the stored output."
   },
   "quiz": {
-    "question": "Which state choice keeps Bitmasking for Subsets correct?",
+    "question": "Which explanation best describes Bitmasking for Subsets?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Bitmasking for Subsets' transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "A bitmask represents a selection: bit i says whether element i is included.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Bitmasking for Subsets stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Bitmasking for Subsets needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. A bitmask represents a selection: bit i says whether element i is included.",
+    "incorrectText": "Try again. A bitmask represents a selection: bit i says whether element i is included. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
   "algorithmSlug": "bitmasking-subsets",
@@ -167,5 +153,47 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "Each binary position represents a power of two. A mask uses those positions as on/off flags.",
+    "family": "Binary digits",
+    "example": "For [a, b, c], mask 101₂ selects a and c. Masks 000₂ through 111₂ cover all 8 subsets.",
+    "sampleInput": [
+      [
+        1,
+        2
+      ]
+    ],
+    "sampleResult": [
+      [],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Bit",
+        "One binary digit, either 0 or 1."
+      ],
+      [
+        "Mask",
+        "Bits used to select, record, or test positions."
+      ],
+      [
+        "XOR",
+        "An operation that gives 1 where two input bits differ."
+      ]
+    ],
+    "pitfall": "JavaScript bitwise operators on Number use 32-bit integers. Check non-negative input assumptions and use suitable integer arithmetic for larger values.",
+    "checkpoint": "Explain this in your own words: A bitmask represents a selection: bit i says whether element i is included."
+  },
+  "relatedLinks": []
 };

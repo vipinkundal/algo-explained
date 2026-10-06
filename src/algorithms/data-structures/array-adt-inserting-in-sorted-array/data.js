@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/array-adt-inserting-in-sorted-array/code/original.cpp",
   "originalCodeFilename": "06_01_inserting_in_sorted_array.cpp",
   "originalActiveLine": 3,
-  "meaning": "Array ADT Inserting In Sorted Array shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Array ADT Inserting In Sorted Array explains the array state model and how one focused change updates it.",
-  "concept": "Array ADT Inserting In Sorted Array is useful when values must be placed into a reliable order before later work can be simple. Use this when the algorithm's ordering invariant and cost fit the input size and stability needs.",
-  "logicSummary": "Protect the algorithm's ordering invariant until every value reaches final order.",
-  "transitionSummary": "Each step compares or moves values so the unsorted region gets smaller.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Insert into a sorted array by shifting larger values right before placing the new value.",
+  "problem": "Insert into a sorted array by shifting larger values right before placing the new value.",
+  "concept": "Insert into a sorted array by shifting larger values right before placing the new value.",
+  "logicSummary": "Insert into a sorted array by shifting larger values right before placing the new value.",
+  "transitionSummary": "Insert 3 into [1, 4, 7] to obtain [1, 3, 4, 7].",
+  "codeInsight": "Insert into a sorted array by shifting larger values right before placing the new value.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
-  "realLifeExample": "Array ADT Inserting In Sorted Array is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Arrays / Array ADT behavior through state changes instead of memorized code.",
-  "memoryTrick": "Array ADT Inserting In Sorted Array: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Array ADT Inserting In Sorted Array is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Insert 3 into [1, 4, 7] to obtain [1, 3, 4, 7].",
+  "whenToUse": "Insert into a sorted array by shifting larger values right before placing the new value.",
+  "memoryTrick": "Insert into a sorted array by shifting larger values right before placing the new value.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Copy values",
-      "text": "Work on a mutable array without changing the original input."
+      "title": "Identify what the operation means",
+      "text": "Insert into a sorted array by shifting larger values right before placing the new value."
     },
     {
-      "title": "Choose invariant",
-      "text": "Track the sorted or partitioned region."
+      "title": "Work through a small case",
+      "text": "Insert 3 into [1, 4, 7] to obtain [1, 3, 4, 7]."
     },
     {
-      "title": "Move values",
-      "text": "Perform the comparison, swap, merge, or placement."
-    },
-    {
-      "title": "Return order",
-      "text": "Return the fully sorted array."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "slot index",
-      "purpose": "Selects the current array position."
+      "name": "values",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "active value",
-      "purpose": "The value currently being read or moved."
-    },
-    {
-      "name": "write slot",
-      "purpose": "Marks where an updated value is stored."
-    },
-    {
-      "name": "array view",
-      "purpose": "Shows the slots after Array ADT Inserting In Sorted Array applies its operation."
+      "name": "sum",
+      "purpose": "Combines input items into one accumulated answer, so the result can be returned or reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Input array",
-      "title": "Copy values",
-      "note": "The code starts with the values to reorder.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Insert into a sorted array by shifting larger values right before placing the new value.",
       "activeLine": 2,
-      "codeInsight": "Defines arrayAdtInsertingInSortedArray as the runnable entry point for this lesson."
+      "codeInsight": "Insert into a sorted array by shifting larger values right before placing the new value."
     },
     {
-      "label": "Invariant",
-      "title": "Track ordered work",
-      "note": "The algorithm marks what part is already safe.",
-      "activeLine": 3,
-      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Move",
-      "title": "Apply ordering step",
-      "note": "The current operation reduces disorder.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Insert 3 into [1, 4, 7] to obtain [1, 3, 4, 7].",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Sorted output",
-      "title": "Return final order",
-      "note": "The result is returned when no unsorted work remains.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Insert into a sorted array by shifting larger values right before placing the new value."
     }
   ],
   "complexity": {
@@ -129,9 +103,9 @@ export const algorithmPage = {
   ],
   "relatedLinks": [
     {
-      "id": "array-patterns",
-      "title": "Array Patterns",
-      "label": "Existing algorithm lesson"
+      "id": "linear-search",
+      "title": "Linear Search",
+      "label": "Start with indexed array values"
     }
   ],
   "runnerInput": [],
@@ -233,5 +207,41 @@ export const algorithmPage = {
         "secondaryLabel": "Each step compares or moves values so the unsorted region gets smaller."
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Insert 3 into [1, 4, 7] to obtain [1, 3, 4, 7].",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "array",
+      "values": [
+        3,
+        1,
+        4,
+        1,
+        5
+      ],
+      "length": 5,
+      "max": 5,
+      "sum": 14
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Insert into a sorted array by shifting larger values right before placing the new value."
   }
 };

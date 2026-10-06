@@ -12,107 +12,81 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/c-stl-algorithm-pages/cpp-accumulate/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "C++ accumulate() is a C++ STL Algorithm Pages technique focused on answer.",
-  "problem": "C++ accumulate() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its running sum transition.",
-  "concept": "Prefix-style state is useful when a running total or boundary delta lets future queries reuse past work. Use this when range answers or cumulative changes appear repeatedly.",
-  "logicSummary": "Build a running state once, then answer each range or final value by combining saved boundaries.",
-  "transitionSummary": "Each item updates the running total, difference, or accumulator exactly once.",
-  "codeInsight": "The implementation keeps C++ accumulate()'s state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "C++ accumulate() appears when the input is input and the required result is answer.",
-  "whenToUse": "Use C++ accumulate() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a running sum dry run.",
-  "memoryTrick": "C++ accumulate(): name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C++ accumulate() is shown as cumulative state over positions. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "std::accumulate combines a range with an initial value, usually to compute a total.",
+  "problem": "std::accumulate combines a range with an initial value, usually to compute a total.",
+  "concept": "std::accumulate combines a range with an initial value, usually to compute a total.",
+  "logicSummary": "std::accumulate combines a range with an initial value, usually to compute a total.",
+  "transitionSummary": "For [2, 3, 4] and initial value 10, accumulation returns 19. The initial value also determines the result type in C++.",
+  "codeInsight": "std::accumulate combines a range with an initial value, usually to compute a total.",
+  "realLifeExample": "For [2, 3, 4] and initial value 10, accumulation returns 19. The initial value also determines the result type in C++.",
+  "whenToUse": "std::accumulate combines a range with an initial value, usually to compute a total.",
+  "memoryTrick": "std::accumulate combines a range with an initial value, usually to compute a total.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Initialize accumulator",
-      "text": "Start with zero or the neutral value."
+      "title": "Identify what the operation means",
+      "text": "std::accumulate combines a range with an initial value, usually to compute a total."
     },
     {
-      "title": "Consume value",
-      "text": "Add the current contribution."
+      "title": "Work through a small case",
+      "text": "For [2, 3, 4] and initial value 10, accumulation returns 19. The initial value also determines the result type in C++."
     },
     {
-      "title": "Store boundary",
-      "text": "Save the cumulative state for later lookup."
-    },
-    {
-      "title": "Answer range",
-      "text": "Use stored boundaries to produce the result."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "array, initial",
-      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. initial: The initial input used by the algorithm."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "running total",
-      "purpose": "The accumulator after processing each item in order."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by cppAccumulate after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the running sum transition until the stop condition for C++ accumulate() is reached. Stop when no valid work remains or the answer is known."
+      "name": "initialValue = 0",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     }
   ],
   "dryRun": [
     {
-      "label": "Values",
-      "title": "Read values or updates",
-      "note": "The code receives the array, ranges, or deltas.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "std::accumulate combines a range with an initial value, usually to compute a total.",
       "activeLine": 5,
-      "codeInsight": "Defines cppAccumulate and names the input values, initialValue = 0; edits to those inputs change the visual state and output."
+      "codeInsight": "std::accumulate combines a range with an initial value, usually to compute a total."
     },
     {
-      "label": "Accumulator",
-      "title": "Start running state",
-      "note": "A neutral starting value makes every update consistent.",
-      "activeLine": 5,
-      "codeInsight": "Defines cppAccumulate and names the input values, initialValue = 0; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Prefix step",
-      "title": "Apply current contribution",
-      "note": "The running state changes by the current value or boundary delta.",
-      "activeLine": 5,
-      "codeInsight": "Defines cppAccumulate and names the input values, initialValue = 0; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Range result",
-      "title": "Read saved state",
-      "note": "The stored state gives the final or range answer.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For [2, 3, 4] and initial value 10, accumulation returns 19. The initial value also determines the result type in C++.",
       "activeLine": 6,
-      "codeInsight": "Returns values.reduce((total, value) => total + value, initialValue), the final value maintained by C++ accumulate()'s code path."
+      "codeInsight": "std::accumulate combines a range with an initial value, usually to compute a total."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(n) applications of the combining operation.",
+    "space": "O(1) auxiliary state for numeric addition."
   },
   "quiz": {
-    "question": "Which state choice keeps C++ accumulate() correct?",
+    "question": "Which explanation best describes C++ accumulate()?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through C++ accumulate()'s transition.",
+        "text": "std::accumulate combines a range with an initial value, usually to compute a total.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. C++ accumulate() stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. C++ accumulate() needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. std::accumulate combines a range with an initial value, usually to compute a total.",
+    "incorrectText": "Try again. std::accumulate combines a range with an initial value, usually to compute a total. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "c-stl-algorithm-pages",
   "algorithmSlug": "cpp-accumulate",
@@ -210,5 +184,37 @@ export const algorithmPage = {
         "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "For [2, 3, 4] and initial value 10, accumulation returns 19. The initial value also determines the result type in C++.",
+    "sampleInput": [
+      [
+        1,
+        2,
+        3
+      ],
+      10
+    ],
+    "sampleResult": 16,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: std::accumulate combines a range with an initial value, usually to compute a total."
+  },
+  "relatedLinks": []
 };

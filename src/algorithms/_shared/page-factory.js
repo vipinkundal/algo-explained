@@ -1,5 +1,7 @@
 import { createDynamicVisualization, formatVisualizerInput } from "./dynamic-animation-engine.js";
 
+import { renderGrowthLab, renderGrowthOutput, renderGlossary } from "./learning-ui.js";
+
 const CODE_RUN_TIMEOUT_MS = 2000;
 
 const RUNNER_WORKER_SOURCE = `
@@ -214,6 +216,8 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     codeOutputKind: "idle",
     selectedAnswer: "",
     step: 0,
+    inputOpen: false,
+    inputError: "",
     visualizerInputDraft: formatVisualizerInput(algorithmPage.runnerInput || []),
     visualizerInputText: formatVisualizerInput(algorithmPage.runnerInput || []),
     dynamicVisualization: null,
@@ -221,15 +225,20 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   };
 
   function render(view) {
+    if (view === "visualizer") return renderVisualizer();
     if (view === "challenge") return renderChallenge();
-    return renderVisualizer();
+    return renderLesson();
   }
 
   function bind(root) {
     loadCode();
 
     root.querySelectorAll(".workspace [data-action]").forEach((button) => {
-      button.addEventListener("click", () => handleAction(button.dataset.action));
+      button.addEventListener("click", () => {
+        const action = button.dataset.action;
+        handleAction(action);
+        root.querySelector(`[data-action="${action}"]`)?.focus({ preventScroll: true });
+      });
     });
 
     root.querySelectorAll("[data-code-tab]").forEach((button) => {
@@ -243,6 +252,15 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       button.addEventListener("click", () => {
         state.selectedAnswer = button.dataset.answer;
         requestRender();
+        root.querySelector(`[data-answer="${state.selectedAnswer}"]`)?.focus({ preventScroll: true });
+      });
+    });
+
+    root.querySelectorAll("[data-growth-size]").forEach((input) => {
+      input.addEventListener("input", () => {
+        const panel = input.closest(".growth-lab");
+        panel.querySelector("[data-growth-value]").textContent = input.value;
+        panel.querySelector("[data-growth-output]").innerHTML = renderGrowthOutput(Number(input.value));
       });
     });
 
@@ -255,6 +273,9 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       });
     }
 
+    root.querySelector(".input-disclosure")?.addEventListener("toggle", (event) => {
+      state.inputOpen = event.target.open;
+    });
     const visualizerInput = root.querySelector("[data-visualizer-input]");
     if (visualizerInput) {
       visualizerInput.addEventListener("input", () => {
@@ -268,20 +289,14 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   function onViewChange() {}
 
   function renderLesson() {
-    return renderVisualizer();
-  }
-
-  function renderLessonOverview() {
     return `
-      <div class="lesson-overview">
+      <section lang="en" class="algorithm-page lesson-panel" aria-labelledby="lesson-title">
+        <p class="eyebrow">${escapeHtml(algorithmPage.category)}</p>
+        <h1 id="lesson-title">${escapeHtml(algorithmPage.title)}</h1>
         <p class="lede">${escapeHtml(algorithmPage.meaning)}</p>
-        <div class="algorithm-hero" data-visualizer="${escapeHtml(algorithmPage.visualizerType)}">
-          <div class="hero-symbol" aria-hidden="true">${icon(algorithmPage.icon)}</div>
-          <div>
-            <strong>${escapeHtml(algorithmPage.problem)}</strong>
-            <p>${escapeHtml(algorithmPage.realLifeExample)}</p>
-          </div>
-        </div>
+        ${renderLearningOverview()}
+        ${renderWorkedExample()}
+        <div class="lesson-model"><h3>Picture the working state</h3><p class="learning-caption">${escapeHtml(getVisualScope())}</p>${renderDryRunStage(getCurrentStep())}</div>
         <div class="logic-list">
           <h3>${icon("analytics")} ${escapeHtml(t("algorithmPage.stepByStepLogic"))}</h3>
           ${algorithmPage.logicSteps.map((step, index) => `
@@ -291,18 +306,52 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             </div>
           `).join("")}
         </div>
-        <div class="info-grid">
-          <article>
-            <h3>${icon("rule")} ${escapeHtml(t("algorithmPage.whenToUse"))}</h3>
-            <p>${escapeHtml(algorithmPage.whenToUse)}</p>
-          </article>
-          <article>
-            <h3>${icon("psychology")} ${escapeHtml(t("algorithmPage.memoryTrick"))}</h3>
-            <p>${escapeHtml(algorithmPage.memoryTrick)}</p>
-          </article>
-        </div>
-      </div>
+        ${renderVariableGuide()}
+        ${renderCodeReasoning()}
+        ${renderPitfall()}
+        ${renderComplexity()}
+        ${renderGlossary(algorithmPage, escapeHtml)}
+        ${renderRelatedLinks()}
+        <button class="primary-action" data-view="visualizer">${escapeHtml(t("algorithmPage.startVisualizer"))} ${icon("arrow_forward")}</button>
+      </section>
     `;
+  }
+
+  function renderLearningOverview() {
+    const guide = algorithmPage.learningGuide;
+    if (!guide) return "";
+    return `<aside class="learning-overview"><p class="eyebrow">Build the mental picture · ${escapeHtml(guide.family)}</p><p>${escapeHtml(guide.mentalModel)}</p></aside>`;
+  }
+
+  function renderWorkedExample() {
+    const guide = algorithmPage.learningGuide;
+    if (!guide) return "";
+    return `<section class="worked-example" aria-label="Small worked example"><p class="eyebrow">Make it concrete</p><h3>A small example</h3><p>${escapeHtml(guide.example)}</p><details><summary>Compare with the runnable sample</summary><p>${escapeHtml(guide.sampleScope)}</p><div class="sample-io"><div><strong>Function arguments</strong><pre>${escapeHtml(JSON.stringify(guide.sampleInput, null, 2))}</pre></div><div><strong>Returned result</strong><pre>${escapeHtml(JSON.stringify(guide.sampleResult, null, 2))}</pre></div></div><p class="learning-caption">Arguments are listed in function parameter order. A function with no parameters may use values inside its source. Open Watch & try to inspect or run it.</p></details></section>`;
+  }
+
+  function renderVariableGuide() {
+    return `<section class="variable-guide"><h3>What the names mean</h3><p class="learning-caption">Read these beside the code. Some labels describe a group of variables or a rule.</p><dl>${algorithmPage.variables.map(v=>`<div><dt><code>${escapeHtml(v.name)}</code></dt><dd>${escapeHtml(v.purpose)}</dd></div>`).join("")}</dl></section>`;
+  }
+
+  function renderCodeReasoning() {
+    const lines = getCodeSource().split(/\r?\n/).map((line,index)=>({line:line.trim(),number:index+1}));
+    const keyLines = lines.filter(({line}) => /^(const|let|if|for|while|return)\b/.test(line)).slice(0,6);
+    if (!keyLines.length) return "";
+    return `<details class="learning-disclosure code-reasoning"><summary>Why these code lines are needed</summary><p class="learning-caption">These explanations use the actual runnable JavaScript. Read each line as a purpose, not just an instruction. The highlighted line in Watch & try has more context.</p><ol>${keyLines.map(({line,number})=>`<li><strong>Line ${number}</strong><code>${escapeHtml(line)}</code><p>${escapeHtml(describeCodeLine(line,{title:algorithmPage.title,note:algorithmPage.concept}) || algorithmPage.codeInsight)}</p></li>`).join("")}</ol></details>`;
+  }
+
+  function renderPitfall() {
+    const guide = algorithmPage.learningGuide;
+    return guide ? `<aside class="pitfall-card"><h3>Check before you use it</h3><p>${escapeHtml(guide.pitfall)}</p></aside>` : "";
+  }
+
+  function renderComplexity() {
+    return `<section class="lesson-complexity"><h3>How much work and memory?</h3><p class="learning-caption">These notes describe the topic or the implementation indicated below. A structure-only companion may perform different operations. Time means work as input grows. Space means storage; check whether the note includes output storage.</p><div class="complexity-grid"><article><strong>Time</strong><p>${escapeHtml(algorithmPage.complexity.time)}</p></article><article><strong>Space</strong><p>${escapeHtml(algorithmPage.complexity.space)}</p></article></div><p class="learning-caption">n usually means the number of input items; V and E mean graph vertices and edges. Other symbols are defined by the specific problem.</p>${renderGrowthLab({open:algorithmPage.id === "time-complexity-basics"})}</section>`;
+  }
+
+  function getVisualScope() {
+    if (algorithmPage.animation?.static) return "A prepared walkthrough of this lesson’s sample. Editing the code changes Run code output; it does not rewrite these teaching steps.";
+    return "An illustrative model of the input and working state. It is not an execution recording of the editable code. Models may show up to 16 values, 80 steps, 6 graph nodes, or an 8-by-8 grid. Run code uses the full arguments to check the JavaScript result.";
   }
 
   function renderVisualizer() {
@@ -310,16 +359,23 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     const activeLine = getActiveLine(current);
     const stepTotal = getStepCount();
     return `
-      <section class="algorithm-page visualizer-panel" data-algorithm-page="${escapeHtml(algorithmPage.id)}" data-visualizer="${escapeHtml(algorithmPage.visualizerType)}" aria-labelledby="visualizer-title">
+      <section lang="en" class="algorithm-page visualizer-panel" data-algorithm-page="${escapeHtml(algorithmPage.id)}" data-visualizer="${escapeHtml(algorithmPage.visualizerType)}" aria-labelledby="visualizer-title">
         <div class="title-row">
           <div>
             ${renderPageTags()}
-            <h2 id="visualizer-title">${escapeHtml(algorithmPage.title)}</h2>
+            <h1 id="visualizer-title">${escapeHtml(algorithmPage.title)}</h1>
             <p>${escapeHtml(algorithmPage.visualizerCaption)}</p>
           </div>
           <span class="step-pill">${escapeHtml(t("algorithmPage.stepCounter", { current: state.step + 1, total: stepTotal }))}</span>
         </div>
-        ${renderLessonOverview()}
+        ${renderDryRunStage(current)}
+        <div class="control-deck" aria-label="${escapeHtml(t("algorithmPage.visualizerControls"))}">
+          <button data-action="prev" ${state.step === 0 ? "disabled" : ""} aria-label="${escapeHtml(t("algorithmPage.previousStep"))}">${icon("skip_previous")}<span>Back</span></button>
+          <button class="play-button" data-action="next" ${state.step >= stepTotal - 1 ? "disabled" : ""} aria-label="${escapeHtml(t("algorithmPage.nextStep"))}">${icon("skip_next")}<span>Next step</span></button>
+          <button data-action="reset" aria-label="${escapeHtml(t("algorithmPage.resetVisualizer"))}">${icon("replay")}<span>Restart</span></button>
+        </div>
+        <p class="step-narration" role="status">Step ${state.step + 1} of ${stepTotal}: ${escapeHtml(current.title)}. ${escapeHtml(current.note)}</p>
+        <details class="learning-disclosure"><summary>Understand the idea behind this step</summary>
         <div class="concept-loop-grid">
           <article>
             <strong>${icon("psychology")} ${escapeHtml(t("algorithmPage.concept"))}</strong>
@@ -334,13 +390,10 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             <p>${escapeHtml(algorithmPage.transitionSummary || getTransitionSummary(current))}</p>
           </article>
         </div>
+        </details>
+        ${algorithmPage.originalCodePath ? `<p class="learning-caption companion-scope">${escapeHtml(algorithmPage.learningGuide.sampleScope)}</p>` : ""}
+        <aside class="watch-guide"><strong>Read → predict → step → compare</strong><p>Before advancing, predict which value or link will change. Follow the highlighted state and explanation, then use Run code to compare the result.</p><p class="learning-caption">${escapeHtml(getVisualScope())}</p></aside>
         ${renderVisualizerInputPanel()}
-        ${renderDryRunStage(current)}
-        <div class="control-deck" aria-label="${escapeHtml(t("algorithmPage.visualizerControls"))}">
-          <button data-action="prev" aria-label="${escapeHtml(t("algorithmPage.previousStep"))}">${icon("skip_previous")}</button>
-          <button class="play-button" data-action="next" aria-label="${escapeHtml(t("algorithmPage.nextStep"))}">${icon("skip_next")}</button>
-          <button data-action="reset" aria-label="${escapeHtml(t("algorithmPage.resetVisualizer"))}">${icon("replay")}</button>
-        </div>
         <div class="trace-layout">
           ${renderCodeTrace(activeLine)}
           <aside class="explanation-bubble">
@@ -361,7 +414,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     const stackItemCount = animation.type === "stack-queue-flow" && Array.isArray(animation.items)
       ? animation.items.length
       : 0;
-    return Math.max(dryRunCount, animationStepCount, stackItemCount, 1);
+    return animationStepCount || Math.max(dryRunCount, stackItemCount, 1);
   }
 
   function getAnimationStep(stepIndex = state.step) {
@@ -386,7 +439,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   function getCurrentStep() {
     const animationStep = getAnimationStep(state.step);
     const dryRunSteps = Array.isArray(algorithmPage.dryRun) ? algorithmPage.dryRun : [];
-    const dryRunStep = dryRunSteps[state.step] || dryRunSteps[state.step % Math.max(dryRunSteps.length, 1)];
+    const dryRunStep = dryRunSteps[state.step] || dryRunSteps.at(-1);
     if (dryRunStep || animationStep.title || animationStep.phase) {
       return {
         ...(dryRunStep || {}),
@@ -431,21 +484,27 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     const preview = JSON.stringify(getEffectiveRunInput(), null, 2);
 
     return `
+      <details class="learning-disclosure input-disclosure" ${state.inputOpen ? "open" : ""}><summary>Try your own input or inspect the sample</summary>
+      ${state.inputError ? `<p role="alert" class="result incorrect">${escapeHtml(state.inputError)}</p>` : ""}
+      <p>Use JSON. For one parameter, enter its value. For several parameters, enter an array of arguments in the same order as the function signature.</p>
+      ${algorithmPage.animation?.static ? '<p class="pitfall-card">This diagram uses a fixed teaching sample. Input changes affect Run code; the prepared walkthrough stays on its original sample.</p>' : ''}
+      ${!algorithmPage.runnerInput?.length ? '<p>This companion has no input parameters. Its sample values are inside the code; edit the JavaScript source to try a different case.</p>' : ''}
       <section class="visualizer-input-panel" aria-label="Dynamic visualizer input">
         <div>
-          <label for="visualizer-input-${escapeHtml(algorithmPage.id)}">Input text</label>
-          <textarea id="visualizer-input-${escapeHtml(algorithmPage.id)}" data-visualizer-input rows="4" spellcheck="false">${escapeHtml(state.visualizerInputDraft)}</textarea>
+          <label for="visualizer-input-${escapeHtml(algorithmPage.id)}">Function input (JSON)</label>
+          <textarea ${!algorithmPage.runnerInput?.length ? "readonly" : ""} id="visualizer-input-${escapeHtml(algorithmPage.id)}" data-visualizer-input rows="4" spellcheck="false">${escapeHtml(state.visualizerInputDraft)}</textarea>
         </div>
         <aside>
-          <strong>Dynamic trace</strong>
+          <strong>Arguments for Run code</strong>
           <p>${escapeHtml(status)}</p>
           <pre>${escapeHtml(preview)}</pre>
           <div>
-            <button type="button" data-action="apply-input">${icon("auto_fix_high")} Apply input</button>
+            <button type="button" data-action="apply-input" ${!algorithmPage.runnerInput?.length ? "disabled" : ""}>${icon("auto_fix_high")} Apply input</button>
             <button type="button" data-action="reset-input">${icon("restart_alt")} Sample</button>
           </div>
         </aside>
       </section>
+      </details>
     `;
   }
 
@@ -477,7 +536,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     const dryRunCount = Array.isArray(algorithmPage.dryRun) ? algorithmPage.dryRun.length : 0;
     const animationStepCount = Array.isArray(animation.steps) ? animation.steps.length : 0;
     const stackItemCount = animation.type === "stack-queue-flow" && Array.isArray(animation.items) ? animation.items.length : 0;
-    return Math.max(dryRunCount, animationStepCount, stackItemCount, 1);
+    return animationStepCount || Math.max(dryRunCount, stackItemCount, 1);
   }
 
   function renderDryRunStage(current) {
@@ -731,14 +790,15 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   }
 
   function renderArrayBoard(animation, animationStep) {
-    const values = Array.isArray(animationStep.values) && animationStep.values.length
+    const values = Array.isArray(animationStep.values)
       ? animationStep.values
-      : (Array.isArray(animation.values) && animation.values.length ? animation.values : [4, 1, 3, 2]);
+      : (Array.isArray(animation.values) ? animation.values : [4, 1, 3, 2]);
     const active = new Set(animationStep.activeIndices || []);
     const sorted = new Set(animationStep.sortedIndices || []);
     const muted = new Set(animationStep.mutedIndices || []);
     const windowRange = Array.isArray(animationStep.window) ? animationStep.window : [];
 
+    if (!values.length) return '<p class="learning-caption">Empty array: there are no positions to inspect.</p>';
     return `
       <div class="array-animation-row">
         ${values.map((value, index) => {
@@ -972,7 +1032,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
             </div>
             <textarea data-code-editor spellcheck="false" rows="${editorRows}" aria-label="${escapeHtml(t("algorithmPage.codeEditor"))}">${escapeHtml(codeSource)}</textarea>
           </div>
-          <div class="code-output ${escapeHtml(state.codeOutputKind)}" aria-label="${escapeHtml(t("algorithmPage.codeOutput"))}">
+          <div role="status" class="code-output ${escapeHtml(state.codeOutputKind)}" aria-label="${escapeHtml(t("algorithmPage.codeOutput"))}">
             <strong>${escapeHtml(t("algorithmPage.codeOutput"))}</strong>
             <pre>${escapeHtml(output)}</pre>
           </div>
@@ -1111,40 +1171,57 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     const text = line.trim();
     if (!text || text === "}") return "";
 
+    if (algorithmPage.id === "binary-search") {
+      if (/^let low = 0/.test(text)) return "Starts the candidate range at the first index, so no possible match is excluded before a comparison.";
+      if (/^let high = array.length - 1/.test(text)) return "Sets an inclusive boundary at the last valid index. Using array.length itself would point past the array.";
+      if (/^while \(low <= high\)/.test(text)) return "Keeps searching while at least one candidate remains. The equality case matters because one remaining slot can still contain the target.";
+      if (/^const mid = Math.floor/.test(text)) return "Chooses an actual integer index near the middle, allowing one comparison to eliminate roughly half the remaining candidates.";
+      if (/array\[mid\] < target/.test(text)) return "Because the array is sorted, every value through mid is also too small. Moving to mid + 1 safely discards those values and guarantees progress.";
+      if (/high = mid - 1/.test(text)) return "The middle value is too large, so the sorted order excludes it and everything to its right. Subtracting one prevents the same probe from being repeated.";
+    }
+    if (algorithmPage.id === "factorial-recursion" && /return value \* factorialRecursion/.test(text)) return "Implements n! = n × (n − 1)!. The caller keeps n while the smaller call finishes, then multiplies by that returned answer; no choice is undone.";
+    if (algorithmPage.id === "bfs") {
+      if (/const queue/.test(text)) return "Keeps discovered vertices waiting in arrival order, which is why BFS explores a whole layer before going deeper.";
+      if (/new Set/.test(text)) return "Records discovered vertices so cycles and shared neighbors do not cause the same vertex to be queued repeatedly.";
+      if (/const order/.test(text)) return "Starts an empty answer list. Each removed vertex is appended here, preserving the BFS visitation order.";
+      if (/queue\.shift/.test(text)) return "Removes the oldest waiting vertex, preserving first-in, first-out order and making this the next vertex to explore.";
+      if (/for \(const next of graph\[node\]/.test(text)) return "Inspects the current vertex’s outgoing neighbors. A vertex with no adjacency list uses an empty list, so there is nothing to explore from it.";
+    }
+
     const functionMatch = text.match(/^export function\s+(\w+)\(([^)]*)\)/);
     if (functionMatch) {
       const params = functionMatch[2].trim();
       return params
-        ? `This line defines the runnable function and its input (${params}), so changing those values changes the animation and output.`
+        ? `This line defines the runnable function and its input (${params}), so changing those arguments can change the Run code result.`
         : "This line defines the runnable function used by the visualizer.";
     }
 
     const declarationMatch = text.match(/^(const|let)\s+(\w+)\s*=\s*(.+);?$/);
     if (declarationMatch) {
       const [, declarationKind, name, expression] = declarationMatch;
-      if (/^\[\.\.\.\w+\]/.test(expression)) return `Copies the input into ${name}, so the animation can show mutations without pretending the caller's original array changes.`;
+      if (/^\[\.\.\.\w+\]/.test(expression)) return `Copies the collection into ${name}, so changing this outer array does not change the input array. Nested objects, if any, still share their references.`;
       if (/\.reduce\(/.test(expression)) return `Computes ${name} by reducing the current values, matching the aggregate shown in the result state.`;
-      if (/\.length\b/.test(expression)) return `Stores ${name} from the current length, making the loop boundary explicit for the visual trace.`;
+      if (/\.length\b/.test(expression)) return `Stores ${name} using the current collection length. Read the expression to see whether it represents a size, a last index, or another derived value.`;
       if (/\.filter\(/.test(expression) && /\.sort\(/.test(expression)) return `Selects ${name} by filtering unfinished candidates and ordering them by the algorithm's priority rule.`;
-      if (name === "stack" && /\[\]/.test(expression)) return "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear.";
-      if (name === "result" && /Array\(/.test(expression) && /\.fill\(/.test(expression)) return "Creates the answer array and fills it with the fallback value for items that never find a next greater element.";
-      if (/Array\(/.test(expression) && /\.fill\(/.test(expression)) return `Prepares ${name} with a default value so unresolved positions already have the correct fallback answer.`;
+      if (name === "stack" && /\[\]/.test(expression)) return "Creates a stack for pending items. This lesson’s rule determines what the stored items represent.";
+      if (name === "result" && /Array\(/.test(expression) && /\.fill\(/.test(expression)) return "Creates the result array and fills its slots with an initial value. Later code decides which entries change.";
+      if (/Array\(/.test(expression) && /\.fill\(/.test(expression)) return `Prepares ${name} with an initial value in every slot, so later code can read and update those slots.`;
       if (/new Set|new Map/.test(expression)) return `Creates ${name} for fast membership or lookup checks while the scan runs.`;
       if (/Object\.fromEntries/.test(expression)) return `Builds ${name} as a lookup table so each key has an explicit starting state.`;
       if (/Math\./.test(expression)) return `Computes ${name} from the current values before the algorithm decides the next move.`;
-      if (/^\[.*\]$/.test(expression.replace(/;$/, ""))) return `Seeds ${name} with the sample values shown in the visualizer, giving the trace concrete cells to inspect.`;
-      if (/\[\]/.test(expression)) return `Creates ${name} as empty working state; later lines add and remove values from it.`;
-      if (/^\{/.test(expression.replace(/;$/, ""))) return `Builds ${name} as a structured sample object that the tree, graph, or map visualizer can render directly.`;
-      if (/\{/.test(expression)) return `Builds ${name} from structured fields so the visual trace can show named values instead of an opaque blob.`;
-      if (declarationKind === "let") return `Initializes ${name} as mutable state; later branches update it as the search window or traversal changes.`;
-      if (/\[/.test(expression)) return `Prepares ${name} from the sample collection that the next visual step inspects.`;
+      if (/^\[\]$/.test(expression.replace(/;$/, ""))) return `Starts ${name} as an empty array. Later code decides which values to store in it.`;
+      if (/^\[.*\]$/.test(expression.replace(/;$/, ""))) return `Initializes ${name} with the listed values or expressions, establishing the starting contents used by later code.`;
+      if (/^\{/.test(expression.replace(/;$/, ""))) return `Initializes ${name} as an object with named fields, allowing later code to read or update each field.`;
+      if (/\{/.test(expression)) return `Builds ${name} from structured fields so later code can access the values by name.`;
+      if (declarationKind === "let") return `Initializes ${name} as state that can be reassigned. Later code uses its changing value to track progress or an accumulated answer.`;
+      if (/\[/.test(expression)) return `Reads or builds ${name} from a collection expression, saving that value for the following code.`;
       return `Stores ${name} so the algorithm can reuse this value without recomputing it.`;
     }
 
     const whileMatch = text.match(/^while\s*\((.+)\)/);
     if (whileMatch) {
       if (/stack\.length/.test(whileMatch[1]) && /\.at\(-1\)/.test(whileMatch[1])) {
-        return "This line peeks at the stack top and keeps popping while the current value is greater, resolving every smaller value that was waiting.";
+        return "Checks the stack top and the comparison in this condition. Repeating the loop processes stored items until that comparison stops being true.";
       }
       return `This condition (${whileMatch[1]}) decides whether more pending state must be resolved before the scan can continue.`;
     }
@@ -1152,18 +1229,23 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
     const forMatch = text.match(/^for\s*\((.+)\)/);
     if (forMatch) {
       const header = forMatch[1];
-      if (/const\s+\[.+\]\s+of/.test(header)) return `Iterates over each pair from the input structure, so the animation advances one relationship at a time.`;
-      if (/const\s+\w+\s+of/.test(header)) return `Visits each input value once, letting the displayed state update in the same order as the code.`;
+      if (/const\s+\[.+\]\s+of/.test(header)) return `Reads each pair from the collection for this loop, assigning its components to the two names in the header.`;
+      if (/const\s+\w+\s+of/.test(header)) return `Processes each value from this collection during this execution of the loop. Nested loops or repeated calls may visit the collection again.`;
       if (/left.*right|right.*left/.test(header)) return `Moves two indexes toward each other, matching the animation's paired pointer updates.`;
       return `Runs the counted loop (${header}) so each visual step follows one code-controlled iteration.`;
     }
 
     const ifMatch = text.match(/^if\s*\((.+)\)/);
-    if (ifMatch) return `This branch checks ${ifMatch[1]}; only the matching branch is allowed to update the algorithm state.`;
+    if (ifMatch) {
+      if (/!root|!node/.test(ifMatch[1])) return "Handles an absent node before reading its fields. This prevents an empty subtree from being treated as a real node.";
+      if (algorithmPage.id === "factorial-recursion" && /value <= 1/.test(ifMatch[1])) return "Provides the known answer for 0! and 1!, stopping recursion before another call is made.";
+      if (/=== target/.test(ifMatch[1]) && /return/.test(text)) return "Checks whether the current candidate matches the target. Returning here avoids inspecting more candidates after a match.";
+      return `Checks ${ifMatch[1]} before choosing a branch. The following action is valid only when that condition is true.`;
+    }
 
-    if (/result\[stack\.pop\(\)\]\s*=/.test(text)) return "This line pops an index from the stack and writes the current value as that index's next greater element.";
-    if (/\.pop\(\)/.test(text)) return "This line removes the most recent pending item and resolves it with the current value.";
-    if (/stack\.push\(index\)/.test(text)) return "This line pushes the current index because its next greater value has not been found yet.";
+    if (/result\[stack\.pop\(\)\]\s*=/.test(text)) return "Removes a stored index from the stack and fills that result position with the value on the right-hand side.";
+    if (/\.pop\(\)/.test(text)) return "This line removes the last stored item. Read the surrounding code to see how the removed value is used.";
+    if (/stack\.push\(index\)/.test(text)) return "This line stores the current index on the stack for later processing.";
     if (/\.push\(/.test(text)) {
       const target = text.split(".push(")[0].trim();
       return `Adds the current value to ${target}, keeping it available for later comparisons or traversal.`;
@@ -1230,23 +1312,26 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
   function renderChallenge() {
     const selected = algorithmPage.quiz.options.find((option) => option.key === state.selectedAnswer);
     return `
-      <section class="algorithm-page challenge-panel" aria-labelledby="challenge-title">
+      <section lang="en" class="algorithm-page challenge-panel" aria-labelledby="challenge-title">
         <div class="title-row">
           <div>
             <p class="eyebrow">${escapeHtml(t("algorithmPage.miniQuiz"))}</p>
-            <h2 id="challenge-title">${escapeHtml(algorithmPage.title)}</h2>
+            <h1 id="challenge-title">${escapeHtml(algorithmPage.title)}</h1>
             <p>${escapeHtml(algorithmPage.quiz.question)}</p>
           </div>
           <span class="step-pill purple">${icon("quiz")} ${escapeHtml(t("algorithmPage.practice"))}</span>
         </div>
+        <p class="learning-caption">Choose an answer to see the reasoning. You can try again or revisit the lesson at any time.</p>
         <div class="answer-list">
           ${algorithmPage.quiz.options.map((option) => `
-            <button class="answer ${state.selectedAnswer === option.key ? "selected" : ""}" data-answer="${escapeHtml(option.key)}">
+            <button class="answer ${state.selectedAnswer === option.key ? "selected" : ""}" data-answer="${escapeHtml(option.key)}" aria-pressed="${state.selectedAnswer === option.key}">
               <span>${escapeHtml(option.key)}</span>${escapeHtml(option.text)}
             </button>
           `).join("")}
         </div>
         ${selected ? renderChallengeResult(selected) : ""}
+        <details class="learning-disclosure"><summary>Review the small example</summary><p>${escapeHtml(algorithmPage.learningGuide?.example || algorithmPage.concept)}</p></details>
+        <button class="text-action" data-view="lesson">Revisit the explanation</button>
         <div class="complexity-grid">
           <article><strong>${escapeHtml(t("algorithmPage.time"))}</strong><p>${escapeHtml(algorithmPage.complexity.time)}</p></article>
           <article><strong>${escapeHtml(t("algorithmPage.space"))}</strong><p>${escapeHtml(algorithmPage.complexity.space)}</p></article>
@@ -1257,7 +1342,7 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
 
   function renderChallengeResult(selected) {
     return `
-      <p class="result ${selected.correct ? "correct" : "incorrect"}">
+      <p role="status" class="result ${selected.correct ? "correct" : "incorrect"}">
         ${escapeHtml(selected.correct ? algorithmPage.quiz.correctText : algorithmPage.quiz.incorrectText)}
       </p>
     `;
@@ -1269,6 +1354,20 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       return;
     }
     if (action === "apply-input") {
+      try {
+        const parsed = JSON.parse(state.visualizerInputDraft);
+        const expected = algorithmPage.runnerInput || [];
+        if (expected.length > 1 && (!Array.isArray(parsed) || parsed.length !== expected.length)) {
+          throw new Error(`Enter ${expected.length} arguments in an outer JSON array, matching the function parameter order.`);
+        }
+      } catch (error) {
+        state.inputError = error.message.startsWith("Enter ") ? error.message : 'Enter valid JSON, such as [1, 2, 3]. Put quotes around strings and omit trailing commas.';
+        state.inputOpen = true;
+        requestRender();
+        return;
+      }
+      state.inputError = "";
+      state.inputOpen = true;
       state.visualizerInputText = state.visualizerInputDraft;
       state.dynamicVisualizationKey = "";
       state.step = 0;
@@ -1276,6 +1375,8 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       return;
     }
     if (action === "reset-input") {
+      state.inputError = "";
+      state.inputOpen = true;
       const sampleInput = formatVisualizerInput(algorithmPage.runnerInput || []);
       state.visualizerInputDraft = sampleInput;
       state.visualizerInputText = sampleInput;
@@ -1285,8 +1386,8 @@ export function createGenericAlgorithmPage(deps, algorithmPage) {
       return;
     }
     const stepCount = getStepCount();
-    if (action === "prev") state.step = (state.step - 1 + stepCount) % stepCount;
-    if (action === "next") state.step = (state.step + 1) % stepCount;
+    if (action === "prev") state.step = Math.max(0, state.step - 1);
+    if (action === "next") state.step = Math.min(stepCount - 1, state.step + 1);
     if (action === "reset") state.step = 0;
     requestRender();
   }

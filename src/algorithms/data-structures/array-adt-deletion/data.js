@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/array-adt-deletion/code/original.cpp",
   "originalCodeFilename": "02_arrray_deletion.cpp",
   "originalActiveLine": 4,
-  "meaning": "Deletion in Array ADT shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Deletion in Array ADT explains the array state model and how one focused change updates it.",
-  "concept": "Deletion in Array ADT is useful when contiguous storage, indexes, length, or capacity explain the operation. Use this when an array operation depends on slot position, bounds, or shifting values.",
-  "logicSummary": "Read the index or value, check the active length and capacity, update the affected slots, and return the visible array result.",
-  "transitionSummary": "Each step changes one index, length, capacity, or shifted range while preserving the array representation.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Delete an array element by shifting later values left and reducing the logical length.",
+  "problem": "Delete an array element by shifting later values left and reducing the logical length.",
+  "concept": "Delete an array element by shifting later values left and reducing the logical length.",
+  "logicSummary": "Delete an array element by shifting later values left and reducing the logical length.",
+  "transitionSummary": "Delete index 1 from [2, 4, 6]: move 6 left to get [2, 6].",
+  "codeInsight": "Delete an array element by shifting later values left and reducing the logical length.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
-  "realLifeExample": "Deletion in Array ADT is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Arrays / Array ADT behavior through state changes instead of memorized code.",
-  "memoryTrick": "Deletion in Array ADT: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Deletion in Array ADT is shown as indexed array state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Delete index 1 from [2, 4, 6]: move 6 left to get [2, 6].",
+  "whenToUse": "Delete an array element by shifting later values left and reducing the logical length.",
+  "memoryTrick": "Delete an array element by shifting later values left and reducing the logical length.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read request",
-      "text": "Identify the index, value, length, or capacity involved."
+      "title": "Identify what the operation means",
+      "text": "Delete an array element by shifting later values left and reducing the logical length."
     },
     {
-      "title": "Check bounds",
-      "text": "Confirm the operation is valid for the active array size."
+      "title": "Work through a small case",
+      "text": "Delete index 1 from [2, 4, 6]: move 6 left to get [2, 6]."
     },
     {
-      "title": "Update slots",
-      "text": "Set, shift, scan, or resize the affected cells."
-    },
-    {
-      "title": "Return array result",
-      "text": "Return the found value, status, or updated array view."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "slot index",
-      "purpose": "Selects the current array position."
+      "name": "values",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "active value",
-      "purpose": "The value currently being read or moved."
-    },
-    {
-      "name": "write slot",
-      "purpose": "Marks where an updated value is stored."
-    },
-    {
-      "name": "array view",
-      "purpose": "Shows the slots after Deletion in Array ADT applies its operation."
+      "name": "sum",
+      "purpose": "Combines input items into one accumulated answer, so the result can be returned or reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Array",
-      "title": "Read array request",
-      "note": "The code receives an array plus an index, value, or command.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Delete an array element by shifting later values left and reducing the logical length.",
       "activeLine": 2,
-      "codeInsight": "Defines arrayAdtDeletion as the runnable entry point for this lesson."
+      "codeInsight": "Delete an array element by shifting later values left and reducing the logical length."
     },
     {
-      "label": "Index / length",
-      "title": "Check active range",
-      "note": "Bounds and current length decide whether the operation is valid.",
-      "activeLine": 4,
-      "codeInsight": "Computes sum by reducing the current values, matching the aggregate shown in the result state."
-    },
-    {
-      "label": "Slots",
-      "title": "Update affected cells",
-      "note": "The operation sets, shifts, scans, or resizes array slots.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Delete index 1 from [2, 4, 6]: move 6 left to get [2, 6].",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return array state",
-      "note": "The visible value or updated array confirms the operation.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Delete an array element by shifting later values left and reducing the logical length."
     }
   ],
   "complexity": {
@@ -129,9 +103,9 @@ export const algorithmPage = {
   ],
   "relatedLinks": [
     {
-      "id": "array-patterns",
-      "title": "Array Patterns",
-      "label": "Existing algorithm lesson"
+      "id": "linear-search",
+      "title": "Linear Search",
+      "label": "Start with indexed array values"
     }
   ],
   "runnerInput": [],
@@ -233,5 +207,41 @@ export const algorithmPage = {
         "secondaryLabel": "Each step changes one index, length, capacity, or shifted range while preserving the array representation."
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Delete index 1 from [2, 4, 6]: move 6 left to get [2, 6].",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "array",
+      "values": [
+        3,
+        1,
+        4,
+        1,
+        5
+      ],
+      "length": 5,
+      "max": 5,
+      "sum": 14
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Delete an array element by shifting later values left and reducing the logical length."
   }
 };

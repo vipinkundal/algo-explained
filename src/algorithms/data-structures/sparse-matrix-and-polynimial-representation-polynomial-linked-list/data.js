@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/sparse-matrix-and-polynimial-representation-polynomial-linked-list/code/original.cpp",
   "originalCodeFilename": "02_polynomial_linked_list.cpp",
   "originalActiveLine": 5,
-  "meaning": "Sparse Matrix / Polynomial Polynomial Linked List shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Sparse Matrix / Polynomial Polynomial Linked List explains the linked-list state model and how one focused change updates it.",
-  "concept": "Sparse Matrix / Polynomial Polynomial Linked List is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
-  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
-  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "A polynomial linked list stores each term’s coefficient and exponent in a node.",
+  "problem": "A polynomial linked list stores each term’s coefficient and exponent in a node.",
+  "concept": "A polynomial linked list stores each term’s coefficient and exponent in a node.",
+  "logicSummary": "A polynomial linked list stores each term’s coefficient and exponent in a node.",
+  "transitionSummary": "3x² + 5 can be represented by (3, 2) → (5, 0).",
+  "codeInsight": "A polynomial linked list stores each term’s coefficient and exponent in a node.",
   "originalCodeInsight": "The C/C++ Node struct is the memory layout: data stores the value and next/child pointers connect the structure.",
-  "realLifeExample": "Sparse Matrix / Polynomial Polynomial Linked List is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Matrix / Sparse Matrix / Polynomial behavior through state changes instead of memorized code.",
-  "memoryTrick": "Sparse Matrix / Polynomial Polynomial Linked List: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Sparse Matrix / Polynomial Polynomial Linked List is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "3x² + 5 can be represented by (3, 2) → (5, 0).",
+  "whenToUse": "A polynomial linked list stores each term’s coefficient and exponent in a node.",
+  "memoryTrick": "A polynomial linked list stores each term’s coefficient and exponent in a node.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read algorithm state",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "A polynomial linked list stores each term’s coefficient and exponent in a node."
     },
     {
-      "title": "Inspect invariant",
-      "text": "Look at the active algorithm state fields."
+      "title": "Work through a small case",
+      "text": "3x² + 5 can be represented by (3, 2) → (5, 0)."
     },
     {
-      "title": "State change",
-      "text": "update the state described by this algorithm."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Check the allowed input and stopping rule before running the routine. A picture of state alone is not a proof of correctness."
     }
   ],
   "variables": [
     {
-      "name": "head link",
-      "purpose": "References the first node in the chain."
-    },
-    {
-      "name": "walk pointer",
-      "purpose": "Moves through links one node at a time."
-    },
-    {
-      "name": "new node",
-      "purpose": "Represents the node created or examined in Sparse Matrix / Polynomial Polynomial Linked List."
-    },
-    {
-      "name": "chain view",
-      "purpose": "Shows the visible node order after pointer updates."
+      "name": "nodes",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Algorithm State",
-      "title": "Read algorithm state action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 3,
-      "codeInsight": "Stores nodes from the current length, making the loop boundary explicit for the visual trace."
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A polynomial linked list stores each term’s coefficient and exponent in a node.",
+      "activeLine": 2,
+      "codeInsight": "A polynomial linked list stores each term’s coefficient and exponent in a node."
     },
     {
-      "label": "Invariant",
-      "title": "Inspect algorithm state",
-      "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 3,
-      "codeInsight": "Stores nodes from the current length, making the loop boundary explicit for the visual trace."
-    },
-    {
-      "label": "State change",
-      "title": "Update the state described by this algorithm",
-      "note": "Only the necessary algorithm state fields are changed.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "3x² + 5 can be represented by (3, 2) → (5, 0).",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A polynomial linked list stores each term’s coefficient and exponent in a node."
     }
   ],
   "complexity": {
@@ -261,5 +231,38 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "State is the information a computation remembers between steps. A transition changes that information; a stop rule ends the computation.",
+    "family": "State and rules",
+    "example": "3x² + 5 can be represented by (3, 2) → (5, 0).",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "linked list",
+      "operation": "insert at position 1",
+      "values": [
+        10,
+        15,
+        20,
+        30
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "State",
+        "Values remembered at the current step."
+      ],
+      [
+        "Transition",
+        "The update that moves to the next state."
+      ],
+      [
+        "Base case",
+        "A small or finished situation with a known answer."
+      ]
+    ],
+    "pitfall": "Check the allowed input and stopping rule before running the routine. A picture of state alone is not a proof of correctness.",
+    "checkpoint": "Explain this in your own words: A polynomial linked list stores each term’s coefficient and exponent in a node."
   }
 };

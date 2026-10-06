@@ -139,8 +139,8 @@
         }
       ],
       "complexity": {
-        "time": "O(n) pour l'implémentation pédagogique de référence.",
-        "space": "O(n) pour l'état suivi lorsque c'est nécessaire."
+        "time": "O(n × 2ⁿ)",
+        "space": "O(n) + O(n × 2ⁿ)"
       },
       "quiz": {
         "question": "Quel choix d'état garde le backtracking correct ?",

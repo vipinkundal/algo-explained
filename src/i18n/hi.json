@@ -139,8 +139,8 @@
         }
       ],
       "complexity": {
-        "time": "educational reference implementation के लिए O(n)।",
-        "space": "ज़रूरत होने पर tracked state के लिए O(n)।"
+        "time": "O(n × 2ⁿ)",
+        "space": "O(n) + O(n × 2ⁿ)"
       },
       "quiz": {
         "question": "कौन-सा state choice बैकट्रैकिंग बेसिक्स को सही रखता है?",

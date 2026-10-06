@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "search",
   "codePath": "./src/algorithms/searching/upper-bound/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Upper Bound is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Find the first sorted position whose value is strictly greater than target.",
   "problem": "Find the first sorted position whose value is strictly greater than target.",
   "concept": "Upper Bound discards every value less than or equal to target, including duplicates equal to target.",
   "logicSummary": "Search [low, high), move past mid when array[mid] <= target, and keep mid only when it is greater.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it to count equal values: upperBound(x) - lowerBound(x).",
   "whenToUse": "Use Upper Bound when you need the first value after all target-equal values.",
   "memoryTrick": "Upper bound skips equals.",
-  "visualizerCaption": "Upper Bound is shown with the exact boundary, probe, or scan state used by the code.",
+  "visualizerCaption": "Explore Upper Bound through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Open half range",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state keeps Upper Bound correct?",
+    "question": "Which explanation best describes Upper Bound?",
     "options": [
       {
         "key": "A",
-        "text": "Use the page's own search boundary or scan state and update it only through the listed transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another search algorithm's comparison rule without checking the invariant.",
-        "correct": false
+        "text": "Find the first sorted position whose value is strictly greater than target.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Stop before the algorithm-specific boundary or scan condition is resolved.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Upper Bound works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Upper Bound needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Find the first sorted position whose value is strictly greater than target.",
+    "incorrectText": "Try again. Find the first sorted position whose value is strictly greater than target. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "searching",
   "algorithmSlug": "upper-bound",
@@ -233,5 +233,40 @@ export const algorithmPage = {
         "secondaryLabel": "array[mid] <= target moves low to mid + 1; otherwise high becomes mid."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Open half range: Search for the first value greater than 5. Value 5 is skipped: 5 <= target, so move low to 4. Value 12 is greater: Keep index 5 by setting high to 5. First greater index: Index 4 holds 9, the first value greater than 5.",
+    "sampleInput": [
+      [
+        1,
+        2,
+        5,
+        5,
+        9,
+        12
+      ],
+      5
+    ],
+    "sampleResult": 4,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Find the first sorted position whose value is strictly greater than target."
+  },
+  "relatedLinks": []
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/postorder-traversal/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Postorder Traversal visits a binary tree in left subtree, right subtree, then current node order.",
+  "meaning": "Postorder Traversal collects children before parents, which is useful when parent work depends on completed subtrees.",
   "problem": "Postorder Traversal collects children before parents, which is useful when parent work depends on completed subtrees.",
   "concept": "The recursive helper first walks node.left, then node.right, then pushes node.value.",
   "logicSummary": "Start at root, finish the left subtree, finish the right subtree, then visit the current node and return the collected result.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Postorder is useful for deleting a folder tree because files and child folders are handled before the parent folder.",
   "whenToUse": "Use Postorder Traversal when a parent should be processed after all descendants.",
   "memoryTrick": "Postorder means LRN: Left, Right, Node.",
-  "visualizerCaption": "The animation shows values entering result in postorder sequence: 1, 3, 2, 5, 7, 6, 4.",
+  "visualizerCaption": "Explore Postorder Traversal through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check node",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(h) recursion or traversal state."
   },
   "quiz": {
-    "question": "Which state choice keeps Postorder Traversal correct?",
+    "question": "Which explanation best describes Postorder Traversal?",
     "options": [
       {
         "key": "A",
-        "text": "Visit left subtree, then right subtree, then the current node.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Postorder Traversal collects children before parents, which is useful when parent work depends on completed subtrees.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Postorder Traversal is exactly left, right, node.",
-    "incorrectText": "Not quite. Moving result.push before either recursive call changes the traversal order."
+    "correctText": "Correct. Postorder Traversal collects children before parents, which is useful when parent work depends on completed subtrees.",
+    "incorrectText": "Try again. Postorder Traversal collects children before parents, which is useful when parent work depends on completed subtrees. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "postorder-traversal",
@@ -254,8 +254,8 @@ export const algorithmPage = {
           "7"
         ],
         "nodeLabels": {
-          "4": "4 wait",
-          "2": "2 left"
+          "2": "2 left",
+          "4": "4 wait"
         }
       },
       {
@@ -274,8 +274,8 @@ export const algorithmPage = {
         ],
         "nodeLabels": {
           "1": "1 #1",
-          "3": "3 #2",
           "2": "2 #3",
+          "3": "3 #2",
           "4": "4 wait"
         }
       },
@@ -291,12 +291,12 @@ export const algorithmPage = {
         "mutedNodes": [],
         "nodeLabels": {
           "1": "1 #1",
-          "3": "3 #2",
           "2": "2 #3",
+          "3": "3 #2",
+          "4": "4 wait",
           "5": "5 #4",
-          "7": "7 #5",
           "6": "6 #6",
-          "4": "4 wait"
+          "7": "7 #5"
         }
       },
       {
@@ -311,14 +311,68 @@ export const algorithmPage = {
         "mutedNodes": [],
         "nodeLabels": {
           "1": "1 #1",
-          "3": "3 #2",
           "2": "2 #3",
+          "3": "3 #2",
+          "4": "4 #7",
           "5": "5 #4",
-          "7": "7 #5",
           "6": "6 #6",
-          "4": "4 #7"
+          "7": "7 #5"
         }
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check node: Call walk(root) to begin the recursive traversal. Read node state: Recurse into the left subtree first. Move/combine: Recurse into the right subtree before visiting the node. Return tree result: Push the current node after both children are done.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        }
+      }
+    ],
+    "sampleResult": [
+      1,
+      3,
+      2,
+      5,
+      7,
+      6,
+      4
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Postorder Traversal collects children before parents, which is useful when parent work depends on completed subtrees."
   }
 };

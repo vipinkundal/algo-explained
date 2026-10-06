@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/level-order-traversal/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Level Order Traversal visits a tree breadth-first, reading every node on one level before moving to the next.",
+  "meaning": "Level Order Traversal uses a queue so nodes are processed in the same order their parents discover them.",
   "problem": "Level Order Traversal uses a queue so nodes are processed in the same order their parents discover them.",
   "concept": "Level-order traversal is useful when tree nodes must be processed by depth from top to bottom. Use this when closer-to-root nodes must be handled before deeper nodes.",
   "logicSummary": "Start with the root in a queue, visit the front node, append its value, then enqueue children.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it when rendering a family tree by rows, scanning a folder tree by depth, or finding nodes closest to the root first.",
   "whenToUse": "Use Level Order Traversal when tree nodes must be processed by depth from top to bottom.",
   "memoryTrick": "Level Order Traversal: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Level Order Traversal is shown as breadth-first queue traversal. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Level Order Traversal through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check root",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(w) for the queue, where w is the maximum tree width."
   },
   "quiz": {
-    "question": "Which state choice keeps Level Order Traversal correct?",
+    "question": "Which explanation best describes Level Order Traversal?",
     "options": [
       {
         "key": "A",
-        "text": "Track a queue of discovered nodes and visit them in first-in, first-out order.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Use recursive return values from children to decide the next node.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Use a stack so the deepest node is always visited first.",
-        "correct": false
+        "text": "Level Order Traversal uses a queue so nodes are processed in the same order their parents discover them.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. The queue is what keeps the traversal breadth-first.",
-    "incorrectText": "Not quite. Level Order Traversal depends on FIFO queue order, not recursion order or stack order."
+    "correctText": "Correct. Level Order Traversal uses a queue so nodes are processed in the same order their parents discover them.",
+    "incorrectText": "Try again. Level Order Traversal uses a queue so nodes are processed in the same order their parents discover them. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "level-order-traversal",
@@ -307,8 +307,8 @@ export const algorithmPage = {
           "7"
         ],
         "nodeLabels": {
-          "4": "4 #1",
           "2": "2 next",
+          "4": "4 #1",
           "6": "6 next"
         }
       },
@@ -323,15 +323,69 @@ export const algorithmPage = {
         "replacementNode": "4",
         "mutedNodes": [],
         "nodeLabels": {
-          "4": "4 #1",
-          "2": "2 #2",
-          "6": "6 #3",
           "1": "1 #4",
+          "2": "2 #2",
           "3": "3 #5",
+          "4": "4 #1",
           "5": "5 #6",
+          "6": "6 #3",
           "7": "7 #7"
         }
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check root: Return an empty result for an empty tree. Seed queue: Put the root in the BFS queue. Visit front: Append the next queued node value. Enqueue children: Push left and right children for the next levels.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        }
+      }
+    ],
+    "sampleResult": [
+      4,
+      2,
+      6,
+      1,
+      3,
+      5,
+      7
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Level Order Traversal uses a queue so nodes are processed in the same order their parents discover them."
   }
 };

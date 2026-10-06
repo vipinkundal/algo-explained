@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/essential-c-and-cpp-basic-array/code/original.cpp",
   "originalCodeFilename": "01_basic_array.cpp",
   "originalActiveLine": 3,
-  "meaning": "C/C++ Basic Array shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "C/C++ Basic Array explains the array state model and how one focused change updates it.",
-  "concept": "C/C++ Basic Array is useful when C/C++ storage, addresses, structures, or object ownership affect the program result. Use this when the lesson depends on stack memory, heap memory, references, pointers, structs, or classes.",
-  "logicSummary": "Create the C/C++ value, inspect how it is passed or referenced, apply the operation, and read the final memory-visible result.",
-  "transitionSummary": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "An array stores same-type elements in contiguous slots addressed by index.",
+  "problem": "An array stores same-type elements in contiguous slots addressed by index.",
+  "concept": "An array stores same-type elements in contiguous slots addressed by index.",
+  "logicSummary": "An array stores same-type elements in contiguous slots addressed by index.",
+  "transitionSummary": "For int values[3] = {2, 4, 6}, values[1] is 4; valid indexes are 0 through 2.",
+  "codeInsight": "An array stores same-type elements in contiguous slots addressed by index.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
-  "realLifeExample": "C/C++ Basic Array is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning C/C++ Essentials behavior through state changes instead of memorized code.",
-  "memoryTrick": "C/C++ Basic Array: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C/C++ Basic Array is shown as C/C++ memory and value flow. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "For int values[3] = {2, 4, 6}, values[1] is 4; valid indexes are 0 through 2.",
+  "whenToUse": "An array stores same-type elements in contiguous slots addressed by index.",
+  "memoryTrick": "An array stores same-type elements in contiguous slots addressed by index.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Declare value",
-      "text": "Create the variable, pointer, structure, or object."
+      "title": "Identify what the operation means",
+      "text": "An array stores same-type elements in contiguous slots addressed by index."
     },
     {
-      "title": "Inspect storage",
-      "text": "Notice whether the code uses value, address, reference, or member access."
+      "title": "Work through a small case",
+      "text": "For int values[3] = {2, 4, 6}, values[1] is 4; valid indexes are 0 through 2."
     },
     {
-      "title": "Apply operation",
-      "text": "Run the function, assignment, dereference, or method call."
-    },
-    {
-      "title": "Read result",
-      "text": "Read the changed value, member, pointer target, or object output."
+      "title": "Check the boundary cases",
+      "text": "Do not use a pointer after its object’s lifetime ends. Passing by value copies an object; passing by pointer or reference can access the original."
     }
   ],
   "variables": [
     {
-      "name": "slot index",
-      "purpose": "Selects the current array position."
+      "name": "values",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "active value",
-      "purpose": "The value currently being read or moved."
-    },
-    {
-      "name": "write slot",
-      "purpose": "Marks where an updated value is stored."
-    },
-    {
-      "name": "array view",
-      "purpose": "Shows the slots after C/C++ Basic Array applies its operation."
+      "name": "sum",
+      "purpose": "Combines input items into one accumulated answer, so the result can be returned or reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Declaration",
-      "title": "Create program value",
-      "note": "The code introduces the variable, pointer, structure, or object.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "An array stores same-type elements in contiguous slots addressed by index.",
       "activeLine": 2,
-      "codeInsight": "Defines essentialCAndCppBasicArray as the runnable entry point for this lesson."
+      "codeInsight": "An array stores same-type elements in contiguous slots addressed by index."
     },
     {
-      "label": "Storage",
-      "title": "Track address or copy",
-      "note": "Passing by value, pointer, or reference controls what can change.",
-      "activeLine": 4,
-      "codeInsight": "Computes sum by reducing the current values, matching the aggregate shown in the result state."
-    },
-    {
-      "label": "C/C++ rule",
-      "title": "Apply C/C++ rule",
-      "note": "Assignment, dereference, member access, or method call changes the state.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For int values[3] = {2, 4, 6}, values[1] is 4; valid indexes are 0 through 2.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Read final value",
-      "note": "The visible output follows from the memory model.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "An array stores same-type elements in contiguous slots addressed by index."
     }
   ],
   "complexity": {
@@ -129,9 +103,9 @@ export const algorithmPage = {
   ],
   "relatedLinks": [
     {
-      "id": "array-patterns",
-      "title": "Array Patterns",
-      "label": "Existing algorithm lesson"
+      "id": "linear-search",
+      "title": "Linear Search",
+      "label": "Start with indexed array values"
     }
   ],
   "runnerInput": [],
@@ -233,5 +207,41 @@ export const algorithmPage = {
         "secondaryLabel": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules."
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "C/C++ separates a value from the memory that stores it. Pointers and references explain how a function can access an existing object.",
+    "family": "Storage and ownership",
+    "example": "For int values[3] = {2, 4, 6}, values[1] is 4; valid indexes are 0 through 2.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "array",
+      "values": [
+        3,
+        1,
+        4,
+        1,
+        5
+      ],
+      "length": 5,
+      "max": 5,
+      "sum": 14
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Pointer",
+        "A value representing a memory address."
+      ],
+      [
+        "Reference",
+        "A C++ alias for an existing object."
+      ],
+      [
+        "Lifetime",
+        "The interval during which an object exists and may be accessed."
+      ]
+    ],
+    "pitfall": "Do not use a pointer after its object’s lifetime ends. Passing by value copies an object; passing by pointer or reference can access the original.",
+    "checkpoint": "Explain this in your own words: An array stores same-type elements in contiguous slots addressed by index."
   }
 };

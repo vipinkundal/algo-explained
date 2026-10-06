@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/manachers-algorithm/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Manacher’s Algorithm is taught with its own string state, transition, code trace, and stopping rule.",
+  "meaning": "Find the longest palindromic substring in linear time by reusing palindrome radii.",
   "problem": "Find the longest palindromic substring in linear time by reusing palindrome radii.",
   "concept": "Manacher transforms the text with separators, tracks the current rightmost palindrome, and mirrors radius information around its center.",
   "logicSummary": "Transform text, keep center/right boundaries, initialize each radius from its mirror when possible, expand, and update the best radius.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it when longest-palindrome queries must be linear rather than center-expansion O(n^2).",
   "whenToUse": "Use Manacher’s Algorithm for longest palindromic substring when input size makes O(n^2) too slow.",
   "memoryTrick": "Mirror the radius, then expand only beyond known territory.",
-  "visualizerCaption": "The trace shows transformed-string centers, mirrored radius reuse, expansion, and best extraction.",
+  "visualizerCaption": "Explore Manacher’s Algorithm through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Transform text",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n) for transformed string and radius array."
   },
   "quiz": {
-    "question": "Which state keeps Manacher’s Algorithm correct?",
+    "question": "Which explanation best describes Manacher’s Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "Track transformed indices, mirror radius, center/right boundary, and best radius.",
+        "text": "Find the longest palindromic substring in linear time by reusing palindrome radii.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse another string algorithm's state names without matching its invariant.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Manacher’s Algorithm works because the page state follows that exact string invariant.",
-    "incorrectText": "Not quite. Manacher’s Algorithm needs its own string state and stop condition."
+    "correctText": "Correct. Find the longest palindromic substring in linear time by reusing palindrome radii.",
+    "incorrectText": "Try again. Find the longest palindromic substring in linear time by reusing palindrome radii. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "strings",
   "algorithmSlug": "manachers-algorithm",
@@ -183,5 +183,32 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A string is an ordered sequence. A substring occupies consecutive positions; a subsequence can skip positions.",
+    "family": "Characters and positions",
+    "example": "Transform text: Insert separators so every palindrome has one center. Reuse mirror: Inside the right boundary, copy the bounded mirror radius. Expand center: Compare characters outside the known radius. Extract best: Convert transformed center/radius back to original substring.",
+    "sampleInput": [
+      "babad"
+    ],
+    "sampleResult": "bab",
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Prefix",
+        "Characters at the beginning of a string."
+      ],
+      [
+        "Substring",
+        "A consecutive section of a string."
+      ],
+      [
+        "Frequency",
+        "How often a character occurs."
+      ]
+    ],
+    "pitfall": "Check empty strings and repeated characters. State whether case, spaces, and Unicode characters affect matching.",
+    "checkpoint": "Explain this in your own words: Find the longest palindromic substring in linear time by reusing palindrome radii."
+  },
+  "relatedLinks": []
 };

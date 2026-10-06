@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/matrix-chain-multiplication/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Matrix Chain Multiplication is taught with its own DP state definition, transition, code trace, and answer state.",
+  "meaning": "Find the minimum scalar multiplication cost for multiplying a chain of matrices without changing their order.",
   "problem": "Find the minimum scalar multiplication cost for multiplying a chain of matrices without changing their order.",
   "concept": "Matrix Chain DP defines dp[left][right] as the minimum cost to multiply matrices left through right.",
   "logicSummary": "Solve short intervals first, then try every split point for larger intervals and keep the cheapest split.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for optimizing matrix expression evaluation and any ordered interval split optimization.",
   "whenToUse": "Use matrix-chain DP when the problem asks for the best way to parenthesize an ordered sequence.",
   "memoryTrick": "Every interval tries every final split.",
-  "visualizerCaption": "The trace fills interval costs by increasing chain length.",
+  "visualizerCaption": "Explore Matrix Chain Multiplication through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Define interval state",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n^2)."
   },
   "quiz": {
-    "question": "Which state keeps Matrix Chain Multiplication correct?",
+    "question": "Which explanation best describes Matrix Chain Multiplication?",
     "options": [
       {
         "key": "A",
-        "text": "Define dp[left][right] for intervals and try every split after shorter intervals are solved.",
+        "text": "Find the minimum scalar multiplication cost for multiplying a chain of matrices without changing their order.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse another DP recurrence without matching this algorithm's state.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Read the final answer before the required dependency states are solved.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Matrix Chain Multiplication works when the state meaning, transition, and answer state stay aligned.",
-    "incorrectText": "Not quite. Matrix Chain Multiplication needs its own state, dependencies, and stop condition."
+    "correctText": "Correct. Find the minimum scalar multiplication cost for multiplying a chain of matrices without changing their order.",
+    "incorrectText": "Try again. Find the minimum scalar multiplication cost for multiplying a chain of matrices without changing their order. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "matrix-chain-multiplication",
@@ -281,5 +281,37 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A dynamic-programming state names a smaller question. A recurrence explains how its answer uses answers you already know.",
+    "family": "Saved subproblems",
+    "example": "Define interval state: dp[left][right] is the minimum cost for matrices left through right. Set single matrix cost: A single matrix needs no multiplication, so diagonal cells are 0. Grow intervals: Fill length 2, then length 3, and so on. Try splits: Each interval tests every possible final split point.",
+    "sampleInput": [
+      [
+        10,
+        30,
+        5,
+        60
+      ]
+    ],
+    "sampleResult": 4500,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "One precisely defined subproblem."
+      ],
+      [
+        "Recurrence",
+        "A rule for computing a state from smaller states."
+      ],
+      [
+        "Base case",
+        "A known answer that starts the table or recursion."
+      ]
+    ],
+    "pitfall": "Define what each table entry means before filling it. Check base cases, evaluation order, and whether a choice can be reused.",
+    "checkpoint": "Explain this in your own words: Find the minimum scalar multiplication cost for multiplying a chain of matrices without changing their order."
+  },
+  "relatedLinks": []
 };

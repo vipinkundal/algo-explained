@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/array-adt-check-if-sorted/code/original.cpp",
   "originalCodeFilename": "06_02_check_if_soted.cpp",
   "originalActiveLine": 3,
-  "meaning": "Check Sorted Array shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Check Sorted Array explains the array state model and how one focused change updates it.",
-  "concept": "Check Sorted Array is useful when values must be placed into a reliable order before later work can be simple. Use this when the algorithm's ordering invariant and cost fit the input size and stability needs.",
-  "logicSummary": "Protect the algorithm's ordering invariant until every value reaches final order.",
-  "transitionSummary": "Each step compares or moves values so the unsorted region gets smaller.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Check adjacent values to determine whether an array is in non-decreasing order.",
+  "problem": "Check adjacent values to determine whether an array is in non-decreasing order.",
+  "concept": "Check adjacent values to determine whether an array is in non-decreasing order.",
+  "logicSummary": "Check adjacent values to determine whether an array is in non-decreasing order.",
+  "transitionSummary": "[1, 3, 3] is sorted; [1, 4, 2] fails at 4 > 2.",
+  "codeInsight": "Check adjacent values to determine whether an array is in non-decreasing order.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
-  "realLifeExample": "Check Sorted Array is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Arrays / Array ADT behavior through state changes instead of memorized code.",
-  "memoryTrick": "Check Sorted Array: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Check Sorted Array is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "[1, 3, 3] is sorted; [1, 4, 2] fails at 4 > 2.",
+  "whenToUse": "Check adjacent values to determine whether an array is in non-decreasing order.",
+  "memoryTrick": "Check adjacent values to determine whether an array is in non-decreasing order.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Copy values",
-      "text": "Work on a mutable array without changing the original input."
+      "title": "Identify what the operation means",
+      "text": "Check adjacent values to determine whether an array is in non-decreasing order."
     },
     {
-      "title": "Choose invariant",
-      "text": "Track the sorted or partitioned region."
+      "title": "Work through a small case",
+      "text": "[1, 3, 3] is sorted; [1, 4, 2] fails at 4 > 2."
     },
     {
-      "title": "Move values",
-      "text": "Perform the comparison, swap, merge, or placement."
-    },
-    {
-      "title": "Return order",
-      "text": "Return the fully sorted array."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "slot index",
-      "purpose": "Selects the current array position."
+      "name": "values",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "active value",
-      "purpose": "The value currently being read or moved."
-    },
-    {
-      "name": "write slot",
-      "purpose": "Marks where an updated value is stored."
-    },
-    {
-      "name": "array view",
-      "purpose": "Shows the slots after Check Sorted Array applies its operation."
+      "name": "sum",
+      "purpose": "Combines input items into one accumulated answer, so the result can be returned or reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Input array",
-      "title": "Copy values",
-      "note": "The code starts with the values to reorder.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Check adjacent values to determine whether an array is in non-decreasing order.",
       "activeLine": 2,
-      "codeInsight": "Defines arrayAdtCheckIfSorted as the runnable entry point for this lesson."
+      "codeInsight": "Check adjacent values to determine whether an array is in non-decreasing order."
     },
     {
-      "label": "Invariant",
-      "title": "Track ordered work",
-      "note": "The algorithm marks what part is already safe.",
-      "activeLine": 3,
-      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Move",
-      "title": "Apply ordering step",
-      "note": "The current operation reduces disorder.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "[1, 3, 3] is sorted; [1, 4, 2] fails at 4 > 2.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Sorted output",
-      "title": "Return final order",
-      "note": "The result is returned when no unsorted work remains.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Check adjacent values to determine whether an array is in non-decreasing order."
     }
   ],
   "complexity": {
@@ -129,9 +103,9 @@ export const algorithmPage = {
   ],
   "relatedLinks": [
     {
-      "id": "array-patterns",
-      "title": "Array Patterns",
-      "label": "Existing algorithm lesson"
+      "id": "linear-search",
+      "title": "Linear Search",
+      "label": "Start with indexed array values"
     }
   ],
   "runnerInput": [],
@@ -233,5 +207,41 @@ export const algorithmPage = {
         "secondaryLabel": "Each step compares or moves values so the unsorted region gets smaller."
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "[1, 3, 3] is sorted; [1, 4, 2] fails at 4 > 2.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "array",
+      "values": [
+        3,
+        1,
+        4,
+        1,
+        5
+      ],
+      "length": 5,
+      "max": 5,
+      "sum": 14
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Check adjacent values to determine whether an array is in non-decreasing order."
   }
 };

@@ -12,107 +12,89 @@ export const algorithmPage = {
   "icon": "grid_on",
   "codePath": "./src/algorithms/matrix-and-grid/search-in-sorted-matrix/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Search in Sorted Matrix is a Matrix and Grid technique focused on sorted array.",
-  "problem": "Search in Sorted Matrix is a sorting strategy that repeatedly narrows unsorted work until every value is in order.",
-  "concept": "Search in Sorted Matrix is useful when values must be placed into a reliable order before later work can be simple. Use this when the algorithm's ordering invariant and cost fit the input size and stability needs.",
-  "logicSummary": "Protect the algorithm's ordering invariant until every value reaches final order.",
-  "transitionSummary": "Each step compares or moves values so the unsorted region gets smaller.",
-  "codeInsight": "The implementation copies the input first, then mutates only that working array so the original caller data is not changed.",
-  "realLifeExample": "Search in Sorted Matrix appears when the input is array and the required result is sorted array.",
-  "whenToUse": "Use Search in Sorted Matrix when a problem matches the Matrix and Grid pattern and the expected state changes match a matrix staircase dry run.",
-  "memoryTrick": "Search in Sorted Matrix: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Search in Sorted Matrix is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step.",
+  "problem": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step.",
+  "concept": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step.",
+  "logicSummary": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step.",
+  "transitionSummary": "From the top-right cell, a value larger than the target means move left; a smaller value means move down. This relies on both rows and columns being sorted.",
+  "codeInsight": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step.",
+  "realLifeExample": "From the top-right cell, a value larger than the target means move left; a smaller value means move down. This relies on both rows and columns being sorted.",
+  "whenToUse": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step.",
+  "memoryTrick": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Copy values",
-      "text": "Work on a mutable array without changing the original input."
+      "title": "Identify what the operation means",
+      "text": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step."
     },
     {
-      "title": "Choose invariant",
-      "text": "Track the sorted or partitioned region."
+      "title": "Work through a small case",
+      "text": "From the top-right cell, a value larger than the target means move left; a smaller value means move down. This relies on both rows and columns being sorted."
     },
     {
-      "title": "Move values",
-      "text": "Perform the comparison, swap, merge, or placement."
-    },
-    {
-      "title": "Return order",
-      "text": "Return the fully sorted array."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
-      "name": "array, target",
-      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
+      "name": "matrix",
+      "purpose": "The input grid, addressed by row and column."
     },
     {
-      "name": "row, column, and visited state",
-      "purpose": "Cell coordinates and visited or transformed values used by the grid transition. This page visualizes it as matrix staircase."
+      "name": "target",
+      "purpose": "The value or total the operation is trying to locate or reach."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by searchInSortedMatrix after the maintained state reaches the stop rule."
+      "name": "row",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Compare, move, swap, merge, or bucket values according to this sorter until no unsorted work remains. Stop when no valid work remains or the answer is known."
+      "name": "col",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Input array",
-      "title": "Copy values",
-      "note": "The code starts with the values to reorder.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step.",
       "activeLine": 5,
-      "codeInsight": "Defines searchInSortedMatrix and names the input matrix, target; edits to those inputs change the visual state and output."
+      "codeInsight": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step."
     },
     {
-      "label": "Invariant",
-      "title": "Track ordered work",
-      "note": "The algorithm marks what part is already safe.",
-      "activeLine": 5,
-      "codeInsight": "Defines searchInSortedMatrix and names the input matrix, target; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Move",
-      "title": "Apply ordering step",
-      "note": "The current operation reduces disorder.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "From the top-right cell, a value larger than the target means move left; a smaller value means move down. This relies on both rows and columns being sorted.",
       "activeLine": 6,
-      "codeInsight": "Checks !matrix.length || !matrix[0].length; only the branch that preserves Search in Sorted Matrix's invariant is allowed to change state."
-    },
-    {
-      "label": "Sorted output",
-      "title": "Return final order",
-      "note": "The result is returned when no unsorted work remains.",
-      "activeLine": 14,
-      "codeInsight": "Returns the final array-style answer [-1, -1], so the last frame should show the chosen positions or sequence."
+      "codeInsight": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "O(R + C) for a corner walk with both rows and columns sorted.",
+    "space": "O(1) auxiliary state."
   },
   "quiz": {
-    "question": "Which state choice keeps Search in Sorted Matrix correct?",
+    "question": "Which explanation best describes Search in Sorted Matrix?",
     "options": [
       {
         "key": "A",
-        "text": "Track indices and working array and update it only through Search in Sorted Matrix's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Search in Sorted Matrix stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Search in Sorted Matrix needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step.",
+    "incorrectText": "Try again. In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "matrix-and-grid",
   "algorithmSlug": "search-in-sorted-matrix",
@@ -250,5 +232,47 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "From the top-right cell, a value larger than the target means move left; a smaller value means move down. This relies on both rows and columns being sorted.",
+    "sampleInput": [
+      [
+        [
+          1,
+          3,
+          5
+        ],
+        [
+          7,
+          9,
+          11
+        ]
+      ],
+      9
+    ],
+    "sampleResult": [
+      1,
+      1
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: In a matrix with sorted rows and columns, compare from a corner to eliminate a row or column at each step."
+  },
+  "relatedLinks": []
 };

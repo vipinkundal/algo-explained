@@ -12,80 +12,74 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/recursion-and-backtracking/sudoku-solver/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Sudoku Solver is a Recursion and Backtracking technique focused on solutions.",
-  "problem": "Sudoku Solver explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
-  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
-  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "Sudoku Solver appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use Sudoku Solver when a problem matches the Recursion and Backtracking pattern and the expected state changes match a board state dry run.",
-  "memoryTrick": "Sudoku Solver: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Sudoku Solver is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail.",
+  "problem": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail.",
+  "concept": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail.",
+  "logicSummary": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail.",
+  "transitionSummary": "If a cell already has 1 in its row, trying 1 is rejected before exploring the next cell.",
+  "codeInsight": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail.",
+  "realLifeExample": "If a cell already has 1 in its row, trying 1 is rejected before exploring the next cell.",
+  "whenToUse": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail.",
+  "memoryTrick": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Base case",
-      "text": "Stop when the current state is complete or invalid."
+      "title": "Identify what the operation means",
+      "text": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail."
     },
     {
-      "title": "Choose option",
-      "text": "Pick the next valid branch."
+      "title": "Work through a small case",
+      "text": "If a cell already has 1 in its row, trying 1 is rejected before exploring the next cell."
     },
     {
-      "title": "Recurse",
-      "text": "Solve the smaller state."
-    },
-    {
-      "title": "Return or undo",
-      "text": "Collect the result or backtrack before the next choice."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
-      "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "name": "board",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "path and recursion frame",
-      "purpose": "The partial choice path plus the current recursive frame before backtracking restores it. This page visualizes it as board state."
+      "name": "grid",
+      "purpose": "Holds a separate copy of the values so working changes do not overwrite the caller’s array."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by sudokuSolver after the maintained state reaches the stop rule."
+      "name": "index",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "boxRow",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "boxCol",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "r",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "c",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Base",
-      "title": "Check stop condition",
-      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail.",
       "activeLine": 5,
-      "codeInsight": "Defines sudokuSolver and names the input board; edits to those inputs change the visual state and output."
+      "codeInsight": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail."
     },
     {
-      "label": "Choice",
-      "title": "Select next option",
-      "note": "One valid move is added to the state.",
-      "activeLine": 5,
-      "codeInsight": "Defines sudokuSolver and names the input board; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Call",
-      "title": "Recurse deeper",
-      "note": "The same rule runs on a smaller or extended state.",
-      "activeLine": 6,
-      "codeInsight": "Prepares grid from the sample collection that the next visual step inspects."
-    },
-    {
-      "label": "Unwind",
-      "title": "Return or backtrack",
-      "note": "The result is combined or the choice is removed.",
-      "activeLine": 14,
-      "codeInsight": "Returns true, the boolean result reached by the highlighted checks."
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "If a cell already has 1 in its row, trying 1 is rejected before exploring the next cell.",
+      "activeLine": 9,
+      "codeInsight": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail."
     }
   ],
   "complexity": {
@@ -93,26 +87,26 @@ export const algorithmPage = {
     "space": "O(n) for tracked state when needed."
   },
   "quiz": {
-    "question": "Which state choice keeps Sudoku Solver correct?",
+    "question": "Which explanation best describes Sudoku Solver?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through Sudoku Solver's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Sudoku Solver stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Sudoku Solver needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail.",
+    "incorrectText": "Try again. A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "recursion-and-backtracking",
   "algorithmSlug": "sudoku-solver",
@@ -352,5 +346,232 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "If a cell already has 1 in its row, trying 1 is rejected before exploring the next cell.",
+    "sampleInput": [
+      [
+        [
+          5,
+          3,
+          0,
+          0,
+          7,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          1,
+          9,
+          5,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          9,
+          8,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          8,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          4,
+          0,
+          0,
+          8,
+          0,
+          3,
+          0,
+          0,
+          1
+        ],
+        [
+          7,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          6
+        ],
+        [
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          2,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          4,
+          1,
+          9,
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          8,
+          0,
+          0,
+          7,
+          9
+        ]
+      ]
+    ],
+    "sampleResult": [
+      [
+        5,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        1,
+        2
+      ],
+      [
+        6,
+        7,
+        2,
+        1,
+        9,
+        5,
+        3,
+        4,
+        8
+      ],
+      [
+        1,
+        9,
+        8,
+        3,
+        4,
+        2,
+        5,
+        6,
+        7
+      ],
+      [
+        8,
+        5,
+        9,
+        7,
+        6,
+        1,
+        4,
+        2,
+        3
+      ],
+      [
+        4,
+        2,
+        6,
+        8,
+        5,
+        3,
+        7,
+        9,
+        1
+      ],
+      [
+        7,
+        1,
+        3,
+        9,
+        2,
+        4,
+        8,
+        5,
+        6
+      ],
+      [
+        9,
+        6,
+        1,
+        5,
+        3,
+        7,
+        2,
+        8,
+        4
+      ],
+      [
+        2,
+        8,
+        7,
+        4,
+        1,
+        9,
+        6,
+        3,
+        5
+      ],
+      [
+        3,
+        4,
+        5,
+        2,
+        8,
+        6,
+        1,
+        7,
+        9
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: A Sudoku solver fills an empty cell with a digit that is absent from its row, column, and box, then backtracks if later choices fail."
+  },
+  "relatedLinks": []
 };

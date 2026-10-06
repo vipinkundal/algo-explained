@@ -138,3 +138,35 @@ For visual changes, browser-check representative pages from these families:
 - Do not add a C/C++ compiler for the current frontend-only runner model.
 - C/C++ reference source is shown as reference material; Runnable JS is the executable browser demo.
 - Prefer regenerating metadata with scripts when applying broad changes across many pages.
+
+## Beginner learning improvements
+
+Every one of the 242 lessons now includes a topic explanation, a small worked
+example, a visual model, named variables, vocabulary, and a sample result checked
+against the runnable JavaScript. Home provides a suggested beginner path and all
+16 subject groups; Search can filter by subject. Each lesson has visible
+Understand, Watch & try, and Check yourself stages.
+
+The growth explorer compares illustrative operation counts and doubled input
+sizes. It is a teaching aid rather than a runtime benchmark. Prepared diagrams
+and structure-only companions are labelled separately from executed JavaScript.
+
+Additional checks:
+
+```bash
+npm run check:learning
+npm run check:shell
+npm run check:interactions
+```
+
+`check:learning` validates all 242 registered lessons, renders all 726 topic views,
+checks related links and assets, and compares stored sample results with bounded
+JavaScript execution. `check:shell` covers 12 isolated app-view fixtures, including
+account and daily-quiz states, without creating accounts or changing progress.
+
+See [the coverage report](docs/learning-coverage-report.json) and
+[implementation and QA notes](docs/learning-improvements.md). To refresh the
+curated guides and sample results after source changes, run
+`node scripts/enrich-beginner-guides.mjs`. Review generated content before saving
+it over intentional per-lesson customizations. Other older content generators
+can overwrite lesson metadata; rerun this enrichment after using them.

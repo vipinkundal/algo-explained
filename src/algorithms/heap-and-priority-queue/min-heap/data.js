@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "queue",
   "codePath": "./src/algorithms/heap-and-priority-queue/min-heap/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Min Heap is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Min Heap keeps the smallest value at the root after each insertion.",
   "problem": "Min Heap keeps the smallest value at the root after each insertion.",
   "concept": "Min Heap is useful when queue behavior is the clearest model for the data changes. Use this when the problem is naturally described by first-in, first-out state.",
   "logicSummary": "Read the next value or operation, maintain first-in, first-out state, then enqueue, dequeue, peek, or evict entries.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Min Heap appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Min Heap when its state transition is the natural way to model the problem.",
   "memoryTrick": "Min Heap: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Min Heap is shown as queue state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Min Heap through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read queue",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n)."
   },
   "quiz": {
-    "question": "Which state choice keeps Min Heap correct?",
+    "question": "Which explanation best describes Min Heap?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Min Heap's transition.",
+        "text": "Min Heap keeps the smallest value at the root after each insertion.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Min Heap stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Min Heap needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Min Heap keeps the smallest value at the root after each insertion.",
+    "incorrectText": "Try again. Min Heap keeps the smallest value at the root after each insertion. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "heap-and-priority-queue",
   "algorithmSlug": "min-heap",
@@ -251,5 +251,42 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Read queue: Identify the next command, value, node, or library call. Inspect queue front: Look at the active queue fields. Enqueue / dequeue: enqueue, dequeue, peek, or evict entries. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      [
+        3,
+        1,
+        4,
+        2
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      4,
+      3
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Min Heap keeps the smallest value at the root after each insertion."
+  },
+  "relatedLinks": []
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/cycle-detection-directed/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Cycle Detection in Directed Graph is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Directed cycle detection finds a back edge into the active DFS recursion stack.",
   "problem": "Directed cycle detection finds a back edge into the active DFS recursion stack.",
   "concept": "A directed graph has a cycle when DFS reaches a vertex that is already on the current recursion path.",
   "logicSummary": "Keep two sets: visited for fully discovered vertices and active for the current DFS path.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use directed cycle detection for dependency graphs, course prerequisites, build pipelines, and import graphs.",
   "whenToUse": "Use it when edges have direction and you need to know whether any dependency chain loops back on itself.",
   "memoryTrick": "Directed cycle: visited means seen before; active means still on the current path.",
-  "visualizerCaption": "Watch the recursion stack highlight the back edge that proves a directed cycle.",
+  "visualizerCaption": "Explore Cycle Detection in Directed Graph through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Start DFS",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state keeps Cycle Detection in Directed Graph correct?",
+    "question": "Which explanation best describes Cycle Detection in Directed Graph?",
     "options": [
       {
         "key": "A",
-        "text": "visited follows the page's own transition rule.",
+        "text": "Directed cycle detection finds a back edge into the active DFS recursion stack.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Directed cycle detection finds a back edge into the active DFS recursion stack.",
+    "incorrectText": "Try again. Directed cycle detection finds a back edge into the active DFS recursion stack. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "cycle-detection-directed",
@@ -312,5 +312,47 @@ export const algorithmPage = {
       }
     ],
     "static": true
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A graph contains vertices (places) and edges (connections). Arrows mean a connection can be followed only in that direction.",
+    "family": "Graphs and connections",
+    "example": "Start DFS: Pick any unvisited vertex and begin a DFS path. Mark active: A vertex is active while its outgoing edges are still being explored. Check outgoing edges: A neighbor already in active is a back edge. Unwind or return true: Remove safe vertices from active, or stop immediately when a back edge is found.",
+    "sampleInput": [
+      {
+        "A": [
+          "B"
+        ],
+        "B": [
+          "C"
+        ],
+        "C": [
+          "D",
+          "E"
+        ],
+        "D": [
+          "B"
+        ],
+        "E": []
+      }
+    ],
+    "sampleResult": true,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Vertex",
+        "One point in a graph; also called a node."
+      ],
+      [
+        "Edge",
+        "A connection between vertices."
+      ],
+      [
+        "Visited",
+        "A record that a vertex has already been discovered."
+      ]
+    ],
+    "pitfall": "Mark discovered vertices to avoid repeating work. Check directedness and whether every component must be visited.",
+    "checkpoint": "Explain this in your own words: Directed cycle detection finds a back edge into the active DFS recursion stack."
+  },
+  "relatedLinks": []
 };

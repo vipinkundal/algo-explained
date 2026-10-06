@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/kosaraju/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Kosaraju’s Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Kosaraju's Algorithm finds strongly connected components with two DFS passes.",
   "problem": "Kosaraju's Algorithm finds strongly connected components with two DFS passes.",
   "concept": "The first DFS records finish order; the second DFS runs on the reversed graph in that order to collect SCCs.",
   "logicSummary": "Run DFS to fill a stack by finish time, reverse every edge, then pop vertices and collect reversed-graph components.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use Kosaraju for mutual reachability groups, module cycles, call graphs, and directed dependency analysis.",
   "whenToUse": "Use it when you need all strongly connected components and a clear two-pass DFS is acceptable.",
   "memoryTrick": "Kosaraju: finish order first, reverse roads second, collect islands third.",
-  "visualizerCaption": "Watch finish order and reversed-edge collection split the directed graph into SCCs.",
+  "visualizerCaption": "Explore Kosaraju’s Algorithm through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "First DFS",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V + E)."
   },
   "quiz": {
-    "question": "Which state keeps Kosaraju’s Algorithm correct?",
+    "question": "Which explanation best describes Kosaraju’s Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "order follows the page's own transition rule.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
-        "correct": false
+        "text": "Kosaraju's Algorithm finds strongly connected components with two DFS passes.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Kosaraju's Algorithm finds strongly connected components with two DFS passes.",
+    "incorrectText": "Try again. Kosaraju's Algorithm finds strongly connected components with two DFS passes. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "kosaraju",
@@ -318,5 +318,59 @@ export const algorithmPage = {
         "frontierNodes": []
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A graph contains vertices (places) and edges (connections). Arrows mean a connection can be followed only in that direction.",
+    "family": "Graphs and connections",
+    "example": "First DFS: Push each vertex after all outgoing work finishes. Reverse graph: Build a graph where every edge points backward. Pop finish order: Use the latest finishing vertex as the next root. Collect SCC: DFS on the reversed graph emits one strongly connected component.",
+    "sampleInput": [
+      {
+        "A": [
+          "B"
+        ],
+        "B": [
+          "C"
+        ],
+        "C": [
+          "A",
+          "D"
+        ],
+        "D": [
+          "E"
+        ],
+        "E": [
+          "D"
+        ]
+      }
+    ],
+    "sampleResult": [
+      [
+        "A",
+        "C",
+        "B"
+      ],
+      [
+        "D",
+        "E"
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Vertex",
+        "One point in a graph; also called a node."
+      ],
+      [
+        "Edge",
+        "A connection between vertices."
+      ],
+      [
+        "Visited",
+        "A record that a vertex has already been discovered."
+      ]
+    ],
+    "pitfall": "Mark discovered vertices to avoid repeating work. Check directedness and whether every component must be visited.",
+    "checkpoint": "Explain this in your own words: Kosaraju's Algorithm finds strongly connected components with two DFS passes."
+  },
+  "relatedLinks": []
 };

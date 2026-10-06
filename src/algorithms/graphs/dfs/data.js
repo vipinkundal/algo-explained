@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/dfs/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Depth-First Search is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Depth-First Search follows one graph branch until it cannot continue, then backtracks.",
   "problem": "Depth-First Search follows one graph branch until it cannot continue, then backtracks.",
   "concept": "DFS uses recursion or an explicit stack to keep the current path active while deeper vertices are explored first.",
   "logicSummary": "Visit a node, mark it, recursively visit each unseen neighbor, then backtrack to the previous call.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use DFS for connected components, cycle checks, topological ordering, maze exploration, and tree-style graph problems.",
   "whenToUse": "Use DFS when the answer depends on reachability, exhaustive branch exploration, or entry/exit timing.",
   "memoryTrick": "DFS dives first, then comes back for siblings.",
-  "visualizerCaption": "Watch the recursion path grow and shrink as DFS explores one branch before its siblings.",
+  "visualizerCaption": "Explore Depth-First Search through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Enter a vertex",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V) for visited plus recursion stack."
   },
   "quiz": {
-    "question": "Which state keeps Depth-First Search correct?",
+    "question": "Which explanation best describes Depth-First Search?",
     "options": [
       {
         "key": "A",
-        "text": "visited follows the page's own transition rule.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
-        "correct": false
+        "text": "Depth-First Search follows one graph branch until it cannot continue, then backtracks.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Depth-First Search follows one graph branch until it cannot continue, then backtracks.",
+    "incorrectText": "Try again. Depth-First Search follows one graph branch until it cannot continue, then backtracks. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "dfs",
@@ -319,5 +319,55 @@ export const algorithmPage = {
       }
     ],
     "static": true
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A graph contains vertices (places) and edges (connections). Arrows mean a connection can be followed only in that direction.",
+    "family": "Graphs and connections",
+    "example": "Enter a vertex: If it was already visited, return immediately. Mark and record: Mark the vertex visited and append it to traversal order. Recurse into neighbors: The first unseen neighbor becomes the next active call. Backtrack: When a node has no unseen neighbors, control returns to its parent call.",
+    "sampleInput": [
+      {
+        "A": [
+          "B",
+          "C"
+        ],
+        "B": [
+          "D",
+          "E"
+        ],
+        "C": [
+          "F"
+        ],
+        "D": [],
+        "E": [],
+        "F": []
+      },
+      "A"
+    ],
+    "sampleResult": [
+      "A",
+      "B",
+      "D",
+      "E",
+      "C",
+      "F"
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Vertex",
+        "One point in a graph; also called a node."
+      ],
+      [
+        "Edge",
+        "A connection between vertices."
+      ],
+      [
+        "Visited",
+        "A record that a vertex has already been discovered."
+      ]
+    ],
+    "pitfall": "Mark discovered vertices to avoid repeating work. Check directedness and whether every component must be visited.",
+    "checkpoint": "Explain this in your own words: Depth-First Search follows one graph branch until it cannot continue, then backtracks."
+  },
+  "relatedLinks": []
 };

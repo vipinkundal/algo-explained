@@ -1,0 +1,1696 @@
+[
+  {
+    "id": "difference-array",
+    "route": "/algorithms/array-patterns/difference-array",
+    "file": "src/algorithms/array-patterns/difference-array/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "dutch-national-flag",
+    "route": "/algorithms/array-patterns/dutch-national-flag",
+    "file": "src/algorithms/array-patterns/dutch-national-flag/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "kadanes-algorithm",
+    "route": "/algorithms/array-patterns/kadanes-algorithm",
+    "file": "src/algorithms/array-patterns/kadanes-algorithm/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "longest-consecutive-sequence",
+    "route": "/algorithms/array-patterns/longest-consecutive-sequence",
+    "file": "src/algorithms/array-patterns/longest-consecutive-sequence/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "majority-element",
+    "route": "/algorithms/array-patterns/majority-element",
+    "file": "src/algorithms/array-patterns/majority-element/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "maximum-product-subarray",
+    "route": "/algorithms/array-patterns/maximum-product-subarray",
+    "file": "src/algorithms/array-patterns/maximum-product-subarray/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "prefix-sum",
+    "route": "/algorithms/array-patterns/prefix-sum",
+    "file": "src/algorithms/array-patterns/prefix-sum/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "sliding-window",
+    "route": "/algorithms/array-patterns/sliding-window",
+    "file": "src/algorithms/array-patterns/sliding-window/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "two-pointers",
+    "route": "/algorithms/array-patterns/two-pointers",
+    "file": "src/algorithms/array-patterns/two-pointers/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-accumulate",
+    "route": "/algorithms/cpp-stl/accumulate",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-accumulate/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-binary-search",
+    "route": "/algorithms/cpp-stl/binary-search",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-binary-search/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-lower-bound",
+    "route": "/algorithms/cpp-stl/lower-bound",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-lower-bound/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-map-set",
+    "route": "/algorithms/cpp-stl/map-set",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-map-set/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-max-min-element",
+    "route": "/algorithms/cpp-stl/max-min-element",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-max-min-element/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-next-permutation",
+    "route": "/algorithms/cpp-stl/next-permutation",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-next-permutation/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-priority-queue",
+    "route": "/algorithms/cpp-stl/priority-queue",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-priority-queue/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-reverse",
+    "route": "/algorithms/cpp-stl/reverse",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-reverse/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-sort",
+    "route": "/algorithms/cpp-stl/sort",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-sort/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-unique",
+    "route": "/algorithms/cpp-stl/unique",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-unique/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-unordered-map-set",
+    "route": "/algorithms/cpp-stl/unordered-map-set",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-unordered-map-set/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cpp-upper-bound",
+    "route": "/algorithms/cpp-stl/upper-bound",
+    "file": "src/algorithms/c-stl-algorithm-pages/cpp-upper-bound/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-binary-search",
+    "route": "/algorithms/data-structures/array-adt-binary-search",
+    "file": "src/algorithms/data-structures/array-adt-binary-search/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-check-if-sorted",
+    "route": "/algorithms/data-structures/array-adt-check-if-sorted",
+    "file": "src/algorithms/data-structures/array-adt-check-if-sorted/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-creating-array-of-desired-size",
+    "route": "/algorithms/data-structures/array-adt-creating-array-of-desired-size",
+    "file": "src/algorithms/data-structures/array-adt-creating-array-of-desired-size/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-deletion",
+    "route": "/algorithms/data-structures/array-adt-deletion",
+    "file": "src/algorithms/data-structures/array-adt-deletion/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-duplicate",
+    "route": "/algorithms/data-structures/array-adt-duplicate",
+    "file": "src/algorithms/data-structures/array-adt-duplicate/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-finding-missing-element",
+    "route": "/algorithms/data-structures/array-adt-finding-missing-element",
+    "file": "src/algorithms/data-structures/array-adt-finding-missing-element/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-get-set-max-sum",
+    "route": "/algorithms/data-structures/array-adt-get-set-max-sum",
+    "file": "src/algorithms/data-structures/array-adt-get-set-max-sum/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-inserting-in-sorted-array",
+    "route": "/algorithms/data-structures/array-adt-inserting-in-sorted-array",
+    "file": "src/algorithms/data-structures/array-adt-inserting-in-sorted-array/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-linear-search",
+    "route": "/algorithms/data-structures/array-adt-linear-search",
+    "file": "src/algorithms/data-structures/array-adt-linear-search/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-linear-search-transposition",
+    "route": "/algorithms/data-structures/array-adt-linear-search-transposition",
+    "file": "src/algorithms/data-structures/array-adt-linear-search-transposition/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-max-and-min",
+    "route": "/algorithms/data-structures/array-adt-max-and-min",
+    "file": "src/algorithms/data-structures/array-adt-max-and-min/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-menu",
+    "route": "/algorithms/data-structures/array-adt-menu",
+    "file": "src/algorithms/data-structures/array-adt-menu/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-merging-array",
+    "route": "/algorithms/data-structures/array-adt-merging-array",
+    "file": "src/algorithms/data-structures/array-adt-merging-array/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-negative-values",
+    "route": "/algorithms/data-structures/array-adt-negative-values",
+    "file": "src/algorithms/data-structures/array-adt-negative-values/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-reverse-and-shift-of-an-array",
+    "route": "/algorithms/data-structures/array-adt-reverse-and-shift-of-an-array",
+    "file": "src/algorithms/data-structures/array-adt-reverse-and-shift-of-an-array/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-set",
+    "route": "/algorithms/data-structures/array-adt-set",
+    "file": "src/algorithms/data-structures/array-adt-set/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-adt-sum-of-k",
+    "route": "/algorithms/data-structures/array-adt-sum-of-k",
+    "file": "src/algorithms/data-structures/array-adt-sum-of-k/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-representation-d-array",
+    "route": "/algorithms/data-structures/array-representation-d-array",
+    "file": "src/algorithms/data-structures/array-representation-d-array/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-representation-increasing-array-size",
+    "route": "/algorithms/data-structures/array-representation-increasing-array-size",
+    "file": "src/algorithms/data-structures/array-representation-increasing-array-size/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-array-representation-static-array-and-dynamic-array",
+    "route": "/algorithms/data-structures/array-representation-static-array-and-dynamic-array",
+    "file": "src/algorithms/data-structures/array-representation-static-array-and-dynamic-array/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-avl-ll-rotation",
+    "route": "/algorithms/data-structures/avl-ll-rotation",
+    "file": "src/algorithms/data-structures/avl-ll-rotation/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-binary-tree-creation",
+    "route": "/algorithms/data-structures/binary-tree-creation",
+    "file": "src/algorithms/data-structures/binary-tree-creation/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-binary-tree-level-order",
+    "route": "/algorithms/data-structures/binary-tree-level-order",
+    "file": "src/algorithms/data-structures/binary-tree-level-order/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-binary-tree-traversal",
+    "route": "/algorithms/data-structures/binary-tree-traversal",
+    "file": "src/algorithms/data-structures/binary-tree-traversal/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-bst-basics",
+    "route": "/algorithms/data-structures/bst-basics",
+    "file": "src/algorithms/data-structures/bst-basics/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-circular-queue",
+    "route": "/algorithms/data-structures/circular-queue",
+    "file": "src/algorithms/data-structures/circular-queue/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-above-program-as-template-class",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-above-program-as-template-class",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-above-program-as-template-class/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-array-as-parameter",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-array-as-parameter",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-array-as-parameter/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-basic-array",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-basic-array",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-basic-array/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-functions",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-functions",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-functions/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-modular-with-structure-programming-style",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-modular-with-structure-programming-style",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-modular-with-structure-programming-style/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-monolithic-program",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-monolithic-program",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-monolithic-program/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-oop-style",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-oop-style",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-oop-style/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-pointer",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-pointer",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-pointer/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-pointer-to-structure",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-pointer-to-structure",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-pointer-to-structure/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-rectangle-class-with-oop",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-rectangle-class-with-oop",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-rectangle-class-with-oop/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-reference",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-reference",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-reference/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-structure",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-structure",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-structure/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-essential-c-and-cpp-structure-as-parameter",
+    "route": "/algorithms/data-structures/essential-c-and-cpp-structure-as-parameter",
+    "file": "src/algorithms/data-structures/essential-c-and-cpp-structure-as-parameter/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-heap-creation",
+    "route": "/algorithms/data-structures/heap-creation",
+    "file": "src/algorithms/data-structures/heap-creation/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-cdoublell",
+    "route": "/algorithms/data-structures/linked-list-cdoublell",
+    "file": "src/algorithms/data-structures/linked-list-cdoublell/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-circular-linkedlist",
+    "route": "/algorithms/data-structures/linked-list-circular-linkedlist",
+    "file": "src/algorithms/data-structures/linked-list-circular-linkedlist/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-concatenate-and-merge-linked-list",
+    "route": "/algorithms/data-structures/linked-list-concatenate-and-merge-linked-list",
+    "file": "src/algorithms/data-structures/linked-list-concatenate-and-merge-linked-list/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-count-and-sum",
+    "route": "/algorithms/data-structures/linked-list-count-and-sum",
+    "file": "src/algorithms/data-structures/linked-list-count-and-sum/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-deleting-from-circular-linked-list",
+    "route": "/algorithms/data-structures/linked-list-deleting-from-circular-linked-list",
+    "file": "src/algorithms/data-structures/linked-list-deleting-from-circular-linked-list/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-deleting-in-linked-list",
+    "route": "/algorithms/data-structures/linked-list-deleting-in-linked-list",
+    "file": "src/algorithms/data-structures/linked-list-deleting-in-linked-list/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-display-linked-list",
+    "route": "/algorithms/data-structures/linked-list-display-linked-list",
+    "file": "src/algorithms/data-structures/linked-list-display-linked-list/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-doubly-ll",
+    "route": "/algorithms/data-structures/linked-list-doubly-ll",
+    "file": "src/algorithms/data-structures/linked-list-doubly-ll/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-insert-circular-linked-list",
+    "route": "/algorithms/data-structures/linked-list-insert-circular-linked-list",
+    "file": "src/algorithms/data-structures/linked-list-insert-circular-linked-list/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-inserting-in-sorted-linked-list",
+    "route": "/algorithms/data-structures/linked-list-inserting-in-sorted-linked-list",
+    "file": "src/algorithms/data-structures/linked-list-inserting-in-sorted-linked-list/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-insertion",
+    "route": "/algorithms/data-structures/linked-list-insertion",
+    "file": "src/algorithms/data-structures/linked-list-insertion/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-isloop",
+    "route": "/algorithms/data-structures/linked-list-isloop",
+    "file": "src/algorithms/data-structures/linked-list-isloop/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-linear-search",
+    "route": "/algorithms/data-structures/linked-list-linear-search",
+    "file": "src/algorithms/data-structures/linked-list-linear-search/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-linked-list-in-class",
+    "route": "/algorithms/data-structures/linked-list-linked-list-in-class",
+    "file": "src/algorithms/data-structures/linked-list-linked-list-in-class/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-max-linked-list",
+    "route": "/algorithms/data-structures/linked-list-max-linked-list",
+    "file": "src/algorithms/data-structures/linked-list-max-linked-list/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-middlenode-and-intersection-of-two-ll",
+    "route": "/algorithms/data-structures/linked-list-middlenode-and-intersection-of-two-ll",
+    "file": "src/algorithms/data-structures/linked-list-middlenode-and-intersection-of-two-ll/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-recursively-display-linked-list",
+    "route": "/algorithms/data-structures/linked-list-recursively-display-linked-list",
+    "file": "src/algorithms/data-structures/linked-list-recursively-display-linked-list/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-remove-duplicate-data",
+    "route": "/algorithms/data-structures/linked-list-remove-duplicate-data",
+    "file": "src/algorithms/data-structures/linked-list-remove-duplicate-data/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-reverse-linked-list",
+    "route": "/algorithms/data-structures/linked-list-reverse-linked-list",
+    "file": "src/algorithms/data-structures/linked-list-reverse-linked-list/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-linked-list-sorted-checking",
+    "route": "/algorithms/data-structures/linked-list-sorted-checking",
+    "file": "src/algorithms/data-structures/linked-list-sorted-checking/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-matrix-c-cpp-lower-triangular-matrix",
+    "route": "/algorithms/data-structures/matrix-c-cpp-lower-triangular-matrix",
+    "file": "src/algorithms/data-structures/matrix-c-cpp-lower-triangular-matrix/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-matrix-diagonal-matrix",
+    "route": "/algorithms/data-structures/matrix-diagonal-matrix",
+    "file": "src/algorithms/data-structures/matrix-diagonal-matrix/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-matrix-diagonal-matrix-with-c-cpp-class",
+    "route": "/algorithms/data-structures/matrix-diagonal-matrix-with-c-cpp-class",
+    "file": "src/algorithms/data-structures/matrix-diagonal-matrix-with-c-cpp-class/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-matrix-lower-triangular-matrix",
+    "route": "/algorithms/data-structures/matrix-lower-triangular-matrix",
+    "file": "src/algorithms/data-structures/matrix-lower-triangular-matrix/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-queue-array-enqueue-dequeue",
+    "route": "/algorithms/data-structures/queue-array-enqueue-dequeue",
+    "file": "src/algorithms/data-structures/queue-array-enqueue-dequeue/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-queue-using-linked-list",
+    "route": "/algorithms/data-structures/queue-using-linked-list",
+    "file": "src/algorithms/data-structures/queue-using-linked-list/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-exponent",
+    "route": "/algorithms/data-structures/recursion-exponent",
+    "file": "src/algorithms/data-structures/recursion-exponent/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-factorial",
+    "route": "/algorithms/data-structures/recursion-factorial",
+    "file": "src/algorithms/data-structures/recursion-factorial/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-fibonacci",
+    "route": "/algorithms/data-structures/recursion-fibonacci",
+    "file": "src/algorithms/data-structures/recursion-fibonacci/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-first-recursion-program",
+    "route": "/algorithms/data-structures/recursion-first-recursion-program",
+    "file": "src/algorithms/data-structures/recursion-first-recursion-program/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-indirect-recursion",
+    "route": "/algorithms/data-structures/recursion-indirect-recursion",
+    "file": "src/algorithms/data-structures/recursion-indirect-recursion/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-ncr",
+    "route": "/algorithms/data-structures/recursion-ncr",
+    "file": "src/algorithms/data-structures/recursion-ncr/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-nested-recursion",
+    "route": "/algorithms/data-structures/recursion-nested-recursion",
+    "file": "src/algorithms/data-structures/recursion-nested-recursion/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-static-variable-in-recursion",
+    "route": "/algorithms/data-structures/recursion-static-variable-in-recursion",
+    "file": "src/algorithms/data-structures/recursion-static-variable-in-recursion/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-sum-of-first-n-natural-number",
+    "route": "/algorithms/data-structures/recursion-sum-of-first-n-natural-number",
+    "file": "src/algorithms/data-structures/recursion-sum-of-first-n-natural-number/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-taylor-series",
+    "route": "/algorithms/data-structures/recursion-taylor-series",
+    "file": "src/algorithms/data-structures/recursion-taylor-series/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-taylor-series-using-horners-rule",
+    "route": "/algorithms/data-structures/recursion-taylor-series-using-horners-rule",
+    "file": "src/algorithms/data-structures/recursion-taylor-series-using-horners-rule/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-toh",
+    "route": "/algorithms/data-structures/recursion-toh",
+    "file": "src/algorithms/data-structures/recursion-toh/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-recursion-tree-recursion",
+    "route": "/algorithms/data-structures/recursion-tree-recursion",
+    "file": "src/algorithms/data-structures/recursion-tree-recursion/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-sparse-matrix-addition",
+    "route": "/algorithms/data-structures/sparse-matrix-addition",
+    "file": "src/algorithms/data-structures/sparse-matrix-addition/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-sparse-matrix-and-polynimial-representation-polynomial-linked-list",
+    "route": "/algorithms/data-structures/sparse-matrix-and-polynimial-representation-polynomial-linked-list",
+    "file": "src/algorithms/data-structures/sparse-matrix-and-polynimial-representation-polynomial-linked-list/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-sparse-matrix-and-polynimial-representation-sparse-matrix",
+    "route": "/algorithms/data-structures/sparse-matrix-and-polynimial-representation-sparse-matrix",
+    "file": "src/algorithms/data-structures/sparse-matrix-and-polynimial-representation-sparse-matrix/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-sparse-matrix-creation-and-display-of-sparse-matrix",
+    "route": "/algorithms/data-structures/sparse-matrix-creation-and-display-of-sparse-matrix",
+    "file": "src/algorithms/data-structures/sparse-matrix-creation-and-display-of-sparse-matrix/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-sparse-matrix-polynomial-representation",
+    "route": "/algorithms/data-structures/sparse-matrix-polynomial-representation",
+    "file": "src/algorithms/data-structures/sparse-matrix-polynomial-representation/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-sparse-matrix-sparse-matrix-using-c-cpp",
+    "route": "/algorithms/data-structures/sparse-matrix-sparse-matrix-using-c-cpp",
+    "file": "src/algorithms/data-structures/sparse-matrix-sparse-matrix-using-c-cpp/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-stack-infix-to-postfix",
+    "route": "/algorithms/data-structures/stack-infix-to-postfix",
+    "file": "src/algorithms/data-structures/stack-infix-to-postfix/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-stack-infix-to-postfix-2",
+    "route": "/algorithms/data-structures/stack-infix-to-postfix-2",
+    "file": "src/algorithms/data-structures/stack-infix-to-postfix-2/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-stack-parenthesis-is-balanced",
+    "route": "/algorithms/data-structures/stack-parenthesis-is-balanced",
+    "file": "src/algorithms/data-structures/stack-parenthesis-is-balanced/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-stack-parenthesis-is-balanced-extended",
+    "route": "/algorithms/data-structures/stack-parenthesis-is-balanced-extended",
+    "file": "src/algorithms/data-structures/stack-parenthesis-is-balanced-extended/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-stack-postfix-eval",
+    "route": "/algorithms/data-structures/stack-postfix-eval",
+    "file": "src/algorithms/data-structures/stack-postfix-eval/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-stack-stack-using-ll",
+    "route": "/algorithms/data-structures/stack-stack-using-ll",
+    "file": "src/algorithms/data-structures/stack-stack-using-ll/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-stack-using-array",
+    "route": "/algorithms/data-structures/stack-using-array",
+    "file": "src/algorithms/data-structures/stack-using-array/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-string-anagram",
+    "route": "/algorithms/data-structures/string-anagram",
+    "file": "src/algorithms/data-structures/string-anagram/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-string-changing-case",
+    "route": "/algorithms/data-structures/string-changing-case",
+    "file": "src/algorithms/data-structures/string-changing-case/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-string-comparing-string",
+    "route": "/algorithms/data-structures/string-comparing-string",
+    "file": "src/algorithms/data-structures/string-comparing-string/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-string-duplicates",
+    "route": "/algorithms/data-structures/string-duplicates",
+    "file": "src/algorithms/data-structures/string-duplicates/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-string-duplicates-with-bitwise-operator",
+    "route": "/algorithms/data-structures/string-duplicates-with-bitwise-operator",
+    "file": "src/algorithms/data-structures/string-duplicates-with-bitwise-operator/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-string-permutation",
+    "route": "/algorithms/data-structures/string-permutation",
+    "file": "src/algorithms/data-structures/string-permutation/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-string-permutation-2",
+    "route": "/algorithms/data-structures/string-permutation-2",
+    "file": "src/algorithms/data-structures/string-permutation-2/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-string-reverse-string",
+    "route": "/algorithms/data-structures/string-reverse-string",
+    "file": "src/algorithms/data-structures/string-reverse-string/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-string-string",
+    "route": "/algorithms/data-structures/string-string",
+    "file": "src/algorithms/data-structures/string-string/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-string-valid",
+    "route": "/algorithms/data-structures/string-valid",
+    "file": "src/algorithms/data-structures/string-valid/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-string-vowels-no-of-words",
+    "route": "/algorithms/data-structures/string-vowels-no-of-words",
+    "file": "src/algorithms/data-structures/string-vowels-no-of-words/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-trees-height-and-count",
+    "route": "/algorithms/data-structures/trees-height-and-count",
+    "file": "src/algorithms/data-structures/trees-height-and-count/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-trees-node",
+    "route": "/algorithms/data-structures/trees-node",
+    "file": "src/algorithms/data-structures/trees-node/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-trees-queue",
+    "route": "/algorithms/data-structures/trees-queue",
+    "file": "src/algorithms/data-structures/trees-queue/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "ds-trees-stack",
+    "route": "/algorithms/data-structures/trees-stack",
+    "file": "src/algorithms/data-structures/trees-stack/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "coin-change",
+    "route": "/algorithms/dynamic-programming/coin-change",
+    "file": "src/algorithms/dynamic-programming/coin-change/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "dp-on-grids",
+    "route": "/algorithms/dynamic-programming/dp-on-grids",
+    "file": "src/algorithms/dynamic-programming/dp-on-grids/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "dp-on-trees",
+    "route": "/algorithms/dynamic-programming/dp-on-trees",
+    "file": "src/algorithms/dynamic-programming/dp-on-trees/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "edit-distance",
+    "route": "/algorithms/dynamic-programming/edit-distance",
+    "file": "src/algorithms/dynamic-programming/edit-distance/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "fibonacci-dp",
+    "route": "/algorithms/dynamic-programming/fibonacci-dp",
+    "file": "src/algorithms/dynamic-programming/fibonacci-dp/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "longest-common-subsequence",
+    "route": "/algorithms/dynamic-programming/longest-common-subsequence",
+    "file": "src/algorithms/dynamic-programming/longest-common-subsequence/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "longest-increasing-subsequence",
+    "route": "/algorithms/dynamic-programming/longest-increasing-subsequence",
+    "file": "src/algorithms/dynamic-programming/longest-increasing-subsequence/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "matrix-chain-multiplication",
+    "route": "/algorithms/dynamic-programming/matrix-chain-multiplication",
+    "file": "src/algorithms/dynamic-programming/matrix-chain-multiplication/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "partition-dp",
+    "route": "/algorithms/dynamic-programming/partition-dp",
+    "file": "src/algorithms/dynamic-programming/partition-dp/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "zero-one-knapsack",
+    "route": "/algorithms/dynamic-programming/zero-one-knapsack",
+    "file": "src/algorithms/dynamic-programming/zero-one-knapsack/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "backtracking-basics",
+    "route": "/algorithms/foundations/backtracking-basics",
+    "file": "src/algorithms/foundations/backtracking-basics/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "dynamic-programming-basics",
+    "route": "/algorithms/foundations/dynamic-programming-basics",
+    "file": "src/algorithms/foundations/dynamic-programming-basics/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "greedy-basics",
+    "route": "/algorithms/foundations/greedy-basics",
+    "file": "src/algorithms/foundations/greedy-basics/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "hashing-basics",
+    "route": "/algorithms/foundations/hashing-basics",
+    "file": "src/algorithms/foundations/hashing-basics/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "recursion-basics",
+    "route": "/algorithms/foundations/recursion-basics",
+    "file": "src/algorithms/foundations/recursion-basics/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "space-complexity-basics",
+    "route": "/algorithms/foundations/space-complexity-basics",
+    "file": "src/algorithms/foundations/space-complexity-basics/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "time-complexity-basics",
+    "route": "/algorithms/foundations/time-complexity-basics",
+    "file": "src/algorithms/foundations/time-complexity-basics/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "bellman-ford",
+    "route": "/algorithms/graphs/bellman-ford",
+    "file": "src/algorithms/graphs/bellman-ford/data.js",
+    "family": "edge-relaxation",
+    "sampleError": ""
+  },
+  {
+    "id": "bfs",
+    "route": "/algorithms/graphs/bfs",
+    "file": "src/algorithms/graphs/bfs/data.js",
+    "family": "graph-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cycle-detection-directed",
+    "route": "/algorithms/graphs/cycle-detection-directed",
+    "file": "src/algorithms/graphs/cycle-detection-directed/data.js",
+    "family": "graph-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "cycle-detection-undirected",
+    "route": "/algorithms/graphs/cycle-detection-undirected",
+    "file": "src/algorithms/graphs/cycle-detection-undirected/data.js",
+    "family": "graph-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "dfs",
+    "route": "/algorithms/graphs/dfs",
+    "file": "src/algorithms/graphs/dfs/data.js",
+    "family": "graph-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "dijkstra",
+    "route": "/algorithms/graphs/dijkstra",
+    "file": "src/algorithms/graphs/dijkstra/data.js",
+    "family": "edge-relaxation",
+    "sampleError": ""
+  },
+  {
+    "id": "floyd-warshall",
+    "route": "/algorithms/graphs/floyd-warshall",
+    "file": "src/algorithms/graphs/floyd-warshall/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "kosaraju",
+    "route": "/algorithms/graphs/kosaraju",
+    "file": "src/algorithms/graphs/kosaraju/data.js",
+    "family": "graph-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "kruskal",
+    "route": "/algorithms/graphs/kruskal",
+    "file": "src/algorithms/graphs/kruskal/data.js",
+    "family": "graph-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "prim",
+    "route": "/algorithms/graphs/prim",
+    "file": "src/algorithms/graphs/prim/data.js",
+    "family": "graph-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "tarjan",
+    "route": "/algorithms/graphs/tarjan",
+    "file": "src/algorithms/graphs/tarjan/data.js",
+    "family": "graph-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "topological-sort",
+    "route": "/algorithms/graphs/topological-sort",
+    "file": "src/algorithms/graphs/topological-sort/data.js",
+    "family": "graph-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "union-find",
+    "route": "/algorithms/graphs/union-find",
+    "file": "src/algorithms/graphs/union-find/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "heapify",
+    "route": "/algorithms/heaps/heapify",
+    "file": "src/algorithms/heap-and-priority-queue/heapify/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "kth-largest-smallest",
+    "route": "/algorithms/heaps/kth-largest-smallest",
+    "file": "src/algorithms/heap-and-priority-queue/kth-largest-smallest/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "max-heap",
+    "route": "/algorithms/heaps/max-heap",
+    "file": "src/algorithms/heap-and-priority-queue/max-heap/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "merge-k-sorted-lists",
+    "route": "/algorithms/heaps/merge-k-sorted-lists",
+    "file": "src/algorithms/heap-and-priority-queue/merge-k-sorted-lists/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "min-heap",
+    "route": "/algorithms/heaps/min-heap",
+    "file": "src/algorithms/heap-and-priority-queue/min-heap/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "top-k-frequent-elements",
+    "route": "/algorithms/heaps/top-k-frequent-elements",
+    "file": "src/algorithms/heap-and-priority-queue/top-k-frequent-elements/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "flood-fill",
+    "route": "/algorithms/matrix/flood-fill",
+    "file": "src/algorithms/matrix-and-grid/flood-fill/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "island-counting",
+    "route": "/algorithms/matrix/island-counting",
+    "file": "src/algorithms/matrix-and-grid/island-counting/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "matrix-traversal",
+    "route": "/algorithms/matrix/matrix-traversal",
+    "file": "src/algorithms/matrix-and-grid/matrix-traversal/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "prefix-sum-matrix",
+    "route": "/algorithms/matrix/prefix-sum-matrix",
+    "file": "src/algorithms/matrix-and-grid/prefix-sum-matrix/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "rotate-matrix",
+    "route": "/algorithms/matrix/rotate-matrix",
+    "file": "src/algorithms/matrix-and-grid/rotate-matrix/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "search-in-sorted-matrix",
+    "route": "/algorithms/matrix/search-in-sorted-matrix",
+    "file": "src/algorithms/matrix-and-grid/search-in-sorted-matrix/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "spiral-matrix",
+    "route": "/algorithms/matrix/spiral-matrix",
+    "file": "src/algorithms/matrix-and-grid/spiral-matrix/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "bit-basics",
+    "route": "/algorithms/bit-manipulation/bit-basics",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/bit-basics/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "bitmasking-subsets",
+    "route": "/algorithms/bit-manipulation/bitmasking-subsets",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/bitmasking-subsets/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "count-set-bits",
+    "route": "/algorithms/bit-manipulation/count-set-bits",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/count-set-bits/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "fast-power",
+    "route": "/algorithms/number-theory/fast-power",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/fast-power/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "gcd-euclidean",
+    "route": "/algorithms/number-theory/gcd-euclidean",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/gcd-euclidean/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "lcm",
+    "route": "/algorithms/number-theory/lcm",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/lcm/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "modular-exponentiation",
+    "route": "/algorithms/number-theory/modular-exponentiation",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/modular-exponentiation/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "modular-inverse",
+    "route": "/algorithms/number-theory/modular-inverse",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/modular-inverse/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "power-of-two",
+    "route": "/algorithms/bit-manipulation/power-of-two",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/power-of-two/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "prime-checking",
+    "route": "/algorithms/number-theory/prime-checking",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/prime-checking/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "sieve-of-eratosthenes",
+    "route": "/algorithms/number-theory/sieve-of-eratosthenes",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/sieve-of-eratosthenes/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "single-number",
+    "route": "/algorithms/bit-manipulation/single-number",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/single-number/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "xor-tricks",
+    "route": "/algorithms/bit-manipulation/xor-tricks",
+    "file": "src/algorithms/number-theory-and-bit-manipulation/xor-tricks/data.js",
+    "family": "state-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "circular-queue",
+    "route": "/algorithms/queue/circular-queue",
+    "file": "src/algorithms/queue/circular-queue/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "deque",
+    "route": "/algorithms/queue/deque",
+    "file": "src/algorithms/queue/deque/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "lru-cache",
+    "route": "/algorithms/queue/lru-cache",
+    "file": "src/algorithms/queue/lru-cache/data.js",
+    "family": "linked-list-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "queue-basics",
+    "route": "/algorithms/queue/queue-basics",
+    "file": "src/algorithms/queue/queue-basics/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "sliding-window-maximum",
+    "route": "/algorithms/queue/sliding-window-maximum",
+    "file": "src/algorithms/queue/sliding-window-maximum/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "combination-sum",
+    "route": "/algorithms/backtracking/combination-sum",
+    "file": "src/algorithms/recursion-and-backtracking/combination-sum/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "factorial-recursion",
+    "route": "/algorithms/recursion/factorial-recursion",
+    "file": "src/algorithms/recursion-and-backtracking/factorial-recursion/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "fibonacci-recursion",
+    "route": "/algorithms/recursion/fibonacci-recursion",
+    "file": "src/algorithms/recursion-and-backtracking/fibonacci-recursion/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "generate-parentheses",
+    "route": "/algorithms/backtracking/generate-parentheses",
+    "file": "src/algorithms/recursion-and-backtracking/generate-parentheses/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "n-queens",
+    "route": "/algorithms/backtracking/n-queens",
+    "file": "src/algorithms/recursion-and-backtracking/n-queens/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "permutations",
+    "route": "/algorithms/backtracking/permutations",
+    "file": "src/algorithms/recursion-and-backtracking/permutations/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "rat-in-a-maze",
+    "route": "/algorithms/backtracking/rat-in-a-maze",
+    "file": "src/algorithms/recursion-and-backtracking/rat-in-a-maze/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "subsets",
+    "route": "/algorithms/backtracking/subsets",
+    "file": "src/algorithms/recursion-and-backtracking/subsets/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "sudoku-solver",
+    "route": "/algorithms/backtracking/sudoku-solver",
+    "file": "src/algorithms/recursion-and-backtracking/sudoku-solver/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "tower-of-hanoi",
+    "route": "/algorithms/recursion/tower-of-hanoi",
+    "file": "src/algorithms/recursion-and-backtracking/tower-of-hanoi/data.js",
+    "family": "recursion-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "word-search",
+    "route": "/algorithms/backtracking/word-search",
+    "file": "src/algorithms/recursion-and-backtracking/word-search/data.js",
+    "family": "matrix-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "binary-search",
+    "route": "/algorithms/searching/binary-search",
+    "file": "src/algorithms/searching/binary-search/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "linear-search",
+    "route": "/algorithms/searching/linear-search",
+    "file": "src/algorithms/searching/linear-search/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "lower-bound",
+    "route": "/algorithms/searching/lower-bound",
+    "file": "src/algorithms/searching/lower-bound/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "search-in-rotated-sorted-array",
+    "route": "/algorithms/searching/search-in-rotated-sorted-array",
+    "file": "src/algorithms/searching/search-in-rotated-sorted-array/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "ternary-search",
+    "route": "/algorithms/searching/ternary-search",
+    "file": "src/algorithms/searching/ternary-search/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "upper-bound",
+    "route": "/algorithms/searching/upper-bound",
+    "file": "src/algorithms/searching/upper-bound/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "bubble-sort",
+    "route": "/algorithms/sorting/bubble-sort",
+    "file": "src/algorithms/sorting/bubble-sort/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "bucket-sort",
+    "route": "/algorithms/sorting/bucket-sort",
+    "file": "src/algorithms/sorting/bucket-sort/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "counting-sort",
+    "route": "/algorithms/sorting/counting-sort",
+    "file": "src/algorithms/sorting/counting-sort/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "heap-sort",
+    "route": "/algorithms/sorting/heap-sort",
+    "file": "src/algorithms/sorting/heap-sort/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "insertion-sort",
+    "route": "/algorithms/sorting/insertion-sort",
+    "file": "src/algorithms/sorting/insertion-sort/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "merge-sort",
+    "route": "/algorithms/sorting/merge-sort",
+    "file": "src/algorithms/sorting/merge-sort/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "quick-sort",
+    "route": "/algorithms/sorting/quick-sort",
+    "file": "src/algorithms/sorting/quick-sort/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "radix-sort",
+    "route": "/algorithms/sorting/radix-sort",
+    "file": "src/algorithms/sorting/radix-sort/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "selection-sort",
+    "route": "/algorithms/sorting/selection-sort",
+    "file": "src/algorithms/sorting/selection-sort/data.js",
+    "family": "array-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "largest-rectangle-histogram",
+    "route": "/algorithms/stack/largest-rectangle-histogram",
+    "file": "src/algorithms/stack/largest-rectangle-histogram/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "min-stack",
+    "route": "/algorithms/stack/min-stack",
+    "file": "src/algorithms/stack/min-stack/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "next-greater-element",
+    "route": "/algorithms/stack/next-greater-element",
+    "file": "src/algorithms/stack/next-greater-element/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "previous-greater-element",
+    "route": "/algorithms/stack/previous-greater-element",
+    "file": "src/algorithms/stack/previous-greater-element/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "stack-basics",
+    "route": "/algorithms/stack/stack-basics",
+    "file": "src/algorithms/stack/stack-basics/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "stock-span",
+    "route": "/algorithms/stack/stock-span",
+    "file": "src/algorithms/stack/stock-span/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "valid-parentheses",
+    "route": "/algorithms/stack/valid-parentheses",
+    "file": "src/algorithms/stack/valid-parentheses/data.js",
+    "family": "stack-queue-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "anagram-detection",
+    "route": "/algorithms/strings/anagram-detection",
+    "file": "src/algorithms/strings/anagram-detection/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "kmp",
+    "route": "/algorithms/strings/kmp",
+    "file": "src/algorithms/strings/kmp/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "longest-palindromic-substring",
+    "route": "/algorithms/strings/longest-palindromic-substring",
+    "file": "src/algorithms/strings/longest-palindromic-substring/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "manachers-algorithm",
+    "route": "/algorithms/strings/manachers-algorithm",
+    "file": "src/algorithms/strings/manachers-algorithm/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "rabin-karp",
+    "route": "/algorithms/strings/rabin-karp",
+    "file": "src/algorithms/strings/rabin-karp/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "trie-search",
+    "route": "/algorithms/strings/trie-search",
+    "file": "src/algorithms/strings/trie-search/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "z-algorithm",
+    "route": "/algorithms/strings/z-algorithm",
+    "file": "src/algorithms/strings/z-algorithm/data.js",
+    "family": "string-flow",
+    "sampleError": ""
+  },
+  {
+    "id": "avl-tree-basics",
+    "route": "/algorithms/trees/avl-tree-basics",
+    "file": "src/algorithms/trees/avl-tree-basics/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "bst-delete",
+    "route": "/algorithms/trees/bst-delete",
+    "file": "src/algorithms/trees/bst-delete/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "bst-insert",
+    "route": "/algorithms/trees/bst-insert",
+    "file": "src/algorithms/trees/bst-insert/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "bst-search",
+    "route": "/algorithms/trees/bst-search",
+    "file": "src/algorithms/trees/bst-search/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "diameter-of-tree",
+    "route": "/algorithms/trees/diameter-of-tree",
+    "file": "src/algorithms/trees/diameter-of-tree/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "height-depth-of-tree",
+    "route": "/algorithms/trees/height-depth-of-tree",
+    "file": "src/algorithms/trees/height-depth-of-tree/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "inorder-traversal",
+    "route": "/algorithms/trees/inorder-traversal",
+    "file": "src/algorithms/trees/inorder-traversal/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "level-order-traversal",
+    "route": "/algorithms/trees/level-order-traversal",
+    "file": "src/algorithms/trees/level-order-traversal/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "lowest-common-ancestor",
+    "route": "/algorithms/trees/lowest-common-ancestor",
+    "file": "src/algorithms/trees/lowest-common-ancestor/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "postorder-traversal",
+    "route": "/algorithms/trees/postorder-traversal",
+    "file": "src/algorithms/trees/postorder-traversal/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "preorder-traversal",
+    "route": "/algorithms/trees/preorder-traversal",
+    "file": "src/algorithms/trees/preorder-traversal/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "red-black-tree-basics",
+    "route": "/algorithms/trees/red-black-tree-basics",
+    "file": "src/algorithms/trees/red-black-tree-basics/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  },
+  {
+    "id": "trie",
+    "route": "/algorithms/trees/trie",
+    "file": "src/algorithms/trees/trie/data.js",
+    "family": "tree-operation",
+    "sampleError": ""
+  }
+]

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "queue",
   "codePath": "./src/algorithms/queue/lru-cache/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "LRU Cache is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "LRU Cache combines a map with recency order so the least recently used key is evicted first.",
   "problem": "LRU Cache combines a map with recency order so the least recently used key is evicted first.",
   "concept": "LRU Cache is useful when queue behavior is the clearest model for the data changes. Use this when the problem is naturally described by first-in, first-out state.",
   "logicSummary": "Read the next value or operation, maintain first-in, first-out state, then enqueue, dequeue, peek, or evict entries.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "LRU Cache appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use LRU Cache when its state transition is the natural way to model the problem.",
   "memoryTrick": "LRU Cache: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "LRU Cache is shown as queue state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore LRU Cache through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read queue",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(capacity)."
   },
   "quiz": {
-    "question": "Which state choice keeps LRU Cache correct?",
+    "question": "Which explanation best describes LRU Cache?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through LRU Cache's transition.",
+        "text": "LRU Cache combines a map with recency order so the least recently used key is evicted first.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. LRU Cache stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. LRU Cache needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. LRU Cache combines a map with recency order so the least recently used key is evicted first.",
+    "incorrectText": "Try again. LRU Cache combines a map with recency order so the least recently used key is evicted first. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "queue",
   "algorithmSlug": "lru-cache",
@@ -213,5 +213,60 @@ export const algorithmPage = {
         "nextNode": "tail"
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A linked list follows arrows from node to node. Unlike an array, its nodes do not need neighboring memory slots.",
+    "family": "Linked nodes",
+    "example": "Read queue: Identify the next command, value, node, or library call. Inspect queue front: Look at the active queue fields. Enqueue / dequeue: enqueue, dequeue, peek, or evict entries. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      2,
+      [
+        {
+          "type": "put",
+          "key": 1,
+          "value": 1
+        },
+        {
+          "type": "put",
+          "key": 2,
+          "value": 2
+        },
+        {
+          "type": "get",
+          "key": 1
+        },
+        {
+          "type": "put",
+          "key": 3,
+          "value": 3
+        },
+        {
+          "type": "get",
+          "key": 2
+        }
+      ]
+    ],
+    "sampleResult": [
+      1,
+      -1
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Head",
+        "The first node in a list."
+      ],
+      [
+        "Next",
+        "The link leading to another node."
+      ],
+      [
+        "Null",
+        "No object or next node is present."
+      ]
+    ],
+    "pitfall": "Save the next link before changing it. Handle an empty list and a change to the head; circular lists need a different stop rule.",
+    "checkpoint": "Explain this in your own words: LRU Cache combines a map with recency order so the least recently used key is evicted first."
+  },
+  "relatedLinks": []
 };

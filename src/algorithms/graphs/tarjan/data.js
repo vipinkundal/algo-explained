@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/tarjan/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Tarjan’s Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Tarjan's Algorithm finds strongly connected components in one DFS using low-link values.",
   "problem": "Tarjan's Algorithm finds strongly connected components in one DFS using low-link values.",
   "concept": "Each vertex gets a discovery index and low-link value; when low[node] equals indices[node], node is the root of an SCC.",
   "logicSummary": "Assign an index, push the node onto a stack, update low-link through tree/back edges, and pop a component at a root.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use Tarjan for dependency cycles, call graph SCCs, compiler analysis, and directed graph condensation.",
   "whenToUse": "Use it when you need SCCs in one DFS pass with O(V + E) time.",
   "memoryTrick": "Tarjan keeps a stack of unresolved nodes; a root pops one SCC.",
-  "visualizerCaption": "Watch discovery indices and low-link values decide when a stack segment becomes an SCC.",
+  "visualizerCaption": "Explore Tarjan’s Algorithm through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Index node",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state keeps Tarjan’s Algorithm correct?",
+    "question": "Which explanation best describes Tarjan’s Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "indices, low follows the page's own transition rule.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
-        "correct": false
+        "text": "Tarjan's Algorithm finds strongly connected components in one DFS using low-link values.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Tarjan's Algorithm finds strongly connected components in one DFS using low-link values.",
+    "incorrectText": "Try again. Tarjan's Algorithm finds strongly connected components in one DFS using low-link values. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "tarjan",
@@ -316,5 +316,59 @@ export const algorithmPage = {
         }
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A graph contains vertices (places) and edges (connections). Arrows mean a connection can be followed only in that direction.",
+    "family": "Graphs and connections",
+    "example": "Index node: Give the node discovery and low-link values. Push on stack: The node remains unresolved while it is on the stack. Update low-link: Tree and back edges can lower the current node's low value. Pop component: When low equals index, pop until the root is removed.",
+    "sampleInput": [
+      {
+        "A": [
+          "B"
+        ],
+        "B": [
+          "C"
+        ],
+        "C": [
+          "A",
+          "D"
+        ],
+        "D": [
+          "E"
+        ],
+        "E": [
+          "D"
+        ]
+      }
+    ],
+    "sampleResult": [
+      [
+        "E",
+        "D"
+      ],
+      [
+        "C",
+        "B",
+        "A"
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Vertex",
+        "One point in a graph; also called a node."
+      ],
+      [
+        "Edge",
+        "A connection between vertices."
+      ],
+      [
+        "Visited",
+        "A record that a vertex has already been discovered."
+      ]
+    ],
+    "pitfall": "Mark discovered vertices to avoid repeating work. Check directedness and whether every component must be visited.",
+    "checkpoint": "Explain this in your own words: Tarjan's Algorithm finds strongly connected components in one DFS using low-link values."
+  },
+  "relatedLinks": []
 };

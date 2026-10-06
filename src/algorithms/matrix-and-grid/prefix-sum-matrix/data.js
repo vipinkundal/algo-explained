@@ -12,107 +12,97 @@ export const algorithmPage = {
   "icon": "grid_on",
   "codePath": "./src/algorithms/matrix-and-grid/prefix-sum-matrix/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Prefix Sum Matrix is a Matrix and Grid technique focused on answer.",
-  "problem": "Prefix Sum Matrix solves a Matrix and Grid problem by maintaining only the state needed for its grid prefix transition.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "The implementation keeps Prefix Sum Matrix's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Prefix Sum Matrix appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Prefix Sum Matrix when a problem matches the Matrix and Grid pattern and the expected state changes match a grid prefix dry run.",
-  "memoryTrick": "Prefix Sum Matrix: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Prefix Sum Matrix is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them.",
+  "problem": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them.",
+  "concept": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them.",
+  "logicSummary": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them.",
+  "transitionSummary": "For [[1, 2], [3, 4]], the full rectangle totals 10. A subrectangle is found by subtracting the strips above and left, then adding back their overlap.",
+  "codeInsight": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them.",
+  "realLifeExample": "For [[1, 2], [3, 4]], the full rectangle totals 10. A subrectangle is found by subtracting the strips above and left, then adding back their overlap.",
+  "whenToUse": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them.",
+  "memoryTrick": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "For [[1, 2], [3, 4]], the full rectangle totals 10. A subrectangle is found by subtracting the strips above and left, then adding back their overlap."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
       "name": "matrix",
-      "purpose": "The two-dimensional structure whose cells are visited or updated."
+      "purpose": "The input grid, addressed by row and column."
     },
     {
-      "name": "row, column, and visited state",
-      "purpose": "Cell coordinates and visited or transformed values used by the grid transition. This page visualizes it as grid prefix."
+      "name": "rows",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by prefixSumMatrix after the maintained state reaches the stop rule."
+      "name": "cols",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the grid prefix transition until the stop condition for Prefix Sum Matrix is reached. Stop when no valid work remains or the answer is known."
+      "name": "prefix",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "row",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "col",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them.",
       "activeLine": 5,
-      "codeInsight": "Defines prefixSumMatrix and names the input matrix; edits to those inputs change the visual state and output."
+      "codeInsight": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
-      "activeLine": 5,
-      "codeInsight": "Defines prefixSumMatrix and names the input matrix; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 9,
-      "codeInsight": "Runs the counted loop (let row = 1; row <= rows; row += 1) so each visual step follows one code-controlled iteration."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For [[1, 2], [3, 4]], the full rectangle totals 10. A subrectangle is found by subtracting the strips above and left, then adding back their overlap.",
       "activeLine": 14,
-      "codeInsight": "Returns prefix, the final value maintained by Prefix Sum Matrix's code path."
+      "codeInsight": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(R × C) preprocessing, then O(1) per rectangle-sum query.",
+    "space": "O(R × C) prefix table."
   },
   "quiz": {
-    "question": "Which state choice keeps Prefix Sum Matrix correct?",
+    "question": "Which explanation best describes Prefix Sum Matrix?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Prefix Sum Matrix's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Prefix Sum Matrix stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Prefix Sum Matrix needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them.",
+    "incorrectText": "Try again. A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "matrix-and-grid",
   "algorithmSlug": "prefix-sum-matrix",
@@ -245,5 +235,57 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "For [[1, 2], [3, 4]], the full rectangle totals 10. A subrectangle is found by subtracting the strips above and left, then adding back their overlap.",
+    "sampleInput": [
+      [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    ],
+    "sampleResult": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        3
+      ],
+      [
+        0,
+        4,
+        10
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: A two-dimensional prefix sum stores rectangle totals so later rectangle queries can reuse them."
+  },
+  "relatedLinks": []
 };

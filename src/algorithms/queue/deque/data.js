@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "queue",
   "codePath": "./src/algorithms/queue/deque/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Deque is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Deque supports insertion and removal at both ends.",
   "problem": "Deque supports insertion and removal at both ends.",
   "concept": "Deque is useful when queue behavior is the clearest model for the data changes. Use this when the problem is naturally described by first-in, first-out state.",
   "logicSummary": "Read the next value or operation, maintain first-in, first-out state, then enqueue, dequeue, peek, or evict entries.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Deque appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Deque when its state transition is the natural way to model the problem.",
   "memoryTrick": "Deque: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Deque is shown as queue state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Deque through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read queue",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(m)."
   },
   "quiz": {
-    "question": "Which state choice keeps Deque correct?",
+    "question": "Which explanation best describes Deque?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Deque's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Deque supports insertion and removal at both ends.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Deque stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Deque needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Deque supports insertion and removal at both ends.",
+    "incorrectText": "Try again. Deque supports insertion and removal at both ends. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "queue",
   "algorithmSlug": "deque",
@@ -218,5 +218,50 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "Read queue: Identify the next command, value, node, or library call. Inspect queue front: Look at the active queue fields. Enqueue / dequeue: enqueue, dequeue, peek, or evict entries. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      [
+        {
+          "type": "pushBack",
+          "value": 1
+        },
+        {
+          "type": "pushFront",
+          "value": 2
+        },
+        {
+          "type": "popBack"
+        },
+        {
+          "type": "popFront"
+        }
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: Deque supports insertion and removal at both ends."
+  },
+  "relatedLinks": []
 };

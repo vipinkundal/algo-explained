@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "queue",
   "codePath": "./src/algorithms/heap-and-priority-queue/merge-k-sorted-lists/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Merge K Sorted Lists is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Merge K Sorted Lists repeatedly chooses the smallest current head among all sorted lists.",
   "problem": "Merge K Sorted Lists repeatedly chooses the smallest current head among all sorted lists.",
   "concept": "Merge K Sorted Lists is useful when splitting into sorted halves makes merging predictable. Use this when stable n log n sorting is preferred and extra merge space is acceptable.",
   "logicSummary": "Divide the array into halves, sort each half recursively, then merge the two sorted halves.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Merge K Sorted Lists appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Merge K Sorted Lists when its state transition is the natural way to model the problem.",
   "memoryTrick": "Merge K Sorted Lists: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Merge K Sorted Lists is shown as values moving toward sorted order. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Merge K Sorted Lists through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Split range",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(N)."
   },
   "quiz": {
-    "question": "Which state choice keeps Merge K Sorted Lists correct?",
+    "question": "Which explanation best describes Merge K Sorted Lists?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Merge K Sorted Lists' transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Merge K Sorted Lists repeatedly chooses the smallest current head among all sorted lists.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Merge K Sorted Lists stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Merge K Sorted Lists needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Merge K Sorted Lists repeatedly chooses the smallest current head among all sorted lists.",
+    "incorrectText": "Try again. Merge K Sorted Lists repeatedly chooses the smallest current head among all sorted lists. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "heap-and-priority-queue",
   "algorithmSlug": "merge-k-sorted-lists",
@@ -259,5 +259,52 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Split range: Divide the current array section. Sort halves: Recursively sort left and right sections. Merge fronts: Choose the smaller front value. Return merged array: Produce one sorted section.",
+    "sampleInput": [
+      [
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ]
+      ]
+    ],
+    "sampleResult": [
+      1,
+      1,
+      2,
+      3,
+      4,
+      6
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Merge K Sorted Lists repeatedly chooses the smallest current head among all sorted lists."
+  },
+  "relatedLinks": []
 };

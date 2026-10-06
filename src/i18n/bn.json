@@ -139,8 +139,8 @@
         }
       ],
       "complexity": {
-        "time": "educational reference implementation-এর জন্য O(n)।",
-        "space": "প্রয়োজন হলে tracked state-এর জন্য O(n)।"
+        "time": "O(n × 2ⁿ)",
+        "space": "O(n) + O(n × 2ⁿ)"
       },
       "quiz": {
         "question": "কোন state choice ব্যাকট্র্যাকিং বেসিকসকে সঠিক রাখে?",

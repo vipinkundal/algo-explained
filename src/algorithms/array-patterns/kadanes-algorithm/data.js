@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "view_week",
   "codePath": "./src/algorithms/array-patterns/kadanes-algorithm/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Kadane’s Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Kadane’s Algorithm keeps the best subarray ending here and the best subarray seen anywhere.",
   "problem": "Kadane’s Algorithm keeps the best subarray ending here and the best subarray seen anywhere.",
   "concept": "Prefix-style state is useful when a running total or boundary delta lets future queries reuse past work. Use this when range answers or cumulative changes appear repeatedly.",
   "logicSummary": "Build a running state once, then answer each range or final value by combining saved boundaries.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Kadane’s Algorithm appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Kadane’s Algorithm when the problem statement matches its array invariant.",
   "memoryTrick": "Kadane’s Algorithm: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Kadane’s Algorithm is shown as cumulative state over positions. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Kadane’s Algorithm through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Initialize accumulator",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Kadane’s Algorithm correct?",
+    "question": "Which explanation best describes Kadane’s Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Kadane’s Algorithm's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Kadane’s Algorithm keeps the best subarray ending here and the best subarray seen anywhere.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Kadane’s Algorithm stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Kadane’s Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Kadane’s Algorithm keeps the best subarray ending here and the best subarray seen anywhere.",
+    "incorrectText": "Try again. Kadane’s Algorithm keeps the best subarray ending here and the best subarray seen anywhere. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "array-patterns",
   "algorithmSlug": "kadanes-algorithm",
@@ -233,5 +233,42 @@ export const algorithmPage = {
         "secondaryLabel": "Each item updates the running total, difference, or accumulator exactly once."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Initialize accumulator: Start with zero or the neutral value. Consume value: Add the current contribution. Store boundary: Save the cumulative state for later lookup. Answer range: Use stored boundaries to produce the result.",
+    "sampleInput": [
+      [
+        -2,
+        1,
+        -3,
+        4,
+        -1,
+        2,
+        1,
+        -5,
+        4
+      ]
+    ],
+    "sampleResult": 6,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Kadane’s Algorithm keeps the best subarray ending here and the best subarray seen anywhere."
+  },
+  "relatedLinks": []
 };

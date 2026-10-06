@@ -9,7 +9,7 @@ export function formatVisualizerInput(runnerInput = []) {
 export function createDynamicVisualization(algorithmPage, codeSource, inputText) {
   const expectedInput = Array.isArray(algorithmPage.runnerInput) ? algorithmPage.runnerInput : [];
   const parameterNames = getFunctionParameters(codeSource);
-  const parsed = parseInputText(inputText, expectedInput, parameterNames);
+  const parsed = expectedInput.length ? parseInputText(inputText, expectedInput, parameterNames) : { ok: true, message: "This function uses sample values inside its source.", runInput: [] };
   const animation = createAnimation(algorithmPage, parsed.runInput);
 
   return {
@@ -532,6 +532,33 @@ function createStringAnimation(page, runInput, base) {
 }
 
 function createRecursionAnimation(page, runInput, base) {
+  if (page.id === "factorial-recursion") {
+    const value = Number(runInput[0]);
+    if (Number.isInteger(value) && value >= 0 && value <= 8) {
+      const numbers = value <= 1 ? [value] : range(value, 1);
+      const calls = numbers.map(n => `factorial(${n})`);
+      const steps = numbers.map((n,index) => makeStep(page,base,index,{
+        phase: n <= 1 ? "Base case" : `Call with ${n}`,
+        title: n <= 1 ? `factorial(${n}) returns 1` : `Keep ${n} and ask for factorial(${n - 1})`,
+        note: n <= 1 ? "The condition value <= 1 stops the descent and returns 1." : `This call waits for ${n - 1}! before multiplying its answer by ${n}.`,
+        rule: "Each call keeps its own value. Returning a result resumes the caller; no choice needs to be undone.",
+        activeCall:index, returningCalls:n <= 1 ? [index] : [],
+      }));
+      let result = 1;
+      for (let n = 2; n <= value; n += 1) {
+        const previous = result; result *= n;
+        const index = numbers.indexOf(n);
+        steps.push(makeStep(page,base,steps.length,{
+          phase:`Return ${result}`,title:`${n} × ${previous} = ${result}`,
+          note:`factorial(${n}) returns ${result} to its caller.`,
+          rule:"Multiply by the saved value as the smaller call returns.",
+          activeCall:index,returningCalls:range(index,calls.length-1),
+        }));
+      }
+      return {...base,type:"recursion-flow",title:"Factorial calls and returns",calls,steps};
+    }
+  }
+
   const n = Math.max(1, Math.min(8, Number(firstScalarInput(runInput, 4)) || 4));
   const calls = range(n, 1).map((value) => `${page.algorithmSlug || "solve"}(${value})`);
   calls.push("base case");
@@ -595,7 +622,7 @@ function makeStep(page, base, index, extras) {
 
 function firstArrayInput(runInput, fallback = [4, 1, 3, 2]) {
   const array = runInput.find((item) => Array.isArray(item) && !Array.isArray(item[0]));
-  return Array.isArray(array) && array.length ? array : fallback;
+  return Array.isArray(array) ? array : fallback;
 }
 
 function firstMatrixInput(runInput, fallback) {

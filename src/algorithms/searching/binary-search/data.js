@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "search",
   "codePath": "./src/algorithms/searching/binary-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Binary Search is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Find a target inside a sorted array by repeatedly halving the candidate range.",
   "problem": "Find a target inside a sorted array by repeatedly halving the candidate range.",
   "concept": "Binary Search relies on sorted order: one midpoint comparison proves an entire half impossible.",
   "logicSummary": "Keep low and high around the remaining range, test mid, and discard the half that cannot contain target.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for sorted lookup tables, dictionary pages, IDs, timestamps, and monotonic predicates.",
   "whenToUse": "Use Binary Search only when the array is sorted or the predicate changes direction once.",
   "memoryTrick": "Middle decides which half survives.",
-  "visualizerCaption": "Binary Search is shown with the exact boundary, probe, or scan state used by the code.",
+  "visualizerCaption": "Explore Binary Search through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "low = 0, high = 6",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state keeps Binary Search correct?",
+    "question": "Which explanation best describes Binary Search?",
     "options": [
       {
         "key": "A",
-        "text": "Use the page's own search boundary or scan state and update it only through the listed transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another search algorithm's comparison rule without checking the invariant.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Stop before the algorithm-specific boundary or scan condition is resolved.",
-        "correct": false
+        "text": "Find a target inside a sorted array by repeatedly halving the candidate range.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Binary Search works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Binary Search needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Find a target inside a sorted array by repeatedly halving the candidate range.",
+    "incorrectText": "Try again. Find a target inside a sorted array by repeatedly halving the candidate range. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "searching",
   "algorithmSlug": "binary-search",
@@ -243,5 +243,40 @@ export const algorithmPage = {
         "secondaryLabel": "If array[mid] is too small move low to mid + 1; if too large move high to mid - 1; equality returns mid."
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "low = 0, high = 6: The target 13 can be anywhere in the sorted range. Compare 7: 7 is smaller than 13, so the left half cannot contain 13. Move low to 4: Only indices 4 through 6 remain. Compare 13: The new midpoint equals target, so return its index.",
+    "sampleInput": [
+      [
+        1,
+        3,
+        5,
+        7,
+        9,
+        13,
+        15
+      ],
+      13
+    ],
+    "sampleResult": 5,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Find a target inside a sorted array by repeatedly halving the candidate range."
   }
 };

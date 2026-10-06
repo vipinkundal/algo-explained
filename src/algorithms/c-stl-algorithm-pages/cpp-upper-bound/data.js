@@ -12,107 +12,93 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/c-stl-algorithm-pages/cpp-upper-bound/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "C++ upper_bound() is a C++ STL Algorithm Pages technique focused on index or insertion point.",
-  "problem": "C++ upper_bound() narrows where a target can be by scanning or shrinking a candidate interval.",
-  "concept": "C++ upper_bound() is useful when sorted order lets you discard a whole half of the search space. Use this when the input is sorted or the answer predicate changes only once.",
-  "logicSummary": "Maintain low/high boundaries, test the middle, and keep only the half that can still contain the answer.",
-  "transitionSummary": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
-  "codeInsight": "The boundary variables are the important state; every branch must make the remaining search interval smaller.",
-  "realLifeExample": "C++ upper_bound() appears when the input is array, target and the required result is index or insertion point.",
-  "whenToUse": "Use C++ upper_bound() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a array boundaries dry run.",
-  "memoryTrick": "C++ upper_bound(): name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C++ upper_bound() is shown as a shrinking boundary search. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "std::upper_bound finds the first position whose value is greater than the target in a sorted range.",
+  "problem": "std::upper_bound finds the first position whose value is greater than the target in a sorted range.",
+  "concept": "std::upper_bound finds the first position whose value is greater than the target in a sorted range.",
+  "logicSummary": "std::upper_bound finds the first position whose value is greater than the target in a sorted range.",
+  "transitionSummary": "In [1, 3, 3, 7], upper_bound(3) points to index 3, after both copies of 3.",
+  "codeInsight": "std::upper_bound finds the first position whose value is greater than the target in a sorted range.",
+  "realLifeExample": "In [1, 3, 3, 7], upper_bound(3) points to index 3, after both copies of 3.",
+  "whenToUse": "std::upper_bound finds the first position whose value is greater than the target in a sorted range.",
+  "memoryTrick": "std::upper_bound finds the first position whose value is greater than the target in a sorted range.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read sorted input",
-      "text": "Confirm the array or predicate has monotonic order."
+      "title": "Identify what the operation means",
+      "text": "std::upper_bound finds the first position whose value is greater than the target in a sorted range."
     },
     {
-      "title": "Set boundaries",
-      "text": "Place low and high around every candidate."
+      "title": "Work through a small case",
+      "text": "In [1, 3, 3, 7], upper_bound(3) points to index 3, after both copies of 3."
     },
     {
-      "title": "Compare middle",
-      "text": "Use mid to decide which half is impossible."
-    },
-    {
-      "title": "Return boundary",
-      "text": "Return the found index or final insertion boundary."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "array, target",
-      "purpose": "array: The ordered or unsorted list the algorithm scans, partitions, sorts, or transforms. target: The value or condition each comparison is trying to locate."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "low, high, mid",
-      "purpose": "The shrinking search window and midpoint used to discard impossible positions."
+      "name": "target",
+      "purpose": "The value or total the operation is trying to locate or reach."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by cppUpperBound after the maintained state reaches the stop rule."
+      "name": "low",
+      "purpose": "Marks one end of the candidate range. Changing a boundary removes positions that no longer need to be considered."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Each transition either advances one position or moves a boundary inward. Stop when no valid work remains or the answer is known."
+      "name": "high",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
+    },
+    {
+      "name": "mid",
+      "purpose": "Chooses an interior position from the current boundaries so a comparison can reduce the remaining range."
     }
   ],
   "dryRun": [
     {
-      "label": "Sorted input",
-      "title": "Read the ordered search space",
-      "note": "The code starts from a range where binary decisions are valid.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "std::upper_bound finds the first position whose value is greater than the target in a sorted range.",
       "activeLine": 5,
-      "codeInsight": "Defines cppUpperBound and names the input values, target; edits to those inputs change the visual state and output."
+      "codeInsight": "std::upper_bound finds the first position whose value is greater than the target in a sorted range."
     },
     {
-      "label": "low / high",
-      "title": "Open the candidate window",
-      "note": "low and high mark every position that may still answer.",
-      "activeLine": 6,
-      "codeInsight": "Initializes low as mutable state; later branches update it as the search window or traversal changes."
-    },
-    {
-      "label": "mid check",
-      "title": "Compare the midpoint",
-      "note": "The midpoint decides which half is removed.",
-      "activeLine": 10,
-      "codeInsight": "When values[mid] <= target is true, low = mid + 1; the animation should show that branch's state update immediately."
-    },
-    {
-      "label": "Return",
-      "title": "Emit index or boundary",
-      "note": "The loop ends with a match or the collapsed boundary.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "In [1, 3, 3, 7], upper_bound(3) points to index 3, after both copies of 3.",
       "activeLine": 13,
-      "codeInsight": "Returns low, the final value maintained by C++ upper_bound()'s code path."
+      "codeInsight": "std::upper_bound finds the first position whose value is greater than the target in a sorted range."
     }
   ],
   "complexity": {
-    "time": "O(log n) on sorted or searchable ranges.",
-    "space": "O(1) auxiliary space."
+    "time": "O(log n) comparisons; iterator movement can be linear for non-random-access iterators.",
+    "space": "O(1) auxiliary state with an iterative implementation."
   },
   "quiz": {
-    "question": "Which state choice keeps C++ upper_bound() correct?",
+    "question": "Which explanation best describes C++ upper_bound()?",
     "options": [
       {
         "key": "A",
-        "text": "Track search window and update it only through C++ upper_bound()'s transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "std::upper_bound finds the first position whose value is greater than the target in a sorted range.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. C++ upper_bound() stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. C++ upper_bound() needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. std::upper_bound finds the first position whose value is greater than the target in a sorted range.",
+    "incorrectText": "Try again. std::upper_bound finds the first position whose value is greater than the target in a sorted range. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "c-stl-algorithm-pages",
   "algorithmSlug": "cpp-upper-bound",
@@ -214,5 +200,38 @@ export const algorithmPage = {
         "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "In [1, 3, 3, 7], upper_bound(3) points to index 3, after both copies of 3.",
+    "sampleInput": [
+      [
+        1,
+        3,
+        3,
+        5
+      ],
+      3
+    ],
+    "sampleResult": 3,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: std::upper_bound finds the first position whose value is greater than the target in a sorted range."
+  },
+  "relatedLinks": []
 };

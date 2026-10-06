@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/zero-one-knapsack/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "0/1 Knapsack is taught with its own DP state definition, recurrence, code trace, and answer cell.",
+  "meaning": "Given item weights and values, maximize value without exceeding capacity when each item can be taken at most once.",
   "problem": "Given item weights and values, maximize value without exceeding capacity when each item can be taken at most once.",
   "concept": "0/1 Knapsack defines dp[cap] as the best value reachable for a capacity after processing some prefix of items.",
   "logicSummary": "Initialize dp with zeros, process each item once, scan capacities backward, and decide whether taking the item improves dp[cap].",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for budgeted selection, packing, feature choice, or any take/skip optimization with limited capacity.",
   "whenToUse": "Use 0/1 Knapsack when every item is either taken once or skipped.",
   "memoryTrick": "Backward capacity means one copy of the item.",
-  "visualizerCaption": "The trace shows each item updating capacity cells from right to left.",
+  "visualizerCaption": "Explore 0/1 Knapsack through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Define dp[cap]",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(capacity)."
   },
   "quiz": {
-    "question": "Which state keeps 0/1 Knapsack correct?",
+    "question": "Which explanation best describes 0/1 Knapsack?",
     "options": [
       {
         "key": "A",
-        "text": "Define dp[cap] as best value and scan capacity backward for each item.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another DP recurrence without matching the state definition.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Read the answer before the required dependency cells have been filled.",
-        "correct": false
+        "text": "Given item weights and values, maximize value without exceeding capacity when each item can be taken at most once.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. 0/1 Knapsack works when its table meaning and recurrence stay aligned.",
-    "incorrectText": "Not quite. 0/1 Knapsack needs its own state, recurrence, and answer cell."
+    "correctText": "Correct. Given item weights and values, maximize value without exceeding capacity when each item can be taken at most once.",
+    "incorrectText": "Try again. Given item weights and values, maximize value without exceeding capacity when each item can be taken at most once. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "zero-one-knapsack",
@@ -307,5 +307,42 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A dynamic-programming state names a smaller question. A recurrence explains how its answer uses answers you already know.",
+    "family": "Saved subproblems",
+    "example": "Define dp[cap]: Best value possible with the processed items and capacity cap. Start at zero: No items means value 0 for every capacity. Scan capacity backward: Update larger capacities first so the current item is used once. Read dp[capacity]: The final capacity cell is the best valid value.",
+    "sampleInput": [
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        4,
+        5
+      ],
+      5
+    ],
+    "sampleResult": 7,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "One precisely defined subproblem."
+      ],
+      [
+        "Recurrence",
+        "A rule for computing a state from smaller states."
+      ],
+      [
+        "Base case",
+        "A known answer that starts the table or recursion."
+      ]
+    ],
+    "pitfall": "Define what each table entry means before filling it. Check base cases, evaluation order, and whether a choice can be reused.",
+    "checkpoint": "Explain this in your own words: Given item weights and values, maximize value without exceeding capacity when each item can be taken at most once."
+  },
+  "relatedLinks": []
 };

@@ -139,8 +139,8 @@
         }
       ],
       "complexity": {
-        "time": "O(n) para a implementação educacional de referência.",
-        "space": "O(n) para o estado acompanhado quando necessário."
+        "time": "O(n × 2ⁿ)",
+        "space": "O(n) + O(n × 2ⁿ)"
       },
       "quiz": {
         "question": "Qual escolha de estado mantém Backtracking Basics correto?",

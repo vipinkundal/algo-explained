@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/avl-ll-rotation/code/original.cpp",
   "originalCodeFilename": "01_LL_Rotation.cpp",
   "originalActiveLine": 7,
-  "meaning": "AVL LL Rotation shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "AVL LL Rotation explains the balanced-tree state model and how one focused change updates it.",
-  "concept": "AVL LL Rotation is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on balance invariant.",
-  "logicSummary": "Start at the root, maintain balance invariant, rotate or recolor when height/color rules are violated, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses balance invariant to decide the next child, rotation, or returned value.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "An AVL left-left imbalance is repaired by rotating the unbalanced node right.",
+  "problem": "An AVL left-left imbalance is repaired by rotating the unbalanced node right.",
+  "concept": "An AVL left-left imbalance is repaired by rotating the unbalanced node right.",
+  "logicSummary": "An AVL left-left imbalance is repaired by rotating the unbalanced node right.",
+  "transitionSummary": "Insert 30, 20, 10: rotating right at 30 makes 20 the root with children 10 and 30.",
+  "codeInsight": "An AVL left-left imbalance is repaired by rotating the unbalanced node right.",
   "originalCodeInsight": "The C/C++ Node struct is the memory layout: data stores the value and next/child pointers connect the structure.",
-  "realLifeExample": "AVL LL Rotation is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Trees / BST / AVL / Heap behavior through state changes instead of memorized code.",
-  "memoryTrick": "AVL LL Rotation: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "AVL LL Rotation is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Insert 30, 20, 10: rotating right at 30 makes 20 the root with children 10 and 30.",
+  "whenToUse": "An AVL left-left imbalance is repaired by rotating the unbalanced node right.",
+  "memoryTrick": "An AVL left-left imbalance is repaired by rotating the unbalanced node right.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "title": "Identify what the operation means",
+      "text": "An AVL left-left imbalance is repaired by rotating the unbalanced node right."
     },
     {
-      "title": "Read node state",
-      "text": "Inspect balance invariant."
+      "title": "Work through a small case",
+      "text": "Insert 30, 20, 10: rotating right at 30 makes 20 the root with children 10 and 30."
     },
     {
-      "title": "Move/combine",
-      "text": "rotate or recolor when height/color rules are violated."
-    },
-    {
-      "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "title": "Check the boundary cases",
+      "text": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it."
     }
   ],
   "variables": [
     {
-      "name": "pivot node",
-      "purpose": "The node around which the rotation happens."
-    },
-    {
-      "name": "height gap",
-      "purpose": "Tracks when one side is too tall."
-    },
-    {
-      "name": "rotated child",
-      "purpose": "The child that moves during rebalancing."
-    },
-    {
-      "name": "balanced view",
-      "purpose": "Shows the tree after the rotation restores order."
+      "name": "return",
+      "purpose": "The function returns a value or snapshot. Open the JavaScript source to inspect the fixed sample."
     }
   ],
   "dryRun": [
     {
-      "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "An AVL left-left imbalance is repaired by rotating the unbalanced node right.",
       "activeLine": 2,
-      "codeInsight": "Defines avlLlRotation as the runnable entry point for this lesson."
+      "codeInsight": "An AVL left-left imbalance is repaired by rotating the unbalanced node right."
     },
     {
-      "label": "Node state",
-      "title": "Read balance invariant",
-      "note": "The current node controls the next step.",
-      "activeLine": 2,
-      "codeInsight": "Defines avlLlRotation as the runnable entry point for this lesson."
-    },
-    {
-      "label": "Child step",
-      "title": "Rotate or recolor when height/color rules are violated",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "Sets the returned rotation field to \"right rotation\", which is one of the named values rendered in the visual summary."
-    },
-    {
-      "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Insert 30, 20, 10: rotating right at 30 makes 20 the root with children 10 and 30.",
       "activeLine": 3,
-      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "An AVL left-left imbalance is repaired by rotating the unbalanced node right."
     }
   ],
   "complexity": {
@@ -270,5 +240,43 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Insert 30, 20, 10: rotating right at 30 makes 20 the root with children 10 and 30.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "AVL tree",
+      "imbalance": "left-left",
+      "rotation": "right rotation",
+      "before": [
+        30,
+        20,
+        10
+      ],
+      "after": [
+        20,
+        10,
+        30
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: An AVL left-left imbalance is repaired by rotating the unbalanced node right."
   }
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/cycle-detection-undirected/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Cycle Detection in Undirected Graph is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Undirected cycle detection uses the parent edge to distinguish normal backtracking from a real cycle.",
   "problem": "Undirected cycle detection uses the parent edge to distinguish normal backtracking from a real cycle.",
   "concept": "In an undirected graph, seeing a visited neighbor is a cycle only when that neighbor is not the vertex you came from.",
   "logicSummary": "DFS each component, pass the parent into the recursive call, and reject visited neighbors that are not the parent.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for detecting loops in undirected networks, roads, cable layouts, and component validation.",
   "whenToUse": "Use it when graph edges are bidirectional and you need to know whether any component contains a loop.",
   "memoryTrick": "Undirected cycle: visited is okay only if it is your parent.",
-  "visualizerCaption": "Watch the DFS parent check separate the return edge from the edge that proves a cycle.",
+  "visualizerCaption": "Explore Cycle Detection in Undirected Graph through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Start a component",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state keeps Cycle Detection in Undirected Graph correct?",
+    "question": "Which explanation best describes Cycle Detection in Undirected Graph?",
     "options": [
       {
         "key": "A",
-        "text": "visited follows the page's own transition rule.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
-        "correct": false
+        "text": "Undirected cycle detection uses the parent edge to distinguish normal backtracking from a real cycle.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Undirected cycle detection uses the parent edge to distinguish normal backtracking from a real cycle.",
+    "incorrectText": "Try again. Undirected cycle detection uses the parent edge to distinguish normal backtracking from a real cycle. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "cycle-detection-undirected",
@@ -292,5 +292,49 @@ export const algorithmPage = {
       }
     ],
     "static": true
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A graph contains vertices (places) and edges (connections). Arrows mean a connection can be followed only in that direction.",
+    "family": "Graphs and connections",
+    "example": "Start a component: Run DFS from any vertex that is not yet visited. Carry parent: Pass the previous vertex into the recursive call. Check neighbors: Recurse into unseen neighbors; visited non-parent neighbors prove a cycle. Return result: Stop when any component reports a cycle.",
+    "sampleInput": [
+      {
+        "A": [
+          "B",
+          "C"
+        ],
+        "B": [
+          "A",
+          "C"
+        ],
+        "C": [
+          "A",
+          "B",
+          "D"
+        ],
+        "D": [
+          "C"
+        ]
+      }
+    ],
+    "sampleResult": true,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Vertex",
+        "One point in a graph; also called a node."
+      ],
+      [
+        "Edge",
+        "A connection between vertices."
+      ],
+      [
+        "Visited",
+        "A record that a vertex has already been discovered."
+      ]
+    ],
+    "pitfall": "Mark discovered vertices to avoid repeating work. Check directedness and whether every component must be visited.",
+    "checkpoint": "Explain this in your own words: Undirected cycle detection uses the parent edge to distinguish normal backtracking from a real cycle."
+  },
+  "relatedLinks": []
 };

@@ -12,107 +12,93 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/recursion-and-backtracking/tower-of-hanoi/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Tower of Hanoi is a Recursion and Backtracking technique focused on solutions.",
-  "problem": "Tower of Hanoi explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
-  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
-  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "Tower of Hanoi appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use Tower of Hanoi when a problem matches the Recursion and Backtracking pattern and the expected state changes match a disk moves dry run.",
-  "memoryTrick": "Tower of Hanoi: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Tower of Hanoi is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one.",
+  "problem": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one.",
+  "concept": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one.",
+  "logicSummary": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one.",
+  "transitionSummary": "Move 2 disks from A to C: move the small disk A → B, the large disk A → C, then the small disk B → C.",
+  "codeInsight": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one.",
+  "realLifeExample": "Move 2 disks from A to C: move the small disk A → B, the large disk A → C, then the small disk B → C.",
+  "whenToUse": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one.",
+  "memoryTrick": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Base case",
-      "text": "Stop when the current state is complete or invalid."
+      "title": "Identify what the operation means",
+      "text": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one."
     },
     {
-      "title": "Choose option",
-      "text": "Pick the next valid branch."
+      "title": "Work through a small case",
+      "text": "Move 2 disks from A to C: move the small disk A → B, the large disk A → C, then the small disk B → C."
     },
     {
-      "title": "Recurse",
-      "text": "Solve the smaller state."
-    },
-    {
-      "title": "Return or undo",
-      "text": "Collect the result or backtrack before the next choice."
+      "title": "Check the boundary cases",
+      "text": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays."
     }
   ],
   "variables": [
     {
-      "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "name": "disks",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "path and recursion frame",
-      "purpose": "The partial choice path plus the current recursive frame before backtracking restores it. This page visualizes it as disk moves."
+      "name": "from = \"A\"",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by towerOfHanoi after the maintained state reaches the stop rule."
+      "name": "to = \"C\"",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "helper = \"B\"",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
+    },
+    {
+      "name": "moves",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     }
   ],
   "dryRun": [
     {
-      "label": "Base",
-      "title": "Check stop condition",
-      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one.",
       "activeLine": 5,
-      "codeInsight": "Defines towerOfHanoi and names the input disks, from = \"A\", to = \"C\", helper = \"B\"; edits to those inputs change the visual state and output."
+      "codeInsight": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one."
     },
     {
-      "label": "Choice",
-      "title": "Select next option",
-      "note": "One valid move is added to the state.",
-      "activeLine": 5,
-      "codeInsight": "Defines towerOfHanoi and names the input disks, from = \"A\", to = \"C\", helper = \"B\"; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Call",
-      "title": "Recurse deeper",
-      "note": "The same rule runs on a smaller or extended state.",
-      "activeLine": 6,
-      "codeInsight": "Seeds moves with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Unwind",
-      "title": "Return or backtrack",
-      "note": "The result is combined or the choice is removed.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Move 2 disks from A to C: move the small disk A → B, the large disk A → C, then the small disk B → C.",
       "activeLine": 14,
-      "codeInsight": "Returns moves, the final value maintained by Tower of Hanoi's code path."
+      "codeInsight": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "Θ(2ⁿ) moves; exactly 2ⁿ − 1 for n disks.",
+    "space": "O(n) call depth; storing all moves also needs Θ(2ⁿ) output space."
   },
   "quiz": {
-    "question": "Which state choice keeps Tower of Hanoi correct?",
+    "question": "Which explanation best describes Tower of Hanoi?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through Tower of Hanoi's transition.",
+        "text": "Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "Every recursive function must try every possible arrangement and undo every call.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Tower of Hanoi stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Tower of Hanoi needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one.",
+    "incorrectText": "Try again. Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "recursion-and-backtracking",
   "algorithmSlug": "tower-of-hanoi",
@@ -180,5 +166,60 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "Each call remembers its own unfinished work. A base case returns directly; the other calls resume as smaller calls finish.",
+    "family": "Recursive calls",
+    "example": "Move 2 disks from A to C: move the small disk A → B, the large disk A → C, then the small disk B → C.",
+    "sampleInput": [
+      3
+    ],
+    "sampleResult": [
+      [
+        "A",
+        "C"
+      ],
+      [
+        "A",
+        "B"
+      ],
+      [
+        "C",
+        "B"
+      ],
+      [
+        "A",
+        "C"
+      ],
+      [
+        "B",
+        "A"
+      ],
+      [
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "C"
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Base case",
+        "An input that returns without another recursive call."
+      ],
+      [
+        "Call frame",
+        "The parameters and local work belonging to one call."
+      ],
+      [
+        "Backtracking",
+        "Undoing a choice to explore another branch; not every recursion needs it."
+      ]
+    ],
+    "pitfall": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays.",
+    "checkpoint": "Explain this in your own words: Tower of Hanoi moves a stack of disks between pegs, moving one disk at a time and never placing a larger disk on a smaller one."
   }
 };

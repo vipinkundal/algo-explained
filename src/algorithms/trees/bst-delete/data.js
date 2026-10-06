@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/bst-delete/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "BST Delete removes a value while preserving the binary-search-tree ordering rule.",
+  "meaning": "Deleting node 2 from the sample BST requires the two-child case: replace it with its inorder successor 3.",
   "problem": "Deleting node 2 from the sample BST requires the two-child case: replace it with its inorder successor 3.",
   "concept": "Search by comparing the target with each node; when the target has two children, copy the minimum value from its right subtree and delete the duplicate.",
   "logicSummary": "Start at the root, maintain ordered branch, compare with the current node and move left or right, and return the tree-specific result.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Deleting a key from an ordered index uses the same idea: replace a removed internal key with its next sorted value.",
   "whenToUse": "Use BST Delete when a value must be removed without losing sorted-search behavior.",
   "memoryTrick": "BST Delete: leaf, one child, or two children with successor.",
-  "visualizerCaption": "The animation deletes 2 by replacing it with successor 3 and removing the old 3 leaf.",
+  "visualizerCaption": "Explore BST Delete through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check node",
@@ -290,26 +290,26 @@ export const algorithmPage = {
     "space": "O(n) for tracked state when needed."
   },
   "quiz": {
-    "question": "Which state choice keeps BST Delete correct?",
+    "question": "Which explanation best describes BST Delete?",
     "options": [
       {
         "key": "A",
-        "text": "Track current node and traversal state and update it only through BST Delete's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Deleting node 2 from the sample BST requires the two-child case: replace it with its inorder successor 3.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. BST Delete stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. BST Delete needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Deleting node 2 from the sample BST requires the two-child case: replace it with its inorder successor 3.",
+    "incorrectText": "Try again. Deleting node 2 from the sample BST requires the two-child case: replace it with its inorder successor 3. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "bst-delete",
@@ -343,5 +343,76 @@ export const algorithmPage = {
       "title": "BST Basics",
       "label": "C/C++ BST source"
     }
-  ]
+  ],
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check node: Search for the delete target using BST comparisons. Read node state: When the target is found, choose the delete case. Move/combine: For two children, copy the inorder successor. Return tree result: Delete the duplicate successor and reconnect the subtree.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        }
+      },
+      2
+    ],
+    "sampleResult": {
+      "value": 4,
+      "left": {
+        "value": 3,
+        "left": {
+          "value": 1,
+          "left": null,
+          "right": null
+        },
+        "right": null
+      },
+      "right": {
+        "value": 6,
+        "left": {
+          "value": 5,
+          "left": null,
+          "right": null
+        },
+        "right": {
+          "value": 7,
+          "left": null,
+          "right": null
+        }
+      }
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Deleting node 2 from the sample BST requires the two-child case: replace it with its inorder successor 3."
+  }
 };

@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/array-representation-increasing-array-size/code/original.cpp",
   "originalCodeFilename": "02_increasing_array_size.cpp",
   "originalActiveLine": 2,
-  "meaning": "Increasing Array Size shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Increasing Array Size explains the array state model and how one focused change updates it.",
-  "concept": "Increasing Array Size is useful when contiguous storage, indexes, length, or capacity explain the operation. Use this when an array operation depends on slot position, bounds, or shifting values.",
-  "logicSummary": "Read the index or value, check the active length and capacity, update the affected slots, and return the visible array result.",
-  "transitionSummary": "Each step changes one index, length, capacity, or shifted range while preserving the array representation.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block.",
+  "problem": "To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block.",
+  "concept": "To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block.",
+  "logicSummary": "To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block.",
+  "transitionSummary": "Three values in capacity 3 can be copied into capacity 6 before a fourth is appended.",
+  "codeInsight": "To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block.",
   "originalCodeInsight": "Dynamic allocation creates storage at runtime; every pointer assignment changes how nodes or arrays are connected.",
-  "realLifeExample": "Increasing Array Size is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Arrays / Array ADT behavior through state changes instead of memorized code.",
-  "memoryTrick": "Increasing Array Size: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Increasing Array Size is shown as indexed array state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Three values in capacity 3 can be copied into capacity 6 before a fourth is appended.",
+  "whenToUse": "To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block.",
+  "memoryTrick": "To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read request",
-      "text": "Identify the index, value, length, or capacity involved."
+      "title": "Identify what the operation means",
+      "text": "To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block."
     },
     {
-      "title": "Check bounds",
-      "text": "Confirm the operation is valid for the active array size."
+      "title": "Work through a small case",
+      "text": "Three values in capacity 3 can be copied into capacity 6 before a fourth is appended."
     },
     {
-      "title": "Update slots",
-      "text": "Set, shift, scan, or resize the affected cells."
-    },
-    {
-      "title": "Return array result",
-      "text": "Return the found value, status, or updated array view."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "slot index",
-      "purpose": "Selects the current array position."
+      "name": "values",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "active value",
-      "purpose": "The value currently being read or moved."
-    },
-    {
-      "name": "write slot",
-      "purpose": "Marks where an updated value is stored."
-    },
-    {
-      "name": "array view",
-      "purpose": "Shows the slots after Increasing Array Size applies its operation."
+      "name": "sum",
+      "purpose": "Combines input items into one accumulated answer, so the result can be returned or reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Array",
-      "title": "Read array request",
-      "note": "The code receives an array plus an index, value, or command.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block.",
       "activeLine": 2,
-      "codeInsight": "Defines arrayRepresentationIncreasingArraySize as the runnable entry point for this lesson."
+      "codeInsight": "To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block."
     },
     {
-      "label": "Index / length",
-      "title": "Check active range",
-      "note": "Bounds and current length decide whether the operation is valid.",
-      "activeLine": 4,
-      "codeInsight": "Computes sum by reducing the current values, matching the aggregate shown in the result state."
-    },
-    {
-      "label": "Slots",
-      "title": "Update affected cells",
-      "note": "The operation sets, shifts, scans, or resizes array slots.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Three values in capacity 3 can be copied into capacity 6 before a fourth is appended.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return array state",
-      "note": "The visible value or updated array confirms the operation.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block."
     }
   ],
   "complexity": {
@@ -129,9 +103,9 @@ export const algorithmPage = {
   ],
   "relatedLinks": [
     {
-      "id": "array-patterns",
-      "title": "Array Patterns",
-      "label": "Existing algorithm lesson"
+      "id": "linear-search",
+      "title": "Linear Search",
+      "label": "Start with indexed array values"
     }
   ],
   "runnerInput": [],
@@ -233,5 +207,41 @@ export const algorithmPage = {
         "secondaryLabel": "Each step changes one index, length, capacity, or shifted range while preserving the array representation."
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Three values in capacity 3 can be copied into capacity 6 before a fourth is appended.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "array",
+      "values": [
+        3,
+        1,
+        4,
+        1,
+        5
+      ],
+      "length": 5,
+      "max": 5,
+      "sum": 14
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: To grow fixed storage, allocate a larger block, copy existing elements, and replace the old block."
   }
 };

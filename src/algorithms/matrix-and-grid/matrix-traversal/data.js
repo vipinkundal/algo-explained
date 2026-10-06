@@ -12,107 +12,89 @@ export const algorithmPage = {
   "icon": "grid_on",
   "codePath": "./src/algorithms/matrix-and-grid/matrix-traversal/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Matrix Traversal is a Matrix and Grid technique focused on answer.",
-  "problem": "Matrix Traversal solves a Matrix and Grid problem by maintaining only the state needed for its grid walk transition.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "The implementation keeps Matrix Traversal's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Matrix Traversal appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Matrix Traversal when a problem matches the Matrix and Grid pattern and the expected state changes match a grid walk dry run.",
-  "memoryTrick": "Matrix Traversal: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Matrix Traversal is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Matrix traversal visits cells using both a row index and a column index.",
+  "problem": "Matrix traversal visits cells using both a row index and a column index.",
+  "concept": "Matrix traversal visits cells using both a row index and a column index.",
+  "logicSummary": "Matrix traversal visits cells using both a row index and a column index.",
+  "transitionSummary": "For [[1, 2], [3, 4]], row-by-row traversal visits 1 → 2 → 3 → 4; column-by-column traversal visits 1 → 3 → 2 → 4.",
+  "codeInsight": "Matrix traversal visits cells using both a row index and a column index.",
+  "realLifeExample": "For [[1, 2], [3, 4]], row-by-row traversal visits 1 → 2 → 3 → 4; column-by-column traversal visits 1 → 3 → 2 → 4.",
+  "whenToUse": "Matrix traversal visits cells using both a row index and a column index.",
+  "memoryTrick": "Matrix traversal visits cells using both a row index and a column index.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "Matrix traversal visits cells using both a row index and a column index."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "For [[1, 2], [3, 4]], row-by-row traversal visits 1 → 2 → 3 → 4; column-by-column traversal visits 1 → 3 → 2 → 4."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
-      "name": "root",
-      "purpose": "The tree node where recursion or traversal begins."
+      "name": "matrix",
+      "purpose": "The input grid, addressed by row and column."
     },
     {
-      "name": "row, column, and visited state",
-      "purpose": "Cell coordinates and visited or transformed values used by the grid transition. This page visualizes it as grid walk."
+      "name": "order",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by matrixTraversal after the maintained state reaches the stop rule."
+      "name": "row",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the grid walk transition until the stop condition for Matrix Traversal is reached. Stop when no valid work remains or the answer is known."
+      "name": "col",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Matrix traversal visits cells using both a row index and a column index.",
       "activeLine": 5,
-      "codeInsight": "Defines matrixTraversal and names the input matrix; edits to those inputs change the visual state and output."
+      "codeInsight": "Matrix traversal visits cells using both a row index and a column index."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
-      "activeLine": 5,
-      "codeInsight": "Defines matrixTraversal and names the input matrix; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 7,
-      "codeInsight": "Runs the counted loop (let row = 0; row < matrix.length; row += 1) so each visual step follows one code-controlled iteration."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For [[1, 2], [3, 4]], row-by-row traversal visits 1 → 2 → 3 → 4; column-by-column traversal visits 1 → 3 → 2 → 4.",
       "activeLine": 10,
-      "codeInsight": "Returns order, the final value maintained by Matrix Traversal's code path."
+      "codeInsight": "Matrix traversal visits cells using both a row index and a column index."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(R × C) for R rows and C columns.",
+    "space": "O(1) traversal state; collecting all cells uses O(R × C) output space."
   },
   "quiz": {
-    "question": "Which state choice keeps Matrix Traversal correct?",
+    "question": "Which explanation best describes Matrix Traversal?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Matrix Traversal's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Matrix traversal visits cells using both a row index and a column index.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Matrix Traversal stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Matrix Traversal needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Matrix traversal visits cells using both a row index and a column index.",
+    "incorrectText": "Try again. Matrix traversal visits cells using both a row index and a column index. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "matrix-and-grid",
   "algorithmSlug": "matrix-traversal",
@@ -267,5 +249,45 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "For [[1, 2], [3, 4]], row-by-row traversal visits 1 → 2 → 3 → 4; column-by-column traversal visits 1 → 3 → 2 → 4.",
+    "sampleInput": [
+      [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: Matrix traversal visits cells using both a row index and a column index."
   }
 };

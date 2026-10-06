@@ -12,107 +12,81 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/foundations/time-complexity-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Time Complexity Basics is a Foundations technique focused on answer.",
-  "problem": "Time Complexity Basics solves a Foundations problem by maintaining only the state needed for its growth chart transition.",
-  "concept": "Time Complexity Basics is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
-  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
-  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-  "codeInsight": "The implementation keeps Time Complexity Basics' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Time Complexity Basics appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Time Complexity Basics when a problem matches the Foundations pattern and the expected state changes match a growth chart dry run.",
-  "memoryTrick": "Time Complexity Basics: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Time Complexity Basics is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Time complexity describes how the amount of work grows as the input grows.",
+  "problem": "Time complexity describes how the amount of work grows as the input grows.",
+  "concept": "Time complexity describes how the amount of work grows as the input grows.",
+  "logicSummary": "Time complexity describes how the amount of work grows as the input grows.",
+  "transitionSummary": "At n = 8, a full scan uses about 8 visits; comparing every pair uses about 64 comparisons. These are growth models, not milliseconds.",
+  "codeInsight": "Time complexity describes how the amount of work grows as the input grows.",
+  "realLifeExample": "At n = 8, a full scan uses about 8 visits; comparing every pair uses about 64 comparisons. These are growth models, not milliseconds.",
+  "whenToUse": "Time complexity describes how the amount of work grows as the input grows.",
+  "memoryTrick": "Time complexity describes how the amount of work grows as the input grows.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read algorithm state",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "Time complexity describes how the amount of work grows as the input grows."
     },
     {
-      "title": "Inspect invariant",
-      "text": "Look at the active algorithm state fields."
+      "title": "Work through a small case",
+      "text": "At n = 8, a full scan uses about 8 visits; comparing every pair uses about 64 comparisons. These are growth models, not milliseconds."
     },
     {
-      "title": "State change",
-      "text": "update the state described by this algorithm."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Check the allowed input and stopping rule before running the routine. A picture of state alone is not a proof of correctness."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "working state",
-      "purpose": "The local state updated by the algorithm transition. This page visualizes it as growth chart."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by timeComplexityBasics after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the growth chart transition until the stop condition for Time Complexity Basics is reached. Stop when no valid work remains or the answer is known."
+      "name": "inputSize",
+      "purpose": "Chooses the provided array or a fallback sample so the following collection operations have an array to read."
     }
   ],
   "dryRun": [
     {
-      "label": "Algorithm State",
-      "title": "Read algorithm state action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 6,
-      "codeInsight": "Stores inputSize from the current length, making the loop boundary explicit for the visual trace."
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Time complexity describes how the amount of work grows as the input grows.",
+      "activeLine": 5,
+      "codeInsight": "Time complexity describes how the amount of work grows as the input grows."
     },
     {
-      "label": "Invariant",
-      "title": "Inspect algorithm state",
-      "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 6,
-      "codeInsight": "Stores inputSize from the current length, making the loop boundary explicit for the visual trace."
-    },
-    {
-      "label": "State change",
-      "title": "Update the state described by this algorithm",
-      "note": "Only the necessary algorithm state fields are changed.",
-      "activeLine": 6,
-      "codeInsight": "Stores inputSize from the current length, making the loop boundary explicit for the visual trace."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "At n = 8, a full scan uses about 8 visits; comparing every pair uses about 64 comparisons. These are growth models, not milliseconds.",
       "activeLine": 7,
-      "codeInsight": "Returns the final state object { inputSize, linearSteps: inputSize, quadraticSteps: inputSize * inputSize }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Time complexity describes how the amount of work grows as the input grows."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "The growth models compare O(1), O(log n), O(n), O(n log n), and O(n²). The demo computes counts; it does not perform those loops.",
+    "space": "The count-reporting demo uses O(1) extra state."
   },
   "quiz": {
-    "question": "Which state choice keeps Time Complexity Basics correct?",
+    "question": "Which explanation best describes Time Complexity Basics?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Time Complexity Basics' transition.",
+        "text": "Time complexity describes how the amount of work grows as the input grows.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Time Complexity Basics stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Time Complexity Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Time complexity describes how the amount of work grows as the input grows.",
+    "incorrectText": "Try again. Time complexity describes how the amount of work grows as the input grows. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "foundations",
   "algorithmSlug": "time-complexity-basics",
@@ -168,5 +142,40 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "State is the information a computation remembers between steps. A transition changes that information; a stop rule ends the computation.",
+    "family": "State and rules",
+    "example": "At n = 8, a full scan uses about 8 visits; comparing every pair uses about 64 comparisons. These are growth models, not milliseconds.",
+    "sampleInput": [
+      [
+        1,
+        2,
+        3
+      ]
+    ],
+    "sampleResult": {
+      "inputSize": 3,
+      "linearSteps": 3,
+      "quadraticSteps": 9
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "Values remembered at the current step."
+      ],
+      [
+        "Transition",
+        "The update that moves to the next state."
+      ],
+      [
+        "Base case",
+        "A small or finished situation with a known answer."
+      ]
+    ],
+    "pitfall": "Check the allowed input and stopping rule before running the routine. A picture of state alone is not a proof of correctness.",
+    "checkpoint": "Explain this in your own words: Time complexity describes how the amount of work grows as the input grows."
+  },
+  "relatedLinks": []
 };

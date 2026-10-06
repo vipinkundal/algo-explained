@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/radix-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Radix Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Sort non-negative integers digit by digit from least significant to most significant.",
   "problem": "Sort non-negative integers digit by digit from least significant to most significant.",
   "concept": "Radix Sort uses stable digit buckets so lower-place ordering is preserved while higher places are processed.",
   "logicSummary": "Find the max digit length, bucket values by the current place, flatten buckets, and move to the next place.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for fixed-width integer-like keys such as IDs when digits are bounded.",
   "whenToUse": "Use Radix Sort for non-negative integers with manageable digit length.",
   "memoryTrick": "Ones, tens, hundreds: stable buckets each round.",
-  "visualizerCaption": "Radix Sort is shown with the actual sorted/unsorted state that its code maintains.",
+  "visualizerCaption": "Explore Radix Sort through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Find largest value",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n + b)."
   },
   "quiz": {
-    "question": "Which state keeps Radix Sort correct?",
+    "question": "Which explanation best describes Radix Sort?",
     "options": [
       {
         "key": "A",
-        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
+        "text": "Sort non-negative integers digit by digit from least significant to most significant.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Use one generic sorted-array story for every sorting algorithm.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Move values without preserving the algorithm's stated invariant.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Radix Sort works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Radix Sort needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Sort non-negative integers digit by digit from least significant to most significant.",
+    "incorrectText": "Try again. Sort non-negative integers digit by digit from least significant to most significant. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "radix-sort",
@@ -226,5 +226,46 @@ export const algorithmPage = {
         "secondaryLabel": "For each digit place, every value enters bucket digit(value, place), then buckets are flattened from 0 to 9."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Find largest value: The largest value tells how many digit passes are needed. Bucket by ones digit: Every value enters bucket 0 through 9. Preserve bucket order: Buckets flatten from 0 to 9 while preserving order inside each bucket. Repeat for tens: The same distribution runs for the next digit place.",
+    "sampleInput": [
+      [
+        170,
+        45,
+        75,
+        90,
+        802,
+        24
+      ]
+    ],
+    "sampleResult": [
+      24,
+      45,
+      75,
+      90,
+      170,
+      802
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Sort non-negative integers digit by digit from least significant to most significant."
+  },
+  "relatedLinks": []
 };

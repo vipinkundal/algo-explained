@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/essential-c-and-cpp-modular-with-structure-programming-style/code/original.cpp",
   "originalCodeFilename": "09_02_modeular_with_structure_programming_style.cpp",
   "originalActiveLine": 5,
-  "meaning": "C/C++ Modular With Structure Programming Style shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "C/C++ Modular With Structure Programming Style explains the C/C++ storage state model and how one focused change updates it.",
-  "concept": "C/C++ Modular With Structure Programming Style is useful when C/C++ storage, addresses, structures, or object ownership affect the program result. Use this when the lesson depends on stack memory, heap memory, references, pointers, structs, or classes.",
-  "logicSummary": "Create the C/C++ value, inspect how it is passed or referenced, apply the operation, and read the final memory-visible result.",
-  "transitionSummary": "Each step changes a value, address, member, or object boundary according to C/C++ memory rules.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Modular programming separates operations into functions and groups related fields into a structure.",
+  "problem": "Modular programming separates operations into functions and groups related fields into a structure.",
+  "concept": "Modular programming separates operations into functions and groups related fields into a structure.",
+  "logicSummary": "Modular programming separates operations into functions and groups related fields into a structure.",
+  "transitionSummary": "A Rectangle structure stores length and width; an area function reads both fields.",
+  "codeInsight": "Modular programming separates operations into functions and groups related fields into a structure.",
   "originalCodeInsight": "The C/C++ reference C/C++ Modular With Structure Programming Style source shows the C/C++ memory model and operation order used by this lesson.",
-  "realLifeExample": "C/C++ Modular With Structure Programming Style is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning C/C++ Essentials behavior through state changes instead of memorized code.",
-  "memoryTrick": "C/C++ Modular With Structure Programming Style: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C/C++ Modular With Structure Programming Style is shown as C/C++ memory and value flow. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "A Rectangle structure stores length and width; an area function reads both fields.",
+  "whenToUse": "Modular programming separates operations into functions and groups related fields into a structure.",
+  "memoryTrick": "Modular programming separates operations into functions and groups related fields into a structure.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Declare value",
-      "text": "Create the variable, pointer, structure, or object."
+      "title": "Identify what the operation means",
+      "text": "Modular programming separates operations into functions and groups related fields into a structure."
     },
     {
-      "title": "Inspect storage",
-      "text": "Notice whether the code uses value, address, reference, or member access."
+      "title": "Work through a small case",
+      "text": "A Rectangle structure stores length and width; an area function reads both fields."
     },
     {
-      "title": "Apply operation",
-      "text": "Run the function, assignment, dereference, or method call."
-    },
-    {
-      "title": "Read result",
-      "text": "Read the changed value, member, pointer target, or object output."
+      "title": "Check the boundary cases",
+      "text": "Do not use a pointer after its object’s lifetime ends. Passing by value copies an object; passing by pointer or reference can access the original."
     }
   ],
   "variables": [
     {
-      "name": "declared name",
-      "purpose": "The identifier introduced by the C/C++ example."
-    },
-    {
-      "name": "stored value",
-      "purpose": "The value currently associated with that identifier."
-    },
-    {
-      "name": "address view",
-      "purpose": "Shows where pointer-style examples refer in memory."
-    },
-    {
-      "name": "printed output",
-      "purpose": "The observable result produced by C/C++ Modular With Structure Programming Style."
+      "name": "return",
+      "purpose": "The function returns a value or snapshot. Open the JavaScript source to inspect the fixed sample."
     }
   ],
   "dryRun": [
     {
-      "label": "Declaration",
-      "title": "Create program value",
-      "note": "The code introduces the variable, pointer, structure, or object.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Modular programming separates operations into functions and groups related fields into a structure.",
       "activeLine": 2,
-      "codeInsight": "Defines essentialCAndCppModularWithStructureProgrammingStyle as the runnable entry point for this lesson."
+      "codeInsight": "Modular programming separates operations into functions and groups related fields into a structure."
     },
     {
-      "label": "Storage",
-      "title": "Track address or copy",
-      "note": "Passing by value, pointer, or reference controls what can change.",
-      "activeLine": 4,
-      "codeInsight": "Sets the returned topic field to \"C/C++ Modular With Structure Programming Style\", which is one of the named values rendered in the visual summary."
-    },
-    {
-      "label": "C/C++ rule",
-      "title": "Apply C/C++ rule",
-      "note": "Assignment, dereference, member access, or method call changes the state.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "A Rectangle structure stores length and width; an area function reads both fields.",
       "activeLine": 3,
-      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Read final value",
-      "note": "The visible output follows from the memory model.",
-      "activeLine": 3,
-      "codeInsight": "Returns the final state object {, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Modular programming separates operations into functions and groups related fields into a structure."
     }
   ],
   "complexity": {
@@ -174,5 +144,37 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "C/C++ separates a value from the memory that stores it. Pointers and references explain how a function can access an existing object.",
+    "family": "Storage and ownership",
+    "example": "A Rectangle structure stores length and width; an area function reads both fields.",
+    "sampleInput": [],
+    "sampleResult": {
+      "topic": "C/C++ Modular With Structure Programming Style",
+      "idea": "This runnable JS companion mirrors the state-first C/C++ lesson in browser-safe JavaScript.",
+      "state": [
+        "input",
+        "working memory",
+        "result"
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Pointer",
+        "A value representing a memory address."
+      ],
+      [
+        "Reference",
+        "A C++ alias for an existing object."
+      ],
+      [
+        "Lifetime",
+        "The interval during which an object exists and may be accessed."
+      ]
+    ],
+    "pitfall": "Do not use a pointer after its object’s lifetime ends. Passing by value copies an object; passing by pointer or reference can access the original.",
+    "checkpoint": "Explain this in your own words: Modular programming separates operations into functions and groups related fields into a structure."
   }
 };

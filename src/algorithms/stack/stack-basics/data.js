@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "layers",
   "codePath": "./src/algorithms/stack/stack-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Stack Basics is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Stack Basics follows last-in, first-out order with push and pop operations.",
   "problem": "Stack Basics follows last-in, first-out order with push and pop operations.",
   "concept": "Stack Basics is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
   "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Stack Basics appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Stack Basics when its state transition is the natural way to model the problem.",
   "memoryTrick": "Stack Basics: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Stack Basics is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Stack Basics through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read stack",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(m)."
   },
   "quiz": {
-    "question": "Which state choice keeps Stack Basics correct?",
+    "question": "Which explanation best describes Stack Basics?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Stack Basics' transition.",
+        "text": "Stack Basics follows last-in, first-out order with push and pop operations.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Stack Basics stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Stack Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Stack Basics follows last-in, first-out order with push and pop operations.",
+    "incorrectText": "Try again. Stack Basics follows last-in, first-out order with push and pop operations. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "stack",
   "algorithmSlug": "stack-basics",
@@ -246,5 +246,53 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "Read stack: Identify the next command, value, node, or library call. Inspect stack top: Look at the active stack fields. Push / pop: push, pop, peek, or resolve stack entries. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      [
+        {
+          "type": "push",
+          "value": 1
+        },
+        {
+          "type": "push",
+          "value": 2
+        },
+        {
+          "type": "peek"
+        },
+        {
+          "type": "pop"
+        },
+        {
+          "type": "pop"
+        }
+      ]
+    ],
+    "sampleResult": [
+      2,
+      2,
+      1
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: Stack Basics follows last-in, first-out order with push and pop operations."
   }
 };

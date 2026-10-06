@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/trees-queue/code/original.h",
   "originalCodeFilename": "Queue.h",
   "originalActiveLine": 1,
-  "meaning": "Binary Tree Queue shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Binary Tree Queue explains the queue state model and how one focused change updates it.",
-  "concept": "Binary Tree Queue is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on balance invariant.",
-  "logicSummary": "Start at the root, maintain balance invariant, rotate or recolor when height/color rules are violated, and return the tree-specific result.",
-  "transitionSummary": "Each step focuses on one node and uses balance invariant to decide the next child, rotation, or returned value.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "A queue remembers tree nodes waiting to be visited in level order.",
+  "problem": "A queue remembers tree nodes waiting to be visited in level order.",
+  "concept": "A queue remembers tree nodes waiting to be visited in level order.",
+  "logicSummary": "A queue remembers tree nodes waiting to be visited in level order.",
+  "transitionSummary": "After processing root 4, enqueue children 2 and 6 so they are visited before their children.",
+  "codeInsight": "A queue remembers tree nodes waiting to be visited in level order.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
-  "realLifeExample": "Binary Tree Queue is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Trees / BST / AVL / Heap behavior through state changes instead of memorized code.",
-  "memoryTrick": "Binary Tree Queue: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Binary Tree Queue is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "After processing root 4, enqueue children 2 and 6 so they are visited before their children.",
+  "whenToUse": "A queue remembers tree nodes waiting to be visited in level order.",
+  "memoryTrick": "A queue remembers tree nodes waiting to be visited in level order.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Check node",
-      "text": "Handle an empty root or finished subtree."
+      "title": "Identify what the operation means",
+      "text": "A queue remembers tree nodes waiting to be visited in level order."
     },
     {
-      "title": "Read node state",
-      "text": "Inspect balance invariant."
+      "title": "Work through a small case",
+      "text": "After processing root 4, enqueue children 2 and 6 so they are visited before their children."
     },
     {
-      "title": "Move/combine",
-      "text": "rotate or recolor when height/color rules are violated."
-    },
-    {
-      "title": "Return tree result",
-      "text": "Return traversal output, path result, or updated tree state."
+      "title": "Check the boundary cases",
+      "text": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it."
     }
   ],
   "variables": [
     {
-      "name": "front cursor",
-      "purpose": "Marks the next value that would leave the queue."
+      "name": "queue",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "rear cursor",
-      "purpose": "Marks where the next incoming value is placed."
-    },
-    {
-      "name": "waiting line",
-      "purpose": "The ordered queue contents while Binary Tree Queue runs."
-    },
-    {
-      "name": "served item",
-      "purpose": "The value removed or inspected by the current queue operation."
+      "name": "output",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     }
   ],
   "dryRun": [
     {
-      "label": "Root",
-      "title": "Check current node",
-      "note": "The code starts by handling missing nodes or the current root.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A queue remembers tree nodes waiting to be visited in level order.",
       "activeLine": 2,
-      "codeInsight": "Defines treesQueue as the runnable entry point for this lesson."
+      "codeInsight": "A queue remembers tree nodes waiting to be visited in level order."
     },
     {
-      "label": "Node state",
-      "title": "Read balance invariant",
-      "note": "The current node controls the next step.",
-      "activeLine": 3,
-      "codeInsight": "Seeds queue with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Child step",
-      "title": "Rotate or recolor when height/color rules are violated",
-      "note": "The algorithm moves to a child, combines a value, or repairs structure.",
-      "activeLine": 6,
-      "codeInsight": "Adds the current value to output, keeping it available for later comparisons or traversal."
-    },
-    {
-      "label": "Tree result",
-      "title": "Return result",
-      "note": "The final traversal, path, measurement, or tree state is returned.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "After processing root 4, enqueue children 2 and 6 so they are visited before their children.",
       "activeLine": 7,
-      "codeInsight": "Returns the final state object { structure: \"queue\", invariant: \"first in, first out\", state: queue, dequeued: output }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A queue remembers tree nodes waiting to be visited in level order."
     }
   ],
   "complexity": {
@@ -270,5 +244,40 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "After processing root 4, enqueue children 2 and 6 so they are visited before their children.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "queue",
+      "invariant": "first in, first out",
+      "state": [
+        2,
+        3,
+        4
+      ],
+      "dequeued": [
+        1
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: A queue remembers tree nodes waiting to be visited in level order."
   }
 };

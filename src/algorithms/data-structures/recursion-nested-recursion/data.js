@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/recursion-nested-recursion/code/original.cpp",
   "originalCodeFilename": "05_nested_recursion.cpp",
   "originalActiveLine": 3,
-  "meaning": "Nested Recursion shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Nested Recursion explains the recursive call state model and how one focused change updates it.",
-  "concept": "Nested Recursion is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
-  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
-  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Nested recursion uses the result of a recursive call as the input of another recursive call.",
+  "problem": "Nested recursion uses the result of a recursive call as the input of another recursive call.",
+  "concept": "Nested recursion uses the result of a recursive call as the input of another recursive call.",
+  "logicSummary": "Nested recursion uses the result of a recursive call as the input of another recursive call.",
+  "transitionSummary": "In f(f(n − 1)), evaluate the inner call first, then pass its result to the outer call.",
+  "codeInsight": "Nested recursion uses the result of a recursive call as the input of another recursive call.",
   "originalCodeInsight": "The C/C++ reference Nested Recursion source shows the C/C++ memory model and operation order used by this lesson.",
-  "realLifeExample": "Nested Recursion is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Recursion behavior through state changes instead of memorized code.",
-  "memoryTrick": "Nested Recursion: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Nested Recursion is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "In f(f(n − 1)), evaluate the inner call first, then pass its result to the outer call.",
+  "whenToUse": "Nested recursion uses the result of a recursive call as the input of another recursive call.",
+  "memoryTrick": "Nested recursion uses the result of a recursive call as the input of another recursive call.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read stack",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "Nested recursion uses the result of a recursive call as the input of another recursive call."
     },
     {
-      "title": "Inspect stack top",
-      "text": "Look at the active stack fields."
+      "title": "Work through a small case",
+      "text": "In f(f(n − 1)), evaluate the inner call first, then pass its result to the outer call."
     },
     {
-      "title": "Push / pop",
-      "text": "push, pop, peek, or resolve stack entries."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays."
     }
   ],
   "variables": [
     {
-      "name": "call input",
-      "purpose": "The value passed into the current recursive call."
+      "name": "n = 5",
+      "purpose": "The input size or numeric limit; check the function signature and sample to see its role here."
     },
     {
-      "name": "base guard",
-      "purpose": "Stops the recursion when the smallest case is reached."
-    },
-    {
-      "name": "return trail",
-      "purpose": "Records values while calls unwind."
-    },
-    {
-      "name": "final value",
-      "purpose": "The answer produced by Nested Recursion."
+      "name": "calls",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     }
   ],
   "dryRun": [
     {
-      "label": "Stack",
-      "title": "Read stack action",
-      "note": "The code receives the next value or command.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Nested recursion uses the result of a recursive call as the input of another recursive call.",
       "activeLine": 2,
-      "codeInsight": "Defines recursionNestedRecursion and names the input n = 5; edits to those inputs change the visual state and output."
+      "codeInsight": "Nested recursion uses the result of a recursive call as the input of another recursive call."
     },
     {
-      "label": "Stack top",
-      "title": "Inspect stack",
-      "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "Seeds calls with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Push / pop",
-      "title": "Push, pop, peek, or resolve stack entries",
-      "note": "Only the necessary stack fields are changed.",
-      "activeLine": 5,
-      "codeInsight": "Adds the current value to calls, keeping it available for later comparisons or traversal."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "In f(f(n − 1)), evaluate the inner call first, then pass its result to the outer call.",
       "activeLine": 6,
-      "codeInsight": "Returns value <= 1 ? 1 : value * factorial(value - 1), the final value maintained by Nested Recursion's code path."
+      "codeInsight": "Nested recursion uses the result of a recursive call as the input of another recursive call."
     }
   ],
   "complexity": {
@@ -191,5 +165,39 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "Each call remembers its own unfinished work. A base case returns directly; the other calls resume as smaller calls finish.",
+    "family": "Recursive calls",
+    "example": "In f(f(n − 1)), evaluate the inner call first, then pass its result to the outer call.",
+    "sampleInput": [],
+    "sampleResult": {
+      "pattern": "recursion",
+      "calls": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "result": 120
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Base case",
+        "An input that returns without another recursive call."
+      ],
+      [
+        "Call frame",
+        "The parameters and local work belonging to one call."
+      ],
+      [
+        "Backtracking",
+        "Undoing a choice to explore another branch; not every recursion needs it."
+      ]
+    ],
+    "pitfall": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays.",
+    "checkpoint": "Explain this in your own words: Nested recursion uses the result of a recursive call as the input of another recursive call."
   }
 };

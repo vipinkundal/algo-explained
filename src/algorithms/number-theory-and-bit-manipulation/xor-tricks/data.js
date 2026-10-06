@@ -12,107 +12,81 @@ export const algorithmPage = {
   "icon": "memory",
   "codePath": "./src/algorithms/number-theory-and-bit-manipulation/xor-tricks/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "XOR Tricks is a Number Theory and Bit Manipulation technique focused on answer.",
-  "problem": "XOR Tricks solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its xor cancel transition.",
-  "concept": "Number and bit algorithms are useful when arithmetic properties let you skip brute-force work. Use this when divisibility, powers, bits, xor, or modular rules define the answer.",
-  "logicSummary": "Read numeric input, keep the relevant arithmetic state, apply the identity, and return the reduced result.",
-  "transitionSummary": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
-  "codeInsight": "The implementation keeps XOR Tricks' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "XOR Tricks appears when the input is input and the required result is answer.",
-  "whenToUse": "Use XOR Tricks when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a xor cancel dry run.",
-  "memoryTrick": "XOR Tricks: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "XOR Tricks is shown as arithmetic-state reduction. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged.",
+  "problem": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged.",
+  "concept": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged.",
+  "logicSummary": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged.",
+  "transitionSummary": "a XOR a = 0 and a XOR 0 = a. Thus 5 XOR 2 XOR 5 = 2.",
+  "codeInsight": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged.",
+  "realLifeExample": "a XOR a = 0 and a XOR 0 = a. Thus 5 XOR 2 XOR 5 = 2.",
+  "whenToUse": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged.",
+  "memoryTrick": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read numbers",
-      "text": "Identify the integer, range, or modulus."
+      "title": "Identify what the operation means",
+      "text": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged."
     },
     {
-      "title": "Set invariant",
-      "text": "Choose the arithmetic or bit rule."
+      "title": "Work through a small case",
+      "text": "a XOR a = 0 and a XOR 0 = a. Thus 5 XOR 2 XOR 5 = 2."
     },
     {
-      "title": "Apply operation",
-      "text": "Shift, xor, divide, multiply, or mark values."
-    },
-    {
-      "title": "Return result",
-      "text": "Return the reduced number or boolean answer."
+      "title": "Check the boundary cases",
+      "text": "JavaScript bitwise operators on Number use 32-bit integers. Check non-negative input assumptions and use suitable integer arithmetic for larger values."
     }
   ],
   "variables": [
     {
-      "name": "value, other",
-      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "a",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "xor accumulator",
-      "purpose": "The running xor value where duplicate bits cancel out."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by xorTricks after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the xor cancel transition until the stop condition for XOR Tricks is reached. Stop when no valid work remains or the answer is known."
+      "name": "b",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     }
   ],
   "dryRun": [
     {
-      "label": "Numbers",
-      "title": "Read numeric state",
-      "note": "The code receives the number, range, or modulus.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged.",
       "activeLine": 5,
-      "codeInsight": "Defines xorTricks and names the input a, b; edits to those inputs change the visual state and output."
+      "codeInsight": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged."
     },
     {
-      "label": "Rule",
-      "title": "Select math invariant",
-      "note": "The chosen identity controls every update.",
-      "activeLine": 5,
-      "codeInsight": "Defines xorTricks and names the input a, b; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Reduction",
-      "title": "Apply one reduction",
-      "note": "A shift, xor, multiply, divide, or mark changes state.",
-      "activeLine": 5,
-      "codeInsight": "Defines xorTricks and names the input a, b; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Numeric result",
-      "title": "Return numeric result",
-      "note": "The loop ends when the invariant gives the answer.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "a XOR a = 0 and a XOR 0 = a. Thus 5 XOR 2 XOR 5 = 2.",
       "activeLine": 6,
-      "codeInsight": "Returns the final state object { xor: a ^ b, withoutTempSwap: [b, a], toggledLowestBit: a ^ 1 }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(1) per fixed-width XOR, or O(n) for a scan of n values.",
+    "space": "O(1) scan state."
   },
   "quiz": {
-    "question": "Which state choice keeps XOR Tricks correct?",
+    "question": "Which explanation best describes XOR Tricks?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through XOR Tricks' transition.",
+        "text": "XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. XOR Tricks stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. XOR Tricks needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged.",
+    "incorrectText": "Try again. XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
   "algorithmSlug": "xor-tricks",
@@ -165,5 +139,40 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "Each binary position represents a power of two. A mask uses those positions as on/off flags.",
+    "family": "Binary digits",
+    "example": "a XOR a = 0 and a XOR 0 = a. Thus 5 XOR 2 XOR 5 = 2.",
+    "sampleInput": [
+      6,
+      3
+    ],
+    "sampleResult": {
+      "xor": 5,
+      "withoutTempSwap": [
+        3,
+        6
+      ],
+      "toggledLowestBit": 7
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Bit",
+        "One binary digit, either 0 or 1."
+      ],
+      [
+        "Mask",
+        "Bits used to select, record, or test positions."
+      ],
+      [
+        "XOR",
+        "An operation that gives 1 where two input bits differ."
+      ]
+    ],
+    "pitfall": "JavaScript bitwise operators on Number use 32-bit integers. Check non-negative input assumptions and use suitable integer arithmetic for larger values.",
+    "checkpoint": "Explain this in your own words: XOR keeps bits that differ; equal values cancel and XOR with zero leaves a value unchanged."
+  },
+  "relatedLinks": []
 };

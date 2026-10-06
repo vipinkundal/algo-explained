@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "queue",
   "codePath": "./src/algorithms/queue/circular-queue/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Circular Queue is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Circular Queue reuses fixed storage by wrapping front and rear indices.",
   "problem": "Circular Queue reuses fixed storage by wrapping front and rear indices.",
   "concept": "Circular Queue is useful when queue behavior is the clearest model for the data changes. Use this when the problem is naturally described by first-in, first-out state.",
   "logicSummary": "Read the next value or operation, maintain first-in, first-out state, then enqueue, dequeue, peek, or evict entries.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Circular Queue appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Circular Queue when its state transition is the natural way to model the problem.",
   "memoryTrick": "Circular Queue: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Circular Queue is shown as queue state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Circular Queue through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read queue",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(capacity)."
   },
   "quiz": {
-    "question": "Which state choice keeps Circular Queue correct?",
+    "question": "Which explanation best describes Circular Queue?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Circular Queue's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Circular Queue reuses fixed storage by wrapping front and rear indices.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Circular Queue stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Circular Queue needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Circular Queue reuses fixed storage by wrapping front and rear indices.",
+    "incorrectText": "Try again. Circular Queue reuses fixed storage by wrapping front and rear indices. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "queue",
   "algorithmSlug": "circular-queue",
@@ -242,5 +242,62 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "Read queue: Identify the next command, value, node, or library call. Inspect queue front: Look at the active queue fields. Enqueue / dequeue: enqueue, dequeue, peek, or evict entries. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      2,
+      [
+        {
+          "type": "enqueue",
+          "value": 1
+        },
+        {
+          "type": "enqueue",
+          "value": 2
+        },
+        {
+          "type": "enqueue",
+          "value": 3
+        },
+        {
+          "type": "dequeue"
+        },
+        {
+          "type": "enqueue",
+          "value": 4
+        },
+        {
+          "type": "dequeue"
+        },
+        {
+          "type": "dequeue"
+        }
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      4
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: Circular Queue reuses fixed storage by wrapping front and rear indices."
   }
 };

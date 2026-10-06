@@ -12,107 +12,85 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/foundations/hashing-basics/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Hashing Basics is a Foundations technique focused on answer.",
-  "problem": "Hashing Basics solves a Foundations problem by maintaining only the state needed for its hash table transition.",
-  "concept": "Hashing Basics is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
-  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
-  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-  "codeInsight": "The implementation keeps Hashing Basics' state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Hashing Basics appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Hashing Basics when a problem matches the Foundations pattern and the expected state changes match a hash table dry run.",
-  "memoryTrick": "Hashing Basics: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Hashing Basics is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Hashing maps a key to a storage location so a value can be found without scanning every entry.",
+  "problem": "Hashing maps a key to a storage location so a value can be found without scanning every entry.",
+  "concept": "Hashing maps a key to a storage location so a value can be found without scanning every entry.",
+  "logicSummary": "Hashing maps a key to a storage location so a value can be found without scanning every entry.",
+  "transitionSummary": "A phone book can store name → number pairs. Two keys may choose the same bucket, so collisions must be handled.",
+  "codeInsight": "Hashing maps a key to a storage location so a value can be found without scanning every entry.",
+  "realLifeExample": "A phone book can store name → number pairs. Two keys may choose the same bucket, so collisions must be handled.",
+  "whenToUse": "Hashing maps a key to a storage location so a value can be found without scanning every entry.",
+  "memoryTrick": "Hashing maps a key to a storage location so a value can be found without scanning every entry.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read algorithm state",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "Hashing maps a key to a storage location so a value can be found without scanning every entry."
     },
     {
-      "title": "Inspect invariant",
-      "text": "Look at the active algorithm state fields."
+      "title": "Work through a small case",
+      "text": "A phone book can store name → number pairs. Two keys may choose the same bucket, so collisions must be handled."
     },
     {
-      "title": "State change",
-      "text": "update the state described by this algorithm."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Check the allowed input and stopping rule before running the routine. A picture of state alone is not a proof of correctness."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "working state",
-      "purpose": "The local state updated by the algorithm transition. This page visualizes it as hash table."
+      "name": "counts",
+      "purpose": "Remembers a frequency for each key, allowing another occurrence to update an existing count."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by hashingBasics after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the hash table transition until the stop condition for Hashing Basics is reached. Stop when no valid work remains or the answer is known."
+      "name": "key",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Algorithm State",
-      "title": "Read algorithm state action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 6,
-      "codeInsight": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly."
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Hashing maps a key to a storage location so a value can be found without scanning every entry.",
+      "activeLine": 5,
+      "codeInsight": "Hashing maps a key to a storage location so a value can be found without scanning every entry."
     },
     {
-      "label": "Invariant",
-      "title": "Inspect algorithm state",
-      "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 6,
-      "codeInsight": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly."
-    },
-    {
-      "label": "State change",
-      "title": "Update the state described by this algorithm",
-      "note": "Only the necessary algorithm state fields are changed.",
-      "activeLine": 9,
-      "codeInsight": "Updates counts[key] with (counts[key] || 0) + 1; this is the state change the animation should reflect."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "A phone book can store name → number pairs. Two keys may choose the same bucket, so collisions must be handled.",
       "activeLine": 11,
-      "codeInsight": "Returns counts, the final value maintained by Hashing Basics's code path."
+      "codeInsight": "Hashing maps a key to a storage location so a value can be found without scanning every entry."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "Lookup is O(1) on average under a suitable hash distribution, O(n) in the worst case.",
+    "space": "O(n) for n stored entries."
   },
   "quiz": {
-    "question": "Which state choice keeps Hashing Basics correct?",
+    "question": "Which explanation best describes Hashing Basics?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Hashing Basics' transition.",
+        "text": "Hashing maps a key to a storage location so a value can be found without scanning every entry.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Hashing Basics stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Hashing Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Hashing maps a key to a storage location so a value can be found without scanning every entry.",
+    "incorrectText": "Try again. Hashing maps a key to a storage location so a value can be found without scanning every entry. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "foundations",
   "algorithmSlug": "hashing-basics",
@@ -168,5 +146,39 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "State is the information a computation remembers between steps. A transition changes that information; a stop rule ends the computation.",
+    "family": "State and rules",
+    "example": "A phone book can store name → number pairs. Two keys may choose the same bucket, so collisions must be handled.",
+    "sampleInput": [
+      [
+        "a",
+        "b",
+        "a"
+      ]
+    ],
+    "sampleResult": {
+      "a": 2,
+      "b": 1
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "Values remembered at the current step."
+      ],
+      [
+        "Transition",
+        "The update that moves to the next state."
+      ],
+      [
+        "Base case",
+        "A small or finished situation with a known answer."
+      ]
+    ],
+    "pitfall": "Check the allowed input and stopping rule before running the routine. A picture of state alone is not a proof of correctness.",
+    "checkpoint": "Explain this in your own words: Hashing maps a key to a storage location so a value can be found without scanning every entry."
+  },
+  "relatedLinks": []
 };

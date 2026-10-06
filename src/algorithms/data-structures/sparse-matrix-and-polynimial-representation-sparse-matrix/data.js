@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/sparse-matrix-and-polynimial-representation-sparse-matrix/code/original.cpp",
   "originalCodeFilename": "01_sparse_matrix.cpp",
   "originalActiveLine": 4,
-  "meaning": "Sparse Matrix shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Sparse Matrix explains the matrix state model and how one focused change updates it.",
-  "concept": "Sparse Matrix is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
-  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
-  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "A sparse matrix stores non-zero entries with their row and column positions.",
+  "problem": "A sparse matrix stores non-zero entries with their row and column positions.",
+  "concept": "A sparse matrix stores non-zero entries with their row and column positions.",
+  "logicSummary": "A sparse matrix stores non-zero entries with their row and column positions.",
+  "transitionSummary": "A 100 × 100 matrix with 3 non-zero values can store 3 triples instead of 10,000 values.",
+  "codeInsight": "A sparse matrix stores non-zero entries with their row and column positions.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
-  "realLifeExample": "Sparse Matrix is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Matrix / Sparse Matrix / Polynomial behavior through state changes instead of memorized code.",
-  "memoryTrick": "Sparse Matrix: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Sparse Matrix is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "A 100 × 100 matrix with 3 non-zero values can store 3 triples instead of 10,000 values.",
+  "whenToUse": "A sparse matrix stores non-zero entries with their row and column positions.",
+  "memoryTrick": "A sparse matrix stores non-zero entries with their row and column positions.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read algorithm state",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "A sparse matrix stores non-zero entries with their row and column positions."
     },
     {
-      "title": "Inspect invariant",
-      "text": "Look at the active algorithm state fields."
+      "title": "Work through a small case",
+      "text": "A 100 × 100 matrix with 3 non-zero values can store 3 triples instead of 10,000 values."
     },
     {
-      "title": "State change",
-      "text": "update the state described by this algorithm."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
-      "name": "row marker",
-      "purpose": "Selects the row being inspected."
+      "name": "matrix",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "column marker",
-      "purpose": "Selects the column being inspected."
-    },
-    {
-      "name": "stored cell",
-      "purpose": "The value addressed by Sparse Matrix."
-    },
-    {
-      "name": "matrix view",
-      "purpose": "Shows the compact or expanded grid state."
+      "name": "nonZero",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Algorithm State",
-      "title": "Read algorithm state action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 3,
-      "codeInsight": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A sparse matrix stores non-zero entries with their row and column positions.",
+      "activeLine": 2,
+      "codeInsight": "A sparse matrix stores non-zero entries with their row and column positions."
     },
     {
-      "label": "Invariant",
-      "title": "Inspect algorithm state",
-      "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 3,
-      "codeInsight": "Seeds matrix with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "State change",
-      "title": "Update the state described by this algorithm",
-      "note": "Only the necessary algorithm state fields are changed.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "A 100 × 100 matrix with 3 non-zero values can store 3 triples instead of 10,000 values.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"matrix\", representation: \"non-zero entries\", nonZero }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "A sparse matrix stores non-zero entries with their row and column positions."
     }
   ],
   "complexity": {
@@ -261,5 +235,49 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "A 100 × 100 matrix with 3 non-zero values can store 3 triples instead of 10,000 values.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "matrix",
+      "representation": "non-zero entries",
+      "nonZero": [
+        {
+          "r": 0,
+          "c": 0,
+          "value": 1
+        },
+        {
+          "r": 1,
+          "c": 1,
+          "value": 2
+        },
+        {
+          "r": 2,
+          "c": 2,
+          "value": 3
+        }
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: A sparse matrix stores non-zero entries with their row and column positions."
   }
 };

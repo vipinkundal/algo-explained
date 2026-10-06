@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/heap-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Heap Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Sort an array by building a max heap and repeatedly extracting the maximum value.",
   "problem": "Sort an array by building a max heap and repeatedly extracting the maximum value.",
   "concept": "Heap Sort first makes the array obey the max-heap property, then swaps the root into the final suffix and heapifies the reduced heap.",
   "logicSummary": "Build a max heap, swap root with the end of the heap, shrink heap size, and sift down the new root.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use heap sort when in-place O(n log n) sorting is needed without quick sort's worst-case risk.",
   "whenToUse": "Use Heap Sort when predictable time and O(1) auxiliary space matter more than stability.",
   "memoryTrick": "Max at root, swap to end, repair the heap.",
-  "visualizerCaption": "Heap Sort is shown with the actual sorted/unsorted state that its code maintains.",
+  "visualizerCaption": "Explore Heap Sort through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Heapify internal nodes",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1) auxiliary space."
   },
   "quiz": {
-    "question": "Which state keeps Heap Sort correct?",
+    "question": "Which explanation best describes Heap Sort?",
     "options": [
       {
         "key": "A",
-        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Use one generic sorted-array story for every sorting algorithm.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Move values without preserving the algorithm's stated invariant.",
-        "correct": false
+        "text": "Sort an array by building a max heap and repeatedly extracting the maximum value.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Heap Sort works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Heap Sort needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Sort an array by building a max heap and repeatedly extracting the maximum value.",
+    "incorrectText": "Try again. Sort an array by building a max heap and repeatedly extracting the maximum value. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "heap-sort",
@@ -225,5 +225,44 @@ export const algorithmPage = {
         "secondaryLabel": "Each extraction places one maximum into the sorted suffix and restores heap order in the remaining prefix."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Heapify internal nodes: Bottom-up heapify creates a max heap. Swap root with end: The maximum moves into its final sorted slot. Exclude sorted suffix: The heap size decreases before the next heapify. Sift root down: The remaining prefix becomes a valid max heap again.",
+    "sampleInput": [
+      [
+        5,
+        1,
+        4,
+        2,
+        8
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      4,
+      5,
+      8
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Sort an array by building a max heap and repeatedly extracting the maximum value."
+  },
+  "relatedLinks": []
 };

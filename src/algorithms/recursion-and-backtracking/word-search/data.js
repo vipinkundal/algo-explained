@@ -12,80 +12,78 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/recursion-and-backtracking/word-search/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Word Search is a Recursion and Backtracking technique focused on solutions.",
-  "problem": "Word Search explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "Word Search appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use Word Search when a problem matches the Recursion and Backtracking pattern and the expected state changes match a grid dfs dry run.",
-  "memoryTrick": "Word Search: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Word Search is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path.",
+  "problem": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path.",
+  "concept": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path.",
+  "logicSummary": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path.",
+  "transitionSummary": "For the word CAT, find C, then an adjacent A, then an adjacent T. A matching letter elsewhere on the board is not enough.",
+  "codeInsight": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path.",
+  "realLifeExample": "For the word CAT, find C, then an adjacent A, then an adjacent T. A matching letter elsewhere on the board is not enough.",
+  "whenToUse": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path.",
+  "memoryTrick": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "For the word CAT, find C, then an adjacent A, then an adjacent T. A matching letter elsewhere on the board is not enough."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
-      "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "name": "board",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "path and recursion frame",
-      "purpose": "The partial choice path plus the current recursive frame before backtracking restores it. This page visualizes it as grid dfs."
+      "name": "word",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by wordSearch after the maintained state reaches the stop rule."
+      "name": "rows",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "cols",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
+    },
+    {
+      "name": "seen",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "found",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "row",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "col",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path.",
       "activeLine": 5,
-      "codeInsight": "Defines wordSearch and names the input board, word; edits to those inputs change the visual state and output."
+      "codeInsight": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For the word CAT, find C, then an adjacent A, then an adjacent T. A matching letter elsewhere on the board is not enough.",
       "activeLine": 10,
-      "codeInsight": "Checks index === word.length; only the branch that preserves Word Search's invariant is allowed to change state."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 10,
-      "codeInsight": "Checks index === word.length; only the branch that preserves Word Search's invariant is allowed to change state."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
-      "activeLine": 16,
-      "codeInsight": "Returns found, the final value maintained by Word Search's code path."
+      "codeInsight": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path."
     }
   ],
   "complexity": {
@@ -93,26 +91,26 @@ export const algorithmPage = {
     "space": "O(n) for tracked state when needed."
   },
   "quiz": {
-    "question": "Which state choice keeps Word Search correct?",
+    "question": "Which explanation best describes Word Search?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through Word Search's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Word Search follows neighboring board cells to spell a word, using each cell at most once in that path.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Word Search stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Word Search needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Word Search follows neighboring board cells to spell a word, using each cell at most once in that path.",
+    "incorrectText": "Try again. Word Search follows neighboring board cells to spell a word, using each cell at most once in that path. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "recursion-and-backtracking",
   "algorithmSlug": "word-search",
@@ -266,5 +264,52 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "For the word CAT, find C, then an adjacent A, then an adjacent T. A matching letter elsewhere on the board is not enough.",
+    "sampleInput": [
+      [
+        [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        [
+          "S",
+          "F",
+          "C",
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
+        ]
+      ],
+      "ABCCED"
+    ],
+    "sampleResult": true,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: Word Search follows neighboring board cells to spell a word, using each cell at most once in that path."
+  },
+  "relatedLinks": []
 };

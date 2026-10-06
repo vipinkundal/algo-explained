@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/trie/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "A trie stores words by sharing common prefixes across character links.",
+  "meaning": "Trie insertion builds a prefix tree so words like cat and car share the c -> a prefix and split only at the final character.",
   "problem": "Trie insertion builds a prefix tree so words like cat and car share the c -> a prefix and split only at the final character.",
   "concept": "For each word, start at root and create or follow one child link per character, then mark the final node as a word ending.",
   "logicSummary": "Create the root object, walk every word character by character, create missing child nodes, mark $ at the end of each word, and return root.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Autocomplete dictionaries use tries so all words beginning with ca can share the same prefix path.",
   "whenToUse": "Use a trie when many strings share prefixes and you need fast prefix or whole-word lookup.",
   "memoryTrick": "Trie insertion: root, one character edge at a time, terminal marker at the word end.",
-  "visualizerCaption": "The animation inserts cat and car, showing the shared ca prefix and two terminal endings.",
+  "visualizerCaption": "Explore Trie Operations through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check node",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n) for tracked state when needed."
   },
   "quiz": {
-    "question": "Which state choice keeps Trie Operations correct?",
+    "question": "Which explanation best describes Trie Operations?",
     "options": [
       {
         "key": "A",
-        "text": "Share common prefix nodes and mark terminal nodes for complete words.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Trie insertion builds a prefix tree so words like cat and car share the c -> a prefix and split only at the final character.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Trie insertion reuses prefix nodes and only branches when characters differ.",
-    "incorrectText": "Not quite. A trie must preserve the character path and terminal markers for each word."
+    "correctText": "Correct. Trie insertion builds a prefix tree so words like cat and car share the c -> a prefix and split only at the final character.",
+    "incorrectText": "Try again. Trie insertion builds a prefix tree so words like cat and car share the c -> a prefix and split only at the final character. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "trie",
@@ -262,5 +262,46 @@ export const algorithmPage = {
         }
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check node: Create the root object. Read node state: Start each word from root. Move/combine: Follow or create the child link for each character. Return tree result: Mark word endings and return the trie root.",
+    "sampleInput": [
+      [
+        "cat",
+        "car"
+      ]
+    ],
+    "sampleResult": {
+      "c": {
+        "a": {
+          "t": {
+            "$": true
+          },
+          "r": {
+            "$": true
+          }
+        }
+      }
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Trie insertion builds a prefix tree so words like cat and car share the c -> a prefix and split only at the final character."
+  },
+  "relatedLinks": []
 };

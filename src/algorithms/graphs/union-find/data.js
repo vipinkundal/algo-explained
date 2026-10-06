@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/union-find/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Disjoint Set Union / Union Find is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Union Find tracks which vertices belong to the same component while merging sets quickly.",
   "problem": "Union Find tracks which vertices belong to the same component while merging sets quickly.",
   "concept": "Disjoint Set Union represents each component as a parent tree; find returns the root and union attaches one root to another.",
   "logicSummary": "Initialize every vertex as its own parent, compress paths during find, and union only when two roots differ.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use Union Find for connectivity queries, Kruskal's MST, grouping accounts, and dynamic component merging.",
   "whenToUse": "Use it when edges arrive as merge operations and you need fast same-component checks.",
   "memoryTrick": "Union Find: ask each node for its root, then merge roots, not leaves.",
-  "visualizerCaption": "Watch parent trees merge and path compression flatten component lookups.",
+  "visualizerCaption": "Explore Disjoint Set Union / Union Find through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Create singleton sets",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state keeps Disjoint Set Union / Union Find correct?",
+    "question": "Which explanation best describes Disjoint Set Union / Union Find?",
     "options": [
       {
         "key": "A",
-        "text": "parent follows the page's own transition rule.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
-        "correct": false
+        "text": "Union Find tracks which vertices belong to the same component while merging sets quickly.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Union Find tracks which vertices belong to the same component while merging sets quickly.",
+    "incorrectText": "Try again. Union Find tracks which vertices belong to the same component while merging sets quickly. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "union-find",
@@ -274,5 +274,55 @@ export const algorithmPage = {
         "replacementNode": "0"
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Create singleton sets: Every node starts as its own parent with rank 0. Find roots: Follow parent pointers until the component root is reached. Union roots: Attach one root under the other when the components differ. Return merge results: Each operation reports whether a real merge happened.",
+    "sampleInput": [
+      5,
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ]
+    ],
+    "sampleResult": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Union Find tracks which vertices belong to the same component while merging sets quickly."
+  },
+  "relatedLinks": []
 };

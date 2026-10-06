@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "abc",
   "codePath": "./src/algorithms/strings/longest-palindromic-substring/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Longest Palindromic Substring is taught with its own string state, transition, code trace, and stopping rule.",
+  "meaning": "Return the longest contiguous substring that reads the same forward and backward.",
   "problem": "Return the longest contiguous substring that reads the same forward and backward.",
   "concept": "Expanding around each possible center finds every odd and even palindrome without checking every substring separately.",
   "logicSummary": "For each index, expand around one-character and two-character centers, then keep the longest valid palindrome.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for text analysis, DNA symmetry scans, and interview problems asking for the longest mirrored block.",
   "whenToUse": "Use center expansion for simple O(n^2) palindrome search with O(1) extra state.",
   "memoryTrick": "Pick a center, grow while both sides mirror.",
-  "visualizerCaption": "The trace expands candidate centers and locks the best palindrome found so far.",
+  "visualizerCaption": "Explore Longest Palindromic Substring through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Pick center",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1) auxiliary space."
   },
   "quiz": {
-    "question": "Which state keeps Longest Palindromic Substring correct?",
+    "question": "Which explanation best describes Longest Palindromic Substring?",
     "options": [
       {
         "key": "A",
-        "text": "Track center expansion pointers and update best only after a valid palindrome is known.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another string algorithm's state names without matching its invariant.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Advance indices without the mismatch, hash, frequency, trie, or radius rule.",
-        "correct": false
+        "text": "Return the longest contiguous substring that reads the same forward and backward.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Longest Palindromic Substring works because the page state follows that exact string invariant.",
-    "incorrectText": "Not quite. Longest Palindromic Substring needs its own string state and stop condition."
+    "correctText": "Correct. Return the longest contiguous substring that reads the same forward and backward.",
+    "incorrectText": "Try again. Return the longest contiguous substring that reads the same forward and backward. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "strings",
   "algorithmSlug": "longest-palindromic-substring",
@@ -183,5 +183,32 @@ export const algorithmPage = {
         "matchedRange": []
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A string is an ordered sequence. A substring occupies consecutive positions; a subsequence can skip positions.",
+    "family": "Characters and positions",
+    "example": "Pick center: Treat each index as an odd center and each gap as an even center. Expand outward: Move left and right while characters match. Capture substring: The valid palindrome is text.slice(left + 1, right). Keep best: Replace best only when the current palindrome is longer.",
+    "sampleInput": [
+      "babad"
+    ],
+    "sampleResult": "bab",
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Prefix",
+        "Characters at the beginning of a string."
+      ],
+      [
+        "Substring",
+        "A consecutive section of a string."
+      ],
+      [
+        "Frequency",
+        "How often a character occurs."
+      ]
+    ],
+    "pitfall": "Check empty strings and repeated characters. State whether case, spaces, and Unicode characters affect matching.",
+    "checkpoint": "Explain this in your own words: Return the longest contiguous substring that reads the same forward and backward."
+  },
+  "relatedLinks": []
 };

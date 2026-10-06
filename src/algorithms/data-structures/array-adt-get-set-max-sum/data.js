@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/array-adt-get-set-max-sum/code/original.cpp",
   "originalCodeFilename": "05_get_set_max_sum.cpp",
   "originalActiveLine": 3,
-  "meaning": "Array ADT Get Set Max Sum shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Array ADT Get Set Max Sum explains the array state model and how one focused change updates it.",
-  "concept": "Array ADT Get Set Max Sum is useful when contiguous storage, indexes, length, or capacity explain the operation. Use this when an array operation depends on slot position, bounds, or shifting values.",
-  "logicSummary": "Read the index or value, check the active length and capacity, update the affected slots, and return the visible array result.",
-  "transitionSummary": "Each step changes one index, length, capacity, or shifted range while preserving the array representation.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total.",
+  "problem": "Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total.",
+  "concept": "Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total.",
+  "logicSummary": "Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total.",
+  "transitionSummary": "For [2, 4, 6], get(1) is 4, the maximum is 6, and the total is 12.",
+  "codeInsight": "Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
-  "realLifeExample": "Array ADT Get Set Max Sum is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Arrays / Array ADT behavior through state changes instead of memorized code.",
-  "memoryTrick": "Array ADT Get Set Max Sum: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Array ADT Get Set Max Sum is shown as indexed array state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "For [2, 4, 6], get(1) is 4, the maximum is 6, and the total is 12.",
+  "whenToUse": "Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total.",
+  "memoryTrick": "Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read request",
-      "text": "Identify the index, value, length, or capacity involved."
+      "title": "Identify what the operation means",
+      "text": "Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total."
     },
     {
-      "title": "Check bounds",
-      "text": "Confirm the operation is valid for the active array size."
+      "title": "Work through a small case",
+      "text": "For [2, 4, 6], get(1) is 4, the maximum is 6, and the total is 12."
     },
     {
-      "title": "Update slots",
-      "text": "Set, shift, scan, or resize the affected cells."
-    },
-    {
-      "title": "Return array result",
-      "text": "Return the found value, status, or updated array view."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "slot index",
-      "purpose": "Selects the current array position."
+      "name": "values",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "active value",
-      "purpose": "The value currently being read or moved."
-    },
-    {
-      "name": "write slot",
-      "purpose": "Marks where an updated value is stored."
-    },
-    {
-      "name": "array view",
-      "purpose": "Shows the slots after Array ADT Get Set Max Sum applies its operation."
+      "name": "sum",
+      "purpose": "Combines input items into one accumulated answer, so the result can be returned or reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Array",
-      "title": "Read array request",
-      "note": "The code receives an array plus an index, value, or command.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total.",
       "activeLine": 2,
-      "codeInsight": "Defines arrayAdtGetSetMaxSum as the runnable entry point for this lesson."
+      "codeInsight": "Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total."
     },
     {
-      "label": "Index / length",
-      "title": "Check active range",
-      "note": "Bounds and current length decide whether the operation is valid.",
-      "activeLine": 4,
-      "codeInsight": "Computes sum by reducing the current values, matching the aggregate shown in the result state."
-    },
-    {
-      "label": "Slots",
-      "title": "Update affected cells",
-      "note": "The operation sets, shifts, scans, or resizes array slots.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For [2, 4, 6], get(1) is 4, the maximum is 6, and the total is 12.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return array state",
-      "note": "The visible value or updated array confirms the operation.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total."
     }
   ],
   "complexity": {
@@ -129,9 +103,9 @@ export const algorithmPage = {
   ],
   "relatedLinks": [
     {
-      "id": "array-patterns",
-      "title": "Array Patterns",
-      "label": "Existing algorithm lesson"
+      "id": "linear-search",
+      "title": "Linear Search",
+      "label": "Start with indexed array values"
     }
   ],
   "runnerInput": [],
@@ -233,5 +207,41 @@ export const algorithmPage = {
         "secondaryLabel": "Each step changes one index, length, capacity, or shifted range while preserving the array representation."
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "For [2, 4, 6], get(1) is 4, the maximum is 6, and the total is 12.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "array",
+      "values": [
+        3,
+        1,
+        4,
+        1,
+        5
+      ],
+      "length": 5,
+      "max": 5,
+      "sum": 14
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Array access reads or writes a slot by index; aggregate operations scan values to find a maximum or total."
   }
 };

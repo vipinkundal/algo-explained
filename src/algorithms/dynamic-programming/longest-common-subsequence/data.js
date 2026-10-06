@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/longest-common-subsequence/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Longest Common Subsequence is taught with its own DP state definition, recurrence, code trace, and answer cell.",
+  "meaning": "Find the length of the longest sequence that appears in both strings without requiring contiguous positions.",
   "problem": "Find the length of the longest sequence that appears in both strings without requiring contiguous positions.",
   "concept": "LCS defines dp[i][j] as the best subsequence length using the first i characters of a and first j characters of b.",
   "logicSummary": "Build a prefix-pair table; matching characters extend the diagonal, while mismatches keep the better top or left answer.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use LCS for diff tools, similarity scoring, DNA sequence comparison, and edit-distance-style reasoning.",
   "whenToUse": "Use LCS when order matters but characters do not need to be adjacent.",
   "memoryTrick": "Match takes diagonal plus one; mismatch takes best of top or left.",
-  "visualizerCaption": "The trace fills prefix-pair cells and ends at dp[a.length][b.length].",
+  "visualizerCaption": "Explore Longest Common Subsequence through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Define dp[i][j]",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(nm)."
   },
   "quiz": {
-    "question": "Which state keeps Longest Common Subsequence correct?",
+    "question": "Which explanation best describes Longest Common Subsequence?",
     "options": [
       {
         "key": "A",
-        "text": "Define dp[i][j] for prefixes and use diagonal/top/left dependencies.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another DP recurrence without matching the state definition.",
-        "correct": false
+        "text": "Find the length of the longest sequence that appears in both strings without requiring contiguous positions.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Read the answer before the required dependency cells have been filled.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Longest Common Subsequence works when its table meaning and recurrence stay aligned.",
-    "incorrectText": "Not quite. Longest Common Subsequence needs its own state, recurrence, and answer cell."
+    "correctText": "Correct. Find the length of the longest sequence that appears in both strings without requiring contiguous positions.",
+    "incorrectText": "Try again. Find the length of the longest sequence that appears in both strings without requiring contiguous positions. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "longest-common-subsequence",
@@ -274,5 +274,33 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A dynamic-programming state names a smaller question. A recurrence explains how its answer uses answers you already know.",
+    "family": "Saved subproblems",
+    "example": "Define dp[i][j]: Best LCS length for prefixes a[0..i) and b[0..j). Seed empty prefixes: Empty string against anything has LCS length 0. Match or mismatch: Use diagonal on match, otherwise best top/left. Read bottom-right: The final cell is the full-string LCS length.",
+    "sampleInput": [
+      "abcde",
+      "ace"
+    ],
+    "sampleResult": 3,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "One precisely defined subproblem."
+      ],
+      [
+        "Recurrence",
+        "A rule for computing a state from smaller states."
+      ],
+      [
+        "Base case",
+        "A known answer that starts the table or recursion."
+      ]
+    ],
+    "pitfall": "Define what each table entry means before filling it. Check base cases, evaluation order, and whether a choice can be reused.",
+    "checkpoint": "Explain this in your own words: Find the length of the longest sequence that appears in both strings without requiring contiguous positions."
+  },
+  "relatedLinks": []
 };

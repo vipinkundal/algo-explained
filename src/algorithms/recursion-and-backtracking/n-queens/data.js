@@ -12,80 +12,74 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/recursion-and-backtracking/n-queens/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "N-Queens is a Recursion and Backtracking technique focused on solutions.",
-  "problem": "N-Queens explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
-  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
-  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "N-Queens appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use N-Queens when a problem matches the Recursion and Backtracking pattern and the expected state changes match a chessboard dry run.",
-  "memoryTrick": "N-Queens: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "N-Queens is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "N-Queens places one queen per row so that no two queens share a column or diagonal.",
+  "problem": "N-Queens places one queen per row so that no two queens share a column or diagonal.",
+  "concept": "N-Queens places one queen per row so that no two queens share a column or diagonal.",
+  "logicSummary": "N-Queens places one queen per row so that no two queens share a column or diagonal.",
+  "transitionSummary": "On a 4 × 4 board, columns [1, 3, 0, 2] for rows [0, 1, 2, 3] form one valid placement, using zero-based positions.",
+  "codeInsight": "N-Queens places one queen per row so that no two queens share a column or diagonal.",
+  "realLifeExample": "On a 4 × 4 board, columns [1, 3, 0, 2] for rows [0, 1, 2, 3] form one valid placement, using zero-based positions.",
+  "whenToUse": "N-Queens places one queen per row so that no two queens share a column or diagonal.",
+  "memoryTrick": "N-Queens places one queen per row so that no two queens share a column or diagonal.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Base case",
-      "text": "Stop when the current state is complete or invalid."
+      "title": "Identify what the operation means",
+      "text": "N-Queens places one queen per row so that no two queens share a column or diagonal."
     },
     {
-      "title": "Choose option",
-      "text": "Pick the next valid branch."
+      "title": "Work through a small case",
+      "text": "On a 4 × 4 board, columns [1, 3, 0, 2] for rows [0, 1, 2, 3] form one valid placement, using zero-based positions."
     },
     {
-      "title": "Recurse",
-      "text": "Solve the smaller state."
-    },
-    {
-      "title": "Return or undo",
-      "text": "Collect the result or backtrack before the next choice."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
-      "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "name": "size",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "path and recursion frame",
-      "purpose": "The partial choice path plus the current recursive frame before backtracking restores it. This page visualizes it as chessboard."
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by nQueens after the maintained state reaches the stop rule."
+      "name": "columns",
+      "purpose": "Records keys or membership so later steps can look them up without scanning the original collection again."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "diagA",
+      "purpose": "Records keys or membership so later steps can look them up without scanning the original collection again."
+    },
+    {
+      "name": "diagB",
+      "purpose": "Records keys or membership so later steps can look them up without scanning the original collection again."
+    },
+    {
+      "name": "board",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "col",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Base",
-      "title": "Check stop condition",
-      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "N-Queens places one queen per row so that no two queens share a column or diagonal.",
       "activeLine": 5,
-      "codeInsight": "Defines nQueens and names the input size; edits to those inputs change the visual state and output."
+      "codeInsight": "N-Queens places one queen per row so that no two queens share a column or diagonal."
     },
     {
-      "label": "Choice",
-      "title": "Select next option",
-      "note": "One valid move is added to the state.",
-      "activeLine": 5,
-      "codeInsight": "Defines nQueens and names the input size; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Call",
-      "title": "Recurse deeper",
-      "note": "The same rule runs on a smaller or extended state.",
-      "activeLine": 6,
-      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Unwind",
-      "title": "Return or backtrack",
-      "note": "The result is combined or the choice is removed.",
-      "activeLine": 14,
-      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "On a 4 × 4 board, columns [1, 3, 0, 2] for rows [0, 1, 2, 3] form one valid placement, using zero-based positions.",
+      "activeLine": 30,
+      "codeInsight": "N-Queens places one queen per row so that no two queens share a column or diagonal."
     }
   ],
   "complexity": {
@@ -93,26 +87,26 @@ export const algorithmPage = {
     "space": "O(n) for tracked state when needed."
   },
   "quiz": {
-    "question": "Which state choice keeps N-Queens correct?",
+    "question": "Which explanation best describes N-Queens?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through N-Queens' transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "N-Queens places one queen per row so that no two queens share a column or diagonal.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. N-Queens stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. N-Queens needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. N-Queens places one queen per row so that no two queens share a column or diagonal.",
+    "incorrectText": "Try again. N-Queens places one queen per row so that no two queens share a column or diagonal. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "recursion-and-backtracking",
   "algorithmSlug": "n-queens",
@@ -243,5 +237,45 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "On a 4 × 4 board, columns [1, 3, 0, 2] for rows [0, 1, 2, 3] form one valid placement, using zero-based positions.",
+    "sampleInput": [
+      4
+    ],
+    "sampleResult": [
+      [
+        ".Q..",
+        "...Q",
+        "Q...",
+        "..Q."
+      ],
+      [
+        "..Q.",
+        "Q...",
+        "...Q",
+        ".Q.."
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: N-Queens places one queen per row so that no two queens share a column or diagonal."
+  },
+  "relatedLinks": []
 };

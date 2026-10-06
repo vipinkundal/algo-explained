@@ -12,107 +12,77 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/recursion-and-backtracking/factorial-recursion/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Factorial Recursion is a Recursion and Backtracking technique focused on solutions.",
-  "problem": "Factorial Recursion explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Factorial Recursion is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
-  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
-  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "Factorial Recursion appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use Factorial Recursion when a problem matches the Recursion and Backtracking pattern and the expected state changes match a call stack dry run.",
-  "memoryTrick": "Factorial Recursion: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Factorial Recursion is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time.",
+  "problem": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time.",
+  "concept": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time.",
+  "logicSummary": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time.",
+  "transitionSummary": "4! = 4 × 3 × 2 × 1 = 24. The base case is 0! = 1 (and 1! = 1).",
+  "codeInsight": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time.",
+  "realLifeExample": "4! = 4 × 3 × 2 × 1 = 24. The base case is 0! = 1 (and 1! = 1).",
+  "whenToUse": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time.",
+  "memoryTrick": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read stack",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time."
     },
     {
-      "title": "Inspect stack top",
-      "text": "Look at the active stack fields."
+      "title": "Work through a small case",
+      "text": "4! = 4 × 3 × 2 × 1 = 24. The base case is 0! = 1 (and 1! = 1)."
     },
     {
-      "title": "Push / pop",
-      "text": "push, pop, peek, or resolve stack entries."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays."
     }
   ],
   "variables": [
     {
-      "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
-    },
-    {
-      "name": "path and recursion frame",
-      "purpose": "The partial choice path plus the current recursive frame before backtracking restores it. This page visualizes it as call stack."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by factorialRecursion after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "value",
+      "purpose": "The number to compute with; recursive routines pass a smaller value to the next call."
     }
   ],
   "dryRun": [
     {
-      "label": "Stack",
-      "title": "Read stack action",
-      "note": "The code receives the next value or command.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time.",
       "activeLine": 5,
-      "codeInsight": "Defines factorialRecursion and names the input value; edits to those inputs change the visual state and output."
+      "codeInsight": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time."
     },
     {
-      "label": "Stack top",
-      "title": "Inspect stack",
-      "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 5,
-      "codeInsight": "Defines factorialRecursion and names the input value; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Push / pop",
-      "title": "Push, pop, peek, or resolve stack entries",
-      "note": "Only the necessary stack fields are changed.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "4! = 4 × 3 × 2 × 1 = 24. The base case is 0! = 1 (and 1! = 1).",
       "activeLine": 6,
-      "codeInsight": "Checks value <= 1; only the branch that preserves Factorial Recursion's invariant is allowed to change state."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
-      "activeLine": 7,
-      "codeInsight": "Returns value * factorialRecursion(value - 1), the final value maintained by Factorial Recursion's code path."
+      "codeInsight": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "O(n) for n recursive multiplications in this number-based demo.",
+    "space": "O(n) active call frames. JavaScript Number loses exact integer precision for sufficiently large factorials."
   },
   "quiz": {
-    "question": "Which state choice keeps Factorial Recursion correct?",
+    "question": "Which explanation best describes Factorial Recursion?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through Factorial Recursion's transition.",
-        "correct": true
+        "text": "Every recursive function must try every possible arrangement and undo every call.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Factorial Recursion stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Factorial Recursion needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time.",
+    "incorrectText": "Try again. Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "recursion-and-backtracking",
   "algorithmSlug": "factorial-recursion",
@@ -180,5 +150,31 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "Each call remembers its own unfinished work. A base case returns directly; the other calls resume as smaller calls finish.",
+    "family": "Recursive calls",
+    "example": "4! = 4 × 3 × 2 × 1 = 24. The base case is 0! = 1 (and 1! = 1).",
+    "sampleInput": [
+      5
+    ],
+    "sampleResult": 120,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Base case",
+        "An input that returns without another recursive call."
+      ],
+      [
+        "Call frame",
+        "The parameters and local work belonging to one call."
+      ],
+      [
+        "Backtracking",
+        "Undoing a choice to explore another branch; not every recursion needs it."
+      ]
+    ],
+    "pitfall": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays.",
+    "checkpoint": "Explain this in your own words: Factorial multiplies a non-negative integer by every smaller positive integer, using a smaller recursive call each time."
   }
 };

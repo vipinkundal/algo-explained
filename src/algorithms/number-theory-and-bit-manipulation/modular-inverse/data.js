@@ -12,107 +12,81 @@ export const algorithmPage = {
   "icon": "memory",
   "codePath": "./src/algorithms/number-theory-and-bit-manipulation/modular-inverse/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Modular Inverse is a Number Theory and Bit Manipulation technique focused on answer.",
-  "problem": "Modular Inverse solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its extended gcd transition.",
-  "concept": "Number and bit algorithms are useful when arithmetic properties let you skip brute-force work. Use this when divisibility, powers, bits, xor, or modular rules define the answer.",
-  "logicSummary": "Read numeric input, keep the relevant arithmetic state, apply the identity, and return the reduced result.",
-  "transitionSummary": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
-  "codeInsight": "The implementation keeps Modular Inverse's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Modular Inverse appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Modular Inverse when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a extended gcd dry run.",
-  "memoryTrick": "Modular Inverse: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Modular Inverse is shown as arithmetic-state reduction. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m.",
+  "problem": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m.",
+  "concept": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m.",
+  "logicSummary": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m.",
+  "transitionSummary": "3 has inverse 4 modulo 11 because 3 × 4 = 12 ≡ 1. An inverse exists only when gcd(a, m) = 1.",
+  "codeInsight": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m.",
+  "realLifeExample": "3 has inverse 4 modulo 11 because 3 × 4 = 12 ≡ 1. An inverse exists only when gcd(a, m) = 1.",
+  "whenToUse": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m.",
+  "memoryTrick": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read numbers",
-      "text": "Identify the integer, range, or modulus."
+      "title": "Identify what the operation means",
+      "text": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m."
     },
     {
-      "title": "Set invariant",
-      "text": "Choose the arithmetic or bit rule."
+      "title": "Work through a small case",
+      "text": "3 has inverse 4 modulo 11 because 3 × 4 = 12 ≡ 1. An inverse exists only when gcd(a, m) = 1."
     },
     {
-      "title": "Apply operation",
-      "text": "Shift, xor, divide, multiply, or mark values."
-    },
-    {
-      "title": "Return result",
-      "text": "Return the reduced number or boolean answer."
+      "title": "Check the boundary cases",
+      "text": "Handle zero, one, negative values, and invalid domains explicitly. Large Number calculations can lose exact integer precision."
     }
   ],
   "variables": [
     {
-      "name": "value, other",
-      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "value",
+      "purpose": "The number to compute with; recursive routines pass a smaller value to the next call."
     },
     {
-      "name": "numeric invariant",
-      "purpose": "The remainder, bit mask, power, xor, or primality state updated each step. This page visualizes it as extended gcd."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by modularInverse after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the extended gcd transition until the stop condition for Modular Inverse is reached. Stop when no valid work remains or the answer is known."
+      "name": "mod",
+      "purpose": "The modulus; reducing by it keeps only the remainder needed by modular arithmetic."
     }
   ],
   "dryRun": [
     {
-      "label": "Numbers",
-      "title": "Read numeric state",
-      "note": "The code receives the number, range, or modulus.",
-      "activeLine": 8,
-      "codeInsight": "Updates const [g, x1, y1] with extendedGcd(b, a % b); this is the state change the animation should reflect."
-    },
-    {
-      "label": "Rule",
-      "title": "Select math invariant",
-      "note": "The chosen identity controls every update.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m.",
       "activeLine": 5,
-      "codeInsight": "Defines modularInverse and names the input value, mod; edits to those inputs change the visual state and output."
+      "codeInsight": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m."
     },
     {
-      "label": "Reduction",
-      "title": "Apply one reduction",
-      "note": "A shift, xor, multiply, divide, or mark changes state.",
-      "activeLine": 5,
-      "codeInsight": "Defines modularInverse and names the input value, mod; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Numeric result",
-      "title": "Return numeric result",
-      "note": "The loop ends when the invariant gives the answer.",
-      "activeLine": 9,
-      "codeInsight": "Returns the final array-style answer [g, y1, x1 - Math.floor(a / b) * y1], so the last frame should show the chosen positions or sequence."
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "3 has inverse 4 modulo 11 because 3 × 4 = 12 ≡ 1. An inverse exists only when gcd(a, m) = 1.",
+      "activeLine": 7,
+      "codeInsight": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(log m) arithmetic steps with extended Euclid; other implementations depend on their exponentiation method.",
+    "space": "O(1) iterative state or logarithmic recursion depth. The inverse exists only for coprime inputs."
   },
   "quiz": {
-    "question": "Which state choice keeps Modular Inverse correct?",
+    "question": "Which explanation best describes Modular Inverse?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Modular Inverse's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Modular Inverse stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Modular Inverse needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m.",
+    "incorrectText": "Try again. A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
   "algorithmSlug": "modular-inverse",
@@ -165,5 +139,33 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "Arithmetic properties can reduce a search: factors come in pairs, remainders shrink GCD problems, and squaring reduces exponent work.",
+    "family": "Arithmetic structure",
+    "example": "3 has inverse 4 modulo 11 because 3 × 4 = 12 ≡ 1. An inverse exists only when gcd(a, m) = 1.",
+    "sampleInput": [
+      3,
+      11
+    ],
+    "sampleResult": 4,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Remainder",
+        "What remains after integer division."
+      ],
+      [
+        "Modulo",
+        "Keeping a value’s remainder under a chosen modulus."
+      ],
+      [
+        "Divisor",
+        "An integer that divides another integer exactly."
+      ]
+    ],
+    "pitfall": "Handle zero, one, negative values, and invalid domains explicitly. Large Number calculations can lose exact integer precision.",
+    "checkpoint": "Explain this in your own words: A modular inverse of a is a number x such that a × x leaves remainder 1 modulo m."
+  },
+  "relatedLinks": []
 };

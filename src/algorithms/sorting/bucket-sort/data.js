@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/bucket-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Bucket Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Sort values by distributing them into value-range buckets, sorting each bucket, and concatenating buckets.",
   "problem": "Sort values by distributing them into value-range buckets, sorting each bucket, and concatenating buckets.",
   "concept": "Bucket Sort uses distribution: values with similar ranges go into the same bucket, and bucket order determines global order.",
   "logicSummary": "Find min/max, compute bucket width, place each value into a bucket, sort buckets, and flatten them.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for roughly uniform numeric values such as scores or normalized measurements.",
   "whenToUse": "Use Bucket Sort when values are numeric and spread reasonably across known ranges.",
   "memoryTrick": "Put values in range bins, sort inside bins, read bins left to right.",
-  "visualizerCaption": "Bucket Sort is shown with the actual sorted/unsorted state that its code maintains.",
+  "visualizerCaption": "Explore Bucket Sort through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Find min and max",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(n + k)."
   },
   "quiz": {
-    "question": "Which state keeps Bucket Sort correct?",
+    "question": "Which explanation best describes Bucket Sort?",
     "options": [
       {
         "key": "A",
-        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
+        "text": "Sort values by distributing them into value-range buckets, sorting each bucket, and concatenating buckets.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Use one generic sorted-array story for every sorting algorithm.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Move values without preserving the algorithm's stated invariant.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Bucket Sort works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Bucket Sort needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Sort values by distributing them into value-range buckets, sorting each bucket, and concatenating buckets.",
+    "incorrectText": "Try again. Sort values by distributing them into value-range buckets, sorting each bucket, and concatenating buckets. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "bucket-sort",
@@ -236,5 +236,51 @@ export const algorithmPage = {
         "secondaryLabel": "Each value maps to exactly one bucket based on its numeric range."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Find min and max: The range determines bucket width. Map values to buckets: Each value enters the bucket for its range. Order inside each bucket: Small buckets are sorted individually. Concatenate bucket order: Lower-range buckets come before higher-range buckets.",
+    "sampleInput": [
+      [
+        29,
+        25,
+        3,
+        49,
+        9,
+        37,
+        21,
+        43
+      ],
+      4
+    ],
+    "sampleResult": [
+      3,
+      9,
+      21,
+      25,
+      29,
+      37,
+      43,
+      49
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Sort values by distributing them into value-range buckets, sorting each bucket, and concatenating buckets."
+  },
+  "relatedLinks": []
 };

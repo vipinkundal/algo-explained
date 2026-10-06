@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/selection-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Selection Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Sort an array by repeatedly selecting the smallest value from the unsorted suffix.",
   "problem": "Sort an array by repeatedly selecting the smallest value from the unsorted suffix.",
   "concept": "Selection Sort grows a sorted prefix; each pass chooses the smallest remaining item and swaps it into the next prefix slot.",
   "logicSummary": "For each start index, scan the suffix for the minimum value, then swap it into start.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it when swaps are expensive but comparisons are acceptable, or when teaching prefix invariants.",
   "whenToUse": "Use Selection Sort for small arrays or educational traces of minimum selection.",
   "memoryTrick": "Pick the smallest remaining card and place it next.",
-  "visualizerCaption": "Selection Sort is shown with the actual sorted/unsorted state that its code maintains.",
+  "visualizerCaption": "Explore Selection Sort through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Scan suffix",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state keeps Selection Sort correct?",
+    "question": "Which explanation best describes Selection Sort?",
     "options": [
       {
         "key": "A",
-        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Use one generic sorted-array story for every sorting algorithm.",
-        "correct": false
+        "text": "Sort an array by repeatedly selecting the smallest value from the unsorted suffix.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Move values without preserving the algorithm's stated invariant.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Selection Sort works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Selection Sort needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Sort an array by repeatedly selecting the smallest value from the unsorted suffix.",
+    "incorrectText": "Try again. Sort an array by repeatedly selecting the smallest value from the unsorted suffix. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "selection-sort",
@@ -225,5 +225,44 @@ export const algorithmPage = {
         "secondaryLabel": "The minimum candidate changes during the suffix scan; after the scan one swap extends the sorted prefix."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Scan suffix: Find the smallest value among all positions. Swap into prefix: Move 1 into index 0. Find next minimum: The sorted prefix is protected while the suffix is scanned. Prefix covers array: Every position has received the smallest remaining value.",
+    "sampleInput": [
+      [
+        5,
+        1,
+        4,
+        2,
+        8
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      4,
+      5,
+      8
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Sort an array by repeatedly selecting the smallest value from the unsorted suffix."
+  },
+  "relatedLinks": []
 };

@@ -87,6 +87,7 @@ const state = {
   selectedId: "binary-search",
   query: "",
   searchQuery: "",
+  categoryFilter: "",
   loadingPageId: "",
   notice: "",
   userId: initialUserId,
@@ -155,7 +156,7 @@ function renderNavButton(view) {
     challenge: t("nav.challenge"),
     quiz: t("nav.quiz"),
   };
-  return `<button class="nav-link ${state.view === view ? "active" : ""}" data-view="${view}">${escapeHtml(labels[view] || view)}</button>`;
+  return `<button class="nav-link ${state.view === view ? "active" : ""}" data-view="${view}" ${state.view === view ? 'aria-current="page"' : ""}>${escapeHtml(labels[view] || view)}</button>`;
 }
 
 function renderLanguageSelector() {
@@ -179,32 +180,58 @@ function renderCatalog() {
   return `
     <section class="catalog-panel" aria-labelledby="catalog-title">
       <div class="catalog-intro">
-        <p class="eyebrow">Learning dashboard</p>
-        <h1 id="catalog-title">Learn the logic, then watch it move.</h1>
-        <p>Start from plain-English intuition, step through the code trace, then use visual controls to see the state changes.</p>
+        <p class="eyebrow">Understand one idea at a time</p>
+        <h1 id="catalog-title">Algorithms, made <em>understandable.</em></h1>
+        <p>A simple idea. A small example. A picture you can step through. Build your understanding before you dive into the code.</p>
+        <div class="hero-actions"><button class="primary-action" data-algorithm="linear-search">Start with Linear Search ${icon("arrow_forward")}</button><button class="text-action" data-view="search">Explore ${algorithms.length} lessons</button></div>
+        <ol class="learning-journey"><li><b>01</b><strong>Read the idea</strong><span>Learn the words and work a small example.</span></li><li><b>02</b><strong>Watch & try</strong><span>Predict the next step. Change input. Run the code.</span></li><li><b>03</b><strong>Check yourself</strong><span>Answer a question and explain why it works.</span></li></ol>
       </div>
-      ${renderProgressPanel(getSelectedAlgorithm())}
+      ${renderStarterPath()}
+      ${renderTopicMap()}
       ${renderDashboardReports()}
       ${recentAlgorithms.length ? renderRecentDashboard(recentAlgorithms) : renderEmptyRecentDashboard()}
     </section>
   `;
 }
 
+function renderStarterPath() {
+  const steps = [
+    ["linear-search", "Find an item", "Read one slot at a time; no sorted input needed."],
+    ["time-complexity-basics", "Understand the cost", "See why 2× the input can mean 4× the work."],
+    ["binary-search", "Use sorted order", "Discard half the candidates with one comparison."],
+    ["stack-basics", "Remember pending work", "Try the last-in, first-out rule."],
+    ["bfs", "Explore connections", "Walk a graph one layer at a time."],
+  ];
+  return `<section class="starter-path" aria-label="Suggested beginner path"><div class="section-heading"><h2>New here? Follow this path.</h2><span>No prior algorithm knowledge</span></div><div class="starter-grid">${steps.map(([id,title,text],i)=>`<button data-algorithm="${id}"><b>${i+1}</b><strong>${title}</strong><span>${text}</span></button>`).join("")}</div></section>`;
+}
+
+function renderTopicMap() {
+  const descriptions = {"Foundations":"The vocabulary: time, memory, recursion, and reuse.","Searching":"Find a value or a boundary.","Sorting":"Put values in a useful order.","Graphs":"Explore connections, routes, and dependencies.","Trees":"Work with branching and ordered structures.","Dynamic Programming":"Reuse answers to smaller problems.","Data Structures":"Learn storage, links, and C/C++ reference examples.","Array Patterns":"Recognize windows, pointers, and running totals.","Strings":"Compare, match, and rearrange characters.","Stack":"Remember the most recent pending item.","Queue":"Process waiting items in arrival order.","Heap and Priority Queue":"Take the most important item next.","Recursion and Backtracking":"Break down a problem and explore choices.","Matrix and Grid":"Work with rows, columns, and neighbors.","Number Theory and Bit Manipulation":"Use arithmetic and binary properties.","C++ STL Algorithm Pages":"Understand standard library operations."};
+  const groups = Object.entries(descriptions).map(([name,description])=>({name,description,count:algorithms.filter(a=>a.category===name).length})).filter(g=>g.count);
+  return `<section class="topic-map" aria-labelledby="topic-map-title"><div class="section-heading"><h2 id="topic-map-title">Choose what you want to understand</h2><span>${groups.length} subject groups</span></div><div class="topic-grid">${groups.map(g=>`<button data-topic="${escapeHtml(g.name)}"><strong>${escapeHtml(g.name)}</strong><span>${escapeHtml(g.description)}</span><em>${g.count} lessons →</em></button>`).join("")}</div></section>`;
+}
+
+function renderLessonNavigation() {
+  const selected = getSelectedAlgorithm();
+  if (!selected || !routeViews.has(state.view)) return "";
+  return `<section class="lesson-navigation" aria-label="Learning stages"><div class="lesson-breadcrumb"><button data-view="search">All lessons</button><span aria-hidden="true">/</span><span>${escapeHtml(selected.category)}</span></div><nav aria-label="This lesson">${[["lesson","1","Understand"],["visualizer","2","Watch & try"],["challenge","3","Check yourself"]].map(([view,num,label])=>`<button data-view="${view}" ${state.view===view?'aria-current="step"':''}><b>${num}</b>${label}</button>`).join("")}</nav></section>`;
+}
+
 function renderDashboardReports() {
   const recentAlgorithms = getRecentAlgorithms();
   const savedCount = state.savedIds.size;
   const completedCount = Object.values(state.progress)
-    .reduce((total, progress) => total + getProgressCompleteCount(progress), 0);
+    .reduce((total, progress) => total + ["lesson", "visualizer", "challenge"].filter((section) => progress?.[section]).length, 0);
 
   return `
     <section class="dashboard-reports" aria-labelledby="dashboard-reports-title">
       <div class="section-heading">
-        <h2 id="dashboard-reports-title">Reports</h2>
-        <span>More soon</span>
+        <h2 id="dashboard-reports-title">Your learning so far</h2>
+        <span>Small steps count</span>
       </div>
       <div class="report-grid">
         ${renderReportCard("history", "Recent activity", `${recentAlgorithms.length}`, "Algorithms opened recently")}
-        ${renderReportCard("fact_check", "Completed checks", `${completedCount}`, "Learn and quiz marks")}
+        ${renderReportCard("fact_check", "Completed checks", `${completedCount}`, "Lesson, visualizer, and quiz marks")}
         ${renderReportCard("bookmark", "Saved for later", `${savedCount}`, "Algorithms saved to revisit")}
       </div>
     </section>
@@ -255,7 +282,7 @@ function renderEmptyRecentDashboard() {
 function renderRecentCard(algorithm) {
   const title = algorithm.title || algorithm.name;
   const progressCount = getCompletedCount(algorithm.id);
-  const progressLabel = progressCount ? `${progressCount}/2 complete` : "Started";
+  const progressLabel = progressCount ? `${progressCount}/3 complete` : "Started";
   return `
     <button type="button" class="recent-card" data-algorithm="${algorithm.id}">
       <span class="card-icon ${slugify(algorithm.category || "algorithms")}">${icon(algorithm.icon || iconForAlgorithm(algorithm))}</span>
@@ -273,16 +300,18 @@ function renderSearchPanel() {
   const results = getSearchResults();
   const status = state.searchLoading
     ? "Indexing full algorithm page content..."
-    : `${searchRecords.size || algorithms.length} algorithms searchable`;
+    : `${searchRecords.size || algorithms.length} lessons in the library`;
   const resultLabel = query ? `${results.length} matches` : `${results.length} algorithms`;
 
   return `
     <section class="catalog-panel search-panel" aria-labelledby="smart-search-title">
+      <p class="eyebrow">Find your next idea</p><h1 id="smart-search-title">Explore the lesson library</h1><p>Search a name, a problem, or a concept. Try “sorted”, “shortest path”, or “repeated work”. Each lesson includes an explanation, a visual model, and a question.</p>
+      <label class="category-filter">Subject <select data-category-filter><option value="">All subjects</option>${[...new Set(algorithms.map(a=>a.category))].map(c=>`<option value="${escapeHtml(c)}" ${state.categoryFilter===c?'selected':''}>${escapeHtml(c)}</option>`).join("")}</select></label>
       <div class="search-field smart-search-field">
         ${icon("search")}
         <input id="smart-search" value="${escapeHtml(state.searchQuery)}" placeholder="Search title, concept, complexity, code, use case..." aria-label="Search algorithm content" />
       </div>
-      <h1 class="visually-hidden" id="smart-search-title">Search algorithms</h1>
+
       <div class="search-summary">
         <span>${icon("database_search")} ${escapeHtml(status)}</span>
         <span>${escapeHtml(resultLabel)}</span>
@@ -301,7 +330,7 @@ function renderSavedPanel() {
       <div class="saved-heading">
         <p class="eyebrow">Saved for later</p>
         <h1 id="saved-title">Your saved algorithms</h1>
-        <p>${savedAlgorithms.length ? `${savedAlgorithms.length} algorithms saved to your backend-backed progress.` : "Algorithms you save will appear here."}</p>
+        <p>${savedAlgorithms.length ? `${savedAlgorithms.length} lessons saved. Open one to continue learning.` : "Algorithms you save will appear here."}</p>
       </div>
       <div class="search-results saved-results" aria-live="polite">
         ${savedAlgorithms.length ? savedAlgorithms.map((algorithm) => renderSavedResult(algorithm)).join("") : renderEmptySaved()}
@@ -329,6 +358,7 @@ function renderProfilePanel() {
   return `
     <section class="catalog-panel profile-panel" aria-labelledby="profile-title">
       ${state.authUser ? renderAccountProfile() : renderAuthForms()}
+      <aside class="account-learning-note"><strong>Learn at your own pace</strong><p>Lessons, visual models, and per-lesson questions are available without an account. Sign in to bookmark lessons and keep your activity together. Daily quizzes unlock three days after account creation and are available once per 24 hours.</p><button class="text-action" data-view="search">Browse the lessons</button></aside>
     </section>
   `;
 }
@@ -354,7 +384,7 @@ function renderAccountProfile() {
       <div>
         <span>${icon("sync")}</span>
         <strong>Progress sync</strong>
-        <p>${escapeHtml(state.backendStatus === "synced" ? "Synced to backend" : "Available locally")}</p>
+        <p>${escapeHtml(state.backendStatus === "synced" ? "Progress saved" : "Available locally")}</p>
       </div>
     </div>
     <form class="auth-form profile-edit-form" data-auth-form="profile">
@@ -393,7 +423,7 @@ function renderAuthForms() {
       <article>
         ${icon("history")}
         <strong>Recent activity</strong>
-        <p>Resume from recently opened lessons and progress marks.</p>
+        <p>Resume from recently opened lessons, visualizers, and progress marks.</p>
       </article>
     </div>
     <form class="auth-form" data-auth-form="${escapeHtml(state.authMode)}">
@@ -543,7 +573,7 @@ function renderAlgorithmCard(algorithm) {
       <span class="card-meta">
         <b>${escapeHtml(phase)}</b>
         ${algorithm.visualizerType ? `<b>${escapeHtml(algorithm.visualizerType)}</b>` : ""}
-        ${completedCount ? `<b class="progress-chip">${icon("task_alt")} ${completedCount}/2</b>` : ""}
+        ${completedCount ? `<b class="progress-chip">${icon("task_alt")} ${completedCount}/3</b>` : ""}
         ${saved ? `<b class="saved-chip">${icon("bookmark")} Saved</b>` : ""}
       </span>
     </button>
@@ -622,24 +652,25 @@ function renderProgressPanel(selected) {
   const completeCount = getCompletedCount(selected.id);
   const saved = state.savedIds.has(selected.id);
   const syncText = state.backendStatus === "synced"
-    ? "Synced to backend"
+    ? "Progress saved"
     : state.backendStatus === "syncing"
       ? "Syncing..."
-      : "Saved locally until backend is available";
+      : "Stored on this device";
 
   return `
     <section class="progress-panel" aria-label="${escapeHtml(selected.title || selected.name)} progress">
       <div>
         <strong>${icon("fact_check")} Progress</strong>
-        <span>${completeCount}/2 complete · ${syncText}</span>
+        <span>${completeCount}/3 complete · ${syncText}</span>
       </div>
       <div class="progress-actions">
         ${[
-          ["lesson", "school", "Learn"],
+          ["lesson", "school", "Lesson"],
+          ["visualizer", "play_circle", "Visualizer"],
           ["challenge", "quiz", "Quiz"],
         ].map(([section, symbol, label]) => `
-          <button type="button" class="${isProgressSectionComplete(progress, section) ? "completed" : ""}" data-progress-section="${section}">
-            ${icon(isProgressSectionComplete(progress, section) ? "check_circle" : symbol)}<span>${label}</span>
+          <button type="button" class="${progress[section] ? "completed" : ""}" data-progress-section="${section}" aria-pressed="${Boolean(progress[section])}">
+            ${icon(progress[section] ? "check_circle" : symbol)}<span>${label}</span>
           </button>
         `).join("")}
         ${state.authUser ? `
@@ -696,15 +727,20 @@ function render() {
 
   root.innerHTML = `
     ${renderHeader()}
-    <main class="app-shell">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <main id="main-content" class="app-shell" tabindex="-1">
+      ${renderLessonNavigation()}
       <div class="${contentGridClass}">
         ${sidePanel}
-        ${workspace ? `<div class="workspace">${workspace}</div>` : ""}
+        ${workspace ? `<div class="workspace">${workspace}</div>` : state.loadingPageId ? '<p role="status" class="page-loading">Opening your lesson…</p>' : ""}
       </div>
+      ${routeViews.has(state.view) && workspace ? `<aside class="lesson-progress"><p class="learning-caption">Mark the stages you have finished. These are your own learning checkpoints.</p>${renderProgressPanel(getSelectedAlgorithm())}</aside>` : ""}
     </main>
     ${renderNotice()}
     ${renderBottomNav()}
   `;
+  const selectedTitle = routeViews.has(state.view) ? getSelectedAlgorithm()?.title : {catalog:"Home",search:"Lesson library",profile:"Account",saved:"Saved lessons",quiz:"Daily quiz"}[state.view];
+  document.title = `${selectedTitle || "Learn"} · Algo Explained`;
   bindEvents();
   loadedPages.get(state.selectedId)?.bind(root);
 }
@@ -723,6 +759,20 @@ function renderSidePanel() {
 }
 
 function bindEvents() {
+  root.querySelector(".skip-link")?.addEventListener("click", event => {
+    event.preventDefault();
+    root.querySelector("#main-content")?.focus();
+  });
+  root.querySelector("[data-category-filter]")?.addEventListener("change", (event) => {
+    state.categoryFilter = event.target.value;
+    render();
+    root.querySelector("[data-category-filter]")?.focus();
+  });
+  root.querySelectorAll("[data-topic]").forEach(button => button.addEventListener("click", () => {
+    state.categoryFilter = button.dataset.topic;
+    state.searchQuery = "";
+    setView("search");
+  }));
   const smartSearch = root.querySelector("#smart-search");
   if (smartSearch) {
     smartSearch.addEventListener("input", (event) => {
@@ -1038,7 +1088,7 @@ function focusSmartSearch() {
 
 function getSearchResults() {
   const query = state.searchQuery.trim();
-  const records = algorithms.map((algorithm) => getSearchRecord(algorithm));
+  const records = algorithms.filter(a => !state.categoryFilter || a.category === state.categoryFilter).map((algorithm) => getSearchRecord(algorithm));
   if (!query) return mergeEquivalentSearchRecords(records).sort(sortSuggestedSearchRecords);
 
   const tokens = tokenize(query);
@@ -1067,10 +1117,8 @@ function renderSearchResult(record) {
         <span class="search-result-summary">${escapeHtml(record.match)}</span>
         <span class="search-result-meta">
           <b>${escapeHtml(record.category)}</b>
-          ${record.mergedCount ? `<b>${record.mergedCount} merged</b>` : ""}
-          <b>${escapeHtml(record.priority)}</b>
-          <b>${escapeHtml(record.visualizerType)}</b>
-          ${completedCount ? `<b class="progress-chip">${icon("task_alt")} ${completedCount}/2</b>` : ""}
+          ${record.mergedCount ? `<b>${record.mergedCount} related lessons</b>` : ""}
+          ${completedCount ? `<b class="progress-chip">${icon("task_alt")} ${completedCount}/3</b>` : ""}
           ${saved ? `<b class="saved-chip">${icon("bookmark")} Saved</b>` : ""}
         </span>
       </span>
@@ -1287,6 +1335,8 @@ function createSearchRecord(algorithm, pageData = {}) {
     summaryForAlgorithm({ ...algorithm, ...pageData, title, category, visualizerType }),
     useForAlgorithm({ ...algorithm, ...pageData, title, category, visualizerType, priority }),
     pageData.meaning,
+    pageData.learningGuide?.example,
+    pageData.learningGuide?.mentalModel,
     pageData.problem,
     pageData.realLifeExample,
     pageData.whenToUse,
@@ -2051,20 +2101,13 @@ function toggleProgress(section) {
   if (!selected) return;
 
   const progress = getAlgorithmProgress(selected.id);
-  if (section === "lesson") {
-    const completed = !isProgressSectionComplete(progress, "lesson");
-    progress.lesson = completed;
-    progress.visualizer = completed;
-  } else {
-    progress[section] = !progress[section];
-  }
+  progress[section] = !progress[section];
   progress.updatedAt = new Date().toISOString();
   state.progress[selected.id] = progress;
   markAlgorithmRecent(selected.id, { sync: false });
   persistProgress();
   render();
-  syncProgressSection(selected.id, section, isProgressSectionComplete(progress, section));
-  if (section === "lesson") syncProgressSection(selected.id, "visualizer", progress.visualizer);
+  syncProgressSection(selected.id, section, progress[section]);
 }
 
 function showSignIn() {
@@ -2083,16 +2126,7 @@ function getAlgorithmProgress(id) {
 
 function getCompletedCount(id) {
   const progress = state.progress[id] || {};
-  return getProgressCompleteCount(progress);
-}
-
-function getProgressCompleteCount(progress = {}) {
-  return ["lesson", "challenge"].filter((section) => isProgressSectionComplete(progress, section)).length;
-}
-
-function isProgressSectionComplete(progress = {}, section) {
-  if (section === "lesson") return Boolean(progress.lesson || progress.visualizer);
-  return Boolean(progress[section]);
+  return ["lesson", "visualizer", "challenge"].filter((section) => progress[section]).length;
 }
 
 function loadUserId(options = {}) {

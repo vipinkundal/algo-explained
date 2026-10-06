@@ -12,107 +12,89 @@ export const algorithmPage = {
   "icon": "memory",
   "codePath": "./src/algorithms/number-theory-and-bit-manipulation/gcd-euclidean/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "GCD / Euclidean Algorithm is a Number Theory and Bit Manipulation technique focused on answer.",
-  "problem": "GCD / Euclidean Algorithm solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its remainder steps transition.",
-  "concept": "Number and bit algorithms are useful when arithmetic properties let you skip brute-force work. Use this when divisibility, powers, bits, xor, or modular rules define the answer.",
-  "logicSummary": "Read numeric input, keep the relevant arithmetic state, apply the identity, and return the reduced result.",
-  "transitionSummary": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
-  "codeInsight": "The implementation keeps GCD / Euclidean Algorithm's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "GCD / Euclidean Algorithm appears when the input is input and the required result is answer.",
-  "whenToUse": "Use GCD / Euclidean Algorithm when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a remainder steps dry run.",
-  "memoryTrick": "GCD / Euclidean Algorithm: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "GCD / Euclidean Algorithm is shown as arithmetic-state reduction. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder.",
+  "problem": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder.",
+  "concept": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder.",
+  "logicSummary": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder.",
+  "transitionSummary": "gcd(18, 12) → gcd(12, 6) → gcd(6, 0) = 6. Stop when the remainder is zero.",
+  "codeInsight": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder.",
+  "realLifeExample": "gcd(18, 12) → gcd(12, 6) → gcd(6, 0) = 6. Stop when the remainder is zero.",
+  "whenToUse": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder.",
+  "memoryTrick": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read numbers",
-      "text": "Identify the integer, range, or modulus."
+      "title": "Identify what the operation means",
+      "text": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder."
     },
     {
-      "title": "Set invariant",
-      "text": "Choose the arithmetic or bit rule."
+      "title": "Work through a small case",
+      "text": "gcd(18, 12) → gcd(12, 6) → gcd(6, 0) = 6. Stop when the remainder is zero."
     },
     {
-      "title": "Apply operation",
-      "text": "Shift, xor, divide, multiply, or mark values."
-    },
-    {
-      "title": "Return result",
-      "text": "Return the reduced number or boolean answer."
+      "title": "Check the boundary cases",
+      "text": "Handle zero, one, negative values, and invalid domains explicitly. Large Number calculations can lose exact integer precision."
     }
   ],
   "variables": [
     {
-      "name": "value, other",
-      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "a",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "current remainder pair",
-      "purpose": "The pair of numbers updated until the remainder reaches zero."
+      "name": "b",
+      "purpose": "An input to the computation. Compare its position in the function signature with the corresponding sample argument."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by gcdEuclidean after the maintained state reaches the stop rule."
+      "name": "x",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the remainder steps transition until the stop condition for GCD / Euclidean Algorithm is reached. Stop when no valid work remains or the answer is known."
+      "name": "y",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Numbers",
-      "title": "Read numeric state",
-      "note": "The code receives the number, range, or modulus.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder.",
       "activeLine": 5,
-      "codeInsight": "Defines gcdEuclidean and names the input a, b; edits to those inputs change the visual state and output."
+      "codeInsight": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder."
     },
     {
-      "label": "Rule",
-      "title": "Select math invariant",
-      "note": "The chosen identity controls every update.",
-      "activeLine": 5,
-      "codeInsight": "Defines gcdEuclidean and names the input a, b; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Reduction",
-      "title": "Apply one reduction",
-      "note": "A shift, xor, multiply, divide, or mark changes state.",
-      "activeLine": 5,
-      "codeInsight": "Defines gcdEuclidean and names the input a, b; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Numeric result",
-      "title": "Return numeric result",
-      "note": "The loop ends when the invariant gives the answer.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "gcd(18, 12) → gcd(12, 6) → gcd(6, 0) = 6. Stop when the remainder is zero.",
       "activeLine": 9,
-      "codeInsight": "Returns x, the final value maintained by GCD / Euclidean Algorithm's code path."
+      "codeInsight": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(log min(|a|, |b|)) remainder steps for positive inputs, treating arithmetic as constant cost.",
+    "space": "O(1) in an iterative version."
   },
   "quiz": {
-    "question": "Which state choice keeps GCD / Euclidean Algorithm correct?",
+    "question": "Which explanation best describes GCD / Euclidean Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through GCD / Euclidean Algorithm's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. GCD / Euclidean Algorithm stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. GCD / Euclidean Algorithm needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder.",
+    "incorrectText": "Try again. The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
   "algorithmSlug": "gcd-euclidean",
@@ -165,5 +147,33 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "Arithmetic properties can reduce a search: factors come in pairs, remainders shrink GCD problems, and squaring reduces exponent work.",
+    "family": "Arithmetic structure",
+    "example": "gcd(18, 12) → gcd(12, 6) → gcd(6, 0) = 6. Stop when the remainder is zero.",
+    "sampleInput": [
+      48,
+      18
+    ],
+    "sampleResult": 6,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Remainder",
+        "What remains after integer division."
+      ],
+      [
+        "Modulo",
+        "Keeping a value’s remainder under a chosen modulus."
+      ],
+      [
+        "Divisor",
+        "An integer that divides another integer exactly."
+      ]
+    ],
+    "pitfall": "Handle zero, one, negative values, and invalid domains explicitly. Large Number calculations can lose exact integer precision.",
+    "checkpoint": "Explain this in your own words: The Euclidean algorithm finds the greatest common divisor by replacing a pair with the smaller number and the remainder."
+  },
+  "relatedLinks": []
 };

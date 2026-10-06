@@ -1,0 +1,2912 @@
+{
+  "pages": 242,
+  "views": 726,
+  "sampleExecutions": 242,
+  "failures": [],
+  "rows": [
+    {
+      "id": "anagram-detection",
+      "route": "/algorithms/strings/anagram-detection",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "avl-tree-basics",
+      "route": "/algorithms/trees/avl-tree-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "backtracking-basics",
+      "route": "/algorithms/foundations/backtracking-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "bellman-ford",
+      "route": "/algorithms/graphs/bellman-ford",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "edge-relaxation",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "bfs",
+      "route": "/algorithms/graphs/bfs",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "graph-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "binary-search",
+      "route": "/algorithms/searching/binary-search",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "bit-basics",
+      "route": "/algorithms/bit-manipulation/bit-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "bitmasking-subsets",
+      "route": "/algorithms/bit-manipulation/bitmasking-subsets",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "bst-delete",
+      "route": "/algorithms/trees/bst-delete",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "bst-insert",
+      "route": "/algorithms/trees/bst-insert",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "bst-search",
+      "route": "/algorithms/trees/bst-search",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "bubble-sort",
+      "route": "/algorithms/sorting/bubble-sort",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "bucket-sort",
+      "route": "/algorithms/sorting/bucket-sort",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "circular-queue",
+      "route": "/algorithms/queue/circular-queue",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "coin-change",
+      "route": "/algorithms/dynamic-programming/coin-change",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "combination-sum",
+      "route": "/algorithms/backtracking/combination-sum",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "count-set-bits",
+      "route": "/algorithms/bit-manipulation/count-set-bits",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "counting-sort",
+      "route": "/algorithms/sorting/counting-sort",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "cpp-accumulate",
+      "route": "/algorithms/cpp-stl/accumulate",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cpp-binary-search",
+      "route": "/algorithms/cpp-stl/binary-search",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cpp-lower-bound",
+      "route": "/algorithms/cpp-stl/lower-bound",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cpp-map-set",
+      "route": "/algorithms/cpp-stl/map-set",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cpp-max-min-element",
+      "route": "/algorithms/cpp-stl/max-min-element",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cpp-next-permutation",
+      "route": "/algorithms/cpp-stl/next-permutation",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cpp-priority-queue",
+      "route": "/algorithms/cpp-stl/priority-queue",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cpp-reverse",
+      "route": "/algorithms/cpp-stl/reverse",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cpp-sort",
+      "route": "/algorithms/cpp-stl/sort",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cpp-unique",
+      "route": "/algorithms/cpp-stl/unique",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cpp-unordered-map-set",
+      "route": "/algorithms/cpp-stl/unordered-map-set",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cpp-upper-bound",
+      "route": "/algorithms/cpp-stl/upper-bound",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "cycle-detection-directed",
+      "route": "/algorithms/graphs/cycle-detection-directed",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "graph-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "cycle-detection-undirected",
+      "route": "/algorithms/graphs/cycle-detection-undirected",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "graph-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "deque",
+      "route": "/algorithms/queue/deque",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "dfs",
+      "route": "/algorithms/graphs/dfs",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "graph-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "diameter-of-tree",
+      "route": "/algorithms/trees/diameter-of-tree",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "difference-array",
+      "route": "/algorithms/array-patterns/difference-array",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "dijkstra",
+      "route": "/algorithms/graphs/dijkstra",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "edge-relaxation",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "dp-on-grids",
+      "route": "/algorithms/dynamic-programming/dp-on-grids",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "dp-on-trees",
+      "route": "/algorithms/dynamic-programming/dp-on-trees",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "ds-array-adt-binary-search",
+      "route": "/algorithms/data-structures/array-adt-binary-search",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-check-if-sorted",
+      "route": "/algorithms/data-structures/array-adt-check-if-sorted",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-creating-array-of-desired-size",
+      "route": "/algorithms/data-structures/array-adt-creating-array-of-desired-size",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-deletion",
+      "route": "/algorithms/data-structures/array-adt-deletion",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-duplicate",
+      "route": "/algorithms/data-structures/array-adt-duplicate",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-finding-missing-element",
+      "route": "/algorithms/data-structures/array-adt-finding-missing-element",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-get-set-max-sum",
+      "route": "/algorithms/data-structures/array-adt-get-set-max-sum",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-inserting-in-sorted-array",
+      "route": "/algorithms/data-structures/array-adt-inserting-in-sorted-array",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-linear-search",
+      "route": "/algorithms/data-structures/array-adt-linear-search",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-linear-search-transposition",
+      "route": "/algorithms/data-structures/array-adt-linear-search-transposition",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-max-and-min",
+      "route": "/algorithms/data-structures/array-adt-max-and-min",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-menu",
+      "route": "/algorithms/data-structures/array-adt-menu",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-merging-array",
+      "route": "/algorithms/data-structures/array-adt-merging-array",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-negative-values",
+      "route": "/algorithms/data-structures/array-adt-negative-values",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-reverse-and-shift-of-an-array",
+      "route": "/algorithms/data-structures/array-adt-reverse-and-shift-of-an-array",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-set",
+      "route": "/algorithms/data-structures/array-adt-set",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-adt-sum-of-k",
+      "route": "/algorithms/data-structures/array-adt-sum-of-k",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-representation-d-array",
+      "route": "/algorithms/data-structures/array-representation-d-array",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-representation-increasing-array-size",
+      "route": "/algorithms/data-structures/array-representation-increasing-array-size",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-array-representation-static-array-and-dynamic-array",
+      "route": "/algorithms/data-structures/array-representation-static-array-and-dynamic-array",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-avl-ll-rotation",
+      "route": "/algorithms/data-structures/avl-ll-rotation",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-binary-tree-creation",
+      "route": "/algorithms/data-structures/binary-tree-creation",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-binary-tree-level-order",
+      "route": "/algorithms/data-structures/binary-tree-level-order",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-binary-tree-traversal",
+      "route": "/algorithms/data-structures/binary-tree-traversal",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-bst-basics",
+      "route": "/algorithms/data-structures/bst-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-circular-queue",
+      "route": "/algorithms/data-structures/circular-queue",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-above-program-as-template-class",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-above-program-as-template-class",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-array-as-parameter",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-array-as-parameter",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-basic-array",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-basic-array",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-functions",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-functions",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-modular-with-structure-programming-style",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-modular-with-structure-programming-style",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-monolithic-program",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-monolithic-program",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-oop-style",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-oop-style",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-pointer",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-pointer",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-pointer-to-structure",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-pointer-to-structure",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-rectangle-class-with-oop",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-rectangle-class-with-oop",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-reference",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-reference",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-structure",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-structure",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-essential-c-and-cpp-structure-as-parameter",
+      "route": "/algorithms/data-structures/essential-c-and-cpp-structure-as-parameter",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-heap-creation",
+      "route": "/algorithms/data-structures/heap-creation",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-cdoublell",
+      "route": "/algorithms/data-structures/linked-list-cdoublell",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-circular-linkedlist",
+      "route": "/algorithms/data-structures/linked-list-circular-linkedlist",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-concatenate-and-merge-linked-list",
+      "route": "/algorithms/data-structures/linked-list-concatenate-and-merge-linked-list",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-count-and-sum",
+      "route": "/algorithms/data-structures/linked-list-count-and-sum",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-deleting-from-circular-linked-list",
+      "route": "/algorithms/data-structures/linked-list-deleting-from-circular-linked-list",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-deleting-in-linked-list",
+      "route": "/algorithms/data-structures/linked-list-deleting-in-linked-list",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-display-linked-list",
+      "route": "/algorithms/data-structures/linked-list-display-linked-list",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-doubly-ll",
+      "route": "/algorithms/data-structures/linked-list-doubly-ll",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-insert-circular-linked-list",
+      "route": "/algorithms/data-structures/linked-list-insert-circular-linked-list",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-inserting-in-sorted-linked-list",
+      "route": "/algorithms/data-structures/linked-list-inserting-in-sorted-linked-list",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-insertion",
+      "route": "/algorithms/data-structures/linked-list-insertion",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-isloop",
+      "route": "/algorithms/data-structures/linked-list-isloop",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-linear-search",
+      "route": "/algorithms/data-structures/linked-list-linear-search",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-linked-list-in-class",
+      "route": "/algorithms/data-structures/linked-list-linked-list-in-class",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-max-linked-list",
+      "route": "/algorithms/data-structures/linked-list-max-linked-list",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-middlenode-and-intersection-of-two-ll",
+      "route": "/algorithms/data-structures/linked-list-middlenode-and-intersection-of-two-ll",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-recursively-display-linked-list",
+      "route": "/algorithms/data-structures/linked-list-recursively-display-linked-list",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-remove-duplicate-data",
+      "route": "/algorithms/data-structures/linked-list-remove-duplicate-data",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-reverse-linked-list",
+      "route": "/algorithms/data-structures/linked-list-reverse-linked-list",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-linked-list-sorted-checking",
+      "route": "/algorithms/data-structures/linked-list-sorted-checking",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-matrix-c-cpp-lower-triangular-matrix",
+      "route": "/algorithms/data-structures/matrix-c-cpp-lower-triangular-matrix",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-matrix-diagonal-matrix",
+      "route": "/algorithms/data-structures/matrix-diagonal-matrix",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-matrix-diagonal-matrix-with-c-cpp-class",
+      "route": "/algorithms/data-structures/matrix-diagonal-matrix-with-c-cpp-class",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-matrix-lower-triangular-matrix",
+      "route": "/algorithms/data-structures/matrix-lower-triangular-matrix",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-queue-array-enqueue-dequeue",
+      "route": "/algorithms/data-structures/queue-array-enqueue-dequeue",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-queue-using-linked-list",
+      "route": "/algorithms/data-structures/queue-using-linked-list",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-exponent",
+      "route": "/algorithms/data-structures/recursion-exponent",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-factorial",
+      "route": "/algorithms/data-structures/recursion-factorial",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-fibonacci",
+      "route": "/algorithms/data-structures/recursion-fibonacci",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-first-recursion-program",
+      "route": "/algorithms/data-structures/recursion-first-recursion-program",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-indirect-recursion",
+      "route": "/algorithms/data-structures/recursion-indirect-recursion",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-ncr",
+      "route": "/algorithms/data-structures/recursion-ncr",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-nested-recursion",
+      "route": "/algorithms/data-structures/recursion-nested-recursion",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-static-variable-in-recursion",
+      "route": "/algorithms/data-structures/recursion-static-variable-in-recursion",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-sum-of-first-n-natural-number",
+      "route": "/algorithms/data-structures/recursion-sum-of-first-n-natural-number",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-taylor-series",
+      "route": "/algorithms/data-structures/recursion-taylor-series",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-taylor-series-using-horners-rule",
+      "route": "/algorithms/data-structures/recursion-taylor-series-using-horners-rule",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-toh",
+      "route": "/algorithms/data-structures/recursion-toh",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-recursion-tree-recursion",
+      "route": "/algorithms/data-structures/recursion-tree-recursion",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-sparse-matrix-addition",
+      "route": "/algorithms/data-structures/sparse-matrix-addition",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-sparse-matrix-and-polynimial-representation-polynomial-linked-list",
+      "route": "/algorithms/data-structures/sparse-matrix-and-polynimial-representation-polynomial-linked-list",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-sparse-matrix-and-polynimial-representation-sparse-matrix",
+      "route": "/algorithms/data-structures/sparse-matrix-and-polynimial-representation-sparse-matrix",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-sparse-matrix-creation-and-display-of-sparse-matrix",
+      "route": "/algorithms/data-structures/sparse-matrix-creation-and-display-of-sparse-matrix",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-sparse-matrix-polynomial-representation",
+      "route": "/algorithms/data-structures/sparse-matrix-polynomial-representation",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-sparse-matrix-sparse-matrix-using-c-cpp",
+      "route": "/algorithms/data-structures/sparse-matrix-sparse-matrix-using-c-cpp",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-stack-infix-to-postfix",
+      "route": "/algorithms/data-structures/stack-infix-to-postfix",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-stack-infix-to-postfix-2",
+      "route": "/algorithms/data-structures/stack-infix-to-postfix-2",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-stack-parenthesis-is-balanced",
+      "route": "/algorithms/data-structures/stack-parenthesis-is-balanced",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-stack-parenthesis-is-balanced-extended",
+      "route": "/algorithms/data-structures/stack-parenthesis-is-balanced-extended",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-stack-postfix-eval",
+      "route": "/algorithms/data-structures/stack-postfix-eval",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-stack-stack-using-ll",
+      "route": "/algorithms/data-structures/stack-stack-using-ll",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-stack-using-array",
+      "route": "/algorithms/data-structures/stack-using-array",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-string-anagram",
+      "route": "/algorithms/data-structures/string-anagram",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-string-changing-case",
+      "route": "/algorithms/data-structures/string-changing-case",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-string-comparing-string",
+      "route": "/algorithms/data-structures/string-comparing-string",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-string-duplicates",
+      "route": "/algorithms/data-structures/string-duplicates",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-string-duplicates-with-bitwise-operator",
+      "route": "/algorithms/data-structures/string-duplicates-with-bitwise-operator",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-string-permutation",
+      "route": "/algorithms/data-structures/string-permutation",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-string-permutation-2",
+      "route": "/algorithms/data-structures/string-permutation-2",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-string-reverse-string",
+      "route": "/algorithms/data-structures/string-reverse-string",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-string-string",
+      "route": "/algorithms/data-structures/string-string",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-string-valid",
+      "route": "/algorithms/data-structures/string-valid",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-string-vowels-no-of-words",
+      "route": "/algorithms/data-structures/string-vowels-no-of-words",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-trees-height-and-count",
+      "route": "/algorithms/data-structures/trees-height-and-count",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-trees-node",
+      "route": "/algorithms/data-structures/trees-node",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-trees-queue",
+      "route": "/algorithms/data-structures/trees-queue",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "ds-trees-stack",
+      "route": "/algorithms/data-structures/trees-stack",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "structure companion"
+    },
+    {
+      "id": "dutch-national-flag",
+      "route": "/algorithms/array-patterns/dutch-national-flag",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "dynamic-programming-basics",
+      "route": "/algorithms/foundations/dynamic-programming-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "edit-distance",
+      "route": "/algorithms/dynamic-programming/edit-distance",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "factorial-recursion",
+      "route": "/algorithms/recursion/factorial-recursion",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "fast-power",
+      "route": "/algorithms/number-theory/fast-power",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "fibonacci-dp",
+      "route": "/algorithms/dynamic-programming/fibonacci-dp",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "fibonacci-recursion",
+      "route": "/algorithms/recursion/fibonacci-recursion",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "flood-fill",
+      "route": "/algorithms/matrix/flood-fill",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "floyd-warshall",
+      "route": "/algorithms/graphs/floyd-warshall",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "gcd-euclidean",
+      "route": "/algorithms/number-theory/gcd-euclidean",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "generate-parentheses",
+      "route": "/algorithms/backtracking/generate-parentheses",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "greedy-basics",
+      "route": "/algorithms/foundations/greedy-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "hashing-basics",
+      "route": "/algorithms/foundations/hashing-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "heap-sort",
+      "route": "/algorithms/sorting/heap-sort",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "heapify",
+      "route": "/algorithms/heaps/heapify",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "height-depth-of-tree",
+      "route": "/algorithms/trees/height-depth-of-tree",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "inorder-traversal",
+      "route": "/algorithms/trees/inorder-traversal",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "insertion-sort",
+      "route": "/algorithms/sorting/insertion-sort",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "island-counting",
+      "route": "/algorithms/matrix/island-counting",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "kadanes-algorithm",
+      "route": "/algorithms/array-patterns/kadanes-algorithm",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "kmp",
+      "route": "/algorithms/strings/kmp",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "kosaraju",
+      "route": "/algorithms/graphs/kosaraju",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "graph-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "kruskal",
+      "route": "/algorithms/graphs/kruskal",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "graph-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "kth-largest-smallest",
+      "route": "/algorithms/heaps/kth-largest-smallest",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "largest-rectangle-histogram",
+      "route": "/algorithms/stack/largest-rectangle-histogram",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "lcm",
+      "route": "/algorithms/number-theory/lcm",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "level-order-traversal",
+      "route": "/algorithms/trees/level-order-traversal",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "linear-search",
+      "route": "/algorithms/searching/linear-search",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "longest-common-subsequence",
+      "route": "/algorithms/dynamic-programming/longest-common-subsequence",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "longest-consecutive-sequence",
+      "route": "/algorithms/array-patterns/longest-consecutive-sequence",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "longest-increasing-subsequence",
+      "route": "/algorithms/dynamic-programming/longest-increasing-subsequence",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "longest-palindromic-substring",
+      "route": "/algorithms/strings/longest-palindromic-substring",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "lower-bound",
+      "route": "/algorithms/searching/lower-bound",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "lowest-common-ancestor",
+      "route": "/algorithms/trees/lowest-common-ancestor",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "lru-cache",
+      "route": "/algorithms/queue/lru-cache",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "linked-list-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "majority-element",
+      "route": "/algorithms/array-patterns/majority-element",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "manachers-algorithm",
+      "route": "/algorithms/strings/manachers-algorithm",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "matrix-chain-multiplication",
+      "route": "/algorithms/dynamic-programming/matrix-chain-multiplication",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "matrix-traversal",
+      "route": "/algorithms/matrix/matrix-traversal",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "max-heap",
+      "route": "/algorithms/heaps/max-heap",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "maximum-product-subarray",
+      "route": "/algorithms/array-patterns/maximum-product-subarray",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "merge-k-sorted-lists",
+      "route": "/algorithms/heaps/merge-k-sorted-lists",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "merge-sort",
+      "route": "/algorithms/sorting/merge-sort",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "min-heap",
+      "route": "/algorithms/heaps/min-heap",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "min-stack",
+      "route": "/algorithms/stack/min-stack",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "modular-exponentiation",
+      "route": "/algorithms/number-theory/modular-exponentiation",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "modular-inverse",
+      "route": "/algorithms/number-theory/modular-inverse",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "n-queens",
+      "route": "/algorithms/backtracking/n-queens",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "next-greater-element",
+      "route": "/algorithms/stack/next-greater-element",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "partition-dp",
+      "route": "/algorithms/dynamic-programming/partition-dp",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "permutations",
+      "route": "/algorithms/backtracking/permutations",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "postorder-traversal",
+      "route": "/algorithms/trees/postorder-traversal",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "power-of-two",
+      "route": "/algorithms/bit-manipulation/power-of-two",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "prefix-sum",
+      "route": "/algorithms/array-patterns/prefix-sum",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "prefix-sum-matrix",
+      "route": "/algorithms/matrix/prefix-sum-matrix",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "preorder-traversal",
+      "route": "/algorithms/trees/preorder-traversal",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "previous-greater-element",
+      "route": "/algorithms/stack/previous-greater-element",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "prim",
+      "route": "/algorithms/graphs/prim",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "graph-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "prime-checking",
+      "route": "/algorithms/number-theory/prime-checking",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "queue-basics",
+      "route": "/algorithms/queue/queue-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "quick-sort",
+      "route": "/algorithms/sorting/quick-sort",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "rabin-karp",
+      "route": "/algorithms/strings/rabin-karp",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "radix-sort",
+      "route": "/algorithms/sorting/radix-sort",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "rat-in-a-maze",
+      "route": "/algorithms/backtracking/rat-in-a-maze",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "recursion-basics",
+      "route": "/algorithms/foundations/recursion-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "red-black-tree-basics",
+      "route": "/algorithms/trees/red-black-tree-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "rotate-matrix",
+      "route": "/algorithms/matrix/rotate-matrix",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "search-in-rotated-sorted-array",
+      "route": "/algorithms/searching/search-in-rotated-sorted-array",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "search-in-sorted-matrix",
+      "route": "/algorithms/matrix/search-in-sorted-matrix",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "selection-sort",
+      "route": "/algorithms/sorting/selection-sort",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "sieve-of-eratosthenes",
+      "route": "/algorithms/number-theory/sieve-of-eratosthenes",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "single-number",
+      "route": "/algorithms/bit-manipulation/single-number",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "sliding-window",
+      "route": "/algorithms/array-patterns/sliding-window",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "sliding-window-maximum",
+      "route": "/algorithms/queue/sliding-window-maximum",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "space-complexity-basics",
+      "route": "/algorithms/foundations/space-complexity-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "spiral-matrix",
+      "route": "/algorithms/matrix/spiral-matrix",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "stack-basics",
+      "route": "/algorithms/stack/stack-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "stock-span",
+      "route": "/algorithms/stack/stock-span",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "subsets",
+      "route": "/algorithms/backtracking/subsets",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "sudoku-solver",
+      "route": "/algorithms/backtracking/sudoku-solver",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "tarjan",
+      "route": "/algorithms/graphs/tarjan",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "graph-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "ternary-search",
+      "route": "/algorithms/searching/ternary-search",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "time-complexity-basics",
+      "route": "/algorithms/foundations/time-complexity-basics",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "top-k-frequent-elements",
+      "route": "/algorithms/heaps/top-k-frequent-elements",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "topological-sort",
+      "route": "/algorithms/graphs/topological-sort",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "graph-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "tower-of-hanoi",
+      "route": "/algorithms/recursion/tower-of-hanoi",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "recursion-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "trie",
+      "route": "/algorithms/trees/trie",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "trie-search",
+      "route": "/algorithms/strings/trie-search",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "two-pointers",
+      "route": "/algorithms/array-patterns/two-pointers",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "union-find",
+      "route": "/algorithms/graphs/union-find",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "tree-operation",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "upper-bound",
+      "route": "/algorithms/searching/upper-bound",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "array-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "valid-parentheses",
+      "route": "/algorithms/stack/valid-parentheses",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "stack-queue-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "word-search",
+      "route": "/algorithms/backtracking/word-search",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "xor-tricks",
+      "route": "/algorithms/bit-manipulation/xor-tricks",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "state-flow",
+      "sample": "passed",
+      "scope": "illustrative model"
+    },
+    {
+      "id": "z-algorithm",
+      "route": "/algorithms/strings/z-algorithm",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "string-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    },
+    {
+      "id": "zero-one-knapsack",
+      "route": "/algorithms/dynamic-programming/zero-one-knapsack",
+      "views": [
+        "lesson",
+        "visualizer",
+        "challenge"
+      ],
+      "family": "matrix-flow",
+      "sample": "passed",
+      "scope": "prepared sample"
+    }
+  ]
+}

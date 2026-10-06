@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/floyd-warshall/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Floyd-Warshall Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Floyd-Warshall computes shortest paths between every pair of vertices.",
   "problem": "Floyd-Warshall computes shortest paths between every pair of vertices.",
   "concept": "The algorithm lets each vertex become an intermediate stop and asks whether i -> k -> j improves i -> j.",
   "logicSummary": "Copy the distance matrix, choose an intermediate vertex, and update every from/to pair through that intermediate.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use Floyd-Warshall for all-pairs shortest paths on small dense graphs or route tables.",
   "whenToUse": "Use it when you need every source-to-target shortest path and O(V^3) is acceptable.",
   "memoryTrick": "Floyd-Warshall asks: would going through k make this pair cheaper?",
-  "visualizerCaption": "Watch a distance matrix improve as each vertex is allowed as an intermediate stop.",
+  "visualizerCaption": "Explore Floyd-Warshall Algorithm through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Copy the matrix",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V^2)."
   },
   "quiz": {
-    "question": "Which state keeps Floyd-Warshall Algorithm correct?",
+    "question": "Which explanation best describes Floyd-Warshall Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "mid follows the page's own transition rule.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
-        "correct": false
+        "text": "Floyd-Warshall computes shortest paths between every pair of vertices.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Floyd-Warshall computes shortest paths between every pair of vertices.",
+    "incorrectText": "Try again. Floyd-Warshall computes shortest paths between every pair of vertices. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "floyd-warshall",
@@ -383,5 +383,82 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "Copy the matrix: Start from direct edge distances. Pick intermediate k: Allow one vertex to be used as a bridge. Update every pair: Compare direct distance with from -> k -> to. Return the matrix: After all k phases, every pair has its shortest distance.",
+    "sampleInput": [
+      [
+        [
+          0,
+          3,
+          99,
+          7
+        ],
+        [
+          8,
+          0,
+          2,
+          99
+        ],
+        [
+          5,
+          99,
+          0,
+          1
+        ],
+        [
+          2,
+          99,
+          99,
+          0
+        ]
+      ]
+    ],
+    "sampleResult": [
+      [
+        0,
+        3,
+        5,
+        6
+      ],
+      [
+        5,
+        0,
+        2,
+        3
+      ],
+      [
+        3,
+        6,
+        0,
+        1
+      ],
+      [
+        2,
+        5,
+        7,
+        0
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: Floyd-Warshall computes shortest paths between every pair of vertices."
+  },
+  "relatedLinks": []
 };

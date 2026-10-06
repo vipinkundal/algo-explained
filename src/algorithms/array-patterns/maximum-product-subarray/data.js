@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "view_week",
   "codePath": "./src/algorithms/array-patterns/maximum-product-subarray/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Maximum Product Subarray is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Maximum Product Subarray tracks both max and min products because a negative value can flip them.",
   "problem": "Maximum Product Subarray tracks both max and min products because a negative value can flip them.",
   "concept": "Maximum Product Subarray is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
   "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Maximum Product Subarray appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Maximum Product Subarray when the problem statement matches its array invariant.",
   "memoryTrick": "Maximum Product Subarray: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Maximum Product Subarray is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Maximum Product Subarray through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read algorithm state",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Maximum Product Subarray correct?",
+    "question": "Which explanation best describes Maximum Product Subarray?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Maximum Product Subarray's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Maximum Product Subarray tracks both max and min products because a negative value can flip them.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Maximum Product Subarray stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Maximum Product Subarray needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Maximum Product Subarray tracks both max and min products because a negative value can flip them.",
+    "incorrectText": "Try again. Maximum Product Subarray tracks both max and min products because a negative value can flip them. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "array-patterns",
   "algorithmSlug": "maximum-product-subarray",
@@ -213,5 +213,37 @@ export const algorithmPage = {
         "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Read algorithm state: Identify the next command, value, node, or library call. Inspect invariant: Look at the active algorithm state fields. State change: update the state described by this algorithm. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      [
+        2,
+        3,
+        -2,
+        4
+      ]
+    ],
+    "sampleResult": 6,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Maximum Product Subarray tracks both max and min products because a negative value can flip them."
+  },
+  "relatedLinks": []
 };

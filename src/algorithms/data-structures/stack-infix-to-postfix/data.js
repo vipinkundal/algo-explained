@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/stack-infix-to-postfix/code/original.cpp",
   "originalCodeFilename": "05_infix_to_postfix.cpp",
   "originalActiveLine": 5,
-  "meaning": "Stack Infix To Postfix shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Stack Infix To Postfix explains the stack state model and how one focused change updates it.",
-  "concept": "Stack Infix To Postfix is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
-  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
-  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence.",
+  "problem": "Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence.",
+  "concept": "Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence.",
+  "logicSummary": "Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence.",
+  "transitionSummary": "a + b * c becomes a b c * + because multiplication happens before addition.",
+  "codeInsight": "Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence.",
   "originalCodeInsight": "Dynamic allocation creates storage at runtime; every pointer assignment changes how nodes or arrays are connected.",
-  "realLifeExample": "Stack Infix To Postfix is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Stack behavior through state changes instead of memorized code.",
-  "memoryTrick": "Stack Infix To Postfix: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Stack Infix To Postfix is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "a + b * c becomes a b c * + because multiplication happens before addition.",
+  "whenToUse": "Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence.",
+  "memoryTrick": "Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read stack",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence."
     },
     {
-      "title": "Inspect stack top",
-      "text": "Look at the active stack fields."
+      "title": "Work through a small case",
+      "text": "a + b * c becomes a b c * + because multiplication happens before addition."
     },
     {
-      "title": "Push / pop",
-      "text": "push, pop, peek, or resolve stack entries."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Check empty and full states, and identify which end an operation changes."
     }
   ],
   "variables": [
     {
-      "name": "top marker",
-      "purpose": "Points at the most recent item in the stack."
+      "name": "stack",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "stack slots",
-      "purpose": "The ordered storage used by Stack Infix To Postfix."
-    },
-    {
-      "name": "popped item",
-      "purpose": "The value removed when the top marker moves down."
-    },
-    {
-      "name": "balance flag",
-      "purpose": "Shows whether the stack invariant still holds."
+      "name": "output",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     }
   ],
   "dryRun": [
     {
-      "label": "Stack",
-      "title": "Read stack action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 3,
-      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence.",
+      "activeLine": 2,
+      "codeInsight": "Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence."
     },
     {
-      "label": "Stack top",
-      "title": "Inspect stack",
-      "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
-    },
-    {
-      "label": "Push / pop",
-      "title": "Push, pop, peek, or resolve stack entries",
-      "note": "Only the necessary stack fields are changed.",
-      "activeLine": 5,
-      "codeInsight": "Visits each input value once, letting the displayed state update in the same order as the code."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "a + b * c becomes a b c * + because multiplication happens before addition.",
       "activeLine": 7,
-      "codeInsight": "Returns the final state object { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence."
     }
   ],
   "complexity": {
@@ -212,5 +186,39 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "a + b * c becomes a b c * + because multiplication happens before addition.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "stack",
+      "invariant": "last in, first out",
+      "state": [
+        10,
+        20
+      ],
+      "popped": [
+        30
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: Convert infix expressions to postfix by keeping pending operators on a stack and respecting precedence."
   }
 };

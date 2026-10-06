@@ -12,107 +12,93 @@ export const algorithmPage = {
   "icon": "grid_on",
   "codePath": "./src/algorithms/matrix-and-grid/island-counting/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Island Counting is a Matrix and Grid technique focused on answer.",
-  "problem": "Island Counting solves a Matrix and Grid problem by maintaining only the state needed for its grid bfs dfs transition.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "The implementation keeps Island Counting's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Island Counting appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Island Counting when a problem matches the Matrix and Grid pattern and the expected state changes match a grid bfs dfs dry run.",
-  "memoryTrick": "Island Counting: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Island Counting is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another.",
+  "problem": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another.",
+  "concept": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another.",
+  "logicSummary": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another.",
+  "transitionSummary": "With four-direction adjacency, [[1, 0], [0, 1]] has 2 islands because the land cells touch only diagonally.",
+  "codeInsight": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another.",
+  "realLifeExample": "With four-direction adjacency, [[1, 0], [0, 1]] has 2 islands because the land cells touch only diagonally.",
+  "whenToUse": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another.",
+  "memoryTrick": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "With four-direction adjacency, [[1, 0], [0, 1]] has 2 islands because the land cells touch only diagonally."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
-      "name": "matrix",
-      "purpose": "The two-dimensional structure whose cells are visited or updated."
+      "name": "grid",
+      "purpose": "The cells and their values; the routine decides which neighbors to follow."
     },
     {
-      "name": "row, column, and visited state",
-      "purpose": "Cell coordinates and visited or transformed values used by the grid transition. This page visualizes it as grid bfs dfs."
+      "name": "seen",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by islandCounting after the maintained state reaches the stop rule."
+      "name": "count",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the grid bfs dfs transition until the stop condition for Island Counting is reached. Stop when no valid work remains or the answer is known."
+      "name": "row",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
+    },
+    {
+      "name": "col",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another.",
       "activeLine": 5,
-      "codeInsight": "Defines islandCounting and names the input grid; edits to those inputs change the visual state and output."
+      "codeInsight": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
-      "activeLine": 5,
-      "codeInsight": "Defines islandCounting and names the input grid; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 9,
-      "codeInsight": "Checks row < 0 || col < 0 || row >= grid.length || col >= grid[0].length; only the branch that preserves Island Counting's invariant is allowed to change state."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "With four-direction adjacency, [[1, 0], [0, 1]] has 2 islands because the land cells touch only diagonally.",
       "activeLine": 25,
-      "codeInsight": "Returns count, the final value maintained by Island Counting's code path."
+      "codeInsight": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(R × C) for a rectangular grid.",
+    "space": "O(R × C) for traversal state in the worst case."
   },
   "quiz": {
-    "question": "Which state choice keeps Island Counting correct?",
+    "question": "Which explanation best describes Island Counting?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Island Counting's transition.",
+        "text": "Island Counting counts separate connected groups of land cells, marking a whole group before counting another.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Island Counting stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Island Counting needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Island Counting counts separate connected groups of land cells, marking a whole group before counting another.",
+    "incorrectText": "Try again. Island Counting counts separate connected groups of land cells, marking a whole group before counting another. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "matrix-and-grid",
   "algorithmSlug": "island-counting",
@@ -259,5 +245,48 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "With four-direction adjacency, [[1, 0], [0, 1]] has 2 islands because the land cells touch only diagonally.",
+    "sampleInput": [
+      [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ]
+    ],
+    "sampleResult": 3,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: Island Counting counts separate connected groups of land cells, marking a whole group before counting another."
+  },
+  "relatedLinks": []
 };

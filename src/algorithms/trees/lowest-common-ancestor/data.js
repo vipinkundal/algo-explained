@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/lowest-common-ancestor/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Lowest Common Ancestor finds the deepest node that has both requested values in its subtree.",
+  "meaning": "Given a tree and two target values, return the lowest node where the two search paths meet.",
   "problem": "Given a tree and two target values, return the lowest node where the two search paths meet.",
   "concept": "Each recursive call returns null, one found target, or the ancestor value when both sides find a target.",
   "logicSummary": "Search left and right subtrees; if both return non-null at a node, that node is the LCA.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "In an org chart, LCA is the closest manager shared by two employees.",
   "whenToUse": "Use Lowest Common Ancestor when you need the deepest shared ancestor of two nodes in a tree.",
   "memoryTrick": "LCA: one target on the left and one on the right means return the current node.",
-  "visualizerCaption": "The animation searches for 1 and 3, then returns 2 as their lowest common ancestor.",
+  "visualizerCaption": "Explore Lowest Common Ancestor through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check current node",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(h) recursion or traversal state."
   },
   "quiz": {
-    "question": "Which state choice keeps Lowest Common Ancestor correct?",
+    "question": "Which explanation best describes Lowest Common Ancestor?",
     "options": [
       {
         "key": "A",
-        "text": "Return the current node when one target is found in each child subtree.",
+        "text": "Given a tree and two target values, return the lowest node where the two search paths meet.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. The LCA is the first node where both target paths meet.",
-    "incorrectText": "Not quite. LCA depends on the two recursive return values from the left and right subtrees."
+    "correctText": "Correct. Given a tree and two target values, return the lowest node where the two search paths meet.",
+    "incorrectText": "Try again. Given a tree and two target values, return the lowest node where the two search paths meet. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "lowest-common-ancestor",
@@ -244,8 +244,8 @@ export const algorithmPage = {
           "7"
         ],
         "nodeLabels": {
-          "4": "4 search",
-          "2": "2 left"
+          "2": "2 left",
+          "4": "4 search"
         }
       },
       {
@@ -309,5 +309,54 @@ export const algorithmPage = {
         }
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check current node: Return immediately if the current node is null or matches either target. Search left subtree: Ask the left child whether it contains either target. Search right subtree: Ask the right child whether it contains either target. Return ancestor: If both sides return values, return the current node value.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        }
+      },
+      1,
+      3
+    ],
+    "sampleResult": 2,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Given a tree and two target values, return the lowest node where the two search paths meet."
+  },
+  "relatedLinks": []
 };

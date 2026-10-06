@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/preorder-traversal/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Preorder Traversal is a Trees technique focused on tree result.",
+  "meaning": "Preorder Traversal relies on the recursive structure of a tree: solve the current node and combine child results.",
   "problem": "Preorder Traversal relies on the recursive structure of a tree: solve the current node and combine child results.",
   "concept": "Preorder Traversal is useful when tree structure lets each node decide the next smaller piece of work. Use this when the answer depends on visit order.",
   "logicSummary": "Start at the root, maintain visit order, visit the current node in preorder, inorder, or postorder position, and return the tree-specific result.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Preorder Traversal appears when the input is root and the required result is tree result.",
   "whenToUse": "Use Preorder Traversal when a problem matches the Trees pattern and the expected state changes match a tree traversal dry run.",
   "memoryTrick": "Preorder Traversal: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Preorder Traversal is shown as node-by-node tree state. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Preorder Traversal through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check node",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(h) recursion or traversal state."
   },
   "quiz": {
-    "question": "Which state choice keeps Preorder Traversal correct?",
+    "question": "Which explanation best describes Preorder Traversal?",
     "options": [
       {
         "key": "A",
-        "text": "Track current node and traversal state and update it only through Preorder Traversal's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Preorder Traversal relies on the recursive structure of a tree: solve the current node and combine child results.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Preorder Traversal stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Preorder Traversal needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Preorder Traversal relies on the recursive structure of a tree: solve the current node and combine child results.",
+    "incorrectText": "Try again. Preorder Traversal relies on the recursive structure of a tree: solve the current node and combine child results. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "preorder-traversal",
@@ -278,5 +278,59 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check node: Handle an empty root or finished subtree. Read node state: Inspect visit order. Move/combine: visit the current node in preorder, inorder, or postorder position. Return tree result: Return traversal output, path result, or updated tree state.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        }
+      }
+    ],
+    "sampleResult": [
+      4,
+      2,
+      1,
+      3,
+      6,
+      5,
+      7
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Preorder Traversal relies on the recursive structure of a tree: solve the current node and combine child results."
   }
 };

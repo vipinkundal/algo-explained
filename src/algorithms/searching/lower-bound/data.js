@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "search",
   "codePath": "./src/algorithms/searching/lower-bound/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Lower Bound is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Find the first sorted position whose value is greater than or equal to target.",
   "problem": "Find the first sorted position whose value is greater than or equal to target.",
   "concept": "Lower Bound keeps the first possible answer inside a half-open range until low and high meet.",
   "logicSummary": "Search [low, high), discard values strictly less than target, and keep mid when it may be the answer.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for insertion points, first true predicates, and counting duplicates with upper bound.",
   "whenToUse": "Use Lower Bound when you need the first value not less than target.",
   "memoryTrick": "Lower bound keeps equals; it only throws away values that are too small.",
-  "visualizerCaption": "Lower Bound is shown with the exact boundary, probe, or scan state used by the code.",
+  "visualizerCaption": "Explore Lower Bound through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Open half range",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state keeps Lower Bound correct?",
+    "question": "Which explanation best describes Lower Bound?",
     "options": [
       {
         "key": "A",
-        "text": "Use the page's own search boundary or scan state and update it only through the listed transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another search algorithm's comparison rule without checking the invariant.",
-        "correct": false
+        "text": "Find the first sorted position whose value is greater than or equal to target.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Stop before the algorithm-specific boundary or scan condition is resolved.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Lower Bound works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Lower Bound needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Find the first sorted position whose value is greater than or equal to target.",
+    "incorrectText": "Try again. Find the first sorted position whose value is greater than or equal to target. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "searching",
   "algorithmSlug": "lower-bound",
@@ -231,5 +231,40 @@ export const algorithmPage = {
         "secondaryLabel": "array[mid] < target moves low to mid + 1; otherwise high becomes mid to preserve that candidate."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Open half range: The answer is somewhere before high. Value 5 is not less than 5: Keep mid by moving high to 3. Value 2 is too small: Move low to 2. First 5: low and high meet at the first valid index.",
+    "sampleInput": [
+      [
+        1,
+        2,
+        5,
+        5,
+        9,
+        12
+      ],
+      5
+    ],
+    "sampleResult": 2,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Find the first sorted position whose value is greater than or equal to target."
+  },
+  "relatedLinks": []
 };

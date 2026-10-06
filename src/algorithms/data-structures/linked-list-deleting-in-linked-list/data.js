@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/linked-list-deleting-in-linked-list/code/original.cpp",
   "originalCodeFilename": "08_Deleting_in_linked_list.cpp",
   "originalActiveLine": 5,
-  "meaning": "Linked List Deletion shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Linked List Deletion explains the linked-list state model and how one focused change updates it.",
-  "concept": "Linked List Deletion is useful when linked list behavior is the clearest model for the data changes. Use this when the problem is naturally described by node-link structure.",
-  "logicSummary": "Read the next value or operation, maintain node-link structure, then move pointers without losing the rest of the chain.",
-  "transitionSummary": "Each step changes only the part of the linked list required to preserve the invariant.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Delete a list node by changing the link before it to skip that node.",
+  "problem": "Delete a list node by changing the link before it to skip that node.",
+  "concept": "Delete a list node by changing the link before it to skip that node.",
+  "logicSummary": "Delete a list node by changing the link before it to skip that node.",
+  "transitionSummary": "Removing B from A → B → C leaves A → C; deleting the head also changes the start pointer.",
+  "codeInsight": "Delete a list node by changing the link before it to skip that node.",
   "originalCodeInsight": "The C/C++ Node struct is the memory layout: data stores the value and next/child pointers connect the structure.",
-  "realLifeExample": "Linked List Deletion is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Linked List behavior through state changes instead of memorized code.",
-  "memoryTrick": "Linked List Deletion: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Linked List Deletion is shown as linked list state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Removing B from A → B → C leaves A → C; deleting the head also changes the start pointer.",
+  "whenToUse": "Delete a list node by changing the link before it to skip that node.",
+  "memoryTrick": "Delete a list node by changing the link before it to skip that node.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read linked list",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "Delete a list node by changing the link before it to skip that node."
     },
     {
-      "title": "Inspect node links",
-      "text": "Look at the active linked list fields."
+      "title": "Work through a small case",
+      "text": "Removing B from A → B → C leaves A → C; deleting the head also changes the start pointer."
     },
     {
-      "title": "Pointer update",
-      "text": "move pointers without losing the rest of the chain."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Save the next link before changing it. Handle an empty list and a change to the head; circular lists need a different stop rule."
     }
   ],
   "variables": [
     {
-      "name": "head link",
-      "purpose": "References the first node in the chain."
-    },
-    {
-      "name": "walk pointer",
-      "purpose": "Moves through links one node at a time."
-    },
-    {
-      "name": "new node",
-      "purpose": "Represents the node created or examined in Linked List Deletion."
-    },
-    {
-      "name": "chain view",
-      "purpose": "Shows the visible node order after pointer updates."
+      "name": "nodes",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     }
   ],
   "dryRun": [
     {
-      "label": "Linked List",
-      "title": "Read linked list action",
-      "note": "The code receives the next value or command.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Delete a list node by changing the link before it to skip that node.",
       "activeLine": 2,
-      "codeInsight": "Defines linkedListDeletingInLinkedList as the runnable entry point for this lesson."
+      "codeInsight": "Delete a list node by changing the link before it to skip that node."
     },
     {
-      "label": "Node links",
-      "title": "Inspect linked list",
-      "note": "The active state must still satisfy node-link structure.",
-      "activeLine": 3,
-      "codeInsight": "Stores nodes from the current length, making the loop boundary explicit for the visual trace."
-    },
-    {
-      "label": "Pointer update",
-      "title": "Move pointers without losing the rest of the chain",
-      "note": "Only the necessary linked list fields are changed.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Removing B from A → B → C leaves A → C; deleting the head also changes the start pointer.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"linked list\", operation: \"insert at position 1\", values: nodes.map((node) => node.value) }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Delete a list node by changing the link before it to skip that node."
     }
   ],
   "complexity": {
@@ -198,5 +168,38 @@ export const algorithmPage = {
         "nextNode": "tail"
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A linked list follows arrows from node to node. Unlike an array, its nodes do not need neighboring memory slots.",
+    "family": "Linked nodes",
+    "example": "Removing B from A → B → C leaves A → C; deleting the head also changes the start pointer.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "linked list",
+      "operation": "insert at position 1",
+      "values": [
+        10,
+        15,
+        20,
+        30
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Head",
+        "The first node in a list."
+      ],
+      [
+        "Next",
+        "The link leading to another node."
+      ],
+      [
+        "Null",
+        "No object or next node is present."
+      ]
+    ],
+    "pitfall": "Save the next link before changing it. Handle an empty list and a change to the head; circular lists need a different stop rule.",
+    "checkpoint": "Explain this in your own words: Delete a list node by changing the link before it to skip that node."
   }
 };

@@ -12,107 +12,81 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/c-stl-algorithm-pages/cpp-unique/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "C++ unique() is a C++ STL Algorithm Pages technique focused on answer.",
-  "problem": "C++ unique() solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its duplicate shift transition.",
-  "concept": "C++ unique() is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
-  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
-  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-  "codeInsight": "The implementation keeps C++ unique()'s state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "C++ unique() appears when the input is input and the required result is answer.",
-  "whenToUse": "Use C++ unique() when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a duplicate shift dry run.",
-  "memoryTrick": "C++ unique(): name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C++ unique() is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end.",
+  "problem": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end.",
+  "concept": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end.",
+  "logicSummary": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end.",
+  "transitionSummary": "[1, 1, 2, 1] retains [1, 2, 1]. It does not remove non-adjacent duplicates or shrink a vector; use erase afterward.",
+  "codeInsight": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end.",
+  "realLifeExample": "[1, 1, 2, 1] retains [1, 2, 1]. It does not remove non-adjacent duplicates or shrink a vector; use erase afterward.",
+  "whenToUse": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end.",
+  "memoryTrick": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read algorithm state",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end."
     },
     {
-      "title": "Inspect invariant",
-      "text": "Look at the active algorithm state fields."
+      "title": "Work through a small case",
+      "text": "[1, 1, 2, 1] retains [1, 2, 1]. It does not remove non-adjacent duplicates or shrink a vector; use erase afterward."
     },
     {
-      "title": "State change",
-      "text": "update the state described by this algorithm."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "working state",
-      "purpose": "The local state updated by the algorithm transition. This page visualizes it as duplicate shift."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by cppUnique after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the duplicate shift transition until the stop condition for C++ unique() is reached. Stop when no valid work remains or the answer is known."
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Algorithm State",
-      "title": "Read algorithm state action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 6,
-      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end.",
+      "activeLine": 5,
+      "codeInsight": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end."
     },
     {
-      "label": "Invariant",
-      "title": "Inspect algorithm state",
-      "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 6,
-      "codeInsight": "Seeds result with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "State change",
-      "title": "Update the state described by this algorithm",
-      "note": "Only the necessary algorithm state fields are changed.",
-      "activeLine": 8,
-      "codeInsight": "Checks result.length === 0 || result[result.length - 1] !== value) result.push(value; only the branch that preserves C++ unique()'s invariant is allowed to change state."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "[1, 1, 2, 1] retains [1, 2, 1]. It does not remove non-adjacent duplicates or shrink a vector; use erase afterward.",
       "activeLine": 10,
-      "codeInsight": "Returns result, the final value maintained by C++ unique()'s code path."
+      "codeInsight": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(n) comparisons for a range of n elements.",
+    "space": "O(1) auxiliary state; the container still needs erase to shrink."
   },
   "quiz": {
-    "question": "Which state choice keeps C++ unique() correct?",
+    "question": "Which explanation best describes C++ unique()?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through C++ unique()'s transition.",
+        "text": "std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. C++ unique() stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. C++ unique() needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end.",
+    "incorrectText": "Try again. std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "c-stl-algorithm-pages",
   "algorithmSlug": "cpp-unique",
@@ -217,5 +191,42 @@ export const algorithmPage = {
         "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "[1, 1, 2, 1] retains [1, 2, 1]. It does not remove non-adjacent duplicates or shrink a vector; use erase afterward.",
+    "sampleInput": [
+      [
+        1,
+        1,
+        2,
+        2,
+        1
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      1
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: std::unique moves adjacent duplicates out of the retained prefix and returns its new logical end."
+  },
+  "relatedLinks": []
 };

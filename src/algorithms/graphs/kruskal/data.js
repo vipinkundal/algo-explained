@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/kruskal/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Kruskal’s Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Kruskal's Algorithm builds a minimum spanning tree by choosing the cheapest safe edge.",
   "problem": "Kruskal's Algorithm builds a minimum spanning tree by choosing the cheapest safe edge.",
   "concept": "Sort edges by weight and use Union Find to reject any edge whose endpoints are already connected.",
   "logicSummary": "Sort all edges, scan from cheapest to most expensive, and add an edge only when union succeeds.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use Kruskal for connecting sites, cables, roads, or clusters with minimum total cost.",
   "whenToUse": "Use it for undirected weighted graphs when an MST is needed and sorting edges is acceptable.",
   "memoryTrick": "Kruskal buys the cheapest edge that does not close a cycle.",
-  "visualizerCaption": "Watch edges become accepted or skipped as Union Find protects the MST invariant.",
+  "visualizerCaption": "Explore Kruskal’s Algorithm through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Sort edges",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state keeps Kruskal’s Algorithm correct?",
+    "question": "Which explanation best describes Kruskal’s Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "parent follows the page's own transition rule.",
+        "text": "Kruskal's Algorithm builds a minimum spanning tree by choosing the cheapest safe edge.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Kruskal's Algorithm builds a minimum spanning tree by choosing the cheapest safe edge.",
+    "incorrectText": "Try again. Kruskal's Algorithm builds a minimum spanning tree by choosing the cheapest safe edge. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "kruskal",
@@ -329,5 +329,85 @@ export const algorithmPage = {
         }
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A graph contains vertices (places) and edges (connections). Arrows mean a connection can be followed only in that direction.",
+    "family": "Graphs and connections",
+    "example": "Sort edges: Cheapest edges are considered first. Find endpoints: Use Union Find to get each endpoint's component. Accept safe edge: If roots differ, add the edge and merge components. Return MST: Stop after enough safe edges have been chosen.",
+    "sampleInput": [
+      5,
+      [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          1,
+          4,
+          8
+        ]
+      ]
+    ],
+    "sampleResult": [
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        2,
+        2
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Vertex",
+        "One point in a graph; also called a node."
+      ],
+      [
+        "Edge",
+        "A connection between vertices."
+      ],
+      [
+        "Visited",
+        "A record that a vertex has already been discovered."
+      ]
+    ],
+    "pitfall": "Mark discovered vertices to avoid repeating work. Check directedness and whether every component must be visited.",
+    "checkpoint": "Explain this in your own words: Kruskal's Algorithm builds a minimum spanning tree by choosing the cheapest safe edge."
+  },
+  "relatedLinks": []
 };

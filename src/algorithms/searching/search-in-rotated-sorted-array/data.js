@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "search",
   "codePath": "./src/algorithms/searching/search-in-rotated-sorted-array/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Search in Rotated Sorted Array is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Find a target in a sorted array that was rotated at an unknown pivot.",
   "problem": "Find a target in a sorted array that was rotated at an unknown pivot.",
   "concept": "The array is not globally sorted, but every step has at least one sorted half that can be tested.",
   "logicSummary": "Compare mid, identify the sorted side, and keep only the side where target can legally fit.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for circularly shifted sorted IDs, rotated logs, or ring-buffer snapshots.",
   "whenToUse": "Use this version when values are distinct or duplicate handling is added deliberately.",
   "memoryTrick": "One half is sorted; ask if target belongs there.",
-  "visualizerCaption": "Search in Rotated Sorted Array is shown with the exact boundary, probe, or scan state used by the code.",
+  "visualizerCaption": "Explore Search in Rotated Sorted Array through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Probe rotated array",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state keeps Search in Rotated Sorted Array correct?",
+    "question": "Which explanation best describes Search in Rotated Sorted Array?",
     "options": [
       {
         "key": "A",
-        "text": "Use the page's own search boundary or scan state and update it only through the listed transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another search algorithm's comparison rule without checking the invariant.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Stop before the algorithm-specific boundary or scan condition is resolved.",
-        "correct": false
+        "text": "Find a target in a sorted array that was rotated at an unknown pivot.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Search in Rotated Sorted Array works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Search in Rotated Sorted Array needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Find a target in a sorted array that was rotated at an unknown pivot.",
+    "incorrectText": "Try again. Find a target in a sorted array that was rotated at an unknown pivot. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "searching",
   "algorithmSlug": "search-in-rotated-sorted-array",
@@ -235,5 +235,41 @@ export const algorithmPage = {
         "secondaryLabel": "If the left side is sorted, target either fits there and high moves left, or low moves right; the mirrored rule handles the right side."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Probe rotated array: mid splits the current window even though the whole array is rotated. Identify sorted half: array[low] <= array[mid] means the left side is ordered. Choose the fitting half: If target is not inside the sorted half, discard that half. Return mid on equality: Equality stops the search regardless of rotation.",
+    "sampleInput": [
+      [
+        6,
+        7,
+        0,
+        1,
+        2,
+        4,
+        5
+      ],
+      1
+    ],
+    "sampleResult": 3,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Find a target in a sorted array that was rotated at an unknown pivot."
+  },
+  "relatedLinks": []
 };

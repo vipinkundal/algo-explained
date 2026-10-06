@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/array-adt-menu/code/original.cpp",
   "originalCodeFilename": "09_menu.cpp",
   "originalActiveLine": 4,
-  "meaning": "Array ADT Menu shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Array ADT Menu explains the array state model and how one focused change updates it.",
-  "concept": "Array ADT Menu is useful when contiguous storage, indexes, length, or capacity explain the operation. Use this when an array operation depends on slot position, bounds, or shifting values.",
-  "logicSummary": "Read the index or value, check the active length and capacity, update the affected slots, and return the visible array result.",
-  "transitionSummary": "Each step changes one index, length, capacity, or shifted range while preserving the array representation.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "An array ADT wraps storage and operations behind a menu or interface.",
+  "problem": "An array ADT wraps storage and operations behind a menu or interface.",
+  "concept": "An array ADT wraps storage and operations behind a menu or interface.",
+  "logicSummary": "An array ADT wraps storage and operations behind a menu or interface.",
+  "transitionSummary": "Insert adds a value; delete removes one; display reads the active slots without changing them.",
+  "codeInsight": "An array ADT wraps storage and operations behind a menu or interface.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
-  "realLifeExample": "Array ADT Menu is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Arrays / Array ADT behavior through state changes instead of memorized code.",
-  "memoryTrick": "Array ADT Menu: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Array ADT Menu is shown as indexed array state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Insert adds a value; delete removes one; display reads the active slots without changing them.",
+  "whenToUse": "An array ADT wraps storage and operations behind a menu or interface.",
+  "memoryTrick": "An array ADT wraps storage and operations behind a menu or interface.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read request",
-      "text": "Identify the index, value, length, or capacity involved."
+      "title": "Identify what the operation means",
+      "text": "An array ADT wraps storage and operations behind a menu or interface."
     },
     {
-      "title": "Check bounds",
-      "text": "Confirm the operation is valid for the active array size."
+      "title": "Work through a small case",
+      "text": "Insert adds a value; delete removes one; display reads the active slots without changing them."
     },
     {
-      "title": "Update slots",
-      "text": "Set, shift, scan, or resize the affected cells."
-    },
-    {
-      "title": "Return array result",
-      "text": "Return the found value, status, or updated array view."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "slot index",
-      "purpose": "Selects the current array position."
+      "name": "values",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "active value",
-      "purpose": "The value currently being read or moved."
-    },
-    {
-      "name": "write slot",
-      "purpose": "Marks where an updated value is stored."
-    },
-    {
-      "name": "array view",
-      "purpose": "Shows the slots after Array ADT Menu applies its operation."
+      "name": "sum",
+      "purpose": "Combines input items into one accumulated answer, so the result can be returned or reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Array",
-      "title": "Read array request",
-      "note": "The code receives an array plus an index, value, or command.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "An array ADT wraps storage and operations behind a menu or interface.",
       "activeLine": 2,
-      "codeInsight": "Defines arrayAdtMenu as the runnable entry point for this lesson."
+      "codeInsight": "An array ADT wraps storage and operations behind a menu or interface."
     },
     {
-      "label": "Index / length",
-      "title": "Check active range",
-      "note": "Bounds and current length decide whether the operation is valid.",
-      "activeLine": 4,
-      "codeInsight": "Computes sum by reducing the current values, matching the aggregate shown in the result state."
-    },
-    {
-      "label": "Slots",
-      "title": "Update affected cells",
-      "note": "The operation sets, shifts, scans, or resizes array slots.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Insert adds a value; delete removes one; display reads the active slots without changing them.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return array state",
-      "note": "The visible value or updated array confirms the operation.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "An array ADT wraps storage and operations behind a menu or interface."
     }
   ],
   "complexity": {
@@ -129,9 +103,9 @@ export const algorithmPage = {
   ],
   "relatedLinks": [
     {
-      "id": "array-patterns",
-      "title": "Array Patterns",
-      "label": "Existing algorithm lesson"
+      "id": "linear-search",
+      "title": "Linear Search",
+      "label": "Start with indexed array values"
     }
   ],
   "runnerInput": [],
@@ -233,5 +207,41 @@ export const algorithmPage = {
         "secondaryLabel": "Each step changes one index, length, capacity, or shifted range while preserving the array representation."
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Insert adds a value; delete removes one; display reads the active slots without changing them.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "array",
+      "values": [
+        3,
+        1,
+        4,
+        1,
+        5
+      ],
+      "length": 5,
+      "max": 5,
+      "sum": 14
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: An array ADT wraps storage and operations behind a menu or interface."
   }
 };

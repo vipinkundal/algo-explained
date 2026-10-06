@@ -12,107 +12,81 @@ export const algorithmPage = {
   "icon": "school",
   "codePath": "./src/algorithms/c-stl-algorithm-pages/cpp-unordered-map-set/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "C++ unordered_map / unordered_set is a C++ STL Algorithm Pages technique focused on answer.",
-  "problem": "C++ unordered_map / unordered_set solves a C++ STL Algorithm Pages problem by maintaining only the state needed for its hash table transition.",
-  "concept": "C++ unordered_map / unordered_set is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
-  "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
-  "transitionSummary": "Each step changes only the part of the algorithm state required to preserve the invariant.",
-  "codeInsight": "The implementation keeps C++ unordered_map / unordered_set's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "C++ unordered_map / unordered_set appears when the input is input and the required result is answer.",
-  "whenToUse": "Use C++ unordered_map / unordered_set when a problem matches the C++ STL Algorithm Pages pattern and the expected state changes match a hash table dry run.",
-  "memoryTrick": "C++ unordered_map / unordered_set: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "C++ unordered_map / unordered_set is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order.",
+  "problem": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order.",
+  "concept": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order.",
+  "logicSummary": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order.",
+  "transitionSummary": "An unordered_set built from [3, 1, 3] has 2 keys. Lookup is constant time on average, but can be linear in the worst case.",
+  "codeInsight": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order.",
+  "realLifeExample": "An unordered_set built from [3, 1, 3] has 2 keys. Lookup is constant time on average, but can be linear in the worst case.",
+  "whenToUse": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order.",
+  "memoryTrick": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read algorithm state",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order."
     },
     {
-      "title": "Inspect invariant",
-      "text": "Look at the active algorithm state fields."
+      "title": "Work through a small case",
+      "text": "An unordered_set built from [3, 1, 3] has 2 keys. Lookup is constant time on average, but can be linear in the worst case."
     },
     {
-      "title": "State change",
-      "text": "update the state described by this algorithm."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Check the allowed input and stopping rule before running the routine. A picture of state alone is not a proof of correctness."
     }
   ],
   "variables": [
     {
-      "name": "input",
-      "purpose": "The numeric or collection input used by the bit, math, or foundation routine."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     },
     {
-      "name": "working state",
-      "purpose": "The local state updated by the algorithm transition. This page visualizes it as hash table."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by cppUnorderedMapSet after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the hash table transition until the stop condition for C++ unordered_map / unordered_set is reached. Stop when no valid work remains or the answer is known."
+      "name": "counts",
+      "purpose": "Remembers a frequency for each key, allowing another occurrence to update an existing count."
     }
   ],
   "dryRun": [
     {
-      "label": "Algorithm State",
-      "title": "Read algorithm state action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 6,
-      "codeInsight": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly."
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order.",
+      "activeLine": 5,
+      "codeInsight": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order."
     },
     {
-      "label": "Invariant",
-      "title": "Inspect algorithm state",
-      "note": "The active state must still satisfy page-specific invariant.",
-      "activeLine": 6,
-      "codeInsight": "Builds counts as a structured sample object that the tree, graph, or map visualizer can render directly."
-    },
-    {
-      "label": "State change",
-      "title": "Update the state described by this algorithm",
-      "note": "Only the necessary algorithm state fields are changed.",
-      "activeLine": 7,
-      "codeInsight": "Visits each input value once, letting the displayed state update in the same order as the code."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "An unordered_set built from [3, 1, 3] has 2 keys. Lookup is constant time on average, but can be linear in the worst case.",
       "activeLine": 8,
-      "codeInsight": "Returns the final state object { unorderedMap: counts, unorderedSet: [...new Set(values)] }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(1) average lookup/insertion; O(n) worst case for one operation.",
+    "space": "O(n) stored entries and buckets."
   },
   "quiz": {
-    "question": "Which state choice keeps C++ unordered_map / unordered_set correct?",
+    "question": "Which explanation best describes C++ unordered_map / unordered_set?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through C++ unordered_map / unordered_set's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. C++ unordered_map / unordered_set stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. C++ unordered_map / unordered_set needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order.",
+    "incorrectText": "Try again. Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "c-stl-algorithm-pages",
   "algorithmSlug": "cpp-unordered-map-set",
@@ -168,5 +142,45 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "State is the information a computation remembers between steps. A transition changes that information; a stop rule ends the computation.",
+    "family": "State and rules",
+    "example": "An unordered_set built from [3, 1, 3] has 2 keys. Lookup is constant time on average, but can be linear in the worst case.",
+    "sampleInput": [
+      [
+        1,
+        2,
+        2
+      ]
+    ],
+    "sampleResult": {
+      "unorderedMap": {
+        "1": 1,
+        "2": 2
+      },
+      "unorderedSet": [
+        1,
+        2
+      ]
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "Values remembered at the current step."
+      ],
+      [
+        "Transition",
+        "The update that moves to the next state."
+      ],
+      [
+        "Base case",
+        "A small or finished situation with a known answer."
+      ]
+    ],
+    "pitfall": "Check the allowed input and stopping rule before running the routine. A picture of state alone is not a proof of correctness.",
+    "checkpoint": "Explain this in your own words: Unordered maps and sets use hashing for key lookup and do not keep keys in sorted order."
+  },
+  "relatedLinks": []
 };

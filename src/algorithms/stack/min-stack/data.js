@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "layers",
   "codePath": "./src/algorithms/stack/min-stack/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Min Stack is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Min Stack keeps a normal stack plus a second stack of current minimum values.",
   "problem": "Min Stack keeps a normal stack plus a second stack of current minimum values.",
   "concept": "Min Stack is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
   "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Min Stack appears when the problem is defined by the behavior of this exact data structure.",
   "whenToUse": "Use Min Stack when its state transition is the natural way to model the problem.",
   "memoryTrick": "Min Stack: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Min Stack is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Min Stack through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read stack",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(m)."
   },
   "quiz": {
-    "question": "Which state choice keeps Min Stack correct?",
+    "question": "Which explanation best describes Min Stack?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Min Stack's transition.",
+        "text": "Min Stack keeps a normal stack plus a second stack of current minimum values.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Min Stack stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Min Stack needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Min Stack keeps a normal stack plus a second stack of current minimum values.",
+    "incorrectText": "Try again. Min Stack keeps a normal stack plus a second stack of current minimum values. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "stack",
   "algorithmSlug": "min-stack",
@@ -224,5 +224,53 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "Read stack: Identify the next command, value, node, or library call. Inspect stack top: Look at the active stack fields. Push / pop: push, pop, peek, or resolve stack entries. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      [
+        {
+          "type": "push",
+          "value": 3
+        },
+        {
+          "type": "push",
+          "value": 1
+        },
+        {
+          "type": "min"
+        },
+        {
+          "type": "pop"
+        },
+        {
+          "type": "min"
+        }
+      ]
+    ],
+    "sampleResult": [
+      1,
+      3
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: Min Stack keeps a normal stack plus a second stack of current minimum values."
+  },
+  "relatedLinks": []
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/counting-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Counting Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Sort integer values by counting how many times each key appears.",
   "problem": "Sort integer values by counting how many times each key appears.",
   "concept": "Counting Sort replaces comparisons with frequency counts over a bounded integer range.",
   "logicSummary": "Find min/max, count each value by offset, then emit every value in increasing key order.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for grades, ages, bytes, or other bounded integer keys.",
   "whenToUse": "Use Counting Sort when values are integers in a small known range.",
   "memoryTrick": "Count keys first, write values later.",
-  "visualizerCaption": "Counting Sort is shown with the actual sorted/unsorted state that its code maintains.",
+  "visualizerCaption": "Explore Counting Sort through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Find min and max",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(k)."
   },
   "quiz": {
-    "question": "Which state keeps Counting Sort correct?",
+    "question": "Which explanation best describes Counting Sort?",
     "options": [
       {
         "key": "A",
-        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Use one generic sorted-array story for every sorting algorithm.",
-        "correct": false
+        "text": "Sort integer values by counting how many times each key appears.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Move values without preserving the algorithm's stated invariant.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Counting Sort works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Counting Sort needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Sort integer values by counting how many times each key appears.",
+    "incorrectText": "Try again. Sort integer values by counting how many times each key appears. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "counting-sort",
@@ -240,5 +240,48 @@ export const algorithmPage = {
         "secondaryLabel": "Each input value increments exactly one count; output repeats each offset by its count."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Find min and max: The count array covers every key from min to max. Increment frequencies: Every value updates one count slot. Write repeated keys: The output walks counts from low key to high key. Sorted by key order: No pairwise comparisons were needed.",
+    "sampleInput": [
+      [
+        4,
+        2,
+        2,
+        8,
+        3,
+        3,
+        1
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      2,
+      3,
+      3,
+      4,
+      8
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Sort integer values by counting how many times each key appears."
+  },
+  "relatedLinks": []
 };

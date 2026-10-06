@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "view_week",
   "codePath": "./src/algorithms/array-patterns/majority-element/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Majority Element is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Majority Element uses vote cancellation: different values cancel out, leaving the majority candidate.",
   "problem": "Majority Element uses vote cancellation: different values cancel out, leaving the majority candidate.",
   "concept": "Majority Element is useful when algorithm state behavior is the clearest model for the data changes. Use this when the problem is naturally described by page-specific invariant.",
   "logicSummary": "Read the next value or operation, maintain page-specific invariant, then update the state described by this algorithm.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Majority Element appears when contiguous ranges, ordering, or repeated array state can be reused across positions.",
   "whenToUse": "Use Majority Element when the problem statement matches its array invariant.",
   "memoryTrick": "Majority Element: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Majority Element is shown as algorithm state state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "visualizerCaption": "Explore Majority Element through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Read algorithm state",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state choice keeps Majority Element correct?",
+    "question": "Which explanation best describes Majority Element?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Majority Element's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Majority Element uses vote cancellation: different values cancel out, leaving the majority candidate.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Majority Element stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Majority Element needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Majority Element uses vote cancellation: different values cancel out, leaving the majority candidate.",
+    "incorrectText": "Try again. Majority Element uses vote cancellation: different values cancel out, leaving the majority candidate. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "array-patterns",
   "algorithmSlug": "majority-element",
@@ -227,5 +227,40 @@ export const algorithmPage = {
         "secondaryLabel": "Each step changes only the part of the algorithm state required to preserve the invariant."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Read algorithm state: Identify the next command, value, node, or library call. Inspect invariant: Look at the active algorithm state fields. State change: update the state described by this algorithm. Read result: Return the emitted value or updated structure.",
+    "sampleInput": [
+      [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    ],
+    "sampleResult": 2,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Majority Element uses vote cancellation: different values cancel out, leaving the majority candidate."
+  },
+  "relatedLinks": []
 };

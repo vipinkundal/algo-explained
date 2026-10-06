@@ -20,81 +20,51 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/binary-tree-level-order/code/original.cpp",
   "originalCodeFilename": "03_LevelOrder.cpp",
   "originalActiveLine": 7,
-  "meaning": "Binary Tree Level Order Traversal shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Binary Tree Level Order Traversal explains the tree state model and how one focused change updates it.",
-  "concept": "Level-order traversal is useful when tree nodes must be processed by depth from top to bottom. Use this when closer-to-root nodes must be handled before deeper nodes.",
-  "logicSummary": "Start with the root in a queue, visit the front node, append its value, then enqueue children.",
-  "transitionSummary": "Each step removes the next queued node and appends its children to the back.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Level-order traversal visits a binary tree one depth at a time using a queue.",
+  "problem": "Level-order traversal visits a binary tree one depth at a time using a queue.",
+  "concept": "Level-order traversal visits a binary tree one depth at a time using a queue.",
+  "logicSummary": "Level-order traversal visits a binary tree one depth at a time using a queue.",
+  "transitionSummary": "Root 4 with children 2 and 6 is visited as 4 → 2 → 6.",
+  "codeInsight": "Level-order traversal visits a binary tree one depth at a time using a queue.",
   "originalCodeInsight": "The C++ class groups data members with operations, so the structure controls how outside code can mutate state.",
-  "realLifeExample": "Binary Tree Level Order Traversal is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Trees / BST / AVL / Heap behavior through state changes instead of memorized code.",
-  "memoryTrick": "Binary Tree Level Order Traversal: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Binary Tree Level Order Traversal is shown as breadth-first queue traversal. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Root 4 with children 2 and 6 is visited as 4 → 2 → 6.",
+  "whenToUse": "Level-order traversal visits a binary tree one depth at a time using a queue.",
+  "memoryTrick": "Level-order traversal visits a binary tree one depth at a time using a queue.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Check root",
-      "text": "Return an empty result for an empty tree."
+      "title": "Identify what the operation means",
+      "text": "Level-order traversal visits a binary tree one depth at a time using a queue."
     },
     {
-      "title": "Seed queue",
-      "text": "Put the root in the BFS queue."
+      "title": "Work through a small case",
+      "text": "Root 4 with children 2 and 6 is visited as 4 → 2 → 6."
     },
     {
-      "title": "Visit front",
-      "text": "Append the next queued node value."
-    },
-    {
-      "title": "Enqueue children",
-      "text": "Push left and right children for the next levels."
+      "title": "Check the boundary cases",
+      "text": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it."
     }
   ],
   "variables": [
     {
-      "name": "entry node",
-      "purpose": "The node where the traversal or creation step begins."
-    },
-    {
-      "name": "visit queue",
-      "purpose": "Holds nodes waiting to be processed."
-    },
-    {
-      "name": "current node",
-      "purpose": "The node being handled by Binary Tree Level Order Traversal."
-    },
-    {
-      "name": "visit order",
-      "purpose": "The visible order produced by the traversal."
+      "name": "tree",
+      "purpose": "Groups named values and relationships into a record that the companion can inspect and report."
     }
   ],
   "dryRun": [
     {
-      "label": "Root",
-      "title": "Check for empty tree",
-      "note": "If root is missing, there are no levels to visit.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Level-order traversal visits a binary tree one depth at a time using a queue.",
       "activeLine": 2,
-      "codeInsight": "Defines binaryTreeLevelOrder as the runnable entry point for this lesson."
+      "codeInsight": "Level-order traversal visits a binary tree one depth at a time using a queue."
     },
     {
-      "label": "Queue",
-      "title": "Seed traversal queue",
-      "note": "The root becomes the first discovered node.",
-      "activeLine": 3,
-      "codeInsight": "Builds tree as a structured sample object that the tree, graph, or map visualizer can render directly."
-    },
-    {
-      "label": "Visit",
-      "title": "Process queue front",
-      "note": "The front node is appended to output.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Root 4 with children 2 and 6 is visited as 4 → 2 → 6.",
       "activeLine": 4,
-      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Children",
-      "title": "Discover next level",
-      "note": "Children are pushed to the queue for later visits.",
-      "activeLine": 4,
-      "codeInsight": "Returns the final state object { structure: \"binary tree\", traversal: \"level order\", result: [tree.value, tree.left.value, tree.right.value] }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Level-order traversal visits a binary tree one depth at a time using a queue."
     }
   ],
   "complexity": {
@@ -282,5 +252,37 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Root 4 with children 2 and 6 is visited as 4 → 2 → 6.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "binary tree",
+      "traversal": "level order",
+      "result": [
+        1,
+        2,
+        3
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Level-order traversal visits a binary tree one depth at a time using a queue."
   }
 };

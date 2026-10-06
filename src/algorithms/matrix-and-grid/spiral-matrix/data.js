@@ -12,107 +12,101 @@ export const algorithmPage = {
   "icon": "grid_on",
   "codePath": "./src/algorithms/matrix-and-grid/spiral-matrix/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Spiral Matrix is a Matrix and Grid technique focused on answer.",
-  "problem": "Spiral Matrix solves a Matrix and Grid problem by maintaining only the state needed for its boundary grid transition.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "The implementation keeps Spiral Matrix's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Spiral Matrix appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Spiral Matrix when a problem matches the Matrix and Grid pattern and the expected state changes match a boundary grid dry run.",
-  "memoryTrick": "Spiral Matrix: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Spiral Matrix is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring.",
+  "problem": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring.",
+  "concept": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring.",
+  "logicSummary": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring.",
+  "transitionSummary": "For [[1, 2, 3], [4, 5, 6], [7, 8, 9]], visit 1 → 2 → 3 → 6 → 9 → 8 → 7 → 4 → 5.",
+  "codeInsight": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring.",
+  "realLifeExample": "For [[1, 2, 3], [4, 5, 6], [7, 8, 9]], visit 1 → 2 → 3 → 6 → 9 → 8 → 7 → 4 → 5.",
+  "whenToUse": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring.",
+  "memoryTrick": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "For [[1, 2, 3], [4, 5, 6], [7, 8, 9]], visit 1 → 2 → 3 → 6 → 9 → 8 → 7 → 4 → 5."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
       "name": "matrix",
-      "purpose": "The two-dimensional structure whose cells are visited or updated."
+      "purpose": "The input grid, addressed by row and column."
     },
     {
-      "name": "row, column, and visited state",
-      "purpose": "Cell coordinates and visited or transformed values used by the grid transition. This page visualizes it as boundary grid."
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by spiralMatrix after the maintained state reaches the stop rule."
+      "name": "top",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the boundary grid transition until the stop condition for Spiral Matrix is reached. Stop when no valid work remains or the answer is known."
+      "name": "bottom",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
+    },
+    {
+      "name": "left",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "right",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
+    },
+    {
+      "name": "col",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring.",
       "activeLine": 5,
-      "codeInsight": "Defines spiralMatrix and names the input matrix; edits to those inputs change the visual state and output."
+      "codeInsight": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
-      "activeLine": 9,
-      "codeInsight": "Initializes left as mutable state; later branches update it as the search window or traversal changes."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 11,
-      "codeInsight": "Repeats while top <= bottom && left <= right is true, so the algorithm keeps resolving current work before moving on."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "For [[1, 2, 3], [4, 5, 6], [7, 8, 9]], visit 1 → 2 → 3 → 6 → 9 → 8 → 7 → 4 → 5.",
       "activeLine": 25,
-      "codeInsight": "Returns result, the final value maintained by Spiral Matrix's code path."
+      "codeInsight": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(R × C) to visit each cell once.",
+    "space": "O(1) boundary state, plus O(R × C) if storing the traversal output."
   },
   "quiz": {
-    "question": "Which state choice keeps Spiral Matrix correct?",
+    "question": "Which explanation best describes Spiral Matrix?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Spiral Matrix's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Spiral Matrix stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Spiral Matrix needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring.",
+    "incorrectText": "Try again. Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "matrix-and-grid",
   "algorithmSlug": "spiral-matrix",
@@ -259,5 +253,58 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "For [[1, 2, 3], [4, 5, 6], [7, 8, 9]], visit 1 → 2 → 3 → 6 → 9 → 8 → 7 → 4 → 5.",
+    "sampleInput": [
+      [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      3,
+      6,
+      9,
+      8,
+      7,
+      4,
+      5
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: Spiral traversal visits the outside edges of a matrix, then moves inward to the next ring."
+  },
+  "relatedLinks": []
 };

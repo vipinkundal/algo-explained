@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/inorder-traversal/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Inorder Traversal visits a binary tree in left subtree, current node, then right subtree order.",
+  "meaning": "Inorder Traversal collects every node value while preserving the left-node-right traversal rule.",
   "problem": "Inorder Traversal collects every node value while preserving the left-node-right traversal rule.",
   "concept": "The recursive helper first walks node.left, then pushes node.value, then walks node.right.",
   "logicSummary": "Start at root, recurse into the left subtree, visit the current node, recurse into the right subtree, and return the collected result.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "In a binary search tree, inorder traversal lists values in sorted order.",
   "whenToUse": "Use Inorder Traversal when you need left-to-right tree order, especially sorted output from a BST.",
   "memoryTrick": "Inorder means LNR: Left, Node, Right.",
-  "visualizerCaption": "The animation shows values entering result in inorder sequence: 1, 2, 3, 4, 5, 6, 7.",
+  "visualizerCaption": "Explore Inorder Traversal through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check node",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(h) recursion or traversal state."
   },
   "quiz": {
-    "question": "Which state choice keeps Inorder Traversal correct?",
+    "question": "Which explanation best describes Inorder Traversal?",
     "options": [
       {
         "key": "A",
-        "text": "Visit left subtree first, then push the current node, then visit the right subtree.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
-        "correct": false
+        "text": "Inorder Traversal collects every node value while preserving the left-node-right traversal rule.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Inorder Traversal is exactly left, node, right.",
-    "incorrectText": "Not quite. Moving result.push before or after both recursive calls changes the traversal order."
+    "correctText": "Correct. Inorder Traversal collects every node value while preserving the left-node-right traversal rule.",
+    "incorrectText": "Try again. Inorder Traversal collects every node value while preserving the left-node-right traversal rule. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "inorder-traversal",
@@ -254,8 +254,8 @@ export const algorithmPage = {
           "7"
         ],
         "nodeLabels": {
-          "4": "4 wait",
-          "2": "2 left"
+          "2": "2 left",
+          "4": "4 wait"
         }
       },
       {
@@ -321,5 +321,59 @@ export const algorithmPage = {
         }
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check node: Call walk(root) to begin the recursive traversal. Read node state: Recurse into the left subtree first. Move/combine: Push the current node after its left subtree is done. Return tree result: Traverse the right subtree and return the final result.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        }
+      }
+    ],
+    "sampleResult": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Inorder Traversal collects every node value while preserving the left-node-right traversal rule."
   }
 };

@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/stack-parenthesis-is-balanced-extended/code/original.cpp",
   "originalCodeFilename": "04_parenthesis_is_balanced_extended.cpp",
   "originalActiveLine": 5,
-  "meaning": "Balanced Parentheses Extended shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Balanced Parentheses Extended explains the stack state model and how one focused change updates it.",
-  "concept": "Balanced Parentheses Extended is useful when stack behavior is the clearest model for the data changes. Use this when the problem is naturally described by last-in, first-out state.",
-  "logicSummary": "Read the next value or operation, maintain last-in, first-out state, then push, pop, peek, or resolve stack entries.",
-  "transitionSummary": "Each step changes only the part of the stack required to preserve the invariant.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Check several bracket types by matching each closing bracket with the most recent opening bracket.",
+  "problem": "Check several bracket types by matching each closing bracket with the most recent opening bracket.",
+  "concept": "Check several bracket types by matching each closing bracket with the most recent opening bracket.",
+  "logicSummary": "Check several bracket types by matching each closing bracket with the most recent opening bracket.",
+  "transitionSummary": "{[()]} is balanced; ([)] has the right counts but the wrong nesting.",
+  "codeInsight": "Check several bracket types by matching each closing bracket with the most recent opening bracket.",
   "originalCodeInsight": "Dynamic allocation creates storage at runtime; every pointer assignment changes how nodes or arrays are connected.",
-  "realLifeExample": "Balanced Parentheses Extended is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Stack behavior through state changes instead of memorized code.",
-  "memoryTrick": "Balanced Parentheses Extended: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Balanced Parentheses Extended is shown as stack state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "{[()]} is balanced; ([)] has the right counts but the wrong nesting.",
+  "whenToUse": "Check several bracket types by matching each closing bracket with the most recent opening bracket.",
+  "memoryTrick": "Check several bracket types by matching each closing bracket with the most recent opening bracket.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read stack",
-      "text": "Identify the next command, value, node, or library call."
+      "title": "Identify what the operation means",
+      "text": "Check several bracket types by matching each closing bracket with the most recent opening bracket."
     },
     {
-      "title": "Inspect stack top",
-      "text": "Look at the active stack fields."
+      "title": "Work through a small case",
+      "text": "{[()]} is balanced; ([)] has the right counts but the wrong nesting."
     },
     {
-      "title": "Push / pop",
-      "text": "push, pop, peek, or resolve stack entries."
-    },
-    {
-      "title": "Read result",
-      "text": "Return the emitted value or updated structure."
+      "title": "Check the boundary cases",
+      "text": "Check empty and full states, and identify which end an operation changes."
     }
   ],
   "variables": [
     {
-      "name": "top marker",
-      "purpose": "Points at the most recent item in the stack."
+      "name": "stack",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "stack slots",
-      "purpose": "The ordered storage used by Balanced Parentheses Extended."
-    },
-    {
-      "name": "popped item",
-      "purpose": "The value removed when the top marker moves down."
-    },
-    {
-      "name": "balance flag",
-      "purpose": "Shows whether the stack invariant still holds."
+      "name": "output",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     }
   ],
   "dryRun": [
     {
-      "label": "Stack",
-      "title": "Read stack action",
-      "note": "The code receives the next value or command.",
-      "activeLine": 3,
-      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Check several bracket types by matching each closing bracket with the most recent opening bracket.",
+      "activeLine": 2,
+      "codeInsight": "Check several bracket types by matching each closing bracket with the most recent opening bracket."
     },
     {
-      "label": "Stack top",
-      "title": "Inspect stack",
-      "note": "The active state must still satisfy last-in, first-out state.",
-      "activeLine": 3,
-      "codeInsight": "Creates the monotonic stack. It stores indexes that are still waiting for a greater value to appear."
-    },
-    {
-      "label": "Push / pop",
-      "title": "Push, pop, peek, or resolve stack entries",
-      "note": "Only the necessary stack fields are changed.",
-      "activeLine": 5,
-      "codeInsight": "Visits each input value once, letting the displayed state update in the same order as the code."
-    },
-    {
-      "label": "Result",
-      "title": "Return visible result",
-      "note": "The return value or printed state confirms the operation.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "{[()]} is balanced; ([)] has the right counts but the wrong nesting.",
       "activeLine": 7,
-      "codeInsight": "Returns the final state object { structure: \"stack\", invariant: \"last in, first out\", state: stack, popped: output }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Check several bracket types by matching each closing bracket with the most recent opening bracket."
     }
   ],
   "complexity": {
@@ -218,5 +192,39 @@ export const algorithmPage = {
         ]
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "A stack removes the newest item first. A queue removes the oldest item first. A deque allows both ends.",
+    "family": "Ordered waiting",
+    "example": "{[()]} is balanced; ([)] has the right counts but the wrong nesting.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "stack",
+      "invariant": "last in, first out",
+      "state": [
+        10,
+        20
+      ],
+      "popped": [
+        30
+      ]
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Push / enqueue",
+        "Add an item to the structure."
+      ],
+      [
+        "Pop / dequeue",
+        "Remove an item according to the structure’s ordering rule."
+      ],
+      [
+        "Peek",
+        "Read the next item without removing it."
+      ]
+    ],
+    "pitfall": "Check empty and full states, and identify which end an operation changes.",
+    "checkpoint": "Explain this in your own words: Check several bracket types by matching each closing bracket with the most recent opening bracket."
   }
 };

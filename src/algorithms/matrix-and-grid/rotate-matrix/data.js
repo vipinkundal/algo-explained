@@ -12,107 +12,93 @@ export const algorithmPage = {
   "icon": "grid_on",
   "codePath": "./src/algorithms/matrix-and-grid/rotate-matrix/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Rotate Matrix is a Matrix and Grid technique focused on answer.",
-  "problem": "Rotate Matrix solves a Matrix and Grid problem by maintaining only the state needed for its grid transform transition.",
-  "concept": "Grid algorithms are useful when positions, neighbors, boundaries, or cell states define the problem. Use this when the answer depends on moving through rows, columns, or regions.",
-  "logicSummary": "Read dimensions, choose the active cell or boundary, update neighbors or accumulated state, and return the grid result.",
-  "transitionSummary": "Each step moves to a valid cell, changes a boundary, or updates a matrix state.",
-  "codeInsight": "The implementation keeps Rotate Matrix's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Rotate Matrix appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Rotate Matrix when a problem matches the Matrix and Grid pattern and the expected state changes match a grid transform dry run.",
-  "memoryTrick": "Rotate Matrix: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Rotate Matrix is shown as row/column state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Rotating a square matrix by 90 degrees moves each cell into a new row and column.",
+  "problem": "Rotating a square matrix by 90 degrees moves each cell into a new row and column.",
+  "concept": "Rotating a square matrix by 90 degrees moves each cell into a new row and column.",
+  "logicSummary": "Rotating a square matrix by 90 degrees moves each cell into a new row and column.",
+  "transitionSummary": "A clockwise rotation turns [[1, 2], [3, 4]] into [[3, 1], [4, 2]]. Transpose, then reverse each row.",
+  "codeInsight": "Rotating a square matrix by 90 degrees moves each cell into a new row and column.",
+  "realLifeExample": "A clockwise rotation turns [[1, 2], [3, 4]] into [[3, 1], [4, 2]]. Transpose, then reverse each row.",
+  "whenToUse": "Rotating a square matrix by 90 degrees moves each cell into a new row and column.",
+  "memoryTrick": "Rotating a square matrix by 90 degrees moves each cell into a new row and column.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read grid",
-      "text": "Identify dimensions and valid cells."
+      "title": "Identify what the operation means",
+      "text": "Rotating a square matrix by 90 degrees moves each cell into a new row and column."
     },
     {
-      "title": "Choose position",
-      "text": "Select the current row/column or boundary."
+      "title": "Work through a small case",
+      "text": "A clockwise rotation turns [[1, 2], [3, 4]] into [[3, 1], [4, 2]]. Transpose, then reverse each row."
     },
     {
-      "title": "Update neighbors",
-      "text": "Move, fill, rotate, or accumulate according to the rule."
-    },
-    {
-      "title": "Return grid result",
-      "text": "Return count, transformed grid, or lookup answer."
+      "title": "Check the boundary cases",
+      "text": "Check row and column bounds separately. State whether diagonal neighbors are allowed."
     }
   ],
   "variables": [
     {
       "name": "matrix",
-      "purpose": "The two-dimensional structure whose cells are visited or updated."
+      "purpose": "The input grid, addressed by row and column."
     },
     {
-      "name": "row, column, and visited state",
-      "purpose": "Cell coordinates and visited or transformed values used by the grid transition. This page visualizes it as grid transform."
+      "name": "n",
+      "purpose": "Remembers how many items are present; this supports bounds, size reporting, or the stopping rule."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by rotateMatrix after the maintained state reaches the stop rule."
+      "name": "rotated",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the grid transform transition until the stop condition for Rotate Matrix is reached. Stop when no valid work remains or the answer is known."
+      "name": "row",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
+    },
+    {
+      "name": "col",
+      "purpose": "Keeps an intermediate value available for later expressions. Follow its assignments and uses in the code-line explanations."
     }
   ],
   "dryRun": [
     {
-      "label": "Grid",
-      "title": "Read rows and columns",
-      "note": "The code starts from the matrix shape.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Rotating a square matrix by 90 degrees moves each cell into a new row and column.",
       "activeLine": 5,
-      "codeInsight": "Defines rotateMatrix and names the input matrix; edits to those inputs change the visual state and output."
+      "codeInsight": "Rotating a square matrix by 90 degrees moves each cell into a new row and column."
     },
     {
-      "label": "Position",
-      "title": "Choose active cell",
-      "note": "The current row/column controls the next update.",
-      "activeLine": 5,
-      "codeInsight": "Defines rotateMatrix and names the input matrix; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Move/update",
-      "title": "Apply neighbor or boundary rule",
-      "note": "The transition changes reachable cells, boundaries, or accumulated values.",
-      "activeLine": 8,
-      "codeInsight": "Runs the counted loop (let row = 0; row < n; row += 1) so each visual step follows one code-controlled iteration."
-    },
-    {
-      "label": "Result",
-      "title": "Return grid output",
-      "note": "The final matrix, count, or query answer is returned.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "A clockwise rotation turns [[1, 2], [3, 4]] into [[3, 1], [4, 2]]. Transpose, then reverse each row.",
       "activeLine": 11,
-      "codeInsight": "Returns rotated, the final value maintained by Rotate Matrix's code path."
+      "codeInsight": "Rotating a square matrix by 90 degrees moves each cell into a new row and column."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(n²) to rotate an n-by-n matrix.",
+    "space": "O(1) auxiliary state for in-place rotation, or O(n²) for a separate output matrix."
   },
   "quiz": {
-    "question": "Which state choice keeps Rotate Matrix correct?",
+    "question": "Which explanation best describes Rotate Matrix?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Rotate Matrix's transition.",
+        "text": "Rotating a square matrix by 90 degrees moves each cell into a new row and column.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Rotate Matrix stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Rotate Matrix needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Rotating a square matrix by 90 degrees moves each cell into a new row and column.",
+    "incorrectText": "Try again. Rotating a square matrix by 90 degrees moves each cell into a new row and column. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "matrix-and-grid",
   "algorithmSlug": "rotate-matrix",
@@ -245,5 +231,50 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A matrix is a grid. Identify a cell by its row first, then its column.",
+    "family": "Rows and columns",
+    "example": "A clockwise rotation turns [[1, 2], [3, 4]] into [[3, 1], [4, 2]]. Transpose, then reverse each row.",
+    "sampleInput": [
+      [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    ],
+    "sampleResult": [
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        2
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Row",
+        "A horizontal sequence of cells."
+      ],
+      [
+        "Column",
+        "A vertical sequence of cells."
+      ],
+      [
+        "Neighbor",
+        "A cell reachable under the chosen adjacency rule."
+      ]
+    ],
+    "pitfall": "Check row and column bounds separately. State whether diagonal neighbors are allowed.",
+    "checkpoint": "Explain this in your own words: Rotating a square matrix by 90 degrees moves each cell into a new row and column."
+  },
+  "relatedLinks": []
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/quick-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Quick Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Sort an array by partitioning around a pivot and recursively sorting both sides.",
   "problem": "Sort an array by partitioning around a pivot and recursively sorting both sides.",
   "concept": "Quick Sort places one pivot in final position, with smaller-or-equal values on the left and larger values on the right.",
   "logicSummary": "Choose a pivot, partition the current range, then recursively sort the left and right partitions.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use quick sort when average-case speed and in-place partitioning are more important than stability.",
   "whenToUse": "Use Quick Sort for general in-memory sorting with good pivot strategy.",
   "memoryTrick": "Partition first; recurse around the fixed pivot.",
-  "visualizerCaption": "Quick Sort is shown with the actual sorted/unsorted state that its code maintains.",
+  "visualizerCaption": "Explore Quick Sort through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Use last value as pivot",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(log n) average recursion stack."
   },
   "quiz": {
-    "question": "Which state keeps Quick Sort correct?",
+    "question": "Which explanation best describes Quick Sort?",
     "options": [
       {
         "key": "A",
-        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Use one generic sorted-array story for every sorting algorithm.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Move values without preserving the algorithm's stated invariant.",
-        "correct": false
+        "text": "Sort an array by partitioning around a pivot and recursively sorting both sides.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Quick Sort works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Quick Sort needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Sort an array by partitioning around a pivot and recursively sorting both sides.",
+    "incorrectText": "Try again. Sort an array by partitioning around a pivot and recursively sorting both sides. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "quick-sort",
@@ -220,5 +220,44 @@ export const algorithmPage = {
         "secondaryLabel": "During partition, each value <= pivot swaps into the smaller region; the final pivot swap fixes the pivot index."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Use last value as pivot: 8 is the pivot for the first full range. Move smaller values left: Every value <= pivot joins the left partition. Swap pivot into place: The pivot lands between smaller and larger values. Sort both sides: The pivot is excluded from recursive ranges.",
+    "sampleInput": [
+      [
+        5,
+        1,
+        4,
+        2,
+        8
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      4,
+      5,
+      8
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Sort an array by partitioning around a pivot and recursively sorting both sides."
+  },
+  "relatedLinks": []
 };

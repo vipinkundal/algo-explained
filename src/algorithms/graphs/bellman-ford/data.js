@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/bellman-ford/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Bellman-Ford Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Bellman-Ford computes single-source shortest paths even when some edges are negative.",
   "problem": "Bellman-Ford computes single-source shortest paths even when some edges are negative.",
   "concept": "Bellman-Ford relaxes every edge V - 1 times, then scans once more to detect a reachable negative cycle.",
   "logicSummary": "Set the start distance to 0, scan every edge repeatedly, and keep any shorter candidate distance.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use Bellman-Ford for graphs with rebates, penalties, currency arbitrage checks, or any shortest-path graph with negative edges.",
   "whenToUse": "Use it when edge weights may be negative and you also need negative-cycle detection.",
   "memoryTrick": "Bellman-Ford lets every edge make an offer, then asks if any offer is still improving.",
-  "visualizerCaption": "Watch repeated edge relaxation update the distance table and then test for a negative cycle.",
+  "visualizerCaption": "Explore Bellman-Ford Algorithm through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Initialize distances",
@@ -229,26 +229,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state keeps Bellman-Ford Algorithm correct?",
+    "question": "Which explanation best describes Bellman-Ford Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "distance follows the page's own transition rule.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
-        "correct": false
+        "text": "Bellman-Ford computes single-source shortest paths even when some edges are negative.",
+        "correct": true
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Bellman-Ford computes single-source shortest paths even when some edges are negative.",
+    "incorrectText": "Try again. Bellman-Ford computes single-source shortest paths even when some edges are negative. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "bellman-ford",
@@ -287,5 +287,73 @@ export const algorithmPage = {
       ]
     ],
     "A"
-  ]
+  ],
+  "learningGuide": {
+    "mentalModel": "An edge weight is the cost of a connection. A shortest-path algorithm keeps the best cost found so far.",
+    "family": "Weighted graphs",
+    "example": "Initialize distances: Start is 0; all other vertices are infinity. Relax every edge: Try to improve each destination using each source edge. Repeat V - 1 times: Enough passes allow paths with up to V - 1 edges. Check one more pass: Any remaining improvement means a negative cycle is reachable.",
+    "sampleInput": [
+      [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      [
+        [
+          "A",
+          "B",
+          4
+        ],
+        [
+          "A",
+          "C",
+          5
+        ],
+        [
+          "B",
+          "C",
+          -2
+        ],
+        [
+          "C",
+          "D",
+          3
+        ],
+        [
+          "B",
+          "D",
+          6
+        ]
+      ],
+      "A"
+    ],
+    "sampleResult": {
+      "distance": {
+        "A": 0,
+        "B": 4,
+        "C": 2,
+        "D": 5
+      },
+      "hasNegativeCycle": false
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Weight",
+        "The cost attached to an edge."
+      ],
+      [
+        "Relaxation",
+        "Replace a distance if a cheaper route is found."
+      ],
+      [
+        "Infinity",
+        "No route to that vertex has been found yet."
+      ]
+    ],
+    "pitfall": "Check the algorithm’s assumptions about negative weights and negative cycles before using a shortest-path result.",
+    "checkpoint": "Explain this in your own words: Bellman-Ford computes single-source shortest paths even when some edges are negative."
+  },
+  "relatedLinks": []
 };

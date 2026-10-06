@@ -18,107 +18,89 @@ export const algorithmPage = {
       2
     ]
   ],
-  "meaning": "Backtracking Basics is a Foundations technique focused on solutions.",
-  "problem": "Backtracking Basics explores a decision tree by choosing, recursing, and undoing the choice before trying the next option.",
-  "concept": "Recursion and backtracking are useful when a problem branches into smaller choices that share the same rule. Use this when the answer is built by choosing, recursing, and sometimes undoing choices.",
-  "logicSummary": "Handle the base case, choose the next option, recurse into smaller state, then combine or undo state.",
-  "transitionSummary": "Each step either reaches a base case or moves one level deeper with a smaller decision state.",
-  "codeInsight": "The backtrack step is what keeps the state correct: every push must have a matching pop.",
-  "realLifeExample": "Backtracking Basics appears when the input is choices and the required result is solutions.",
-  "whenToUse": "Use Backtracking Basics when a problem matches the Foundations pattern and the expected state changes match a recursion tree dry run.",
-  "memoryTrick": "Backtracking Basics: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Backtracking Basics is shown as call/choice state changes. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work.",
+  "problem": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work.",
+  "concept": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work.",
+  "logicSummary": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work.",
+  "transitionSummary": "To place queens, try a safe square, continue to the next row, and remove the queen if later rows have no safe square.",
+  "codeInsight": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work.",
+  "realLifeExample": "To place queens, try a safe square, continue to the next row, and remove the queen if later rows have no safe square.",
+  "whenToUse": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work.",
+  "memoryTrick": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Base case",
-      "text": "Stop when the current state is complete or invalid."
+      "title": "Identify what the operation means",
+      "text": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work."
     },
     {
-      "title": "Choose option",
-      "text": "Pick the next valid branch."
+      "title": "Work through a small case",
+      "text": "To place queens, try a safe square, continue to the next row, and remove the queen if later rows have no safe square."
     },
     {
-      "title": "Recurse",
-      "text": "Solve the smaller state."
-    },
-    {
-      "title": "Return or undo",
-      "text": "Collect the result or backtrack before the next choice."
+      "title": "Check the boundary cases",
+      "text": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays."
     }
   ],
   "variables": [
     {
       "name": "choices",
-      "purpose": "The candidate values that drive the heap, recursion, subset, or frequency process."
+      "purpose": "The available decisions to try when constructing a path."
     },
     {
-      "name": "call frame and path",
-      "purpose": "The current recursive call plus the partial answer built so far."
+      "name": "values",
+      "purpose": "Chooses the provided array or a fallback sample so the following collection operations have an array to read."
     },
     {
-      "name": "returned value",
-      "purpose": "The value produced by backtrackingBasics after the maintained state reaches the stop rule."
+      "name": "result",
+      "purpose": "Stores completed answers or computed states so they can be returned and, where needed, reused."
     },
     {
-      "name": "transition / stop rule",
-      "purpose": "The transition is choose -> explore -> unchoose, which keeps sibling branches isolated. Stop when no valid work remains or the answer is known."
+      "name": "path",
+      "purpose": "Remembers the current partial choice sequence; backtracking restores it before trying a sibling branch."
     }
   ],
   "dryRun": [
     {
-      "label": "Base",
-      "title": "Check stop condition",
-      "note": "The entry step names the function inputs before the trace checks base cases or expands choices.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work.",
       "activeLine": 5,
-      "codeInsight": "Defines backtrackingBasics and names the input choices; edits to those inputs change the visual state and output."
+      "codeInsight": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work."
     },
     {
-      "label": "Choice",
-      "title": "Select next option",
-      "note": "One valid move is added to the state.",
-      "activeLine": 5,
-      "codeInsight": "Defines backtrackingBasics and names the input choices; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Call",
-      "title": "Recurse deeper",
-      "note": "The same rule runs on a smaller or extended state.",
-      "activeLine": 6,
-      "codeInsight": "Prepares values from the sample collection that the next visual step inspects."
-    },
-    {
-      "label": "Unwind",
-      "title": "Return or backtrack",
-      "note": "The result is combined or the choice is removed.",
-      "activeLine": 13,
-      "codeInsight": "Returns from this branch immediately because the current recursive or conditional state is complete."
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "To place queens, try a safe square, continue to the next row, and remove the queen if later rows have no safe square.",
+      "activeLine": 22,
+      "codeInsight": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work."
     }
   ],
   "complexity": {
-    "time": "O(n) for the educational reference implementation.",
-    "space": "O(n) for tracked state when needed."
+    "time": "O(n × 2ⁿ) for this demo, which enumerates and copies all subsets.",
+    "space": "O(n) active path and call depth, plus O(n × 2ⁿ) stored output."
   },
   "quiz": {
-    "question": "Which state choice keeps Backtracking Basics correct?",
+    "question": "Which explanation best describes Backtracking Basics?",
     "options": [
       {
         "key": "A",
-        "text": "Track path and update it only through Backtracking Basics' transition.",
+        "text": "Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. Backtracking Basics stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Backtracking Basics needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work.",
+    "incorrectText": "Try again. Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "foundations",
   "algorithmSlug": "backtracking-basics",
@@ -249,5 +231,47 @@ export const algorithmPage = {
         "mutedNodes": []
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "Each call remembers its own unfinished work. A base case returns directly; the other calls resume as smaller calls finish.",
+    "family": "Recursive calls",
+    "example": "To place queens, try a safe square, continue to the next row, and remove the queen if later rows have no safe square.",
+    "sampleInput": [
+      [
+        1,
+        2
+      ]
+    ],
+    "sampleResult": [
+      [],
+      [
+        2
+      ],
+      [
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Base case",
+        "An input that returns without another recursive call."
+      ],
+      [
+        "Call frame",
+        "The parameters and local work belonging to one call."
+      ],
+      [
+        "Backtracking",
+        "Undoing a choice to explore another branch; not every recursion needs it."
+      ]
+    ],
+    "pitfall": "Every recursive path must move toward a base case. Count call-stack memory as well as any explicit arrays.",
+    "checkpoint": "Explain this in your own words: Backtracking builds a possible solution one choice at a time, undoing a choice when a branch cannot work."
+  },
+  "relatedLinks": []
 };

@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/array-adt-binary-search/code/original.cpp",
   "originalCodeFilename": "04_binary_search.cpp",
   "originalActiveLine": 3,
-  "meaning": "Binary Search in Array ADT shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Binary Search in Array ADT explains the array state model and how one focused change updates it.",
-  "concept": "Binary Search in Array ADT is useful when sorted order lets you discard a whole half of the search space. Use this when the input is sorted or the answer predicate changes only once.",
-  "logicSummary": "Maintain low/high boundaries, test the middle, and keep only the half that can still contain the answer.",
-  "transitionSummary": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Find a value in a sorted array by checking the middle and discarding an impossible half.",
+  "problem": "Find a value in a sorted array by checking the middle and discarding an impossible half.",
+  "concept": "Find a value in a sorted array by checking the middle and discarding an impossible half.",
+  "logicSummary": "Find a value in a sorted array by checking the middle and discarding an impossible half.",
+  "transitionSummary": "Searching for 7 in [1, 3, 5, 7, 9] checks 5, then 7; the answer is index 3.",
+  "codeInsight": "Find a value in a sorted array by checking the middle and discarding an impossible half.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
-  "realLifeExample": "Binary Search in Array ADT is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Arrays / Array ADT behavior through state changes instead of memorized code.",
-  "memoryTrick": "Binary Search in Array ADT: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Binary Search in Array ADT is shown as a shrinking boundary search. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Searching for 7 in [1, 3, 5, 7, 9] checks 5, then 7; the answer is index 3.",
+  "whenToUse": "Find a value in a sorted array by checking the middle and discarding an impossible half.",
+  "memoryTrick": "Find a value in a sorted array by checking the middle and discarding an impossible half.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Read sorted input",
-      "text": "Confirm the array or predicate has monotonic order."
+      "title": "Identify what the operation means",
+      "text": "Find a value in a sorted array by checking the middle and discarding an impossible half."
     },
     {
-      "title": "Set boundaries",
-      "text": "Place low and high around every candidate."
+      "title": "Work through a small case",
+      "text": "Searching for 7 in [1, 3, 5, 7, 9] checks 5, then 7; the answer is index 3."
     },
     {
-      "title": "Compare middle",
-      "text": "Use mid to decide which half is impossible."
-    },
-    {
-      "title": "Return boundary",
-      "text": "Return the found index or final insertion boundary."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "slot index",
-      "purpose": "Selects the current array position."
+      "name": "values",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "active value",
-      "purpose": "The value currently being read or moved."
-    },
-    {
-      "name": "write slot",
-      "purpose": "Marks where an updated value is stored."
-    },
-    {
-      "name": "array view",
-      "purpose": "Shows the slots after Binary Search in Array ADT applies its operation."
+      "name": "sum",
+      "purpose": "Combines input items into one accumulated answer, so the result can be returned or reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Sorted input",
-      "title": "Read the ordered search space",
-      "note": "The code starts from a range where binary decisions are valid.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Find a value in a sorted array by checking the middle and discarding an impossible half.",
       "activeLine": 2,
-      "codeInsight": "Defines arrayAdtBinarySearch as the runnable entry point for this lesson."
+      "codeInsight": "Find a value in a sorted array by checking the middle and discarding an impossible half."
     },
     {
-      "label": "low / high",
-      "title": "Open the candidate window",
-      "note": "low and high mark every position that may still answer.",
-      "activeLine": 3,
-      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "mid check",
-      "title": "Compare the midpoint",
-      "note": "The midpoint decides which half is removed.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Searching for 7 in [1, 3, 5, 7, 9] checks 5, then 7; the answer is index 3.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Return",
-      "title": "Emit index or boundary",
-      "note": "The loop ends with a match or the collapsed boundary.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Find a value in a sorted array by checking the middle and discarding an impossible half."
     }
   ],
   "complexity": {
@@ -130,9 +104,9 @@ export const algorithmPage = {
   ],
   "relatedLinks": [
     {
-      "id": "array-patterns",
-      "title": "Array Patterns",
-      "label": "Existing algorithm lesson"
+      "id": "linear-search",
+      "title": "Linear Search",
+      "label": "Start with indexed array values"
     },
     {
       "id": "binary-search",
@@ -239,5 +213,41 @@ export const algorithmPage = {
         "secondaryLabel": "Each comparison must shrink the boundary range; equality returns immediately, otherwise low or high moves past mid."
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Searching for 7 in [1, 3, 5, 7, 9] checks 5, then 7; the answer is index 3.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "array",
+      "values": [
+        3,
+        1,
+        4,
+        1,
+        5
+      ],
+      "length": 5,
+      "max": 5,
+      "sum": 14
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Find a value in a sorted array by checking the middle and discarding an impossible half."
   }
 };

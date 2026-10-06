@@ -12,107 +12,77 @@ export const algorithmPage = {
   "icon": "memory",
   "codePath": "./src/algorithms/number-theory-and-bit-manipulation/power-of-two/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Power of Two is a Number Theory and Bit Manipulation technique focused on answer.",
-  "problem": "Power of Two solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its bit check transition.",
-  "concept": "Number and bit algorithms are useful when arithmetic properties let you skip brute-force work. Use this when divisibility, powers, bits, xor, or modular rules define the answer.",
-  "logicSummary": "Read numeric input, keep the relevant arithmetic state, apply the identity, and return the reduced result.",
-  "transitionSummary": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
-  "codeInsight": "The implementation keeps Power of Two's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Power of Two appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Power of Two when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a bit check dry run.",
-  "memoryTrick": "Power of Two: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Power of Two is shown as arithmetic-state reduction. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "A positive power of two has exactly one set bit in its binary representation.",
+  "problem": "A positive power of two has exactly one set bit in its binary representation.",
+  "concept": "A positive power of two has exactly one set bit in its binary representation.",
+  "logicSummary": "A positive power of two has exactly one set bit in its binary representation.",
+  "transitionSummary": "8 = 1000₂ is a power of two; 10 = 1010₂ is not. Check n > 0 before testing (n & (n − 1)) === 0.",
+  "codeInsight": "A positive power of two has exactly one set bit in its binary representation.",
+  "realLifeExample": "8 = 1000₂ is a power of two; 10 = 1010₂ is not. Check n > 0 before testing (n & (n − 1)) === 0.",
+  "whenToUse": "A positive power of two has exactly one set bit in its binary representation.",
+  "memoryTrick": "A positive power of two has exactly one set bit in its binary representation.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read numbers",
-      "text": "Identify the integer, range, or modulus."
+      "title": "Identify what the operation means",
+      "text": "A positive power of two has exactly one set bit in its binary representation."
     },
     {
-      "title": "Set invariant",
-      "text": "Choose the arithmetic or bit rule."
+      "title": "Work through a small case",
+      "text": "8 = 1000₂ is a power of two; 10 = 1010₂ is not. Check n > 0 before testing (n & (n − 1)) === 0."
     },
     {
-      "title": "Apply operation",
-      "text": "Shift, xor, divide, multiply, or mark values."
-    },
-    {
-      "title": "Return result",
-      "text": "Return the reduced number or boolean answer."
+      "title": "Check the boundary cases",
+      "text": "JavaScript bitwise operators on Number use 32-bit integers. Check non-negative input assumptions and use suitable integer arithmetic for larger values."
     }
   ],
   "variables": [
     {
-      "name": "value, other",
-      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
-    },
-    {
-      "name": "numeric invariant",
-      "purpose": "The remainder, bit mask, power, xor, or primality state updated each step. This page visualizes it as bit check."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by powerOfTwo after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the bit check transition until the stop condition for Power of Two is reached. Stop when no valid work remains or the answer is known."
+      "name": "value",
+      "purpose": "The number to compute with; recursive routines pass a smaller value to the next call."
     }
   ],
   "dryRun": [
     {
-      "label": "Numbers",
-      "title": "Read numeric state",
-      "note": "The code receives the number, range, or modulus.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "A positive power of two has exactly one set bit in its binary representation.",
       "activeLine": 5,
-      "codeInsight": "Defines powerOfTwo and names the input value; edits to those inputs change the visual state and output."
+      "codeInsight": "A positive power of two has exactly one set bit in its binary representation."
     },
     {
-      "label": "Rule",
-      "title": "Select math invariant",
-      "note": "The chosen identity controls every update.",
-      "activeLine": 5,
-      "codeInsight": "Defines powerOfTwo and names the input value; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Reduction",
-      "title": "Apply one reduction",
-      "note": "A shift, xor, multiply, divide, or mark changes state.",
-      "activeLine": 5,
-      "codeInsight": "Defines powerOfTwo and names the input value; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Numeric result",
-      "title": "Return numeric result",
-      "note": "The loop ends when the invariant gives the answer.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "8 = 1000₂ is a power of two; 10 = 1010₂ is not. Check n > 0 before testing (n & (n − 1)) === 0.",
       "activeLine": 6,
-      "codeInsight": "Returns value > 0 && (value & (value - 1)) === 0, the final value maintained by Power of Two's code path."
+      "codeInsight": "A positive power of two has exactly one set bit in its binary representation."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(1) for a fixed-width bit test.",
+    "space": "O(1). Require n > 0 and observe the integer width of the implementation."
   },
   "quiz": {
-    "question": "Which state choice keeps Power of Two correct?",
+    "question": "Which explanation best describes Power of Two?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Power of Two's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "A positive power of two has exactly one set bit in its binary representation.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Power of Two stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Power of Two needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. A positive power of two has exactly one set bit in its binary representation.",
+    "incorrectText": "Try again. A positive power of two has exactly one set bit in its binary representation. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
   "algorithmSlug": "power-of-two",
@@ -164,5 +134,32 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "Each binary position represents a power of two. A mask uses those positions as on/off flags.",
+    "family": "Binary digits",
+    "example": "8 = 1000₂ is a power of two; 10 = 1010₂ is not. Check n > 0 before testing (n & (n − 1)) === 0.",
+    "sampleInput": [
+      16
+    ],
+    "sampleResult": true,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Bit",
+        "One binary digit, either 0 or 1."
+      ],
+      [
+        "Mask",
+        "Bits used to select, record, or test positions."
+      ],
+      [
+        "XOR",
+        "An operation that gives 1 where two input bits differ."
+      ]
+    ],
+    "pitfall": "JavaScript bitwise operators on Number use 32-bit integers. Check non-negative input assumptions and use suitable integer arithmetic for larger values.",
+    "checkpoint": "Explain this in your own words: A positive power of two has exactly one set bit in its binary representation."
+  },
+  "relatedLinks": []
 };

@@ -12,107 +12,77 @@ export const algorithmPage = {
   "icon": "memory",
   "codePath": "./src/algorithms/number-theory-and-bit-manipulation/single-number/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Single Number is a Number Theory and Bit Manipulation technique focused on answer.",
-  "problem": "Single Number solves a Number Theory and Bit Manipulation problem by maintaining only the state needed for its xor cancel transition.",
-  "concept": "Number and bit algorithms are useful when arithmetic properties let you skip brute-force work. Use this when divisibility, powers, bits, xor, or modular rules define the answer.",
-  "logicSummary": "Read numeric input, keep the relevant arithmetic state, apply the identity, and return the reduced result.",
-  "transitionSummary": "Each step applies one arithmetic, modular, or bit operation that preserves the invariant.",
-  "codeInsight": "The implementation keeps Single Number's state local to this page: initialize it once, update it in the main loop or recursive call, and return the answer directly.",
-  "realLifeExample": "Single Number appears when the input is input and the required result is answer.",
-  "whenToUse": "Use Single Number when a problem matches the Number Theory and Bit Manipulation pattern and the expected state changes match a xor cancel dry run.",
-  "memoryTrick": "Single Number: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Single Number is shown as arithmetic-state reduction. The numbered steps follow the code path used to maintain the main invariant.",
+  "meaning": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice.",
+  "problem": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice.",
+  "concept": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice.",
+  "logicSummary": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice.",
+  "transitionSummary": "[4, 1, 4] gives 4 XOR 1 XOR 4 = 1. This rule depends on the paired-occurrence assumption.",
+  "codeInsight": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice.",
+  "realLifeExample": "[4, 1, 4] gives 4 XOR 1 XOR 4 = 1. This rule depends on the paired-occurrence assumption.",
+  "whenToUse": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice.",
+  "memoryTrick": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice.",
+  "visualizerCaption": "Follow the teaching model, then run the JavaScript sample to check its result.",
   "logicSteps": [
     {
-      "title": "Read numbers",
-      "text": "Identify the integer, range, or modulus."
+      "title": "Identify what the operation means",
+      "text": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice."
     },
     {
-      "title": "Set invariant",
-      "text": "Choose the arithmetic or bit rule."
+      "title": "Work through a small case",
+      "text": "[4, 1, 4] gives 4 XOR 1 XOR 4 = 1. This rule depends on the paired-occurrence assumption."
     },
     {
-      "title": "Apply operation",
-      "text": "Shift, xor, divide, multiply, or mark values."
-    },
-    {
-      "title": "Return result",
-      "text": "Return the reduced number or boolean answer."
+      "title": "Check the boundary cases",
+      "text": "JavaScript bitwise operators on Number use 32-bit integers. Check non-negative input assumptions and use suitable integer arithmetic for larger values."
     }
   ],
   "variables": [
     {
-      "name": "value, other",
-      "purpose": "value: The numeric or collection input used by the bit, math, or foundation routine. other: The numeric or collection input used by the bit, math, or foundation routine."
-    },
-    {
-      "name": "xor accumulator",
-      "purpose": "The running xor value where duplicate bits cancel out."
-    },
-    {
-      "name": "returned value",
-      "purpose": "The value produced by singleNumber after the maintained state reaches the stop rule."
-    },
-    {
-      "name": "transition / stop rule",
-      "purpose": "Repeat the xor cancel transition until the stop condition for Single Number is reached. Stop when no valid work remains or the answer is known."
+      "name": "values",
+      "purpose": "The collection to process. Its length tells the routine how many input items are available."
     }
   ],
   "dryRun": [
     {
-      "label": "Numbers",
-      "title": "Read numeric state",
-      "note": "The code receives the number, range, or modulus.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice.",
       "activeLine": 5,
-      "codeInsight": "Defines singleNumber and names the input values; edits to those inputs change the visual state and output."
+      "codeInsight": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice."
     },
     {
-      "label": "Rule",
-      "title": "Select math invariant",
-      "note": "The chosen identity controls every update.",
-      "activeLine": 5,
-      "codeInsight": "Defines singleNumber and names the input values; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Reduction",
-      "title": "Apply one reduction",
-      "note": "A shift, xor, multiply, divide, or mark changes state.",
-      "activeLine": 5,
-      "codeInsight": "Defines singleNumber and names the input values; edits to those inputs change the visual state and output."
-    },
-    {
-      "label": "Numeric result",
-      "title": "Return numeric result",
-      "note": "The loop ends when the invariant gives the answer.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "[4, 1, 4] gives 4 XOR 1 XOR 4 = 1. This rule depends on the paired-occurrence assumption.",
       "activeLine": 6,
-      "codeInsight": "Returns values.reduce((answer, value) => answer ^ value, 0), the final value maintained by Single Number's code path."
+      "codeInsight": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice."
     }
   ],
   "complexity": {
-    "time": "Depends on the finalized input size and transition count.",
-    "space": "Depends on the auxiliary state maintained by the implementation."
+    "time": "O(n) for one XOR scan when all other values occur exactly twice.",
+    "space": "O(1) auxiliary state for fixed-width integers."
   },
   "quiz": {
-    "question": "Which state choice keeps Single Number correct?",
+    "question": "Which explanation best describes Single Number?",
     "options": [
       {
         "key": "A",
-        "text": "Track state and update it only through Single Number's transition.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Single Number stays understandable when its own state and transition drive the answer.",
-    "incorrectText": "Not quite. Single Number needs its own input, state, answer, and condition rather than another algorithm's page structure."
+    "correctText": "Correct. XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice.",
+    "incorrectText": "Try again. XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "number-theory-and-bit-manipulation",
   "algorithmSlug": "single-number",
@@ -168,5 +138,36 @@ export const algorithmPage = {
         "activeState": 3
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "Each binary position represents a power of two. A mask uses those positions as on/off flags.",
+    "family": "Binary digits",
+    "example": "[4, 1, 4] gives 4 XOR 1 XOR 4 = 1. This rule depends on the paired-occurrence assumption.",
+    "sampleInput": [
+      [
+        2,
+        2,
+        1
+      ]
+    ],
+    "sampleResult": 1,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Bit",
+        "One binary digit, either 0 or 1."
+      ],
+      [
+        "Mask",
+        "Bits used to select, record, or test positions."
+      ],
+      [
+        "XOR",
+        "An operation that gives 1 where two input bits differ."
+      ]
+    ],
+    "pitfall": "JavaScript bitwise operators on Number use 32-bit integers. Check non-negative input assumptions and use suitable integer arithmetic for larger values.",
+    "checkpoint": "Explain this in your own words: XOR cancels paired equal integers, leaving the one unpaired value when all other values occur twice."
+  },
+  "relatedLinks": []
 };

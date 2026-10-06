@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "sort",
   "codePath": "./src/algorithms/sorting/bubble-sort/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Bubble Sort is taught here with its own input shape, state, transition, code trace, and stop condition.",
+  "meaning": "Sort an array by repeatedly swapping adjacent out-of-order values.",
   "problem": "Sort an array by repeatedly swapping adjacent out-of-order values.",
   "concept": "Bubble Sort pushes the largest unsorted value to the end of the unsorted range on every pass.",
   "logicSummary": "Scan adjacent pairs, swap when left is greater than right, then shrink the unsorted suffix boundary.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for teaching adjacent swaps and inversion removal, not for large production sorting.",
   "whenToUse": "Use Bubble Sort only for small or educational cases where adjacent-swap behavior matters.",
   "memoryTrick": "Big values bubble right one pass at a time.",
-  "visualizerCaption": "Bubble Sort is shown with the actual sorted/unsorted state that its code maintains.",
+  "visualizerCaption": "Explore Bubble Sort through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Compare 5 and 1",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(1)."
   },
   "quiz": {
-    "question": "Which state keeps Bubble Sort correct?",
+    "question": "Which explanation best describes Bubble Sort?",
     "options": [
       {
         "key": "A",
-        "text": "Track the algorithm's own sorted region, partition, bucket, count, heap, or digit state.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Use one generic sorted-array story for every sorting algorithm.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Move values without preserving the algorithm's stated invariant.",
-        "correct": false
+        "text": "Sort an array by repeatedly swapping adjacent out-of-order values.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. Bubble Sort works because that state and transition match the algorithm.",
-    "incorrectText": "Not quite. Bubble Sort needs its own state and stop condition instead of borrowed page logic."
+    "correctText": "Correct. Sort an array by repeatedly swapping adjacent out-of-order values.",
+    "incorrectText": "Try again. Sort an array by repeatedly swapping adjacent out-of-order values. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "sorting",
   "algorithmSlug": "bubble-sort",
@@ -225,5 +225,44 @@ export const algorithmPage = {
         "secondaryLabel": "Each adjacent comparison either swaps a local inversion or leaves the pair as-is; the pass ends with one more final value."
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Compare 5 and 1: 5 > 1, so swap the adjacent pair. Bubble 5 right: 5 continues moving until it reaches the end of the pass. Lock final value: The last slot is sorted and excluded from the next pass. Stop early: A pass without swaps means every adjacent pair is ordered.",
+    "sampleInput": [
+      [
+        5,
+        1,
+        4,
+        2,
+        8
+      ]
+    ],
+    "sampleResult": [
+      1,
+      2,
+      4,
+      5,
+      8
+    ],
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Sort an array by repeatedly swapping adjacent out-of-order values."
+  },
+  "relatedLinks": []
 };

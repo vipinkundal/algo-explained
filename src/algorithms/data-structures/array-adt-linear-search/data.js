@@ -20,81 +20,55 @@ export const algorithmPage = {
   "originalCodePath": "./src/algorithms/data-structures/array-adt-linear-search/code/original.cpp",
   "originalCodeFilename": "03_01_linear_search.cpp",
   "originalActiveLine": 3,
-  "meaning": "Linear Search in Array ADT shows how data is organized, changed, and inspected through a small browser demo with a C/C++ reference available beside it.",
-  "problem": "Linear Search in Array ADT explains the array state model and how one focused change updates it.",
-  "concept": "Linear Search in Array ADT is useful when every item may matter and the input has no stronger ordering to exploit. Use this when a simple pass is clearer or cheaper than preprocessing.",
-  "logicSummary": "Move one index through the array, update the running state, and stop when the required condition is met.",
-  "transitionSummary": "Each loop consumes the current item exactly once and advances the index.",
-  "codeInsight": "Use the Runnable JS tab to edit inputs and see browser-safe output. Use the C/C++ Reference tab to study the source implementation.",
+  "meaning": "Linear search checks array slots one by one until a target matches.",
+  "problem": "Linear search checks array slots one by one until a target matches.",
+  "concept": "Linear search checks array slots one by one until a target matches.",
+  "logicSummary": "Linear search checks array slots one by one until a target matches.",
+  "transitionSummary": "Searching [8, 3, 6] for 3 returns index 1.",
+  "codeInsight": "Linear search checks array slots one by one until a target matches.",
   "originalCodeInsight": "The loop is the transition: it repeatedly visits elements or nodes and updates the structure state.",
-  "realLifeExample": "Linear Search in Array ADT is useful when you need to understand the mechanics behind library-level data structures.",
-  "whenToUse": "Use this page when learning Arrays / Array ADT behavior through state changes instead of memorized code.",
-  "memoryTrick": "Linear Search in Array ADT: name the invariant, then trace the exact state change.",
-  "visualizerCaption": "Linear Search in Array ADT is shown as a left-to-right scan. The numbered steps follow the code path used to maintain the main invariant.",
+  "realLifeExample": "Searching [8, 3, 6] for 3 returns index 1.",
+  "whenToUse": "Linear search checks array slots one by one until a target matches.",
+  "memoryTrick": "Linear search checks array slots one by one until a target matches.",
+  "visualizerCaption": "Inspect a representation of the structure, then compare it with the C/C++ reference.",
   "logicSteps": [
     {
-      "title": "Start scan",
-      "text": "Set the first index and initial result."
+      "title": "Identify what the operation means",
+      "text": "Linear search checks array slots one by one until a target matches."
     },
     {
-      "title": "Read value",
-      "text": "Inspect the current array item."
+      "title": "Work through a small case",
+      "text": "Searching [8, 3, 6] for 3 returns index 1."
     },
     {
-      "title": "Update state",
-      "text": "Change the answer, counter, or candidate."
-    },
-    {
-      "title": "Finish pass",
-      "text": "Return the maintained result after the scan."
+      "title": "Check the boundary cases",
+      "text": "Keep positions and values separate. Check whether the right boundary is included before changing an index."
     }
   ],
   "variables": [
     {
-      "name": "slot index",
-      "purpose": "Selects the current array position."
+      "name": "values",
+      "purpose": "Keeps a sequence of sample or working values for the following operations."
     },
     {
-      "name": "active value",
-      "purpose": "The value currently being read or moved."
-    },
-    {
-      "name": "write slot",
-      "purpose": "Marks where an updated value is stored."
-    },
-    {
-      "name": "array view",
-      "purpose": "Shows the slots after Linear Search in Array ADT applies its operation."
+      "name": "sum",
+      "purpose": "Combines input items into one accumulated answer, so the result can be returned or reused."
     }
   ],
   "dryRun": [
     {
-      "label": "Input array",
-      "title": "Read values",
-      "note": "The code receives the list and any target condition.",
+      "label": "Topic",
+      "title": "Understand the operation",
+      "note": "Linear search checks array slots one by one until a target matches.",
       "activeLine": 2,
-      "codeInsight": "Defines arrayAdtLinearSearch as the runnable entry point for this lesson."
+      "codeInsight": "Linear search checks array slots one by one until a target matches."
     },
     {
-      "label": "Index",
-      "title": "Select current item",
-      "note": "The loop focuses on one position at a time.",
-      "activeLine": 3,
-      "codeInsight": "Seeds values with the sample values shown in the visualizer, giving the trace concrete cells to inspect."
-    },
-    {
-      "label": "Update",
-      "title": "Apply comparison or count",
-      "note": "The current value changes the running state only if the rule says so.",
+      "label": "Example",
+      "title": "Reason through the example",
+      "note": "Searching [8, 3, 6] for 3 returns index 1.",
       "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
-    },
-    {
-      "label": "Result",
-      "title": "Return scan output",
-      "note": "When the scan ends, the tracked result is returned.",
-      "activeLine": 5,
-      "codeInsight": "Returns the final state object { structure: \"array\", values, length: values.length, max: Math.max(...values), sum }, exposing the exact fields the visualizer has been tracking."
+      "codeInsight": "Linear search checks array slots one by one until a target matches."
     }
   ],
   "complexity": {
@@ -130,14 +104,9 @@ export const algorithmPage = {
   ],
   "relatedLinks": [
     {
-      "id": "array-patterns",
-      "title": "Array Patterns",
-      "label": "Existing algorithm lesson"
-    },
-    {
       "id": "linear-search",
       "title": "Linear Search",
-      "label": "Existing algorithm lesson"
+      "label": "Start with indexed array values"
     }
   ],
   "runnerInput": [],
@@ -239,5 +208,41 @@ export const algorithmPage = {
         "secondaryLabel": "Each loop consumes the current item exactly once and advances the index."
       }
     ]
+  },
+  "learningGuide": {
+    "mentalModel": "An array is a row of numbered slots. An index tells you where a value is; it is not the value itself.",
+    "family": "Arrays and indexes",
+    "example": "Searching [8, 3, 6] for 3 returns index 1.",
+    "sampleInput": [],
+    "sampleResult": {
+      "structure": "array",
+      "values": [
+        3,
+        1,
+        4,
+        1,
+        5
+      ],
+      "length": 5,
+      "max": 5,
+      "sum": 14
+    },
+    "sampleScope": "This runnable JavaScript companion illustrates the data structure. Its returned snapshot may cover fewer operations than the C/C++ reference. The topic example above explains the named operation.",
+    "terms": [
+      [
+        "Index",
+        "A position in a sequence, usually starting at 0."
+      ],
+      [
+        "Boundary",
+        "The first or last position still being considered."
+      ],
+      [
+        "Invariant",
+        "A rule that remains true after each step."
+      ]
+    ],
+    "pitfall": "Keep positions and values separate. Check whether the right boundary is included before changing an index.",
+    "checkpoint": "Explain this in your own words: Linear search checks array slots one by one until a target matches."
   }
 };

@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "table_chart",
   "codePath": "./src/algorithms/dynamic-programming/dp-on-grids/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "DP on Grids is taught with its own DP state definition, recurrence, code trace, and answer cell.",
+  "meaning": "Count paths from the top-left to bottom-right of a grid while blocked cells cannot be used.",
   "problem": "Count paths from the top-left to bottom-right of a grid while blocked cells cannot be used.",
   "concept": "Grid DP defines dp[row][col] as the number of ways to reach that cell from allowed top and left predecessors.",
   "logicSummary": "Scan cells in row-major order, skip obstacles, seed the start cell, and add ways from top plus left.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use it for path counting, robot movement, grid scoring, and blocked-map route planning.",
   "whenToUse": "Use DP on Grids when each cell depends on nearby previously solved cells.",
   "memoryTrick": "A grid cell inherits ways from top and left.",
-  "visualizerCaption": "The trace fills a path-count table cell by cell while skipping obstacles.",
+  "visualizerCaption": "Explore DP on Grids through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Define dp[row][col]",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(rows * cols)."
   },
   "quiz": {
-    "question": "Which state keeps DP on Grids correct?",
+    "question": "Which explanation best describes DP on Grids?",
     "options": [
       {
         "key": "A",
-        "text": "Define each cell by top and left dependencies and fill in dependency order.",
+        "text": "Count paths from the top-left to bottom-right of a grid while blocked cells cannot be used.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse another DP recurrence without matching the state definition.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Read the answer before the required dependency cells have been filled.",
+        "text": "All grid problems allow diagonal movement without checking bounds.",
         "correct": false
       }
     ],
-    "correctText": "Correct. DP on Grids works when its table meaning and recurrence stay aligned.",
-    "incorrectText": "Not quite. DP on Grids needs its own state, recurrence, and answer cell."
+    "correctText": "Correct. Count paths from the top-left to bottom-right of a grid while blocked cells cannot be used.",
+    "incorrectText": "Try again. Count paths from the top-left to bottom-right of a grid while blocked cells cannot be used. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "dynamic-programming",
   "algorithmSlug": "dp-on-grids",
@@ -268,5 +268,48 @@ export const algorithmPage = {
         ]
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A dynamic-programming state names a smaller question. A recurrence explains how its answer uses answers you already know.",
+    "family": "Saved subproblems",
+    "example": "Define dp[row][col]: Number of valid paths to that cell. Seed start: The start cell has one path if it is open. Skip blockers: Blocked cells contribute zero paths. Add dependencies: Open cells add top and left path counts.",
+    "sampleInput": [
+      [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    ],
+    "sampleResult": 2,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "State",
+        "One precisely defined subproblem."
+      ],
+      [
+        "Recurrence",
+        "A rule for computing a state from smaller states."
+      ],
+      [
+        "Base case",
+        "A known answer that starts the table or recursion."
+      ]
+    ],
+    "pitfall": "Define what each table entry means before filling it. Check base cases, evaluation order, and whether a choice can be reused.",
+    "checkpoint": "Explain this in your own words: Count paths from the top-left to bottom-right of a grid while blocked cells cannot be used."
+  },
+  "relatedLinks": []
 };

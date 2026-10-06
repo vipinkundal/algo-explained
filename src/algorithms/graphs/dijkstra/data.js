@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "hub",
   "codePath": "./src/algorithms/graphs/dijkstra/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Dijkstra’s Algorithm is taught here with its own state, transition, code trace, and stopping rule.",
+  "meaning": "Dijkstra's Algorithm computes shortest path distances from one start vertex when all edge weights are non-negative.",
   "problem": "Dijkstra's Algorithm computes shortest path distances from one start vertex when all edge weights are non-negative.",
   "concept": "Dijkstra repeatedly finalizes the unvisited vertex with the smallest known distance, then relaxes its outgoing weighted edges.",
   "logicSummary": "Initialize all distances to infinity except the start, choose the smallest unvisited distance, and improve neighbors through relaxation.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Use Dijkstra for route planning, network latency, game maps, and any non-negative shortest-path problem.",
   "whenToUse": "Use it for single-source shortest paths on weighted graphs with no negative edge weights.",
   "memoryTrick": "Dijkstra locks the nearest unlocked vertex, then offers better prices to its neighbors.",
-  "visualizerCaption": "Watch each edge relaxation update the distance table until all reachable shortest paths are finalized.",
+  "visualizerCaption": "Explore Dijkstra’s Algorithm through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Initialize distances",
@@ -100,26 +100,26 @@ export const algorithmPage = {
     "space": "O(V)."
   },
   "quiz": {
-    "question": "Which state keeps Dijkstra’s Algorithm correct?",
+    "question": "Which explanation best describes Dijkstra’s Algorithm?",
     "options": [
       {
         "key": "A",
-        "text": "distances follows the page's own transition rule.",
+        "text": "Dijkstra's Algorithm computes shortest path distances from one start vertex when all edge weights are non-negative.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reuse another graph algorithm's frontier and hope the result still matches.",
+        "text": "The position of a value is always identical to the value stored there.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Skip the stop condition once one edge has been inspected.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       }
     ],
-    "correctText": "Correct. The page-specific state is what makes this algorithm different from the other graph pages.",
-    "incorrectText": "Not quite. This algorithm needs its own input, state, transition, and stop condition."
+    "correctText": "Correct. Dijkstra's Algorithm computes shortest path distances from one start vertex when all edge weights are non-negative.",
+    "incorrectText": "Try again. Dijkstra's Algorithm computes shortest path distances from one start vertex when all edge weights are non-negative. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "graphs",
   "algorithmSlug": "dijkstra",
@@ -342,5 +342,98 @@ export const algorithmPage = {
       }
     ],
     "static": true
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "An edge weight is the cost of a connection. A shortest-path algorithm keeps the best cost found so far.",
+    "family": "Weighted graphs",
+    "example": "Initialize distances: Set start to 0 and every other vertex to infinity. Pick closest unvisited: Choose the unvisited vertex with the smallest known distance. Relax outgoing edges: If going through current is cheaper, update the neighbor distance and predecessor. Return shortest paths: Final distances and previous pointers describe the shortest-path tree.",
+    "sampleInput": [
+      {
+        "A": [
+          [
+            "B",
+            4
+          ],
+          [
+            "C",
+            2
+          ]
+        ],
+        "B": [
+          [
+            "D",
+            5
+          ]
+        ],
+        "C": [
+          [
+            "B",
+            1
+          ],
+          [
+            "D",
+            8
+          ],
+          [
+            "E",
+            10
+          ]
+        ],
+        "D": [
+          [
+            "E",
+            2
+          ],
+          [
+            "F",
+            6
+          ]
+        ],
+        "E": [
+          [
+            "F",
+            3
+          ]
+        ],
+        "F": []
+      },
+      "A"
+    ],
+    "sampleResult": {
+      "distances": {
+        "A": 0,
+        "B": 3,
+        "C": 2,
+        "D": 8,
+        "E": 10,
+        "F": 13
+      },
+      "previous": {
+        "A": null,
+        "B": "C",
+        "C": "A",
+        "D": "B",
+        "E": "D",
+        "F": "E"
+      }
+    },
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Weight",
+        "The cost attached to an edge."
+      ],
+      [
+        "Relaxation",
+        "Replace a distance if a cheaper route is found."
+      ],
+      [
+        "Infinity",
+        "No route to that vertex has been found yet."
+      ]
+    ],
+    "pitfall": "Check the algorithm’s assumptions about negative weights and negative cycles before using a shortest-path result.",
+    "checkpoint": "Explain this in your own words: Dijkstra's Algorithm computes shortest path distances from one start vertex when all edge weights are non-negative."
+  },
+  "relatedLinks": []
 };

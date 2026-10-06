@@ -12,7 +12,7 @@ export const algorithmPage = {
   "icon": "account_tree",
   "codePath": "./src/algorithms/trees/diameter-of-tree/code/solution.js",
   "codeFilename": "solution.js",
-  "meaning": "Tree diameter is the longest path between any two nodes, measured here as the number of edges on that path.",
+  "meaning": "Compute the longest path in the sample tree while each recursive call also returns subtree height to its parent.",
   "problem": "Compute the longest path in the sample tree while each recursive call also returns subtree height to its parent.",
   "concept": "At each node, left + right is the best diameter passing through that node, and 1 + Math.max(left, right) is the height returned upward.",
   "logicSummary": "Compute left height, compute right height, update diameter with left + right, and return the node height.",
@@ -21,7 +21,7 @@ export const algorithmPage = {
   "realLifeExample": "Diameter is like finding the longest route between two endpoints in a branching road map.",
   "whenToUse": "Use this pattern when each node must return height while also updating a global best path.",
   "memoryTrick": "Diameter at a node is left height plus right height; height returned is one plus the taller side.",
-  "visualizerCaption": "The animation shows diameter becoming 4 for path 1 -> 2 -> 4 -> 6 -> 7.",
+  "visualizerCaption": "Explore Diameter of Tree through a sample teaching model, then compare it with the runnable result.",
   "logicSteps": [
     {
       "title": "Check node",
@@ -93,26 +93,26 @@ export const algorithmPage = {
     "space": "O(h) recursion or traversal state."
   },
   "quiz": {
-    "question": "Which state choice keeps Diameter of Tree correct?",
+    "question": "Which explanation best describes Diameter of Tree?",
     "options": [
       {
         "key": "A",
-        "text": "Update diameter with left + right at every node while returning height upward.",
-        "correct": true
+        "text": "The position of a value is always identical to the value stored there.",
+        "correct": false
       },
       {
         "key": "B",
-        "text": "Reuse a different algorithm's state names even when the transition is different.",
+        "text": "The method works for every input, even when its required ordering or structure is absent.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Return before checking the algorithm-specific stop condition.",
-        "correct": false
+        "text": "Compute the longest path in the sample tree while each recursive call also returns subtree height to its parent.",
+        "correct": true
       }
     ],
-    "correctText": "Correct. The longest path through a node uses the heights of both child subtrees.",
-    "incorrectText": "Not quite. Returning height and updating diameter are related but different values."
+    "correctText": "Correct. Compute the longest path in the sample tree while each recursive call also returns subtree height to its parent.",
+    "incorrectText": "Try again. Compute the longest path in the sample tree while each recursive call also returns subtree height to its parent. Compare the small example in the lesson with your choice."
   },
   "categorySlug": "trees",
   "algorithmSlug": "diameter-of-tree",
@@ -259,11 +259,11 @@ export const algorithmPage = {
         "replacementNode": "6",
         "mutedNodes": [],
         "nodeLabels": {
-          "2": "2 h=2",
-          "6": "6 h=2",
           "1": "1 h=1",
+          "2": "2 h=2",
           "3": "3 h=1",
           "5": "5 h=1",
+          "6": "6 h=2",
           "7": "7 h=1"
         }
       },
@@ -310,5 +310,52 @@ export const algorithmPage = {
         }
       }
     ]
-  }
+  },
+  "learningGuide": {
+    "mentalModel": "A tree branches from a root. A child is one level below its parent; a leaf has no children.",
+    "family": "Trees and links",
+    "example": "Check node: Return height 0 for null children. Read node state: Compute left and right subtree heights. Move/combine: Update diameter with left + right. Return tree result: Return 1 plus the taller child height.",
+    "sampleInput": [
+      {
+        "value": 4,
+        "left": {
+          "value": 2,
+          "left": {
+            "value": 1
+          },
+          "right": {
+            "value": 3
+          }
+        },
+        "right": {
+          "value": 6,
+          "left": {
+            "value": 5
+          },
+          "right": {
+            "value": 7
+          }
+        }
+      }
+    ],
+    "sampleResult": 4,
+    "sampleScope": "This is the result of the unedited JavaScript function with the sample arguments. Changing the input or code can change the result.",
+    "terms": [
+      [
+        "Root",
+        "The starting node of a tree."
+      ],
+      [
+        "Subtree",
+        "A node together with all of its descendants."
+      ],
+      [
+        "Height",
+        "The longest downward path; check whether the code counts nodes or edges."
+      ]
+    ],
+    "pitfall": "Do not assume a tree is a binary search tree or balanced unless the problem guarantees it.",
+    "checkpoint": "Explain this in your own words: Compute the longest path in the sample tree while each recursive call also returns subtree height to its parent."
+  },
+  "relatedLinks": []
 };
